@@ -1,12 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-snapshot';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from "react-browser-router";
 import registerServiceWorker from './registerServiceWorker';
+import $ from 'jquery';
 
-ReactDOM.render((
-<BrowserRouter basename="island">
+render((
+<BrowserRouter basename="ourisland">
 	<App />
 </BrowserRouter>), 
 document.getElementById('root'));
