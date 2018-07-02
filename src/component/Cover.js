@@ -4,7 +4,7 @@ class Cover extends Component {
   render() {
     return (
       <section id="cover" className="min-vh-100 bg-silver">
-        Cover
+        <nav>Cover</nav>
       </section>
     );
   }
