@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from "react-browser-router";
 import registerServiceWorker from './registerServiceWorker';
-import $ from 'jquery';
 
 render((
 <BrowserRouter basename="ourisland">

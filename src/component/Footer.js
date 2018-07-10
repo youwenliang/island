@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom';
 class Footer extends Component {
   render() {
     return (
-      <section id="footer" className="h4 bg-near-black">
-        <Link to="/ourisland">Home</Link>
+      <section id="footer" className="bg-near-black pv5">
+      	<div className="mw8 center ph3">
+          <div className="cf ph2-ns">
+        	<Link to="/ourisland">Home</Link>
+          </div>
+        </div>
       </section>
     );
   }

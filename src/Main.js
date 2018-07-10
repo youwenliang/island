@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Home from './component/Home'
-import Search from './component/Search'
-import Page from './component/Page'
+import Home from './view/Home'
+import Search from './view/Search'
+import Page from './view/Page'
 
 class Main extends Component {
   render() {
@@ -10,8 +10,8 @@ class Main extends Component {
       <main>
         <Switch>
           <Route exact path='/ourisland' component={Home} />
-          <Route path='/ourisland/timeline' component={Search} />
-          <Route path='/ourisland/:id' component={Page} />
+          <Route path='/ourisland/timeline/' component={Search} />
+          <Route path='/ourisland/:id/' component={Page} />
         </Switch>
       </main>
     );
