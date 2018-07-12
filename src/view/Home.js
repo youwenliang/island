@@ -11,7 +11,7 @@ class Home extends Component {
     $(document).scrollTop(0);
     function setHeight() {
       var windowHeight = $(window).height(),
-        $block = $('#cover, #timeline');
+        $block = $('#cover');
         if(windowHeight > 550) { // 550px is your css min-height for this block
           $block.css('min-height', windowHeight + 'px') 
         } else {

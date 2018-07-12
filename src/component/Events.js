@@ -3,12 +3,36 @@ import { Link } from 'react-router-dom';
 import data from '../data/data.js'
 
 class Events extends Component {
-  event = (id) => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      topics: [0,0,0]
+    };
+  }
+  handleMouseOver (id) {
+    var topic = id.split('-')[0];
+    var num = id.split('-')[1];
+    switch(topic) {
+      case "1":
+        this.setState({topics:[num-1,0,0]});
+        break;
+      case "2":
+        this.setState({topics:[0,num-1,0]});
+        break;
+      case "3":
+        this.setState({topics:[0,0,num-1]});
+        break;
+      default:
+        break;
+    }
+  }
+
+  event = (content) => {
     return (
-      <li className="dib center tc">
-        <Link to={"/ourisland/page"+id+"/"}>
+      <li className="dib center tc" onMouseOver={() => this.handleMouseOver(content.id)}>
+        <Link to={"/ourisland/page"+content.id+"/"}>
         <figure className="h4 w4 br-100 ma3 bg-near-white"></figure>
-        {id}
+        {content.name}
         </Link>
       </li>
     )
@@ -20,8 +44,8 @@ class Events extends Component {
     var topic_title = event_data[num].title
     var event_content = event_data[num].content
     for(var i = 0; i < event_content.length; i++) {
-      var id = event_content[i].id;
-      list.push(this.event(id));
+      var content = event_content[i];
+      list.push(this.event(content));
     }  
     return (
       <section className="mb7-ns mb6 mt4">
@@ -40,7 +64,7 @@ class Events extends Component {
         <div className="bg-silver pv6-ns pv4 relative">
           <div className="mw8 center ph3">
             <div className="cf ph2-ns">
-              <p>test</p>
+              <p>{event_content[this.state.topics[num]].name}</p>
             </div>
           </div>
           <div className="event tr-l tc ph5-l nowrap overflow-x-scroll relative">
