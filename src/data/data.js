@@ -60,33 +60,38 @@ var data = {
       "name": "stories001",
       "time": 1975,
       "area": "north",
-      "keywords": [1975, "north", "topic_river", "key"]
+      "keywords": [1975, "north", "topic_river", "key"],
+      "tags": [1975, "north", "topic_river", "key"]
     },
     {
       "name": "stories002",
       "time": 1980,
       "area": "south",
-      "keywords": [1980, "south", "topic_river", "key"]
+      "keywords": [1980, "south", "topic_river", "key"],
+      "tags": [1980, "south", "topic_river", "key"]
     },
     {
       "name": "stories003",
       "time": 1990,
       "area": "south",
-      "keywords": [1990, "south", "topic_mountain", "key"]
+      "keywords": [1990, "south", "topic_mountain", "key"],
+      "tags": [1990, "south", "topic_mountain", "key"]
 
     },
     {
       "name": "stories004",
       "time": 1991,
       "area": "north",
-      "keywords": [1991, "north", "topic_mountain", "key2"]
+      "keywords": [1991, "north", "topic_mountain", "key2"],
+      "tags": [1991, "north", "topic_mountain", "key2"]
 
     },
     {
       "name": "stories005",
       "time": 1982,
       "area": "south",
-      "keywords": [1982, "south", "topic_pollution", "key2"]
+      "keywords": [1982, "south", "topic_pollution", "key2"],
+      "tags": [1982, "south", "topic_pollution", "key2"],
 
     }
   ]

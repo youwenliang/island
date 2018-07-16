@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import data from '../data/data.js'
 
+const event_data = data.events;
+
 class Events extends Component {
   constructor(props) {
     super(props);
@@ -40,9 +42,8 @@ class Events extends Component {
 
   topics = (num) => {
     let list = [];
-    var event_data = data.events;
-    var topic_title = event_data[num].title
-    var event_content = event_data[num].content
+    const topic_title = event_data[num].title
+    const event_content = event_data[num].content
     for(var i = 0; i < event_content.length; i++) {
       var content = event_content[i];
       list.push(this.event(content));

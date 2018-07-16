@@ -4,7 +4,12 @@ import loadImage from 'image-promise';
 import data from '../data/data.js'
 import $ from 'jquery';
 
+const story_data = data.stories;
+
 class Search extends Component {
+  constructor(props) {
+    super(props);
+  }
   componentDidMount() {
     $(document).scrollTop(0);
     function setHeight() {
@@ -38,19 +43,20 @@ class Search extends Component {
       console.info(err.loaded);
     });
   }
-  story = () => {
+  story = (content) => {
     return (
       <div className="h5 w5 dib bg-dark-gray white mh3">
-        Hey
+        {content.name}
       </div>
-    )
+    );
   }
 
   render() {
     let list = [];
-    for (var i = 0; i < 20; i++) {
-      list.push(this.story());
-    }
+    for(var i = 0; i < story_data.length; i++) {
+      var content = story_data[i];
+      list.push(this.story(content));
+    }  
     return (
       <section id="timeline" className="min-vh-100 bg-light-gray pv5-l pv3">
         <Helmet>
@@ -71,6 +77,13 @@ class Search extends Component {
               <li className="dib pa2 mr2 bg-white">topic_mountain</li>
               <li className="dib pa2 mr2 bg-white">topic_pollution</li>
             </ul> 
+          </div>
+        </div>
+        <div className="nowrap overflow-x-scroll">
+          {list}
+        </div>
+        <div className="mw8 center ph3 mv4">
+          <div className="cf ph2-ns">
             <ul className="list pa0">
               <li className="dib pv2 ph5 mr2 bg-white">1970</li>
               <li className="dib pv2 ph5 mr2 bg-white">1980</li>
@@ -79,9 +92,6 @@ class Search extends Component {
               <li className="dib pv2 ph5 mr2 bg-white">2010</li>
             </ul> 
           </div>
-        </div>
-        <div className="nowrap overflow-x-scroll">
-          {list}
         </div>
       </section>
     );
