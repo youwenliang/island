@@ -11,7 +11,8 @@ class Page extends Component {
       id: params.id
     };
   }
-  componentDidMount() {
+
+  componentDidMount(){
     $(document).scrollTop(0);
     document.body.classList.add('ds');
     document.getElementById('loading').classList.remove('fade');

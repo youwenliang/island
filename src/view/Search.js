@@ -3,6 +3,7 @@ import {Helmet} from "react-helmet";
 import loadImage from 'image-promise';
 import data from '../data/data.js'
 import $ from 'jquery';
+import mousewheel from 'jquery-mousewheel';
 
 const story_data = data.stories;
 
@@ -12,6 +13,12 @@ class Search extends Component {
   }
   componentDidMount() {
     $(document).scrollTop(0);
+
+    $('.storyBox').mousewheel(function(event, change) {
+      this.scrollLeft -= (change * 1); //need a value to speed up the change
+      event.preventDefault();
+    });
+
     function setHeight() {
       var windowHeight = $(window).height(),
         $block = $('#timeline');
@@ -79,8 +86,10 @@ class Search extends Component {
             </ul> 
           </div>
         </div>
-        <div className="nowrap overflow-x-scroll">
-          {list}
+        <div className="storyContainer">
+          <div className="storyBox nowrap overflow-x-scroll">
+            {list}
+          </div>
         </div>
         <div className="mw8 center ph3 mv4">
           <div className="cf ph2-ns">

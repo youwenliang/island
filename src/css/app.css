@@ -13,6 +13,8 @@ body {
 }
 
 .event {
+  height: 210px;
+  overflow: hidden;
 	bottom: -140px;
 }
 
@@ -22,9 +24,32 @@ body {
 }
 }
 
+.eventBox {
+  height: 250px;
+}
+
+.eventFigure {
+  transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.24);
+}
+.eventItem:hover .eventFigure{
+  transform: scale(1.07,1.07,1.07);
+  transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.04), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.storyContainer {
+  height: 256px;
+  overflow: hidden;
+}
+
+.storyBox {
+  height: 296px;
+}
+
 /* Loading Gif */
 #loading {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100vh;
   background-color: #fff;

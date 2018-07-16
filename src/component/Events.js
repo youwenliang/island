@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import data from '../data/data.js'
+import data from '../data/data.js';
+import $ from 'jquery';
+import mousewheel from 'jquery-mousewheel';
+import 'jquery-ui/ui/widgets/draggable';
 
 const event_data = data.events;
 
@@ -28,12 +31,18 @@ class Events extends Component {
         break;
     }
   }
+  componentDidMount() {
+    $('.eventBox').mousewheel(function(event, change) {
+      this.scrollLeft -= (change * 1); //need a value to speed up the change
+      event.preventDefault();
+    });
+  }
 
   event = (content) => {
     return (
-      <li className="dib center tc" onMouseOver={() => this.handleMouseOver(content.id)}>
+      <li className="eventItem dib center tc" onMouseOver={() => this.handleMouseOver(content.id)}>
         <Link to={"/ourisland/page"+content.id+"/"}>
-        <figure className="h4 w4 br-100 ma3 bg-near-white"></figure>
+        <figure className="eventFigure h4 w4 br-100 ma3 bg-near-white"></figure>
         {content.name}
         </Link>
       </li>
@@ -52,13 +61,13 @@ class Events extends Component {
       <section className="mb7-ns mb6 mt4">
         <div className="mw8 center ph3">
           <div className="cf ph2-ns">
-            <div className="fl w-100 w-50-l ph2 tl">
-              <p>{topic_title}</p>
-            </div>
             <div className="fl w-100 w-50-l ph2">
               <div className="bg-gray">
                 <figure className="h5"></figure>
               </div>
+            </div>
+            <div className="fl w-100 w-50-l ph2 tl">
+              <p>{topic_title}</p>
             </div>
           </div>
         </div>
@@ -66,10 +75,11 @@ class Events extends Component {
           <div className="mw8 center ph3">
             <div className="cf ph2-ns">
               <p>{event_content[this.state.topics[num]].name}</p>
+              <Link to={"/ourisland/page"+event_content[this.state.topics[num]].id+"/"}> Link </Link>
             </div>
           </div>
-          <div className="event tr-l tc ph5-l nowrap overflow-x-scroll relative">
-            <ul className="list pa0 ph2">{list}</ul>
+          <div className="mw8 center event tr-l tc relative">
+            <ul className="eventBox dragscroll nowrap overflow-x-scroll list pa0 ph2">{list}</ul>
           </div>
         </div>
       </section>

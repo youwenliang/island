@@ -93,6 +93,44 @@ var data = {
       "keywords": [1982, "south", "topic_pollution", "key2"],
       "tags": [1982, "south", "topic_pollution", "key2"],
 
+    },
+    {
+      "name": "stories006",
+      "time": 1975,
+      "area": "north",
+      "keywords": [1975, "north", "topic_river", "key"],
+      "tags": [1975, "north", "topic_river", "key"]
+    },
+    {
+      "name": "stories007",
+      "time": 1980,
+      "area": "south",
+      "keywords": [1980, "south", "topic_river", "key"],
+      "tags": [1980, "south", "topic_river", "key"]
+    },
+    {
+      "name": "stories008",
+      "time": 1990,
+      "area": "south",
+      "keywords": [1990, "south", "topic_mountain", "key"],
+      "tags": [1990, "south", "topic_mountain", "key"]
+
+    },
+    {
+      "name": "stories009",
+      "time": 1991,
+      "area": "north",
+      "keywords": [1991, "north", "topic_mountain", "key2"],
+      "tags": [1991, "north", "topic_mountain", "key2"]
+
+    },
+    {
+      "name": "stories010",
+      "time": 1982,
+      "area": "south",
+      "keywords": [1982, "south", "topic_pollution", "key2"],
+      "tags": [1982, "south", "topic_pollution", "key2"],
+
     }
   ]
 }
