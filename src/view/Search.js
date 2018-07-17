@@ -5,6 +5,7 @@ import data from '../data/data.js'
 import $ from 'jquery';
 import mousewheel from 'jquery-mousewheel';
 
+// Story Data
 const story_data = data.stories;
 
 class Search extends Component {

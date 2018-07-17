@@ -36,13 +36,16 @@ class Page extends Component {
   render() {
     var title = this.state.id
     return (
-      <div>
-        {title}
-        test
+      <section id={title} className="bg-near-white pv6-l pv4">
         <Helmet>
             <title>{title}</title>
         </Helmet>
-      </div>
+        <div className="mw8 center ph3">
+          <div className="cf ph2-ns">
+            <p>{title}</p>
+          </div>
+        </div>
+      </section>
     );
   }
 }

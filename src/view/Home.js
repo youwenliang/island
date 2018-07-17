@@ -7,13 +7,6 @@ import $ from 'jquery';
 import loadImage from 'image-promise';
 
 class Home extends Component {
-  componentWillUnmount() {  
-    console.log("unmount");
-  }
-  componentWillMount() {  
-    this.forceUpdate();
-  }
-
   componentDidMount(){
     $(document).scrollTop(0);
     function setHeight() {
