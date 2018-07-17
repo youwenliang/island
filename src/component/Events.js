@@ -18,12 +18,14 @@ class Events extends Component {
   handleMouseEnter (id) {
     var topic = id.split('-')[0];
     var num = id.split('-')[1];
+    var $this = this;
+    var tween = null;
+
     switch(topic) {
     case "1":
-      var $this = this;
       if($this.state.topics[0] === num-1) ;
       else {
-        var tween = TweenMax.to($('#topic-'+topic+' .eventBg'), .2, {opacity: 0});
+        tween = TweenMax.to($('#topic-'+topic+' .eventBg'), .2, {opacity: 0});
         tween.eventCallback("onComplete", function(){
           TweenMax.to($('#topic-'+topic+' .eventBg'), .6, {opacity: 1});
           $this.setState({topics:[num-1,0,0]});
@@ -31,10 +33,9 @@ class Events extends Component {
       }
       break;
     case "2":
-      var $this = this;
       if($this.state.topics[1] === num-1) ;
       else {
-        var tween = TweenMax.to($('#topic-'+topic+' .eventBg'), .2, {opacity: 0});
+        tween = TweenMax.to($('#topic-'+topic+' .eventBg'), .2, {opacity: 0});
         tween.eventCallback("onComplete", function(){
           TweenMax.to($('#topic-'+topic+' .eventBg'), .6, {opacity: 1});
           $this.setState({topics:[0,num-1,0]});
@@ -42,10 +43,9 @@ class Events extends Component {
       }
       break;
     case "3":
-      var $this = this;
       if($this.state.topics[2] === num-1) ;
       else {
-        var tween = TweenMax.to($('#topic-'+topic+' .eventBg'), .2, {opacity: 0});
+        tween = TweenMax.to($('#topic-'+topic+' .eventBg'), .2, {opacity: 0});
         tween.eventCallback("onComplete", function(){
           TweenMax.to($('#topic-'+topic+' .eventBg'), .6, {opacity: 1});
           $this.setState({topics:[0,0,num-1]});
