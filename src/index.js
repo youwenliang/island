@@ -18,7 +18,7 @@ registerServiceWorker();
 $(document).ready(function(){
 	$(window).scroll( function(){
 	  $('.hide').each( function(i){
-		var bottom_of_object = $(this).offset().top + $(this).outerHeight()/2;
+		var bottom_of_object = $(this).offset().top + $(this).outerHeight()/4;
 		var bottom_of_window = $(window).scrollTop() + $(window).height();
 		var $this = $(this);
 		if( bottom_of_window > bottom_of_object ){

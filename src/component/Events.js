@@ -71,17 +71,17 @@ class Events extends Component {
           var $this = $('#topic-'+k+' .eventBg');
           var bottom_of_object = $this.offset().top + $this.outerHeight();
           var bottom_of_window = $(window).scrollTop() + $(window).height();
-          if( bottom_of_window > bottom_of_object + 100){
+          if( bottom_of_window > bottom_of_object + 50){
           if(!flag[k-1]) {
             $('#topic-'+k+' .eventItem').each(function(i){
               var $eventItem = $(this);
             setTimeout(function(){
               TweenMax.to($eventItem, .4, {transform: "scale3d(1,1,1)"});
-              }, i * 50);
+              }, 50 + i * 50);
             });
             flag[k-1] = !flag[k-1];
           }
-          } else if( bottom_of_window < bottom_of_object){
+          } else if( bottom_of_window < bottom_of_object - 200){
             if(flag[k-1]) {
               $('#topic-'+k+' .eventItem').each(function(i){
                 TweenMax.to($(this), .4, {transform: "scale3d(0,0,0)"});
@@ -123,7 +123,7 @@ class Events extends Component {
       var content = event_content[i];
       list.push(this.event(content));
     }
-    var bgUrl = "https://fakeimg.pl/1200x900/282828/eae0d0/?text="+event_content[this.state.topics[num]].name+"&retina=1";
+    var bgUrl = "https://fakeimg.pl/1200x900/000000/ffffff/?text="+event_content[this.state.topics[num]].name+"&retina=1";
     var bgStyle = {
           backgroundImage: 'url('+bgUrl+')',
           backgroundPosition: 'center center',
@@ -135,20 +135,20 @@ class Events extends Component {
         <div className="mw8 center ph3">
           <div className="cf ph2-ns hide">
             <div className="fl w-100 w-50-l ph2">
-              <figure>
-                <img src={"https://fakeimg.pl/400x300/?text="+topic_title+"&retina=1"} alt={topic_title} />
+              <figure className="mh0">
+                <img src={"https://fakeimg.pl/500x200/?text="+topic_title+"&retina=1"} alt={topic_title} />
               </figure>
             </div>
             <div className="fl w-100 w-50-l ph2 tl">
-              <p>{topic_title}</p>
+              <h2>{topic_title}</h2>
             </div>
           </div>
         </div>
         <div className="eventContainer relative hide mv4">
           <div className="pv6-ns pv4 eventBg" style={bgStyle}>
-            <div className="mw8 center ph3">
+            <div className="mw8 center ph5-l ph4 relative z1">
               <div className="cf ph2-ns">
-                <p>{event_content[this.state.topics[num]].name}</p>
+                <h3 className="white">{event_content[this.state.topics[num]].name}</h3>
                 <Link to={"/ourisland/page"+event_content[this.state.topics[num]].id+"/"}> Link </Link>
               </div>
             </div>
