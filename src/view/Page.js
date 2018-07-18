@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import {Helmet} from "react-helmet";
 import loadImage from 'image-promise';
+import data from '../data/data.js';
 import $ from 'jquery';
+import mousewheel from 'jquery-mousewheel';
+import {TweenMax, CSSPlugin, ScrollToPlugin, Draggable, Elastic} from "gsap/all";
+
+// Event Data
+const pageEvent_data = data.pageEvents;
 
 class Page extends Component {
   constructor(props) {
@@ -34,15 +40,16 @@ class Page extends Component {
     });
   }
   render() {
-    var title = this.state.id
+    var data = pageEvent_data[this.state.id];
+
     return (
-      <section id={title} className="bg-near-white pv6-l pv4">
+      <section id={data.id} className="bg-near-white pv6-l pv4">
         <Helmet>
-            <title>{title}</title>
+            <title>{data.title}</title>
         </Helmet>
         <div className="mw8 center ph3">
           <div className="cf ph2-ns">
-            <p>{title}</p>
+            <p>{data.title}</p>
           </div>
         </div>
       </section>

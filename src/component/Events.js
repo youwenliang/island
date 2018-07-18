@@ -69,24 +69,26 @@ class Events extends Component {
       $(window).scroll( function(){
         for (var k = 1; k <= 3; k++) {
           var $this = $('#topic-'+k+' .eventBg');
-          var bottom_of_object = $this.offset().top + $this.outerHeight();
-          var bottom_of_window = $(window).scrollTop() + $(window).height();
-          if( bottom_of_window > bottom_of_object + 50){
-          if(!flag[k-1]) {
-            $('#topic-'+k+' .eventItem').each(function(i){
-              var $eventItem = $(this);
-            setTimeout(function(){
-              TweenMax.to($eventItem, .4, {transform: "scale3d(1,1,1)"});
-              }, 50 + i * 50);
-            });
-            flag[k-1] = !flag[k-1];
-          }
-          } else if( bottom_of_window < bottom_of_object - 200){
-            if(flag[k-1]) {
+          if($this.length !== 0) {
+            var bottom_of_object = $this.offset().top + $this.outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
+            if( bottom_of_window > bottom_of_object + 50){
+            if(!flag[k-1]) {
               $('#topic-'+k+' .eventItem').each(function(i){
-                TweenMax.to($(this), .4, {transform: "scale3d(0,0,0)"});
+                var $eventItem = $(this);
+              setTimeout(function(){
+                TweenMax.to($eventItem, .4, {transform: "scale3d(1,1,1)"});
+                }, 50 + i * 50);
               });
               flag[k-1] = !flag[k-1];
+            }
+            } else if( bottom_of_window < bottom_of_object - 200){
+              if(flag[k-1]) {
+                $('#topic-'+k+' .eventItem').each(function(i){
+                  TweenMax.to($(this), .4, {transform: "scale3d(0,0,0)"});
+                });
+                flag[k-1] = !flag[k-1];
+              }
             }
           }
         }
@@ -105,7 +107,7 @@ class Events extends Component {
   event = (content) => {
     return (
       <li className="eventItem dib center tc" onMouseEnter={() => this.handleMouseEnter(content.id)}>
-        <Link to={"/ourisland/page"+content.id+"/"}>
+        <Link to={"/ourisland/"+content.url+"/"}>
         <figure className="eventFigure h4 w4 br-100 ma3 bg-near-white">
           <img src={"https://fakeimg.pl/200x200/?text="+content.id+"&retina=1"} alt={content.name} />
         </figure>
