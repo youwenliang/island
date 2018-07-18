@@ -64,6 +64,11 @@ body {
 
 .storyBox {
   height: 296px;
+  cursor: grab;
+}
+
+.storyItem {
+  cursor: pointer;
 }
 
 /* Loading Gif */

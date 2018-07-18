@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import data from '../data/data.js';
 import $ from 'jquery';
 import mousewheel from 'jquery-mousewheel';
+import dragscroll from 'dragscroll';
 import {TweenMax, CSSPlugin, ScrollToPlugin, Draggable, Elastic} from "gsap/all";
 
 // Event Data
@@ -106,7 +107,7 @@ class Events extends Component {
 
   event = (content) => {
     return (
-      <li className="eventItem dib center tc" onMouseEnter={() => this.handleMouseEnter(content.id)}>
+      <li className="eventItem item dib center tc" onMouseEnter={() => this.handleMouseEnter(content.id)}>
         <Link to={"/ourisland/"+content.url+"/"}>
         <figure className="eventFigure h4 w4 br-100 ma3 bg-near-white">
           <img src={"https://fakeimg.pl/200x200/?text="+content.id+"&retina=1"} alt={content.name} />
@@ -156,7 +157,7 @@ class Events extends Component {
             </div>
           </div>
           <div className="mw8 center event tr-l tc relative">
-            <ul className="eventBox dragscroll nowrap overflow-x-scroll list pa0 ph2">{list}</ul>
+            <ul className="eventBox dragscroll nowrap overflow-x-scroll dragscroll list pa0 ph2">{list}</ul>
           </div>
         </div>
       </section>

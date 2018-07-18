@@ -16,16 +16,37 @@ document.getElementById('root'));
 registerServiceWorker();
 
 $(document).ready(function(){
+
+	// Disable Image dragging
+	$('img').on('dragstart', function(event) { event.preventDefault(); });
+
+	// Show hidden div on scroll
 	$(window).scroll( function(){
 	  $('.hide').each( function(i){
 		var bottom_of_object = $(this).offset().top + $(this).outerHeight()/4;
 		var bottom_of_window = $(window).scrollTop() + $(window).height();
 		var $this = $(this);
 		if( bottom_of_window > bottom_of_object ){
-			TweenMax.to($this, .4, {opacity: 1, transform: "translate3d(0,-20px,0)"});
+			TweenMax.to($this, .4, {opacity: 1, transform: "translate3d(0,0,0)"});
 		} else {
-			TweenMax.to($this, .4, {opacity: 0, transform: "translate3d(0,0,0)"});
+			TweenMax.to($this, .4, {opacity: 0, transform: "translate3d(0,50px,0)"});
 		}
 	  });
+	});
+
+	// Prevent Click and Dragscroll
+	$('.dragscroll').on('scroll', function() {
+		$('.dragscroll .item').one('click touch', function( event ) {
+			if (event.isDefaultPrevented()) {
+				$('.dragscroll .item').unbind('click touch').off(event);
+				return true;
+			} else event.preventDefault();
+		});
+	});
+	$('.dragscroll .item').on('click touch', function(event) {
+		if (event.isDefaultPrevented()) {
+			$('.dragscroll .item').unbind('click touch').off(event);
+			return true;
+		}
 	});
 });

@@ -4,6 +4,7 @@ import loadImage from 'image-promise';
 import data from '../data/data.js'
 import $ from 'jquery';
 import mousewheel from 'jquery-mousewheel';
+import dragscroll from 'dragscroll';
 
 // Story Data
 const story_data = data.stories;
@@ -53,7 +54,7 @@ class Search extends Component {
   }
   story = (content) => {
     return (
-      <div className="h5 w5 dib bg-dark-gray white mh3">
+      <div className="storyItem item h5 w5 dib bg-dark-gray white mh3">
         {content.name}
       </div>
     );
@@ -88,7 +89,7 @@ class Search extends Component {
           </div>
         </div>
         <div className="storyContainer">
-          <div className="storyBox nowrap overflow-x-scroll">
+          <div className="storyBox nowrap overflow-x-scroll dragscroll">
             {list}
           </div>
         </div>

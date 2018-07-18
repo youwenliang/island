@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "dragscroll": "0.0.8",
     "gsap": "^2.0.1",
     "image-promise": "^5.0.1",
     "jquery": "^3.2.1",
