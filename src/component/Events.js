@@ -152,7 +152,7 @@ class Events extends Component {
             <div className="mw8 center ph5-l ph4 relative z1">
               <div className="cf ph2-ns">
                 <h3 className="white">{event_content[this.state.topics[num]].name}</h3>
-                <Link to={"/ourisland/page"+event_content[this.state.topics[num]].id+"/"}> Link </Link>
+                <Link to={"/ourisland/"+event_content[this.state.topics[num]].url+"/"}> Link </Link>
               </div>
             </div>
           </div>
