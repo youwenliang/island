@@ -5,6 +5,8 @@ import data from '../data/data.js'
 import $ from 'jquery';
 import mousewheel from 'jquery-mousewheel';
 import dragscroll from 'dragscroll';
+import Modal from 'react-responsive-modal';
+import {TweenMax, CSSPlugin, ScrollToPlugin, Draggable, Elastic} from "gsap/all";
 
 // Story Data
 const story_data = data.stories;
@@ -16,9 +18,20 @@ class Search extends Component {
     super(props);
     this.state = {
       search: '',
-      area: ''
+      area: '',
+      open: false,
+      content: {}
     };
   }
+
+  onOpenModal = (event, c) => {
+    if(!$(event.target).hasClass('noClick')) this.setState({ open: true, content: c});
+  };
+
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
+
   componentDidMount() {
     $(document).scrollTop(0);
 
@@ -66,7 +79,7 @@ class Search extends Component {
   // Story Component
   story = (content) => {
     return (
-      <li className="storyItem item h5 w5 dib bg-dark-gray white mh3">
+      <li className="storyItem item h7 w6 dib bg-dark-gray white mh3" onClick={(e) => this.onOpenModal(e, content)}>
         <div className="pa4">
           <h3 className="ma0">{content.name}</h3>
           <h5 className="ma0">{content.time}</h5>
@@ -76,7 +89,7 @@ class Search extends Component {
   }
   storyList = () => {
     let filteredStories = story_data.filter((s) => { return s.keywords.indexOf(this.state.search) != -1 && s.keywords.indexOf(this.state.area) != -1;});
-    return (<ul className="storyBox pa0 nowrap list overflow-x-scroll dragscroll">{filteredStories.map((s) => { return this.story(s) })}</ul>);
+    return (<ul className="storyBox tc pa0 nowrap list overflow-x-scroll dragscroll">{filteredStories.map((s) => { return this.story(s) })}</ul>);
   }
 
   // Topic Component
@@ -100,33 +113,52 @@ class Search extends Component {
     if(event) event.preventDefault();
     const key = this.refs.keyword.value;
     const key_area = this.refs.areas.value;
-    this.setState({
-      search: key.substr(0,20),
-      area: key_area
+    var $this = this;
+    var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
+    tween.eventCallback("onComplete", function(){
+      TweenMax.to($('.storyBox'), .6, {opacity: 1});
+      $this.setState({
+        search: key.substr(0,20),
+        area: key_area
+      });
+      $('.storyBox').scrollLeft(0);
     });
   }
   updateTopic = (event) => {
     if(event) event.preventDefault();
     const key = event.target.id;
-    this.setState({
-      search: key,
-      area: "",
+    var $this = this;
+    var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
+    tween.eventCallback("onComplete", function(){
+      TweenMax.to($('.storyBox'), .6, {opacity: 1});
+      $this.setState({
+        search: key,
+        area: "",
+      });
+      $this.refs.keyword.value = key;
+      $this.refs.areas.value = '';
+      $('.storyBox').scrollLeft(0);
     });
-    this.refs.keyword.value = key;
-    this.refs.areas.value = '';
   }
   updateDate = (event) => {
     if(event) event.preventDefault();
     const key = event.target.innerHTML;
-    this.setState({
-      search: key,
-      area: "",
+    var $this = this;
+    var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
+    tween.eventCallback("onComplete", function(){
+      TweenMax.to($('.storyBox'), .6, {opacity: 1});
+      $this.setState({
+        search: key,
+        area: "",
+      });
+      $this.refs.keyword.value = key;
+      $this.refs.areas.value = '';
+      $('.storyBox').scrollLeft(0);
     });
-    this.refs.keyword.value = key;
-    this.refs.areas.value = '';
   }
 
   render() {
+    const { open } = this.state;
     return (
       <section id="timeline" className="min-vh-100 bg-light-gray pv5-l pv3">
         <Helmet>
@@ -161,6 +193,12 @@ class Search extends Component {
             {this.dateList()}
           </div>
         </div>
+        <Modal open={open} onClose={this.onCloseModal}>
+          <h2>{this.state.content.name}</h2>
+          <p>
+            {this.state.content.content}
+          </p>
+        </Modal>
       </section>
     );
   }

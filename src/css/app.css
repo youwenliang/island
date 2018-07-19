@@ -14,9 +14,17 @@ body {
 .z1 {
   z-index: 1;
 }
-
 .cp {
   cursor: pointer;
+}
+.w6 {
+  width: 20rem;
+}
+.h6 {
+  height: 20rem;
+}
+.h7 {
+  height: 24rem;
 }
 
 /* Events */
@@ -62,12 +70,12 @@ body {
 
 /* Stories */
 .storyContainer {
-  height: 256px;
+  height: 24rem;
   overflow: hidden;
 }
 
 .storyBox {
-  height: 296px;
+  height: calc(24rem + 40px);
   cursor: grab;
 }
 

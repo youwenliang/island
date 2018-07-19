@@ -126,30 +126,32 @@ var data = {
       "time": 1975,
       "area": "north",
       "keywords": "1970 1975 north River key",
-      "tags": [1975, "north", "River", "key"]
+      "tags": [1975, "north", "River", "key"],
+      "content": "this is 001 content"
     },
     {
       "name": "stories002",
       "time": 1980,
       "area": "south",
       "keywords": "1980 south River key",
-      "tags": [1980, "south", "River", "key"]
+      "tags": [1980, "south", "River", "key"],
+      "content": "this is 002 content"
     },
     {
       "name": "stories003",
       "time": 1990,
       "area": "south",
       "keywords": "1990 south Mountain key",
-      "tags": [1990, "south", "Mountain", "key"]
-
+      "tags": [1990, "south", "Mountain", "key"],
+      "content": "this is 003 content"
     },
     {
       "name": "stories004",
       "time": 1991,
       "area": "north",
       "keywords": "1990 1991 north Mountain key2",
-      "tags": [1991, "north", "Mountain", "key2"]
-
+      "tags": [1991, "north", "Mountain", "key2"],
+      "content": "this is 004 content"
     },
     {
       "name": "stories005",
@@ -157,37 +159,39 @@ var data = {
       "area": "south",
       "keywords": "1980 1982 south Pollution key2",
       "tags": [1982, "south", "Pollution", "key2"],
-
+      "content": "this is 005 content"
     },
     {
       "name": "stories006",
       "time": 1975,
       "area": "north",
       "keywords": "1970 1975 north River key",
-      "tags": [1975, "north", "River", "key"]
+      "tags": [1975, "north", "River", "key"],
+      "content": "this is 006 content"
     },
     {
       "name": "stories007",
       "time": 1980,
       "area": "south",
       "keywords": "1980 south River key",
-      "tags": [1980, "south", "River", "key"]
+      "tags": [1980, "south", "River", "key"],
+      "content": "this is 007 content"
     },
     {
       "name": "stories008",
       "time": 1990,
       "area": "south",
       "keywords": "1990 south Mountain key",
-      "tags": [1990, "south", "Mountain", "key"]
-
+      "tags": [1990, "south", "Mountain", "key"],
+      "content": "this is 008 content"
     },
     {
       "name": "stories009",
       "time": 1991,
       "area": "north",
       "keywords": "1990 1991 north Mountain key2",
-      "tags": [1991, "north", "Mountain", "key2"]
-
+      "tags": [1991, "north", "Mountain", "key2"],
+      "content": "this is 009 content"
     },
     {
       "name": "stories010",
@@ -195,7 +199,7 @@ var data = {
       "area": "south",
       "keywords": "1980 1982 south Pollution key2",
       "tags": [1982, "south", "Pollution", "key2"],
-
+      "content": "this is 010 content"
     }
   ]
 }

@@ -11,9 +11,11 @@ class Timeline extends Component {
               <a href="/ourisland/timeline/" target="_blank">Search</a>
             </div>
             <div className="fl w-100 w-60-l ph2 hide">
-              <figure className="mh0">
-                <img src="https://fakeimg.pl/800x600/?text=timeline&retina=1" alt="timeline" />
-              </figure>
+              <a href="/ourisland/timeline/" target="_blank">
+                <figure className="mh0">
+                  <img src="https://fakeimg.pl/800x600/?text=timeline&retina=1" alt="timeline" />
+                </figure>
+              </a>
             </div>
           </div>
         </div>

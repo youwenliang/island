@@ -39,13 +39,20 @@ $(document).ready(function(){
 		$('.dragscroll .item').one('click touch', function( event ) {
 			if (event.isDefaultPrevented()) {
 				$('.dragscroll .item').unbind('click touch').off(event);
+				$('.dragscroll .item').removeClass('noClick');
 				return true;
-			} else event.preventDefault();
+			} else {
+				$('.dragscroll .item').addClass('noClick');
+				console.log( "blocked link" );
+				event.preventDefault();
+			}
 		});
 	});
+
 	$('.dragscroll .item').on('click touch', function(event) {
 		if (event.isDefaultPrevented()) {
 			$('.dragscroll .item').unbind('click touch').off(event);
+			$('.dragscroll .item').removeClass('noClick');
 			return true;
 		}
 	});
