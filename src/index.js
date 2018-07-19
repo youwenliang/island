@@ -36,23 +36,23 @@ $(document).ready(function(){
 
 	// Prevent Click and Dragscroll
 	$('.dragscroll').on('scroll', function() {
+		$('.dragscroll .item').addClass('noClick');
 		$('.dragscroll .item').one('click touch', function( event ) {
 			if (event.isDefaultPrevented()) {
 				$('.dragscroll .item').unbind('click touch').off(event);
-				$('.dragscroll .item').removeClass('noClick');
 				return true;
 			} else {
-				$('.dragscroll .item').addClass('noClick');
-				console.log( "blocked link" );
+				// console.log( "blocked link" );
 				event.preventDefault();
+				setTimeout(function(){
+					$('.dragscroll .item').removeClass('noClick');
+				}, 400);
 			}
 		});
 	});
-
 	$('.dragscroll .item').on('click touch', function(event) {
 		if (event.isDefaultPrevented()) {
 			$('.dragscroll .item').unbind('click touch').off(event);
-			$('.dragscroll .item').removeClass('noClick');
 			return true;
 		}
 	});
