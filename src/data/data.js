@@ -86,82 +86,115 @@ var data = {
     }
   },
 
+  // Topics
+
+  "topics": [
+    {
+      "title": "All",
+      "keyword": ""
+    },
+    {
+      "title": "River",
+      "keyword": "River"
+    },
+    {
+      "title": "Mountain",
+      "keyword": "Mountain"
+    },
+    {
+      "title": "Pollution",
+      "keyword": "Pollution"
+    },
+    {
+      "title": "Topic4",
+      "keyword": "topic_4"
+    },
+    {
+      "title": "Topic5",
+      "keyword": "topic_5"
+    }
+  ],
+
+  // Dates
+
+  "dates": ["1970", "1980", "1990", "2000", "2010"],
+
   // 150 Stories
   "stories": [
     {
       "name": "stories001",
       "time": 1975,
       "area": "north",
-      "keywords": [1975, "north", "topic_river", "key"],
-      "tags": [1975, "north", "topic_river", "key"]
+      "keywords": "1970 1975 north River key",
+      "tags": [1975, "north", "River", "key"]
     },
     {
       "name": "stories002",
       "time": 1980,
       "area": "south",
-      "keywords": [1980, "south", "topic_river", "key"],
-      "tags": [1980, "south", "topic_river", "key"]
+      "keywords": "1980 south River key",
+      "tags": [1980, "south", "River", "key"]
     },
     {
       "name": "stories003",
       "time": 1990,
       "area": "south",
-      "keywords": [1990, "south", "topic_mountain", "key"],
-      "tags": [1990, "south", "topic_mountain", "key"]
+      "keywords": "1990 south Mountain key",
+      "tags": [1990, "south", "Mountain", "key"]
 
     },
     {
       "name": "stories004",
       "time": 1991,
       "area": "north",
-      "keywords": [1991, "north", "topic_mountain", "key2"],
-      "tags": [1991, "north", "topic_mountain", "key2"]
+      "keywords": "1990 1991 north Mountain key2",
+      "tags": [1991, "north", "Mountain", "key2"]
 
     },
     {
       "name": "stories005",
       "time": 1982,
       "area": "south",
-      "keywords": [1982, "south", "topic_pollution", "key2"],
-      "tags": [1982, "south", "topic_pollution", "key2"],
+      "keywords": "1980 1982 south Pollution key2",
+      "tags": [1982, "south", "Pollution", "key2"],
 
     },
     {
       "name": "stories006",
       "time": 1975,
       "area": "north",
-      "keywords": [1975, "north", "topic_river", "key"],
-      "tags": [1975, "north", "topic_river", "key"]
+      "keywords": "1970 1975 north River key",
+      "tags": [1975, "north", "River", "key"]
     },
     {
       "name": "stories007",
       "time": 1980,
       "area": "south",
-      "keywords": [1980, "south", "topic_river", "key"],
-      "tags": [1980, "south", "topic_river", "key"]
+      "keywords": "1980 south River key",
+      "tags": [1980, "south", "River", "key"]
     },
     {
       "name": "stories008",
       "time": 1990,
       "area": "south",
-      "keywords": [1990, "south", "topic_mountain", "key"],
-      "tags": [1990, "south", "topic_mountain", "key"]
+      "keywords": "1990 south Mountain key",
+      "tags": [1990, "south", "Mountain", "key"]
 
     },
     {
       "name": "stories009",
       "time": 1991,
       "area": "north",
-      "keywords": [1991, "north", "topic_mountain", "key2"],
-      "tags": [1991, "north", "topic_mountain", "key2"]
+      "keywords": "1990 1991 north Mountain key2",
+      "tags": [1991, "north", "Mountain", "key2"]
 
     },
     {
       "name": "stories010",
       "time": 1982,
       "area": "south",
-      "keywords": [1982, "south", "topic_pollution", "key2"],
-      "tags": [1982, "south", "topic_pollution", "key2"],
+      "keywords": "1980 1982 south Pollution key2",
+      "tags": [1982, "south", "Pollution", "key2"],
 
     }
   ]
