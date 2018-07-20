@@ -31,6 +31,9 @@ img {
 .w7 {
   width: 24rem;
 }
+.dragscroll {
+  -webkit-overflow-scrolling: touch;
+}
 
 @media screen and (min-width: 30em) {
   .w6-ns {
