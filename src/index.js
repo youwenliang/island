@@ -5,7 +5,7 @@ import App from './App';
 import { BrowserRouter } from "react-browser-router";
 import registerServiceWorker from './registerServiceWorker';
 import $ from 'jquery';
-import {TweenMax, CSSPlugin, ScrollToPlugin, Draggable, Elastic} from "gsap/all";
+import {TweenMax} from "gsap/all";
 import ScrollMagic from 'scrollmagic';
 
 render((

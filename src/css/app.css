@@ -4,6 +4,10 @@ body {
 	overflow-x: hidden;
 }
 
+img {
+  vertical-align: bottom;
+}
+
 #cover, #timeline {
 	min-height: 550px;
 }
@@ -17,9 +21,26 @@ body {
 .cp {
   cursor: pointer;
 }
+.pn {
+  pointer-events: none;
+}
+
 .w6 {
   width: 20rem;
 }
+.w7 {
+  width: 24rem;
+}
+
+@media screen and (min-width: 30em) {
+  .w6-ns {
+    width: 20rem;
+  }
+  .w7-ns {
+    width: 24rem;
+  }
+}
+
 .h6 {
   height: 20rem;
 }
@@ -38,7 +59,9 @@ body {
   height: 250px;
 }
 
-.eventBox::-webkit-scrollbar { 
+.eventBox::-webkit-scrollbar,
+.storyBox::-webkit-scrollbar,
+.topicBox::-webkit-scrollbar  { 
     display: none; 
 }
 
@@ -80,7 +103,16 @@ body {
 }
 
 .storyItem {
-  cursor: pointer;
+  vertical-align: top;
+}
+
+.topicContainer {
+  height: 3rem;
+}
+
+.topicBox {
+  height: calc(3rem + 40px);
+  cursor: grab;
 }
 
 /* Loading Gif */

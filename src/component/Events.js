@@ -4,7 +4,7 @@ import data from '../data/data.js';
 import $ from 'jquery';
 import mousewheel from 'jquery-mousewheel';
 import dragscroll from 'dragscroll';
-import {TweenMax, CSSPlugin, ScrollToPlugin, Draggable, Elastic} from "gsap/all";
+import {TweenMax} from "gsap/all";
 
 // Event Data
 const event_data = data.events;

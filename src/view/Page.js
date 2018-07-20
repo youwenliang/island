@@ -3,8 +3,8 @@ import {Helmet} from "react-helmet";
 import loadImage from 'image-promise';
 import data from '../data/data.js';
 import $ from 'jquery';
-import mousewheel from 'jquery-mousewheel';
-import {TweenMax, CSSPlugin, ScrollToPlugin, Draggable, Elastic} from "gsap/all";
+// import mousewheel from 'jquery-mousewheel';
+// import {TweenMax} from "gsap/all";
 
 // Event Data
 const pageEvent_data = data.pageEvents;

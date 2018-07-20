@@ -6,7 +6,8 @@ import $ from 'jquery';
 import mousewheel from 'jquery-mousewheel';
 import dragscroll from 'dragscroll';
 import Modal from 'react-responsive-modal';
-import {TweenMax, CSSPlugin, ScrollToPlugin, Draggable, Elastic} from "gsap/all";
+// import LazyLoad from 'react-lazyload';
+import {TweenMax} from "gsap/all";
 
 // Story Data
 const story_data = data.stories;
@@ -25,7 +26,9 @@ class Search extends Component {
   }
 
   onOpenModal = (event, c) => {
-    if(!$(event.target).hasClass('noClick')) this.setState({ open: true, content: c});
+    if(!$(event.target).hasClass('noClick') && c.time !== "") {
+      this.setState({ open: true, content: c});
+    }
   };
 
   onCloseModal = () => {
@@ -78,17 +81,29 @@ class Search extends Component {
 
   // Story Component
   story = (content) => {
+    let d = " dib";
+    if(this.state.search === "" && content.keywords.indexOf("topic") !== -1) d = " dn";
+
+    // Topic Cards
+    let style = " white bg-dark-gray w6-ns w5 h6";
+    let image = " db";
+    if(content.time === "") {
+      style = " bg-white dark-gray w7-ns w5 h7";
+      image = " dn";
+    }
     return (
-      <li className="storyItem item h7 w6 dib bg-dark-gray white mh3" onClick={(e) => this.onOpenModal(e, content)}>
-        <div className="pa4">
-          <h3 className="ma0">{content.name}</h3>
-          <h5 className="ma0">{content.time}</h5>
+      <li className={"storyItem item cp mh3"+d+style} onClick={(e) => this.onOpenModal(e, content)}>
+        <div className="pn">
+          <figure className={"ma0"+image}>
+            <img src="https://fakeimg.pl/600x350/?text=story&retina=1" alt="story" />
+          </figure>
+          <h3 className="ma0 pa4 tl">{content.name}</h3>
         </div>
       </li>
     );
   }
   storyList = () => {
-    let filteredStories = story_data.filter((s) => { return s.keywords.indexOf(this.state.search) != -1 && s.keywords.indexOf(this.state.area) != -1;});
+    let filteredStories = story_data.filter((s) => { return s.keywords.indexOf(this.state.search) !== -1 && s.keywords.indexOf(this.state.area) !== -1;});
     return (<ul className="storyBox tc pa0 nowrap list overflow-x-scroll dragscroll">{filteredStories.map((s) => { return this.story(s) })}</ul>);
   }
 
@@ -97,7 +112,7 @@ class Search extends Component {
     return (<li className="dib pa2 mr2 bg-white cp ph4" id={t.keyword} onClick={this.updateTopic.bind(this)}>{t.title}</li>);
   }
   topicList = () => {
-    return (<ul className="list pa0 nowrap list overflow-x-scroll dragscroll">{topic_data.map((t) => { return this.topic(t); })}</ul>)
+    return (<ul className="topicBox list pa0 ph2-ns nowrap list overflow-x-scroll dragscroll">{topic_data.map((t) => { return this.topic(t); })}</ul>)
   }
 
   // Date Component
@@ -165,7 +180,7 @@ class Search extends Component {
             <title>Timeline</title>
         </Helmet>
         <div className="mw8 center ph3 mv4">
-          <div className="cf ph2-ns mb5">
+          <div className="cf ph2-ns mb5-ns mb2">
             <div className="fl w-100 w-30-l ph2">
               <h1 className="ma0">Search</h1>
             </div>
@@ -183,7 +198,9 @@ class Search extends Component {
               </form>
             </div>
           </div>
-          {this.topicList()}    
+        </div>
+        <div className="topicContainer mw8-ns center ph3-ns">
+          {this.topicList()}
         </div>
         <div className="storyContainer">
           {this.storyList()}

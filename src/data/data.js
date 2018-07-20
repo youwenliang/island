@@ -122,6 +122,30 @@ var data = {
   // 150 Stories
   "stories": [
     {
+      "name": "All",
+      "time": "",
+      "area": "",
+      "keywords": "",
+      "tags": [],
+      "content": "this is All"
+    },
+    {
+      "name": "River",
+      "time": "",
+      "area": "",
+      "keywords": "River topic",
+      "tags": [],
+      "content": "this is River"
+    },
+    {
+      "name": "Mountain",
+      "time": "",
+      "area": "",
+      "keywords": "Mountain topic",
+      "tags": [],
+      "content": "this is Mountain"
+    },
+    {
       "name": "stories001",
       "time": 1975,
       "area": "north",
