@@ -126,10 +126,10 @@ class Search extends Component {
 
   // Topic Component
   topic = (t) => {
-    return (<li className="dib pa2 mr2 bg-white cp ph4" id={t.keyword} onClick={this.updateTopic.bind(this)}>{t.title}</li>);
+    return (<li className="dib w-100 pa2 mr2 bg-white cp ph4 tc" id={t.keyword} onClick={this.updateTopic.bind(this)}>{t.title}</li>);
   }
   topicList = () => {
-    return (<ul className="topicBox list pa0 ph2-ns nowrap list overflow-x-scroll dragscroll">{topic_data.map((t) => { return this.topic(t); })}</ul>)
+    return (<ul className="topicBox list flex space-between pa0 ph2-ns nowrap list overflow-x-scroll dragscroll">{topic_data.map((t) => { return this.topic(t); })}</ul>)
   }
 
   // Date Component
