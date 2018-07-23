@@ -51,7 +51,9 @@ img {
 .pn {
   pointer-events: none;
 }
-
+.w150 {
+  width: 150px;
+}
 .w6 {
   width: 20rem;
 }

@@ -208,7 +208,7 @@ class Search extends Component {
             <div className="fl w-100 w-70-l ph2-ns">
               <form className="flex space-between aic" onSubmit={this.updateSearch.bind(this)}>
                 <input id="search_input" className="w-100 ph2" type="text" ref="keyword" placeholder="搜尋紀事"/>
-                <select name="areas" ref="areas">
+                <select name="areas" ref="areas" className="w150">
                   <option value="">全部地區</option>
                   <option value="north">北部地區</option>
                   <option value="central">中部地區</option>
