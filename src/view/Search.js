@@ -8,6 +8,7 @@ import dragscroll from 'dragscroll';
 import Modal from 'react-responsive-modal';
 // import LazyLoad from 'react-lazyload';
 import {TweenMax} from "gsap/all";
+import InfiniteScroll from 'react-infinite-scroller';
 
 // Story Data
 const story_data = data.stories;
@@ -121,7 +122,11 @@ class Search extends Component {
   }
   storyList = () => {
     let filteredStories = story_data.filter((s) => { return s.keywords.indexOf(this.state.search) !== -1 && s.keywords.indexOf(this.state.area) !== -1;});
-    return (<ul id="storyBox" className="storyBox tc pa0 nowrap list overflow-x-scroll dragscroll">{filteredStories.map((s) => { return this.story(s) })}</ul>);
+    return (
+      <ul id="storyBox" className="storyBox tc pa0 nowrap list overflow-x-scroll dragscroll">
+        {filteredStories.map((s) => { return this.story(s) })}
+      </ul>
+    );
   }
 
   // Topic Component
@@ -196,14 +201,14 @@ class Search extends Component {
         <Helmet>
             <title>Timeline</title>
         </Helmet>
-        <div className="mw8 center ph3 mv4">
+        <div className="mw8-ns center ph3-ns mv4-ns">
           <div className="cf ph2-ns mb5-ns mb2">
             <div className="fl w-100 w-30-l ph2">
-              <h1 className="ma0">時間軸大紀事</h1>
+              <h2 className="ma0-l mv4 tl-ns tc">台灣環境史三十年大事紀</h2>
             </div>
-            <div className="fl w-100 w-70-l ph2">
-              <form onSubmit={this.updateSearch.bind(this)}>
-                <input id="search_input" className="w-70" type="text" ref="keyword"/>
+            <div className="fl w-100 w-70-l ph2-ns">
+              <form className="flex space-between aic" onSubmit={this.updateSearch.bind(this)}>
+                <input id="search_input" className="w-100 ph2" type="text" ref="keyword"/>
                 <select name="areas" ref="areas">
                   <option value="">全部地區</option>
                   <option value="north">北部地區</option>
@@ -211,7 +216,7 @@ class Search extends Component {
                   <option value="south">南部地區</option>
                   <option value="others">其他</option>
                 </select>
-                <input type="submit" value="搜尋" />
+                <input type="submit" className="ph2 tc cp w4" value="搜尋" />
               </form>
             </div>
           </div>
@@ -245,3 +250,5 @@ class Search extends Component {
 }
 
 export default Search;
+
+
