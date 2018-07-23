@@ -130,7 +130,7 @@ class Search extends Component {
 
   // Topic Component
   topic = (t) => {
-    return (<li className="dib w-100 pa2 mr2 bg-white cp ph4 tc" id={t.keyword} onClick={this.updateTopic.bind(this)}>{t.title}</li>);
+    return (<li className="dib w-100 pa2 mh2 bg-white cp ph4 tc" id={t.keyword} onClick={this.updateTopic.bind(this)}>{t.title}</li>);
   }
   topicList = () => {
     return (<ul className="topicBox list flex space-between pa0 ph2-ns nowrap list overflow-x-scroll dragscroll">{topic_data.map((t) => { return this.topic(t); })}</ul>)
@@ -201,13 +201,13 @@ class Search extends Component {
             <title>Timeline</title>
         </Helmet>
         <div className="mw8-ns center ph3-ns mv4-ns">
-          <div className="cf ph2-ns mb5-ns mb2">
+          <div className="cf ph2-ns mb3-ns mb2">
             <div className="fl w-100 w-30-l ph2">
               <h2 className="ma0-l mv4 tl-ns tc">台灣環境史三十年大事紀</h2>
             </div>
             <div className="fl w-100 w-70-l ph2-ns">
               <form className="flex space-between aic" onSubmit={this.updateSearch.bind(this)}>
-                <input id="search_input" className="w-100 ph2" type="text" ref="keyword"/>
+                <input id="search_input" className="w-100 ph2" type="text" ref="keyword" placeholder="搜尋紀事"/>
                 <select name="areas" ref="areas">
                   <option value="">全部地區</option>
                   <option value="north">北部地區</option>
@@ -223,7 +223,7 @@ class Search extends Component {
         <div className="topicContainer mw8-ns center ph3-ns">
           {this.topicList()}
         </div>
-        <div className="storyContainer mt5-ns mt3">
+        <div className="storyContainer mt4-ns mt3">
           {this.storyList()}
         </div>
         <div className="mw8 center ph3 mv4">
