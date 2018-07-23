@@ -36,17 +36,18 @@ $(document).ready(function(){
 
 	// Prevent Click and Dragscroll
 	$('.dragscroll').on('scroll', function() {
-		$('.dragscroll .item').addClass('noClick');
 		$('.dragscroll .item').one('click touch', function( event ) {
+			var $this = $(this);
+			$this.addClass('noClick');
 			if (event.isDefaultPrevented()) {
 				$('.dragscroll .item').unbind('click touch').off(event);
 				return true;
 			} else {
-				// console.log( "blocked link" );
+				console.log( "blocked link" );
 				event.preventDefault();
 				setTimeout(function(){
-					$('.dragscroll .item').removeClass('noClick');
-				}, 400);
+					$this.removeClass('noClick');
+				}, 100);
 			}
 		});
 	});

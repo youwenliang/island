@@ -7,7 +7,7 @@ class Cover extends Component {
       	<nav className="bg-white pv3">
       	  <div className="mw8 center ph3">
           	<div className="cf ph2-ns">
-          		<p>Our Island</p>
+          		<p>我們的島</p>
           	</div>
           </div>
         </nav>

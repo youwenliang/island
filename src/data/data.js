@@ -2,68 +2,68 @@ var data = {
   // Homepage 3 Topics
   "events": [
     {
-      "title": "Topic1",
+      "title": "主題一水線",
       "content": [{
           "id": "1-1",
-          "name": "001",
+          "name": "事件1",
           "url": "event001"
         }, {
           "id": "1-2",
-          "name": "002",
+          "name": "事件2",
           "url": "event002"
         }, {
           "id": "1-3",
-          "name": "003",
+          "name": "事件3",
           "url": "event003"
         }, {
           "id": "1-4",
-          "name": "004",
+          "name": "事件4",
           "url": "event004"
         }, {
           "id": "1-5",
-          "name": "005",
+          "name": "事件5",
           "url": "event005"
         }
       ]
     },
     {
-      "title": "Topic2",
+      "title": "主題二山線",
       "content": [{
           "id": "2-1",
-          "name": "006",
+          "name": "事件6",
           "url": "event006"
         }, {
           "id": "2-2",
-          "name": "007",
+          "name": "事件7",
           "url": "event007"
         }, {
           "id": "2-3",
-          "name": "008",
+          "name": "事件8",
           "url": "event008"
         }, {
           "id": "2-4",
-          "name": "009",
+          "name": "事件9",
           "url": "event009"
         }
       ]
     },
     {
-      "title": "Topic3",
+      "title": "主題三污染線",
       "content": [{
           "id": "3-1",
-          "name": "010",
+          "name": "事件10",
           "url": "event010"
         }, {
           "id": "3-2",
-          "name": "011",
+          "name": "事件11",
           "url": "event011"
         }, {
           "id": "3-3",
-          "name": "012",
+          "name": "事件12",
           "url": "event012"
         }, {
           "id": "3-4",
-          "name": "013",
+          "name": "事件13",
           "url": "event013"
         }
       ]
@@ -74,55 +74,55 @@ var data = {
   "pageEvents": {
     "event001": {
       "title": "this is title 001",
-      "id": "001"
+      "id": "事件1"
     },
     "event002": {
       "title": "this is title 002",
-      "id": "002"
+      "id": "事件2"
     },
     "event003": {
       "title": "this is title 003",
-      "id": "003"
+      "id": "事件3"
     },
     "event004": {
       "title": "this is title 004",
-      "id": "004"
+      "id": "事件4"
     },
     "event005": {
       "title": "this is title 005",
-      "id": "005"
+      "id": "事件5"
     },
     "event006": {
       "title": "this is title 006",
-      "id": "006"
+      "id": "事件6"
     },
     "event007": {
       "title": "this is title 007",
-      "id": "007"
+      "id": "事件7"
     },
     "event008": {
       "title": "this is title 008",
-      "id": "008"
+      "id": "事件8"
     },
     "event009": {
       "title": "this is title 009",
-      "id": "009"
+      "id": "事件9"
     },
     "event010": {
       "title": "this is title 010",
-      "id": "010"
+      "id": "事件10"
     },
     "event011": {
       "title": "this is title 011",
-      "id": "011"
+      "id": "事件11"
     },
     "event012": {
       "title": "this is title 012",
-      "id": "012"
+      "id": "事件12"
     },
     "event013": {
       "title": "this is title 013",
-      "id": "013"
+      "id": "事件13"
     }
   },
 
@@ -186,7 +186,7 @@ var data = {
       "content": "this is Mountain"
     },
     {
-      "name": "stories001",
+      "name": "事件01",
       "time": 1975,
       "area": "north",
       "keywords": "1970 1975 north River key",
@@ -194,7 +194,7 @@ var data = {
       "content": "this is 001 content"
     },
     {
-      "name": "stories002",
+      "name": "事件02",
       "time": 1980,
       "area": "south",
       "keywords": "1980 south River key",
@@ -202,7 +202,7 @@ var data = {
       "content": "this is 002 content"
     },
     {
-      "name": "stories003",
+      "name": "事件03",
       "time": 1990,
       "area": "south",
       "keywords": "1990 south Mountain key",
@@ -210,7 +210,7 @@ var data = {
       "content": "this is 003 content"
     },
     {
-      "name": "stories004",
+      "name": "事件04",
       "time": 1991,
       "area": "north",
       "keywords": "1990 1991 north Mountain key2",
@@ -218,7 +218,7 @@ var data = {
       "content": "this is 004 content"
     },
     {
-      "name": "stories005",
+      "name": "事件05",
       "time": 1982,
       "area": "south",
       "keywords": "1980 1982 south Pollution key2",
@@ -226,7 +226,7 @@ var data = {
       "content": "this is 005 content"
     },
     {
-      "name": "stories006",
+      "name": "事件06",
       "time": 1975,
       "area": "north",
       "keywords": "1970 1975 north River key",
@@ -234,7 +234,7 @@ var data = {
       "content": "this is 006 content"
     },
     {
-      "name": "stories007",
+      "name": "事件07",
       "time": 1980,
       "area": "south",
       "keywords": "1980 south River key",
@@ -242,7 +242,7 @@ var data = {
       "content": "this is 007 content"
     },
     {
-      "name": "stories008",
+      "name": "事件08",
       "time": 1990,
       "area": "south",
       "keywords": "1990 south Mountain key",
@@ -250,7 +250,7 @@ var data = {
       "content": "this is 008 content"
     },
     {
-      "name": "stories009",
+      "name": "事件09",
       "time": 1991,
       "area": "north",
       "keywords": "1990 1991 north Mountain key2",
@@ -258,7 +258,7 @@ var data = {
       "content": "this is 009 content"
     },
     {
-      "name": "stories010",
+      "name": "事件10",
       "time": 1982,
       "area": "south",
       "keywords": "1980 1982 south Pollution key2",

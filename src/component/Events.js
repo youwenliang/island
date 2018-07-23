@@ -139,7 +139,7 @@ class Events extends Component {
           <div className="cf ph2-ns hide">
             <div className="fl w-100 w-50-l ph2">
               <figure className="mh0">
-                <img src={"https://fakeimg.pl/500x200/?text="+topic_title+"&retina=1"} alt={topic_title} />
+                <img src={"https://fakeimg.pl/500x200/?text=illustration&retina=1"} alt={topic_title} />
               </figure>
             </div>
             <div className="fl w-100 w-50-l ph2 tl">
@@ -152,7 +152,7 @@ class Events extends Component {
             <div className="mw8 center ph5-l ph4 relative z1">
               <div className="cf ph2-ns">
                 <h3 className="white">{event_content[this.state.topics[num]].name}</h3>
-                <Link to={"/ourisland/"+event_content[this.state.topics[num]].url+"/"}> Link </Link>
+                <Link to={"/ourisland/"+event_content[this.state.topics[num]].url+"/"}> <button className="cp">事件連結</button> </Link>
               </div>
             </div>
           </div>
@@ -169,8 +169,8 @@ class Events extends Component {
       <section id="events" className="bg-white pt6-l pt4 tl">
         <div className="mw8 center ph3">
           <div className="cf ph2-ns tc hide">
-            <h2 className="ph2">Events</h2>
-            <h4 className="ph2 mb5-l mb4">tagline</h4>
+            <h1 className="ph2 fw7">三大主題十三個事件</h1>
+            <h3 className="ph2 mb5-l mb4 fw4">三大主題副標</h3>
           </div>
         </div>
         {this.topics(0)}

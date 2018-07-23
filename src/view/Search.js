@@ -33,6 +33,7 @@ class Search extends Component {
 
   onCloseModal = () => {
     this.setState({ open: false });
+    $('.noClick').removeClass('noClick');
   };
 
   componentDidMount() {
@@ -77,6 +78,22 @@ class Search extends Component {
       console.info('But these loaded fine:');
       console.info(err.loaded);
     });
+
+    $(document).ready(function(){
+      var scroll = document.getElementById("scrollRange");
+      var panel = document.getElementById("storyBox");    
+      scroll.oninput = function () {
+        var total = panel.scrollWidth - panel.offsetWidth;
+        var percentage = total*(this.value/100);
+        console.log(total);
+        panel.scrollLeft = percentage;
+        //console.log(percentage);
+      }
+      panel.onscroll = function () {
+        var total = panel.scrollWidth - panel.offsetWidth;
+        scroll.value = panel.scrollLeft*100/total;
+      }
+    });
   }
 
   // Story Component
@@ -104,7 +121,7 @@ class Search extends Component {
   }
   storyList = () => {
     let filteredStories = story_data.filter((s) => { return s.keywords.indexOf(this.state.search) !== -1 && s.keywords.indexOf(this.state.area) !== -1;});
-    return (<ul className="storyBox tc pa0 nowrap list overflow-x-scroll dragscroll">{filteredStories.map((s) => { return this.story(s) })}</ul>);
+    return (<ul id="storyBox" className="storyBox tc pa0 nowrap list overflow-x-scroll dragscroll">{filteredStories.map((s) => { return this.story(s) })}</ul>);
   }
 
   // Topic Component
@@ -117,7 +134,7 @@ class Search extends Component {
 
   // Date Component
   date = (d) => {
-    return (<li className="w-20 tc dib pa2 bg-white cp" onClick={this.updateDate.bind(this)}>{d}</li>);
+    return (<li className="w-20 tc dib pa2 bg-white cp">{d}</li>);
   }
   dateList = () => {
     return (<ul className="list pa0">{date_data.map((d) => { return this.date(d); })}</ul>)
@@ -155,22 +172,22 @@ class Search extends Component {
       $('.storyBox').scrollLeft(0);
     });
   }
-  updateDate = (event) => {
-    if(event) event.preventDefault();
-    const key = event.target.innerHTML;
-    var $this = this;
-    var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
-    tween.eventCallback("onComplete", function(){
-      TweenMax.to($('.storyBox'), .6, {opacity: 1});
-      $this.setState({
-        search: key,
-        area: "",
-      });
-      $this.refs.keyword.value = key;
-      $this.refs.areas.value = '';
-      $('.storyBox').scrollLeft(0);
-    });
-  }
+  // updateDate = (event) => {
+  //   if(event) event.preventDefault();
+  //   const key = event.target.innerHTML;
+  //   var $this = this;
+  //   var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
+  //   tween.eventCallback("onComplete", function(){
+  //     TweenMax.to($('.storyBox'), .6, {opacity: 1});
+  //     $this.setState({
+  //       search: key,
+  //       area: "",
+  //     });
+  //     $this.refs.keyword.value = key;
+  //     $this.refs.areas.value = '';
+  //     $('.storyBox').scrollLeft(0);
+  //   });
+  // }
 
   render() {
     const { open } = this.state;
@@ -182,7 +199,7 @@ class Search extends Component {
         <div className="mw8 center ph3 mv4">
           <div className="cf ph2-ns mb5-ns mb2">
             <div className="fl w-100 w-30-l ph2">
-              <h1 className="ma0">Search</h1>
+              <h1 className="ma0">時間軸大紀事</h1>
             </div>
             <div className="fl w-100 w-70-l ph2">
               <form onSubmit={this.updateSearch.bind(this)}>
@@ -194,7 +211,7 @@ class Search extends Component {
                   <option value="south">南部地區</option>
                   <option value="others">其他</option>
                 </select>
-                <input type="submit" value="search" />
+                <input type="submit" value="搜尋" />
               </form>
             </div>
           </div>
@@ -202,15 +219,21 @@ class Search extends Component {
         <div className="topicContainer mw8-ns center ph3-ns">
           {this.topicList()}
         </div>
-        <div className="storyContainer">
+        <div className="storyContainer mt5-ns mt3">
           {this.storyList()}
         </div>
         <div className="mw8 center ph3 mv4">
+          <form className="rangeSlider">
+            <input id="scrollRange" className="w-100" type="range" defaultValue="0"/>
+          </form>
           <div className="cf ph2-ns">
             {this.dateList()}
           </div>
         </div>
         <Modal open={open} onClose={this.onCloseModal}>
+          <figure className="mh0 mv4">
+            <img src="https://fakeimg.pl/600x350/?text=story&retina=1" alt="story" />
+          </figure>
           <h2>{this.state.content.name}</h2>
           <p>
             {this.state.content.content}

@@ -1,7 +1,14 @@
 @import "tachyons";
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 
 body {
 	overflow-x: hidden;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #0c0c0d;
 }
 
 img {
@@ -107,6 +114,12 @@ img {
 
 .storyItem {
   vertical-align: top;
+}
+
+@media screen and (min-width: 70em) {
+  .storyItem:nth-child(1) {
+    margin-left: calc((100vw - 68rem)/2);
+  }
 }
 
 .topicContainer {

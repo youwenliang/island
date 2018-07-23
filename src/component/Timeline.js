@@ -7,8 +7,9 @@ class Timeline extends Component {
         <div className="mw8 center ph3">
           <div className="cf ph2-ns">
             <div className="fl w-100 w-40-l ph2 tl hide">
-              <p>Timeline</p>
-              <a href="/ourisland/timeline/" target="_blank">Search</a>
+              <h1 className="fw7">時間軸大紀事</h1>
+              <h3 className="fw4">時間軸介紹內文</h3>
+              <a href="/ourisland/timeline/" target="_blank"><button>前往時間軸</button></a>
             </div>
             <div className="fl w-100 w-60-l ph2 hide">
               <a href="/ourisland/timeline/" target="_blank">

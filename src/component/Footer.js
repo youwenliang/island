@@ -6,7 +6,7 @@ class Footer extends Component {
       <section id="footer" className="bg-dark-gray pv5">
       	<div className="mw8 center ph3">
           <div className="cf ph2-ns">
-        	<a href="/ourisland">Home</a>
+        	<a href="/ourisland" className="white">回到首頁</a>
           </div>
         </div>
       </section>
