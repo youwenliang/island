@@ -6,9 +6,8 @@ import $ from 'jquery';
 import mousewheel from 'jquery-mousewheel';
 import dragscroll from 'dragscroll';
 import Modal from 'react-responsive-modal';
-// import LazyLoad from 'react-lazyload';
 import {TweenMax} from "gsap/all";
-import InfiniteScroll from 'react-infinite-scroller';
+import ReactList from 'react-list';
 
 // Story Data
 const story_data = data.stories;
