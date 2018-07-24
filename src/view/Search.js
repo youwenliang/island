@@ -8,6 +8,7 @@ import dragscroll from 'dragscroll';
 import Modal from 'react-responsive-modal';
 import {TweenMax} from "gsap/all";
 import ReactList from 'react-list';
+import Image from "react-graceful-image";
 
 // Story Data
 const story_data = data.stories;
@@ -82,66 +83,83 @@ class Search extends Component {
     $(document).ready(function(){
       var scroll = document.getElementById("scrollRange");
       var panel = document.getElementById("storyBox");    
-      scroll.oninput = function () {
+      scroll.oninput = function (el) {
         var total = panel.scrollWidth - panel.offsetWidth;
         var percentage = total*(this.value/100);
-        console.log(total);
         panel.scrollLeft = percentage;
-        //console.log(percentage);
+        window.scrollTo(window.scrollX, window.scrollY + 1);
+        window.scrollTo(window.scrollX, window.scrollY - 1);
       }
-      panel.onscroll = function () {
+      panel.onscroll = function (el) {
         var total = panel.scrollWidth - panel.offsetWidth;
         scroll.value = panel.scrollLeft*100/total;
+        window.scrollTo(window.scrollX, window.scrollY + 1);
+        window.scrollTo(window.scrollX, window.scrollY - 1);
       }
     });
+
   }
 
-  // Story Component
-  story = (content) => {
+  stories = (s) => {
     let d = " dib";
-    if(this.state.search === "" && content.keywords.indexOf("topic") !== -1) d = " dn";
+    if(this.state.search === "" && s.keywords.indexOf("topic") !== -1) d = " dn";
 
     // Topic Cards
-    let style = " white bg-dark-gray w6-ns w5 h6";
+    let style = " bg-white dark-gray w6-ns w5 card";
     let image = " db";
-    if(content.time === "") {
-      style = " bg-white dark-gray w7-ns w5 h7";
+    if(s.time === "") {
+      style = " white bg-dark-gray w7-ns w5";
       image = " dn";
     }
+
     return (
-      <li className={"storyItem item cp mh3"+d+style} onClick={(e) => this.onOpenModal(e, content)}>
+      <li className={"storyItem item cp mh3"+d+style} onClick={(e) => this.onOpenModal(e, s)}>
         <div className="pn">
           <figure className={"ma0"+image}>
-            <img src="https://fakeimg.pl/600x350/?text=story&retina=1" alt="story" />
+            <Image
+              src="https://fakeimg.pl/600x480/?text=story&retina=1"
+              width="100%"
+              height="100%"
+              alt="story"
+            />
           </figure>
-          <h3 className="ma0 pa4 tl">{content.name}</h3>
+          <div className="pa4 tl">
+            <h3 className="ma0">{s.name}</h3>
+            <p className="mv2">{s.time}</p>
+          </div>
         </div>
       </li>
     );
-  }
+  } 
+
+  // Story Component
   storyList = () => {
-    let filteredStories = story_data.filter((s) => { return s.keywords.indexOf(this.state.search) !== -1 && s.keywords.indexOf(this.state.area) !== -1;});
-    return (
-      <ul id="storyBox" className="storyBox tc pa0 nowrap list overflow-x-scroll dragscroll">
-        {filteredStories.map((s) => { return this.story(s) })}
-      </ul>
-    );
+    let filteredStories = story_data.filter((s) => { 
+      return s.keywords.indexOf(this.state.search) !== -1 && s.keywords.indexOf(this.state.area) !== -1;
+    });
+    return (<ul id="storyBox" className="storyBox tc pa0 nowrap list overflow-x-scroll dragscroll">{filteredStories.map((s) => { 
+      return this.stories(s);
+    })}</ul>);
   }
 
   // Topic Component
-  topic = (t) => {
-    return (<li className="dib w-100 pa2 mh2 bg-white cp ph4 tc" id={t.keyword} onClick={this.updateTopic.bind(this)}>{t.title}</li>);
-  }
   topicList = () => {
-    return (<ul className="topicBox list flex space-between pa0 ph2-ns nowrap list overflow-x-scroll dragscroll">{topic_data.map((t) => { return this.topic(t); })}</ul>)
+    return (<ul className="topicBox list flex space-between pa0 ph2-ns nowrap list overflow-x-scroll dragscroll">{topic_data.map((t) => { 
+      return (
+        <li className="dib w-100 pa2 mh2 bg-white cp ph4 tc" id={t.keyword} onClick={this.updateTopic.bind(this)}>{t.title}</li>
+      );
+    })}</ul>)
   }
 
   // Date Component
-  date = (d) => {
-    return (<li className="w-20 tc dib pa2 bg-white cp">{d}</li>);
-  }
   dateList = () => {
-    return (<ul className="list pa0">{date_data.map((d) => { return this.date(d); })}</ul>)
+    if(this.state.search === '') {
+      return (<ul className="list pa0">{date_data.map((d) => { 
+        return (
+          <li className="w-20 tc dib pa2 bg-white cp">{d}</li>
+        ); 
+      })}</ul>)
+    }
   }
 
   // Update Search
@@ -223,7 +241,7 @@ class Search extends Component {
         <div className="topicContainer mw8-ns center ph3-ns">
           {this.topicList()}
         </div>
-        <div className="storyContainer mt4-ns mt3">
+        <div className="storyContainer mt5-ns mt3">
           {this.storyList()}
         </div>
         <div className="mw8 center ph3 mv4">

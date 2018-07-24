@@ -64,7 +64,14 @@ img {
   -webkit-overflow-scrolling: touch;
 }
 
+.card figure {
+  height: 205px;
+}
+
 @media screen and (min-width: 30em) {
+  .card figure {
+    height: 256px;
+  }
   .w6-ns {
     width: 20rem;
   }
@@ -134,8 +141,26 @@ img {
   cursor: grab;
 }
 
+@media screen and (min-width: 30em) {
+  .storyContainer {
+    height: 27rem;
+  }
+
+  .storyBox {
+    height: calc(27rem + 40px);
+  }
+}
+
 .storyItem {
   vertical-align: top;
+  box-shadow: rgba(50,50,50,0.2) 10px 17px 18px;
+  transition: all .4s ease-in-out;
+}
+
+.storyItem.card:hover {
+  box-shadow: rgba(50,50,50,0.2) 5px 5px 5px;
+  transform: scale(0.98,0.98);
+  transition: all .4s ease-in-out;
 }
 
 @media screen and (min-width: 70em) {
