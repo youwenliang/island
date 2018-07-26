@@ -196,7 +196,7 @@ class Search extends Component {
       event.target.classList.add('active');
       setTimeout(function(){
         $('.dateContainer .active').removeClass('active');
-        $('.dateContainer li:nth-child(1').addClass('active');
+        $('.dateContainer li:nth-child(1)').addClass('active');
       }, 600);
       event.preventDefault();
     }
@@ -274,13 +274,15 @@ class Search extends Component {
           </div>
         </div>
         <Modal open={open} onClose={this.onCloseModal}>
-          <figure className="mh0 mv4">
+          <figure className="mh0 mv4 modalImg">
             <img src="https://fakeimg.pl/600x350/?text=story&retina=1" alt="story" />
           </figure>
-          <h2>{this.state.content.name}</h2>
-          <p>
-            {this.state.content.content}
-          </p>
+          <div className="ph4 pb4">
+            <h2>{this.state.content.name}</h2>
+            <p>
+              {this.state.content.content}
+            </p>
+          </div>
         </Modal>
       </section>
     );

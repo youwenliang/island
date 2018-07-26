@@ -1,9 +1,10 @@
 @import "tachyons";
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif');
 
 body {
 	overflow-x: hidden;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto Serif', sans-serif;
 }
 
 a {
@@ -173,13 +174,13 @@ ul.none {
 .storyItem {
   vertical-align: top;
   box-shadow: rgba(50,50,50,0.2) 10px 17px 18px;
-  transition: all .4s ease-in-out;
+  transition: box-shadow .4s ease-in-out, transform .4s ease-in-out;
 }
 
 .storyItem.card:hover {
   box-shadow: rgba(50,50,50,0.2) 5px 5px 5px;
   transform: scale(0.98,0.98);
-  transition: all .4s ease-in-out;
+  transition: box-shadow .4s ease-in-out, transform .4s ease-in-out;
 }
 
 @media screen and (min-width: 70em) {
@@ -223,6 +224,12 @@ ul.none {
   .storyItem:nth-child(1) {
     /*margin-left: calc((100vw - 64rem)/2);*/
   }
+}
+
+.modalImg {
+  width: calc(100% + 2.4rem);
+  position: relative;
+  left: -1.2rem;
 }
 
 
