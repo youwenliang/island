@@ -151,6 +151,25 @@ img {
   }
 }
 
+.topicContainer li,
+.dateContainer li {
+  transition: all .2s ease-in-out;
+}
+li.active {
+  background: #0c0c0d;
+  color: white;
+  transition: all .2s ease-in-out;
+}
+
+.dateContainer ul {
+  transition: all .2s ease-in-out;
+}
+ul.none {
+  opacity: 0;
+  pointer-events: none;
+  transition: all .2s ease-in-out;
+}
+
 .storyItem {
   vertical-align: top;
   box-shadow: rgba(50,50,50,0.2) 10px 17px 18px;

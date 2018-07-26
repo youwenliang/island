@@ -39,6 +39,7 @@ class Search extends Component {
 
   componentDidMount() {
     $(document).scrollTop(0);
+    $('#storyBox').scrollLeft(0);
 
     // Horizontal Scroll
     $('.storyBox').mousewheel(function(event, change) {
@@ -145,21 +146,32 @@ class Search extends Component {
   // Topic Component
   topicList = () => {
     return (<ul className="topicBox list flex space-between pa0 ph2-ns nowrap list overflow-x-scroll dragscroll">{topic_data.map((t) => { 
+      let highlight = '';
+      if(t.title === 'All') highlight = 'active'
       return (
-        <li className="dib w-100 pa2 mh2 bg-white cp ph4 tc" id={t.keyword} onClick={this.updateTopic.bind(this)}>{t.title}</li>
+        <li className={"dib w-100 pa2 mh2 bg-white cp ph4 tc "+highlight} id={t.keyword} onClick={this.updateTopic.bind(this)}>{t.title}</li>
       );
     })}</ul>)
   }
 
   // Date Component
+  scrollDate = (event) => {
+    $('.dateContainer .active').removeClass('active');
+    event.target.classList.add('active');
+    $('#storyBox').animate( {scrollLeft:1000}, 400);
+  }
+
   dateList = () => {
-    if(this.state.search === '') {
-      return (<ul className="list pa0">{date_data.map((d) => { 
-        return (
-          <li className="w-20 tc dib pa2 bg-white cp">{d}</li>
-        ); 
-      })}</ul>)
-    }
+    let disable = ''
+    if(this.state.search !== '') disable = 'none';
+
+    return (<ul className={"list pa0 "+disable}>{date_data.map((d) => { 
+      let highlight = '';
+      if(d === '1970') highlight = 'active';
+      return (
+        <li className={"w-20 tc dib pa2 bg-white cp " + highlight} onClick={this.scrollDate.bind(this)}>{d}</li>
+      ); 
+    })}</ul>)
   }
 
   // Update Search
@@ -170,7 +182,7 @@ class Search extends Component {
     var $this = this;
     var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
     tween.eventCallback("onComplete", function(){
-      TweenMax.to($('.storyBox'), .6, {opacity: 1});
+      TweenMax.to($('.storyBox'), .4, {opacity: 1});
       $this.setState({
         search: key.substr(0,20),
         area: key_area
@@ -179,18 +191,27 @@ class Search extends Component {
     });
   }
   updateTopic = (event) => {
-    if(event) event.preventDefault();
+    if(event) {
+      $('.topicContainer .active').removeClass('active');
+      event.target.classList.add('active');
+      setTimeout(function(){
+        $('.dateContainer .active').removeClass('active');
+        $('.dateContainer li:nth-child(1').addClass('active');
+      }, 600);
+      event.preventDefault();
+    }
     const key = event.target.id;
     var $this = this;
     var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
     tween.eventCallback("onComplete", function(){
-      TweenMax.to($('.storyBox'), .6, {opacity: 1});
+      TweenMax.to($('.storyBox'), .4, {opacity: 1});
       $this.setState({
         search: key,
         area: "",
       });
       $this.refs.keyword.value = key;
       $this.refs.areas.value = '';
+
       $('.storyBox').scrollLeft(0);
     });
   }
@@ -248,7 +269,7 @@ class Search extends Component {
           <form className="rangeSlider">
             <input id="scrollRange" className="w-100" type="range" defaultValue="0"/>
           </form>
-          <div className="cf ph2-ns">
+          <div className="dateContainer cf ph2-ns">
             {this.dateList()}
           </div>
         </div>
