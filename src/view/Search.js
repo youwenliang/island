@@ -157,7 +157,7 @@ class Search extends Component {
   // Date Component
   scrollDate = (event) => {
     var t = event.target.innerHTML.toString()[2];
-    var scrollL = 415 + (this.findDate(t) - 3)*352;
+    var scrollL = 415 + (this.findDate(t) - topic_data.length)*352;
     $('.dateContainer .active').removeClass('active');
     event.target.classList.add('active');
     $('#storyBox').animate( {scrollLeft: scrollL}, 400);
