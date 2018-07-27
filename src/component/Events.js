@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import data from '../data/data.js';
 import $ from 'jquery';
-import mousewheel from 'jquery-mousewheel';
-import dragscroll from 'dragscroll';
+import mousewheel from 'jquery-mousewheel'; // eslint-disable-line no-unused-vars
+import dragscroll from 'dragscroll'; // eslint-disable-line no-unused-vars
 import {TweenMax} from "gsap/all";
 
 // Event Data
@@ -105,9 +105,9 @@ class Events extends Component {
     });
   }
 
-  event = (content) => {
+  event = (content, i) => {
     return (
-      <li className="eventItem item dib center tc" onMouseEnter={() => this.handleMouseEnter(content.id)}>
+      <li className="eventItem item dib center tc" key={i} onMouseEnter={() => this.handleMouseEnter(content.id)}>
         <Link to={"/ourisland/"+content.url+"/"}>
         <figure className="eventFigure h4 w4 br-100 ma3 bg-near-white">
           <img src={"https://fakeimg.pl/200x200/?text="+content.id+"&retina=1"} alt={content.name} />
@@ -124,7 +124,7 @@ class Events extends Component {
     const event_content = event_data[num].content
     for(var i = 0; i < event_content.length; i++) {
       var content = event_content[i];
-      list.push(this.event(content));
+      list.push(this.event(content, i));
     }
     var bgUrl = "https://fakeimg.pl/1200x900/000000/ffffff/?text="+event_content[this.state.topics[num]].name+"&retina=1";
     var bgStyle = {

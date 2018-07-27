@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-browser-router";
 import registerServiceWorker from './registerServiceWorker';
 import $ from 'jquery';
 import {TweenMax} from "gsap/all";
-import ScrollMagic from 'scrollmagic';
+import ScrollMagic from 'scrollmagic'; // eslint-disable-line no-unused-vars
 
 render((
 <BrowserRouter basename="ourisland">

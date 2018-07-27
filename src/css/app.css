@@ -14,6 +14,7 @@ a {
 
 img {
   vertical-align: bottom;
+  pointer-events: none;
 }
 
 .flex {
@@ -230,6 +231,10 @@ ul.none {
   width: calc(100% + 2.4rem);
   position: relative;
   left: -1.2rem;
+}
+
+* {
+   user-select: none;
 }
 
 

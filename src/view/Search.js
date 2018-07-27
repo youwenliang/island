@@ -3,11 +3,11 @@ import {Helmet} from "react-helmet";
 import loadImage from 'image-promise';
 import data from '../data/data.js'
 import $ from 'jquery';
-import mousewheel from 'jquery-mousewheel';
-import dragscroll from 'dragscroll';
+import mousewheel from 'jquery-mousewheel'; // eslint-disable-line no-unused-vars
+import dragscroll from 'dragscroll'; // eslint-disable-line no-unused-vars
 import Modal from 'react-responsive-modal';
 import {TweenMax} from "gsap/all";
-import ReactList from 'react-list';
+import ReactList from 'react-list'; // eslint-disable-line no-unused-vars
 import Image from "react-graceful-image";
 
 // Story Data
@@ -101,7 +101,7 @@ class Search extends Component {
 
   }
 
-  stories = (s) => {
+  stories = (s, i) => {
     let d = " dib";
     if(this.state.search === "" && s.keywords.indexOf("topic") !== -1) d = " dn";
 
@@ -114,7 +114,7 @@ class Search extends Component {
     }
 
     return (
-      <li className={"storyItem item cp mh3"+d+style} onClick={(e) => this.onOpenModal(e, s)}>
+      <li className={"storyItem item cp mh3"+d+style} key={i} onClick={(e) => this.onOpenModal(e, s)}>
         <div className="pn">
           <figure className={"ma0"+image}>
             <Image
@@ -138,18 +138,18 @@ class Search extends Component {
     let filteredStories = story_data.filter((s) => { 
       return s.keywords.indexOf(this.state.search) !== -1 && s.keywords.indexOf(this.state.area) !== -1;
     });
-    return (<ul id="storyBox" className="storyBox tc pa0 nowrap list overflow-x-scroll dragscroll">{filteredStories.map((s) => { 
-      return this.stories(s);
+    return (<ul id="storyBox" className="storyBox tc pa0 nowrap list overflow-x-scroll dragscroll">{filteredStories.map((s, i) => { 
+      return this.stories(s, i);
     })}</ul>);
   }
 
   // Topic Component
   topicList = () => {
-    return (<ul className="topicBox list flex space-between pa0 ph2-ns nowrap list overflow-x-scroll dragscroll">{topic_data.map((t) => { 
+    return (<ul className="topicBox list flex space-between pa0 ph2-ns nowrap list overflow-x-scroll dragscroll">{topic_data.map((t, i) => { 
       let highlight = '';
       if(t.title === 'All') highlight = 'active'
       return (
-        <li className={"dib w-100 pa2 mh2 bg-white cp ph4 tc "+highlight} id={t.keyword} onClick={this.updateTopic.bind(this)}>{t.title}</li>
+        <li className={"dib w-100 pa2 mh2 bg-white cp ph4 tc "+highlight} key={i} id={t.keyword} onClick={this.updateTopic.bind(this)}>{t.title}</li>
       );
     })}</ul>)
   }
@@ -165,11 +165,11 @@ class Search extends Component {
     let disable = ''
     if(this.state.search !== '') disable = 'none';
 
-    return (<ul className={"list pa0 "+disable}>{date_data.map((d) => { 
+    return (<ul className={"list pa0 "+disable}>{date_data.map((d, i) => { 
       let highlight = '';
       if(d === '1970') highlight = 'active';
       return (
-        <li className={"w-20 tc dib pa2 bg-white cp " + highlight} onClick={this.scrollDate.bind(this)}>{d}</li>
+        <li className={"w-20 tc dib pa2 bg-white cp " + highlight} key={i} onClick={this.scrollDate.bind(this)}>{d}</li>
       ); 
     })}</ul>)
   }
