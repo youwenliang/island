@@ -156,9 +156,11 @@ class Search extends Component {
 
   // Date Component
   scrollDate = (event) => {
+    var t = event.target.innerHTML.toString()[2];
+    var scrollL = 415 + (this.findDate(t) - 3)*352;
     $('.dateContainer .active').removeClass('active');
     event.target.classList.add('active');
-    $('#storyBox').animate( {scrollLeft:1000}, 400);
+    $('#storyBox').animate( {scrollLeft: scrollL}, 400);
   }
 
   dateList = () => {
@@ -215,22 +217,15 @@ class Search extends Component {
       $('.storyBox').scrollLeft(0);
     });
   }
-  // updateDate = (event) => {
-  //   if(event) event.preventDefault();
-  //   const key = event.target.innerHTML;
-  //   var $this = this;
-  //   var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
-  //   tween.eventCallback("onComplete", function(){
-  //     TweenMax.to($('.storyBox'), .6, {opacity: 1});
-  //     $this.setState({
-  //       search: key,
-  //       area: "",
-  //     });
-  //     $this.refs.keyword.value = key;
-  //     $this.refs.areas.value = '';
-  //     $('.storyBox').scrollLeft(0);
-  //   });
-  // }
+  findDate = (n) => {
+    for (var i = 0; i < story_data.length; i++) {
+      if(n > 1) {
+        if(story_data[i].time.toString().indexOf('9'+n) !== -1) return i;
+      } else {
+        if(story_data[i].time.toString().indexOf('20'+n) !== -1) return i;
+      }
+    }
+  }
 
   render() {
     const { open } = this.state;

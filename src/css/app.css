@@ -188,6 +188,9 @@ ul.none {
   .storyItem:nth-child(1) {
     margin-left: calc((100vw - 68rem)/2);
   }
+  .storyBox {
+    padding-right: calc((100vw - 68rem)/2);
+  }
 }
 
 .topicContainer {
