@@ -14,6 +14,7 @@ import Image from "react-graceful-image";
 const story_data = data.stories;
 const topic_data = data.topics;
 const date_data = data.dates;
+var divides = [];
 
 class Search extends Component {
   constructor(props) {
@@ -24,6 +25,14 @@ class Search extends Component {
       open: false,
       content: {}
     };
+    divides = [
+      415 + (this.findDate('7') - topic_data.length)*352,
+      415 + (this.findDate('8') - topic_data.length)*352,
+      415 + (this.findDate('9') - topic_data.length)*352,
+      415 + (this.findDate('0') - topic_data.length)*352,
+      415 + (this.findDate('1') - topic_data.length)*352
+    ];
+    console.log(divides);
   }
 
   onOpenModal = (event, c) => {
@@ -81,6 +90,7 @@ class Search extends Component {
       console.info(err.loaded);
     });
 
+    var $this = this;
     $(document).ready(function(){
       var scroll = document.getElementById("scrollRange");
       var panel = document.getElementById("storyBox");    
@@ -90,15 +100,39 @@ class Search extends Component {
         panel.scrollLeft = percentage;
         window.scrollTo(window.scrollX, window.scrollY + 1);
         window.scrollTo(window.scrollX, window.scrollY - 1);
+        $this.activeScroll(panel);
       }
       panel.onscroll = function (el) {
         var total = panel.scrollWidth - panel.offsetWidth;
         scroll.value = panel.scrollLeft*100/total;
         window.scrollTo(window.scrollX, window.scrollY + 1);
         window.scrollTo(window.scrollX, window.scrollY - 1);
+        $this.activeScroll(panel);
       }
     });
+  }
 
+  activeScroll = (p) => {
+    if(p.scrollLeft < divides[4]) {
+        $('.dateContainer li.active').removeClass('active');
+        $('.dateContainer li:nth-child(4)').addClass('active');
+      }
+      else {
+        $('.dateContainer li.active').removeClass('active');
+        $('.dateContainer li:nth-child(5)').addClass('active');
+      }
+      if(p.scrollLeft < divides[3]) {
+        $('.dateContainer li.active').removeClass('active');
+        $('.dateContainer li:nth-child(3)').addClass('active');
+      }
+      if(p.scrollLeft < divides[2]) {
+        $('.dateContainer li.active').removeClass('active');
+        $('.dateContainer li:nth-child(2)').addClass('active');
+      }
+      if(p.scrollLeft < divides[1]) {
+        $('.dateContainer li.active').removeClass('active');
+        $('.dateContainer li:nth-child(1)').addClass('active');
+      }
   }
 
   stories = (s, i) => {
@@ -158,8 +192,6 @@ class Search extends Component {
   scrollDate = (event) => {
     var t = event.target.innerHTML.toString()[2];
     var scrollL = 415 + (this.findDate(t) - topic_data.length)*352;
-    $('.dateContainer .active').removeClass('active');
-    event.target.classList.add('active');
     $('#storyBox').animate( {scrollLeft: scrollL}, 400);
   }
 
@@ -183,23 +215,18 @@ class Search extends Component {
     const key_area = this.refs.areas.value;
     var $this = this;
     var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
-    tween.eventCallback("onComplete", function(){
-      TweenMax.to($('.storyBox'), .4, {opacity: 1});
-      $this.setState({
-        search: key.substr(0,20),
-        area: key_area
-      });
-      $('.storyBox').scrollLeft(0);
+    
+    TweenMax.to($('.storyBox'), .4, {opacity: 1}, .3);
+    $this.setState({
+      search: key.substr(0,20),
+      area: key_area
     });
+    $('.storyBox').scrollLeft(0);
   }
   updateTopic = (event) => {
     if(event) {
       $('.topicContainer .active').removeClass('active');
       event.target.classList.add('active');
-      setTimeout(function(){
-        $('.dateContainer .active').removeClass('active');
-        $('.dateContainer li:nth-child(1)').addClass('active');
-      }, 600);
       event.preventDefault();
     }
     const key = event.target.id;
@@ -213,7 +240,6 @@ class Search extends Component {
       });
       $this.refs.keyword.value = key;
       $this.refs.areas.value = '';
-
       $('.storyBox').scrollLeft(0);
     });
   }
