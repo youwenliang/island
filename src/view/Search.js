@@ -113,25 +113,35 @@ class Search extends Component {
   }
 
   activeScroll = (p) => {
-    if(p.scrollLeft < divides[4]) {
-        $('.dateContainer li.active').removeClass('active');
-        $('.dateContainer li:nth-child(4)').addClass('active');
+      if(p.scrollLeft < divides[4] && p.scrollLeft >= divides[3]) {
+        if(!$('.dateContainer li:nth-child(4)').hasClass('active')) {
+          $('.dateContainer li.active').removeClass('active');
+          $('.dateContainer li:nth-child(4)').addClass('active');
+        }
+      }
+      else if(p.scrollLeft < divides[3] && p.scrollLeft >= divides[2]) {
+        if(!$('.dateContainer li:nth-child(3)').hasClass('active')) {
+          $('.dateContainer li.active').removeClass('active');
+          $('.dateContainer li:nth-child(3)').addClass('active');
+        }
+      }
+      else if(p.scrollLeft < divides[2] && p.scrollLeft >= divides[1]) {
+        if(!$('.dateContainer li:nth-child(2)').hasClass('active')) {
+          $('.dateContainer li.active').removeClass('active');
+          $('.dateContainer li:nth-child(2)').addClass('active');
+        }
+      }
+      else if(p.scrollLeft < divides[1]) {
+        if(!$('.dateContainer li:nth-child(1)').hasClass('active')) {
+          $('.dateContainer li.active').removeClass('active');
+          $('.dateContainer li:nth-child(1)').addClass('active');
+        }
       }
       else {
-        $('.dateContainer li.active').removeClass('active');
-        $('.dateContainer li:nth-child(5)').addClass('active');
-      }
-      if(p.scrollLeft < divides[3]) {
-        $('.dateContainer li.active').removeClass('active');
-        $('.dateContainer li:nth-child(3)').addClass('active');
-      }
-      if(p.scrollLeft < divides[2]) {
-        $('.dateContainer li.active').removeClass('active');
-        $('.dateContainer li:nth-child(2)').addClass('active');
-      }
-      if(p.scrollLeft < divides[1]) {
-        $('.dateContainer li.active').removeClass('active');
-        $('.dateContainer li:nth-child(1)').addClass('active');
+        if(!$('.dateContainer li:nth-child(5)').hasClass('active')) {
+          $('.dateContainer li.active').removeClass('active');
+          $('.dateContainer li:nth-child(5)').addClass('active');
+        }
       }
   }
 
@@ -214,8 +224,7 @@ class Search extends Component {
     const key = this.refs.keyword.value;
     const key_area = this.refs.areas.value;
     var $this = this;
-    var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
-    
+    TweenMax.to($('.storyBox'), .2, {opacity: 0});
     TweenMax.to($('.storyBox'), .4, {opacity: 1}, .3);
     $this.setState({
       search: key.substr(0,20),
