@@ -224,8 +224,8 @@ class Search extends Component {
     const key = this.refs.keyword.value;
     const key_area = this.refs.areas.value;
     var $this = this;
-    TweenMax.to($('.storyBox'), .2, {opacity: 0});
     TweenMax.to($('.storyBox'), .4, {opacity: 1}, .3);
+    TweenMax.to($('.storyBox'), .2, {opacity: 0});
     $this.setState({
       search: key.substr(0,20),
       area: key_area
@@ -233,24 +233,26 @@ class Search extends Component {
     $('.storyBox').scrollLeft(0);
   }
   updateTopic = (event) => {
-    if(event) {
-      $('.topicContainer .active').removeClass('active');
-      event.target.classList.add('active');
-      event.preventDefault();
-    }
-    const key = event.target.id;
-    var $this = this;
-    var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
-    tween.eventCallback("onComplete", function(){
-      TweenMax.to($('.storyBox'), .4, {opacity: 1});
-      $this.setState({
-        search: key,
-        area: "",
+    if(!event.target.classList.contains('active')) {
+      if(event) {
+        $('.topicContainer .active').removeClass('active');
+        event.target.classList.add('active');
+        event.preventDefault();
+      }
+      const key = event.target.id;
+      var $this = this;
+      var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
+      tween.eventCallback("onComplete", function(){
+        TweenMax.to($('.storyBox'), .4, {opacity: 1});
+        $this.setState({
+          search: key,
+          area: "",
+        });
+        $this.refs.keyword.value = key;
+        $this.refs.areas.value = '';
+        $('.storyBox').scrollLeft(0);
       });
-      $this.refs.keyword.value = key;
-      $this.refs.areas.value = '';
-      $('.storyBox').scrollLeft(0);
-    });
+    }
   }
   findDate = (n) => {
     for (var i = 0; i < story_data.length; i++) {
