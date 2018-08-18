@@ -186,12 +186,12 @@ var data = {
       "content": "this is Pollution"
     },
     {
-      "name": "事件01",
-      "time": 1975,
-      "area": "north",
-      "keywords": "1970 1975 north River key",
+      "name": "南部橫貫公路通車",
+      "time": "1975.10",
+      "area": "south",
+      "keywords": "1970 1975 south River key",
       "tags": [1975, "north", "River", "key"],
-      "content": "this is 001 content"
+      "content": "1972年通車的南橫公路，開闢過程幾乎全採人力修築，施工期間造成116位人員罹難。莫拉克風災後，路基嚴重受損，至今還在修復，一修再修，政府不斷挹注經費，也引發是否還要堅持修復的爭議。"
     },
     {
       "name": "事件02",

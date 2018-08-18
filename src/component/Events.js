@@ -13,7 +13,8 @@ class Events extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      topics: [0,0,0]
+      topics: [0,0,0],
+      device: ""
     };
   }
   handleMouseEnter (id) {
@@ -58,8 +59,14 @@ class Events extends Component {
     }
   }
   componentDidMount() {
+    var $this = this;
     $(document).ready(function(){
-
+      if($(window).width() >= 480) $this.setState({device: 'desktop'});
+      else $this.setState({device: 'mobile'});
+      $(window).resize(function(){
+        if($(window).width() >= 480) $this.setState({device: 'desktop'});
+        else $this.setState({device: 'mobile'});
+      })
       //Init
       $('.eventItem').each(function(){
         TweenMax.to($(this), .001, {transform: "scale3d(0,0,0)"});
@@ -131,29 +138,36 @@ class Events extends Component {
           backgroundImage: 'url('+bgUrl+')',
           backgroundPosition: 'center center',
           backgroundSize: 'cover',
-          height: '500px'
-      }
+          height: '500px',
+          backgroundRepeat: 'no-repeat'
+    }
+    var topicBg = {
+          backgroundImage: 'url("https://fakeimg.pl/500x200/?text=illustration&retina=1")',
+          backgroundPosition: 'center center',
+          backgroundSize: '1000px',
+          backgroundRepeat: 'no-repeat'
+    }
+    var topic_content = (
+      <div className="cf ph2-ns">
+        <h3 className="white">{event_content[this.state.topics[num]].name}</h3>
+        <Link to={"/ourisland/"+event_content[this.state.topics[num]].url+"/"}>
+          <button className="cp">事件連結</button>
+        </Link>        
+      </div>
+    )
     return (
       <section id={"topic-"+(num+1)} className="mt4">
         <div className="mw8 center ph3">
           <div className="cf ph2-ns hide">
-            <div className="fl w-100 w-50-l ph2">
-              <figure className="mh0">
-                <img src={"https://fakeimg.pl/500x200/?text=illustration&retina=1"} alt={topic_title} />
-              </figure>
-            </div>
-            <div className="fl w-100 w-50-l ph2 tl">
-              <h2>{topic_title}</h2>
+            <div className="flex aic jcc w-100 ph2 relative h5" style={topicBg}>
+              <h2 className="tc">{topic_title}</h2>
             </div>
           </div>
         </div>
         <div className="eventContainer relative hide mv4">
           <div className="pv6-ns pv4 eventBg" style={bgStyle}>
             <div className="mw8 center ph5-l ph4 relative z1">
-              <div className="cf ph2-ns">
-                <h3 className="white">{event_content[this.state.topics[num]].name}</h3>
-                <Link to={"/ourisland/"+event_content[this.state.topics[num]].url+"/"}> <button className="cp">事件連結</button> </Link>
-              </div>
+              {topic_content}
             </div>
           </div>
           <div className="mw8 center event tr-l tc relative">

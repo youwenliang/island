@@ -17,6 +17,11 @@ img {
   pointer-events: none;
 }
 
+button {
+  z-index: 10;
+  cursor: pointer;
+}
+
 .flex {
   display: flex;
 }

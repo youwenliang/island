@@ -9,6 +9,7 @@ import Modal from 'react-responsive-modal';
 import {TweenMax} from "gsap/all";
 import ReactList from 'react-list'; // eslint-disable-line no-unused-vars
 import Image from "react-graceful-image";
+import Swiper from 'swiper';
 
 // Story Data
 const story_data = data.stories;
@@ -39,6 +40,22 @@ class Search extends Component {
     if(!$(event.target).hasClass('noClick') && c.time !== "") {
       this.setState({ open: true, content: c});
     }
+    $(document).ready(function(){
+      console.log("swiper!");
+      var mySwiper = new Swiper ('.swiper-container', {
+        // Optional parameters
+        loop: true,
+        // If we need pagination
+        pagination: {
+          el: '.swiper-pagination',
+        },
+        // Navigation arrows
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }
+      })
+    })
   };
 
   onCloseModal = () => {
@@ -295,9 +312,28 @@ class Search extends Component {
           </div>
         </div>
         <Modal open={open} onClose={this.onCloseModal}>
-          <figure className="mh0 mv4 modalImg">
-            <img src="https://fakeimg.pl/600x350/?text=story&retina=1" alt="story" />
-          </figure>
+          <div className="swiper-container">
+            <div className="swiper-wrapper">
+                <div className="swiper-slide">
+                  <figure className="mh0 mv4 modalImg">
+                    <img src="https://fakeimg.pl/600x350/?text=story1&retina=1" alt="story" />
+                  </figure>
+                </div>
+                <div className="swiper-slide">
+                  <figure className="mh0 mv4 modalImg">
+                    <img src="https://fakeimg.pl/600x350/?text=story2&retina=1" alt="story" />
+                  </figure>
+                </div>
+                <div className="swiper-slide">
+                  <figure className="mh0 mv4 modalImg">
+                    <img src="https://fakeimg.pl/600x350/?text=story3&retina=1" alt="story" />
+                  </figure>
+                </div>
+            </div>
+            <div className="swiper-button-prev"></div>
+            <div className="swiper-button-next"></div>
+          </div>
+          
           <div className="ph4 pb4">
             <h2>{this.state.content.name}</h2>
             <p>
