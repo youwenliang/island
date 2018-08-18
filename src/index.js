@@ -16,7 +16,9 @@ document.getElementById('root'));
 registerServiceWorker();
 
 $(document).ready(function(){
-
+	$(window).click(function(e) {
+	    console.log(e.target.className);
+	});
 	// Disable Image dragging
 	$('img').on('dragstart', function(event) { event.preventDefault(); });
 

@@ -16,6 +16,8 @@ const story_data = data.stories;
 const topic_data = data.topics;
 const date_data = data.dates;
 var divides = [];
+var offset_i = 520;
+var offset_w = 440;
 
 class Search extends Component {
   constructor(props) {
@@ -27,11 +29,11 @@ class Search extends Component {
       content: {}
     };
     divides = [
-      415 + (this.findDate('7') - topic_data.length)*352,
-      415 + (this.findDate('8') - topic_data.length)*352,
-      415 + (this.findDate('9') - topic_data.length)*352,
-      415 + (this.findDate('0') - topic_data.length)*352,
-      415 + (this.findDate('1') - topic_data.length)*352
+      offset_i + (this.findDate('7') - topic_data.length)*offset_w,
+      offset_i + (this.findDate('8') - topic_data.length)*offset_w,
+      offset_i + (this.findDate('9') - topic_data.length)*offset_w,
+      offset_i + (this.findDate('0') - topic_data.length)*offset_w,
+      offset_i + (this.findDate('1') - topic_data.length)*offset_w
     ];
     console.log(divides);
   }
@@ -44,6 +46,7 @@ class Search extends Component {
       console.log("swiper!");
       var mySwiper = new Swiper ('.swiper-container', {
         // Optional parameters
+        autoHeight: true,
         loop: true,
         // If we need pagination
         pagination: {
@@ -172,16 +175,22 @@ class Search extends Component {
     if(s.time === "") {
       style = " white bg-dark-gray w7-ns w5";
       image = " dn";
+    } else {
+      image = " flex aic"
+    }
+    let cover = ""
+    if(s.images !== undefined) {
+      cover = s.images[0];
     }
 
     return (
       <li className={"storyItem item cp mh3"+d+style} key={i} onClick={(e) => this.onOpenModal(e, s)}>
         <div className="pn">
-          <figure className={"ma0"+image}>
+          <figure className={"ma0 vh-25 overflow-hidden"+image}>
             <Image
-              src="https://fakeimg.pl/600x480/?text=story&retina=1"
+              src={cover}
               width="100%"
-              height="100%"
+              height="auto"
               alt="story"
             />
           </figure>
@@ -218,7 +227,7 @@ class Search extends Component {
   // Date Component
   scrollDate = (event) => {
     var t = event.target.innerHTML.toString()[2];
-    var scrollL = 415 + (this.findDate(t) - topic_data.length)*352;
+    var scrollL = offset_i + (this.findDate(t) - topic_data.length)*offset_w;
     $('#storyBox').animate( {scrollLeft: scrollL}, 400);
   }
 
@@ -274,15 +283,33 @@ class Search extends Component {
   findDate = (n) => {
     for (var i = 0; i < story_data.length; i++) {
       if(n > 1) {
-        if(story_data[i].time.toString().indexOf('9'+n) !== -1) return i;
+        if(story_data[i].time.toString().split('.')[0].indexOf('9'+n) !== -1) return i;
       } else {
-        if(story_data[i].time.toString().indexOf('20'+n) !== -1) return i;
+        if(story_data[i].time.toString().split('.')[0].indexOf('20'+n) !== -1) return i;
       }
     }
   }
 
   render() {
     const { open } = this.state;
+    let images = [];
+    let imageLength = 0;
+    if(this.state.content.images !== undefined) {
+      images = this.state.content.images;
+      imageLength = images.length;
+    }
+    var imageSlider = [];
+    for(var i = 0; i < imageLength; i++) {
+      var slides = (
+        <div className="swiper-slide">
+          <figure className="mh0 mv4 modalImg">
+            <img src={images[i]} alt="story" />
+          </figure>
+        </div>
+      )
+      imageSlider.push(slides);
+    }
+
     return (
       <section id="timeline" className="min-vh-100 bg-light-gray pv5-l pv3">
         <Helmet>
@@ -291,7 +318,7 @@ class Search extends Component {
         <div className="mw8-ns center ph3-ns mv4-ns">
           <div className="cf ph2-ns mb3-ns mb2">
             <div className="fl w-100 w-30-l ph2">
-              <h2 className="ma0-l mv4 tl-ns tc">台灣環境史三十年大事紀</h2>
+              <h2 className="ma0-l mb4 tl-ns tc mt0">台灣環境史三十年大事紀</h2>
             </div>
             <div className="fl w-100 w-70-l ph2-ns">
               <form className="flex space-between aic" onSubmit={this.updateSearch.bind(this)}>
@@ -311,10 +338,10 @@ class Search extends Component {
         <div className="topicContainer mw8-ns center ph3-ns">
           {this.topicList()}
         </div>
-        <div className="storyContainer mt5-ns mt3">
+        <div className="storyContainer mt3-ns mt1">
           {this.storyList()}
         </div>
-        <div className="mw8 center ph3 mv4">
+        <div className="mw8 center ph3 mb4 mt2">
           <form className="rangeSlider">
             <input id="scrollRange" className="w-100" type="range" defaultValue="0"/>
           </form>
@@ -325,21 +352,7 @@ class Search extends Component {
         <Modal open={open} onClose={this.onCloseModal}>
           <div className="swiper-container">
             <div className="swiper-wrapper">
-                <div className="swiper-slide">
-                  <figure className="mh0 mv4 modalImg">
-                    <img src="https://fakeimg.pl/600x350/?text=story1&retina=1" alt="story" />
-                  </figure>
-                </div>
-                <div className="swiper-slide">
-                  <figure className="mh0 mv4 modalImg">
-                    <img src="https://fakeimg.pl/600x350/?text=story2&retina=1" alt="story" />
-                  </figure>
-                </div>
-                <div className="swiper-slide">
-                  <figure className="mh0 mv4 modalImg">
-                    <img src="https://fakeimg.pl/600x350/?text=story3&retina=1" alt="story" />
-                  </figure>
-                </div>
+              {imageSlider}
             </div>
             <div className="swiper-button-prev"></div>
             <div className="swiper-button-next"></div>
@@ -347,7 +360,7 @@ class Search extends Component {
           
           <div className="ph4 pb4">
             <h2>{this.state.content.name}</h2>
-            <p>
+            <p className="lh-copy">
               {this.state.content.content}
             </p>
           </div>
