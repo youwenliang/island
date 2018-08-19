@@ -46,6 +46,10 @@ button {
 	min-height: 550px;
 }
 
+#timeline {
+  padding: 7vh 0;
+}
+
 .ds {
 	overflow-y: hidden;
 }
@@ -140,7 +144,7 @@ button {
 
 /* Stories */
 .storyContainer {
-  height: 50vh;
+  height: 60vh;
   min-height: 400px;
   overflow: hidden;
 }
@@ -152,7 +156,7 @@ button {
 
 @media screen and (min-width: 30em) {
   .storyBox {
-    height: calc(50vh + 40px);
+    height: calc(60vh + 40px);
     min-height: 440px;
   }
 }

@@ -235,7 +235,7 @@ class Search extends Component {
     let disable = ''
     if(this.state.search !== '') disable = 'none';
 
-    return (<ul className={"list pa0 "+disable}>{date_data.map((d, i) => { 
+    return (<ul className={"list pa0 mb0 "+disable}>{date_data.map((d, i) => { 
       let highlight = '';
       if(d === '1970') highlight = 'active';
       return (
@@ -311,11 +311,11 @@ class Search extends Component {
     }
 
     return (
-      <section id="timeline" className="min-vh-100 bg-light-gray pv5-l pv3">
+      <section id="timeline" className="min-vh-100 bg-light-gray">
         <Helmet>
             <title>Timeline</title>
         </Helmet>
-        <div className="mw8-ns center ph3-ns mv4-ns">
+        <div className="mw8-ns center ph3-ns mb4-ns">
           <div className="cf ph2-ns mb3-ns mb2">
             <div className="fl w-100 w-30-l ph2">
               <h2 className="ma0-l mb4 tl-ns tc mt0">台灣環境史三十年大事紀</h2>
@@ -341,7 +341,7 @@ class Search extends Component {
         <div className="storyContainer mt3-ns mt1">
           {this.storyList()}
         </div>
-        <div className="mw8 center ph3 mb4 mt2">
+        <div className="mw8 center ph3 mt2">
           <form className="rangeSlider">
             <input id="scrollRange" className="w-100" type="range" defaultValue="0"/>
           </form>
