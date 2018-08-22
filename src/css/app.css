@@ -15,12 +15,27 @@ a {
 img {
   vertical-align: bottom;
   pointer-events: none;
+  /*max-width: initial !important;*/
 }
 
 button {
   z-index: 10;
   cursor: pointer;
 }
+
+.videoBg{
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0; 
+  overflow: hidden;
+}
+
+.videoBg > video {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+}
+
+@media (min-aspect-ratio: 16/9) { .videoBg > video { height: 100%;}}
+@media (max-aspect-ratio: 16/9) { .videoBg > video { width: 100%;}}
+@supports (object-fit: cover) {.videoBg > video { top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }}
 
 .flex {
   display: flex;
@@ -334,12 +349,11 @@ ul.none {
  .overflow-y-auto-l { overflow-y: auto; }
 }
 
-
 /* Image Slider */
 .cd-image-container {
   position: relative;
-  width: 100%;
-  max-width: 60rem;
+  width: 90%;
+  max-width: 768px;
   margin: 0em auto;
 }
 .cd-image-container img {
@@ -391,7 +405,6 @@ ul.none {
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  border-right: 2px solid #ffffff;
 }
 .cd-resize-img img {
   position: absolute;
@@ -457,7 +470,7 @@ ul.none {
   margin-left: -22px;
   margin-top: -22px;
   border-radius: 50%;
-  background: #dc717d;
+  background: #dc717d url("images/cd-arrows.svg") no-repeat center center;
   cursor: move;
   box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
   opacity: 0;

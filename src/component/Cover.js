@@ -12,7 +12,7 @@ class Cover extends Component {
             </div>
           </div>
         </nav>
-        <div class="mw8 center ph3 pv6"><div class="cf ph2-ns tc white">
+        <div className="mw8 center ph3 pv6"><div className="cf ph2-ns tc white">
           <h1>穿梭島嶼時光機</h1><h3>《我們的島》二十週年</h3></div>
         </div>
       </section>

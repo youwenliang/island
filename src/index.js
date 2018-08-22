@@ -171,7 +171,7 @@ $(document).ready(function(){
     }
 
     function updateLabel(label, resizeElement, position) {
-        if(position == 'left') {
+        if(position === 'left') {
             ( label.offset().left + label.outerWidth() < resizeElement.offset().left + resizeElement.outerWidth() ) ? label.removeClass('is-hidden') : label.addClass('is-hidden') ;
         } else {
             ( label.offset().left > resizeElement.offset().left + resizeElement.outerWidth() ) ? label.removeClass('is-hidden') : label.addClass('is-hidden') ;

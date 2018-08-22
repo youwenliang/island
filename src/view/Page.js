@@ -3,6 +3,7 @@ import {Helmet} from "react-helmet";
 import loadImage from 'image-promise';
 import data from '../data/data.js';
 import $ from 'jquery';
+import BeforeAfterSlider from 'react-before-after-slider'
 // import mousewheel from 'jquery-mousewheel';
 // import {TweenMax} from "gsap/all";
 
@@ -114,10 +115,15 @@ function Steps(props) {
 }
 
 function PhotoText(props) {
+  var style = {
+    backgroundImage: "url("+props.url+")",
+    backgroundSize: "cover",
+    backgroundPosition: "center center"
+  }
   return (
-    <section className="cover" className="min-vh-100 bg-light-gray flex aic">
+    <section className="cover" className="min-vh-100 bg-light-gray flex aic" style={style}>
       <div className="mw8 center ph3 w-100">
-        <div className="cf tl white">
+        <div className="cf tl white ph4-ns">
           <h1>PhotoText</h1>
         </div>
       </div>
@@ -129,7 +135,7 @@ function PhotoSwitch(props) {
   return (
     <section className="cover" className="min-vh-100 bg-gray flex aic">
       <div className="mw8 center ph3 w-100">
-        <div className="cf tl white">
+        <div className="cf tl white ph3-ns">
           <h1>PhotoSwitch</h1>
         </div>
       </div>
@@ -139,30 +145,29 @@ function PhotoSwitch(props) {
 
 function PhotoContrast(props) {
   return (
-    <section className="cover" className="min-vh-100 bg-white flex aic">
-      <div className="center w-100">
-          <figure className="cd-image-container">
-            <img src="https://fakeimg.pl/600x480/?text=Original&retina=1"/>
-            <span className="cd-image-label" data-type="original">Original</span>
-
-            <div className="cd-resize-img">
-              <img src="https://fakeimg.pl/600x480/?text=Modified&retina=1"/>
-              <span className="cd-image-label" data-type="modified">Modified</span>
-            </div>
-            <span className="cd-handle"></span>
-          </figure>
-      </div>
+    <section className="cover" className="min-vh-100 bg-white flex aic relative">
+      <figure className="cd-image-container">
+         <img src="https://fakeimg.pl/600x480/cccccc?text=Original&retina=1" alt="Original Image" />
+         <span className="cd-image-label" data-type="original">Original</span>
+        
+         <div className="cd-resize-img"> 
+            <img src="https://fakeimg.pl/600x480/000000?text=Modified&retina=1" alt="Modified Image" />
+            <span className="cd-image-label" data-type="modified">Modified</span>
+         </div>
+        
+         <span className="cd-handle"></span>
+      </figure>
     </section>
   )
 }
 
 function Video(props) {
   return (
-    <section className="cover" className="min-vh-100 bg-gray flex aic">
-      <div className="mw8 center ph3 w-100">
-        <div className="cf tl white">
-          <h1>Video</h1>
-        </div>
+    <section className="cover" className="min-vh-100 bg-gray flex aic relative">
+      <div className="videoBg">
+        <video id="video" muted autoPlay loop playsInline>
+          <source src={props.link} type="video/mp4"/>
+        </video>
       </div>
     </section>
   )
@@ -177,10 +182,10 @@ class Event01 extends Component {
         <Cover title={this.props.data.coverTitle} content={this.props.data.coverDescription}/>
         <Taiwan/>
         <Steps/>
-        <PhotoText/>
+        <PhotoText url={this.props.data.photo[0]}/>
         <PhotoSwitch/>
         <PhotoContrast/>
-        <Video/>
+        <Video link={this.props.data.video[0]}/>
       </div>
     );
   }

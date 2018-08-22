@@ -76,7 +76,9 @@ var data = {
       "title": "this is title 01",
       "id": "事件1",
       "coverTitle": "Cover title 01",
-      "coverDescription": "Cover description 01"
+      "coverDescription": "Cover description 01",
+      "video": ["/videos/video_sample.mp4"],
+      "photo": ["https://fakeimg.pl/600x480/?text=PhotoText&retina=1"]
     },
     "event02": {
       "title": "this is title 02",
