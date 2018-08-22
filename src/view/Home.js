@@ -3,6 +3,7 @@ import {Helmet} from "react-helmet";
 import Cover from '../component/Cover'
 import Timeline from '../component/Timeline'
 import Events from '../component/Events'
+import CTA from '../component/CTA'
 import $ from 'jquery';
 import loadImage from 'image-promise';
 
@@ -50,6 +51,7 @@ class Home extends Component {
         <Cover/>
         <Events/>
         <Timeline/>
+        <CTA/>
       </div>
     );
   }

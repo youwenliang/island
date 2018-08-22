@@ -139,11 +139,18 @@ function PhotoSwitch(props) {
 
 function PhotoContrast(props) {
   return (
-    <section className="cover" className="min-vh-100 bg-light-gray flex aic">
-      <div className="mw8 center ph3 w-100">
-        <div className="cf tl white">
-          <h1>PhotoContrast</h1>
-        </div>
+    <section className="cover" className="min-vh-100 bg-white flex aic">
+      <div className="center w-100">
+          <figure className="cd-image-container">
+            <img src="https://fakeimg.pl/600x480/?text=Original&retina=1"/>
+            <span className="cd-image-label" data-type="original">Original</span>
+
+            <div className="cd-resize-img">
+              <img src="https://fakeimg.pl/600x480/?text=Modified&retina=1"/>
+              <span className="cd-image-label" data-type="modified">Modified</span>
+            </div>
+            <span className="cd-handle"></span>
+          </figure>
       </div>
     </section>
   )

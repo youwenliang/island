@@ -195,8 +195,8 @@ class Search extends Component {
             />
           </figure>
           <div className="pa4 tl">
-            <h3 className="ma0">{s.name}</h3>
-            <p className="mv2">{s.time}</p>
+            <h3 className="ma0 f4-ns f5 initial lh-copy">{s.name}</h3>
+            <p className="mv2 f5-ns f6">{s.time}</p>
           </div>
         </div>
       </li>
@@ -250,8 +250,11 @@ class Search extends Component {
     const key = this.refs.keyword.value;
     const key_area = this.refs.areas.value;
     var $this = this;
-    TweenMax.to($('.storyBox'), .4, {opacity: 1}, .3);
-    TweenMax.to($('.storyBox'), .2, {opacity: 0});
+    var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
+    tween.eventCallback("onComplete", function(){
+      TweenMax.to($('.storyBox'), .4, {opacity: 1});
+    });
+    
     $this.setState({
       search: key.substr(0,20),
       area: key_area
@@ -358,7 +361,7 @@ class Search extends Component {
             <div className="swiper-button-next"></div>
           </div>
           
-          <div className="ph4 pb4">
+          <div className="ph4-ns pb4">
             <h2>{this.state.content.name}</h2>
             <p className="lh-copy">
               {this.state.content.content}
