@@ -116,7 +116,7 @@ class Events extends Component {
     return (
       <li className="eventItem item dib center tc" key={i} onMouseEnter={() => this.handleMouseEnter(content.id)}>
         <Link to={"/ourisland/"+content.url+"/"}>
-        <figure className="eventFigure h4 w4 br-100 ma3 bg-near-white">
+        <figure className="eventFigure circle-10 br-100 ma3 bg-near-white">
           <img src={"https://fakeimg.pl/200x200/?text="+content.id+"&retina=1"} alt={content.name} />
         </figure>
         {content.name}
@@ -138,7 +138,7 @@ class Events extends Component {
           backgroundImage: 'url('+bgUrl+')',
           backgroundPosition: 'center center',
           backgroundSize: 'cover',
-          height: '500px',
+          height: '600px',
           backgroundRepeat: 'no-repeat'
     }
     var topicBg = {
