@@ -219,7 +219,7 @@ var data = {
       "area": "south",
       "keywords": "1970 1972 south 開發利用",
       "tags": [1972, "南部地區", "開發利用"],
-      "images": ["/images/stories/1-A南橫公路(2018.5.23 攝影_傅志男).jpg", "/images/stories/1-B南橫公路(2017.10.14 攝影_傅志男).jpg"]
+      "images": ["./images/stories/1-A南橫公路(2018.5.23 攝影_傅志男).jpg", "./images/stories/1-B南橫公路(2017.10.14 攝影_傅志男).jpg"]
     },
     {
       "id": 2,
@@ -239,7 +239,7 @@ var data = {
       "area": "north",
       "keywords": "1970 1977 north",
       "tags": [1970, "北部地區"],
-      "images": ["/images/stories/3-1994年核一廠外觀.jpg"]
+      "images": ["./images/stories/3-1994年核一廠外觀.jpg"]
     },
     {
       "id": 4,
@@ -259,7 +259,7 @@ var data = {
       "area": "central",
       "keywords": "1970 1979 central 開發利用",
       "tags": [1970, "中部地區", "開發利用"],
-      "images": ["/images/stories/5-A(1994年彰濱工業區抽砂造陸).jpg", "/images/stories/5-B(2010年空拍彰濱工業區陸港區).jpg", "/images/stories/5-C(2010年彰濱工業區線西區).jpg", "/images/stories/5-D(2012年空拍彰濱工業區).jpg"]
+      "images": ["./images/stories/5-A(1994年彰濱工業區抽砂造陸).jpg", "./images/stories/5-B(2010年空拍彰濱工業區陸港區).jpg", "./images/stories/5-C(2010年彰濱工業區線西區).jpg", "./images/stories/5-D(2012年空拍彰濱工業區).jpg"]
     },
     {
       "id": 6,
@@ -299,7 +299,7 @@ var data = {
       "area": "central",
       "keywords": "1980 1982 central 重大公害",
       "tags": [1980, "中部地區", "重大公害"],
-      "images": ["/images/stories/9-A三晃(攝影蔡明德).jpg", "/images/stories/9-B三晃(攝影蔡明德).jpg", "/images/stories/9-C三晃(攝影_蔡明德).jpg"]
+      "images": ["./images/stories/9-A三晃(攝影蔡明德).jpg", "./images/stories/9-B三晃(攝影蔡明德).jpg", "./images/stories/9-C三晃(攝影_蔡明德).jpg"]
     },
     {
       "id": 10,
@@ -359,7 +359,7 @@ var data = {
       "area": "",
       "keywords": "環境運動",
       "tags": [],
-      "images": ["/images/stories/15-A新竹李長榮圍堵現場_(攝影_蔡明德).jpg", "/images/stories/15-B李長榮化工廠圍堵現場(攝影_蔡明德).jpg", "/images/stories/15-C李長榮事件居民載水(攝影_蔡明德)-09.jpg", "/images/stories/15-D李長榮圍廠現場-15.jpg"]
+      "images": ["./images/stories/15-A新竹李長榮圍堵現場_(攝影_蔡明德).jpg", "./images/stories/15-B李長榮化工廠圍堵現場(攝影_蔡明德).jpg", "./images/stories/15-C李長榮事件居民載水(攝影_蔡明德)-09.jpg", "./images/stories/15-D李長榮圍廠現場-15.jpg"]
     },
     {
       "id": 16,
@@ -399,7 +399,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["/images/stories/19-A宜蘭人到經濟部前抗議.jpg", "/images/stories/19-B宜蘭縣長陳定南到經濟部前反對六輕.jpg", "/images/stories/19-C宜蘭人到台塑大樓前反對六輕.jpg"]
+      "images": ["./images/stories/19-A宜蘭人到經濟部前抗議.jpg", "./images/stories/19-B宜蘭縣長陳定南到經濟部前反對六輕.jpg", "./images/stories/19-C宜蘭人到台塑大樓前反對六輕.jpg"]
     },
     {
       "id": 20,
@@ -419,7 +419,7 @@ var data = {
       "area": "",
       "keywords": "環境運動",
       "tags": [],
-      "images": ["/images/stories/21-A.jpg", "/images/stories/21-B.jpg"]
+      "images": ["./images/stories/21-A.jpg", "./images/stories/21-B.jpg"]
     },
     {
       "id": 22,
@@ -439,7 +439,7 @@ var data = {
       "area": "",
       "keywords": "開發利用",
       "tags": [],
-      "images": ["/images/stories/23-A.jpg", "/images/stories/23-B.jpg", "/images/stories/23-C.jpg"]
+      "images": ["./images/stories/23-A.jpg", "./images/stories/23-B.jpg", "./images/stories/23-C.jpg"]
     },
     {
       "id": 24,
@@ -449,7 +449,7 @@ var data = {
       "area": "",
       "keywords": "環境運動",
       "tags": [],
-      "images": ["/images/stories/24.jpg"]
+      "images": ["./images/stories/24.jpg"]
     },
     {
       "id": 25,
@@ -469,7 +469,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["/images/stories/26-A.jpg", "/images/stories/26-B.jpg", "/images/stories/26-C.jpg", "/images/stories/26-D.jpg"]
+      "images": ["./images/stories/26-A.jpg", "./images/stories/26-B.jpg", "./images/stories/26-C.jpg", "./images/stories/26-D.jpg"]
     },
     {
       "id": 27,
@@ -479,7 +479,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["/images/stories/27-A.jpg", "/images/stories/27-B.jpg"]
+      "images": ["./images/stories/27-A.jpg", "./images/stories/27-B.jpg"]
     },
     {
       "id": 28,
@@ -499,7 +499,7 @@ var data = {
       "area": "",
       "keywords": "開發利用",
       "tags": [],
-      "images": ["/images/stories/29-A.jpg", "/images/stories/29-B.jpg"]
+      "images": ["./images/stories/29-A.jpg", "./images/stories/29-B.jpg"]
     },
     {
       "id": 30,
@@ -509,7 +509,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["/images/stories/30-A.jpg", "/images/stories/30-B.jpg", "/images/stories/30-C.jpg"]
+      "images": ["./images/stories/30-A.jpg", "./images/stories/30-B.jpg", "./images/stories/30-C.jpg"]
     },
     {
       "id": 31,
@@ -529,7 +529,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["/images/stories/32-A.jpg", "/images/stories/32-B.jpg", "/images/stories/32-C.jpg"]
+      "images": ["./images/stories/32-A.jpg", "./images/stories/32-B.jpg", "./images/stories/32-C.jpg"]
     },
     {
       "id": 33,
@@ -559,7 +559,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["/images/stories/35-A(1993.09基隆市祈雨) .jpg", "/images/stories/35-B(1993.09基隆市祈雨) .jpg", "/images/stories/35-C.jpg"]
+      "images": ["./images/stories/35-A(1993.09基隆市祈雨) .jpg", "./images/stories/35-B(1993.09基隆市祈雨) .jpg", "./images/stories/35-C.jpg"]
     },
     {
       "id": 36,
@@ -569,7 +569,7 @@ var data = {
       "area": "",
       "keywords": "重大公害",
       "tags": [],
-      "images": ["/images/stories/36-A.jpg", "/images/stories/36-B.jpg", "/images/stories/36-C.jpg", "/images/stories/36-D.jpg"]
+      "images": ["./images/stories/36-A.jpg", "./images/stories/36-B.jpg", "./images/stories/36-C.jpg", "./images/stories/36-D.jpg"]
     },
     {
       "id": 37,
@@ -599,7 +599,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["/images/stories/39-A.jpg", "/images/stories/39-B.jpg"]
+      "images": ["./images/stories/39-A.jpg", "./images/stories/39-B.jpg"]
     },
     {
       "id": 40,
@@ -609,7 +609,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["/images/stories/40-A.jpg", "/images/stories/40-B.jpg"]
+      "images": ["./images/stories/40-A.jpg", "./images/stories/40-B.jpg"]
     },
     {
       "id": 41,
@@ -619,7 +619,7 @@ var data = {
       "area": "",
       "keywords": "開發利用",
       "tags": [],
-      "images": ["/images/stories/41-A.jpg", "/images/stories/41-B.jpg"]
+      "images": ["./images/stories/41-A.jpg", "./images/stories/41-B.jpg"]
     },
     {
       "id": 42,
@@ -629,7 +629,7 @@ var data = {
       "area": "",
       "keywords": "環境運動",
       "tags": [],
-      "images": ["/images/stories/42-A.jpg", "/images/stories/42-B.jpg", "/images/stories/42-C.jpg", "/images/stories/42-D.jpg"]
+      "images": ["./images/stories/42-A.jpg", "./images/stories/42-B.jpg", "./images/stories/42-C.jpg", "./images/stories/42-D.jpg"]
     },
     {
       "id": 43,
@@ -639,7 +639,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["/images/stories/43-A.jpg", "/images/stories/43-B.jpg"]
+      "images": ["./images/stories/43-A.jpg", "./images/stories/43-B.jpg"]
     },
     {
       "id": 44,
@@ -699,7 +699,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["/images/stories/49-A(1996.09.07台中反拜耳說明會 廖永春).jpg", "/images/stories/49-B(1996.09.07台中反拜耳說明會).jpg", "/images/stories/49-C(1996.09.07台中反拜耳說明會).jpg"]
+      "images": ["./images/stories/49-A(1996.09.07台中反拜耳說明會 廖永春).jpg", "./images/stories/49-B(1996.09.07台中反拜耳說明會).jpg", "./images/stories/49-C(1996.09.07台中反拜耳說明會).jpg"]
     },
     {
       "id": 50,
@@ -729,7 +729,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["/images/stories/52-A.jpg", "/images/stories/52-B(顏色不知道可以調嗎).jpg", "/images/stories/52-C(1991.08.25反台泥設廠).jpg"]
+      "images": ["./images/stories/52-A.jpg", "./images/stories/52-B(顏色不知道可以調嗎).jpg", "./images/stories/52-C(1991.08.25反台泥設廠).jpg"]
     },
     {
       "id": 53,

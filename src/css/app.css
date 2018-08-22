@@ -25,6 +25,12 @@ button {
 .flex {
   display: flex;
 }
+.top0 {
+  top: 0;
+}
+.z4 {
+  z-index: 4
+}
 
 .space-around {
   justify-content: space-around;
@@ -40,6 +46,9 @@ button {
 
 .jcc {
   justify-content: center;
+}
+.initial {
+  white-space: initial;
 }
 
 #cover, #timeline {
@@ -256,6 +265,9 @@ ul.none {
    user-select: none;
 }
 
+.swiper-container {
+  max-width: 80vw;
+}
 
 /*
 
