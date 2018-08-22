@@ -250,8 +250,11 @@ class Search extends Component {
     const key = this.refs.keyword.value;
     const key_area = this.refs.areas.value;
     var $this = this;
-    TweenMax.to($('.storyBox'), .4, {opacity: 1}, .3);
-    TweenMax.to($('.storyBox'), .2, {opacity: 0});
+    var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
+    tween.eventCallback("onComplete", function(){
+      TweenMax.to($('.storyBox'), .4, {opacity: 1});
+    });
+    
     $this.setState({
       search: key.substr(0,20),
       area: key_area
