@@ -161,6 +161,7 @@ button {
 .storyBox {
   height: calc(24rem + 40px);
   cursor: grab;
+  padding-top: 5vh;
 }
 
 @media screen and (min-width: 30em) {
