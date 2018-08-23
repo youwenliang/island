@@ -3,7 +3,9 @@ import {Helmet} from "react-helmet";
 import loadImage from 'image-promise';
 import data from '../data/data.js';
 import $ from 'jquery';
-import BeforeAfterSlider from 'react-before-after-slider'
+import BeforeAfterSlider from 'react-before-after-slider';
+import ImageGallery from 'react-image-gallery';
+
 // import mousewheel from 'jquery-mousewheel';
 // import {TweenMax} from "gsap/all";
 
@@ -132,13 +134,23 @@ function PhotoText(props) {
 }
 
 function PhotoSwitch(props) {
+  const images = [
+    {
+      original: 'https://fakeimg.pl/600x480/222222?text=Original&retina=1',
+      thumbnail: 'https://fakeimg.pl/600x480/222222?text=Original&retina=1',
+    },
+    {
+      original: 'https://fakeimg.pl/600x480/666666?text=Original&retina=1',
+      thumbnail: 'https://fakeimg.pl/600x480/666666?text=Original&retina=1'
+    },
+    {
+      original: 'https://fakeimg.pl/600x480/aaaaaa?text=Original&retina=1',
+      thumbnail: 'https://fakeimg.pl/600x480/aaaaaa?text=Original&retina=1'
+    }
+  ]
   return (
-    <section className="cover" className="min-vh-100 bg-gray flex aic">
-      <div className="mw8 center ph3 w-100">
-        <div className="cf tl white ph3-ns">
-          <h1>PhotoSwitch</h1>
-        </div>
-      </div>
+    <section className="cover" className="min-vh-100 bg-gray flex aic w-100">
+      <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} />
     </section>
   )
 }
