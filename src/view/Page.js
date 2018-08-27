@@ -47,6 +47,21 @@ class Page extends Component {
       console.info('But these loaded fine:');
       console.info(err.loaded);
     });
+    $(document).ready(function(){
+      $(window).scroll( function(){
+        $('section').each( function(i){
+        var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+        var top_of_window = $(window).scrollTop();
+        var bottom_of_window = $(window).scrollTop() + $(window).height();
+        var $this = $(this);
+        if( top_of_window <= bottom_of_object && bottom_of_object <= bottom_of_window ){
+          $this.find('.fixed-content').addClass('active');
+        } else {
+          $this.find('.fixed-content').removeClass('active');
+        }
+        });
+      });
+    })
   }
   render() {
     var data = pageEvent_data[this.state.id];
@@ -81,8 +96,9 @@ export default Page;
 /* Components */
 function Cover(props) {
   return (
-    <section className="cover" className="min-vh-100 bg-gray flex aic">
-      <div className="mw8 center ph3 w-100">
+    <section className="cover" className="min-vh-100 bg-white flex aic">
+      <div className="bg-gray w-100 h-100 fixed fixed-content active z1"></div>
+      <div className="mw8 center ph3 w-100 z4">
         <div className="cf tl white">
           <h1>{props.title}</h1>
           <h3>{props.content}</h3>
@@ -94,8 +110,9 @@ function Cover(props) {
 
 function Taiwan(props) {
   return (
-    <section className="cover" className="min-vh-100 bg-light-gray flex aic">
-      <div className="mw8 center ph3 w-100">
+    <section className="cover" className="min-vh-100 flex aic">
+      <div className="bg-light-gray w-100 h-100 fixed fixed-content z1"></div>
+      <div className="mw8 center ph3 w-100 z4">
         <div className="cf tl white">
           <h1>Taiwan</h1>
         </div>
@@ -106,8 +123,9 @@ function Taiwan(props) {
 
 function Steps(props) {
   return (
-    <section className="cover" className="min-vh-100 bg-gray flex aic">
-      <div className="mw8 center ph3 w-100">
+    <section className="cover" className="min-vh-100 flex aic">
+      <div className="bg-gray w-100 h-100 fixed fixed-content z1"></div>
+      <div className="mw8 center ph3 w-100 z4">
         <div className="cf tl white">
           <h1>Steps</h1>
         </div>
@@ -123,8 +141,9 @@ function PhotoText(props) {
     backgroundPosition: "center center"
   }
   return (
-    <section className="cover" className="min-vh-100 bg-light-gray flex aic" style={style}>
-      <div className="mw8 center ph3 w-100">
+    <section className="cover" className="min-vh-100 flex aic">
+      <div className="bg-light-gray w-100 h-100 fixed fixed-content z1" style={style}></div>
+      <div className="mw8 center ph3 w-100 z4">
         <div className="cf tl white ph4-ns">
           <h1>PhotoText</h1>
         </div>
@@ -149,8 +168,15 @@ function PhotoSwitch(props) {
     }
   ]
   return (
-    <section className="cover" className="min-vh-100 bg-gray flex aic w-100">
-      <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} />
+    <section className="cover" className="min-vh-100 flex aic w-100">
+      <div className="bg-light-gray w-100 h-100 fixed fixed-content z1">
+        <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} />
+      </div>
+      <div className="mw8 center ph3 w-100 z4">
+        <div className="cf tl white ph4-ns">
+          <h1>PhotoSwitch</h1>
+        </div>
+      </div>
     </section>
   )
 }
@@ -158,17 +184,24 @@ function PhotoSwitch(props) {
 function PhotoContrast(props) {
   return (
     <section className="cover" className="min-vh-100 bg-white flex aic relative">
-      <figure className="cd-image-container">
-         <img src="https://fakeimg.pl/600x480/cccccc?text=Original&retina=1" alt="Original Image" />
-         <span className="cd-image-label" data-type="original">Original</span>
-        
-         <div className="cd-resize-img"> 
-            <img src="https://fakeimg.pl/600x480/000000?text=Modified&retina=1" alt="Modified Image" />
-            <span className="cd-image-label" data-type="modified">Modified</span>
-         </div>
-        
-         <span className="cd-handle"></span>
-      </figure>
+      <div className="bg-light-gray w-100 h-100 fixed fixed-content z1">
+        <figure className="cd-image-container z4">
+           <img src="https://fakeimg.pl/600x480/cccccc?text=Original&retina=1" alt="Original Image" />
+           <span className="cd-image-label" data-type="original">Original</span>
+          
+           <div className="cd-resize-img"> 
+              <img src="https://fakeimg.pl/600x480/000000?text=Modified&retina=1" alt="Modified Image" />
+              <span className="cd-image-label" data-type="modified">Modified</span>
+           </div>
+          
+           <span className="cd-handle"></span>
+        </figure>
+      </div>
+      <div className="mw8 center ph3 w-100 z4">
+        <div className="cf tl white ph4-ns">
+          <h1>PhotoContrast</h1>
+        </div>
+      </div>
     </section>
   )
 }
@@ -176,10 +209,12 @@ function PhotoContrast(props) {
 function Video(props) {
   return (
     <section className="cover" className="min-vh-100 bg-gray flex aic relative">
+      <div className="bg-light-gray w-100 h-100 fixed fixed-content z1">
       <div className="videoBg">
         <video id="video" muted autoPlay loop playsInline>
           <source src={props.link} type="video/mp4"/>
         </video>
+      </div>
       </div>
     </section>
   )
