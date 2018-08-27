@@ -26,11 +26,13 @@ button {
 .fixed-content {
   opacity: 0;
   top: 0;
+  z-index: -1;
   transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .fixed-content.active {
   opacity: 1;
+  z-index: 1;
 }
 
 .videoBg{

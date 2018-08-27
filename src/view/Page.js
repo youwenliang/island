@@ -97,7 +97,7 @@ export default Page;
 function Cover(props) {
   return (
     <section className="cover" className="min-vh-100 bg-white flex aic">
-      <div className="bg-gray w-100 h-100 fixed fixed-content active z1"></div>
+      <div className="bg-gray w-100 h-100 fixed fixed-content active"></div>
       <div className="mw8 center ph3 w-100 z4">
         <div className="cf tl white">
           <h1>{props.title}</h1>
@@ -111,7 +111,7 @@ function Cover(props) {
 function Taiwan(props) {
   return (
     <section className="cover" className="min-vh-100 flex aic">
-      <div className="bg-light-gray w-100 h-100 fixed fixed-content z1"></div>
+      <div className="bg-light-gray w-100 h-100 fixed fixed-content"></div>
       <div className="mw8 center ph3 w-100 z4">
         <div className="cf tl white">
           <h1>Taiwan</h1>
@@ -124,7 +124,7 @@ function Taiwan(props) {
 function Steps(props) {
   return (
     <section className="cover" className="min-vh-100 flex aic">
-      <div className="bg-gray w-100 h-100 fixed fixed-content z1"></div>
+      <div className="bg-gray w-100 h-100 fixed fixed-content"></div>
       <div className="mw8 center ph3 w-100 z4">
         <div className="cf tl white">
           <h1>Steps</h1>
@@ -142,7 +142,7 @@ function PhotoText(props) {
   }
   return (
     <section className="cover" className="min-vh-100 flex aic">
-      <div className="bg-light-gray w-100 h-100 fixed fixed-content z1" style={style}></div>
+      <div className="bg-light-gray w-100 h-100 fixed fixed-content" style={style}></div>
       <div className="mw8 center ph3 w-100 z4">
         <div className="cf tl white ph4-ns">
           <h1>PhotoText</h1>
@@ -169,7 +169,7 @@ function PhotoSwitch(props) {
   ]
   return (
     <section className="cover" className="min-vh-100 flex aic w-100">
-      <div className="bg-light-gray w-100 h-100 fixed fixed-content z1">
+      <div className="bg-light-gray w-100 h-100 fixed fixed-content">
         <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} />
       </div>
       <div className="mw8 center ph3 w-100 z4">
@@ -184,7 +184,7 @@ function PhotoSwitch(props) {
 function PhotoContrast(props) {
   return (
     <section className="cover" className="min-vh-100 bg-white flex aic relative">
-      <div className="bg-light-gray w-100 h-100 fixed fixed-content z1">
+      <div className="bg-light-gray w-100 h-100 fixed fixed-content">
         <figure className="cd-image-container z4">
            <img src="https://fakeimg.pl/600x480/cccccc?text=Original&retina=1" alt="Original Image" />
            <span className="cd-image-label" data-type="original">Original</span>
@@ -209,7 +209,7 @@ function PhotoContrast(props) {
 function Video(props) {
   return (
     <section className="cover" className="min-vh-100 bg-gray flex aic relative">
-      <div className="bg-light-gray w-100 h-100 fixed fixed-content z1">
+      <div className="bg-light-gray w-100 h-100 fixed fixed-content">
       <div className="videoBg">
         <video id="video" muted autoPlay loop playsInline>
           <source src={props.link} type="video/mp4"/>
