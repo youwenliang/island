@@ -366,7 +366,7 @@ ul.none {
   position: relative;
   width: 90%;
   max-width: 768px;
-  margin: 0em auto;
+  margin: auto;
 }
 .cd-image-container img {
   display: block;
@@ -705,6 +705,8 @@ ul.none {
   .image-gallery-slide.center {
     position: relative; }
   .image-gallery-slide img {
+    height: 100vh;
+    object-fit: cover;
     width: 100%; }
   .image-gallery-slide .image-gallery-description {
     background: rgba(0, 0, 0, 0.4);

@@ -56,6 +56,9 @@ class Page extends Component {
         var $this = $(this);
         if( top_of_window <= bottom_of_object && bottom_of_object <= bottom_of_window ){
           $this.find('.fixed-content').addClass('active');
+          if($this.hasClass('video-content')){
+            $this.find('video').get(0).play();
+          }
         } else {
           $this.find('.fixed-content').removeClass('active');
         }
@@ -96,12 +99,28 @@ export default Page;
 /* Components */
 function Cover(props) {
   return (
-    <section className="cover" className="min-vh-100 bg-white flex aic">
+    <section className="cover" className="min-vh-100 flex aic">
       <div className="bg-gray w-100 h-100 fixed fixed-content active"></div>
       <div className="mw8 center ph3 w-100 z4">
         <div className="cf tl white">
           <h1>{props.title}</h1>
-          <h3>{props.content}</h3>
+          <h3 className="lh-copy">{props.content}</h3>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* Components */
+function Illustration(props) {
+  return (
+    <section className="cover" className="min-vh-100 flex aic">
+      <div className="bg-gray w-100 h-100 fixed fixed-content flex aic">
+        <img src="https://fakeimg.pl/600x480/cccccc?text=Illustration&retina=1" width="50%" alt="Illustration" />
+      </div>
+      <div className="mw8 center ph3 w-100 z4">
+        <div className="cf tl white">
+          <h1>內文</h1>
         </div>
       </div>
     </section>
@@ -183,9 +202,9 @@ function PhotoSwitch(props) {
 
 function PhotoContrast(props) {
   return (
-    <section className="cover" className="min-vh-100 bg-white flex aic relative">
-      <div className="bg-light-gray w-100 h-100 fixed fixed-content">
-        <figure className="cd-image-container z4">
+    <section className="cover" className="min-vh-100 flex aic relative">
+      <div className="bg-light-gray w-100 h-100 fixed fixed-content flex">
+        <figure className="cd-image-container is-visible z4">
            <img src="https://fakeimg.pl/600x480/cccccc?text=Original&retina=1" alt="Original Image" />
            <span className="cd-image-label" data-type="original">Original</span>
           
@@ -208,10 +227,10 @@ function PhotoContrast(props) {
 
 function Video(props) {
   return (
-    <section className="cover" className="min-vh-100 bg-gray flex aic relative">
+    <section className="cover" className="min-vh-100 flex aic relative video-content">
       <div className="bg-light-gray w-100 h-100 fixed fixed-content">
       <div className="videoBg">
-        <video id="video" muted autoPlay loop playsInline>
+        <video id="video" muted loop playsInline>
           <source src={props.link} type="video/mp4"/>
         </video>
       </div>
@@ -227,6 +246,7 @@ class Event01 extends Component {
     return (
       <div>
         <Cover title={this.props.data.coverTitle} content={this.props.data.coverDescription}/>
+        <Illustration/>
         <Taiwan/>
         <Steps/>
         <PhotoText url={this.props.data.photo[0]}/>

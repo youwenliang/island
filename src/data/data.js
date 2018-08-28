@@ -75,8 +75,8 @@ var data = {
     "event01": {
       "title": "this is title 01",
       "id": "事件1",
-      "coverTitle": "Cover title 01",
-      "coverDescription": "Cover description 01",
+      "coverTitle": "變遷 淡水河",
+      "coverDescription": "台北人熟悉的淡水河，也曾經堆滿了垃圾？一起乘著島嶼時光機，回首垃圾山，臭氣憶當年。",
       "video": ["/videos/video_sample.mp4"],
       "photo": ["https://fakeimg.pl/600x480/?text=PhotoText&retina=1"]
     },
