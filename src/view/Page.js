@@ -54,13 +54,16 @@ class Page extends Component {
         var top_of_window = $(window).scrollTop();
         var bottom_of_window = $(window).scrollTop() + $(window).height();
         var $this = $(this);
-        if( top_of_window <= bottom_of_object && bottom_of_object <= bottom_of_window ){
+        if( top_of_window < bottom_of_object && bottom_of_object < bottom_of_window ){
           $this.find('.fixed-content').addClass('active');
           if($this.hasClass('video-content')){
             $this.find('video').get(0).play();
           }
         } else {
           $this.find('.fixed-content').removeClass('active');
+          if($this.hasClass('video-content')){
+            $this.find('video').get(0).pause();
+          }
         }
         });
       });
@@ -100,7 +103,7 @@ export default Page;
 function Cover(props) {
   return (
     <section className="cover" className="min-vh-100 flex aic">
-      <div className="bg-gray w-100 h-100 fixed fixed-content active"></div>
+      <div className="bg-gray w-100 h-100 fixed fixed-content"></div>
       <div className="mw8 center ph3 w-100 z4">
         <div className="cf tl white">
           <h1>{props.title}</h1>
@@ -115,12 +118,14 @@ function Cover(props) {
 function Illustration(props) {
   return (
     <section className="cover" className="min-vh-100 flex aic">
-      <div className="bg-gray w-100 h-100 fixed fixed-content flex aic">
+      <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
         <img src="https://fakeimg.pl/600x480/cccccc?text=Illustration&retina=1" width="50%" alt="Illustration" />
       </div>
       <div className="mw8 center ph3 w-100 z4">
-        <div className="cf tl white">
-          <h1>內文</h1>
+        <div className="cf black">
+          <div className="w-50-l w-100 fr-l pa4-l bg-white">
+            <p>總是人潮絡繹不絕的淡水河，是城市人們的出口，六百多萬人的生活和淡水河流域緊密相依。現在的你很難想像，1993年的淡水河畔，是滿天的垃圾和惡臭味，讓人想快速離開。</p>
+          </div>
         </div>
       </div>
     </section>
@@ -172,20 +177,15 @@ function PhotoText(props) {
 }
 
 function PhotoSwitch(props) {
-  const images = [
-    {
-      original: 'https://fakeimg.pl/600x480/222222?text=Original&retina=1',
-      thumbnail: 'https://fakeimg.pl/600x480/222222?text=Original&retina=1',
-    },
-    {
-      original: 'https://fakeimg.pl/600x480/666666?text=Original&retina=1',
-      thumbnail: 'https://fakeimg.pl/600x480/666666?text=Original&retina=1'
-    },
-    {
-      original: 'https://fakeimg.pl/600x480/aaaaaa?text=Original&retina=1',
-      thumbnail: 'https://fakeimg.pl/600x480/aaaaaa?text=Original&retina=1'
+  var list = props.images;
+  const images = [];
+  for(var i = 0; i < list.length; i++) {
+    var temp = {
+      original: list[i],
+      thumbnail: list[i]
     }
-  ]
+    images.push(temp);
+  }
   return (
     <section className="cover" className="min-vh-100 flex aic w-100">
       <div className="bg-light-gray w-100 h-100 fixed fixed-content">
@@ -193,7 +193,9 @@ function PhotoSwitch(props) {
       </div>
       <div className="mw8 center ph3 w-100 z4">
         <div className="cf tl white ph4-ns">
-          <h1>PhotoSwitch</h1>
+          <div className="fr-l w-50-l w-100">
+            <h1>PhotoSwitch</h1>
+          </div>
         </div>
       </div>
     </section>
@@ -205,12 +207,12 @@ function PhotoContrast(props) {
     <section className="cover" className="min-vh-100 flex aic relative">
       <div className="bg-light-gray w-100 h-100 fixed fixed-content flex">
         <figure className="cd-image-container is-visible z4">
-           <img src="https://fakeimg.pl/600x480/cccccc?text=Original&retina=1" alt="Original Image" />
-           <span className="cd-image-label" data-type="original">Original</span>
+           <img src={props.images[1]} alt="Original Image" />
+           <span className="cd-image-label" data-type="original">{props.images[1].split('(')[1].split('.')[0]}</span>
           
            <div className="cd-resize-img"> 
-              <img src="https://fakeimg.pl/600x480/000000?text=Modified&retina=1" alt="Modified Image" />
-              <span className="cd-image-label" data-type="modified">Modified</span>
+              <img src={props.images[0]} alt="Modified Image" />
+              <span className="cd-image-label" data-type="modified">{props.images[0].split('(')[1].split('.')[0]}</span>
            </div>
           
            <span className="cd-handle"></span>
@@ -225,15 +227,35 @@ function PhotoContrast(props) {
   )
 }
 
+function CoverVideo(props) {
+  return (
+    <section className="cover" className="min-vh-100 flex aic relative video-content">
+      <div className="bg-light-gray w-100 h-100 fixed fixed-content active">
+        <div className="videoBg">
+          <video id="video" muted loop autoPlay playsInline>
+            <source src={props.link} type="video/mp4"/>
+          </video>
+        </div>
+      </div>
+      <div className="mw8 center ph3 w-100 z4">
+        <div className="cf tl black bg-white w-50-l w-100 pa4">
+          <h1 className="f1 fw2 mv0">{props.title}</h1>
+          <h3 className="f3 fw2 lh-copy mb0">{props.content}</h3>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Video(props) {
   return (
     <section className="cover" className="min-vh-100 flex aic relative video-content">
-      <div className="bg-light-gray w-100 h-100 fixed fixed-content">
-      <div className="videoBg">
-        <video id="video" muted loop playsInline>
-          <source src={props.link} type="video/mp4"/>
-        </video>
-      </div>
+      <div className="bg-light-gray w-100 h-100 fixed fixed-content active">
+        <div className="videoBg">
+          <video id="video" muted loop playsInline>
+            <source src={props.link} type="video/mp4"/>
+          </video>
+        </div>
       </div>
     </section>
   )
@@ -245,14 +267,14 @@ class Event01 extends Component {
   render() {
     return (
       <div>
-        <Cover title={this.props.data.coverTitle} content={this.props.data.coverDescription}/>
+        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.video[0]}/>
         <Illustration/>
         <Taiwan/>
+        <PhotoSwitch images={this.props.data.imageswitch}/>
+        <Video link={this.props.data.video[1]}/>
         <Steps/>
         <PhotoText url={this.props.data.photo[0]}/>
-        <PhotoSwitch/>
-        <PhotoContrast/>
-        <Video link={this.props.data.video[0]}/>
+        <PhotoContrast images={this.props.data.imagecontrast}/>
       </div>
     );
   }

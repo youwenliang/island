@@ -77,8 +77,10 @@ var data = {
       "id": "事件1",
       "coverTitle": "變遷 淡水河",
       "coverDescription": "台北人熟悉的淡水河，也曾經堆滿了垃圾？一起乘著島嶼時光機，回首垃圾山，臭氣憶當年。",
-      "video": ["/videos/video_sample.mp4"],
-      "photo": ["https://fakeimg.pl/600x480/?text=PhotoText&retina=1"]
+      "video": ["/event01/videos/A18(底圖動態02).mp4", "/event01/videos/A18(底圖動態02).mp4"],
+      "photo": ["https://fakeimg.pl/600x480/?text=PhotoText&retina=1"],
+      "imageswitch": ["/event01/A8(1992.瓊林里垃圾場抗爭).jpg", "/event01/A4(1993年淡水河岸垃圾).jpg", "/event01/A7(2004年台北縣淡水河岸八里垃圾場).jpg"],
+      "imagecontrast": ["/event01/A11(1998.10八里海岸-扒文蛤).jpg", "/event01/A13(2017.09八里海岸文蛤淤積).jpg"]
     },
     "event02": {
       "title": "this is title 02",
