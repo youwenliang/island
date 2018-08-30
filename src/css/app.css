@@ -23,16 +23,27 @@ button {
   cursor: pointer;
 }
 
+.min-vh-200 {
+  min-height: 200vh;
+}
+.mt50vh {
+  margin-top: 50vh;
+}
+.ai-flex-end {
+  align-items: flex-end;
+}
+
 .fixed-content {
   opacity: 0;
   top: 0;
-  z-index: -1;
-  transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
+  pointer-events: none;
+  transition: all .6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .fixed-content.active {
   opacity: 1;
-  z-index: 1;
+  pointer-events: auto !important;
 }
 
 .videoBg{
@@ -365,7 +376,9 @@ ul.none {
 .cd-image-container {
   position: relative;
   width: 90%;
-  max-width: 768px;
+  max-height: 90%;
+  overflow: hidden;
+  /*max-width: 768px;*/
   margin: auto;
 }
 .cd-image-container img {
