@@ -9,7 +9,7 @@ import Modal from 'react-responsive-modal';
 import {TweenMax} from "gsap/all";
 import ReactList from 'react-list'; // eslint-disable-line no-unused-vars
 import Image from "react-graceful-image";
-import Swiper from 'swiper';
+import Swiper from 'swiper/dist/js/swiper.js';
 
 // Story Data
 const story_data = data.stories;

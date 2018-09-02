@@ -4,7 +4,12 @@
 
 body {
 	overflow-x: hidden;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto Serif', sans-serif;
+  letter-spacing: 1px;
+}
+
+.pre-wrap {
+  white-space: pre-wrap;
 }
 
 a {
@@ -23,6 +28,16 @@ button {
   cursor: pointer;
 }
 
+.absolute-center {
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.bottom-100 {
+  bottom: 100px;
+}
+
 .min-vh-200 {
   min-height: 200vh;
 }
@@ -38,7 +53,7 @@ button {
   top: 0;
   z-index: 1;
   pointer-events: none;
-  transition: all .6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .fixed-content.active {
@@ -66,8 +81,21 @@ button {
 .top0 {
   top: 0;
 }
+.bottom0{
+  bottom: 0;
+}
+.bottom-200 {
+  bottom: 200px;
+}
+.top-left {
+  top: 0;
+  left: 0;
+}
 .z4 {
   z-index: 4
+}
+.z10 {
+  z-index: 10;
 }
 
 .space-around {
@@ -87,6 +115,9 @@ button {
 }
 .initial {
   white-space: initial;
+}
+.flex-column {
+  flex-direction: column;
 }
 
 #cover, #timeline {
@@ -312,6 +343,12 @@ ul.none {
   max-width: 80vw;
 }
 
+.coverVideo-tag {
+  font-size: 1.7rem;
+  letter-spacing: 2px;
+  margin-top: 0px;
+}
+
 /*
 
     OVERFLOW
@@ -376,7 +413,7 @@ ul.none {
 .cd-image-container {
   position: relative;
   width: 90%;
-  max-height: 90%;
+  max-height: 70%;
   overflow: hidden;
   /*max-width: 768px;*/
   margin: auto;
