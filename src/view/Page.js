@@ -210,7 +210,7 @@ function PhotoText(props) {
 
 function PhotoTextRight(props) {
   return (
-    <section className="cover min-vh-100 flex aic">
+    <section className="min-vh-200 flex aic">
       <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
         <figure className="w-100">
           <img className="w-50-l w-100" src="https://fakeimg.pl/600x480/?text=PhotoText&retina=1" alt="illustration"/>
@@ -238,7 +238,7 @@ function PhotoSwitch(props) {
     images.push(temp);
   }
   return (
-    <section className="cover min-vh-100 flex aic w-100">
+    <section className="min-vh-200 flex aic w-100">
       <div className="bg-light-gray w-100 h-100 fixed fixed-content">
         <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} />
       </div>
@@ -337,7 +337,7 @@ class Event01 extends Component {
   render() {
     return (
       <div>
-        <nav className="bg-gray w-100 h3 fixed top0 z10"></nav>
+        <nav className="bg-gray w-100 h3 fixed top0 z10 o-10"></nav>
         <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.video[0]}/>
         <Taiwan
           text1={this.props.data.taiwanText[0]}
