@@ -16,9 +16,9 @@ class Cover extends Component {
     return (
       <section id="cover" className="min-vh-100 bg-gray flex jcc aic">
         <nav className="pv2 fixed w-100 top0 z10">
-          <div className="bg-white o-80 w-100 h-100 absolute top0"/>
+          <div className="bg-near-black o-50 w-100 h-100 absolute top0"/>
           <div className="mw8 center ph3 relative z4">
-            <div className="ph2-ns flex space-between aic">
+            <div className="ph2-ns flex space-between aic white">
               <p>我們的島</p><a href="/ourisland/timeline/" target="_blank">
               <button className="cp">前往大紀事</button></a>
             </div>

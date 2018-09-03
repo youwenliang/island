@@ -5,6 +5,9 @@ import $ from 'jquery';
 import mousewheel from 'jquery-mousewheel'; // eslint-disable-line no-unused-vars
 import dragscroll from 'dragscroll'; // eslint-disable-line no-unused-vars
 import {TweenMax} from "gsap/all";
+import topic1 from '../images/山水污染分層-01.svg';
+import topic2 from '../images/山水污染分層-02.svg';
+import topic3 from '../images/山水污染分層-03.svg';
 
 // Event Data
 const event_data = data.events;
@@ -116,10 +119,11 @@ class Events extends Component {
     return (
       <li className="eventItem item dib center tc" key={i} onMouseEnter={() => this.handleMouseEnter(content.id)}>
         <Link to={"/ourisland/"+content.url+"/"}>
-        <figure className="eventFigure circle-10 br-100 ma3 bg-near-white">
-          <img src={"https://fakeimg.pl/200x200/?text="+content.id+"&retina=1"} alt={content.name} />
+        <figure className="eventFigure circle-10 br-100 ma3 bg-white flex aic jcc">
+          <img src={content.icon} width="120" height="120" alt={content.name} />
         </figure>
-        {content.name}
+        <p className="f5 fw7 mv0">{content.name.split('@')[0]}</p>
+        <p className="f6 o-50 fw4 mv2">{content.name.split('@')[1]}</p>
         </Link>
       </li>
     )
@@ -133,7 +137,8 @@ class Events extends Component {
       var content = event_content[i];
       list.push(this.event(content, i));
     }
-    var bgUrl = "https://fakeimg.pl/1200x900/000000/ffffff/?text="+event_content[this.state.topics[num]].name+"&retina=1";
+    var bgUrl = event_content[this.state.topics[num]].image;
+    console.log(bgUrl);
     var bgStyle = {
           backgroundImage: 'url('+bgUrl+')',
           backgroundPosition: 'center center',
@@ -141,12 +146,26 @@ class Events extends Component {
           height: '600px',
           backgroundRepeat: 'no-repeat'
     }
-    var topicBg = {
-          backgroundImage: 'url("https://fakeimg.pl/500x200/?text=illustration&retina=1")',
+    var topicBg = [
+    {
+          backgroundImage: 'url('+topic1+')',
           backgroundPosition: 'center center',
-          backgroundSize: '1000px',
+          backgroundSize: '700px',
+          backgroundRepeat: 'no-repeat'
+    },
+    {
+          backgroundImage: 'url('+topic2+')',
+          backgroundPosition: 'center center',
+          backgroundSize: '700px',
+          backgroundRepeat: 'no-repeat'
+    },
+    {
+          backgroundImage: 'url('+topic3+')',
+          backgroundPosition: 'center center',
+          backgroundSize: '700px',
           backgroundRepeat: 'no-repeat'
     }
+    ]
     var topic_content = (
       <div className="cf ph2-ns">
         <h3 className="white">{event_content[this.state.topics[num]].name}</h3>
@@ -159,8 +178,8 @@ class Events extends Component {
       <section id={"topic-"+(num+1)} className="mt4">
         <div className="mw8 center ph3">
           <div className="cf ph2-ns hide">
-            <div className="flex aic jcc w-100 ph2 relative h5" style={topicBg}>
-              <h2 className="tc">{topic_title}</h2>
+            <div className="flex aic jcc w-100 ph2 relative h5" style={topicBg[num]}>
+              {/*<h2 className="tc">{topic_title}</h2>*/}
             </div>
           </div>
         </div>

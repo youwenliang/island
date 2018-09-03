@@ -26,6 +26,22 @@ img {
 button {
   z-index: 10;
   cursor: pointer;
+  background: #fcfcfc;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  height: 32px;
+  border: none;
+  box-shadow: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
 }
 
 .absolute-center {
@@ -179,9 +195,9 @@ button {
 
 /* Events */
 .event {
-  height: 230px;
+  height: 260px;
   overflow: hidden;
-	bottom: 100px;
+	bottom: 115px;
 }
 
 .eventBox {
