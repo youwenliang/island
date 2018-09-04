@@ -1,8 +1,23 @@
 {
-  "main.css": "static/css/main.87fde991.css",
-  "main.css.map": "static/css/main.87fde991.css.map",
-  "main.js": "static/js/main.69fa028d.js",
-  "main.js.map": "static/js/main.69fa028d.js.map",
+  "main.css": "static/css/main.eedccab8.css",
+  "main.css.map": "static/css/main.eedccab8.css.map",
+  "main.js": "static/js/main.9b3683bd.js",
+  "main.js.map": "static/js/main.9b3683bd.js.map",
+  "static/media/NotoSerifCJKtc-Black.otf": "static/media/NotoSerifCJKtc-Black.f75d5198.otf",
+  "static/media/NotoSerifCJKtc-Bold.otf": "static/media/NotoSerifCJKtc-Bold.e5bb639f.otf",
+  "static/media/NotoSerifCJKtc-ExtraLight.otf": "static/media/NotoSerifCJKtc-ExtraLight.fa3bd40b.otf",
+  "static/media/NotoSerifCJKtc-Light.otf": "static/media/NotoSerifCJKtc-Light.9d7ce762.otf",
+  "static/media/NotoSerifCJKtc-Medium.otf": "static/media/NotoSerifCJKtc-Medium.9500c0ff.otf",
+  "static/media/NotoSerifCJKtc-Regular.otf": "static/media/NotoSerifCJKtc-Regular.338584d1.otf",
+  "static/media/NotoSerifCJKtc-SemiBold.otf": "static/media/NotoSerifCJKtc-SemiBold.827e8eb6.otf",
   "static/media/cd-arrows.svg": "static/media/cd-arrows.20db1fe7.svg",
-  "static/media/loading.gif": "static/media/loading.4e239a30.gif"
+  "static/media/cover.mp4": "static/media/cover.87b79b16.mp4",
+  "static/media/cover.svg": "static/media/cover.18e1d4c4.svg",
+  "static/media/hand.svg": "static/media/hand.f92ac56d.svg",
+  "static/media/loading.gif": "static/media/loading.4e239a30.gif",
+  "static/media/phone.svg": "static/media/phone.4a2221e7.svg",
+  "static/media/timemachine.svg": "static/media/timemachine.571c0acb.svg",
+  "static/media/山水污染分層-01.svg": "static/media/山水污染分層-01.3fc0203d.svg",
+  "static/media/山水污染分層-02.svg": "static/media/山水污染分層-02.d7ef0e43.svg",
+  "static/media/山水污染分層-03.svg": "static/media/山水污染分層-03.045c329e.svg"
 }
