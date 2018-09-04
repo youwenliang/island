@@ -35,7 +35,7 @@ class Search extends Component {
       offset_i + (this.findDate('0') - topic_data.length)*offset_w,
       offset_i + (this.findDate('1') - topic_data.length)*offset_w
     ];
-    console.log(divides);
+    // console.log(divides);
   }
 
   onOpenModal = (event, c) => {

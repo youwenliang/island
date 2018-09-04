@@ -138,7 +138,6 @@ class Events extends Component {
       list.push(this.event(content, i));
     }
     var bgUrl = event_content[this.state.topics[num]].image;
-    console.log(bgUrl);
     var bgStyle = {
           backgroundImage: 'url('+bgUrl+')',
           backgroundPosition: 'center center',

@@ -6,36 +6,36 @@ var data = {
       "content": [{
           "id": "1-1",
           "name": "變遷淡水河@新北淡水河",
-          "image": "/images/1-1_A22.jpg",
-          "icon":  "/icons/1-1淡水河.png",
+          "image": "./images/1-1_A22.jpg",
+          "icon":  "./icons/1-1淡水河.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event01"
         }, {
           "id": "1-2",
           "name": "重生二仁溪@台南/高雄",
-          "image": "/images/1-2_B6.jpg",
-          "icon":  "/icons/1-2二仁溪.png",
+          "image": "./images/1-2_B6.jpg",
+          "icon":  "./icons/1-2二仁溪.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event02"
         }, {
           "id": "1-3",
           "name": "陸蟹的天堂與地獄@墾丁恆春",
-          "image": "/images/1-3_C1.jpg",
-          "icon":  "/icons/1-3陸蟹.png",
+          "image": "./images/1-3_C1.jpg",
+          "icon":  "./icons/1-3陸蟹.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event03"
         }, {
           "id": "1-4",
           "name": "漁港的黑色幽默@台東大武漁港",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
-          "icon":  "/icons/1-4港口淤積.png",
+          "icon":  "./icons/1-4港口淤積.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event04"
         }, {
           "id": "1-5",
           "name": "沒有海的港口@金門後豐港",
-          "image": "/images/1-5_E7.jpg",
-          "icon":  "/icons/1-5鱟.png",
+          "image": "./images/1-5_E7.jpg",
+          "icon":  "./icons/1-5鱟.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event05"
         }
@@ -47,28 +47,28 @@ var data = {
           "id": "2-1",
           "name": "咬一口高山青翠@台中梨山",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
-          "icon":  "/icons/2-1梨山.png",
+          "icon":  "./icons/2-1梨山.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event06"
         }, {
           "id": "2-2",
           "name": "冒險泡湯去@南投廬山",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
-          "icon":  "/icons/2-2廬山.png",
+          "icon":  "./icons/2-2廬山.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event07"
         }, {
           "id": "2-3",
           "name": "攔住水失去水@雲林湖山水庫",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
-          "icon":  "/icons/2-3湖山水庫.png",
+          "icon":  "./icons/2-3湖山水庫.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event08"
         }, {
           "id": "2-4",
           "name": "挖山取石的代價@花蓮亞泥",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
-          "icon":  "/icons/2-4亞泥.png",
+          "icon":  "./icons/2-4亞泥.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event09"
         }
@@ -79,29 +79,29 @@ var data = {
       "content": [{
           "id": "3-1",
           "name": "土地該長出什麼@彰化中科四期",
-          "image": "/images/3-1_J9.jpg",
-          "icon":  "/icons/3-1中科四期.png",
+          "image": "./images/3-1_J9.jpg",
+          "icon":  "./icons/3-1中科四期.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event10"
         }, {
           "id": "3-2",
           "name": "石化填出的王國@雲林麥寮六輕",
-          "image": "/images/3-2.jpg",
-          "icon":  "/icons/3-2六輕.png",
+          "image": "./images/3-2.jpg",
+          "icon":  "./icons/3-2六輕.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event11"
         }, {
           "id": "3-3",
           "name": "嗚咽的土地悲歌@台南台鹼安順廠",
-          "image": "/images/3-3_L5.jpg",
-          "icon":  "/icons/3-3台鹼.png",
+          "image": "./images/3-3_L5.jpg",
+          "icon":  "./icons/3-3台鹼.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event12"
         }, {
           "id": "3-4",
           "name": "無人知曉的未爆彈@屏東赤山巖",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
-          "icon":  "/icons/3-4汞污泥.png",
+          "icon":  "./icons/3-4汞污泥.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event13"
         }
@@ -114,15 +114,19 @@ var data = {
     "event01": {
       "title": "this is title 01",
       "id": "事件1",
-      "coverTitle": "/event01/illustrations/01title.svg",
+      "coverTitle": "./illustrations/01title.svg",
       "coverDescription": "台北人熟悉的淡水河，也曾經堆滿了垃圾？\n一起乘著島嶼時光機，回首垃圾山，臭氣憶當年。",
-      "video": ["/event01/videos/A18(底圖動態02).mp4", "/event01/videos/A18(底圖動態02).mp4"],
+      "video": ["./videos/A18(底圖動態02).mp4", "./videos/A18(底圖動態02).mp4"],
       "photo": ["https://fakeimg.pl/600x480/?text=PhotoText&retina=1"],
+      "photoImage": "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
+      "stepImage": "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
 
       "taiwanText": [
         "新北市，淡水區\nNew Taipei City, Tamsui District",
         "淡水區，舊稱滬尾，位於中華民國新北市西北沿海以及淡水河的出海口北側，北鄰三芝區，南鄰臺北市北投區，西濱臺灣海峽，西南與八里區以淡水河一水之隔。"
       ],
+      "taiwan": "./illustrations/taiwan.svg",
+      "taiwanBG": "https://fakeimg.pl/600x480/333333/555555?text=Taiwan&retina=1",
 
       "stepText": [
         "2002:不過有些地方，垃圾只是隱藏在腳下。\n\n例如二重疏洪道旁的建築廢土，2002 年都是露天棄置，高架道路施工時曾清除了一部分，但兩旁的廢棄物只是用柏油掩蓋，並沒有清出。",
@@ -133,11 +137,12 @@ var data = {
         "總是人潮絡繹不絕的淡水河，是城市人們的出口，六百多萬人的生活和淡水河流域緊密相依。\n\n現在的你很難想像，1993年的淡水河畔，是滿天的垃圾和惡臭味，讓人想快速離開。",
         "讓我們乘坐時光機，回到三十年前的淡水河。\n\n一啟航，迎面而來是陣陣臭氣，往上沿著大漢溪而上，岸邊竟有著一座又一座的「垃圾山」，沒處理的污水直接排放，河面處處漂浮垃圾。不要說什麼河岸景觀第一排，就算是在這待一分鐘，也待不下去。"
       ],
+      "illustration": "./illustrations/001new.svg",
 
-      "photoswitch": ["/event01/A8(1992.瓊林里垃圾場抗爭).jpg", "/event01/A4(1993年淡水河岸垃圾).jpg", "/event01/A7(2004年台北縣淡水河岸八里垃圾場).jpg"],
+      "photoswitch": ["./A8(1992.瓊林里垃圾場抗爭).jpg", "./A4(1993年淡水河岸垃圾).jpg", "./A7(2004年台北縣淡水河岸八里垃圾場).jpg"],
       "photoswitchText": "在只求經濟發展忽視環境的七八零年代，政府並沒有完善的垃圾處理政策，當時鄉鎮公所都是自行找地堆置垃圾，海邊與河岸就成了最佳的垃圾場，長久下來不但污染河水，也影響水流。\n\n直到1990年代，環保意識抬頭，人們對河川的髒污忍無可忍，政府開始進行淡水河的整治。其中1992年開始的「大漢溪沿岸舊垃圾清除計畫」，就清運了755萬立方米垃圾，運到新北市林口下罟子掩埋場掩埋。",
 
-      "photocontrast": ["/event01/A11(1998.10八里海岸-扒文蛤).jpg", "/event01/A13(2017.09八里海岸文蛤淤積).jpg"],
+      "photocontrast": ["./A11(1998.10八里海岸-扒文蛤).jpg", "./A13(2017.09八里海岸文蛤淤積).jpg"],
       "photocontrastText": "與水親近，是人類亙古以來的渴望。1998年的淡水河口，在退潮期間，你還有機會看到八里居民在灘地上耙文蛤，在快速都市化的大台北，這群老居民仍舊與熟悉的河海，依存過生活。不過隨著開發建設，人與河海之間的關係，逐漸在轉變。",
 
       "photoText": [

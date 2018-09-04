@@ -126,7 +126,7 @@ function Illustration(props) {
     <section className="min-vh-200 flex aic">
       <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
         <figure className="w-100">
-          <img className="w-50-l w-100"src="/event01/illustrations/001new.svg" alt="illustration"/>
+          <img className="w-50-l w-100" src={props.illustration} alt="illustration"/>
         </figure>
       </div>
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
@@ -147,7 +147,7 @@ function Illustration(props) {
 
 function Taiwan(props) {
   var bgStyle = {
-    backgroundImage: "url(https://fakeimg.pl/600x480/333333/fff?text=Taiwan&retina=1)",
+    backgroundImage: "url("+ props.background +")",
     backgroundSize: "cover",
     backgroundPosition: "center center"
   }
@@ -155,7 +155,7 @@ function Taiwan(props) {
     <section className="cover min-vh-100 flex aic">
       <div className="w-100 h-100 fixed fixed-content flex aic" style={bgStyle}>
         <figure className="w-100">
-          <img className="fr-l w-50-l w-100"src="/event01/illustrations/001new.svg" alt="illustration"/>
+          <img className="fr-l w-50-l w-100 taiwan" src={props.illustration} alt="illustration"/>
         </figure>
       </div>
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
@@ -175,7 +175,7 @@ function Steps(props) {
     <section className="cover min-vh-100 flex aic">
       <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
         <figure className="w-100">
-          <img className="w-50-l w-100" src="https://fakeimg.pl/600x480/?text=2002&retina=1" alt="illustration"/>
+          <img className="w-50-l w-100" src={props.image} alt="illustration"/>
         </figure>
       </div>
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
@@ -213,7 +213,7 @@ function PhotoTextRight(props) {
     <section className="min-vh-200 flex aic">
       <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
         <figure className="w-100">
-          <img className="w-50-l w-100" src="https://fakeimg.pl/600x480/?text=PhotoText&retina=1" alt="illustration"/>
+          <img className="w-50-l w-100" src={props.image} alt="illustration"/>
         </figure>
       </div>
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
@@ -342,27 +342,37 @@ class Event01 extends Component {
         <Taiwan
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
+          illustration = {this.props.data.taiwan}
+          background = {this.props.data.taiwanBG}
         />
         <Illustration 
           text1={this.props.data.illustrationText[0]}
           text2={this.props.data.illustrationText[1]}
+          illustration = {this.props.data.illustration}
         />
         <PhotoSwitch 
           images={this.props.data.photoswitch} 
           text={this.props.data.photoswitchText}
         />
         <Video link={this.props.data.video[1]}/>
-        <PhotoTextRight text={this.props.data.photoText[0]}/>
+        <PhotoTextRight 
+          text={this.props.data.photoText[0]}
+          image = {this.props.data.photoImage}
+        />
         <Steps
           text1={this.props.data.stepText[0]}
           text2={this.props.data.stepText[1]}
+          image = {this.props.data.stepImage}
         />
         <PhotoContrast 
           images={this.props.data.photocontrast}
           text={this.props.data.photocontrastText}
         />
         
-        <PhotoTextRight text={this.props.data.photoText[1]}/>
+        <PhotoTextRight 
+          text={this.props.data.photoText[1]}
+          image = {this.props.data.photoImage}
+        />
         <EndingVideo link={this.props.data.video[1]}/>
       </div>
     );

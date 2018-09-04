@@ -1,56 +1,57 @@
 @import "tachyons";
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif');
-
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+/*
 @font-face {
-  font-family: 'NotoSerifCJKtc';
+  font-family: 'Noto Serif CJK TC';
   font-style: normal;
   font-weight: 200;
   src: url(fonts/NotoSerifCJKtc-ExtraLight.otf);
 }
 
 @font-face {
-  font-family: 'NotoSerifCJKtc';
+  font-family: 'Noto Serif CJK TC';
   font-style: normal;
   font-weight: 300;
   src: url(fonts/NotoSerifCJKtc-Light.otf);
 }
 @font-face {
-  font-family: 'NotoSerifCJKtc';
+  font-family: 'Noto Serif CJK TC';
   font-style: normal;
   font-weight: 400;
   src: url(fonts/NotoSerifCJKtc-Regular.otf);
 }
 
 @font-face {
-  font-family: 'NotoSerifCJKtc';
+  font-family: 'Noto Serif CJK TC';
   font-style: normal;
   font-weight: 500;
   src: url(fonts/NotoSerifCJKtc-Medium.otf);
 }
 @font-face {
-  font-family: 'NotoSerifCJKtc';
+  font-family: 'Noto Serif CJK TC';
   font-style: normal;
   font-weight: 600;
   src: url(fonts/NotoSerifCJKtc-SemiBold.otf);
 }
 
 @font-face {
-  font-family: 'NotoSerifCJKtc';
+  font-family: 'Noto Serif CJK TC';
   font-style: normal;
   font-weight: 700;
   src: url(fonts/NotoSerifCJKtc-Bold.otf);
 }
 @font-face {
-  font-family: 'NotoSerifCJKtc';
+  font-family: 'Noto Serif CJK TC';
   font-style: normal;
   font-weight: 900;
   src: url(fonts/NotoSerifCJKtc-Black.otf);
-}
+}*/
 
 body {
 	overflow-x: hidden;
-  font-family: 'NotoSerifCJKtc', sans-serif;
+  font-family: 'Noto Sans', 'Noto Sans TC', sans-serif;
   letter-spacing: 1px;
 }
 
@@ -207,6 +208,15 @@ button,
   padding: 7vh 0;
 }
 
+#phone {
+  transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateX(-180px) scale(1);
+}
+
+#phone:hover {
+  transform: translateX(-180px) scale(1.3);
+}
+
 .ds {
 	overflow-y: hidden;
 }
@@ -310,6 +320,10 @@ button,
   transform: scale(1.07,1.07,1.07);
   transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 3px 6px rgba(0,0,0,0.04), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.taiwan {
+  max-height: 60vh;
 }
 
 /* Stories */
@@ -1000,3 +1014,5 @@ ul.none {
     .image-gallery-index {
       font-size: .8em;
       padding: 5px 10px; } }
+
+
