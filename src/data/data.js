@@ -8,30 +8,35 @@ var data = {
           "name": "變遷淡水河@新北淡水河",
           "image": "/images/1-1_A22.jpg",
           "icon":  "/icons/1-1淡水河.png",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event01"
         }, {
           "id": "1-2",
           "name": "重生二仁溪@台南/高雄",
           "image": "/images/1-2_B6.jpg",
           "icon":  "/icons/1-2二仁溪.png",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event02"
         }, {
           "id": "1-3",
           "name": "陸蟹的天堂與地獄@墾丁恆春",
           "image": "/images/1-3_C1.jpg",
           "icon":  "/icons/1-3陸蟹.png",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event03"
         }, {
           "id": "1-4",
           "name": "漁港的黑色幽默@台東大武漁港",
-          "image": "https://fakeimg.pl/1200x900/000000/ffffff/?text=image&retina=1",
+          "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/icons/1-4港口淤積.png",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event04"
         }, {
           "id": "1-5",
           "name": "沒有海的港口@金門後豐港",
           "image": "/images/1-5_E7.jpg",
           "icon":  "/icons/1-5鱟.png",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event05"
         }
       ]
@@ -41,26 +46,30 @@ var data = {
       "content": [{
           "id": "2-1",
           "name": "咬一口高山青翠@台中梨山",
-          "image": "https://fakeimg.pl/1200x900/000000/ffffff/?text=image&retina=1",
+          "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/icons/2-1梨山.png",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event06"
         }, {
           "id": "2-2",
           "name": "冒險泡湯去@南投廬山",
-          "image": "https://fakeimg.pl/1200x900/000000/ffffff/?text=image&retina=1",
+          "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/icons/2-2廬山.png",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event07"
         }, {
           "id": "2-3",
           "name": "攔住水失去水@雲林湖山水庫",
-          "image": "https://fakeimg.pl/1200x900/000000/ffffff/?text=image&retina=1",
+          "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/icons/2-3湖山水庫.png",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event08"
         }, {
           "id": "2-4",
           "name": "挖山取石的代價@花蓮亞泥",
-          "image": "https://fakeimg.pl/1200x900/000000/ffffff/?text=image&retina=1",
+          "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/icons/2-4亞泥.png",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event09"
         }
       ]
@@ -72,24 +81,28 @@ var data = {
           "name": "土地該長出什麼@彰化中科四期",
           "image": "/images/3-1_J9.jpg",
           "icon":  "/icons/3-1中科四期.png",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event10"
         }, {
           "id": "3-2",
           "name": "石化填出的王國@雲林麥寮六輕",
           "image": "/images/3-2.jpg",
           "icon":  "/icons/3-2六輕.png",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event11"
         }, {
           "id": "3-3",
           "name": "嗚咽的土地悲歌@台南台鹼安順廠",
           "image": "/images/3-3_L5.jpg",
           "icon":  "/icons/3-3台鹼.png",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event12"
         }, {
           "id": "3-4",
           "name": "無人知曉的未爆彈@屏東赤山巖",
-          "image": "https://fakeimg.pl/1200x900/000000/ffffff/?text=image&retina=1",
+          "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/icons/3-4汞污泥.png",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event13"
         }
       ]
