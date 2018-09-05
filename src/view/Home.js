@@ -46,7 +46,7 @@ class Home extends Component {
     return (
       <div>
         <Helmet>
-            <title>Our Island</title>
+            <title>穿梭島嶼時光機 - 我們的島二十週年</title>
         </Helmet>
         <Cover/>
         <Events/>

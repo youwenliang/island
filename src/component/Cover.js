@@ -20,10 +20,14 @@ class Cover extends Component {
   }
   render() {
     var machineStyle = {
-      bottom: "-28px"
+      bottom: "-28px",
+      width: "90vw",
+      maxWidth: "400px"
     }
     var handStyle = {
       bottom: "-20px",
+      width: "30.375vw",
+      maxWidth: "135px",
       transform: "translateX(70px)"
     }
     var phoneStyle = {
@@ -32,8 +36,8 @@ class Cover extends Component {
     }
     return (
       <section id="cover" className="min-vh-100 bg-gray flex jcc aic">
-        <nav className="pv2 fixed w-100 top0 z10">
-          <div className="bg-dark-gray w-100 h-100 absolute top0"/>
+        <nav className="pv2 w-100 top0 z10">
+          <div className="bg-dark-gray w-100 h-100 absolute top0"></div>
           <div className="mw8 center ph3 relative z4">
             <div className="ph2-ns flex space-between aic white">
               <p>我們的島</p><a href="/ourisland/timeline/" target="_blank">

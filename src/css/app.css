@@ -64,6 +64,36 @@ a {
   color: #0c0c0d;
 }
 
+nav {
+  height: 66px;
+  width: 100vw;
+  position: absolute;
+}
+
+nav > div:nth-child(1) {
+  opacity: 0;
+}
+
+nav.fix {
+  position: fixed;
+  animation: show .2s normal forwards ease-in-out;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.24);
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+nav.fix > div:nth-child(1) {
+  opacity: 1;
+}
+
+
 img {
   vertical-align: bottom;
   pointer-events: none;
@@ -83,6 +113,13 @@ button {
   border: none;
   box-shadow: none;
   letter-spacing: 1.6px;
+  transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.03), 0 3px 6px rgba(0,0,0,0.24);
 }
 
 button,

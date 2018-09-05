@@ -20,6 +20,7 @@ $(document).ready(function(){
 	//     console.log(e.target.className);
 	// });
 	// Disable Image dragging
+    var flag = false;
 	$('img').on('dragstart', function(event) { event.preventDefault(); });
 
 	// Show hidden div on scroll
@@ -34,6 +35,15 @@ $(document).ready(function(){
 			TweenMax.to($this, .4, {opacity: 0, transform: "translate3d(0,50px,0)"});
 		}
 	  });
+      if($(window).scrollTop() >= 66){
+        if(!flag) {
+            flag = true;
+            $('nav').addClass('fix');
+        }
+      } else {
+        flag = false;
+        $('nav').removeClass('fix');
+      }
 	});
 
 	// Prevent Click and Dragscroll

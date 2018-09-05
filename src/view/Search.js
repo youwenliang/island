@@ -316,7 +316,7 @@ class Search extends Component {
     return (
       <section id="timeline" className="min-vh-100 bg-light-gray">
         <Helmet>
-            <title>Timeline</title>
+            <title>台灣環境史三十年大事紀 - 我們的島二十週年</title>
         </Helmet>
         <div className="mw8-ns center ph3-ns mb4-ns">
           <div className="cf ph2-ns mb3-ns mb2">

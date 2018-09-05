@@ -98,6 +98,14 @@ class Page extends Component {
         <Helmet>
             <title>{data.title}</title>
         </Helmet>
+        <nav className="pv2 w-100 top0 z10">
+          <div className="bg-dark-gray w-100 h-100 absolute top0"></div>
+          <div className="mw8 center ph3 relative z4">
+            <div className="ph2-ns flex space-between aic white">
+              <p>我們的島</p>
+            </div>
+          </div>
+        </nav>
         {container}
       </section>
     );
@@ -293,7 +301,7 @@ function CoverVideo(props) {
       <div className="mw8 center ph3 w-100 z4">
         <div className="cf tc white w-80 center pa4">
           <img src={props.title} alt="title" />
-          <h3 className="coverVideo-tag fw2 lh-copy mb0 pre-wrap">{props.content}</h3>
+          <h3 className="coverVideo-tag fw4 lh-copy mb0 pre-wrap">{props.content}</h3>
         </div>
       </div>
     </section>
@@ -337,7 +345,6 @@ class Event01 extends Component {
   render() {
     return (
       <div>
-        <nav className="bg-gray w-100 h3 fixed top0 z10 o-10"></nav>
         <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.video[0]}/>
         <Taiwan
           text1={this.props.data.taiwanText[0]}
