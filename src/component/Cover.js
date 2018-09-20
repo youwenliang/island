@@ -11,14 +11,19 @@ class Cover extends Component {
     $(document).ready(function(){
       $('#phone').click(function(e){
         e.stopPropagation();
-        $('.dialog').toggleClass('hiding');
+        $('#phone').addClass('hiding');
+        $('.dialog').removeClass('hiding');
       })
       $(window).click(function(e){
         $('.dialog').addClass('hiding');
+        $('#phone').removeClass('hiding');
       })
     })
   }
   render() {
+    var titleStyle = {
+      transform: "translateY(-50px)"
+    }
     var machineStyle = {
       bottom: "-28px",
       width: "90vw",
@@ -41,7 +46,7 @@ class Cover extends Component {
           <div className="mw8 center ph3 relative z4">
             <div className="ph2-ns flex space-between aic white">
               <p>我們的島</p><a href="/ourisland/timeline/" target="_blank">
-              <button className="cp">前往大紀事</button></a>
+              <button className="cp h2 ph3">前往大紀事</button></a>
             </div>
           </div>
         </nav>
@@ -59,7 +64,7 @@ class Cover extends Component {
               <div className="bg-white w-100 h-100 absolute top0"/>
               <p className="f4-ns f5 black pa5-ns pa4 mv0 tl lh-copy z1 relative">品古不大像親帶不？初體因？結食原的：對使府做設比定不車一響精成子研道法話像風，五機力須讀我；資客家黃總使前？學關見！現成談是我去灣，人德小也樂頭識不包農條，車裡說動我紀集要次她今型團情頭地知人好重得人提山以德頭岸濟只。</p>
             </div>
-            <img src={cover} width="800px" height="auto" alt="title" />
+            <img src={cover} style={titleStyle} width="800px" height="auto" alt="title" />
             <img className="absolute absolute-center" style={machineStyle} width="400px" src={timemachine} alt="timemachine"/>
             <img className="absolute absolute-center" style={handStyle} width="135px" src={hand} alt="hand"/>
             <img id="phone" className="absolute absolute-center cp z10" style={phoneStyle} width="135px" src={phone} alt="phone"/>

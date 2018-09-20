@@ -167,8 +167,8 @@ class Events extends Component {
     ]
     var topic_content = (
       <div className="cf ph2-ns white">
-        <h1 className="dib f1-ns f2 fw7 mv0 mr2 tracked">{event_content[this.state.topics[num]].name.split('@')[0]}</h1>
-        <h3 className="dib f3-ns f4 fw3 o-80">{"/ "+event_content[this.state.topics[num]].name.split('@')[1]}</h3>
+        <h1 className="dib f2-ns f3 fw7 mv0 mr2 tracked">{event_content[this.state.topics[num]].name.split('@')[0]}</h1>
+        <h3 className="dib f4-ns f5 fw3 o-80">{"/ "+event_content[this.state.topics[num]].name.split('@')[1]}</h3>
         <p className="mw6 f4-ns f5 lh-copy fw4">{event_content[this.state.topics[num]].description}</p>
         <Link to={"/ourisland/"+event_content[this.state.topics[num]].url+"/"}>
           <button className="cp mt4">事件連結</button>
@@ -176,15 +176,15 @@ class Events extends Component {
       </div>
     )
     return (
-      <section id={"topic-"+(num+1)} className="mt4">
+      <section id={"topic-"+(num+1)} className="ma0">
         <div className="mw8 center ph3">
           <div className="cf ph2-ns hide">
-            <div className="flex aic jcc w-100 ph2 relative h5-ns h4" style={topicBg[num]}>
+            <div className="topicTitle flex aic jcc w-100 ph2 relative" style={topicBg[num]}>
               {/*<h2 className="tc">{topic_title}</h2>*/}
             </div>
           </div>
         </div>
-        <div className="eventContainer relative hide mv4">
+        <div className="eventContainer relative hide mt4">
           <div className="pv6-ns pv4 eventBg flex aic" style={bgStyle}>
             <div className="w-100 mw8 center ph5-l ph4 relative z1">
               {topic_content}
