@@ -252,11 +252,25 @@ button,
 #phone {
   transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform: translateX(-180px) scale(1);
+  animation: pop 0.8s infinite;
   opacity: 1;
+}
+
+@keyframes pop {
+  0% {
+    transform: translateX(-180px) scale(1);
+  }
+  30% {
+    transform: translateX(-180px) scale(1.3);
+  }
+  60% {
+    transform: translateX(-180px) scale(1);
+  }
 }
 
 #phone:hover {
   transform: translateX(-180px) scale(1.3);
+  animation: none !important;
 }
 
 #phone.hiding {

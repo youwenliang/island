@@ -78,18 +78,18 @@ class Page extends Component {
   render() {
     var data = pageEvent_data[this.state.id];
     const viewContainerMapping = {
-      'event01': <Event01 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
-      'event02': <Event02 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
-      'event03': <Event03 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
-      'event04': <Event04 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
-      'event05': <Event05 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
-      'event06': <Event06 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
-      'event07': <Event07 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
-      'event08': <Event08 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
-      'event09': <Event09 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
-      'event10': <Event10 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
-      'event11': <Event11 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
-      'event12': <Event12 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
+      'changing-tamsui-river': <Event01 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
+      'reborn-erren-river': <Event02 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
+      'land-crabs-survival': <Event03 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
+      'dawu-fishing-port': <Event04 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
+      'kinmen-Hou-feng-kang': <Event05 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
+      'lishan-high-mountain-farms': <Event06 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
+      'lushan-hotspring-risk': <Event07 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
+      'hushan-reservoir-lost-water': <Event08 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
+      'asia-cement-cost': <Event09 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
+      'science-park-landuse': <Event10 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
+      'petrochemical-kingdom': <Event11 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
+      'soil-pollution-tainan': <Event12 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
       'event13': <Event13 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />
     }
     let container = viewContainerMapping[this.state.view];

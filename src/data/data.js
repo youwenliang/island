@@ -9,35 +9,35 @@ var data = {
           "image": "./images/1-1_A22.jpg",
           "icon":  "./icons/1-1淡水河.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
-          "url": "event01"
+          "url": "changing-tamsui-river"
         }, {
           "id": "1-2",
           "name": "重生二仁溪@台南/高雄",
           "image": "./images/1-2_B6.jpg",
           "icon":  "./icons/1-2二仁溪.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
-          "url": "event02"
+          "url": "reborn-erren-river"
         }, {
           "id": "1-3",
           "name": "陸蟹的天堂與地獄@墾丁恆春",
           "image": "./images/1-3_C1.jpg",
           "icon":  "./icons/1-3陸蟹.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
-          "url": "event03"
+          "url": "land-crabs-survival"
         }, {
           "id": "1-4",
           "name": "漁港的黑色幽默@台東大武漁港",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "./icons/1-4港口淤積.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
-          "url": "event04"
+          "url": "dawu-fishing-port"
         }, {
           "id": "1-5",
           "name": "沒有海的港口@金門後豐港",
           "image": "./images/1-5_E7.jpg",
           "icon":  "./icons/1-5鱟.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
-          "url": "event05"
+          "url": "kinmen-Hou-feng-kang"
         }
       ]
     },
@@ -49,28 +49,28 @@ var data = {
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "./icons/2-1梨山.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
-          "url": "event06"
+          "url": "lishan-high-mountain-farms"
         }, {
           "id": "2-2",
           "name": "冒險泡湯去@南投廬山",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "./icons/2-2廬山.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
-          "url": "event07"
+          "url": "lushan-hotspring-risk"
         }, {
           "id": "2-3",
           "name": "攔住水失去水@雲林湖山水庫",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "./icons/2-3湖山水庫.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
-          "url": "event08"
+          "url": "hushan-reservoir-lost-water"
         }, {
           "id": "2-4",
           "name": "挖山取石的代價@花蓮亞泥",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "./icons/2-4亞泥.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
-          "url": "event09"
+          "url": "asia-cement-cost"
         }
       ]
     },
@@ -82,21 +82,21 @@ var data = {
           "image": "./images/3-1_J9.jpg",
           "icon":  "./icons/3-1中科四期.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
-          "url": "event10"
+          "url": "science-park-landuse"
         }, {
           "id": "3-2",
           "name": "石化填出的王國@雲林麥寮六輕",
           "image": "./images/3-2.jpg",
           "icon":  "./icons/3-2六輕.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
-          "url": "event11"
+          "url": "petrochemical-kingdom"
         }, {
           "id": "3-3",
           "name": "嗚咽的土地悲歌@台南台鹼安順廠",
           "image": "./images/3-3_L5.jpg",
           "icon":  "./icons/3-3台鹼.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
-          "url": "event12"
+          "url": "soil-pollution-tainan"
         }, {
           "id": "3-4",
           "name": "無人知曉的未爆彈@屏東赤山巖",
@@ -111,7 +111,7 @@ var data = {
 
   // 13 Page Events
   "pageEvents": {
-    "event01": {
+    "changing-tamsui-river": {
       "title": "變遷淡水河 - 我們的島",
       "id": "事件1",
       "coverTitle": "./illustrations/01title.svg",
@@ -150,47 +150,47 @@ var data = {
         "現在在淡水河口，大人牽著小孩迫不及待湧入，觀察招潮蟹的出沒、用雙腳感受河水的輕撫。\n\n走過髒污的過往，下一個二十年，你希望淡水河會是什麼樣貌呢？"
       ]
     },
-    "event02": {
+    "reborn-erren-river": {
       "title": "this is title 02",
       "id": "事件2"
     },
-    "event03": {
+    "land-crabs-survival": {
       "title": "this is title 03",
       "id": "事件3"
     },
-    "event04": {
+    "dawu-fishing-port": {
       "title": "this is title 04",
       "id": "事件4"
     },
-    "event05": {
+    "kinmen-Hou-feng-kang": {
       "title": "this is title 05",
       "id": "事件5"
     },
-    "event06": {
+    "lishan-high-mountain-farms": {
       "title": "this is title 06",
       "id": "事件6"
     },
-    "event07": {
+    "lushan-hotspring-risk": {
       "title": "this is title 07",
       "id": "事件7"
     },
-    "event08": {
+    "hushan-reservoir-lost-water": {
       "title": "this is title 08",
       "id": "事件8"
     },
-    "event09": {
+    "asia-cement-cost": {
       "title": "this is title 09",
       "id": "事件9"
     },
-    "event10": {
+    "science-park-landuse": {
       "title": "this is title 10",
       "id": "事件10"
     },
-    "event11": {
+    "petrochemical-kingdom": {
       "title": "this is title 11",
       "id": "事件11"
     },
-    "event12": {
+    "soil-pollution-tainan": {
       "title": "this is title 12",
       "id": "事件12"
     },

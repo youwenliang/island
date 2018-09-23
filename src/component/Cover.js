@@ -3,7 +3,7 @@ import coverVideo from '../videos/cover.mp4';
 import cover from '../images/cover.svg';
 import timemachine from '../images/timemachine.svg';
 import hand from '../images/hand.svg';
-import phone from '../images/phone.svg';
+import phone from '../images/phone_new.svg';
 import $ from 'jquery';
 
 class Cover extends Component {
@@ -45,8 +45,11 @@ class Cover extends Component {
           <div className="bg-dark-gray w-100 h-100 absolute top0"></div>
           <div className="mw8 center ph3 relative z4">
             <div className="ph2-ns flex space-between aic white">
-              <p>我們的島</p><a href="/ourisland/timeline/" target="_blank">
-              <button className="cp h2 ph3">前往大紀事</button></a>
+              <p>我們的島</p>
+              <div className="flex flex-row">
+                <a href="/ourisland/timeline/" target="_blank"><button className="cp h2 ph3">前往大紀事</button></a>
+                <a href="/ourisland/timeline/" target="_blank"><button className="cp h2 ph3 ml3">分享</button></a>
+              </div>
             </div>
           </div>
         </nav>

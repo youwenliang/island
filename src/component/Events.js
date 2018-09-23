@@ -17,7 +17,8 @@ class Events extends Component {
     super(props);
     this.state = {
       topics: [0,0,0],
-      device: ""
+      device: "",
+      colors: ["#369EBB", "#85A48C", "#CF9479"]
     };
   }
   handleMouseEnter (id) {
@@ -145,6 +146,11 @@ class Events extends Component {
           height: '600px',
           backgroundRepeat: 'no-repeat'
     }
+    var btnStyle= {
+        background: this.state.colors[num],
+        boxShadow: '#222 0px 0px 0px 2px',
+        border: '4px solid #fff'
+    }
     var topicBg = [
     {
           backgroundImage: 'url('+topic1+')',
@@ -171,7 +177,7 @@ class Events extends Component {
         <h3 className="dib f4-ns f5 fw3 o-80">{"/ "+event_content[this.state.topics[num]].name.split('@')[1]}</h3>
         <p className="mw6 f4-ns f5 lh-copy fw4">{event_content[this.state.topics[num]].description}</p>
         <Link to={"/ourisland/"+event_content[this.state.topics[num]].url+"/"}>
-          <button className="cp mt4">事件連結</button>
+          <button className="cp mt2 white dib" style={btnStyle}>事件連結</button>
         </Link>        
       </div>
     )
@@ -200,11 +206,11 @@ class Events extends Component {
 
   render() {
     return (
-      <section id="events" className="bg-white pt6-l pt4 tl">
-        <div className="mw8 center ph3">
-          <div className="cf ph2-ns tc hide">
-            <h1 className="ph2 fw7 tracked">三大主題十三個事件</h1>
-            <h3 className="ph2 mb5-l mb4 fw4">三大主題副標</h3>
+      <section id="events" className="bg-white tl">
+        <div className="bg-near-white center ph3 pv6">
+          <div className="cf ph2-ns tc hide flex aic jcc flex-column">
+            <h1 className="ph2 fw7 f2 mv2">三大主題介紹</h1>
+            <h3 className="ph2 fw4 f4 mv2">三大主題介紹</h3>
           </div>
         </div>
         {this.topics(0)}
