@@ -5,9 +5,9 @@ import $ from 'jquery';
 import mousewheel from 'jquery-mousewheel'; // eslint-disable-line no-unused-vars
 import dragscroll from 'dragscroll'; // eslint-disable-line no-unused-vars
 import {TweenMax} from "gsap/all";
-import topic1 from '../images/山水污染分層-01.svg';
-import topic2 from '../images/山水污染分層-02.svg';
-import topic3 from '../images/山水污染分層-03.svg';
+import topic1 from '../assets/images/山水污染分層-01.svg';
+import topic2 from '../assets/images/山水污染分層-02.svg';
+import topic3 from '../assets/images/山水污染分層-03.svg';
 
 // Event Data
 const event_data = data.events;
@@ -26,14 +26,17 @@ class Events extends Component {
     var num = id.split('-')[1];
     var $this = this;
     var tween = null;
+    var scale = null;
 
     switch(topic) {
     case "1":
       if($this.state.topics[0] === num-1) ;
       else {
         tween = TweenMax.to($('#topic-'+topic+' .eventBg'), .2, {opacity: 0});
+        scale = TweenMax.to($('.bg-1'), .1, {transform: 'scale(1)'}, .1);
         tween.eventCallback("onComplete", function(){
           TweenMax.to($('#topic-'+topic+' .eventBg'), .6, {opacity: 1});
+          TweenMax.to($('.bg-1'), 1.2, {transform: 'scale(1.04)'});
           $this.setState({topics:[num-1,0,0]});
         });
       }
@@ -42,8 +45,10 @@ class Events extends Component {
       if($this.state.topics[1] === num-1) ;
       else {
         tween = TweenMax.to($('#topic-'+topic+' .eventBg'), .2, {opacity: 0});
+        scale = TweenMax.to($('.bg-2'), .1, {transform: 'scale(1)'}, .1);
         tween.eventCallback("onComplete", function(){
           TweenMax.to($('#topic-'+topic+' .eventBg'), .6, {opacity: 1});
+          TweenMax.to($('.bg-2'), 1.2, {transform: 'scale(1.04)'});
           $this.setState({topics:[0,num-1,0]});
         });
       }
@@ -52,8 +57,10 @@ class Events extends Component {
       if($this.state.topics[2] === num-1) ;
       else {
         tween = TweenMax.to($('#topic-'+topic+' .eventBg'), .2, {opacity: 0});
+        scale = TweenMax.to($('.bg-3'), .1, {transform: 'scale(1)'}, .1);
         tween.eventCallback("onComplete", function(){
           TweenMax.to($('#topic-'+topic+' .eventBg'), .6, {opacity: 1});
+          TweenMax.to($('.bg-3'), 1.2, {transform: 'scale(1.04)'});
           $this.setState({topics:[0,0,num-1]});
         });
       }
@@ -177,21 +184,22 @@ class Events extends Component {
         <h3 className="dib f4-ns f5 fw3 o-80">{"/ "+event_content[this.state.topics[num]].name.split('@')[1]}</h3>
         <p className="mw6 f4-ns f5 lh-copy fw4">{event_content[this.state.topics[num]].description}</p>
         <Link to={"/ourisland/"+event_content[this.state.topics[num]].url+"/"}>
-          <button className="cp mt2 white dib" style={btnStyle}>事件連結</button>
+          <button className="cp mt2 white dib mb6" style={btnStyle}>事件連結</button>
         </Link>        
       </div>
     )
     return (
-      <section id={"topic-"+(num+1)} className="ma0">
+      <section id={"topic-"+(num+1)} className="ma0 bb bw1 b--light-gray">
         <div className="mw8 center ph3">
           <div className="cf ph2-ns hide">
-            <div className="topicTitle flex aic jcc w-100 ph2 relative" style={topicBg[num]}>
-              {/*<h2 className="tc">{topic_title}</h2>*/}
+            <div className="topicTitle flex aic jcc w-100 ph2 relative mt4" style={topicBg[num]}>
+              <h2 className="tc dn">{topic_title}</h2>
             </div>
           </div>
         </div>
         <div className="eventContainer relative hide mt4">
-          <div className="pv6-ns pv4 eventBg flex aic" style={bgStyle}>
+          <div className="pv6-ns pv4 eventBg flex aic relative overflow-hidden">
+            <div className={"bg-"+(num+1) +" w-100 h-100 absolute top0"} style={bgStyle}></div>
             <div className="w-100 mw8 center ph5-l ph4 relative z1">
               {topic_content}
             </div>

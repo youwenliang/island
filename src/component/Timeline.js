@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Timeline extends Component {
   render() {
     return (
-      <section id="timeline-preview" className="bg-near-white pv6-l pv4 bt bw3 b--light-gray">
+      <section id="timeline-preview" className="bg-near-white pv6-l pv4">
         <div className="mw8 center ph3">
           <div className="cf ph2-ns">
             <div className="fl w-100 w-40-l ph2 tl hide">

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import coverVideo from '../videos/cover.mp4';
-import cover from '../images/cover.svg';
-import timemachine from '../images/timemachine.svg';
-import hand from '../images/hand.svg';
-import phone from '../images/phone_new.svg';
+import coverVideo from '../assets/videos/cover.mp4';
+import cover from '../assets/images/cover.svg';
+import timemachine from '../assets/images/timemachine.svg';
+import hand from '../assets/images/hand.svg';
+import phone from '../assets/images/phone_new.svg';
 import $ from 'jquery';
 
 class Cover extends Component {

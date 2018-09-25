@@ -6,36 +6,36 @@ var data = {
       "content": [{
           "id": "1-1",
           "name": "變遷淡水河@新北淡水河",
-          "image": "./images/1-1_A22.jpg",
-          "icon":  "./icons/1-1淡水河.png",
+          "image": "/images/1-1_A22.jpg",
+          "icon":  "/images/icons/1-1淡水河.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "changing-tamsui-river"
         }, {
           "id": "1-2",
           "name": "重生二仁溪@台南/高雄",
-          "image": "./images/1-2_B6.jpg",
-          "icon":  "./icons/1-2二仁溪.png",
+          "image": "/images/1-2_B6.jpg",
+          "icon":  "/images/icons/1-2二仁溪.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "reborn-erren-river"
         }, {
           "id": "1-3",
           "name": "陸蟹的天堂與地獄@墾丁恆春",
-          "image": "./images/1-3_C1.jpg",
-          "icon":  "./icons/1-3陸蟹.png",
+          "image": "/images/1-3_C1.jpg",
+          "icon":  "/images/icons/1-3陸蟹.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "land-crabs-survival"
         }, {
           "id": "1-4",
           "name": "漁港的黑色幽默@台東大武漁港",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
-          "icon":  "./icons/1-4港口淤積.png",
+          "icon":  "/images/icons/1-4港口淤積.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "dawu-fishing-port"
         }, {
           "id": "1-5",
           "name": "沒有海的港口@金門後豐港",
-          "image": "./images/1-5_E7.jpg",
-          "icon":  "./icons/1-5鱟.png",
+          "image": "/images/1-5_E7.jpg",
+          "icon":  "/images/icons/1-5鱟.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "kinmen-Hou-feng-kang"
         }
@@ -47,28 +47,28 @@ var data = {
           "id": "2-1",
           "name": "咬一口高山青翠@台中梨山",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
-          "icon":  "./icons/2-1梨山.png",
+          "icon":  "/images/icons/2-1梨山.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "lishan-high-mountain-farms"
         }, {
           "id": "2-2",
           "name": "冒險泡湯去@南投廬山",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
-          "icon":  "./icons/2-2廬山.png",
+          "icon":  "/images/icons/2-2廬山.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "lushan-hotspring-risk"
         }, {
           "id": "2-3",
           "name": "攔住水失去水@雲林湖山水庫",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
-          "icon":  "./icons/2-3湖山水庫.png",
+          "icon":  "/images/icons/2-3湖山水庫.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "hushan-reservoir-lost-water"
         }, {
           "id": "2-4",
           "name": "挖山取石的代價@花蓮亞泥",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
-          "icon":  "./icons/2-4亞泥.png",
+          "icon":  "/images/icons/2-4亞泥.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "asia-cement-cost"
         }
@@ -79,29 +79,29 @@ var data = {
       "content": [{
           "id": "3-1",
           "name": "土地該長出什麼@彰化中科四期",
-          "image": "./images/3-1_J9.jpg",
-          "icon":  "./icons/3-1中科四期.png",
+          "image": "/images/3-1_J9.jpg",
+          "icon":  "/images/icons/3-1中科四期.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "science-park-landuse"
         }, {
           "id": "3-2",
           "name": "石化填出的王國@雲林麥寮六輕",
-          "image": "./images/3-2.jpg",
-          "icon":  "./icons/3-2六輕.png",
+          "image": "/images/3-2.jpg",
+          "icon":  "/images/icons/3-2六輕.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "petrochemical-kingdom"
         }, {
           "id": "3-3",
           "name": "嗚咽的土地悲歌@台南台鹼安順廠",
-          "image": "./images/3-3_L5.jpg",
-          "icon":  "./icons/3-3台鹼.png",
+          "image": "/images/3-3_L5.jpg",
+          "icon":  "/images/icons/3-3台鹼.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "soil-pollution-tainan"
         }, {
           "id": "3-4",
           "name": "無人知曉的未爆彈@屏東赤山巖",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
-          "icon":  "./icons/3-4汞污泥.png",
+          "icon":  "/images/icons/3-4汞污泥.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
           "url": "event13"
         }
@@ -114,9 +114,9 @@ var data = {
     "changing-tamsui-river": {
       "title": "變遷淡水河 - 我們的島",
       "id": "事件1",
-      "coverTitle": "./illustrations/01title.svg",
+      "coverTitle": "/illustrations/01title.svg",
       "coverDescription": "台北人熟悉的淡水河，也曾經堆滿了垃圾？\n一起乘著島嶼時光機，回首垃圾山，臭氣憶當年。",
-      "video": ["./videos/A18(底圖動態02).mp4", "./videos/A18(底圖動態02).mp4"],
+      "video": ["/videos/A18(底圖動態02).mp4", "/videos/A18(底圖動態02).mp4"],
       "photo": ["https://fakeimg.pl/600x480/?text=PhotoText&retina=1"],
       "photoImage": "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
       "stepImage": "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
@@ -125,7 +125,7 @@ var data = {
         "新北市，淡水區\nNew Taipei City, Tamsui District",
         "淡水區，舊稱滬尾，位於中華民國新北市西北沿海以及淡水河的出海口北側，北鄰三芝區，南鄰臺北市北投區，西濱臺灣海峽，西南與八里區以淡水河一水之隔。"
       ],
-      "taiwan": "./illustrations/taiwan.svg",
+      "taiwan": "/illustrations/taiwan.svg",
       "taiwanBG": "https://fakeimg.pl/600x480/333333/555555?text=Taiwan&retina=1",
 
       "stepText": [
@@ -137,12 +137,12 @@ var data = {
         "總是人潮絡繹不絕的淡水河，是城市人們的出口，六百多萬人的生活和淡水河流域緊密相依。\n\n現在的你很難想像，1993年的淡水河畔，是滿天的垃圾和惡臭味，讓人想快速離開。",
         "讓我們乘坐時光機，回到三十年前的淡水河。\n\n一啟航，迎面而來是陣陣臭氣，往上沿著大漢溪而上，岸邊竟有著一座又一座的「垃圾山」，沒處理的污水直接排放，河面處處漂浮垃圾。不要說什麼河岸景觀第一排，就算是在這待一分鐘，也待不下去。"
       ],
-      "illustration": "./illustrations/001new.svg",
+      "illustration": "/illustrations/001new.svg",
 
-      "photoswitch": ["./A8(1992.瓊林里垃圾場抗爭).jpg", "./A4(1993年淡水河岸垃圾).jpg", "./A7(2004年台北縣淡水河岸八里垃圾場).jpg"],
+      "photoswitch": ["/A8(1992.瓊林里垃圾場抗爭).jpg", "/A4(1993年淡水河岸垃圾).jpg", "/A7(2004年台北縣淡水河岸八里垃圾場).jpg"],
       "photoswitchText": "在只求經濟發展忽視環境的七八零年代，政府並沒有完善的垃圾處理政策，當時鄉鎮公所都是自行找地堆置垃圾，海邊與河岸就成了最佳的垃圾場，長久下來不但污染河水，也影響水流。\n\n直到1990年代，環保意識抬頭，人們對河川的髒污忍無可忍，政府開始進行淡水河的整治。其中1992年開始的「大漢溪沿岸舊垃圾清除計畫」，就清運了755萬立方米垃圾，運到新北市林口下罟子掩埋場掩埋。",
 
-      "photocontrast": ["./A11(1998.10八里海岸-扒文蛤).jpg", "./A13(2017.09八里海岸文蛤淤積).jpg"],
+      "photocontrast": ["/A11(1998.10八里海岸-扒文蛤).jpg", "/A13(2017.09八里海岸文蛤淤積).jpg"],
       "photocontrastText": "與水親近，是人類亙古以來的渴望。1998年的淡水河口，在退潮期間，你還有機會看到八里居民在灘地上耙文蛤，在快速都市化的大台北，這群老居民仍舊與熟悉的河海，依存過生活。不過隨著開發建設，人與河海之間的關係，逐漸在轉變。",
 
       "photoText": [
@@ -291,7 +291,7 @@ var data = {
       "area": "south",
       "keywords": "1970 1972 south 開發利用",
       "tags": [1972, "南部地區", "開發利用"],
-      "images": ["./images/stories/1-A南橫公路(2018.5.23 攝影_傅志男).jpg", "./images/stories/1-B南橫公路(2017.10.14 攝影_傅志男).jpg"]
+      "images": ["/images/stories/1-A南橫公路(2018.5.23 攝影_傅志男).jpg", "/images/stories/1-B南橫公路(2017.10.14 攝影_傅志男).jpg"]
     },
     {
       "id": 2,
@@ -311,7 +311,7 @@ var data = {
       "area": "north",
       "keywords": "1970 1977 north",
       "tags": [1970, "北部地區"],
-      "images": ["./images/stories/3-1994年核一廠外觀.jpg"]
+      "images": ["/images/stories/3-1994年核一廠外觀.jpg"]
     },
     {
       "id": 4,
@@ -331,7 +331,7 @@ var data = {
       "area": "central",
       "keywords": "1970 1979 central 開發利用",
       "tags": [1970, "中部地區", "開發利用"],
-      "images": ["./images/stories/5-A(1994年彰濱工業區抽砂造陸).jpg", "./images/stories/5-B(2010年空拍彰濱工業區陸港區).jpg", "./images/stories/5-C(2010年彰濱工業區線西區).jpg", "./images/stories/5-D(2012年空拍彰濱工業區).jpg"]
+      "images": ["/images/stories/5-A(1994年彰濱工業區抽砂造陸).jpg", "/images/stories/5-B(2010年空拍彰濱工業區陸港區).jpg", "/images/stories/5-C(2010年彰濱工業區線西區).jpg", "/images/stories/5-D(2012年空拍彰濱工業區).jpg"]
     },
     {
       "id": 6,
@@ -371,7 +371,7 @@ var data = {
       "area": "central",
       "keywords": "1980 1982 central 重大公害",
       "tags": [1980, "中部地區", "重大公害"],
-      "images": ["./images/stories/9-A三晃(攝影蔡明德).jpg", "./images/stories/9-B三晃(攝影蔡明德).jpg", "./images/stories/9-C三晃(攝影_蔡明德).jpg"]
+      "images": ["/images/stories/9-A三晃(攝影蔡明德).jpg", "/images/stories/9-B三晃(攝影蔡明德).jpg", "/images/stories/9-C三晃(攝影_蔡明德).jpg"]
     },
     {
       "id": 10,
@@ -431,7 +431,7 @@ var data = {
       "area": "",
       "keywords": "環境運動",
       "tags": [],
-      "images": ["./images/stories/15-A新竹李長榮圍堵現場_(攝影_蔡明德).jpg", "./images/stories/15-B李長榮化工廠圍堵現場(攝影_蔡明德).jpg", "./images/stories/15-C李長榮事件居民載水(攝影_蔡明德)-09.jpg", "./images/stories/15-D李長榮圍廠現場-15.jpg"]
+      "images": ["/images/stories/15-A新竹李長榮圍堵現場_(攝影_蔡明德).jpg", "/images/stories/15-B李長榮化工廠圍堵現場(攝影_蔡明德).jpg", "/images/stories/15-C李長榮事件居民載水(攝影_蔡明德)-09.jpg", "/images/stories/15-D李長榮圍廠現場-15.jpg"]
     },
     {
       "id": 16,
@@ -471,7 +471,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["./images/stories/19-A宜蘭人到經濟部前抗議.jpg", "./images/stories/19-B宜蘭縣長陳定南到經濟部前反對六輕.jpg", "./images/stories/19-C宜蘭人到台塑大樓前反對六輕.jpg"]
+      "images": ["/images/stories/19-A宜蘭人到經濟部前抗議.jpg", "/images/stories/19-B宜蘭縣長陳定南到經濟部前反對六輕.jpg", "/images/stories/19-C宜蘭人到台塑大樓前反對六輕.jpg"]
     },
     {
       "id": 20,
@@ -491,7 +491,7 @@ var data = {
       "area": "",
       "keywords": "環境運動",
       "tags": [],
-      "images": ["./images/stories/21-A.jpg", "./images/stories/21-B.jpg"]
+      "images": ["/images/stories/21-A.jpg", "/images/stories/21-B.jpg"]
     },
     {
       "id": 22,
@@ -511,7 +511,7 @@ var data = {
       "area": "",
       "keywords": "開發利用",
       "tags": [],
-      "images": ["./images/stories/23-A.jpg", "./images/stories/23-B.jpg", "./images/stories/23-C.jpg"]
+      "images": ["/images/stories/23-A.jpg", "/images/stories/23-B.jpg", "/images/stories/23-C.jpg"]
     },
     {
       "id": 24,
@@ -521,7 +521,7 @@ var data = {
       "area": "",
       "keywords": "環境運動",
       "tags": [],
-      "images": ["./images/stories/24.jpg"]
+      "images": ["/images/stories/24.jpg"]
     },
     {
       "id": 25,
@@ -541,7 +541,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["./images/stories/26-A.jpg", "./images/stories/26-B.jpg", "./images/stories/26-C.jpg", "./images/stories/26-D.jpg"]
+      "images": ["/images/stories/26-A.jpg", "/images/stories/26-B.jpg", "/images/stories/26-C.jpg", "/images/stories/26-D.jpg"]
     },
     {
       "id": 27,
@@ -551,7 +551,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["./images/stories/27-A.jpg", "./images/stories/27-B.jpg"]
+      "images": ["/images/stories/27-A.jpg", "/images/stories/27-B.jpg"]
     },
     {
       "id": 28,
@@ -571,7 +571,7 @@ var data = {
       "area": "",
       "keywords": "開發利用",
       "tags": [],
-      "images": ["./images/stories/29-A.jpg", "./images/stories/29-B.jpg"]
+      "images": ["/images/stories/29-A.jpg", "/images/stories/29-B.jpg"]
     },
     {
       "id": 30,
@@ -581,7 +581,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["./images/stories/30-A.jpg", "./images/stories/30-B.jpg", "./images/stories/30-C.jpg"]
+      "images": ["/images/stories/30-A.jpg", "/images/stories/30-B.jpg", "/images/stories/30-C.jpg"]
     },
     {
       "id": 31,
@@ -601,7 +601,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["./images/stories/32-A.jpg", "./images/stories/32-B.jpg", "./images/stories/32-C.jpg"]
+      "images": ["/images/stories/32-A.jpg", "/images/stories/32-B.jpg", "/images/stories/32-C.jpg"]
     },
     {
       "id": 33,
@@ -631,7 +631,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["./images/stories/35-A(1993.09基隆市祈雨) .jpg", "./images/stories/35-B(1993.09基隆市祈雨) .jpg", "./images/stories/35-C.jpg"]
+      "images": ["/images/stories/35-A(1993.09基隆市祈雨) .jpg", "/images/stories/35-B(1993.09基隆市祈雨) .jpg", "/images/stories/35-C.jpg"]
     },
     {
       "id": 36,
@@ -641,7 +641,7 @@ var data = {
       "area": "",
       "keywords": "重大公害",
       "tags": [],
-      "images": ["./images/stories/36-A.jpg", "./images/stories/36-B.jpg", "./images/stories/36-C.jpg", "./images/stories/36-D.jpg"]
+      "images": ["/images/stories/36-A.jpg", "/images/stories/36-B.jpg", "/images/stories/36-C.jpg", "/images/stories/36-D.jpg"]
     },
     {
       "id": 37,
@@ -671,7 +671,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["./images/stories/39-A.jpg", "./images/stories/39-B.jpg"]
+      "images": ["/images/stories/39-A.jpg", "/images/stories/39-B.jpg"]
     },
     {
       "id": 40,
@@ -681,7 +681,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["./images/stories/40-A.jpg", "./images/stories/40-B.jpg"]
+      "images": ["/images/stories/40-A.jpg", "/images/stories/40-B.jpg"]
     },
     {
       "id": 41,
@@ -691,7 +691,7 @@ var data = {
       "area": "",
       "keywords": "開發利用",
       "tags": [],
-      "images": ["./images/stories/41-A.jpg", "./images/stories/41-B.jpg"]
+      "images": ["/images/stories/41-A.jpg", "/images/stories/41-B.jpg"]
     },
     {
       "id": 42,
@@ -701,7 +701,7 @@ var data = {
       "area": "",
       "keywords": "環境運動",
       "tags": [],
-      "images": ["./images/stories/42-A.jpg", "./images/stories/42-B.jpg", "./images/stories/42-C.jpg", "./images/stories/42-D.jpg"]
+      "images": ["/images/stories/42-A.jpg", "/images/stories/42-B.jpg", "/images/stories/42-C.jpg", "/images/stories/42-D.jpg"]
     },
     {
       "id": 43,
@@ -711,7 +711,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["./images/stories/43-A.jpg", "./images/stories/43-B.jpg"]
+      "images": ["/images/stories/43-A.jpg", "/images/stories/43-B.jpg"]
     },
     {
       "id": 44,
@@ -771,7 +771,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["./images/stories/49-A(1996.09.07台中反拜耳說明會 廖永春).jpg", "./images/stories/49-B(1996.09.07台中反拜耳說明會).jpg", "./images/stories/49-C(1996.09.07台中反拜耳說明會).jpg"]
+      "images": ["/images/stories/49-A(1996.09.07台中反拜耳說明會 廖永春).jpg", "/images/stories/49-B(1996.09.07台中反拜耳說明會).jpg", "/images/stories/49-C(1996.09.07台中反拜耳說明會).jpg"]
     },
     {
       "id": 50,
@@ -801,7 +801,7 @@ var data = {
       "area": "",
       "keywords": "",
       "tags": [],
-      "images": ["./images/stories/52-A.jpg", "./images/stories/52-B(顏色不知道可以調嗎).jpg", "./images/stories/52-C(1991.08.25反台泥設廠).jpg"]
+      "images": ["/images/stories/52-A.jpg", "/images/stories/52-B(顏色不知道可以調嗎).jpg", "/images/stories/52-C(1991.08.25反台泥設廠).jpg"]
     },
     {
       "id": 53,

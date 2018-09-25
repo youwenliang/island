@@ -50,10 +50,10 @@ class Page extends Component {
     $(document).ready(function(){
       $(window).scroll( function(){
         $('section').each( function(i){
-        var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+        // var bottom_of_object = $(this).offset().top + $(this).outerHeight();
         var top_of_object = $(this).offset().top;
         var center_of_window = $(window).scrollTop() + $(window).height()/2;
-        var top_of_window = $(window).scrollTop();
+        // var top_of_window = $(window).scrollTop();
         // var bottom_of_window = $(window).scrollTop() + $(window).height();
         var $this = $(this);
 
@@ -112,21 +112,6 @@ class Page extends Component {
   }
 }
 export default Page;
-
-/* Components */
-function Cover(props) {
-  return (
-    <section className="cover min-vh-100 flex aic">
-      <div className="bg-gray w-100 h-100 fixed fixed-content"></div>
-      <div className="mw8 center ph3 w-100 z4">
-        <div className="cf tl white">
-          <h1>{props.title}</h1>
-          <h3 className="lh-copy">{props.content}</h3>
-        </div>
-      </div>
-    </section>
-  )
-}
 
 /* Components */
 function Illustration(props) {
@@ -192,24 +177,6 @@ function Steps(props) {
             <h2 className="mt0 mb4"><span>2002</span>-<span>2018</span></h2>
             <p className="f4 lh-copy mv0">{props.text1.split(':')[1]}</p>
           </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function PhotoText(props) {
-  var style = {
-    backgroundImage: "url("+props.url+")",
-    backgroundSize: "cover",
-    backgroundPosition: "center center"
-  }
-  return (
-    <section className="cover min-vh-100 flex aic">
-      <div className="bg-light-gray w-100 h-100 fixed fixed-content" style={style}></div>
-      <div className="mw8 center ph3 w-100 z4">
-        <div className="cf tl white ph4-ns">
-          <h1>PhotoText</h1>
         </div>
       </div>
     </section>
