@@ -114,9 +114,9 @@ var data = {
     "changing-tamsui-river": {
       "title": "變遷淡水河 - 我們的島",
       "id": "事件1",
-      "coverTitle": "/illustrations/01title.svg",
+      "coverTitle": "/events/changing-tamsui-river/illustrations/01title.svg",
       "coverDescription": "台北人熟悉的淡水河，也曾經堆滿了垃圾？\n一起乘著島嶼時光機，回首垃圾山，臭氣憶當年。",
-      "video": ["/videos/A18(底圖動態02).mp4", "/videos/A18(底圖動態02).mp4"],
+      "video": ["/events/changing-tamsui-river/videos/A18(底圖動態02).mp4", "/events/changing-tamsui-river/videos/A18(底圖動態02).mp4"],
       "photo": ["https://fakeimg.pl/600x480/?text=PhotoText&retina=1"],
       "photoImage": "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
       "stepImage": "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
@@ -125,7 +125,7 @@ var data = {
         "新北市，淡水區\nNew Taipei City, Tamsui District",
         "淡水區，舊稱滬尾，位於中華民國新北市西北沿海以及淡水河的出海口北側，北鄰三芝區，南鄰臺北市北投區，西濱臺灣海峽，西南與八里區以淡水河一水之隔。"
       ],
-      "taiwan": "/illustrations/taiwan.svg",
+      "taiwan": "/events/changing-tamsui-river/illustrations/taiwan.svg",
       "taiwanBG": "https://fakeimg.pl/600x480/333333/555555?text=Taiwan&retina=1",
 
       "stepText": [
@@ -137,12 +137,12 @@ var data = {
         "總是人潮絡繹不絕的淡水河，是城市人們的出口，六百多萬人的生活和淡水河流域緊密相依。\n\n現在的你很難想像，1993年的淡水河畔，是滿天的垃圾和惡臭味，讓人想快速離開。",
         "讓我們乘坐時光機，回到三十年前的淡水河。\n\n一啟航，迎面而來是陣陣臭氣，往上沿著大漢溪而上，岸邊竟有著一座又一座的「垃圾山」，沒處理的污水直接排放，河面處處漂浮垃圾。不要說什麼河岸景觀第一排，就算是在這待一分鐘，也待不下去。"
       ],
-      "illustration": "/illustrations/001new.svg",
+      "illustration": "/events/changing-tamsui-river/illustrations/001new.svg",
 
-      "photoswitch": ["/A8(1992.瓊林里垃圾場抗爭).jpg", "/A4(1993年淡水河岸垃圾).jpg", "/A7(2004年台北縣淡水河岸八里垃圾場).jpg"],
+      "photoswitch": ["/events/changing-tamsui-river/A8(1992.瓊林里垃圾場抗爭).jpg", "/events/changing-tamsui-river/A4(1993年淡水河岸垃圾).jpg", "/events/changing-tamsui-river/A7(2004年台北縣淡水河岸八里垃圾場).jpg"],
       "photoswitchText": "在只求經濟發展忽視環境的七八零年代，政府並沒有完善的垃圾處理政策，當時鄉鎮公所都是自行找地堆置垃圾，海邊與河岸就成了最佳的垃圾場，長久下來不但污染河水，也影響水流。\n\n直到1990年代，環保意識抬頭，人們對河川的髒污忍無可忍，政府開始進行淡水河的整治。其中1992年開始的「大漢溪沿岸舊垃圾清除計畫」，就清運了755萬立方米垃圾，運到新北市林口下罟子掩埋場掩埋。",
 
-      "photocontrast": ["/A11(1998.10八里海岸-扒文蛤).jpg", "/A13(2017.09八里海岸文蛤淤積).jpg"],
+      "photocontrast": ["/events/changing-tamsui-river/A11(1998.10八里海岸-扒文蛤).jpg", "/events/changing-tamsui-river/A13(2017.09八里海岸文蛤淤積).jpg"],
       "photocontrastText": "與水親近，是人類亙古以來的渴望。1998年的淡水河口，在退潮期間，你還有機會看到八里居民在灘地上耙文蛤，在快速都市化的大台北，這群老居民仍舊與熟悉的河海，依存過生活。不過隨著開發建設，人與河海之間的關係，逐漸在轉變。",
 
       "photoText": [

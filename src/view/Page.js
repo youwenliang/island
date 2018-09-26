@@ -48,31 +48,31 @@ class Page extends Component {
       console.info(err.loaded);
     });
     $(document).ready(function(){
-      $(window).scroll( function(){
-        $('section').each( function(i){
-        // var bottom_of_object = $(this).offset().top + $(this).outerHeight();
-        var top_of_object = $(this).offset().top;
-        var center_of_window = $(window).scrollTop() + $(window).height()/2;
-        // var top_of_window = $(window).scrollTop();
-        // var bottom_of_window = $(window).scrollTop() + $(window).height();
-        var $this = $(this);
+      // $(window).scroll( function(){
+      //   $('section').each( function(i){
+      //   // var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+      //   var top_of_object = $(this).offset().top;
+      //   var center_of_window = $(window).scrollTop() + $(window).height()/2;
+      //   // var top_of_window = $(window).scrollTop();
+      //   // var bottom_of_window = $(window).scrollTop() + $(window).height();
+      //   var $this = $(this);
 
-        if( center_of_window >= top_of_object ){
-          if(!$this.find('.fixed-content').hasClass('active')) {
-            $('.fixed-content.active').removeClass('active');
-            $this.find('.fixed-content').addClass('active');
-            if($this.hasClass('video-content')){
-              $this.find('video').get(0).play();
-            }
-          }
-        } else {
-          $this.find('.fixed-content').removeClass('active');
-          if($this.hasClass('video-content')){
-            $this.find('video').get(0).pause();
-          }
-        }
-        });
-      });
+      //   if( center_of_window >= top_of_object ){
+      //     if(!$this.find('.fixed-content').hasClass('active')) {
+      //       $('.fixed-content.active').removeClass('active');
+      //       $this.find('.fixed-content').addClass('active');
+      //       if($this.hasClass('video-content')){
+      //         $this.find('video').get(0).play();
+      //       }
+      //     }
+      //   } else {
+      //     $this.find('.fixed-content').removeClass('active');
+      //     if($this.hasClass('video-content')){
+      //       $this.find('video').get(0).pause();
+      //     }
+      //   }
+      //   });
+      // });
     })
   }
   render() {
@@ -98,6 +98,7 @@ class Page extends Component {
         <Helmet>
             <title>{data.title}</title>
         </Helmet>
+        {/*Navigation Bar */}
         <nav className="pv2 w-100 top0 z10">
           <div className="bg-dark-gray w-100 h-100 absolute top0"></div>
           <div className="mw8 center ph3 relative z4">
@@ -113,14 +114,71 @@ class Page extends Component {
 }
 export default Page;
 
+
 /* Components */
+
+/*01*/
+function CoverVideo(props) {
+  return (
+    <section className="cover min-vh-100 flex aic relative video-content">
+      <div className="w-100 h-100 absolute top-left clipping">
+      <div className="bg-light-gray w-100 h-100 fixed fixed-content active">
+        <div className="bg-gray o-20 w-100 h-100 absolute z4"/>
+        <div className="videoBg">
+          <video id="video" muted loop autoPlay playsInline>
+            <source src={props.link} type="video/mp4"/>
+          </video>
+        </div>
+      </div>
+      </div>
+      <div className="mw8 center ph3 w-100 z4">
+        <div className="cf tc white w-80 center pa4">
+          <img src={props.title} alt="title" />
+          <h3 className="coverVideo-tag fw4 lh-copy mb0 pre-wrap">{props.content}</h3>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/*02*/
+function Taiwan(props) {
+  var bgStyle = {
+    backgroundImage: "url("+ props.background +")",
+    backgroundSize: "cover",
+    backgroundPosition: "center center"
+  }
+  return (
+    <section className="cover min-vh-100 flex aic relative">
+      <div className="w-100 h-100 absolute top-left clipping">
+        <div className="w-100 h-100 fixed fixed-content flex aic" style={bgStyle}>
+          <figure className="w-100">
+            <img className="fr-l w-50-l w-100 taiwan" src={props.illustration} alt="Taiwan"/>
+          </figure>
+        </div>
+      </div>
+      <div className="mw8 center ph3 w-100 z4 pre-wrap">
+        <div className="cf black">
+          <div className="w-50-l w-100 fl-l pa4-l pa3 bg-near-white">
+            <h2 className="fw7 lh-copy mt0">{props.text1}</h2>
+            <p className="f4 lh-copy mv0">{props.text2}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/*03*/
 function Illustration(props) {
   return (
-    <section className="min-vh-200 flex aic">
-      <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
-        <figure className="w-100">
-          <img className="w-50-l w-100" src={props.illustration} alt="illustration"/>
-        </figure>
+    <section className="min-vh-200 flex aic relative">
+      <div className="w-100 h-100 absolute top-left clipping">
+        <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
+          <figure className="w-100">
+            <img className="w-50-l w-100" src={props.illustration} alt="illustration"/>
+          </figure>
+        </div>
       </div>
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
         <div className="cf black">
@@ -138,62 +196,29 @@ function Illustration(props) {
   )
 }
 
-function Taiwan(props) {
-  var bgStyle = {
-    backgroundImage: "url("+ props.background +")",
-    backgroundSize: "cover",
-    backgroundPosition: "center center"
+/*04*/
+function PhotoTextFull(props) {
+  var text = ""
+  if(props.order === "right") {
+    text = "fr-l"
+  }
+  var fullImage = {
+    height: "100vh",
+    objectFit: "cover",
+    width: "100%"
   }
   return (
-    <section className="cover min-vh-100 flex aic">
-      <div className="w-100 h-100 fixed fixed-content flex aic" style={bgStyle}>
-        <figure className="w-100">
-          <img className="fr-l w-50-l w-100 taiwan" src={props.illustration} alt="illustration"/>
-        </figure>
-      </div>
-      <div className="mw8 center ph3 w-100 z4 pre-wrap">
-        <div className="cf black">
-          <div className="w-50-l w-100 fl-l pa4-l pa3 bg-near-white">
-            <h2 className="fw7 lh-copy mt0">{props.text1}</h2>
-            <p className="f4 lh-copy mv0">{props.text2}</p>
-          </div>
+    <section className="min-vh-200 flex aic relative">
+      <div className="w-100 h-100 absolute top-left clipping">
+        <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
+          <figure className="w-100 ma0">
+            <img className="w-100" style={fullImage} src={props.image} alt="photo"/>
+          </figure>
         </div>
       </div>
-    </section>
-  )
-}
-
-function Steps(props) {
-  return (
-    <section className="cover min-vh-100 flex aic">
-      <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
-        <figure className="w-100">
-          <img className="w-50-l w-100" src={props.image} alt="illustration"/>
-        </figure>
-      </div>
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
         <div className="cf black">
-          <div className="w-50-l w-100 fr-l pa4-l pa3 bg-near-white">
-            <h2 className="mt0 mb4"><span>2002</span>-<span>2018</span></h2>
-            <p className="f4 lh-copy mv0">{props.text1.split(':')[1]}</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function PhotoTextRight(props) {
-  return (
-    <section className="min-vh-200 flex aic">
-      <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
-        <figure className="w-100">
-          <img className="w-50-l w-100" src={props.image} alt="illustration"/>
-        </figure>
-      </div>
-      <div className="mw8 center ph3 w-100 z4 pre-wrap">
-        <div className="cf black">
-          <div className="w-50-l w-100 fr-l pa4-l pa3 bg-near-white">
+          <div className={"w-50-l w-100 pa4-l pa3 bg-near-white "+text}>
             <p className="f4 lh-copy mv0">{props.text}</p>
           </div>
         </div>
@@ -202,6 +227,36 @@ function PhotoTextRight(props) {
   )
 }
 
+/*05*/
+function PhotoText(props) {
+  var photo = ""
+  var text = ""
+  if(props.order === "right") {
+    text = "fr-l"
+  } else {
+    photo = "fr-l"
+  }
+  return (
+    <section className="min-vh-200 flex aic relative">
+      <div className="w-100 h-100 absolute top-left clipping">
+        <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
+          <figure className="w-100">
+            <img className={"w-50-l w-100 "+photo} src={props.image} alt="photo"/>
+          </figure>
+        </div>
+      </div>
+      <div className="mw8 center ph3 w-100 z4 pre-wrap">
+        <div className="cf black">
+          <div className={"w-50-l w-100 pa4-l pa3 bg-near-white "+text}>
+            <p className="f4 lh-copy mv0">{props.text}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/*06*/
 function PhotoSwitch(props) {
   var list = props.images;
   const images = [];
@@ -213,9 +268,11 @@ function PhotoSwitch(props) {
     images.push(temp);
   }
   return (
-    <section className="min-vh-200 flex aic w-100">
-      <div className="bg-light-gray w-100 h-100 fixed fixed-content">
-        <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} />
+    <section className="min-vh-200 flex aic w-100 relative">
+      <div className="w-100 h-100 absolute top-left clipping">
+        <div className="bg-light-gray w-100 h-100 fixed fixed-content">
+          <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} />
+        </div>
       </div>
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
         <div className="cf white">
@@ -229,9 +286,12 @@ function PhotoSwitch(props) {
   )
 }
 
+/*07*/
+
+/*08*/
 function PhotoContrast(props) {
   return (
-    <section className="cover min-vh-100 flex aic relative bg-white flex-column">
+    <section className="cover min-vh-100 flex aic relative bg-white flex-column pv6">
         <div className="w-100 h-100 fixed-content flex">
           <figure className="cd-image-container is-visible z4">
              <img src={props.images[1]} alt="Original" />
@@ -254,41 +314,24 @@ function PhotoContrast(props) {
   )
 }
 
-function CoverVideo(props) {
-  return (
-    <section className="cover min-vh-100 flex aic relative video-content">
-      <div className="bg-light-gray w-100 h-100 fixed fixed-content active">
-        <div className="bg-gray o-20 w-100 h-100 absolute z4"/>
-        <div className="videoBg">
-          <video id="video" muted loop autoPlay playsInline>
-            <source src={props.link} type="video/mp4"/>
-          </video>
-        </div>
-      </div>
-      <div className="mw8 center ph3 w-100 z4">
-        <div className="cf tc white w-80 center pa4">
-          <img src={props.title} alt="title" />
-          <h3 className="coverVideo-tag fw4 lh-copy mb0 pre-wrap">{props.content}</h3>
-        </div>
-      </div>
-    </section>
-  )
-}
-
+/*09*/
 function Video(props) {
   return (
     <section className="cover min-vh-100 flex aic relative video-content">
-      <div className="bg-light-gray w-100 h-100 fixed fixed-content">
-        <div className="videoBg">
-          <video id="video" muted loop playsInline>
-            <source src={props.link} type="video/mp4"/>
-          </video>
+      <div className="w-100 h-100 absolute top-left clipping">
+        <div className="bg-light-gray w-100 h-100 fixed fixed-content">
+          <div className="videoBg">
+            <video id="video" muted loop playsInline>
+              <source src={props.link} type="video/mp4"/>
+            </video>
+          </div>
         </div>
       </div>
     </section>
   )
 }
 
+/*10*/
 function EndingVideo(props) {
   return (
     <section className="cover min-vh-100 flex aic relative video-content">
@@ -305,6 +348,30 @@ function EndingVideo(props) {
     </section>
   )
 }
+
+
+
+
+function Steps(props) {
+  return (
+    <section className="cover min-vh-100 flex aic">
+      <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
+        <figure className="w-100">
+          <img className="w-50-l w-100" src={props.image} alt="illustration"/>
+        </figure>
+      </div>
+      <div className="mw8 center ph3 w-100 z4 pre-wrap">
+        <div className="cf black">
+          <div className="w-50-l w-100 fr-l pa4-l pa3 bg-near-white">
+            <h2 className="mt0 mb4"><span>2002</span>-<span>2018</span></h2>
+            <p className="f4 lh-copy mv0">{props.text1.split(':')[1]}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 
 
 /* Views */
@@ -329,25 +396,35 @@ class Event01 extends Component {
           text={this.props.data.photoswitchText}
         />
         <Video link={this.props.data.video[1]}/>
-        <PhotoTextRight 
+        <PhotoText
+          order="right"
           text={this.props.data.photoText[0]}
           image = {this.props.data.photoImage}
-        />
-        <Steps
-          text1={this.props.data.stepText[0]}
-          text2={this.props.data.stepText[1]}
-          image = {this.props.data.stepImage}
         />
         <PhotoContrast 
           images={this.props.data.photocontrast}
           text={this.props.data.photocontrastText}
         />
-        
-        <PhotoTextRight 
+
+        <PhotoTextFull
+          order="right"
           text={this.props.data.photoText[1]}
           image = {this.props.data.photoImage}
         />
+        
+        <PhotoText
+          order="left"
+          text={this.props.data.photoText[1]}
+          image = {this.props.data.photoImage}
+        />
+        {/*
+        <Steps
+          text1={this.props.data.stepText[0]}
+          text2={this.props.data.stepText[1]}
+          image = {this.props.data.stepImage}
+        />
         <EndingVideo link={this.props.data.video[1]}/>
+        */}
       </div>
     );
   }

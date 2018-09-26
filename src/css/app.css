@@ -13,6 +13,12 @@ body {
   white-space: pre-wrap;
 }
 
+.clipping {
+  overflow: hidden;
+  clip: auto;
+  clip-path: inset(0 0 0 0);
+}
+
 a {
   text-decoration: none;
   color: #0c0c0d;
@@ -121,7 +127,7 @@ button,
 }
 
 .fixed-content {
-  opacity: 0;
+  /*opacity: 0;*/
   top: 0;
   z-index: 1;
   pointer-events: none;
@@ -129,7 +135,7 @@ button,
 }
 
 .fixed-content.active {
-  opacity: 1;
+  /*opacity: 1;*/
   pointer-events: auto !important;
 }
 
