@@ -75,11 +75,16 @@ class Page extends Component {
           var $this = $(this);
           if( bottom_of_window >= top_of_object && top_of_window <= bottom_of_object ){
             if($this.find('video').get(0).paused) {
-              $this.find('video').get(0).play();
+              if($this.find('video').hasClass('clicked')) ;
+              else {
+                $this.find('video').get(0).play();
+                $this.find('.play').removeClass('pause');
+              }
             }
           } else {
             if(!$this.find('video').get(0).paused) {
               $this.find('video').get(0).pause();
+              $this.find('.play').addClass('pause');
             }
           }
         });
@@ -116,7 +121,7 @@ class Page extends Component {
             <div className="ph2-ns flex space-between aic white">
               <p>我們的島</p>
               <div className="flex flex-row">
-                <a href="/ourisland/timeline/" target="_blank"><button className="cp h2 ph3 ml3">分享</button></a>
+                <a href="/ourisland/timeline/" target="_blank"><button className="btn cp h2 ph3 ml3">分享</button></a>
               </div>
             </div>
           </div>
@@ -140,10 +145,10 @@ function CoverVideo(props) {
   return (
     <section className="cover min-vh-100 flex aic relative video-content">
       <div className="w-100 h-100 absolute top-left clipping">
-      <div className="bg-light-gray w-100 h-100 fixed fixed-content active">
-        <div className="bg-gray o-20 w-100 h-100 absolute z4"/>
+      <div className="bg-light-gray w-100 h-100 fixed fixed-content">
+        <div className="bg-gray o-20 w-100 h-100 absolute z4 pn"/>
         <div className="videoBg">
-          <video id="video" muted loop autoPlay playsInline>
+          <video id="coverVideo" muted loop autoPlay playsInline>
             <source src={props.link} type="video/mp4"/>
           </video>
         </div>
@@ -230,7 +235,7 @@ function PhotoTextFull(props) {
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
           <figure className="w-100 ma0">
-            <img className="w-100" style={fullImage} src={props.image} alt="photo"/>
+            <img className="w-100" style={fullImage} src={props.image} alt="background"/>
           </figure>
         </div>
       </div>
@@ -264,7 +269,7 @@ function PhotoText(props) {
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={color1+" w-100 h-100 fixed fixed-content flex aic"}>
           <figure className="center mw80 w-100">
-            <img className={"w-50-l w-100 "+photo} src={props.image} alt="photo"/>
+            <img className={"w-50-l w-100 "+photo} src={props.image} alt="description"/>
           </figure>
         </div>
       </div>
@@ -327,7 +332,7 @@ function PhotoMultiple(props) {
       backgroundPosition: "center center"
     }
     var photos = (
-      <div className="grid-item bg-gray" style={item}></div>
+      <div className="grid-item bg-gray" style={item} key={i}></div>
     )
     if(i%2 === 0) columns+="480px ";
     grid.push(photos);
@@ -382,12 +387,38 @@ function PhotoContrast(props) {
 
 /*09*/
 function Video(props) {
+  function playVideo(e) {
+    var $video = $('#video'+props.videoID);
+    if(e.target.classList.contains('pause')) {
+      e.target.classList.remove('pause');
+      $video.get(0).play();
+      $video.removeClass('clicked');
+    }
+    else {
+      e.target.classList.add('pause');
+      $video.get(0).pause();
+      $video.addClass('clicked');
+    }
+  }
+  function soundVideo(e) {
+    var $video = $('#video'+props.videoID);
+    if(e.target.classList.contains('unmute')) {
+      e.target.classList.remove('unmute');
+      $video.prop('muted', true);
+    }
+    else {
+      e.target.classList.add('unmute');
+      $video.prop('muted', false);
+    }
+  }
   return (
     <section className="cover min-vh-200 flex aic relative video-content">
       <div className="w-100 h-100 absolute top-left clipping">
+        <div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>
+        <div className="fixed sound cp z10" onClick={(e) => soundVideo(e)}></div>
         <div className="bg-light-gray w-100 h-100 fixed fixed-content">
           <div className="videoBg">
-            <video id="video" muted loop playsInline>
+            <video id={'video'+props.videoID} muted loop playsInline>
               <source src={props.link} type="video/mp4"/>
             </video>
           </div>
@@ -405,7 +436,7 @@ function EndingVideo(props) {
         <div className="cf tc black w-30-l w-60-m w-100 center pa2 bg-white mb5">
           <h3>想知道淡水河更多故事....</h3>
         </div>
-        <video id="video" className="center w-100" muted loop autoPlay playsInline>
+        <video id="endingVideo" className="center w-100" muted loop autoPlay playsInline>
           <source src={props.link} type="video/mp4"/>
         </video>
       </div>
@@ -471,7 +502,7 @@ function PhotoAudio(props) {
           <div className="fl w-100 w-50-ns pa2">
             <div className="pv4">
               <figure className="mv0">
-                <img src={props.image} alt="photo"/>
+                <img src={props.image} alt="portrait"/>
               </figure>
             </div>
           </div>
@@ -536,7 +567,10 @@ class Event01 extends Component {
           image={this.props.data.photoMultiple}
         />
 
-        <Video link={this.props.data.video[1]}/>
+        <Video 
+          videoID="01"
+          link={this.props.data.video[1]}
+        />
 
         <PhotoText
           order="right"

@@ -47,8 +47,8 @@ class Cover extends Component {
             <div className="ph2-ns flex space-between aic white">
               <p>我們的島</p>
               <div className="flex flex-row">
-                <a href="/ourisland/timeline/" target="_blank"><button className="cp h2 ph3">前往大紀事</button></a>
-                <a href="/ourisland/timeline/" target="_blank"><button className="cp h2 ph3 ml3">分享</button></a>
+                <a href="/ourisland/timeline/" target="_blank"><button className="btn cp h2 ph3">前往大紀事</button></a>
+                <a href="/ourisland/timeline/" target="_blank"><button className="btn cp h2 ph3 ml3">分享</button></a>
               </div>
             </div>
           </div>

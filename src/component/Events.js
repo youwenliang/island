@@ -184,7 +184,7 @@ class Events extends Component {
         <h3 className="dib f4-ns f5 fw3 o-80">{"/ "+event_content[this.state.topics[num]].name.split('@')[1]}</h3>
         <p className="mw6 f4-ns f5 lh-copy fw4">{event_content[this.state.topics[num]].description}</p>
         <Link to={"/ourisland/"+event_content[this.state.topics[num]].url+"/"}>
-          <button className="cp mt2 white dib mb6" style={btnStyle}>事件連結</button>
+          <button className="btn cp mt2 white dib mb6" style={btnStyle}>事件連結</button>
         </Link>        
       </div>
     )

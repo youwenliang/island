@@ -12,21 +12,21 @@ class CTA extends Component {
               <div className="bg-near-white pv5 pa4 tc">
                 <p className="f4 fw5 mt0">這是內容</p>
                 <p className="f5 fw4">這是說明</p>
-                <button className="center mt4">這是按鈕</button>
+                <button className="btn center mt4">這是按鈕</button>
               </div>
             </div>
             <div className="fl w-third-l w-100 pa2">
               <div className="bg-near-white pv5 pa4 tc">
                 <p className="f4 fw5 mt0">這是內容</p>
                 <p className="f5 fw4">這是說明</p>
-                <button className="center mt4">這是按鈕</button>
+                <button className="btn center mt4">這是按鈕</button>
               </div>
             </div>
             <div className="fl w-third-l w-100 pa2">
               <div className="bg-near-white pv5 pa4 tc">
                 <p className="f4 fw5 mt0">這是內容</p>
                 <p className="f5 fw4">這是說明</p>
-                <button className="center mt4">這是按鈕</button>
+                <button className="btn center mt4">這是按鈕</button>
               </div>
             </div>
           </div>
