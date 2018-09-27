@@ -103,6 +103,14 @@ button,
   bottom: 100px;
 }
 
+.min-vh-150 {
+  min-height: 150vh;
+}
+
+.mw80 {
+  max-width: 80rem;
+}
+
 .min-vh-200 {
   min-height: 200vh;
 }
@@ -472,9 +480,47 @@ ul.none {
 }
 
 .coverVideo-tag {
-  font-size: 1.7rem;
   letter-spacing: 2px;
   margin-top: 0px;
+}
+
+.progress {
+  position: fixed;
+  top: 0; bottom: 0; left: 48px;
+  margin: auto;
+  width: 5px;
+  height: 200px;
+  background: #f2f2f2;
+  display: none;
+  opacity: 0;
+  transition: opacity .2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.progress.active {
+  opacity: 1;
+  transition: opacity .2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0%;
+  width: 100%;
+  background: #0c0c0d;
+}
+
+@media screen and (min-width: 60em) {
+  .progress {
+    display: block;
+  }
+}
+
+/* grid */
+.grid-container {
+  display: grid;
+  grid-gap: 10px;
+  overflow-x: scroll;
 }
 
 /*
@@ -540,11 +586,17 @@ ul.none {
 /* Image Slider */
 .cd-image-container {
   position: relative;
-  width: 90%;
+  width: 100%;
   max-height: 70%;
   overflow: hidden;
   /*max-width: 768px;*/
   margin: auto;
+}
+
+@media screen and (min-width: 30em) {
+  .cd-image-container {
+    width: 90%;
+  }
 }
 .cd-image-container img {
   display: block;

@@ -32,6 +32,13 @@ class Page extends Component {
     document.body.classList.add('ds');
     document.getElementById('loading').classList.remove('fade');
 
+    // $('.dragscroll').scrollLeft(0);
+    // // Horizontal Scroll
+    // $('.dragscroll').mousewheel(function(event, change) {
+    //   this.scrollLeft -= (change * 1); //need a value to speed up the change
+    //   event.preventDefault();
+    // });
+
     var images  = [];
     loadImage(images)
     .then(function (allImgs) {
@@ -48,31 +55,35 @@ class Page extends Component {
       console.info(err.loaded);
     });
     $(document).ready(function(){
-      // $(window).scroll( function(){
-      //   $('section').each( function(i){
-      //   // var bottom_of_object = $(this).offset().top + $(this).outerHeight();
-      //   var top_of_object = $(this).offset().top;
-      //   var center_of_window = $(window).scrollTop() + $(window).height()/2;
-      //   // var top_of_window = $(window).scrollTop();
-      //   // var bottom_of_window = $(window).scrollTop() + $(window).height();
-      //   var $this = $(this);
+      $(window).scroll( function(){
+        var th = $(document).height()-$(window).height();
+        var ch = $(window).scrollTop();
+        var x = 100*ch/th;
+        $('.progress .bar').css('height', x + '%');
 
-      //   if( center_of_window >= top_of_object ){
-      //     if(!$this.find('.fixed-content').hasClass('active')) {
-      //       $('.fixed-content.active').removeClass('active');
-      //       $this.find('.fixed-content').addClass('active');
-      //       if($this.hasClass('video-content')){
-      //         $this.find('video').get(0).play();
-      //       }
-      //     }
-      //   } else {
-      //     $this.find('.fixed-content').removeClass('active');
-      //     if($this.hasClass('video-content')){
-      //       $this.find('video').get(0).pause();
-      //     }
-      //   }
-      //   });
-      // });
+        if(ch >= $(window).height()) {
+          $('.progress').addClass('active');
+        } else {
+          $('.progress').removeClass('active');
+        }
+
+        $('.video-content').each( function(i){
+          var top_of_object = $(this).offset().top;
+          var bottom_of_object = $(this).offset().top + $(this).height();
+          var top_of_window = $(window).scrollTop();
+          var bottom_of_window = $(window).scrollTop()+ $(window).height();
+          var $this = $(this);
+          if( bottom_of_window >= top_of_object && top_of_window <= bottom_of_object ){
+            if($this.find('video').get(0).paused) {
+              $this.find('video').get(0).play();
+            }
+          } else {
+            if(!$this.find('video').get(0).paused) {
+              $this.find('video').get(0).pause();
+            }
+          }
+        });
+      });
     })
   }
   render() {
@@ -98,7 +109,7 @@ class Page extends Component {
         <Helmet>
             <title>{data.title}</title>
         </Helmet>
-        {/*Navigation Bar */}
+        {/*Navigation Bar*/}
         <nav className="pv2 w-100 top0 z10">
           <div className="bg-dark-gray w-100 h-100 absolute top0"></div>
           <div className="mw8 center ph3 relative z4">
@@ -107,6 +118,10 @@ class Page extends Component {
             </div>
           </div>
         </nav>
+        {/*Progress Bar*/}
+        <div className="progress z10">
+          <div className="bar"></div>
+        </div>
         {container}
       </section>
     );
@@ -131,10 +146,10 @@ function CoverVideo(props) {
         </div>
       </div>
       </div>
-      <div className="mw8 center ph3 w-100 z4">
-        <div className="cf tc white w-80 center pa4">
-          <img src={props.title} alt="title" />
-          <h3 className="coverVideo-tag fw4 lh-copy mb0 pre-wrap">{props.content}</h3>
+      <div className="mw8 center ph3 w-100 z4 tc">
+        <img src={props.title} className="center" width="800" alt="title" />
+        <div className="cf white w-80-ns w-100 center ph-ns">
+          <h3 className="f3-ns f4 coverVideo-tag fw4 lh-copy mb0 pre-wrap">{props.content}</h3>
         </div>
       </div>
     </section>
@@ -149,7 +164,7 @@ function Taiwan(props) {
     backgroundPosition: "center center"
   }
   return (
-    <section className="cover min-vh-100 flex aic relative">
+    <section className="cover min-vh-150 flex aic relative">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="w-100 h-100 fixed fixed-content flex aic" style={bgStyle}>
           <figure className="w-100">
@@ -175,7 +190,7 @@ function Illustration(props) {
     <section className="min-vh-200 flex aic relative">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
-          <figure className="w-100">
+          <figure className="center mw80 w-100">
             <img className="w-50-l w-100" src={props.illustration} alt="illustration"/>
           </figure>
         </div>
@@ -229,25 +244,30 @@ function PhotoTextFull(props) {
 
 /*05*/
 function PhotoText(props) {
-  var photo = ""
-  var text = ""
+  var photo, text = "";
+  var color1 = "bg-white"
+  var color2 = "bg-near-white";
+  if(props.color === "invert") {
+    color1 = "bg-near-white";
+    color2 = "bg-white";
+  }
   if(props.order === "right") {
     text = "fr-l"
   } else {
     photo = "fr-l"
   }
   return (
-    <section className="min-vh-200 flex aic relative">
+    <section className="min-vh-150 flex aic relative">
       <div className="w-100 h-100 absolute top-left clipping">
-        <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
-          <figure className="w-100">
+        <div className={color1+" w-100 h-100 fixed fixed-content flex aic"}>
+          <figure className="center mw80 w-100">
             <img className={"w-50-l w-100 "+photo} src={props.image} alt="photo"/>
           </figure>
         </div>
       </div>
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
         <div className="cf black">
-          <div className={"w-50-l w-100 pa4-l pa3 bg-near-white "+text}>
+          <div className={"w-50-l w-100 pa4-l pa3 "+color2+" "+text}>
             <p className="f4 lh-copy mv0">{props.text}</p>
           </div>
         </div>
@@ -287,12 +307,62 @@ function PhotoSwitch(props) {
 }
 
 /*07*/
+function PhotoMultiple(props) {
+  let grid = [];
+  var columns = "";
+  
+  var height = {
+    height: "650px"
+  }
+
+  for (var i = 0; i < props.image.length; i++){
+    var item = {
+      width: "480px",
+      height: "320px",
+      backgroundImage: "url("+props.image[i]+")",
+      backgroundSize: "cover",
+      backgroundPosition: "center center"
+    }
+    var photos = (
+      <div className="grid-item bg-gray" style={item}></div>
+    )
+    if(i%2 == 0) columns+="480px ";
+    grid.push(photos);
+  }
+
+  var container = {
+    gridTemplateColumns: columns,
+    height: "690px",
+    paddingBottom: "40px"
+  }
+
+  return (
+    <section className="flex aic relative bg-white flex-column pv6">      
+      <div className="mw8 center cf black mb5 ph3 w-100">
+        <div className="mw7 w-100 center bg-white">
+          <p className="f4 lh-copy mv0">{props.text}</p>
+        </div>
+      </div>
+      <div className="w-100 overflow-hidden" style={height}>
+       <div className="grid-container nowrap dragscroll" style={container}>
+          {grid}
+        </div> 
+      </div>
+    </section>
+  )
+}
+
 
 /*08*/
 function PhotoContrast(props) {
   return (
-    <section className="cover min-vh-100 flex aic relative bg-white flex-column pv6">
-        <div className="w-100 h-100 fixed-content flex">
+    <section className="flex aic relative bg-white flex-column pv6">
+        <div className="ph3 w-100 z4">
+          <div className="mw8 center cf black mb5">
+            <div className="mw7 w-100 center bg-white">
+              <p className="f4 lh-copy mv0">{props.text}</p>
+            </div>
+          </div>
           <figure className="cd-image-container is-visible z4">
              <img src={props.images[1]} alt="Original" />
              <span className="cd-image-label" data-type="original">{props.images[1].split('(')[1].split('.')[0]}</span>
@@ -302,13 +372,6 @@ function PhotoContrast(props) {
              </div>
              <span className="cd-handle"></span>
           </figure>
-        </div>
-        <div className="mw8 center ph3 w-100 z4 absolute-ns absolute-center bottom-200">
-          <div className="cf black">
-            <div className="mw7 w-100 center pa4-l pa3 bg-white">
-              <p className="f4 lh-copy mv0">{props.text}</p>
-            </div>
-          </div>
         </div>
     </section>
   )
@@ -334,44 +397,18 @@ function Video(props) {
 /*10*/
 function EndingVideo(props) {
   return (
-    <section className="cover min-vh-100 flex aic relative video-content">
-      <div className="bg-white w-100 h-100 fixed fixed-content">
-        <video id="video" className="absolute absolute-center bottom-200 w-50-ns w-100" muted loop autoPlay playsInline>
+    <section className="cover min-vh-100 flex aic relative video-content bg-near-white pv6">
+      <div className="mw8 center ph3 z4 relative mb6">
+        <div className="cf tc black w-30-l w-60-m w-100 center pa2 bg-white mb5">
+          <h3>想知道淡水河更多故事....</h3>
+        </div>
+        <video id="video" className="center w-100" muted loop autoPlay playsInline>
           <source src={props.link} type="video/mp4"/>
         </video>
       </div>
-      <div className="mw8 center ph3 w-30-ns w-100 z4 relative mb6">
-        <div className="cf tc black w-80 center pa2 bg-near-white">
-          <h3>想知道淡水河更多故事....</h3>
-        </div>
-      </div>
     </section>
   )
 }
-
-
-
-
-function Steps(props) {
-  return (
-    <section className="cover min-vh-100 flex aic">
-      <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
-        <figure className="w-100">
-          <img className="w-50-l w-100" src={props.image} alt="illustration"/>
-        </figure>
-      </div>
-      <div className="mw8 center ph3 w-100 z4 pre-wrap">
-        <div className="cf black">
-          <div className="w-50-l w-100 fr-l pa4-l pa3 bg-near-white">
-            <h2 className="mt0 mb4"><span>2002</span>-<span>2018</span></h2>
-            <p className="f4 lh-copy mv0">{props.text1.split(':')[1]}</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
 
 
 /* Views */
@@ -395,12 +432,21 @@ class Event01 extends Component {
           images={this.props.data.photoswitch} 
           text={this.props.data.photoswitchText}
         />
+
+        <PhotoMultiple
+          text={this.props.data.photoMultipleText}
+          image={this.props.data.photoMultiple}
+        />
+
         <Video link={this.props.data.video[1]}/>
+        
         <PhotoText
           order="right"
+          color="invert"
           text={this.props.data.photoText[0]}
           image = {this.props.data.photoImage}
         />
+
         <PhotoContrast 
           images={this.props.data.photocontrast}
           text={this.props.data.photocontrastText}
@@ -417,14 +463,7 @@ class Event01 extends Component {
           text={this.props.data.photoText[1]}
           image = {this.props.data.photoImage}
         />
-        {/*
-        <Steps
-          text1={this.props.data.stepText[0]}
-          text2={this.props.data.stepText[1]}
-          image = {this.props.data.stepImage}
-        />
         <EndingVideo link={this.props.data.video[1]}/>
-        */}
       </div>
     );
   }

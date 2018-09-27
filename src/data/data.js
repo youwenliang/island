@@ -128,10 +128,9 @@ var data = {
       "taiwan": "/events/changing-tamsui-river/illustrations/taiwan.svg",
       "taiwanBG": "https://fakeimg.pl/600x480/333333/555555?text=Taiwan&retina=1",
 
-      "stepText": [
-        "2002:不過有些地方，垃圾只是隱藏在腳下。\n\n例如二重疏洪道旁的建築廢土，2002 年都是露天棄置，高架道路施工時曾清除了一部分，但兩旁的廢棄物只是用柏油掩蓋，並沒有清出。",
-        "2018:2018年我們重回現場竟然又發現，新的垃圾與廢土還是持續堆置，可見違法棄置在都市邊緣地帶還是一再上演。"
-      ],
+      "photoMultipleText": "與水親近，是人類亙古以來的渴望。1998年的淡水河口，在退潮期間，你還有機會看到八里居民在灘地上耙文蛤，在快速都市化的大台北，這群老居民仍舊與熟悉的河海，依存過生活。不過隨著開發建設，人與河海之間的關係，逐漸在轉變。",
+      "photoMultiple": [
+        "https://fakeimg.pl/1200x900/000000/222222/?text=photo1&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo2&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo3&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo4&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo5&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo6&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo7&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo8&retina=1"],
 
       "illustrationText": [
         "總是人潮絡繹不絕的淡水河，是城市人們的出口，六百多萬人的生活和淡水河流域緊密相依。\n\n現在的你很難想像，1993年的淡水河畔，是滿天的垃圾和惡臭味，讓人想快速離開。",
