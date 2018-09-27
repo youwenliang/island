@@ -115,6 +115,9 @@ class Page extends Component {
           <div className="mw8 center ph3 relative z4">
             <div className="ph2-ns flex space-between aic white">
               <p>我們的島</p>
+              <div className="flex flex-row">
+                <a href="/ourisland/timeline/" target="_blank"><button className="cp h2 ph3 ml3">分享</button></a>
+              </div>
             </div>
           </div>
         </nav>
@@ -326,7 +329,7 @@ function PhotoMultiple(props) {
     var photos = (
       <div className="grid-item bg-gray" style={item}></div>
     )
-    if(i%2 == 0) columns+="480px ";
+    if(i%2 === 0) columns+="480px ";
     grid.push(photos);
   }
 
@@ -410,6 +413,95 @@ function EndingVideo(props) {
   )
 }
 
+/*11*/
+
+/*12*/
+function PhotoAudio(props) {
+  function calculateTotalValue(length) {
+    var minutes = Math.floor(length / 60),
+      seconds_int = length - minutes * 60,
+      seconds_str = seconds_int.toString(),
+      seconds = seconds_str.substr(0, 2),
+      time = minutes + ':' + seconds
+
+    return time;
+  }
+
+  function calculateCurrentValue(currentTime) {
+    var current_hour = parseInt(currentTime / 3600) % 24,
+      current_minute = parseInt(currentTime / 60) % 60,
+      current_seconds_long = currentTime % 60,
+      current_seconds = current_seconds_long.toFixed(),
+      current_time = (current_minute < 10 ? "0" + current_minute : current_minute) + ":" + (current_seconds < 10 ? "0" + current_seconds : current_seconds);
+
+    return current_time;
+  }
+  function initProgressBar() {
+    var player = document.getElementById('player');
+    var length = player.duration
+    var current_time = player.currentTime;
+
+    // calculate total length of value
+    var totalLength = calculateTotalValue(length)
+    window.jQuery(".end-time").html('0'+totalLength);
+
+    // calculate current value time
+    var currentTime = calculateCurrentValue(current_time);
+    window.jQuery(".start-time").html(currentTime);
+
+    var progressbar = document.getElementById('seekObj');
+    progressbar.value = (player.currentTime / player.duration);
+    progressbar.addEventListener("click", seek);
+
+    if (player.currentTime === player.duration) {
+      $('#play-btn').removeClass('pause');
+    }
+
+    function seek(evt) {
+      var percent = evt.offsetX / this.offsetWidth;
+      player.currentTime = percent * player.duration;
+      progressbar.value = percent / 100;
+    }
+  };
+
+  return (
+    <section className="flex aic relative bg-white pv6">
+      <div className="mw80 w-100 center ph3 relative">
+        <div className="cf ph2-ns">
+          <div className="fl w-100 w-50-ns pa2">
+            <div className="pv4">
+              <figure className="mv0">
+                <img src={props.image} alt="photo"/>
+              </figure>
+            </div>
+          </div>
+          <div className="fl w-100 w-50-ns pa2">
+            <div className="pv4">
+              <div className="audio-player">
+                <div id="play-btn" className="cp"></div>
+                <div className="audio-wrapper" id="player-container" href="javascript:;">
+                  <audio id="player" onTimeUpdate={() => initProgressBar()}>
+                    <source src={props.audio} type="audio/mp3"/>
+                  </audio>
+                </div>
+                <div className="player-controls scrubber">
+                  <p className="f4">某某某的錄音檔</p>
+                  <span id="seekObjContainer">
+                    <progress id="seekObj" value="0" max="1"></progress>
+                  </span>
+                  <br/>
+                  <small className="fl start-time pt2">00:00</small>
+                  <small className="fr end-time pt2">00:00</small>
+                </div>
+              </div>
+              <p className="f4 lh-copy mv4">{props.text}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 /* Views */
 class Event01 extends Component {
@@ -423,6 +515,12 @@ class Event01 extends Component {
           illustration = {this.props.data.taiwan}
           background = {this.props.data.taiwanBG}
         />
+        <PhotoAudio
+          text={this.props.data.photoAudioText}
+          image={this.props.data.photoAudioPhoto}
+          audio={this.props.data.photoAudio}
+        />
+
         <Illustration 
           text1={this.props.data.illustrationText[0]}
           text2={this.props.data.illustrationText[1]}
@@ -439,7 +537,7 @@ class Event01 extends Component {
         />
 
         <Video link={this.props.data.video[1]}/>
-        
+
         <PhotoText
           order="right"
           color="invert"

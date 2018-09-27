@@ -187,4 +187,45 @@ $(document).ready(function(){
             ( label.offset().left > resizeElement.offset().left + resizeElement.outerWidth() ) ? label.removeClass('is-hidden') : label.addClass('is-hidden') ;
         }
     }
+
+  function initPlayers(num) {
+    // pass num in if there are multiple audio players e.g 'player' + i
+
+    for (var i = 0; i < num; i++) {
+      (function() {
+
+        // Variables
+        // ----------------------------------------------------------
+        // audio embed object
+        var playerContainer = document.getElementById('player-container'),
+          player = document.getElementById('player'),
+          isPlaying = false,
+          playBtn = document.getElementById('play-btn');
+
+        // Controls Listeners
+        // ----------------------------------------------------------
+        if (playBtn != null) {
+          playBtn.addEventListener('click', function() {
+            togglePlay()
+          });
+        }
+
+        // Controls & Sounds Methods
+        // ----------------------------------------------------------
+        function togglePlay() {
+          if (player.paused === false) {
+            player.pause();
+            isPlaying = false;
+            $('#play-btn').removeClass('pause');
+
+          } else {
+            player.play();
+            $('#play-btn').addClass('pause');
+            isPlaying = true;
+          }
+        }
+      }());
+    }
+  }
+  initPlayers(window.jQuery('#player-container').length);
 });

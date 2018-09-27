@@ -523,6 +523,64 @@ ul.none {
   overflow-x: scroll;
 }
 
+/* audio player */
+.audio-player {
+  background: #f9f9f9;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-flow: row;
+  margin: 4rem 0 4rem 0;
+  padding-right: 18px;
+}
+
+.audio-player .player-controls {
+  padding: 0 20px;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 2.5rem;
+  flex: 3;
+}
+
+.audio-player .player-controls p {
+  text-align: left;
+  margin: 0;
+}
+
+.audio-player .player-controls progress {
+  width: 100%;
+}
+
+.audio-player .player-controls progress[value] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: white;
+  color: #0c0c0d;
+  height: 5px;
+}
+
+.audio-player .player-controls progress[value]::-webkit-progress-bar {
+  background-color: #ccc;
+  border-radius: 2px;
+  color: #0c0c0d;
+}
+
+.audio-player .player-controls progress::-webkit-progress-value {
+  background-color: #0c0c0d;
+}
+
+#play-btn {
+  background-image: url('/images/icons/play.svg');
+  background-size: cover;
+  width: 75px;
+  height: 75px;
+  margin: 2rem 0 2rem 2rem;
+}
+
+#play-btn.pause {
+  background-image: url('/images/icons/pause.svg');
+}
+
 /*
 
     OVERFLOW

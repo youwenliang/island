@@ -147,7 +147,11 @@ var data = {
       "photoText": [
         "垃圾清除後，河岸就地綠化，像是早年的土城垃圾山，現在已經改頭換面，營造為「打鳥埤人工濕地」，用來淨化生活污水。居民來到這裡運動、釣魚，回首堆垃圾的過往，不禁慶幸：真的是上個世紀的往事了。\n\n歷經三十年的整治，移除垃圾、污水截流，淡水河水質終於改善，河中魚類種類漸漸增加。", 
         "現在在淡水河口，大人牽著小孩迫不及待湧入，觀察招潮蟹的出沒、用雙腳感受河水的輕撫。\n\n走過髒污的過往，下一個二十年，你希望淡水河會是什麼樣貌呢？"
-      ]
+      ],
+      "photoAudioText": "現在在淡水河口，大人牽著小孩迫不及待湧入，觀察招潮蟹的出沒、用雙腳感受河水的輕撫。\n\n走過髒污的過往，下一個二十年，你希望淡水河會是什麼樣貌呢？",
+      "photoAudioPhoto": "https://fakeimg.pl/600x800/cccccc/222222/?text=person&retina=1",
+      "photoAudio": "/events/changing-tamsui-river/audios/sample.mp3"
+
     },
     "reborn-erren-river": {
       "title": "this is title 02",
