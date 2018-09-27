@@ -317,7 +317,7 @@ function PhotoContrast(props) {
 /*09*/
 function Video(props) {
   return (
-    <section className="cover min-vh-100 flex aic relative video-content">
+    <section className="cover min-vh-200 flex aic relative video-content">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-light-gray w-100 h-100 fixed fixed-content">
           <div className="videoBg">
