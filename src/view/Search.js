@@ -26,7 +26,8 @@ class Search extends Component {
       search: '',
       area: '',
       open: false,
-      content: {}
+      content: {},
+      topic: 0
     };
     divides = [
       offset_i + (this.findDate('7') - topic_data.length)*offset_w,
@@ -47,6 +48,7 @@ class Search extends Component {
       var mySwiper = new Swiper ('.swiper-container', {
         // Optional parameters
         autoHeight: true,
+        allowTouchMove: true,
         loop: true,
         // If we need pagination
         pagination: {
@@ -190,7 +192,7 @@ class Search extends Component {
             <Image
               src={cover}
               width="100%"
-              height="auto"
+              height="100%"
               alt="story"
             />
           </figure>
@@ -215,11 +217,18 @@ class Search extends Component {
 
   // Topic Component
   topicList = () => {
-    return (<ul className="topicBox list flex space-between pa0 ph2-ns nowrap list overflow-x-scroll dragscroll">{topic_data.map((t, i) => { 
+    return (<ul className="topicBox mw8-ns center list flex space-between pa0 ph2-ns nowrap list overflow-x-scroll dragscroll">{topic_data.map((t, i) => { 
       let highlight = '';
-      if(t.title === 'All') highlight = 'active'
+      let img = (<img src={t.icon} width="36" height="36" className="pr2" />);
+      if(t.title === 'All') {
+        highlight = 'active'
+        img = ''
+      }
       return (
-        <li className={"dib w-100 pa2 mh2 bg-white cp ph4 tc "+highlight} key={i} id={t.keyword} onClick={this.updateTopic.bind(this)}>{t.title}</li>
+        <li className={"dib w-100 pa2 mh2 bg-white cp ph4 tc br4 "+highlight} key={i} data-num={i} id={t.keyword} onClick={this.updateTopic.bind(this)}>
+          {img}
+          {t.title}
+        </li>
       );
     })}</ul>)
   }
@@ -239,7 +248,7 @@ class Search extends Component {
       let highlight = '';
       if(d === '1970') highlight = 'active';
       return (
-        <li className={"w-20 tc dib pa2 bg-white cp " + highlight} key={i} onClick={this.scrollDate.bind(this)}>{d}</li>
+        <li className={"w-20 tc dib pa2 bg-white cp ba bw1 b--white " + highlight} key={i} onClick={this.scrollDate.bind(this)}>{d}</li>
       ); 
     })}</ul>)
   }
@@ -269,6 +278,7 @@ class Search extends Component {
         event.preventDefault();
       }
       const key = event.target.id;
+      const id = event.target.dataset.num;
       var $this = this;
       var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
       tween.eventCallback("onComplete", function(){
@@ -276,6 +286,7 @@ class Search extends Component {
         $this.setState({
           search: key,
           area: "",
+          topic: id
         });
         $this.refs.keyword.value = key;
         $this.refs.areas.value = '';
@@ -304,7 +315,7 @@ class Search extends Component {
     var imageSlider = [];
     for(var i = 0; i < imageLength; i++) {
       var slides = (
-        <div className="swiper-slide">
+        <div className="swiper-slide" key={i}>
           <figure className="mh0 mv4 modalImg">
             <img src={images[i]} alt="story" />
           </figure>
@@ -313,18 +324,30 @@ class Search extends Component {
       imageSlider.push(slides);
     }
 
+    var form = {
+      marginTop: "1.5px"
+    }
+
+    var storyBg = {
+      backgroundImage: 'url('+topic_data[this.state.topic].background+')',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center center'
+    }
+
     return (
-      <section id="timeline" className="min-vh-100 bg-light-gray">
+      <section id="timeline" className="min-vh-100 bg-white pv5-l pv4">
         <Helmet>
             <title>台灣環境史三十年大事紀 - 我們的島二十週年</title>
         </Helmet>
         <div className="mw8-ns center ph3-ns mb4-ns">
-          <div className="cf ph2-ns mb3-ns mb2">
-            <div className="fl w-100 w-30-l ph2">
-              <h2 className="ma0-l mb4 tl-ns tc mt0">台灣環境史三十年大事紀</h2>
+          <div className="cf mb3-ns mb2">
+            <div className="fl w-100 w-40-l flex aic mb3 mb0-l ph0-ns ph3">
+              <h2 className="ma0 nowrap">大事紀標題</h2>
+              <p className="ma0 ph3 o-50 f6">大事紀介紹大事紀介紹大事紀介紹大事紀介紹大事紀介紹</p>
             </div>
-            <div className="fl w-100 w-70-l ph2-ns">
-              <form className="flex space-between aic" onSubmit={this.updateSearch.bind(this)}>
+            <div className="fl w-100 w-60-l">
+              <form className="flex space-between aic" style={form} onSubmit={this.updateSearch.bind(this)}>
                 <input id="search_input" className="w-100 ph2" type="text" ref="keyword" placeholder="搜尋紀事"/>
                 <select name="areas" ref="areas" className="w150">
                   <option value="">全部地區</option>
@@ -338,17 +361,17 @@ class Search extends Component {
             </div>
           </div>
         </div>
-        <div className="topicContainer mw8-ns center ph3-ns">
+        <div className="topicContainer pv3 bg-light-gray">
           {this.topicList()}
         </div>
-        <div className="storyContainer mt3-ns mt1">
+        <div className="storyContainer" style={storyBg}>
           {this.storyList()}
         </div>
-        <div className="mw8 center ph3 mt2">
-          <form className="rangeSlider">
+        <div className="mw8 center ph3-ns mt4">
+          <form className="rangeSlider ph3">
             <input id="scrollRange" className="w-100" type="range" defaultValue="0"/>
           </form>
-          <div className="dateContainer cf ph2-ns">
+          <div className="dateContainer cf">
             {this.dateList()}
           </div>
         </div>
@@ -357,11 +380,12 @@ class Search extends Component {
             <div className="swiper-wrapper">
               {imageSlider}
             </div>
+            <div className="swiper-pagination"></div>
             <div className="swiper-button-prev"></div>
             <div className="swiper-button-next"></div>
           </div>
           
-          <div className="ph4-ns pb4">
+          <div className="ph4-ns pb4 modalTxt">
             <h2>{this.state.content.name}</h2>
             <p className="lh-copy">
               {this.state.content.content}

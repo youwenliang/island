@@ -208,27 +208,38 @@ var data = {
   "topics": [
     {
       "title": "All",
-      "keyword": ""
+      "keyword": "",
+      "background": "https://fakeimg.pl/1920x1080/?text=All&retina=1"
     },
     {
       "title": "天災地變",
-      "keyword": "天災地變"
+      "keyword": "天災地變",
+      "icon": "/images/icons/5_icon_01天災.svg",
+      "background": "https://fakeimg.pl/1920x1080/?text=topic_1&retina=1"
     },
     {
       "title": "開發利用",
-      "keyword": "開發利用"
+      "keyword": "開發利用",
+      "icon": "/images/icons/5_icon_02開發.svg",
+      "background": "https://fakeimg.pl/1920x1080/?text=topic_2&retina=1"
     },
     {
       "title": "重大公害",
-      "keyword": "重大公害"
+      "keyword": "重大公害",
+      "icon": "/images/icons/5_icon_03汙染.svg",
+      "background": "https://fakeimg.pl/1920x1080/?text=topic_3&retina=1"
     },
     {
       "title": "食在不安",
-      "keyword": "食在不安"
+      "keyword": "食在不安",
+      "icon": "/images/icons/5_icon_04食安.svg",
+      "background": "https://fakeimg.pl/1920x1080/?text=topic_4&retina=1"
     },
     {
       "title": "環境運動",
-      "keyword": "環境運動"
+      "keyword": "環境運動",
+      "icon": "/images/icons/5_icon_05運動.svg",
+      "background": "https://fakeimg.pl/1920x1080/?text=topic_5&retina=1"
     }
   ],
 

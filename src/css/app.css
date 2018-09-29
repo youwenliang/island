@@ -217,10 +217,6 @@ button,
 	min-height: 550px;
 }
 
-#timeline {
-  padding: 7vh 0;
-}
-
 #phone {
   transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform: translateX(-180px) scale(1);
@@ -388,6 +384,10 @@ button,
 .dateContainer li {
   transition: all .2s ease-in-out;
 }
+.dateContainer li {
+  background: #eee;
+}
+
 li.active {
   background: #0c0c0d;
   color: white;
@@ -409,6 +409,10 @@ ul.none {
   transition: box-shadow .4s ease-in-out, transform .4s ease-in-out;
 }
 
+.storyItem img {
+  object-fit: cover;
+}
+
 .storyItem.card:hover {
   box-shadow: rgba(50,50,50,0.2) 5px 5px 5px;
   transform: scale(0.98,0.98);
@@ -425,12 +429,12 @@ ul.none {
 }
 
 .topicContainer {
-  height: 3rem;
+  height: 5rem;
   overflow: hidden;
 }
 
 .topicBox {
-  height: calc(3rem + 40px);
+  height: calc(5rem + 40px);
   cursor: grab;
   margin-top: 0px;
 }
@@ -473,6 +477,10 @@ ul.none {
   /*width: calc(100% + 2.4rem);*/
   position: relative;
   /*left: -1.2rem;*/
+}
+
+.modalTxt + button {
+  z-index: 10;
 }
 
 * {

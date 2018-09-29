@@ -299,7 +299,7 @@ function PhotoSwitch(props) {
     <section className="min-vh-200 flex aic w-100 relative">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-light-gray w-100 h-100 fixed fixed-content">
-          <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} />
+          <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} autoPlay={true} showNav={false} />
         </div>
       </div>
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
