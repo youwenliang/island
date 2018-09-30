@@ -256,6 +256,7 @@ class Search extends Component {
   // Update Search
   updateSearch = (event) => {
     if(event) event.preventDefault();
+    $('.topicContainer .active').removeClass('active');
     const key = this.refs.keyword.value;
     const key_area = this.refs.areas.value;
     var $this = this;
@@ -266,7 +267,8 @@ class Search extends Component {
     
     $this.setState({
       search: key.substr(0,20),
-      area: key_area
+      area: key_area,
+      topic: 6
     });
     $('.storyBox').scrollLeft(0);
   }
@@ -328,8 +330,15 @@ class Search extends Component {
       marginTop: "1.5px"
     }
 
+    var link = "";
+    if(this.state.topic > 5) {
+      link = "https://fakeimg.pl/1920x1080/?text=search&retina=1"
+    } else {
+      link = topic_data[this.state.topic].background;
+    }
+
     var storyBg = {
-      backgroundImage: 'url('+topic_data[this.state.topic].background+')',
+      backgroundImage: 'url('+link+')',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center center'
