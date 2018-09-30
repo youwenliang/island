@@ -174,21 +174,31 @@ class Search extends Component {
     // Topic Cards
     let style = " bg-white dark-gray w6-ns w5 card";
     let image = " db";
+    var icon = "";
     if(s.time === "") {
-      style = " white bg-dark-gray w7-ns w5";
+      style = " bg-white dark-gray w7-ns w5 pa3";
       image = " dn";
+      if(this.state.topic <= 5) icon = (<img src={topic_data[this.state.topic].icon} width="44" height="44" className="pr3" />);
+      else d = " dn";
     } else {
       image = " flex aic"
+    }
+    if(this.state.topic == 0) {
+      icon = ""
     }
     let cover = ""
     if(s.images !== undefined) {
       cover = s.images[0];
     }
+    var figure = {
+      margin: "1rem 1rem 0 1rem"
+    }
+
 
     return (
       <li className={"storyItem item cp mh3"+d+style} key={i} onClick={(e) => this.onOpenModal(e, s)}>
         <div className="pn">
-          <figure className={"ma0 vh-25 overflow-hidden"+image}>
+          <figure className={"ma0 vh-25 overflow-hidden"+image} style={figure}>
             <Image
               src={cover}
               width="100%"
@@ -196,8 +206,8 @@ class Search extends Component {
               alt="story"
             />
           </figure>
-          <div className="pa4 tl">
-            <h3 className="ma0 f4-ns f5 initial lh-copy">{s.name}</h3>
+          <div className="pa3 tl">
+            <h3 className="ma0 f4-ns f5 initial lh-copy flex aic">{icon}{s.name}</h3>
             <p className="mv2 f5-ns f6">{s.time}</p>
           </div>
         </div>
@@ -220,7 +230,7 @@ class Search extends Component {
     return (<ul className="topicBox mw8-ns center list flex space-between pa0 ph2-ns nowrap list overflow-x-scroll dragscroll">{topic_data.map((t, i) => { 
       let highlight = '';
       let img = (<img src={t.icon} width="36" height="36" className="pr2" />);
-      if(t.title === 'All') {
+      if(t.title === '全部事件') {
         highlight = 'active'
         img = ''
       }
@@ -256,21 +266,23 @@ class Search extends Component {
   // Update Search
   updateSearch = (event) => {
     if(event) event.preventDefault();
-    $('.topicContainer .active').removeClass('active');
     const key = this.refs.keyword.value;
-    const key_area = this.refs.areas.value;
-    var $this = this;
-    var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
-    tween.eventCallback("onComplete", function(){
-      TweenMax.to($('.storyBox'), .4, {opacity: 1});
-    });
-    
-    $this.setState({
-      search: key.substr(0,20),
-      area: key_area,
-      topic: 6
-    });
-    $('.storyBox').scrollLeft(0);
+    if(key !== "") {
+      $('.topicContainer .active').removeClass('active');
+      const key_area = this.refs.areas.value;
+      var $this = this;
+      var tween = TweenMax.to($('.storyBox'), .2, {opacity: 0});
+      tween.eventCallback("onComplete", function(){
+        TweenMax.to($('.storyBox'), .4, {opacity: 1});
+      });
+      
+      $this.setState({
+        search: key.substr(0,20),
+        area: key_area,
+        topic: 6
+      });
+      $('.storyBox').scrollLeft(0);
+    }
   }
   updateTopic = (event) => {
     if(!event.target.classList.contains('active')) {

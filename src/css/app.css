@@ -389,8 +389,7 @@ button,
 }
 
 li.active {
-  background: #0c0c0d;
-  color: white;
+  background: #ccc;
   transition: all .2s ease-in-out;
 }
 

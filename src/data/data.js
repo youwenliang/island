@@ -207,7 +207,7 @@ var data = {
 
   "topics": [
     {
-      "title": "All",
+      "title": "全部事件",
       "keyword": "",
       "background": "https://fakeimg.pl/1920x1080/?text=All&retina=1"
     },
