@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class CTA extends Component {
   render() {
     return (
-      <section id="timeline-preview" className="bg-white pv6-l pv4">
+      <section id="cta" className="bg-white pv6-l pv4">
         <div className="mw8 center ph3">
           <div className="cf ph2-ns tc hide">
             <h1 className="ph2 fw7 tracked">這是標題</h1>

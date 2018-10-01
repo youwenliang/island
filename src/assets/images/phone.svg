@@ -11,7 +11,7 @@
 		animation: switch 1s linear infinite .2s;
 	}
 	#t03 {
-		animation: switch 1s linear infinite .4s;
+		animation: switch 1s linear infinite .3s;
 	}
 	@keyframes switch {
 	  0% {

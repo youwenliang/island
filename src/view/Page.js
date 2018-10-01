@@ -1,10 +1,13 @@
+/*global FB*/
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {Helmet} from "react-helmet";
 import loadImage from 'image-promise';
 import data from '../data/data.js';
 import $ from 'jquery';
 import BeforeAfterSlider from 'react-before-after-slider';
 import ImageGallery from 'react-image-gallery';
+import Nav from '../component/Nav'
 
 // import mousewheel from 'jquery-mousewheel';
 // import {TweenMax} from "gsap/all";
@@ -91,6 +94,7 @@ class Page extends Component {
       });
     })
   }
+
   render() {
     var data = pageEvent_data[this.state.id];
     const viewContainerMapping = {
@@ -114,18 +118,7 @@ class Page extends Component {
         <Helmet>
             <title>{data.title}</title>
         </Helmet>
-        {/*Navigation Bar*/}
-        <nav className="pv2 w-100 top0 z10">
-          <div className="bg-dark-gray w-100 h-100 absolute top0"></div>
-          <div className="mw8 center ph3 relative z4">
-            <div className="ph2-ns flex space-between aic white">
-              <p>我們的島</p>
-              <div className="flex flex-row">
-                <a href="/ourisland/timeline/" target="_blank"><button className="btn cp h2 ph3 ml3">分享</button></a>
-              </div>
-            </div>
-          </div>
-        </nav>
+        <Nav timeline={false}/>
         {/*Progress Bar*/}
         <div className="progress z10">
           <div className="bar"></div>

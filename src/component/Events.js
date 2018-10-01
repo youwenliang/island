@@ -214,7 +214,7 @@ class Events extends Component {
 
   render() {
     return (
-      <section id="events" className="bg-white tl">
+      <div id="events" className="bg-white tl">
         <div className="bg-near-white center ph3 pv6">
           <div className="cf ph2-ns tc hide flex aic jcc flex-column">
             <h1 className="ph2 fw7 f2 mv2">三大主題介紹</h1>
@@ -224,7 +224,7 @@ class Events extends Component {
         {this.topics(0)}
         {this.topics(1)}
         {this.topics(2)}
-      </section>
+      </div>
     );
   }
 }

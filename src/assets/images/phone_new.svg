@@ -34,7 +34,7 @@
 		animation: switch 1s linear infinite;
 	}
 	#t02 {
-		animation: switch 1s linear infinite .2s;
+		animation: switch 1s linear infinite .3s;
 	}
 	#t03 {
 		animation: switch 1s linear infinite .4s;
