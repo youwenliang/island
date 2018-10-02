@@ -222,6 +222,10 @@ function PhotoTextFull(props) {
     objectFit: "cover",
     width: "100%"
   }
+  var bottomRight = {
+    bottom: "40px",
+    right: "40px"
+  }
   return (
     <section className="min-vh-150 flex aic relative">
       <div className="w-100 h-100 absolute top-left clipping">
@@ -229,6 +233,7 @@ function PhotoTextFull(props) {
           <figure className="w-100 ma0">
             <img className="w-100" style={fullImage} src={props.image} alt="background"/>
           </figure>
+          <label className="white absolute" style={bottomRight}>{props.label}</label>
         </div>
       </div>
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
@@ -403,6 +408,18 @@ function Video(props) {
       $video.prop('muted', false);
     }
   }
+  var text = null
+  if(props.text !== "") {
+    text = (
+      <div className="mw8 center ph3 w-100 z4 pre-wrap">
+        <div className="cf black">
+          <div className="w-50-l w-100 pa4-l pa3 bg-white">
+            <p className="f4 lh-copy mv0">{props.text}</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
   return (
     <section className="cover min-vh-200 flex aic relative video-content">
       <div className="w-100 h-100 absolute top-left clipping">
@@ -416,6 +433,7 @@ function Video(props) {
           </div>
         </div>
       </div>
+      {text}
     </section>
   )
 }
@@ -423,14 +441,12 @@ function Video(props) {
 /*10*/
 function EndingVideo(props) {
   return (
-    <section className="cover min-vh-100 flex aic relative video-content bg-near-white pv6">
+    <section className="cover min-vh-100 flex aic relative bg-near-white pv6">
       <div className="mw8 center ph3 z4 relative mb6">
-        <div className="cf tc black w-30-l w-60-m w-100 center pa2 bg-white mb5">
+        <div className="cf tc black w-50-l w-80-m w-100 center pa2 bg-white mb5">
           <h3>想知道淡水河更多故事....</h3>
         </div>
-        <video id="endingVideo" className="center w-100" muted loop autoPlay playsInline>
-          <source src={props.link} type="video/mp4"/>
-        </video>
+        <iframe width="560" height="315" src={props.link} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
     </section>
   )
@@ -526,6 +542,12 @@ function PhotoAudio(props) {
   )
 }
 
+function Transition(props) {
+  return (
+    <section className="banner pv6 bg-white"></section>
+  )
+}
+
 /* Views */
 class Event01 extends Component {
   render() {
@@ -555,6 +577,7 @@ class Event01 extends Component {
         <Video 
           videoID="01"
           link={this.props.data.video[1]}
+          text=""
         />
 
         {/*過場*/}
@@ -563,6 +586,7 @@ class Event01 extends Component {
           order="left"
           text={this.props.data.photoFullText[0]}
           image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
         />
 
         <PhotoText
@@ -583,22 +607,25 @@ class Event01 extends Component {
         <Video 
           videoID="02"
           link={this.props.data.video[1]}
+          text={this.props.data.videoText[0]}
         />
 
         {/*過場*/}
 
         <PhotoTextFull
           order="left"
-          text={this.props.data.photoText[0]}
-          image = {this.props.data.photoImage}
+          text={this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
         />
 
-        {/*過場*/}
+        <Transition/>
 
         <PhotoTextFull
           order="right"
-          text={this.props.data.photoText[0]}
-          image = {this.props.data.photoImage}
+          text={this.props.data.photoFullText[2]}
+          image = {this.props.data.photoFull[2]}
+          label = {this.props.data.photoFullTextLabel[2]}
         />
 
         <PhotoContrast 
@@ -611,9 +638,10 @@ class Event01 extends Component {
         <Video 
           videoID="03"
           link={this.props.data.video[1]}
+          text={this.props.data.videoText[1]}
         />
 
-        <EndingVideo link={this.props.data.video[1]}/>
+        <EndingVideo link={"https://www.youtube.com/embed/GW71xsyJ8TY?rel=0"}/>
       </div>
     );
   }

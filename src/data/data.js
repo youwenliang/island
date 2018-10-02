@@ -117,7 +117,11 @@ var data = {
       // CoverVideo
       "coverTitle": "/events/changing-tamsui-river/illustrations/01title.svg",
       "coverDescription": "台北人熟悉的淡水河，也曾經堆滿了垃圾？\n一起乘著島嶼時光機，回首垃圾山，臭氣憶當年。",
+
       "video": ["/events/changing-tamsui-river/videos/A18(底圖動態02).mp4", "/events/changing-tamsui-river/videos/A18(底圖動態02).mp4"],
+      "videoText": ["垃圾不只影響人 還有海岸生物\n\n回顧淡水河，人們的生活其實與河流息息相關，早期先人從河口上岸發展聚落，在陸運還沒有開發的年代，淡水河及其支流，就像是大台北地區的動脈，不論是交通或貿易，都倚賴這條河，而沿岸居民也曾經與淡水河相依相存，尤其在河口地帶，漁民會依循著潮水的漲退以及季節的變換，捕撈不同的魚類，不過隨著都市發展、河川污染以及地形變遷，傳統生活樣貌已逐漸式微。",
+      "人們對於河流利用的價值觀，決定了它的命運，從堆置垃圾的邊陲地帶，現在淡水河，部分河岸土地價值水漲船高，一棟棟的景觀住宅拔地而起，能透過一面窗看見這條河，成為都市人的高級享受，假日許多人湧進河邊的腳踏車道，或者坐在河邊欣賞美景，大人牽著小孩迫不及待湧入河口，觀察招潮蟹的出沒。\n\n走過髒污的過往，下一個二十年，你希望淡水河會是什麼樣貌呢？"],
+
       // Taiwan
       "taiwanText": [
         "淡水河的地理位置",
@@ -135,15 +139,30 @@ var data = {
       "photoswitch": ["/events/changing-tamsui-river/A8.jpg", "/events/changing-tamsui-river/A4.jpg", "/events/changing-tamsui-river/A6.jpg", "/events/changing-tamsui-river/A2.jpg", "/events/changing-tamsui-river/A7.jpg"],
       "photoswitchText": "在只求經濟發展忽視環境的七八零年代，政府並沒有完善的垃圾處理政策，當時鄉鎮公所都是自行找地堆置垃圾，海邊與河岸就成了最佳的垃圾場，長久下來不但污染河水，也影響水流。\n\n直到1990年代，環保意識抬頭，人們對河川的髒污忍無可忍，政府開始進行淡水河的整治。其中1992年開始的「大漢溪沿岸舊垃圾清除計畫」，就清運了755萬立方米垃圾，運到新北市林口下罟子掩埋場掩埋。",
       "photoswitchLabel": ["1992年新北市新莊區瓊林里垃圾場", "1993年新北市三峽淡水河岸垃圾堆置", "1993.07新北市淡水河口垃圾山", "1994.新北市五股溼地廢棄垃圾", "2004年新北市八里區淡水河岸垃圾場"],
+      
       // Photo Full
-      "photoFull": ["/events/changing-tamsui-river/A38.jpg"],
-      "photoFullText": ["垃圾清除後，河岸就地綠化，像是早年的土城垃圾山，現在已經改頭換面，營造為「打鳥埤人工濕地」，用來淨化生活污水。居民來到這裡運動、釣魚，回首堆垃圾的過往，不禁慶幸：真的是上個世紀的往事了。"],
+      "photoFull": ["/events/changing-tamsui-river/A38.jpg", "/events/changing-tamsui-river/A19.jpg", "/events/changing-tamsui-river/A35.jpg"],
+      "photoFullTextLabel": [
+        "打鳥埤人工濕地空拍",
+        "2017年台北港區段徵收全景",
+        "1987年新北市八里海岸沙丘景觀"
+      ],
+      "photoFullText": [
+      "垃圾清除後，河岸就地綠化，像是早年的土城垃圾山，現在已經改頭換面，營造為「打鳥埤人工濕地」，用來淨化生活污水。居民來到這裡運動、釣魚，回首堆垃圾的過往，不禁慶幸：真的是上個世紀的往事了。",
+      "人河關係改變，重點人的行為改變影響了河。\n\n台北港什麼時候興建，讓淡水河地貌改變的重要轉折。",
+      "有些失去的，已經不會再回來，像是淡水河南邊的八里海岸，曾經有著寬闊的沙丘，最高可達兩三公尺高，不過因為淡水河河砂開採及上游石門水庫及翡翠水庫攔截沙源，就像許多人都還來不及認識淡水河口這美麗的沙丘地形，就在2000年之前已經完全消失，這段海岸目前仍在變動中。"],
+      
       // Photo Text
       "photoText": [
         "歷經三十年的整治，移除垃圾、污水截流，淡水河水質終於改善，河中魚類種類漸漸增加。根據環保署的調查資料，淡水河本流河段魚類種類從民國70年代只有十餘種，到民國100年有50種左右，主要組成魚種有大頭鰱、鯉魚、鯽魚等等，另外在較上游的新店溪河段，消失已久的洄游性魚類日本禿頭鯊、翹嘴紅鮊等也重現蹤跡。近年來更有學校師生發現，已經在新店溪消失長達半世紀的香魚，出現在碧潭一帶。"
       ],
-      "photoImage": ["https://fakeimg.pl/600x480/?text=PhotoText&retina=1"],
+      "photoTextLabel": [
 
+      ],
+      "photoImage": ["https://fakeimg.pl/600x480/?text=PhotoText&retina=1"],
+      // Photo Contrast
+      "photocontrast": ["/events/changing-tamsui-river/A11(1998.10八里海岸-扒文蛤).jpg", "/events/changing-tamsui-river/A13(2017.09八里海岸文蛤淤積).jpg"],
+      "photocontrastText": "1998年的淡水河口，在退潮期間，還可以見到當地居民在灘地上耙文蛤的景象，不過在台北港興建之後，海岸地形改變，河口逐漸淤積，海中拾穗的場景，已不復見。",
 
 
       "stepImage": "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
@@ -153,16 +172,8 @@ var data = {
       "photoMultipleText": "與水親近，是人類亙古以來的渴望。1998年的淡水河口，在退潮期間，你還有機會看到八里居民在灘地上耙文蛤，在快速都市化的大台北，這群老居民仍舊與熟悉的河海，依存過生活。不過隨著開發建設，人與河海之間的關係，逐漸在轉變。",
       "photoMultiple": [
         "https://fakeimg.pl/1200x900/000000/222222/?text=photo1&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo2&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo3&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo4&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo5&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo6&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo7&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo8&retina=1"],
-
       
-
-      
-
-      "photocontrast": ["/events/changing-tamsui-river/A11(1998.10八里海岸-扒文蛤).jpg", "/events/changing-tamsui-river/A13(2017.09八里海岸文蛤淤積).jpg"],
-      "photocontrastText": "與水親近，是人類亙古以來的渴望。1998年的淡水河口，在退潮期間，你還有機會看到八里居民在灘地上耙文蛤，在快速都市化的大台北，這群老居民仍舊與熟悉的河海，依存過生活。不過隨著開發建設，人與河海之間的關係，逐漸在轉變。",
-
-      
-      "photoAudioText": "垃圾不只影響人 還有海岸生物\n\n回顧淡水河，人們的生活其實與河流息息相關，早期先人從河口上岸發展聚落，在陸運還沒有開發的年代，淡水河及其支流，就像是大台北地區的動脈，不論是交通或貿易，都倚賴這條河，而沿岸居民也曾經與淡水河相依相存，尤其在河口地帶，漁民會依循著潮水的漲退以及季節的變換，捕撈不同的魚類，不過隨著都市發展、河川污染以及地形變遷，傳統生活樣貌已逐漸式微。",
+      "photoAudioText": "???",
       "photoAudioPhoto": "https://fakeimg.pl/600x800/cccccc/222222/?text=person&retina=1",
       "photoAudio": "/events/changing-tamsui-river/audios/sample.mp3"
 
