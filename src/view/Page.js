@@ -1,6 +1,5 @@
 /*global FB*/
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import {Helmet} from "react-helmet";
 import loadImage from 'image-promise';
 import data from '../data/data.js';
@@ -224,7 +223,7 @@ function PhotoTextFull(props) {
     width: "100%"
   }
   return (
-    <section className="min-vh-200 flex aic relative">
+    <section className="min-vh-150 flex aic relative">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
           <figure className="w-100 ma0">
@@ -499,7 +498,7 @@ function PhotoAudio(props) {
               </figure>
             </div>
           </div>
-          <div className="fl w-100 w-50-ns pa2">
+          <div className="fl w-100 w-50-ns pa2 pre-wrap">
             <div className="pv4">
               <div className="audio-player">
                 <div id="play-btn" className="cp"></div>
@@ -539,35 +538,65 @@ class Event01 extends Component {
           illustration = {this.props.data.taiwan}
           background = {this.props.data.taiwanBG}
         />
-        <PhotoAudio
-          text={this.props.data.photoAudioText}
-          image={this.props.data.photoAudioPhoto}
-          audio={this.props.data.photoAudio}
-        />
 
         <Illustration 
           text1={this.props.data.illustrationText[0]}
           text2={this.props.data.illustrationText[1]}
           illustration = {this.props.data.illustration}
         />
+
         <PhotoSwitch 
           images={this.props.data.photoswitch} 
           text={this.props.data.photoswitchText}
-        />
+        /> {/*增加照片說明文字*/}
 
-        <PhotoMultiple
-          text={this.props.data.photoMultipleText}
-          image={this.props.data.photoMultiple}
-        />
+        {/*過場*/}
 
         <Video 
           videoID="01"
           link={this.props.data.video[1]}
         />
 
+        {/*過場*/}
+
+        <PhotoTextFull
+          order="left"
+          text={this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+        />
+
         <PhotoText
           order="right"
           color="invert"
+          text={this.props.data.photoText[0]}
+          image = {this.props.data.photoImage[0]}
+        /> {/*圖表*/}
+
+        {/*年代比較*/}
+
+        <PhotoAudio
+          text={this.props.data.photoAudioText}
+          image={this.props.data.photoAudioPhoto}
+          audio={this.props.data.photoAudio}
+        />
+
+        <Video 
+          videoID="02"
+          link={this.props.data.video[1]}
+        />
+
+        {/*過場*/}
+
+        <PhotoTextFull
+          order="left"
+          text={this.props.data.photoText[0]}
+          image = {this.props.data.photoImage}
+        />
+
+        {/*過場*/}
+
+        <PhotoTextFull
+          order="right"
           text={this.props.data.photoText[0]}
           image = {this.props.data.photoImage}
         />
@@ -577,17 +606,13 @@ class Event01 extends Component {
           text={this.props.data.photocontrastText}
         />
 
-        <PhotoTextFull
-          order="right"
-          text={this.props.data.photoText[1]}
-          image = {this.props.data.photoImage}
+        {/*橫向移動背景大圖*/}
+
+        <Video 
+          videoID="03"
+          link={this.props.data.video[1]}
         />
-        
-        <PhotoText
-          order="left"
-          text={this.props.data.photoText[1]}
-          image = {this.props.data.photoImage}
-        />
+
         <EndingVideo link={this.props.data.video[1]}/>
       </div>
     );

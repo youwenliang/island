@@ -10,6 +10,7 @@ import {TweenMax} from "gsap/all";
 import ReactList from 'react-list'; // eslint-disable-line no-unused-vars
 import Image from "react-graceful-image";
 import Swiper from 'swiper/dist/js/swiper.js';
+import Nav from '../component/Nav';
 
 // Story Data
 const story_data = data.stories;
@@ -178,12 +179,12 @@ class Search extends Component {
     if(s.time === "") {
       style = " bg-white dark-gray w7-ns w5 pa3";
       image = " dn";
-      if(this.state.topic <= 5) icon = (<img src={topic_data[this.state.topic].icon} width="44" height="44" className="pr3" />);
+      if(this.state.topic <= 5) icon = (<img src={topic_data[this.state.topic].icon} width="44" height="44" className="pr3" alt={topic_data[this.state.topic].title}/>);
       else d = " dn";
     } else {
       image = " flex aic"
     }
-    if(this.state.topic == 0) {
+    if(this.state.topic === 0) {
       icon = ""
     }
     let cover = ""
@@ -229,7 +230,7 @@ class Search extends Component {
   topicList = () => {
     return (<ul className="topicBox mw8-ns center list flex space-between pa0 ph2-ns nowrap list overflow-x-scroll dragscroll">{topic_data.map((t, i) => { 
       let highlight = '';
-      let img = (<img src={t.icon} width="36" height="36" className="pr2" />);
+      let img = (<img src={t.icon} width="36" height="36" className="pr2" alt={t.title}/>);
       if(t.title === '全部事件') {
         highlight = 'active'
         img = ''
@@ -361,7 +362,8 @@ class Search extends Component {
         <Helmet>
             <title>台灣環境史三十年大事紀 - 我們的島二十週年</title>
         </Helmet>
-        <div className="mw8-ns center ph3-ns mb4-ns">
+        <Nav timeline={false} notfix={true}/>
+        <div className="mw8-ns center ph3-ns mb4-ns pt4-l pt5">
           <div className="cf mb3-ns mb2">
             <div className="fl w-100 w-40-l flex aic mb3 mb0-l ph0-ns ph3">
               <h2 className="ma0 nowrap">大事紀標題</h2>

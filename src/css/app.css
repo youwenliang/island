@@ -28,6 +28,10 @@ a {
   color: #0c0c0d;
 }
 
+.white a {
+  color: #fff;
+}
+
 nav {
   height: 66px;
   width: 100vw;

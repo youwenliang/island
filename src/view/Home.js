@@ -1,6 +1,5 @@
 /*global FB*/
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import {Helmet} from "react-helmet";
 import Cover from '../component/Cover'
 import Timeline from '../component/Timeline'
