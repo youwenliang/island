@@ -186,8 +186,20 @@ function Taiwan(props) {
 
 /*03*/
 function Illustration(props) {
+  var text2 = null;
+  var h = "min-vh-150"
+  if(props.number === 2) {
+    h = "min-vh-200"
+    text2 = (
+      <div className="cf black mt50vh">
+        <div className="w-50-l w-100 fr-l pa4-l pa3 bg-white">
+          <p className="f4 lh-copy mv0">{props.text2}</p>
+        </div>
+      </div>
+    )
+  }
   return (
-    <section className="min-vh-200 flex aic relative">
+    <section className={h+" flex aic relative"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
           <figure className="center mw80 w-100">
@@ -201,11 +213,7 @@ function Illustration(props) {
             <p className="f4 lh-copy mv0">{props.text1}</p>
           </div>
         </div>
-        <div className="cf black mt50vh">
-          <div className="w-50-l w-100 fr-l pa4-l pa3 bg-white">
-            <p className="f4 lh-copy mv0">{props.text2}</p>
-          </div>
-        </div>
+        {text2}
       </div>
     </section>
   )
@@ -320,16 +328,24 @@ function PhotoMultiple(props) {
     height: "650px"
   }
 
-  for (var i = 0; i < props.image.length; i++){
+  for (var i = 0; i < props.images.length; i++){
     var item = {
       width: "480px",
       height: "320px",
-      backgroundImage: "url("+props.image[i]+")",
+      backgroundImage: "url("+props.images[i]+")",
       backgroundSize: "cover",
       backgroundPosition: "center center"
     }
+    var bottomRight = {
+      bottom: "0px",
+      right: "0px",
+      background: "rgba(0,0,0,.2)",
+      padding: "20px"
+    }
     var photos = (
-      <div className="grid-item bg-gray" style={item} key={i}></div>
+      <div className="grid-item bg-gray relative" style={item} key={i}>
+        <label className="absolute white" style={bottomRight}>{props.label[i]}</label>
+      </div>
     )
     if(i%2 === 0) columns+="480px ";
     grid.push(photos);
@@ -562,6 +578,7 @@ class Event01 extends Component {
         />
 
         <Illustration 
+          number = {2}
           text1={this.props.data.illustrationText[0]}
           text2={this.props.data.illustrationText[1]}
           illustration = {this.props.data.illustration}
@@ -570,7 +587,7 @@ class Event01 extends Component {
         <PhotoSwitch 
           images={this.props.data.photoswitch} 
           text={this.props.data.photoswitchText}
-        /> {/*增加照片說明文字*/}
+        />
 
         {/*過場*/}
 
@@ -651,7 +668,52 @@ class Event02 extends Component {
   render() {
     return (
       <div>
-        <p>event02</p>
+        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        
+        <Taiwan
+          text1={this.props.data.taiwanText[0]}
+          text2={this.props.data.taiwanText[1]}
+          illustration = {this.props.data.taiwan}
+          background = {this.props.data.taiwanBG}
+        />
+
+        <Illustration
+          number = {1}
+          text1={this.props.data.illustrationText[0]}
+          illustration = {this.props.data.illustration}
+        />
+
+        <Video 
+          videoID="01"
+          link={this.props.data.video[0]}
+          text={this.props.data.videoText[0]}
+        />
+
+        <Transition/>
+
+        <Video 
+          videoID="02"
+          link={this.props.data.video[1]}
+          text={this.props.data.videoText[1]}
+        />
+
+        <PhotoSwitch 
+          images={this.props.data.photoswitch} 
+          text={this.props.data.photoswitchText}
+        />
+
+        <Video 
+          videoID="03"
+          link={this.props.data.video[2]}
+          text=""
+        />
+
+        <PhotoMultiple
+          text={this.props.data.photoMultipleText}
+          images={this.props.data.photoMultiple}
+          label={this.props.data.photoMultipleLabel}
+        />
+        <EndingVideo link={"https://youtube.com/embed/aeaNKyjoXcs?rel=0"}/>
       </div>
     );
   }

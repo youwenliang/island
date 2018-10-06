@@ -112,7 +112,7 @@ var data = {
   // 13 Page Events
   "pageEvents": {
     "changing-tamsui-river": {
-      "title": "變遷淡水河 - 我們的島",
+      "title": "變遷 淡水河 - 我們的島",
       "id": "事件1",
       // CoverVideo
       "coverTitle": "/events/changing-tamsui-river/illustrations/01title.svg",
@@ -134,7 +134,7 @@ var data = {
         "總是人潮絡繹不絕的淡水河，是城市人們的出口，六百多萬人的生活和淡水河流域緊密相依。\n\n現在的你很難想像，1993年的淡水河畔，是滿天的垃圾和惡臭味，讓人想快速離開。",
         "讓我們乘坐時光機，回到三十年前的淡水河。\n\n一啟航，迎面而來是陣陣臭氣，往上沿著大漢溪而上，岸邊竟有著一座又一座的「垃圾山」，沒處理的污水直接排放，河面處處漂浮垃圾。不要說什麼河岸景觀第一排，就算是在這待一分鐘，也待不下去。"
       ],
-      "illustration": "/events/changing-tamsui-river/illustrations/001new.svg",
+      "illustration": "/events/changing-tamsui-river/illustrations/illustrationA.svg",
       // Photo Switch
       "photoswitch": ["/events/changing-tamsui-river/A8.jpg", "/events/changing-tamsui-river/A4.jpg", "/events/changing-tamsui-river/A6.jpg", "/events/changing-tamsui-river/A2.jpg", "/events/changing-tamsui-river/A7.jpg"],
       "photoswitchText": "在只求經濟發展忽視環境的七八零年代，政府並沒有完善的垃圾處理政策，當時鄉鎮公所都是自行找地堆置垃圾，海邊與河岸就成了最佳的垃圾場，長久下來不但污染河水，也影響水流。\n\n直到1990年代，環保意識抬頭，人們對河川的髒污忍無可忍，政府開始進行淡水河的整治。其中1992年開始的「大漢溪沿岸舊垃圾清除計畫」，就清運了755萬立方米垃圾，運到新北市林口下罟子掩埋場掩埋。",
@@ -168,19 +168,42 @@ var data = {
       "stepImage": "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
       "photo": ["https://fakeimg.pl/600x480/?text=PhotoText&retina=1"],
       
-
-      "photoMultipleText": "與水親近，是人類亙古以來的渴望。1998年的淡水河口，在退潮期間，你還有機會看到八里居民在灘地上耙文蛤，在快速都市化的大台北，這群老居民仍舊與熟悉的河海，依存過生活。不過隨著開發建設，人與河海之間的關係，逐漸在轉變。",
-      "photoMultiple": [
-        "https://fakeimg.pl/1200x900/000000/222222/?text=photo1&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo2&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo3&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo4&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo5&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo6&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo7&retina=1", "https://fakeimg.pl/1200x900/000000/222222/?text=photo8&retina=1"],
-      
       "photoAudioText": "???",
       "photoAudioPhoto": "https://fakeimg.pl/600x800/cccccc/222222/?text=person&retina=1",
       "photoAudio": "/events/changing-tamsui-river/audios/sample.mp3"
 
     },
     "reborn-erren-river": {
-      "title": "this is title 02",
-      "id": "事件2"
+      "title": "重生 二仁溪 - 我們的島",
+      "id": "事件2",
+      //CoverVideo
+      "coverTitle": "/events/reborn-erren-river/illustrations/01title.svg",
+      "coverDescription": "靠著廢五金致富，卻留下污染，造就黑龍江得花多少時間與金錢，才能換回二仁溪的重生？",
+      "coverVideo": "/events/reborn-erren-river/videos/B17(2012年二仁溪兩岸廢棄物導覽).mp4",
+      // Taiwan
+      "taiwanText": [
+        "二仁溪的地理位置",
+        "二仁溪，上游發源於高雄內門區，為台南市與高雄市的界河。兩岸分別流經高雄的田寮、阿蓮、路竹以及台南的關廟、歸仁、仁德等區，最後由高雄茄萣出海。"
+      ],
+      "taiwan": "/events/reborn-erren-river/illustrations/taiwan.svg",
+      "taiwanBG": "https://fakeimg.pl/600x480/333333/555555?text=Taiwan&retina=1",
+      // Illustration
+      "illustrationText": [
+        "如果要說全台灣命運最悲慘的河流，很多人腦海裡浮現的很可能是二仁溪。\n\n二仁溪中下游地區曾經是廢五金與熔煉業的大本營，尤其是北岸的台南灣裡，六零年代，家家戶戶幾乎都在從事拆解廢五金的行業，空氣中總是瀰漫著酸臭煙霧。"
+      ],
+      "illustration": "/events/reborn-erren-river/illustrations/illustrationB.svg",
+      // Videos
+      "video":["/events/reborn-erren-river/videos/B47-早期二仁溪拆解焚燒綠牡蠣.mp4", "/events/reborn-erren-river/videos/B47-早期二仁溪拆解焚燒綠牡蠣.mp4", "/events/reborn-erren-river/videos/B47-早期二仁溪拆解焚燒綠牡蠣.mp4"],
+      "videoText":["廢五金拆解過程中使用的酸性化學物質，就直接排放到河水中，有時甚至還有露天焚燒的廢電纜。在這樣的摧殘下，二仁溪告別了清澈，成為眾人口中又髒又臭的黑龍江。\n\n直到1986年爆發綠牡蠣事件，震驚全台，這才發現二仁溪含有超標重金屬，因此開始進行整治。", "除了廢五金產業，二仁溪還遭受到另一項污染難題。在二仁溪支流中，污染最為嚴重的就是三爺宮溪，不僅有超過百家畜牧場廢水，還有電鍍工廠、金屬表面處理工廠偷排的廢水，河水濃稠如油墨是家常便飯，因此在二仁溪整治過程中，三爺宮溪是頭號要犯。我們2002年在三爺宮溪和二仁溪的匯流處，撈起溪水，水色黑不透光，十多年後，我們再度搭船回到同樣的匯流處，這次撈起來的水色，已經明顯清澈許多。"],
+      // Photo Switch
+      "photoswitch": ["/events/reborn-erren-river/B49.jpg", "/events/reborn-erren-river/B50.jpg", "/events/reborn-erren-river/B51.jpg", "/events/reborn-erren-river/B52.jpg", "/events/reborn-erren-river/B53.jpg"],
+      "photoswitchText": "2018年8月連續豪雨的沖刷下，二仁溪出海口的廢棄物再次現形。早期二仁溪整治過程中，因為經費問題還殘餘幾處電子廢棄物堆置在河邊。根據台南市環保局與當地環團的調查，二仁溪的出海口、南萣橋附近與仁德區至少就有三處廢棄物堆置地點，至今仍可看到大量廢五金。在經年累月的沖刷下，有害物質持續流入河水並沉積在底泥中，對河川生態形成威脅。據六河局估計這些電子廢棄物至少有一萬多噸，清除經費高達三億，目前還沒有清運計畫，是二仁溪整治至今，難以徹底解決的痛處。當初少數廢五金業者以環境為代價賺取利潤，如今社會還在持續付出成本。",
+      "photoswitchLabel": ["2018年二仁溪仁德段電子廢棄物緊鄰河水，日夜掏刷", "2018年二仁溪出海口殘存的電子廢棄物仍卡在消波塊中", "1993.2018年二仁溪仁德段廢棄電路板在水中", "1994.2018年二仁溪南萣橋附近的殘存廢棄物已生青苔", "2018年二仁溪尚未清除的仁德段廢棄物，只能用帆布暫時蓋住"],
+      // Photo Multiple
+      "photoMultipleText": "不只二仁溪，根據環保署2017年的環保統計年報，台灣至今還有30多條以上河川遭到中重度污染，像是長年受到工業廢水排放的桃園黃墘溪、和石化區緊鄰的高雄後勁溪或是飽受中華紙漿廢水長年排放的花蓮溪等等，這些多年來承受污染威脅的河川，到現在還在等待清澈的一天。",
+      "photoMultiple": ["/events/reborn-erren-river/B12.jpg", "/events/reborn-erren-river/B37.jpg", "/events/reborn-erren-river/B31.jpg", "/events/reborn-erren-river/B35.jpg", "/events/reborn-erren-river/B42.jpg", "/events/reborn-erren-river/B33.jpg","/events/reborn-erren-river/B36.jpg", "/events/reborn-erren-river/B25.jpg", "/events/reborn-erren-river/B43.jpg"],
+      "photoMultipleLabel": ["1993年中華紙漿廢水排放花蓮溪", "2001年工業廢水排放到桃園黃墘溪", "2009年工業廢水排放到後勁溪", "2012年高雄阿公店溪上游畜牧廢水污染", "2012年桃園觀音工業區廢水排放富林溪", "2013年日月光偷排高雄後勁溪", "2014年工業廢水排放彰化番雅溝", "2014年觀音工業區廢水排放黃墘溪", "2018年畜牧廢水排放到雲林縣水林鄉五汴排水"],
+
     },
     "land-crabs-survival": {
       "title": "this is title 03",

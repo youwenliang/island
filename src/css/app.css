@@ -676,7 +676,7 @@ ul.none {
 }
 
 .play {
-  background-image: url('/images/icons/play.svg');
+  background-image: url('/images/icons/pause.svg');
   background-size: 40px 40px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -688,7 +688,7 @@ ul.none {
   border-radius: 100%;
 }
 .play.pause {
-  background-image: url('/images/icons/pause.svg');
+  background-image: url('/images/icons/play.svg');
 }
 
 
