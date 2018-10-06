@@ -218,12 +218,58 @@ var data = {
       "id": "事件5"
     },
     "lishan-high-mountain-farms": {
-      "title": "this is title 06",
-      "id": "事件6"
+      "title": "咬一口高山青翠 - 我們的島",
+      "id": "事件6",
+      //CoverVideo
+      "coverTitle": "/events/lishan-high-mountain-farms/illustrations/01title.svg",
+      "coverDescription": "這裡曾經林木蒼鬱\n如今滿山的高麗菜、茶樹和果園\n光禿的山頭 崩落的土石\n見證的是人的意志\n還是大地的嗚咽",
+      "coverVideo": "/events/lishan-high-mountain-farms/videos/F47梨山空拍1.mp4",
+      // Taiwan
+      "taiwanText": [
+        "梨山的地理位置",
+        "梨山位於台中市與宜蘭縣交界，大甲溪的上游海拔兩千公尺左右的山區。行政區域屬台中市和平區，而大梨山地區則包括梨山、松茂、佳陽、環山等泰雅族部落。"
+      ],
+      "taiwan": "/events/lishan-high-mountain-farms/illustrations/taiwan.svg",
+      "taiwanBG": "https://fakeimg.pl/600x480/333333/555555?text=Taiwan&retina=1",
+      // Illustration
+      "illustrationText": [
+        "吃一口清脆的高麗菜，你可知道它來自哪裡嗎？\n\n半個世紀以來，梨山的歷史，可說是台灣高山農業發展的縮影。從五十年代種植蘋果，到後來的水梨、甜柿，近十多年來果樹利潤下降，取而代之的是茶樹、高麗菜地不斷擴張。高山農業支撐起許多人的生計，也滿足國人蔬果的需求，然而，成就了高山農業，環境代價是甚麼？高山農業只能是跟老天爺賭博的投機產業嗎？"
+      ],
+      "illustration": "/events/lishan-high-mountain-farms/illustrations/illustrationF.svg",
+      // PhotoFull
+      "photoFullText": ["站在梨山賓館前的觀景台，連綿的雪山山脈映入眼簾，林木蓊鬱，冬季覆雪、夏季蒼翠。早年梨山一帶是層次豐富的森林，1950年代政府開發中橫，為安置上山開路的榮民，輔導榮民種植蘋果、水梨等溫帶水果，隨著中橫的開通，農民也上山墾拓，梨山的面貌從此改變。", "相較於果樹，茶樹是更淺根的作物，高麗菜則更不利水土保持。果樹多少仍有一些涵養水土的功能，但是高麗菜地每三個月收成翻耕一次，土壤裸露難以保水，雨水一下來泥土直接被沖刷流入水庫，邊坡也因為缺乏植被保護，造成崩塌。"],
+      "photoFull": ["/events/lishan-high-mountain-farms/F46-梨山觀景台望出去.jpg", "/events/lishan-high-mountain-farms/F29.jpg"],
+      "photoFullTextLabel": ["梨山觀景台"],
+      // Video
+      "video": ["/events/lishan-high-mountain-farms/videos/F14-農業上山短片.mp4", "/events/lishan-high-mountain-farms/videos/F32-梨山排水隧道(空景當底圖影音).mp4"],
+      "videoText": ["近十多年來茶園、高麗菜園更是攻城掠地，一步步取代原本翠綠的山頭，根據統計，大梨山地區果樹與高冷蔬菜種植面積超過4000公頃(要換算)，產值達26億。", "土石向大甲溪滾落，表層崩塌之外還有深層隱憂。梨山處在中央山脈與雪山山脈之間，狹長的帶狀崩塌地，這樣的地質條件與小林村相似，有深層崩塌的地滑危機。\n\n1990年，梨山發生大規模滑動，每年出現5到10公分的變位，著名的梨山賓館也因此歇業。直到中興大學土木工程系蘇苗彬教授提出了一個控制地滑風險的排水計畫，以10億6800萬的經費在梨山賓館下方打出兩座排水隧道，每年排出100萬立方公尺的水（相當於666座標準游泳池的水量），來維持本區230公頃土地的安全。"],
+      // PhotoSwitch
+      "photoswitch": ["/events/lishan-high-mountain-farms/F17.jpg", "/events/lishan-high-mountain-farms/F19.jpg", "/events/lishan-high-mountain-farms/F25.jpg", "/events/lishan-high-mountain-farms/F18.jpg"],
+      "photoswitchText": "老一輩的台灣人或許都還記得，在民國六十年代，買一顆蘋果就是一天的工資，蘋果是奢侈品，只有生病時或長輩才能品嘗。那時是梨山最風光的年代，許多平地人上山租地開墾，大學生也常利用暑假上山到果園打工。九十年代台灣加入WTO，蘋果水梨等價格下跌，再加上氣候變遷等因素，種植水果風險提高，許多果農將果樹砍掉，改種風險較低的茶樹，高山茶面積逐年增加。另一方面，原本在武陵農場、福壽山農場等地種植高山高麗菜的菜農在農場土地收回造林後並未下山，轉而承租原住民保留地或農場的放領地。高麗菜屬短期作物風險低，且利潤遠高於果樹，許多地主為了賺取更高額的租金，將土地轉租菜農。",
+      "photoswitchLabel": ["2004年，福壽山農場種植大蒜的農民", "2009年，連綿不斷的高麗菜田", "2009年，蘋果、 水梨是早期開墾的高冷作物", "2015年，民國六七零年代政府鼓勵果農改種茶樹。"],
     },
     "lushan-hotspring-risk": {
-      "title": "this is title 07",
-      "id": "事件7"
+      "title": "冒險泡湯去 廬山 - 我們的島",
+      "id": "事件7",
+      //CoverVideo
+      "coverTitle": "/events/lushan-hotspring-risk/illustrations/01title.svg",
+      "coverDescription": "號稱天下第一泉的廬山溫泉，\n因為泉質優良，一度熙熙攘攘，\n十年前，暴洪沖走了繁華，\n曾經人聲鼎沸的山城，只剩空蕩。",
+      "coverVideo": "/events/lushan-hotspring-risk/videos/G13-塔羅灣溪滾滾洪流縮短版.mp4",
+      // Taiwan
+      "taiwanText": [
+        "盧山的地理位置",
+        "廬山溫泉位在南投縣仁愛鄉，海拔高度約1250公尺，鄰近清境農場與合歡山。"
+      ],
+      "taiwan": "/events/lushan-hotspring-risk/illustrations/taiwan.svg",
+      "taiwanBG": "https://fakeimg.pl/600x480/333333/555555?text=Taiwan&retina=1",
+      // Illustration
+      "illustrationText": [
+        "山明水秀，因水而起 - 廬山是歷史悠久的休閒聖地\n\n然而，好景不常，風災暴洪加上大面積崩塌的雙重衝擊，現在的廬山早已不復當年。"
+      ],
+      "illustration": "/events/lushan-hotspring-risk/illustrations/illustrationG.svg",
+      // Video
+      "videoText": ["廬山溫泉在日治時期就已經開發，當時因為廬山與日本的富士山景色相似，稱為「富士溫泉」。國民政府時期改稱「廬山溫泉」。溫泉露頭高達攝氏98度，屬於碳酸氫鈉泉，無色無味，可飲可浴，泉質極優，飯店越蓋越多，越蓋越豪華，使廬山成為熱鬧山城。", "夢醒時分\n\n2008年9月，辛樂克颱風過境，降下一千多毫米的雨量，塔羅灣溪暴漲，滾滾洪水漫向兩側的溫泉旅館，暴洪沖倒位在河川行水區的綺麗飯店和公主小妹兩棟旅館，怵目驚心的一刻，讓廬山的發展，急轉直下。", "與河爭地嘗苦果\n\n一場又一場的災難，是人們與河爭地的苦果。颱風帶來瞬間強降雨、導致上游集水區嚴重崩塌，產生大量土砂，廬山地區的塔羅灣溪河段，因為溫泉飯占用河川行水區，導致河道窄縮，原本80公尺寬的河道，只剩20公尺寬，因而通洪及輸砂能力嚴重不足，造成兩側溫泉飯店大淹水，水淹一至二層樓高，洪水退去之後，飯店一樓塞滿土砂，無法清理，業者只好將二樓改作一樓，慘澹經營。", "都市計畫變更\n\n2011年，南投縣政府公告「變更廬山風景特定區計畫」，將母安山地滑影響範圍改劃為保護區。經濟部公告塔羅灣溪堤防預定線範圍內為河川區。2012年，南投縣溫泉區管理計畫廢止廬山溫泉區。這兩項變革，正式宣告廬山溫泉接近終點。\n\n五家合法業者已領取總共7億元的補償金，正式歇業。目前還有十多家溫泉業者繼續經營。南投縣政府表示，四十多家業者中，有三十九家願意前往，這將是全台第一個產業遷建的案例。然而，到福興農場投資一家溫泉旅館至少需要一億的資金，遭受多次風災重創的廬山業者，是否還有能力前往？", "量穩質優的泉水，讓廬山因而繁華。然而過度開發、與河爭地加上母安山的危險地質，從崛起到崩毀，不過短短數十年。人不能無止境的向大自然索求，廬山一步步走到今日，正是向環境誠心認錯的時候。"],
+      "video": ["/events/lushan-hotspring-risk/videos/G17-廬山泡溫泉景.mp4", "/events/lushan-hotspring-risk/videos/G21-2008綺麗飯店倒塌.mp4", "/events/lushan-hotspring-risk/videos/G15-2008.9.塔羅灣洪流沖入飯店門口(當底圖).mp4", "/events/lushan-hotspring-risk/videos/G16-廬山業者2018.mp4", "/events/lushan-hotspring-risk/videos/G20-廬山溫泉露頭.mp4"],
     },
     "hushan-reservoir-lost-water": {
       "title": "this is title 08",

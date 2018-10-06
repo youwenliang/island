@@ -689,13 +689,15 @@ class Event02 extends Component {
           text={this.props.data.videoText[0]}
         />
 
-        <Transition/>
+        <Transition/> {/*年代橫向*/}
 
         <Video 
           videoID="02"
           link={this.props.data.video[1]}
           text={this.props.data.videoText[1]}
         />
+
+        {/*這是什麼？*/}
 
         <PhotoSwitch 
           images={this.props.data.photoswitch} 
@@ -753,7 +755,52 @@ class Event06 extends Component {
   render() {
     return (
       <div>
-        <p>event06</p>
+        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        
+        <Taiwan
+          text1={this.props.data.taiwanText[0]}
+          text2={this.props.data.taiwanText[1]}
+          illustration = {this.props.data.taiwan}
+          background = {this.props.data.taiwanBG}
+        />
+
+        <Illustration
+          number = {1}
+          text1={this.props.data.illustrationText[0]}
+          illustration = {this.props.data.illustration}
+        />
+
+        <PhotoTextFull
+          order="right"
+          text={this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+        />
+
+        <Video 
+          videoID="01"
+          link={this.props.data.video[0]}
+          text={this.props.data.videoText[0]}
+        />
+
+        <PhotoSwitch 
+          images={this.props.data.photoswitch} 
+          text={this.props.data.photoswitchText}
+        />
+
+        <PhotoTextFull
+          order="left"
+          text={this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
+        />
+
+        <Video 
+          videoID="02"
+          link={this.props.data.video[1]}
+          text={this.props.data.videoText[1]}
+        />
+
       </div>
     );
   }
@@ -763,7 +810,45 @@ class Event07 extends Component {
   render() {
     return (
       <div>
-        <p>event07</p>
+        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        
+        <Taiwan
+          text1={this.props.data.taiwanText[0]}
+          text2={this.props.data.taiwanText[1]}
+          illustration = {this.props.data.taiwan}
+          background = {this.props.data.taiwanBG}
+        />
+
+        <Video 
+          videoID="01"
+          link={this.props.data.video[0]}
+          text={this.props.data.videoText[0]}
+        />
+
+        <Illustration
+          number = {1}
+          text1={this.props.data.illustrationText[0]}
+          illustration = {this.props.data.illustration}
+        />
+
+        <Video 
+          videoID="02"
+          link={this.props.data.video[1]}
+          text={this.props.data.videoText[1]}
+        />
+
+        <Video 
+          videoID="03"
+          link={this.props.data.video[2]}
+          text={this.props.data.videoText[2]}
+        />
+
+        <Video 
+          videoID="04"
+          link={this.props.data.video[3]}
+          text={this.props.data.videoText[3]}
+        />
+        
       </div>
     );
   }
