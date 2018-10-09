@@ -137,7 +137,7 @@ function CoverVideo(props) {
   return (
     <section className="cover min-vh-100 flex aic relative video-content">
       <div className="w-100 h-100 absolute top-left clipping">
-      <div className="bg-light-gray w-100 h-100 fixed fixed-content">
+      <div className="bg-light-gray w-100 h-100 fixed fixed-content pn">
         <div className="bg-gray o-20 w-100 h-100 absolute z4 pn"/>
         <div className="videoBg">
           <video id="coverVideo" muted loop autoPlay playsInline>
@@ -166,7 +166,7 @@ function Taiwan(props) {
   return (
     <section className="cover min-vh-150 flex aic relative">
       <div className="w-100 h-100 absolute top-left clipping">
-        <div className="w-100 h-100 fixed fixed-content flex aic" style={bgStyle}>
+        <div className="w-100 h-100 fixed fixed-content pn flex aic" style={bgStyle}>
           <figure className="w-100">
             <img className="fr-l w-50-l w-100 taiwan" src={props.illustration} alt="Taiwan"/>
           </figure>
@@ -201,7 +201,7 @@ function Illustration(props) {
   return (
     <section className={h+" flex aic relative"}>
       <div className="w-100 h-100 absolute top-left clipping">
-        <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
+        <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
           <figure className="center mw80 w-100">
             <img className="w-50-l w-100" src={props.illustration} alt="illustration"/>
           </figure>
@@ -230,18 +230,20 @@ function PhotoTextFull(props) {
     objectFit: "cover",
     width: "100%"
   }
-  var bottomRight = {
-    bottom: "40px",
-    right: "40px"
+  var bottomLeft = {
+    bottom: "0px",
+    left: "0px",
+    background: "rgba(0,0,0,.2)",
+    padding: "20px"
   }
   return (
     <section className="min-vh-150 flex aic relative">
       <div className="w-100 h-100 absolute top-left clipping">
-        <div className="bg-white w-100 h-100 fixed fixed-content flex aic">
+        <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
           <figure className="w-100 ma0">
             <img className="w-100" style={fullImage} src={props.image} alt="background"/>
           </figure>
-          <label className="white absolute" style={bottomRight}>{props.label}</label>
+          <label className="white absolute" style={bottomLeft}>{props.label}</label>
         </div>
       </div>
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
@@ -272,7 +274,7 @@ function PhotoText(props) {
   return (
     <section className="min-vh-150 flex aic relative">
       <div className="w-100 h-100 absolute top-left clipping">
-        <div className={color1+" w-100 h-100 fixed fixed-content flex aic"}>
+        <div className={color1+" w-100 h-100 fixed fixed-content pn flex aic"}>
           <figure className="center mw80 w-100">
             <img className={"w-50-l w-100 "+photo} src={props.image} alt="description"/>
           </figure>
@@ -292,19 +294,21 @@ function PhotoText(props) {
 /*06*/
 function PhotoSwitch(props) {
   var list = props.images;
+  var title = props.label;
   const images = [];
   for(var i = 0; i < list.length; i++) {
     var temp = {
       original: list[i],
-      thumbnail: list[i]
+      thumbnail: list[i],
+      description: title[i]
     }
     images.push(temp);
   }
   return (
-    <section className="min-vh-200 flex aic w-100 relative">
+    <section className="min-vh-200 flex aic w-100 relative bvh">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-light-gray w-100 h-100 fixed fixed-content">
-          <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} autoPlay={true} showNav={false} />
+          <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} autoPlay={true} />
         </div>
       </div>
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
@@ -441,7 +445,7 @@ function Video(props) {
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>
         <div className="fixed sound cp z10" onClick={(e) => soundVideo(e)}></div>
-        <div className="bg-light-gray w-100 h-100 fixed fixed-content">
+        <div className="bg-light-gray w-100 h-100 fixed fixed-content pn">
           <div className="videoBg">
             <video id={'video'+props.videoID} muted loop playsInline>
               <source src={props.link} type="video/mp4"/>
@@ -560,7 +564,9 @@ function PhotoAudio(props) {
 
 function Transition(props) {
   return (
-    <section className="banner pv6 bg-white"></section>
+    <section className="banner pt6 pb4 bg-white">
+      <p className="lh-copy mw8 f4 center">{props.text}</p>
+    </section>
   )
 }
 
@@ -587,6 +593,7 @@ class Event01 extends Component {
         <PhotoSwitch 
           images={this.props.data.photoswitch} 
           text={this.props.data.photoswitchText}
+          label={this.props.data.photoswitchLabel}
         />
 
         {/*過場*/}
@@ -702,6 +709,7 @@ class Event02 extends Component {
         <PhotoSwitch 
           images={this.props.data.photoswitch} 
           text={this.props.data.photoswitchText}
+          label={this.props.data.photoswitchLabel}
         />
 
         <Video 
@@ -786,6 +794,7 @@ class Event06 extends Component {
         <PhotoSwitch 
           images={this.props.data.photoswitch} 
           text={this.props.data.photoswitchText}
+          label={this.props.data.photoswitchLabel}
         />
 
         <PhotoTextFull
@@ -842,11 +851,11 @@ class Event07 extends Component {
           link={this.props.data.video[2]}
           text={this.props.data.videoText[2]}
         />
-
+        <Transition text={this.props.data.videoText[3]}/>
         <Video 
           videoID="04"
           link={this.props.data.video[3]}
-          text={this.props.data.videoText[3]}
+          text=""
         />
         
       </div>
