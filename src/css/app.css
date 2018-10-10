@@ -17,6 +17,10 @@ body {
   white-space: pre-wrap;
 }
 
+.lh-copy {
+  line-height: 1.618;
+}
+
 .bvh {
   backface-visibility: hidden;
 }
@@ -325,7 +329,7 @@ button,
 }
 
 .eventBox {
-  height: 250px;
+  height: 300px;
 }
 
 .eventBox::-webkit-scrollbar,
@@ -786,7 +790,6 @@ ul.none {
 .cd-image-container {
   position: relative;
   width: 100%;
-  max-height: 70%;
   overflow: hidden;
   /*max-width: 768px;*/
   margin: auto;
@@ -1140,7 +1143,7 @@ ul.none {
     background: rgba(0, 0, 0, 0.4);
     bottom: 0;
     color: #fff;
-    left: 0;
+    right: 0;
     line-height: 1;
     padding: 20px;
     position: absolute;

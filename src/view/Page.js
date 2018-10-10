@@ -138,7 +138,7 @@ function CoverVideo(props) {
     <section className="cover min-vh-100 flex aic relative video-content">
       <div className="w-100 h-100 absolute top-left clipping">
       <div className="bg-light-gray w-100 h-100 fixed fixed-content pn">
-        <div className="bg-gray o-20 w-100 h-100 absolute z4 pn"/>
+        <div className="bg-gray o-30 w-100 h-100 absolute z4 pn"/>
         <div className="videoBg">
           <video id="coverVideo" muted loop autoPlay playsInline>
             <source src={props.link} type="video/mp4"/>
@@ -161,14 +161,34 @@ function Taiwan(props) {
   var bgStyle = {
     backgroundImage: "url("+ props.background +")",
     backgroundSize: "cover",
-    backgroundPosition: "center center"
+    backgroundPosition: "76% center"
+  }
+  var position = {
+    left: "75%",
+    top: "50%",
+    margin: 0,
+    width: "88px",
+    height: "80px",
+    transform: "translate("+props.map+")"
+  }
+  var l = props.text1.split("的")[0];
+  var r = (l.length-2) * 15 + 45 + "px";
+  var label = {
+    background: "rgba(0,0,0,.7)",
+    color: "white",
+    padding: "5px 20px 5px 10px",
+    top: "48px",
+    position: "relative",
+    right: r,
+    zIndex: "-1"
   }
   return (
     <section className="cover min-vh-150 flex aic relative">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="w-100 h-100 fixed fixed-content pn flex aic" style={bgStyle}>
-          <figure className="w-100">
-            <img className="fr-l w-50-l w-100 taiwan" src={props.illustration} alt="Taiwan"/>
+          <figure className="absolute" style={position}>
+            <label style={label}>{props.text1.split("的")[0]}</label>
+            <img src="/images/icons/machinemap.svg" width="88" height="80" alt="Taiwan"/>
           </figure>
         </div>
       </div>
@@ -222,20 +242,29 @@ function Illustration(props) {
 /*04*/
 function PhotoTextFull(props) {
   var text = ""
-  if(props.order === "right") {
-    text = "fr-l"
-  }
+  
   var fullImage = {
     height: "100vh",
     objectFit: "cover",
     width: "100%"
   }
-  var bottomLeft = {
+  var bottomRight = {
     bottom: "0px",
-    left: "0px",
+    right: "0px",
     background: "rgba(0,0,0,.2)",
     padding: "20px"
   }
+
+  var bgcolor = ""
+  var textcolor = ""
+  if(props.color === "dark") {
+    bgcolor = "bg-dark-gray o-80";
+    textcolor = "white";
+  } else {
+    bgcolor = "bg-white o-90";
+    textcolor = "black";
+  }
+
   return (
     <section className="min-vh-150 flex aic relative">
       <div className="w-100 h-100 absolute top-left clipping">
@@ -243,13 +272,14 @@ function PhotoTextFull(props) {
           <figure className="w-100 ma0">
             <img className="w-100" style={fullImage} src={props.image} alt="background"/>
           </figure>
-          <label className="white absolute" style={bottomLeft}>{props.label}</label>
+          <label className="white absolute" style={bottomRight}>{props.label}</label>
         </div>
       </div>
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
-        <div className="cf black">
-          <div className={"w-50-l w-100 pa4-l pa3 bg-near-white "+text}>
-            <p className="f4 lh-copy mv0">{props.text}</p>
+        <div className="cf">
+          <div className={props.position+" w-50-l w-100 pa4-l pa3 relative"}>
+            <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
+            <p className={"f4 lh-copy mv0 z4 relative "+textcolor}>{props.text}</p>
           </div>
         </div>
       </div>
@@ -313,8 +343,8 @@ function PhotoSwitch(props) {
       </div>
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
         <div className="cf white">
-          <div className="w-50-l w-100 fr-l pa4-l pa3 relative">
-            <div className="w-100 h-100 absolute bg-dark-gray o-70 top-left"></div>
+          <div className={"w-50-l w-100 pa4-l pa3 relative "+props.position}>
+            <div className="w-100 h-100 absolute bg-dark-gray o-80 top-left"></div>
             <p className="f4 lh-copy mv0 relative z4">{props.text}</p>
           </div>
         </div>
@@ -380,14 +410,20 @@ function PhotoMultiple(props) {
 
 /*08*/
 function PhotoContrast(props) {
+  let text = null;
+  if(props.text !== "") {
+    text = (
+      <div className="mw8 center cf black mb5">
+        <div className="mw7 w-100 center bg-white">
+          <p className="f4 lh-copy mv0">{props.text}</p>
+        </div>
+      </div>
+    )
+  }
   return (
     <section className="flex aic relative bg-white flex-column pv6">
         <div className="ph3 w-100 z4">
-          <div className="mw8 center cf black mb5">
-            <div className="mw7 w-100 center bg-white">
-              <p className="f4 lh-copy mv0">{props.text}</p>
-            </div>
-          </div>
+          {text}
           <figure className="cd-image-container is-visible z4">
              <img src={props.images[1]} alt="Original" />
              <span className="cd-image-label" data-type="original">{props.images[1].split('(')[1].split('.')[0]}</span>
@@ -429,12 +465,23 @@ function Video(props) {
     }
   }
   var text = null
+  var bgcolor = ""
+  var textcolor = ""
+  if(props.color === "dark") {
+    bgcolor = "bg-dark-gray o-80";
+    textcolor = "white";
+  } else {
+    bgcolor = "bg-white o-90";
+    textcolor = "black";
+  }
+
   if(props.text !== "") {
     text = (
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
-        <div className="cf black">
-          <div className="w-50-l w-100 pa4-l pa3 bg-white">
-            <p className="f4 lh-copy mv0">{props.text}</p>
+        <div className="cf">
+          <div className={props.position+" w-50-l w-100 pa4-l pa3 relative"}>
+            <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
+            <p className={"f4 lh-copy mv0 z4 relative "+textcolor}>{props.text}</p>
           </div>
         </div>
       </div>
@@ -444,10 +491,10 @@ function Video(props) {
     <section className="cover min-vh-200 flex aic relative video-content">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>
-        <div className="fixed sound cp z10" onClick={(e) => soundVideo(e)}></div>
+        <div className="fixed unmute sound cp z10" onClick={(e) => soundVideo(e)}></div>
         <div className="bg-light-gray w-100 h-100 fixed fixed-content pn">
           <div className="videoBg">
-            <video id={'video'+props.videoID} muted loop playsInline>
+            <video id={'video'+props.videoID} loop playsInline>
               <source src={props.link} type="video/mp4"/>
             </video>
           </div>
@@ -464,7 +511,7 @@ function EndingVideo(props) {
     <section className="cover min-vh-100 flex aic relative bg-near-white pv6">
       <div className="mw8 center ph3 z4 relative mb6">
         <div className="cf tc black w-50-l w-80-m w-100 center pa2 bg-white mb5">
-          <h3>想知道淡水河更多故事....</h3>
+          <h3>想知道{props.text}更多故事....</h3>
         </div>
         <iframe width="560" height="315" src={props.link} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
@@ -564,8 +611,8 @@ function PhotoAudio(props) {
 
 function Transition(props) {
   return (
-    <section className="banner pt6 pb4 bg-white">
-      <p className="lh-copy mw8 f4 center">{props.text}</p>
+    <section className="banner pv6 bg-white">
+      <p className="lh-copy mw7 f4 center pre-wrap">{props.text}</p>
     </section>
   )
 }
@@ -580,7 +627,8 @@ class Event01 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {this.props.data.taiwanBG}
+          background = {"/images/taiwan.jpg"}
+          map = {"-75px, -330px"}
         />
 
         <Illustration 
@@ -607,7 +655,8 @@ class Event01 extends Component {
         {/*過場*/}
 
         <PhotoTextFull
-          order="left"
+          position={"fr-l"}
+          color="dark"
           text={this.props.data.photoFullText[0]}
           image = {this.props.data.photoFull[0]}
           label = {this.props.data.photoFullTextLabel[0]}
@@ -622,31 +671,32 @@ class Event01 extends Component {
 
         {/*年代比較*/}
 
-        <PhotoAudio
-          text={this.props.data.photoAudioText}
-          image={this.props.data.photoAudioPhoto}
-          audio={this.props.data.photoAudio}
-        />
-
         <Video 
           videoID="02"
-          link={this.props.data.video[1]}
+          link={this.props.data.video[2]}
           text={this.props.data.videoText[0]}
+        />
+
+        <Transition text={this.props.data.videoText[1]} />
+        <Video 
+          videoID="03"
+          link={this.props.data.video[3]}
+          text=""
         />
 
         {/*過場*/}
 
         <PhotoTextFull
-          order="left"
+          position={"fl-l"}
+          color="dark"
           text={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
         />
 
-        <Transition/>
-
         <PhotoTextFull
-          order="right"
+          position={"fr-l"}
+          color="dark"
           text={this.props.data.photoFullText[2]}
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
@@ -660,12 +710,12 @@ class Event01 extends Component {
         {/*橫向移動背景大圖*/}
 
         <Video 
-          videoID="03"
-          link={this.props.data.video[1]}
-          text={this.props.data.videoText[1]}
+          videoID="04"
+          link={this.props.data.video[4]}
+          text={this.props.data.videoText[2]}
         />
 
-        <EndingVideo link={"https://www.youtube.com/embed/GW71xsyJ8TY?rel=0"}/>
+        <EndingVideo text="淡水河" link={"https://www.youtube.com/embed/GW71xsyJ8TY?rel=0"}/>
       </div>
     );
   }
@@ -681,7 +731,8 @@ class Event02 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {this.props.data.taiwanBG}
+          background = {"/images/taiwan.jpg"}
+          map = {"-245px, 145px"}
         />
 
         <Illustration
@@ -696,10 +747,9 @@ class Event02 extends Component {
           text={this.props.data.videoText[0]}
         />
 
-        <Transition/> {/*年代橫向*/}
-
         <Video 
           videoID="02"
+          position="fr-l"
           link={this.props.data.video[1]}
           text={this.props.data.videoText[1]}
         />
@@ -723,7 +773,7 @@ class Event02 extends Component {
           images={this.props.data.photoMultiple}
           label={this.props.data.photoMultipleLabel}
         />
-        <EndingVideo link={"https://youtube.com/embed/aeaNKyjoXcs?rel=0"}/>
+        <EndingVideo text={"二仁溪"} link={"https://youtube.com/embed/aeaNKyjoXcs?rel=0"}/>
       </div>
     );
   }
@@ -769,7 +819,8 @@ class Event06 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {this.props.data.taiwanBG}
+          background = {"/images/taiwan.jpg"}
+          map = {"-110px, -200px"}
         />
 
         <Illustration
@@ -779,7 +830,7 @@ class Event06 extends Component {
         />
 
         <PhotoTextFull
-          order="right"
+          position={"fr-l"}
           text={this.props.data.photoFullText[0]}
           image = {this.props.data.photoFull[0]}
           label = {this.props.data.photoFullTextLabel[0]}
@@ -792,22 +843,60 @@ class Event06 extends Component {
         />
 
         <PhotoSwitch 
+          position={"fr-l"}
           images={this.props.data.photoswitch} 
           text={this.props.data.photoswitchText}
           label={this.props.data.photoswitchLabel}
         />
 
         <PhotoTextFull
-          order="left"
+          position={"fl-l"}
           text={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
         />
 
         <Video 
+          position={"fr-l"}
+          color="dark"
           videoID="02"
           link={this.props.data.video[1]}
           text={this.props.data.videoText[1]}
+        />
+
+        <Video 
+          position={"fl-l"}
+          videoID="03"
+          link={this.props.data.video[2]}
+          text={this.props.data.videoText[2]}
+        />
+
+        <Transition text={this.props.data.videoText[3]}/>
+        <Video 
+          videoID="04"
+          link={this.props.data.video[3]}
+          text=""
+        />
+
+        <PhotoTextFull
+          position={"fr-l"}
+          color="dark"
+          text={this.props.data.photoFullText[2]}
+          image = {this.props.data.photoFull[2]}
+          label = {this.props.data.photoFullTextLabel[2]}
+        />
+
+        <Video 
+          videoID="05"
+          position={"fr-l"}
+          text=""
+        />
+
+        <PhotoTextFull
+          position={"fl-l"}
+          text={this.props.data.photoFullText[3]}
+          image = {this.props.data.photoFull[3]}
+          label = {this.props.data.photoFullTextLabel[3]}
         />
 
       </div>
@@ -825,7 +914,8 @@ class Event07 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {this.props.data.taiwanBG}
+          background = {"/images/taiwan.jpg"}
+          map = {"-110px, -110px"}
         />
 
         <Video 
@@ -840,22 +930,48 @@ class Event07 extends Component {
           illustration = {this.props.data.illustration}
         />
 
+        <PhotoTextFull
+          position={"fr-l"}
+          text={this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+        />
+
         <Video 
           videoID="02"
+          color="dark"
           link={this.props.data.video[1]}
           text={this.props.data.videoText[1]}
         />
 
+        <PhotoContrast 
+          images={this.props.data.photocontrast}
+          text=""
+        />
+
         <Video 
           videoID="03"
+          color="dark"
+          position={"fr-l"}
           link={this.props.data.video[2]}
           text={this.props.data.videoText[2]}
+        />
+        <PhotoTextFull
+          position={"fl-l"}
+          text={this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
         />
         <Transition text={this.props.data.videoText[3]}/>
         <Video 
           videoID="04"
           link={this.props.data.video[3]}
           text=""
+        />
+        <Video 
+          videoID="05"
+          link={this.props.data.video[4]}
+          text={this.props.data.videoText[4]}
         />
         
       </div>
