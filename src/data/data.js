@@ -214,8 +214,23 @@ var data = {
       "id": "事件4"
     },
     "kinmen-Hou-feng-kang": {
-      "title": "this is title 05",
-      "id": "事件5"
+      "title": "不靠海的金門後豐港",
+      "id": "事件5",
+      //CoverVideo
+      "coverTitle": "/events/kinmen-Hou-feng-kang/illustrations/01title.svg",
+      "coverDescription": "金門後豐港\n一個名稱有港，卻無法出港的地方。\n一個以海維生的百年漁村聚落，\n卻再也不能輕易地親近海。",
+      "coverVideo": "/events/kinmen-Hou-feng-kang/F47梨山空拍1.mp4",
+      // Taiwan
+      "taiwanText": [
+        "後豐港的地理位置",
+        "位在金門西南邊的一個漁村聚落，隸屬金門縣金城鎮，早期被稱為洪門港，因為相傳遠祖為明朝武將洪旭，聚落居民大多姓洪，以捕魚維生，至今已經有四五百年歷史。"
+      ],
+      
+      // Illustration
+      "illustrationText": [
+        "金門，曾經是戰地的最前線，是不能失守的第一道防線，解除軍事管制之後，2001年開放小三通，金門成為台灣、中國兩岸進出的重要門戶，只要四十分鐘的船程，就能往返金門與廈門，小三通帶來了便利與商機，也讓自然海岸生態，因開發漸漸失守。"
+      ],
+      "illustration": "/events/kinmen-Hou-feng-kang/illustrations/illustrationE.svg",
     },
     "lishan-high-mountain-farms": {
       "title": "咬一口高山青翠 - 我們的島",
@@ -299,8 +314,23 @@ var data = {
       "id": "事件11"
     },
     "soil-pollution-tainan": {
-      "title": "this is title 12",
-      "id": "事件12"
+      "title": " 焦土 台鹼安順廠",
+      "id": "事件12",
+      //CoverVideo
+      "coverTitle": "/events/soil-pollution-tainan/illustrations/01title.svg",
+      "coverDescription": "一座化學工廠\n為濱海小鎮帶來短暫繁華\n也默默侵蝕這片土地\n廠區海水池裡 豐富的魚產\n不是上天給海口人的恩賜\n而是終身病痛與折磨的開端",
+      "coverVideo": "/events/soil-pollution-tainan/F47梨山空拍1.mp4",
+      // Taiwan
+      "taiwanText": [
+        "安順廠的地理位置",
+        "台鹼"
+      ],
+      
+      // Illustration
+      "illustrationText": [
+        "台鹼安順廠"
+      ],
+      "illustration": "/events/soil-pollution-tainan/illustrations/illustrationL.svg",
     },
     "event13": {
       "title": "this is title 13",

@@ -501,6 +501,10 @@ ul.none {
   }
 }
 
+.f5 {
+  font-size: 1.125rem;
+}
+
 /* Navigation */
 #section-nav {
   position: fixed;

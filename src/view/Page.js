@@ -74,8 +74,9 @@ class Page extends Component {
           var bottom_of_object = $(this).offset().top + $(this).height();
           var top_of_window = $(window).scrollTop();
           var bottom_of_window = $(window).scrollTop()+ $(window).height();
+          var center_of_window = $(window).scrollTop()+ $(window).height()/2;
           var $this = $(this);
-          if( bottom_of_window >= top_of_object && top_of_window <= bottom_of_object ){
+          if( center_of_window >= top_of_object && center_of_window <= bottom_of_object ){
             if($this.find('video').get(0).paused) {
               if($this.find('video').hasClass('clicked')) ;
               else {
@@ -195,8 +196,8 @@ function Taiwan(props) {
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
         <div className="cf black">
           <div className="w-50-l w-100 fl-l pa4-l pa3 bg-near-white">
-            <h2 className="fw7 lh-copy mt0">{props.text1}</h2>
-            <p className="f4 lh-copy mv0">{props.text2}</p>
+            <h2 className="f3 fw7 lh-copy mt0">{props.text1}</h2>
+            <p className="f5 lh-copy mv0">{props.text2}</p>
           </div>
         </div>
       </div>
@@ -213,7 +214,7 @@ function Illustration(props) {
     text2 = (
       <div className="cf black mt50vh">
         <div className="w-50-l w-100 fr-l pa4-l pa3 bg-white">
-          <p className="f4 lh-copy mv0">{props.text2}</p>
+          <p className="f5 lh-copy mv0">{props.text2}</p>
         </div>
       </div>
     )
@@ -230,7 +231,7 @@ function Illustration(props) {
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
         <div className="cf black">
           <div className="w-50-l w-100 fr-l pa4-l pa3 bg-white">
-            <p className="f4 lh-copy mv0">{props.text1}</p>
+            <p className="f5 lh-copy mv0">{props.text1}</p>
           </div>
         </div>
         {text2}
@@ -279,7 +280,7 @@ function PhotoTextFull(props) {
         <div className="cf">
           <div className={props.position+" w-50-l w-100 pa4-l pa3 relative"}>
             <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"f4 lh-copy mv0 z4 relative "+textcolor}>{props.text}</p>
+            <p className={"f5 lh-copy mv0 z4 relative "+textcolor}>{props.text}</p>
           </div>
         </div>
       </div>
@@ -313,7 +314,7 @@ function PhotoText(props) {
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
         <div className="cf black">
           <div className={"w-50-l w-100 pa4-l pa3 "+color2+" "+text}>
-            <p className="f4 lh-copy mv0">{props.text}</p>
+            <p className="f5 lh-copy mv0">{props.text}</p>
           </div>
         </div>
       </div>
@@ -345,7 +346,7 @@ function PhotoSwitch(props) {
         <div className="cf white">
           <div className={"w-50-l w-100 pa4-l pa3 relative "+props.position}>
             <div className="w-100 h-100 absolute bg-dark-gray o-80 top-left"></div>
-            <p className="f4 lh-copy mv0 relative z4">{props.text}</p>
+            <p className="f5 lh-copy mv0 relative z4">{props.text}</p>
           </div>
         </div>
       </div>
@@ -395,7 +396,7 @@ function PhotoMultiple(props) {
     <section className="flex aic relative bg-white flex-column pv6">      
       <div className="mw8 center cf black mb5 ph3 w-100">
         <div className="mw7 w-100 center bg-white">
-          <p className="f4 lh-copy mv0">{props.text}</p>
+          <p className="f5 lh-copy mv0">{props.text}</p>
         </div>
       </div>
       <div className="w-100 overflow-hidden" style={height}>
@@ -415,7 +416,7 @@ function PhotoContrast(props) {
     text = (
       <div className="mw8 center cf black mb5">
         <div className="mw7 w-100 center bg-white">
-          <p className="f4 lh-copy mv0">{props.text}</p>
+          <p className="f5 lh-copy mv0">{props.text}</p>
         </div>
       </div>
     )
@@ -481,7 +482,7 @@ function Video(props) {
         <div className="cf">
           <div className={props.position+" w-50-l w-100 pa4-l pa3 relative"}>
             <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"f4 lh-copy mv0 z4 relative "+textcolor}>{props.text}</p>
+            <p className={"f5 lh-copy mv0 z4 relative "+textcolor}>{props.text}</p>
           </div>
         </div>
       </div>
@@ -591,7 +592,7 @@ function PhotoAudio(props) {
                   </audio>
                 </div>
                 <div className="player-controls scrubber">
-                  <p className="f4">某某某的錄音檔</p>
+                  <p className="f5">某某某的錄音檔</p>
                   <span id="seekObjContainer">
                     <progress id="seekObj" value="0" max="1"></progress>
                   </span>
@@ -600,7 +601,7 @@ function PhotoAudio(props) {
                   <small className="fr end-time pt2">00:00</small>
                 </div>
               </div>
-              <p className="f4 lh-copy mv4">{props.text}</p>
+              <p className="f5 lh-copy mv4">{props.text}</p>
             </div>
           </div>
         </div>
@@ -612,7 +613,7 @@ function PhotoAudio(props) {
 function Transition(props) {
   return (
     <section className="banner pv6 bg-white">
-      <p className="lh-copy mw7 f4 center pre-wrap">{props.text}</p>
+      <p className="lh-copy mw7 f5 center pre-wrap">{props.text}</p>
     </section>
   )
 }
@@ -803,7 +804,21 @@ class Event05 extends Component {
   render() {
     return (
       <div>
-        <p>event05</p>
+        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        
+        <Taiwan
+          text1={this.props.data.taiwanText[0]}
+          text2={this.props.data.taiwanText[1]}
+          illustration = {this.props.data.taiwan}
+          background = {"/images/taiwan.jpg"}
+          map = {"-110px, -200px"}
+        />
+
+        <Illustration
+          number = {1}
+          text1={this.props.data.illustrationText[0]}
+          illustration = {this.props.data.illustration}
+        />
       </div>
     );
   }
@@ -1023,7 +1038,21 @@ class Event12 extends Component {
   render() {
     return (
       <div>
-        <p>event12</p>
+        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        
+        <Taiwan
+          text1={this.props.data.taiwanText[0]}
+          text2={this.props.data.taiwanText[1]}
+          illustration = {this.props.data.taiwan}
+          background = {"/images/taiwan.jpg"}
+          map = {"-110px, -200px"}
+        />
+
+        <Illustration
+          number = {1}
+          text1={this.props.data.illustrationText[0]}
+          illustration = {this.props.data.illustration}
+        />
       </div>
     );
   }
