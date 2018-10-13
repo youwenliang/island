@@ -112,7 +112,7 @@ var data = {
   // 13 Page Events
   "pageEvents": {
     "changing-tamsui-river": {
-      "title": "變遷 淡水河 - 我們的島",
+      "title": "變遷 淡水河",
       "id": "事件1",
       // CoverVideo
       "coverTitle": "/events/changing-tamsui-river/illustrations/01title.svg",
@@ -174,7 +174,7 @@ var data = {
 
     },
     "reborn-erren-river": {
-      "title": "重生 二仁溪 - 我們的島",
+      "title": "重生 二仁溪",
       "id": "事件2",
       //CoverVideo
       "coverTitle": "/events/reborn-erren-river/illustrations/01title.svg",
@@ -219,21 +219,31 @@ var data = {
       //CoverVideo
       "coverTitle": "/events/kinmen-Hou-feng-kang/illustrations/01title.svg",
       "coverDescription": "金門後豐港\n一個名稱有港，卻無法出港的地方。\n一個以海維生的百年漁村聚落，\n卻再也不能輕易地親近海。",
-      "coverVideo": "/events/kinmen-Hou-feng-kang/F47梨山空拍1.mp4",
+      "coverVideo": "/events/kinmen-Hou-feng-kang/videos/E12(金門後豐港填港空拍).mp4",
       // Taiwan
       "taiwanText": [
         "後豐港的地理位置",
         "位在金門西南邊的一個漁村聚落，隸屬金門縣金城鎮，早期被稱為洪門港，因為相傳遠祖為明朝武將洪旭，聚落居民大多姓洪，以捕魚維生，至今已經有四五百年歷史。"
       ],
-      
       // Illustration
       "illustrationText": [
         "金門，曾經是戰地的最前線，是不能失守的第一道防線，解除軍事管制之後，2001年開放小三通，金門成為台灣、中國兩岸進出的重要門戶，只要四十分鐘的船程，就能往返金門與廈門，小三通帶來了便利與商機，也讓自然海岸生態，因開發漸漸失守。"
       ],
       "illustration": "/events/kinmen-Hou-feng-kang/illustrations/illustrationE.svg",
+      // Photo Full
+      "photoFullText": ["每年一百多萬人次從水頭商港往返金廈兩岸，不過很多人沒注意到，離水頭商港不遠處，有一個名為後豐港的百年漁村，它的興衰跟金門發展息息相關。", "因為填海造陸，鱟在金門最愛的產房消失了四分之三，回想2005年，腳下踩的灘地充滿生機，現在是一片白色的死寂。", "在下一個二十年，金門還是我們曾經的故鄉嗎?"],
+      "photoFull": ["/events/kinmen-Hou-feng-kang/E14後豐港聚落.jpg", "/events/kinmen-Hou-feng-kang/E20-後豐港灣被填平.JPG", "/events/kinmen-Hou-feng-kang/E39-2015.06.30金門海岸32鱟.JPG"],
+      "photoFullTextLabel": ["後豐港聚落", "後豐港灣被填平", "2015.06.30金門海岸32鱟"],
+      // Video
+      "video": ["/events/kinmen-Hou-feng-kang/videos/E41- 金門傳統習俗都脫離不了海.mp4", "/events/kinmen-Hou-feng-kang/videos/E9-鱟爬影音.mp4", "/events/kinmen-Hou-feng-kang/videos/E13鱟生活史動畫.mp4"],
+      "videoText": ["如今後豐港居民要捕魚，得先走遠遠的路來到臨時的港區，再靠著簡易的保麗龍浮具接駁，才能出海。\n\n門前的漁場消失，聚落的生活型態逐漸改變，人離海愈來愈遠，許多過去的歷史也被遺忘，像是早年因為對大海的敬畏與感謝，老一輩的居民會對海進行祭拜，信仰充分顯現人與海的依存關係。", "鱟是一種比恐龍還古老的生物，早在四億五千萬年前，牠們的祖先就已經生活在地球上，由於海岸開發，棲地破壞，多年來在台灣本島幾乎已經很難看到鱟的蹤跡。\n\n當年因為兩岸情勢緊張，金門海岸是閒人勿進的國防要地，才意外的保留了完整棲地，讓金門成為鱟的天堂，沒想到兩岸情勢轉彎，小三通啟動，卻讓鱟面臨了另一場生存戰役。", "全世界有四種鱟，分布在台灣中國及日本沿海的是三棘鱟，鱟的生活史相當有趣，隨著成長過程，牠們會尋找不同的棲地生活。"],
+      // PhotoSwitch
+      "photoswitch": ["/events/kinmen-Hou-feng-kang/E42-2013年金門浯江口開路.jpg", "/events/kinmen-Hou-feng-kang/E43-2013年雙口沙灘BOT.jpg", "/events/kinmen-Hou-feng-kang/E44-小金門排水工程.jpg", "/events/kinmen-Hou-feng-kang/E45-興建中的金門大橋.JPG", "/events/kinmen-Hou-feng-kang/E46-2017年金門博奕公投.jpg"],
+      "photoswitchText": "",
+      "photoswitchLabel": ["2013年金門浯江口開路", "2013年雙口沙灘BOT", "小金門排水工程", "興建中的金門大橋", "2017年金門博奕公投"],
     },
     "lishan-high-mountain-farms": {
-      "title": "咬一口高山青翠 - 我們的島",
+      "title": "咬一口高山青翠",
       "id": "事件6",
       //CoverVideo
       "coverTitle": "/events/lishan-high-mountain-farms/illustrations/01title.svg",
@@ -268,7 +278,7 @@ var data = {
       "photoswitchLabel": ["2004年，福壽山農場種植大蒜的農民", "2009年，連綿不斷的高麗菜田", "2009年，蘋果、 水梨是早期開墾的高冷作物", "2015年，民國六七零年代政府鼓勵果農改種茶樹。"],
     },
     "lushan-hotspring-risk": {
-      "title": "冒險泡湯去 廬山 - 我們的島",
+      "title": "冒險泡湯去 廬山",
       "id": "事件7",
       //CoverVideo
       "coverTitle": "/events/lushan-hotspring-risk/illustrations/01title.svg",
@@ -319,7 +329,7 @@ var data = {
       //CoverVideo
       "coverTitle": "/events/soil-pollution-tainan/illustrations/01title.svg",
       "coverDescription": "一座化學工廠\n為濱海小鎮帶來短暫繁華\n也默默侵蝕這片土地\n廠區海水池裡 豐富的魚產\n不是上天給海口人的恩賜\n而是終身病痛與折磨的開端",
-      "coverVideo": "/events/soil-pollution-tainan/F47梨山空拍1.mp4",
+      "coverVideo": "/events/soil-pollution-tainan/videos/L15-台鹼安順廠空拍2.mp4",
       // Taiwan
       "taiwanText": [
         "安順廠的地理位置",

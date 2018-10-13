@@ -335,6 +335,15 @@ function PhotoSwitch(props) {
     }
     images.push(temp);
   }
+  var text = null;
+  if(props.text !== "") {
+    text = (
+      <div className={"w-50-l w-100 pa4-l pa3 relative "+props.position}>
+        <div className="w-100 h-100 absolute bg-dark-gray o-80 top-left"></div>
+        <p className="f5 lh-copy mv0 relative z4">{props.text}</p>
+      </div>
+    )
+  }
   return (
     <section className="min-vh-200 flex aic w-100 relative bvh">
       <div className="w-100 h-100 absolute top-left clipping">
@@ -344,10 +353,7 @@ function PhotoSwitch(props) {
       </div>
       <div className="mw8 center ph3 w-100 z4 pre-wrap">
         <div className="cf white">
-          <div className={"w-50-l w-100 pa4-l pa3 relative "+props.position}>
-            <div className="w-100 h-100 absolute bg-dark-gray o-80 top-left"></div>
-            <p className="f5 lh-copy mv0 relative z4">{props.text}</p>
-          </div>
+          {text}
         </div>
       </div>
     </section>
@@ -505,6 +511,53 @@ function Video(props) {
     </section>
   )
 }
+
+/*09-1*/
+function SmallVideo(props) {
+  function playVideo(e) {
+    var $video = $('#video'+props.videoID);
+    if(e.target.classList.contains('pause')) {
+      e.target.classList.remove('pause');
+      $video.get(0).play();
+      $video.removeClass('clicked');
+    }
+    else {
+      e.target.classList.add('pause');
+      $video.get(0).pause();
+      $video.addClass('clicked');
+    }
+  }
+  function soundVideo(e) {
+    var $video = $('#video'+props.videoID);
+    if(e.target.classList.contains('unmute')) {
+      e.target.classList.remove('unmute');
+      $video.prop('muted', true);
+    }
+    else {
+      e.target.classList.add('unmute');
+      $video.prop('muted', false);
+    }
+  }
+  return (
+    <section className="flex aic relative pv6 video-content smallVideo">
+      <div className="mw9 center ph3 z4 relative">
+        <div className="cf flex aic flex-column-s">
+          <div className="fl-l w-100 w-50-l ph4-ns ph2 pv3 relative">
+            <div className="absolute play cp z10" onClick={(e) => playVideo(e)}></div>
+            <div className="absolute unmute sound cp z10" onClick={(e) => soundVideo(e)}></div>
+            <video id={'video'+props.videoID} className="w-100" loop playsInline>
+              <source src={props.link} type="video/mp4"/>
+            </video>
+          </div>
+          <div className="fr-l w-100 w-50-l ph4-ns ph2 pv3">
+            <p className="smallText f5 lh-copy mv0 z4 relative black">{props.text}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 
 /*10*/
 function EndingVideo(props) {
@@ -818,6 +871,52 @@ class Event05 extends Component {
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
+        />
+
+        <PhotoTextFull
+          position={"fr-l"}
+          color={"dark"}
+          text={this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+        />
+        <SmallVideo 
+          videoID="01"
+          link={this.props.data.video[0]}
+          text={this.props.data.videoText[0]}
+        />
+
+        <Video 
+          videoID="02"
+          color="dark"
+          link={this.props.data.video[1]}
+          text={this.props.data.videoText[1]}
+        />
+
+        <SmallVideo 
+          videoID="03"
+          link={this.props.data.video[2]}
+          text={this.props.data.videoText[2]}
+        />
+
+        <PhotoTextFull
+          position={"fl-l"}
+          text={this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
+        />
+
+         <PhotoSwitch 
+          images={this.props.data.photoswitch} 
+          label={this.props.data.photoswitchLabel}
+          text=""
+        />
+
+        <PhotoTextFull
+          position={"fl-l"}
+          text={this.props.data.photoFullText[2]}
+          image = {this.props.data.photoFull[2]}
+          label = {this.props.data.photoFullTextLabel[2]}
         />
       </div>
     );

@@ -25,6 +25,17 @@ body {
   backface-visibility: hidden;
 }
 
+.smallText {
+  max-width: 100%;
+}
+
+@media screen and (min-width: 60em) {
+  .smallText {
+    max-width: 27rem;
+  }
+}
+
+
 .clipping {
   overflow: hidden;
   clip: auto;
@@ -234,6 +245,16 @@ button,
 }
 .flex-column {
   flex-direction: column;
+}
+
+.flex-column-s {
+  flex-direction: column;
+}
+
+@media screen and (min-width: 60em) {
+  .flex-column-s {
+    flex-direction: row;
+  }
 }
 
 #cover, #timeline {
@@ -713,6 +734,7 @@ ul.none {
 }
 
 
+
 .sound {
   background-image: url('/images/icons/mute.svg');
   background-size: 40px 40px;
@@ -728,6 +750,15 @@ ul.none {
 
 .sound.unmute {
   background-image: url('/images/icons/unmute.svg');
+}
+
+.smallVideo .play {
+  top: 32px;
+  right: 108px;
+}
+.smallVideo .sound {
+  top: 32px;
+  right: 48px;
 }
 
 /*
