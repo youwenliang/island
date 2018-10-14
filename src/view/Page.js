@@ -1,5 +1,6 @@
 /*global FB*/
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {Helmet} from "react-helmet";
 import loadImage from 'image-promise';
 import data from '../data/data.js';
@@ -22,10 +23,21 @@ class Page extends Component {
       id: params.id,
       view: params.id
     };
+    //Here ya go
+    this.props.history.listen((location, action) => {
+      var view = location.pathname.replace('/ourisland/','').replace('/','');
+      $(document).scrollTop(0);
+      this.setState({
+        view: view,
+        id: view
+      })
+    });
   }
   switchView = (view) => {
+    $(document).scrollTop(0);
     this.setState({
-      view: view
+      view: view,
+      id: view
     })
   }
 
@@ -94,6 +106,7 @@ class Page extends Component {
       });
     })
   }
+
 
   render() {
     var data = pageEvent_data[this.state.id];
@@ -181,7 +194,8 @@ function Taiwan(props) {
     top: "48px",
     position: "relative",
     right: r,
-    zIndex: "-1"
+    zIndex: "-1",
+    whiteSpace: "nowrap"
   }
   return (
     <section className="cover min-vh-150 flex aic relative">
@@ -671,6 +685,22 @@ function Transition(props) {
   )
 }
 
+function Next(props) {
+  return (
+    <section className="banner pv6 bg-white">
+      <div className="cf ph2-ns">
+        <Link to={"../"+props.prev+"/"}> 
+          <div className="fl w-100 w-50-ns pa2 tc" onClick={() => props.switchView(props.prev)}>Prev</div>
+        </Link>
+        <Link to={"../"+props.next+"/"}> 
+          <div className="fr w-100 w-50-ns pa2 tc" onClick={() => props.switchView(props.next)}>Next</div>
+        </Link>
+      </div>
+    </section>
+  )
+
+}
+
 /* Views */
 class Event01 extends Component {
   render() {
@@ -770,6 +800,7 @@ class Event01 extends Component {
         />
 
         <EndingVideo text="淡水河" link={"https://www.youtube.com/embed/GW71xsyJ8TY?rel=0"}/>
+        <Next switchView={this.props.switchView} next={"reborn-erren-river"} prev={"reborn-erren-river"}/>
       </div>
     );
   }
@@ -847,7 +878,21 @@ class Event04 extends Component {
   render() {
     return (
       <div>
-        <p>event04</p>
+        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        
+        <Taiwan
+          text1={this.props.data.taiwanText[0]}
+          text2={this.props.data.taiwanText[1]}
+          illustration = {this.props.data.taiwan}
+          background = {"/images/taiwan.jpg"}
+          map = {"-110px, -200px"}
+        />
+
+        <Illustration
+          number = {1}
+          text1={this.props.data.illustrationText[0]}
+          illustration = {this.props.data.illustration}
+        />
       </div>
     );
   }
@@ -1107,7 +1152,21 @@ class Event09 extends Component {
   render() {
     return (
       <div>
-        <p>event09</p>
+        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        
+        <Taiwan
+          text1={this.props.data.taiwanText[0]}
+          text2={this.props.data.taiwanText[1]}
+          illustration = {this.props.data.taiwan}
+          background = {"/images/taiwan.jpg"}
+          map = {"-110px, -200px"}
+        />
+
+        <Illustration
+          number = {1}
+          text1={this.props.data.illustrationText[0]}
+          illustration = {this.props.data.illustration}
+        />
       </div>
     );
   }
