@@ -39,7 +39,7 @@ class Nav extends Component {
       <div>
         <nav className="w-100 top0 z10 h3 flex aic space-between">
           <div className="bg-dark-gray w-100 h-100 absolute top0"></div>
-          <div className="w-100 mw8 center ph3 relative z4">
+          <div className="w-100 mw9 center ph3 relative z4">
             <div className="ph2-ns flex space-between aic white">
               <Link to="/ourisland">
                 <img src={logo} height="36px" alt="我們的島"/>

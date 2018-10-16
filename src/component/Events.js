@@ -181,7 +181,7 @@ class Events extends Component {
     var topic_content = (
       <div className="cf ph2-ns white">
         <h1 className="dib f2-ns f3 fw7 mv0 mr2 tracked">{event_content[this.state.topics[num]].name.split('@')[0]}</h1>
-        <h3 className="dib f4-ns f5 fw3 o-80">{"/ "+event_content[this.state.topics[num]].name.split('@')[1]}</h3>
+        <h3 className="dib f4-ns f5 fw4 o-90">{"/ "+event_content[this.state.topics[num]].name.split('@')[1]}</h3>
         <p className="mw6 f4-ns f5 lh-copy fw4">{event_content[this.state.topics[num]].description}</p>
         <Link to={"/ourisland/"+event_content[this.state.topics[num]].url+"/"}>
           <button className="btn cp mt2 white dib mb6" style={btnStyle}>事件連結</button>
