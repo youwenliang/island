@@ -81,21 +81,10 @@ class Page extends Component {
           $('.progress').removeClass('active');
         }
 
-          var top_of_window = $(window).scrollTop();
-          var bottom_of_window = $(window).scrollTop()+ $(window).height();
-          var center_of_window = $(window).scrollTop()+ $(window).height()/2;
+        var top_of_window = $(window).scrollTop();
+        var bottom_of_window = $(window).scrollTop()+ $(window).height();
+        var center_of_window = $(window).scrollTop()+ $(window).height()/2;
 
-        $('.auto-scroll').each( function(i){
-          var top_of_object = $(this).offset().top;
-          var bottom_of_object = $(this).offset().top + $(this).height();
-          
-          var $this = $(this);
-          if( bottom_of_window >= top_of_object && top_of_window <= bottom_of_object ){
-            $this.addClass('inview');
-          } else {
-            $this.removeClass('inview');
-          }
-        });
         $('.video-content').each( function(i){
           var top_of_object = $(this).offset().top;
           var bottom_of_object = $(this).offset().top + $(this).height();
@@ -430,17 +419,6 @@ function PhotoMultiple(props) {
     paddingBottom: "40px"
   }
 
-  var a = 0  
-  setInterval(function(){
-    if(!$('.inview .grid-container').is(":hover")) {
-      $('.inview .grid-container').scrollLeft(a);
-      a+=0.2;
-    } else {
-      a = $('.inview .grid-container').scrollLeft();
-    }
-  },10) 
-
-
   return (
     <section className="flex aic relative bg-white flex-column pv6 auto-scroll">      
       <div className="mw80 center cf black mb5 ph3 w-100">
@@ -541,10 +519,10 @@ function Video(props) {
     <section className="cover min-vh-200 flex aic relative video-content">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>
-        <div className="fixed unmute sound cp z10" onClick={(e) => soundVideo(e)}></div>
+        <div className="fixed sound cp z10" onClick={(e) => soundVideo(e)}></div>
         <div className="bg-light-gray w-100 h-100 fixed fixed-content pn">
           <div className="videoBg">
-            <video id={'video'+props.videoID} loop playsInline>
+            <video id={'video'+props.videoID} loop playsInline muted autoPlay>
               <source src={props.link} type="video/mp4"/>
             </video>
           </div>
@@ -587,8 +565,8 @@ function SmallVideo(props) {
         <div className="cf flex aic flex-column-s">
           <div className="fl-l w-100 w-50-l ph2 pv3 relative">
             <div className="absolute play cp z10" onClick={(e) => playVideo(e)}></div>
-            <div className="absolute unmute sound cp z10" onClick={(e) => soundVideo(e)}></div>
-            <video id={'video'+props.videoID} className="w-100" loop playsInline>
+            <div className="absolute sound cp z10" onClick={(e) => soundVideo(e)}></div>
+            <video id={'video'+props.videoID} className="w-100" loop playsInline muted autoPlay>
               <source src={props.link} type="video/mp4"/>
             </video>
           </div>
