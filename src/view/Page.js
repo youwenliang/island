@@ -81,12 +81,25 @@ class Page extends Component {
           $('.progress').removeClass('active');
         }
 
-        $('.video-content').each( function(i){
-          var top_of_object = $(this).offset().top;
-          var bottom_of_object = $(this).offset().top + $(this).height();
           var top_of_window = $(window).scrollTop();
           var bottom_of_window = $(window).scrollTop()+ $(window).height();
           var center_of_window = $(window).scrollTop()+ $(window).height()/2;
+
+        $('.auto-scroll').each( function(i){
+          var top_of_object = $(this).offset().top;
+          var bottom_of_object = $(this).offset().top + $(this).height();
+          
+          var $this = $(this);
+          if( bottom_of_window >= top_of_object && top_of_window <= bottom_of_object ){
+            $this.addClass('inview');
+          } else {
+            $this.removeClass('inview');
+          }
+        });
+        $('.video-content').each( function(i){
+          var top_of_object = $(this).offset().top;
+          var bottom_of_object = $(this).offset().top + $(this).height();
+          
           var $this = $(this);
           if( center_of_window >= top_of_object && center_of_window <= bottom_of_object ){
             if($this.find('video').get(0).paused) {
@@ -386,9 +399,11 @@ function PhotoMultiple(props) {
     height: "650px"
   }
 
+  var w = $(window).width()/3 + 50 + "px";
+
   for (var i = 0; i < props.images.length; i++){
     var item = {
-      width: "480px",
+      width: w,
       height: "320px",
       backgroundImage: "url("+props.images[i]+")",
       backgroundSize: "cover",
@@ -405,7 +420,7 @@ function PhotoMultiple(props) {
         <label className="absolute white" style={bottomRight}>{props.label[i]}</label>
       </div>
     )
-    if(i%2 === 0) columns+="480px ";
+    if(i%2 === 0) columns+=(w+" ");
     grid.push(photos);
   }
 
@@ -415,8 +430,19 @@ function PhotoMultiple(props) {
     paddingBottom: "40px"
   }
 
+  var a = 0  
+  setInterval(function(){
+    if(!$('.inview .grid-container').is(":hover")) {
+      $('.inview .grid-container').scrollLeft(a);
+      a+=0.2;
+    } else {
+      a = $('.inview .grid-container').scrollLeft();
+    }
+  },10) 
+
+
   return (
-    <section className="flex aic relative bg-white flex-column pv6">      
+    <section className="flex aic relative bg-white flex-column pv6 auto-scroll">      
       <div className="mw80 center cf black mb5 ph3 w-100">
         <div className="mw7 w-100 center bg-white">
           <p className="f5 lh-copy mv0">{props.text}</p>
