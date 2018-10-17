@@ -388,6 +388,18 @@ nav .btn {
   }
 }
 
+.modalImg {
+  max-width: 1024px;
+}
+
+.closeButton-circle {
+  background: #fff;
+  border-radius: 100%;
+  padding: 0.6rem;
+  top: 30px;
+  right: 30px;
+}
+
 .h6 {
   height: 20rem;
 }

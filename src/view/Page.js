@@ -8,6 +8,7 @@ import $ from 'jquery';
 import BeforeAfterSlider from 'react-before-after-slider';
 import ImageGallery from 'react-image-gallery';
 import Nav from '../component/Nav'
+import Modal from 'react-responsive-modal';
 
 // import mousewheel from 'jquery-mousewheel';
 // import {TweenMax} from "gsap/all";
@@ -69,6 +70,29 @@ class Page extends Component {
       console.info(err.loaded);
     });
     $(document).ready(function(){
+      // Autoscroll
+      var scroll = 0;
+      var add = 0;
+      var k = 0;
+      var interval = setInterval(function(){
+          $('.auto-scroll .grid-container').scrollLeft(scroll + add)
+          add+=k;
+      },10);
+
+      $('.auto-scroll .grid-container').hover(function(){
+        add = 0;
+        clearInterval(interval);
+        console.log("????");
+      }, function(){
+        var $this = $(this);
+        scroll = $(this).scrollLeft();
+        interval = setInterval(function(){
+          $this.scrollLeft(scroll + add)
+          add+=k;
+        },10);
+      });
+
+      // Scroll functions
       $(window).scroll( function(){
         var th = $(document).height()-$(window).height();
         var ch = $(window).scrollTop();
@@ -84,6 +108,17 @@ class Page extends Component {
         var top_of_window = $(window).scrollTop();
         var bottom_of_window = $(window).scrollTop()+ $(window).height();
         var center_of_window = $(window).scrollTop()+ $(window).height()/2;
+
+        $('.auto-scroll').each(function(){
+          var top_of_object = $(this).offset().top;
+          var bottom_of_object = $(this).offset().top + $(this).height();
+          var $this = $(this);
+          if( center_of_window >= top_of_object && center_of_window <= bottom_of_object ){
+            k = 0.3
+          } else {
+            k = 0;
+          }
+        });
 
         $('.video-content').each( function(i){
           var top_of_object = $(this).offset().top;
@@ -388,7 +423,7 @@ function PhotoMultiple(props) {
     height: "650px"
   }
 
-  var w = $(window).width()/3 + 50 + "px";
+  var w = "500px";
 
   for (var i = 0; i < props.images.length; i++){
     var item = {
@@ -404,8 +439,9 @@ function PhotoMultiple(props) {
       background: "rgba(0,0,0,.2)",
       padding: "20px"
     }
+    console.log(props.images[i]);
     var photos = (
-      <div className="grid-item bg-gray relative" style={item} key={i}>
+      <div className="grid-item bg-gray relative cp" style={item} key={i} onClick={(e) => props.onOpenModal(e.target.style.backgroundImage.split('\"')[1])}>
         <label className="absolute white" style={bottomRight}>{props.label[i]}</label>
       </div>
     )
@@ -817,7 +853,21 @@ class Event01 extends Component {
 }
 
 class Event02 extends Component {
+  state = {
+    open: false,
+    image: ""
+  }
+ 
+  onOpenModal = (img) => {
+    this.setState({ open: true, image: img});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
         <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
@@ -867,7 +917,13 @@ class Event02 extends Component {
           text={this.props.data.photoMultipleText}
           images={this.props.data.photoMultiple}
           label={this.props.data.photoMultipleLabel}
+          onOpenModal={this.onOpenModal.bind(this)}
         />
+
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image}/>
+        </Modal>
+
         <EndingVideo text={"二仁溪"} link={"https://youtube.com/embed/aeaNKyjoXcs?rel=0"}/>
       </div>
     );
