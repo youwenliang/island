@@ -176,6 +176,14 @@ nav .btn {
   min-height: 150vh;
 }
 
+.min-vh-200 {
+  min-height: 240vh;
+}
+
+.min-vh-300 {
+  min-height: 340vh;
+}
+
 .mw80 {
   max-width: 80rem;
 }
@@ -188,9 +196,7 @@ nav .btn {
   max-width: 450px;
 }
 
-.min-vh-200 {
-  min-height: 240vh;
-}
+
 .mt50vh {
   margin-top: 50vh;
 }

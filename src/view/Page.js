@@ -262,7 +262,7 @@ function Taiwan(props) {
 /*03*/
 function Illustration(props) {
   var text2 = null;
-  var h = "min-vh-200"
+  var h = "min-vh-150"
   if(props.number === 2) {
     h = "min-vh-200"
     text2 = (
@@ -320,8 +320,21 @@ function PhotoTextFull(props) {
     textcolor = "black";
   }
 
+  var text2 = null;
+  var h = "min-vh-200"
+  if(props.number === 2) {
+    h = "min-vh-300"
+    text2 = (
+      <div className="cf mt50vh">
+        <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
+          <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
+          <p className={"f5 lh-copy mv0 z4 relative "+textcolor}>{props.text2}</p>
+        </div>
+      </div>
+    )
+  }
   return (
-    <section className="min-vh-200 flex aic relative">
+    <section className={h+" flex aic relative"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
           <figure className="w-100 ma0">
@@ -334,9 +347,10 @@ function PhotoTextFull(props) {
         <div className="cf">
           <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
             <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"f5 lh-copy mv0 z4 relative "+textcolor}>{props.text}</p>
+            <p className={"f5 lh-copy mv0 z4 relative "+textcolor}>{props.text1}</p>
           </div>
         </div>
+        {text2}
       </div>
     </section>
   )
@@ -389,17 +403,30 @@ function PhotoSwitch(props) {
     }
     images.push(temp);
   }
-  var text = null;
-  if(props.text !== "") {
-    text = (
+  var text1 = null;
+  if(props.text1 !== "") {
+    text1 = (
       <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative "+props.position}>
         <div className="w-100 h-100 absolute bg-dark-gray o-80 top-left"></div>
-        <p className="f5 lh-copy mv0 relative z4">{props.text}</p>
+        <p className="f5 lh-copy mv0 relative z4">{props.text1}</p>
+      </div>
+    )
+  }
+  var text2 = null;
+  var h = "min-vh-200"
+  if(props.number === 2) {
+    h = "min-vh-300"
+    text2 = (
+      <div className="cf white mt50vh">
+        <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative "+props.position}>
+          <div className="w-100 h-100 absolute bg-dark-gray o-80 top-left"></div>
+          <p className="f5 lh-copy mv0 relative z4">{props.text2}</p>
+        </div>
       </div>
     )
   }
   return (
-    <section className="min-vh-200 flex aic w-100 relative bvh">
+    <section className={h+" flex aic w-100 relative bvh"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-light-gray w-100 h-100 fixed fixed-content">
           <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} autoPlay={true} showBullets={true}/>
@@ -407,8 +434,9 @@ function PhotoSwitch(props) {
       </div>
       <div className="mw80 center ph3 w-100 z4 pre-wrap">
         <div className="cf white">
-          {text}
+          {text1}
         </div>
+        {text2}
       </div>
     </section>
   )
@@ -528,7 +556,7 @@ function Video(props) {
       $video.prop('muted', false);
     }
   }
-  var text = null
+  var text1 = null
   var bgcolor = ""
   var textcolor = ""
   if(props.color === "dark") {
@@ -539,20 +567,35 @@ function Video(props) {
     textcolor = "black";
   }
 
-  if(props.text !== "") {
-    text = (
-      <div className="mw80 center ph3 w-100 z4 pre-wrap">
+  if(props.text1 !== "") {
+    text1 = (
+      
         <div className="cf">
           <div className={props.position+" w-50-l mw500 mh3-l mh3-l center w-100 pa4-l pa3 relative"}>
             <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"f5 lh-copy mv0 z4 relative "+textcolor}>{props.text}</p>
+            <p className={"f5 lh-copy mv0 z4 relative "+textcolor}>{props.text1}</p>
           </div>
+        </div>
+      
+    )
+  }
+
+  var text2 = null;
+  var h = "min-vh-200"
+  if(props.number === 2) {
+    h = "min-vh-300"
+    text2 = (
+      <div className="cf mt50vh">
+        <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
+          <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
+          <p className={"f5 lh-copy mv0 z4 relative "+textcolor}>{props.text2}</p>
         </div>
       </div>
     )
   }
+
   return (
-    <section className="cover min-vh-200 flex aic relative video-content">
+    <section className={h+" flex aic relative video-content"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>
         <div className="fixed sound cp z10" onClick={(e) => soundVideo(e)}></div>
@@ -564,7 +607,10 @@ function Video(props) {
           </div>
         </div>
       </div>
-      {text}
+      <div className="mw80 center ph3 w-100 z4 pre-wrap">
+        {text1}
+        {text2}
+      </div>
     </section>
   )
 }
@@ -768,9 +814,11 @@ class Event01 extends Component {
           illustration = {this.props.data.illustration}
         />
 
-        <PhotoSwitch 
+        <PhotoSwitch
+          number = {2} 
           images={this.props.data.photoswitch} 
-          text={this.props.data.photoswitchText}
+          text1={this.props.data.photoswitchText}
+          text2={this.props.data.photoswitchText2}
           label={this.props.data.photoswitchLabel}
         />
 
@@ -779,7 +827,7 @@ class Event01 extends Component {
         <Video 
           videoID="01"
           link={this.props.data.video[1]}
-          text=""
+          text1=""
         />
 
         {/*過場*/}
@@ -787,7 +835,7 @@ class Event01 extends Component {
         <PhotoTextFull
           position={"fr-l"}
           color="dark"
-          text={this.props.data.photoFullText[0]}
+          text1={this.props.data.photoFullText[0]}
           image = {this.props.data.photoFull[0]}
           label = {this.props.data.photoFullTextLabel[0]}
         />
@@ -804,14 +852,14 @@ class Event01 extends Component {
         <Video 
           videoID="02"
           link={this.props.data.video[2]}
-          text={this.props.data.videoText[0]}
+          text1={this.props.data.videoText[0]}
         />
 
         <Transition text={this.props.data.videoText[1]} />
         <Video 
           videoID="03"
           link={this.props.data.video[3]}
-          text=""
+          text1=""
         />
 
         {/*過場*/}
@@ -819,7 +867,7 @@ class Event01 extends Component {
         <PhotoTextFull
           position={"fl-l"}
           color="dark"
-          text={this.props.data.photoFullText[1]}
+          text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
         />
@@ -827,7 +875,7 @@ class Event01 extends Component {
         <PhotoTextFull
           position={"fr-l"}
           color="dark"
-          text={this.props.data.photoFullText[2]}
+          text1={this.props.data.photoFullText[2]}
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
         />
@@ -842,7 +890,7 @@ class Event01 extends Component {
         <Video 
           videoID="04"
           link={this.props.data.video[4]}
-          text={this.props.data.videoText[2]}
+          text1={this.props.data.videoText[2]}
         />
 
         <EndingVideo text="淡水河" link={"https://www.youtube.com/embed/GW71xsyJ8TY?rel=0"}/>
@@ -889,28 +937,30 @@ class Event02 extends Component {
         <Video 
           videoID="01"
           link={this.props.data.video[0]}
-          text={this.props.data.videoText[0]}
+          text1={this.props.data.videoText[0]}
         />
 
         <Video 
           videoID="02"
           position="fr-l"
           link={this.props.data.video[1]}
-          text={this.props.data.videoText[1]}
+          text1={this.props.data.videoText[1]}
         />
 
         {/*這是什麼？*/}
 
         <PhotoSwitch 
+          number = {2} 
           images={this.props.data.photoswitch} 
-          text={this.props.data.photoswitchText}
+          text1={this.props.data.photoswitchText}
+          text2={this.props.data.photoswitchText2}
           label={this.props.data.photoswitchLabel}
         />
 
         <Video 
           videoID="03"
           link={this.props.data.video[2]}
-          text=""
+          text1=""
         />
 
         <PhotoMultiple
@@ -987,7 +1037,7 @@ class Event05 extends Component {
         <PhotoTextFull
           position={"fr-l"}
           color={"dark"}
-          text={this.props.data.photoFullText[0]}
+          text1={this.props.data.photoFullText[0]}
           image = {this.props.data.photoFull[0]}
           label = {this.props.data.photoFullTextLabel[0]}
         />
@@ -1001,7 +1051,7 @@ class Event05 extends Component {
           videoID="02"
           color="dark"
           link={this.props.data.video[1]}
-          text={this.props.data.videoText[1]}
+          text1={this.props.data.videoText[1]}
         />
 
         <SmallVideo 
@@ -1012,7 +1062,7 @@ class Event05 extends Component {
 
         <PhotoTextFull
           position={"fl-l"}
-          text={this.props.data.photoFullText[1]}
+          text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
         />
@@ -1020,12 +1070,12 @@ class Event05 extends Component {
          <PhotoSwitch 
           images={this.props.data.photoswitch} 
           label={this.props.data.photoswitchLabel}
-          text=""
+          text1=""
         />
 
         <PhotoTextFull
           position={"fl-l"}
-          text={this.props.data.photoFullText[2]}
+          text1={this.props.data.photoFullText[2]}
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
         />
@@ -1056,7 +1106,7 @@ class Event06 extends Component {
 
         <PhotoTextFull
           position={"fr-l"}
-          text={this.props.data.photoFullText[0]}
+          text1={this.props.data.photoFullText[0]}
           image = {this.props.data.photoFull[0]}
           label = {this.props.data.photoFullTextLabel[0]}
         />
@@ -1064,49 +1114,53 @@ class Event06 extends Component {
         <Video 
           videoID="01"
           link={this.props.data.video[0]}
-          text={this.props.data.videoText[0]}
+          text1={this.props.data.videoText[0]}
         />
 
         <PhotoSwitch 
           position={"fr-l"}
           images={this.props.data.photoswitch} 
-          text={this.props.data.photoswitchText}
+          text1={this.props.data.photoswitchText}
           label={this.props.data.photoswitchLabel}
         />
 
         <PhotoTextFull
           position={"fl-l"}
-          text={this.props.data.photoFullText[1]}
+          text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
         />
 
         <Video 
+          number={2}
           position={"fr-l"}
           color="dark"
           videoID="02"
           link={this.props.data.video[1]}
-          text={this.props.data.videoText[1]}
+          text1={this.props.data.videoText[1]}
+          text2={this.props.data.videoText[2]}
         />
 
         <Video 
           position={"fl-l"}
           videoID="03"
           link={this.props.data.video[2]}
-          text={this.props.data.videoText[2]}
+          text1={this.props.data.videoText[3]}
         />
 
-        <Transition text={this.props.data.videoText[3]}/>
+        <Transition text={this.props.data.videoText[4]}/>
         <Video 
           videoID="04"
           link={this.props.data.video[3]}
-          text=""
+          text1=""
         />
 
         <PhotoTextFull
-          position={"fr-l"}
+          number={2}
+          position={"fl-l"}
           color="dark"
-          text={this.props.data.photoFullText[2]}
+          text1={this.props.data.photoFullText[2]}
+          text2={this.props.data.photoFullText[3]}
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
         />
@@ -1114,12 +1168,12 @@ class Event06 extends Component {
         <Video 
           videoID="05"
           position={"fr-l"}
-          text=""
+          text1=""
         />
 
         <PhotoTextFull
           position={"fl-l"}
-          text={this.props.data.photoFullText[3]}
+          text1={this.props.data.photoFullText[4]}
           image = {this.props.data.photoFull[3]}
           label = {this.props.data.photoFullTextLabel[3]}
         />
@@ -1146,7 +1200,7 @@ class Event07 extends Component {
         <Video 
           videoID="01"
           link={this.props.data.video[0]}
-          text={this.props.data.videoText[0]}
+          text1={this.props.data.videoText[0]}
         />
 
         <Illustration
@@ -1157,7 +1211,7 @@ class Event07 extends Component {
 
         <PhotoTextFull
           position={"fr-l"}
-          text={this.props.data.photoFullText[0]}
+          text1={this.props.data.photoFullText[0]}
           image = {this.props.data.photoFull[0]}
           label = {this.props.data.photoFullTextLabel[0]}
         />
@@ -1166,7 +1220,7 @@ class Event07 extends Component {
           videoID="02"
           color="dark"
           link={this.props.data.video[1]}
-          text={this.props.data.videoText[1]}
+          text1={this.props.data.videoText[1]}
         />
 
         <PhotoContrast 
@@ -1179,11 +1233,11 @@ class Event07 extends Component {
           color="dark"
           position={"fr-l"}
           link={this.props.data.video[2]}
-          text={this.props.data.videoText[2]}
+          text1={this.props.data.videoText[2]}
         />
         <PhotoTextFull
           position={"fl-l"}
-          text={this.props.data.photoFullText[1]}
+          text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
         />
@@ -1191,12 +1245,12 @@ class Event07 extends Component {
         <Video 
           videoID="04"
           link={this.props.data.video[3]}
-          text=""
+          text1=""
         />
         <Video 
           videoID="05"
           link={this.props.data.video[4]}
-          text={this.props.data.videoText[4]}
+          text1={this.props.data.videoText[4]}
         />
         
       </div>
