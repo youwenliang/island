@@ -766,6 +766,60 @@ function PhotoAudio(props) {
   )
 }
 
+/*13*/
+function PhotoTextMultiple(props) {
+  let grid = [];
+  var columns = "";
+  
+  var height = {
+    height: "480px"
+  }
+
+  var w = $(window).width()/3 + 50 + "px";
+
+  for (var i = 0; i < props.images.length; i++){
+    var photoGridStyle = {
+      width: w,
+      height: "320px",
+      backgroundImage: "url("+props.images[i]+")",
+      backgroundSize: "cover",
+      backgroundPosition: "center center"
+    }
+    var textGridStyle = {
+      height: "160px",
+      whiteSpace: "normal"
+    }
+    var photos = (
+      <div className="grid-item bg-white relative" key={i}>
+        <div style={photoGridStyle}></div>
+        <div style={textGridStyle} className="pa4">
+          <p className="f5 lh-copy mv0">
+          {props.text[i]+props.text[i]+props.text[i]+props.text[i]+props.text[i]+props.text[i]}
+          </p>
+        </div>
+      </div>
+    )
+    columns+=(w+" ");
+    grid.push(photos);
+  }
+
+  var container = {
+    gridTemplateColumns: columns,
+    height: "4800px",
+    paddingBottom: "40px"
+  }
+
+  return (
+    <section className="flex aic relative bg-white flex-column pv6 auto-scroll">      
+      <div className="w-100 overflow-hidden" style={height}>
+        <div className="grid-container nowrap dragscroll" style={container}>
+          {grid}
+        </div> 
+      </div>
+    </section>
+  )
+}
+
 function Transition(props) {
   var max = {
     maxWidth: "880px"
@@ -974,6 +1028,10 @@ class Event02 extends Component {
           <img src={this.state.image}/>
         </Modal>
 
+        <PhotoTextMultiple
+          images={this.props.data.photoMultiple}
+          text={this.props.data.photoMultipleLabel}
+        />
         <EndingVideo text={"二仁溪"} link={"https://youtube.com/embed/aeaNKyjoXcs?rel=0"}/>
       </div>
     );
