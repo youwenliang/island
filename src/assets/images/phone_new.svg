@@ -31,28 +31,28 @@
 	.st25{fill:#FEFEFD;}
 	.st26{fill:#FEFEFB;}
 	#t01 {
-		animation: switch 1s linear infinite;
+		animation: switch 4s linear infinite;
 	}
 	#t02 {
-		animation: switch 1s linear infinite .2s;
+		animation: switch 4s linear infinite 0.2s;
 	}
 	#t03 {
-		animation: switch 1s linear infinite .4s;
+		animation: switch 4s linear infinite 0.4s;
 	}
 	@keyframes switch {
 	  0% {
 	  	opacity: 1;
 	  }
-	  20% {
+	  5% {
 	  	opacity: 1;
 	  }
-	  21% {
+	  6% {
 	  	opacity: 0;
 	  }
-	  59% {
+	  11% {
 	  	opacity: 0;
 	  }
-	  60% {
+	  12% {
 	  	opacity: 1;
 	  }
 	  100% {

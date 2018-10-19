@@ -201,7 +201,7 @@ function CoverVideo(props) {
       </div>
       </div>
       <div className="mw80 center ph3 w-100 z4 tc">
-        <img src={props.title} className="center" width="800" alt="title" />
+        <img src={props.title} className="center mb3" height="150" alt="title" />
         <div className="cf white w-80-ns w-100 center ph-ns">
           <h3 className="f3-ns f4 coverVideo-tag fw4 lh-copy mb0 pre-wrap text-shadow">{props.content}</h3>
         </div>
@@ -277,12 +277,12 @@ function Illustration(props) {
     <section className={h+" flex aic relative"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
-          <figure className="center mw80 w-100 pr5-l">
-            <img className="w-60-l w-100" src={props.illustration} alt="illustration"/>
+          <figure className="center mw70 w-100 pr5-l">
+            <img className="w-50-l w-100" src={props.illustration} alt="illustration"/>
           </figure>
         </div>
       </div>
-      <div className="mw80 center ph3 w-100 z4 pre-wrap">
+      <div className="mw70 center ph3 w-100 z4 pre-wrap">
         <div className="cf black">
           <div className="w-50-l mw500 mh3-l center w-100 fr-l pa4-l pa3 bg-white">
             <p className="f5 lh-copy mv0">{props.text1}</p>
@@ -374,12 +374,12 @@ function PhotoText(props) {
     <section className="min-vh-200 flex aic relative">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={color1+" w-100 h-100 fixed fixed-content pn flex aic"}>
-          <figure className="center mw80 w-100">
+          <figure className="center mw70 w-100">
             <img className={"w-50-l w-100 "+photo} src={props.image} alt="description"/>
           </figure>
         </div>
       </div>
-      <div className="mw80 center ph3 w-100 z4 pre-wrap">
+      <div className="mw70 center ph3 w-100 z4 pre-wrap">
         <div className="cf black">
           <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 "+color2+" "+text}>
             <p className="f5 lh-copy mv0">{props.text}</p>
@@ -448,7 +448,7 @@ function PhotoMultiple(props) {
   var columns = "";
   
   var height = {
-    height: "650px"
+    height: "640px"
   }
 
   var w = "500px";
@@ -479,7 +479,7 @@ function PhotoMultiple(props) {
 
   var container = {
     gridTemplateColumns: columns,
-    height: "690px",
+    height: "680px",
     paddingBottom: "40px"
   }
 
@@ -518,10 +518,10 @@ function PhotoContrast(props) {
           {text}
           <figure className="cd-image-container is-visible z4">
              <img src={props.images[1]} alt="Original" />
-             <span className="cd-image-label" data-type="original">{props.images[1].split('(')[1].split('.')[0]}</span>
+             <span className="cd-image-label" data-type="original">{props.year[0]}</span>
              <div className="cd-resize-img"> 
                 <img src={props.images[0]} alt="Modified" />
-                <span className="cd-image-label" data-type="modified">{props.images[0].split('(')[1].split('.')[0]}</span>
+                <span className="cd-image-label" data-type="modified">{props.year[1]}</span>
              </div>
              <span className="cd-handle"></span>
           </figure>
@@ -654,6 +654,70 @@ function SmallVideo(props) {
           </div>
           <div className="fr-l w-100 w-50-l mw500 center ml5-l ph2 pv3">
             <p className="f5 lh-copy mv0 z4 relative black">{props.text}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/*09-2*/
+function CenterVideo(props) {
+  function playVideo(e) {
+    var $video = $('#video'+props.videoID);
+    if(e.target.classList.contains('pause')) {
+      e.target.classList.remove('pause');
+      $video.get(0).play();
+      $video.removeClass('clicked');
+    }
+    else {
+      e.target.classList.add('pause');
+      $video.get(0).pause();
+      $video.addClass('clicked');
+    }
+  }
+  function soundVideo(e) {
+    var $video = $('#video'+props.videoID);
+    if(e.target.classList.contains('unmute')) {
+      e.target.classList.remove('unmute');
+      $video.prop('muted', true);
+    }
+    else {
+      e.target.classList.add('unmute');
+      $video.prop('muted', false);
+    }
+  }
+  var max = {
+    maxWidth: "800px"
+  }
+  var textShadow = "text-shadow";
+  var bgColor = "";
+  var mask = "bg-dark-gray o-40";
+  if(props.bg) {
+    textShadow = "";
+    bgColor = "bg-dark-gray o-80";
+    mask = "";
+  }
+
+  return (
+    <section className="min-vh-200 flex aic relative pv6 video-content">
+      <div className="w-100 h-100 absolute top-left clipping">
+        <div className={mask+" w-100 h-100 absolute pn top-left z4"}/>
+        <div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>
+        <div className="fixed sound cp z10" onClick={(e) => soundVideo(e)}></div>
+        <div className="bg-light-gray w-100 h-100 fixed fixed-content pn">
+          <div className="videoBg">
+            <video id={'video'+props.videoID} loop playsInline muted autoPlay>
+              <source src={props.link} type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+      <div className="w-100 center ph3 z4 relative">
+        <div className="cf flex aic">
+          <div className="w-100 w-50-l center pa4-l pa2 relative" style={max}>
+            <div className={bgColor+" w-100 h-100 absolute pn top-left"}/>
+            <p className={"f5 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
           </div>
         </div>
       </div>
@@ -852,7 +916,7 @@ class Event01 extends Component {
   render() {
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.video[0]}/>
+        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         <Taiwan
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
@@ -880,7 +944,7 @@ class Event01 extends Component {
 
         <Video 
           videoID="01"
-          link={this.props.data.video[1]}
+          link={this.props.data.video[0]}
           text1=""
         />
 
@@ -905,14 +969,14 @@ class Event01 extends Component {
 
         <Video 
           videoID="02"
-          link={this.props.data.video[2]}
+          link={this.props.data.video[1]}
           text1={this.props.data.videoText[0]}
         />
 
         <Transition text={this.props.data.videoText[1]} />
         <Video 
           videoID="03"
-          link={this.props.data.video[3]}
+          link={this.props.data.video[2]}
           text1=""
         />
 
@@ -937,14 +1001,16 @@ class Event01 extends Component {
         <PhotoContrast 
           images={this.props.data.photocontrast}
           text={this.props.data.photocontrastText}
+          year={this.props.data.photocontrastYear}
         />
 
         {/*橫向移動背景大圖*/}
 
-        <Video 
+        <CenterVideo 
           videoID="04"
-          link={this.props.data.video[4]}
+          link={this.props.data.video[3]}
           text1={this.props.data.videoText[2]}
+          bg={false}
         />
 
         <EndingVideo text="淡水河" link={"https://www.youtube.com/embed/GW71xsyJ8TY?rel=0"}/>
@@ -1028,10 +1094,12 @@ class Event02 extends Component {
           <img src={this.state.image}/>
         </Modal>
 
+        {/*
         <PhotoTextMultiple
           images={this.props.data.photoMultiple}
           text={this.props.data.photoMultipleLabel}
         />
+        */}
         <EndingVideo text={"二仁溪"} link={"https://youtube.com/embed/aeaNKyjoXcs?rel=0"}/>
       </div>
     );
@@ -1284,6 +1352,7 @@ class Event07 extends Component {
         <PhotoContrast 
           images={this.props.data.photocontrast}
           text=""
+          year={this.props.data.photocontrastYear}
         />
 
         <Video 

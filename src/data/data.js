@@ -5,6 +5,7 @@ var data = {
       "title": "主題一水線",
       "content": [{
           "id": "1-1",
+          "num": "01",
           "name": "變遷淡水河@新北淡水河",
           "image": "/images/1-1_A22.jpg",
           "icon":  "/images/icons/1-1淡水河.png",
@@ -12,6 +13,7 @@ var data = {
           "url": "changing-tamsui-river"
         }, {
           "id": "1-2",
+          "num": "02",
           "name": "重生二仁溪@台南/高雄",
           "image": "/images/1-2_B6.jpg",
           "icon":  "/images/icons/1-2二仁溪.png",
@@ -19,6 +21,7 @@ var data = {
           "url": "reborn-erren-river"
         }, {
           "id": "1-3",
+          "num": "03",
           "name": "陸蟹的天堂與地獄@墾丁恆春",
           "image": "/images/1-3_C1.jpg",
           "icon":  "/images/icons/1-3陸蟹.png",
@@ -26,6 +29,7 @@ var data = {
           "url": "land-crabs-survival"
         }, {
           "id": "1-4",
+          "num": "04",
           "name": "漁港的黑色幽默@台東大武漁港",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/images/icons/1-4港口淤積.png",
@@ -33,6 +37,7 @@ var data = {
           "url": "dawu-fishing-port"
         }, {
           "id": "1-5",
+          "num": "05",
           "name": "沒有海的港口@金門後豐港",
           "image": "/images/1-5_E7.jpg",
           "icon":  "/images/icons/1-5鱟.png",
@@ -45,6 +50,7 @@ var data = {
       "title": "主題二山線",
       "content": [{
           "id": "2-1",
+          "num": "06",
           "name": "咬一口高山青翠@台中梨山",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/images/icons/2-1梨山.png",
@@ -52,6 +58,7 @@ var data = {
           "url": "lishan-high-mountain-farms"
         }, {
           "id": "2-2",
+          "num": "07",
           "name": "冒險泡湯去@南投廬山",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/images/icons/2-2廬山.png",
@@ -59,6 +66,7 @@ var data = {
           "url": "lushan-hotspring-risk"
         }, {
           "id": "2-3",
+          "num": "08",
           "name": "攔住水失去水@雲林湖山水庫",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/images/icons/2-3湖山水庫.png",
@@ -66,6 +74,7 @@ var data = {
           "url": "hushan-reservoir-lost-water"
         }, {
           "id": "2-4",
+          "num": "09",
           "name": "挖山取石的代價@花蓮亞泥",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/images/icons/2-4亞泥.png",
@@ -78,6 +87,7 @@ var data = {
       "title": "主題三污染線",
       "content": [{
           "id": "3-1",
+          "num": "10",
           "name": "土地該長出什麼@彰化中科四期",
           "image": "/images/3-1_J9.jpg",
           "icon":  "/images/icons/3-1中科四期.png",
@@ -85,6 +95,7 @@ var data = {
           "url": "science-park-landuse"
         }, {
           "id": "3-2",
+          "num": "11",
           "name": "石化填出的王國@雲林麥寮六輕",
           "image": "/images/3-2.jpg",
           "icon":  "/images/icons/3-2六輕.png",
@@ -92,6 +103,7 @@ var data = {
           "url": "petrochemical-kingdom"
         }, {
           "id": "3-3",
+          "num": "12",
           "name": "焦土台鹼安順廠@台南台鹼安順廠",
           "image": "/images/3-3_L5.jpg",
           "icon":  "/images/icons/3-3台鹼.png",
@@ -99,6 +111,7 @@ var data = {
           "url": "soil-pollution-tainan"
         }, {
           "id": "3-4",
+          "num": "13",
           "name": "無人知曉的未爆彈@屏東赤山巖",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/images/icons/3-4汞污泥.png",
@@ -111,103 +124,193 @@ var data = {
 
   // 13 Page Events
   "pageEvents": {
+
     // ****************************************************************** A ******************************************************************
     "changing-tamsui-river": {
-      "title": "變遷 淡水河",
-      "id": "事件1",
-      // CoverVideo
-      "coverTitle": "/events/changing-tamsui-river/illustrations/01title.svg",
-      "coverDescription": "台北人熟悉的淡水河，也曾經堆滿了垃圾？\n一起乘著島嶼時光機，回首垃圾山，臭氣憶當年。",
 
-      "video": ["/events/changing-tamsui-river/videos/A18(底圖動態02).mp4","/events/changing-tamsui-river/videos/A18(底圖動態02).mp4","/events/changing-tamsui-river/videos/A41-五股二重疏洪道廢土山變遷-陳建志.mp4", "/events/changing-tamsui-river/videos/A14撈鰻苗.mp4", "/events/changing-tamsui-river/videos/A18(底圖動態02).mp4"],
-      "videoText": ["長期關心淡水河的陳建志重回五股二重疏洪道旁，昔日的垃圾廢土山已經變成鐵皮工業區，未來新北市也計畫重劃。", "垃圾不只影響人，還有海岸生物。\n\n回顧淡水河，人們的生活其實與河流息息相關，早期先人從河口上岸發展聚落，在陸運還沒有開發的年代，淡水河及其支流，就像是大台北地區的動脈，不論是交通或貿易，都倚賴這條河，而沿岸居民也曾經與淡水河相依相存，尤其在河口地帶，漁民會依循著潮水的漲退以及季節的變換，捕撈不同的魚類，不過隨著都市發展、河川污染以及地形變遷，傳統生活樣貌已逐漸式微。",
-      "人們對於河流利用的價值觀，決定了它的命運，從堆置垃圾的邊陲地帶，現在淡水河，部分河岸土地價值水漲船高，一棟棟的景觀住宅拔地而起，能透過一面窗看見這條河，成為都市人的高級享受，假日許多人湧進河邊的腳踏車道，或者坐在河邊欣賞美景，大人牽著小孩迫不及待湧入河口，觀察招潮蟹的出沒。\n\n走過髒污的過往，下一個二十年，你希望淡水河會是什麼樣貌呢？", "人們對於河流利用的價值觀，決定了它的命運，從堆置垃圾的邊陲地帶，現在淡水河，部分河岸土地價值水漲船高，一棟棟的景觀住宅拔地而起，能透過一面窗看見這條河，成為都市人的高級享受，假日許多人湧進河邊的腳踏車道，或者坐在河邊欣賞美景，大人牽著小孩迫不及待湧入河口，觀察招潮蟹的出沒。走過髒污的過往，下一個二十年，你希望淡水河會是什麼樣貌呢？"],
+        "title": "變遷 淡水河",
+        "id": "事件1",
 
-      // Taiwan
-      "taiwanText": [
-        "淡水河的地理位置",
-        "淡水河是台灣第三長的河流，三大支流分別為大漢溪、新店溪、基隆河，流域廣闊，涵蓋新竹縣、桃園市、新北市、台北市，提供流域內八百萬人的飲用水、灌溉與工業用水，是北台灣的母親之河。"
-      ],
-      "taiwan": "/events/changing-tamsui-river/illustrations/taiwan.svg",
-      
-      // Illustration
-      "illustrationText": [
-        "總是人潮絡繹不絕的淡水河，是城市人們的出口，六百多萬人的生活和淡水河流域緊密相依。\n\n現在的你很難想像，1993年的淡水河畔，是滿天的垃圾和惡臭味，讓人想快速離開。",
-        "讓我們乘坐時光機，回到三十年前的淡水河。\n\n一啟航，迎面而來是陣陣臭氣，往上沿著大漢溪而上，岸邊竟有著一座又一座的「垃圾山」，沒處理的污水直接排放，河面處處漂浮垃圾。不要說什麼河岸景觀第一排，就算是在這待一分鐘，也待不下去。"
-      ],
-      "illustration": "/events/changing-tamsui-river/illustrations/illustrationA.svg",
-      // Photo Switch
-      "photoswitch": ["/events/changing-tamsui-river/A8.jpg", "/events/changing-tamsui-river/A4.jpg", "/events/changing-tamsui-river/A6.jpg", "/events/changing-tamsui-river/A2.jpg", "/events/changing-tamsui-river/A7.jpg"],
-      "photoswitchText": "在只求經濟發展忽視環境的七八零年代，政府並沒有完善的垃圾處理政策，當時鄉鎮公所都是自行找地堆置垃圾，海邊與河岸就成了最佳的垃圾場，長久下來不但污染河水，也影響水流。",
-      "photoswitchText2": "直到1990年代，環保意識抬頭，人們對河川的髒污忍無可忍，政府開始進行淡水河的整治。其中1992年開始的「大漢溪沿岸舊垃圾清除計畫」，就清運了755萬立方米垃圾，運到新北市林口下罟子掩埋場掩埋。",
-      "photoswitchLabel": ["1992年新北市新莊區瓊林里垃圾場", "1993年新北市三峽淡水河岸垃圾堆置", "1993.07新北市淡水河口垃圾山", "1994.新北市五股溼地廢棄垃圾", "2004年新北市八里區淡水河岸垃圾場"],
-      
-      // Photo Full
-      "photoFull": ["/events/changing-tamsui-river/A38.jpg", "/events/changing-tamsui-river/A19.jpg", "/events/changing-tamsui-river/A35.jpg"],
-      "photoFullTextLabel": [
-        "打鳥埤人工濕地空拍",
-        "2017年台北港區段徵收全景",
-        "1987年新北市八里海岸沙丘景觀"
-      ],
-      "photoFullText": [
-      "垃圾清除後，河岸就地綠化，像是早年的土城垃圾山，現在已經改頭換面，營造為「打鳥埤人工濕地」，用來淨化生活污水。居民來到這裡運動、釣魚，回首堆垃圾的過往，不禁慶幸：真的是上個世紀的往事了。",
-      "人河關係改變，重點人的行為改變影響了河。\n\n台北港什麼時候興建，讓淡水河地貌改變的重要轉折。",
-      "有些失去的，已經不會再回來，像是淡水河南邊的八里海岸，曾經有著寬闊的沙丘，最高可達兩三公尺高，不過因為淡水河河砂開採及上游石門水庫及翡翠水庫攔截沙源，就像許多人都還來不及認識淡水河口這美麗的沙丘地形，就在2000年之前已經完全消失，這段海岸目前仍在變動中。"],
-      
-      // Photo Text
-      "photoText": [
-        "歷經三十年的整治，移除垃圾、污水截流，淡水河水質終於改善，河中魚類種類漸漸增加。根據環保署的調查資料，淡水河本流河段魚類種類從民國70年代只有十餘種，到民國100年有50種左右，主要組成魚種有大頭鰱、鯉魚、鯽魚等等，另外在較上游的新店溪河段，消失已久的洄游性魚類日本禿頭鯊、翹嘴紅鮊等也重現蹤跡。近年來更有學校師生發現，已經在新店溪消失長達半世紀的香魚，出現在碧潭一帶。"
-      ],
-      "photoTextLabel": [
+        // CoverVideo
+        "coverTitle": "/images/titles/01.svg",
+        "coverDescription": "台北人熟悉的淡水河，也曾經堆滿了垃圾？\n一起乘著島嶼時光機，回首垃圾山，臭氣憶當年。",
+        "coverVideo": "/events/changing-tamsui-river/videos/A18(底圖動態02).mp4",
 
-      ],
-      "photoImage": ["https://fakeimg.pl/600x480/?text=PhotoText&retina=1"],
-      // Photo Contrast
-      "photocontrast": ["/events/changing-tamsui-river/A11(1998.10八里海岸-扒文蛤).jpg", "/events/changing-tamsui-river/A13(2017.09八里海岸文蛤淤積).jpg"],
-      "photocontrastText": "1998年的淡水河口，在退潮期間，還可以見到當地居民在灘地上耙文蛤的景象，不過在台北港興建之後，海岸地形改變，河口逐漸淤積，海中拾穗的場景，已不復見。",
+        // Taiwan
+        "taiwanText": [
+            "淡水河的地理位置",
+            "淡水河是台灣第三長的河流，三大支流分別為大漢溪、新店溪、基隆河，流域廣闊，涵蓋新竹縣、桃園市、新北市、台北市，提供流域內八百萬人的飲用水、灌溉與工業用水，是北台灣的母親之河。"
+        ],
 
+        // Illustration
+        "illustrationText": [
+            "總是人潮絡繹不絕的淡水河，是城市人們的出口，六百多萬人的生活和淡水河流域緊密相依。\n\n現在的你很難想像，1993年的淡水河畔，是滿天的垃圾和惡臭味，讓人想快速離開。",
+            "讓我們乘坐時光機，回到三十年前的淡水河。\n\n一啟航，迎面而來是陣陣臭氣，往上沿著大漢溪而上，岸邊竟有著一座又一座的「垃圾山」，沒處理的污水直接排放，河面處處漂浮垃圾。不要說什麼河岸景觀第一排，就算是在這待一分鐘，也待不下去。"
+        ],
+        "illustration": "/events/changing-tamsui-river/illustrations/illustrationA.svg",
 
-      "stepImage": "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
-      "photo": ["https://fakeimg.pl/600x480/?text=PhotoText&retina=1"],
-      
-      "photoAudioText": "???",
-      "photoAudioPhoto": "https://fakeimg.pl/600x800/cccccc/222222/?text=person&retina=1",
-      "photoAudio": "/events/changing-tamsui-river/audios/sample.mp3"
+        // Photo Switch
+        "photoswitch": [
+            "/events/changing-tamsui-river/A8.jpg",
+            "/events/changing-tamsui-river/A4.jpg",
+            "/events/changing-tamsui-river/A6.jpg",
+            "/events/changing-tamsui-river/A2.jpg",
+            "/events/changing-tamsui-river/A7.jpg"
+        ],
+
+        "photoswitchLabel": [
+            "1992年新北市新莊區瓊林里垃圾場",
+            "1993年新北市三峽淡水河岸垃圾堆置",
+            "1993.07新北市淡水河口垃圾山",
+            "1994.新北市五股溼地廢棄垃圾",
+            "2004年新北市八里區淡水河岸垃圾場"
+        ],
+
+        "photoswitchText": "在只求經濟發展忽視環境的七八零年代，政府並沒有完善的垃圾處理政策，當時鄉鎮公所都是自行找地堆置垃圾，海邊與河岸就成了最佳的垃圾場，長久下來不但污染河水，也影響水流。",
+
+        "photoswitchText2": "直到1990年代，環保意識抬頭，人們對河川的髒污忍無可忍，政府開始進行淡水河的整治。其中1992年開始的「大漢溪沿岸舊垃圾清除計畫」，就清運了755萬立方米垃圾，運到新北市林口下罟子掩埋場掩埋。",
+
+        // Video
+        "video": [
+            "/events/changing-tamsui-river/videos/A18(底圖動態02).mp4",
+            "/events/changing-tamsui-river/videos/A41-五股二重疏洪道廢土山變遷-陳建志.mp4",
+            "/events/changing-tamsui-river/videos/A14撈鰻苗.mp4",
+            "/events/changing-tamsui-river/videos/A18(底圖動態02).mp4"
+        ],
+
+        "videoText": [
+            "長期關心淡水河的陳建志重回五股二重疏洪道旁，昔日的垃圾廢土山已經變成鐵皮工業區，未來新北市也計畫重劃。", "垃圾不只影響人，還有海岸生物。\n\n回顧淡水河，人們的生活其實與河流息息相關，早期先人從河口上岸發展聚落，在陸運還沒有開發的年代，淡水河及其支流，就像是大台北地區的動脈，不論是交通或貿易，都倚賴這條河，而沿岸居民也曾經與淡水河相依相存，尤其在河口地帶，漁民會依循著潮水的漲退以及季節的變換，捕撈不同的魚類，不過隨著都市發展、河川污染以及地形變遷，傳統生活樣貌已逐漸式微。",
+
+            "人們對於河流利用的價值觀，決定了它的命運，從堆置垃圾的邊陲地帶，現在淡水河，部分河岸土地價值水漲船高，一棟棟的景觀住宅拔地而起，能透過一面窗看見這條河，成為都市人的高級享受，假日許多人湧進河邊的腳踏車道，或者坐在河邊欣賞美景，大人牽著小孩迫不及待湧入河口，觀察招潮蟹的出沒。\n\n走過髒污的過往，下一個二十年，你希望淡水河會是什麼樣貌呢？",
+
+            "人們對於河流利用的價值觀，決定了它的命運，從堆置垃圾的邊陲地帶，現在淡水河，部分河岸土地價值水漲船高，一棟棟的景觀住宅拔地而起，能透過一面窗看見這條河，成為都市人的高級享受，假日許多人湧進河邊的腳踏車道，或者坐在河邊欣賞美景，大人牽著小孩迫不及待湧入河口，觀察招潮蟹的出沒。走過髒污的過往，下一個二十年，你希望淡水河會是什麼樣貌呢？"
+        ],
+
+        // PhotoTextFull
+
+        "photoFull": [
+            "/events/changing-tamsui-river/A38.jpg",
+            "/events/changing-tamsui-river/A19.jpg",
+            "/events/changing-tamsui-river/A35.jpg"
+        ],
+
+        "photoFullTextLabel": [
+            "打鳥埤人工濕地空拍",
+            "2017年台北港區段徵收全景",
+            "1987年新北市八里海岸沙丘景觀"
+        ],
+
+        "photoFullText": [
+            "垃圾清除後，河岸就地綠化，像是早年的土城垃圾山，現在已經改頭換面，營造為「打鳥埤人工濕地」，用來淨化生活污水。居民來到這裡運動、釣魚，回首堆垃圾的過往，不禁慶幸：真的是上個世紀的往事了。",
+
+            "人河關係改變，重點人的行為改變影響了河。\n\n台北港什麼時候興建，讓淡水河地貌改變的重要轉折。",
+
+            "有些失去的，已經不會再回來，像是淡水河南邊的八里海岸，曾經有著寬闊的沙丘，最高可達兩三公尺高，不過因為淡水河河砂開採及上游石門水庫及翡翠水庫攔截沙源，就像許多人都還來不及認識淡水河口這美麗的沙丘地形，就在2000年之前已經完全消失，這段海岸目前仍在變動中。"
+        ],
+
+        // PhotoText
+        "photoText": [
+            "歷經三十年的整治，移除垃圾、污水截流，淡水河水質終於改善，河中魚類種類漸漸增加。根據環保署的調查資料，淡水河本流河段魚類種類從民國70年代只有十餘種，到民國100年有50種左右，主要組成魚種有大頭鰱、鯉魚、鯽魚等等，另外在較上游的新店溪河段，消失已久的洄游性魚類日本禿頭鯊、翹嘴紅鮊等也重現蹤跡。近年來更有學校師生發現，已經在新店溪消失長達半世紀的香魚，出現在碧潭一帶。"
+        ],
+
+        "photoTextLabel": [],
+
+        "photoImage": [
+            "https://fakeimg.pl/600x480/?text=PhotoText&retina=1"
+        ],
+
+        // PhotoContrast
+
+        "photocontrast": [
+            "/events/changing-tamsui-river/A11(1998.10八里海岸-扒文蛤).jpg",
+            "/events/changing-tamsui-river/A13(2017.09八里海岸文蛤淤積).jpg"
+        ],
+
+        "photocontrastYear": ["1998", "2017"],
+
+        "photocontrastText": "1998年的淡水河口，在退潮期間，還可以見到當地居民在灘地上耙文蛤的景象，不過在台北港興建之後，海岸地形改變，河口逐漸淤積，海中拾穗的場景，已不復見。"
 
     },
     // ****************************************************************** B ******************************************************************
     "reborn-erren-river": {
-      "title": "重生 二仁溪",
-      "id": "事件2",
-      //CoverVideo
-      "coverTitle": "/events/reborn-erren-river/illustrations/01title.svg",
-      "coverDescription": "靠著廢五金致富，卻留下污染，\n造就黑龍江得花多少時間與金錢，才能換回二仁溪的重生？",
-      "coverVideo": "/events/reborn-erren-river/videos/B17(2012年二仁溪兩岸廢棄物導覽).mp4",
-      // Taiwan
-      "taiwanText": [
-        "二仁溪的地理位置",
-        "二仁溪，上游發源於高雄內門區，為台南市與高雄市的界河。兩岸分別流經高雄的田寮、阿蓮、路竹以及台南的關廟、歸仁、仁德等區，最後由高雄茄萣出海。"
-      ],
-      "taiwan": "/events/reborn-erren-river/illustrations/taiwan.svg",
-      
-      // Illustration
-      "illustrationText": [
-        "如果要說全台灣命運最悲慘的河流，很多人腦海裡浮現的很可能是二仁溪。\n\n二仁溪中下游地區曾經是廢五金與熔煉業的大本營，尤其是北岸的台南灣裡，六零年代，家家戶戶幾乎都在從事拆解廢五金的行業，空氣中總是瀰漫著酸臭煙霧。"
-      ],
-      "illustration": "/events/reborn-erren-river/illustrations/illustrationB.svg",
-      // Videos
-      "video":["/events/reborn-erren-river/videos/B47-早期二仁溪拆解焚燒綠牡蠣.mp4", "/events/reborn-erren-river/videos/B16重返二仁溪(有OS).mp4", "/events/reborn-erren-river/videos/B54-二仁溪黃煥彰+蘇水龍談變遷有字幕版.mp4"],
-      "videoText":["廢五金拆解過程中使用的酸性化學物質，就直接排放到河水中，有時甚至還有露天焚燒的廢電纜。在這樣的摧殘下，二仁溪告別了清澈，成為眾人口中又髒又臭的黑龍江。\n\n直到1986年爆發綠牡蠣事件，震驚全台，這才發現二仁溪含有超標重金屬，因此開始進行整治。", "除了廢五金產業，二仁溪還遭受到另一項污染難題。在二仁溪支流中，污染最為嚴重的就是三爺宮溪，不僅有超過百家畜牧場廢水，還有電鍍工廠、金屬表面處理工廠偷排的廢水，河水濃稠如油墨是家常便飯，因此在二仁溪整治過程中，三爺宮溪是頭號要犯。我們2002年在三爺宮溪和二仁溪的匯流處，撈起溪水，水色黑不透光，十多年後，我們再度搭船回到同樣的匯流處，這次撈起來的水色，已經明顯清澈許多。"],
-      // Photo Switch
-      "photoswitch": ["/events/reborn-erren-river/B49.jpg", "/events/reborn-erren-river/B50.jpg", "/events/reborn-erren-river/B51.jpg", "/events/reborn-erren-river/B52.jpg", "/events/reborn-erren-river/B53.jpg"],
-      "photoswitchText": "2018年8月連續豪雨的沖刷下，二仁溪出海口的廢棄物再次現形。早期二仁溪整治過程中，因為經費問題還殘餘幾處電子廢棄物堆置在河邊。根據台南市環保局與當地環團的調查，二仁溪的出海口、南萣橋附近與仁德區至少就有三處廢棄物堆置地點，至今仍可看到大量廢五金。",
-      "photoswitchText2": "在經年累月的沖刷下，有害物質持續流入河水並沉積在底泥中，對河川生態形成威脅。據六河局估計這些電子廢棄物至少有一萬多噸，清除經費高達三億，目前還沒有清運計畫，是二仁溪整治至今，難以徹底解決的痛處。當初少數廢五金業者以環境為代價賺取利潤，如今社會還在持續付出成本。",
-      "photoswitchLabel": ["2018年二仁溪仁德段電子廢棄物緊鄰河水，日夜掏刷", "2018年二仁溪出海口殘存的電子廢棄物仍卡在消波塊中", "1993.2018年二仁溪仁德段廢棄電路板在水中", "1994.2018年二仁溪南萣橋附近的殘存廢棄物已生青苔", "2018年二仁溪尚未清除的仁德段廢棄物，只能用帆布暫時蓋住"],
-      // Photo Multiple
-      "photoMultipleText": "不只二仁溪，根據環保署2017年的環保統計年報，台灣至今還有30多條以上河川遭到中重度污染，像是長年受到工業廢水排放的桃園黃墘溪、和石化區緊鄰的高雄後勁溪或是飽受中華紙漿廢水長年排放的花蓮溪等等，這些多年來承受污染威脅的河川，到現在還在等待清澈的一天。",
-      "photoMultiple": ["/events/reborn-erren-river/B12.jpg", "/events/reborn-erren-river/B37.jpg", "/events/reborn-erren-river/B31.jpg", "/events/reborn-erren-river/B35.jpg", "/events/reborn-erren-river/B42.jpg", "/events/reborn-erren-river/B33.jpg","/events/reborn-erren-river/B36.jpg", "/events/reborn-erren-river/B25.jpg", "/events/reborn-erren-river/B43.jpg"],
-      "photoMultipleLabel": ["1993年中華紙漿廢水排放花蓮溪", "2001年工業廢水排放到桃園黃墘溪", "2009年工業廢水排放到後勁溪", "2012年高雄阿公店溪上游畜牧廢水污染", "2012年桃園觀音工業區廢水排放富林溪", "2013年日月光偷排高雄後勁溪", "2014年工業廢水排放彰化番雅溝", "2014年觀音工業區廢水排放黃墘溪", "2018年畜牧廢水排放到雲林縣水林鄉五汴排水"],
+        "title": "重生 二仁溪",
+        "id": "事件2",
 
+        // CoverVideo
+        "coverTitle": "/images/titles/02.svg",
+        "coverDescription": "靠著廢五金致富，卻留下污染，\n造就黑龍江得花多少時間與金錢，才能換回二仁溪的重生？",
+        "coverVideo": "/events/reborn-erren-river/videos/B17(2012年二仁溪兩岸廢棄物導覽).mp4",
+
+        // Taiwan
+        "taiwanText": [
+            "二仁溪的地理位置",
+            "二仁溪，上游發源於高雄內門區，為台南市與高雄市的界河。兩岸分別流經高雄的田寮、阿蓮、路竹以及台南的關廟、歸仁、仁德等區，最後由高雄茄萣出海。"
+        ],
+
+        // Illustration
+        "illustrationText": [
+            "如果要說全台灣命運最悲慘的河流，很多人腦海裡浮現的很可能是二仁溪。\n\n二仁溪中下游地區曾經是廢五金與熔煉業的大本營，尤其是北岸的台南灣裡，六零年代，家家戶戶幾乎都在從事拆解廢五金的行業，空氣中總是瀰漫著酸臭煙霧。"
+        ],
+        "illustration": "/events/reborn-erren-river/illustrations/illustrationB.svg",
+
+        // Videos
+        "video": [
+            "/events/reborn-erren-river/videos/B47-早期二仁溪拆解焚燒綠牡蠣.mp4", "/events/reborn-erren-river/videos/B16重返二仁溪(有OS).mp4",
+            "/events/reborn-erren-river/videos/B54-二仁溪黃煥彰+蘇水龍談變遷有字幕版.mp4"
+        ],
+
+        "videoText": [
+            "廢五金拆解過程中使用的酸性化學物質，就直接排放到河水中，有時甚至還有露天焚燒的廢電纜。在這樣的摧殘下，二仁溪告別了清澈，成為眾人口中又髒又臭的黑龍江。\n\n直到1986年爆發綠牡蠣事件，震驚全台，這才發現二仁溪含有超標重金屬，因此開始進行整治。",
+            "除了廢五金產業，二仁溪還遭受到另一項污染難題。在二仁溪支流中，污染最為嚴重的就是三爺宮溪，不僅有超過百家畜牧場廢水，還有電鍍工廠、金屬表面處理工廠偷排的廢水，河水濃稠如油墨是家常便飯，因此在二仁溪整治過程中，三爺宮溪是頭號要犯。我們2002年在三爺宮溪和二仁溪的匯流處，撈起溪水，水色黑不透光，十多年後，我們再度搭船回到同樣的匯流處，這次撈起來的水色，已經明顯清澈許多。"
+        ],
+
+        // PhotoSwitch
+        "photoswitch": [
+            "/events/reborn-erren-river/B49.jpg",
+            "/events/reborn-erren-river/B50.jpg",
+            "/events/reborn-erren-river/B51.jpg",
+            "/events/reborn-erren-river/B52.jpg",
+            "/events/reborn-erren-river/B53.jpg"
+        ],
+
+        "photoswitchLabel": [
+            "2018年二仁溪仁德段電子廢棄物緊鄰河水，日夜掏刷",
+            "2018年二仁溪出海口殘存的電子廢棄物仍卡在消波塊中",
+            "1993.2018年二仁溪仁德段廢棄電路板在水中",
+            "1994.2018年二仁溪南萣橋附近的殘存廢棄物已生青苔", 
+            "2018年二仁溪尚未清除的仁德段廢棄物，只能用帆布暫時蓋住"
+        ],
+
+        "photoswitchText": "2018年8月連續豪雨的沖刷下，二仁溪出海口的廢棄物再次現形。早期二仁溪整治過程中，因為經費問題還殘餘幾處電子廢棄物堆置在河邊。根據台南市環保局與當地環團的調查，二仁溪的出海口、南萣橋附近與仁德區至少就有三處廢棄物堆置地點，至今仍可看到大量廢五金。",
+
+        "photoswitchText2": "在經年累月的沖刷下，有害物質持續流入河水並沉積在底泥中，對河川生態形成威脅。據六河局估計這些電子廢棄物至少有一萬多噸，清除經費高達三億，目前還沒有清運計畫，是二仁溪整治至今，難以徹底解決的痛處。當初少數廢五金業者以環境為代價賺取利潤，如今社會還在持續付出成本。",
+
+        // Photo Multiple
+        "photoMultipleText": "不只二仁溪，根據環保署2017年的環保統計年報，台灣至今還有30多條以上河川遭到中重度污染，像是長年受到工業廢水排放的桃園黃墘溪、和石化區緊鄰的高雄後勁溪或是飽受中華紙漿廢水長年排放的花蓮溪等等，這些多年來承受污染威脅的河川，到現在還在等待清澈的一天。",
+
+        "photoMultiple": [
+            "/events/reborn-erren-river/B12.jpg",
+            "/events/reborn-erren-river/B37.jpg",
+            "/events/reborn-erren-river/B31.jpg",
+            "/events/reborn-erren-river/B35.jpg",
+            "/events/reborn-erren-river/B42.jpg",
+            "/events/reborn-erren-river/B33.jpg",
+            "/events/reborn-erren-river/B36.jpg",
+            "/events/reborn-erren-river/B25.jpg",
+            "/events/reborn-erren-river/B43.jpg"
+        ],
+
+        "photoMultipleLabel": [
+            "1993年中華紙漿廢水排放花蓮溪",
+            "2001年工業廢水排放到桃園黃墘溪",
+            "2009年工業廢水排放到後勁溪",
+            "2012年高雄阿公店溪上游畜牧廢水污染",
+            "2012年桃園觀音工業區廢水排放富林溪",
+            "2013年日月光偷排高雄後勁溪",
+            "2014年工業廢水排放彰化番雅溝",
+            "2014年觀音工業區廢水排放黃墘溪",
+            "2018年畜牧廢水排放到雲林縣水林鄉五汴排水"
+        ],
     },
     // ****************************************************************** C ******************************************************************
     "land-crabs-survival": {
@@ -219,7 +322,7 @@ var data = {
       "title": "漁港的黑色幽默",
       "id": "事件4",
       //CoverVideo
-      "coverTitle": "/events/dawu-fishing-port/illustrations/01title.svg",
+      "coverTitle": "/images/titles/04.svg",
       "coverDescription": "漁港變成砂石場 \n怪手挖不完 漁船出不了海\n蓋了六十年\n還沒有完工的永續工程",
       "coverVideo": "/events/dawu-fishing-port/videos/D33-新拍2018大武漁港空拍修.mp4",
       // Taiwan
@@ -238,7 +341,7 @@ var data = {
       "title": "不靠海的金門後豐港",
       "id": "事件5",
       //CoverVideo
-      "coverTitle": "/events/kinmen-Hou-feng-kang/illustrations/01title.svg",
+      "coverTitle": "/images/titles/05.svg",
       "coverDescription": "金門後豐港\n一個名稱有港，卻無法出港的地方。\n一個以海維生的百年漁村聚落，\n卻再也不能輕易地親近海。",
       "coverVideo": "/events/kinmen-Hou-feng-kang/videos/E12(金門後豐港填港空拍).mp4",
       // Taiwan
@@ -268,7 +371,7 @@ var data = {
       "title": "咬一口高山青翠",
       "id": "事件6",
       //CoverVideo
-      "coverTitle": "/events/lishan-high-mountain-farms/illustrations/01title.svg",
+      "coverTitle": "/images/titles/06.svg",
       "coverDescription": "這裡曾經林木蒼鬱，\n如今滿山的高麗菜、茶樹和果園。\n光禿的山頭，崩落的土石，\n見證的是人的意志，還是大地的嗚咽。",
       "coverVideo": "/events/lishan-high-mountain-farms/videos/F47梨山空拍1.mp4",
       // Taiwan
@@ -310,7 +413,7 @@ var data = {
       "title": "冒險泡湯去 廬山",
       "id": "事件7",
       //CoverVideo
-      "coverTitle": "/events/lushan-hotspring-risk/illustrations/01title.svg",
+      "coverTitle": "/images/titles/07.svg",
       "coverDescription": "號稱天下第一泉的廬山溫泉，\n因為泉質優良，一度熙熙攘攘。\n十年前，暴洪沖走了繁華，\n曾經人聲鼎沸的山城，只剩空蕩。",
       "coverVideo": "/events/lushan-hotspring-risk/videos/G13-塔羅灣溪滾滾洪流縮短版.mp4",
       // Taiwan
@@ -335,6 +438,7 @@ var data = {
       // Photo Contrast
       "photocontrast": ["/events/lushan-hotspring-risk/G8(2007.11.15廬山吊橋上游溫泉飯店占用河道).jpg", "/events/lushan-hotspring-risk/G9(2008.辛樂克颱風過後廬山吊橋上游溫泉飯店).jpg"],
       "photocontrastText": "",
+      "photocontrastYear": ["2007", "2008"]
     },
     // ****************************************************************** H ******************************************************************
     "hushan-reservoir-lost-water": {
@@ -346,7 +450,7 @@ var data = {
       "title": "挖山取石的代價",
       "id": "事件9",
       //CoverVideo
-      "coverTitle": "/events/asia-cement-cost/illustrations/01title.svg",
+      "coverTitle": "/images/titles/09.svg",
       "coverDescription": "火藥炸裂她的心臟\n怪手挖開她的背脊\n她的身軀一點點消失\n化成水泥 蓋成樓房\n輸送帶忙碌地準備打包整座山頭\n太魯閣年輕族人問 山去了哪裡",
       "coverVideo": "/events/asia-cement-cost/videos/I1-亞泥空拍.mp4",
       // Taiwan

@@ -124,27 +124,18 @@ button.btn {
   z-index: 10;
   cursor: pointer;
   background: #fcfcfc;
-  border-radius: 22px;
+  border-radius: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0px 32px;
-  height: 44px;
+  height: 56px;
   border: none;
   box-shadow: none;
   letter-spacing: 1.6px;
   transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
   box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.24);
   backface-visibility: hidden;
-}
-
-button.btn:hover {
-  transform: scale3d(1.02, 1.02, 1.02);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.03), 0 3px 6px rgba(0,0,0,0.24);
-}
-
-button.btn:active {
-  color: #000;
 }
 
 button,
@@ -156,6 +147,17 @@ button,
 
 nav .btn {
   height: 36px;
+  color: white;
+  background: none;
+  box-shadow: none;
+  border: 2px white solid;
+  font-weight: 700;
+  padding: 0 17px;
+  font-size: 16px;
+}
+
+nav.fix .btn {
+  border: 2px rgba(255,255,255,0) solid;
 }
 
 .absolute-center {
@@ -186,6 +188,10 @@ nav .btn {
 
 .mw80 {
   max-width: 80rem;
+}
+
+.mw70 {
+  max-width: 70rem;
 }
 
 .mw9 {
@@ -308,10 +314,10 @@ nav .btn {
 }
 
 #phone {
-  transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all .6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform: translateX(-180px) scale3d(1,1,1);
   backface-visibility: hidden;
-  animation: pop 1s infinite;
+  animation: pop 2s infinite;
   opacity: 1;
 }
 
@@ -733,7 +739,7 @@ ul.none {
 /* grid */
 .grid-container {
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 0px;
   overflow-x: scroll;
 }
 
@@ -840,7 +846,7 @@ ul.none {
 }
 
 .play:hover, .sound:hover {
-  opacity: .7;
+  transform: scale(1.05);
 }
 
 /*
