@@ -573,7 +573,7 @@ function Video(props) {
         <div className="cf">
           <div className={props.position+" w-50-l mw500 mh3-l mh3-l center w-100 pa4-l pa3 relative"}>
             <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"f5 lh-copy mv0 z4 relative "+textcolor}>{props.text1}</p>
+            <p className={"pre-wrap f5 lh-copy mv0 z4 relative "+textcolor}>{props.text1}</p>
           </div>
         </div>
       
@@ -588,7 +588,7 @@ function Video(props) {
       <div className="cf mt50vh">
         <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
           <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-          <p className={"f5 lh-copy mv0 z4 relative "+textcolor}>{props.text2}</p>
+          <p className={"pre-wrap f5 lh-copy mv0 z4 relative "+textcolor}>{props.text2}</p>
         </div>
       </div>
     )
@@ -653,7 +653,7 @@ function SmallVideo(props) {
             </video>
           </div>
           <div className="fr-l w-100 w-50-l mw500 center ml5-l ph2 pv3">
-            <p className="f5 lh-copy mv0 z4 relative black">{props.text}</p>
+            <p className="pre-wrap f5 lh-copy mv0 z4 relative black">{props.text}</p>
           </div>
         </div>
       </div>
@@ -717,7 +717,7 @@ function CenterVideo(props) {
         <div className="cf flex aic">
           <div className="w-100 w-50-l center pa4-l pa2 relative" style={max}>
             <div className={bgColor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"f5 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
+            <p className={"pre-wrap f5 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
           </div>
         </div>
       </div>
