@@ -404,7 +404,9 @@ function PhotoSwitch(props) {
     images.push(temp);
   }
   var text1 = null;
+  var h = "min-vh-150"
   if(props.text1 !== "") {
+    h = "min-vh-200"
     text1 = (
       <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative "+props.position}>
         <div className="w-100 h-100 absolute bg-dark-gray o-80 top-left"></div>
@@ -413,7 +415,6 @@ function PhotoSwitch(props) {
     )
   }
   var text2 = null;
-  var h = "min-vh-200"
   if(props.number === 2) {
     h = "min-vh-300"
     text2 = (
@@ -484,7 +485,7 @@ function PhotoMultiple(props) {
   }
 
   return (
-    <section className="flex aic relative bg-white flex-column pv6 auto-scroll">      
+    <section className="flex aic relative bg-white flex-column pv6-l pv4 auto-scroll">      
       <div className="mw80 center cf black mb5 ph3 w-100">
         <div className="mw7 w-100 center bg-white">
           <p className="f5 lh-copy mv0">{props.text}</p>
@@ -513,7 +514,7 @@ function PhotoContrast(props) {
     )
   }
   return (
-    <section className="flex aic relative bg-white flex-column pv6">
+    <section className="flex aic relative bg-white flex-column pv6-l pv4">
         <div className="ph3 w-100 z4">
           {text}
           <figure className="cd-image-container is-visible z4">
@@ -559,6 +560,7 @@ function Video(props) {
   var text1 = null
   var bgcolor = ""
   var textcolor = ""
+  var h = "min-vh-150"
   if(props.color === "dark") {
     bgcolor = "bg-dark-gray o-80";
     textcolor = "white";
@@ -568,6 +570,7 @@ function Video(props) {
   }
 
   if(props.text1 !== "") {
+    h = "min-vh-200"
     text1 = (
       
         <div className="cf">
@@ -581,7 +584,6 @@ function Video(props) {
   }
 
   var text2 = null;
-  var h = "min-vh-200"
   if(props.number === 2) {
     h = "min-vh-300"
     text2 = (
@@ -642,7 +644,7 @@ function SmallVideo(props) {
     }
   }
   return (
-    <section className="flex aic relative pv6 video-content smallVideo">
+    <section className="flex aic relative pv6-l pv4 video-content smallVideo">
       <div className="mw80 w-100 center ph3 z4 relative">
         <div className="cf flex aic flex-column-s">
           <div className="fl-l w-100 w-50-l ph2 pv3 relative">
@@ -700,7 +702,7 @@ function CenterVideo(props) {
   }
 
   return (
-    <section className="min-vh-200 flex aic relative pv6 video-content">
+    <section className="min-vh-200 flex aic relative pv6-l pv4 video-content">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={mask+" w-100 h-100 absolute pn top-left z4"}/>
         <div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>
@@ -729,7 +731,7 @@ function CenterVideo(props) {
 /*10*/
 function EndingVideo(props) {
   return (
-    <section className="cover min-vh-100 flex aic relative bg-near-white pv6">
+    <section className="cover min-vh-100 flex aic relative bg-near-white pv6-l pv4">
       <div className="mw80 center ph3 z4 relative mb6">
         <div className="cf tc black w-50-l w-80-m w-100 center pa2 bg-white mb5">
           <h3>想知道{props.text}更多故事....</h3>
@@ -792,7 +794,7 @@ function PhotoAudio(props) {
   };
 
   return (
-    <section className="flex aic relative bg-white pv6">
+    <section className="flex aic relative bg-white pv6-l pv4">
       <div className="mw80 w-100 center ph3 relative">
         <div className="cf ph2-ns">
           <div className="fl w-100 w-50-ns pa2">
@@ -851,14 +853,14 @@ function Timeline(props) {
     }
     var textGridStyle = {
       height: "240px",
-      maxWidth: "420px",
+      maxWidth: "440px",
       whiteSpace: "normal"
     }
     var photos = (
       <div className="grid-item bg-white relative" key={i}>
         <div style={photoGridStyle}></div>
         <div style={textGridStyle} className="pa4 center">
-          <p className="f5 fw6 lh-copy mv2 bg-white dib z4 relative">
+          <p className="f5 fw6 lh-copy mv2 bg-white dib z4 relative pr2">
             {"• "+props.year[i]}
           </p>
           <p className="f6 lh-copy mv0">
@@ -879,7 +881,7 @@ function Timeline(props) {
   }
 
   var line = {
-    top: "505px",
+    top: "376px",
     left: 0,
     width: "100%",
     height: "2px",
@@ -888,11 +890,21 @@ function Timeline(props) {
     zIndex: 1
   }
 
+  var max = {
+    maxWidth: "880px"
+  }
+  var content = null
+
+  if(props.content !== null) {
+    content = (<p className="lh-copy f5 center pre-wrap ph4-ns ph3 mb5" style={max}>{props.content}</p>);
+  }
+
   return (
-    <section className="min-vh-100 flex aic relative bg-white pv6">      
-      <div className="w-100 overflow-hidden" style={height}>
+    <section className="min-vh-100 flex aic relative bg-white pv6-l pv4 flex-column">      
+      {content}
+      <div className="w-100 overflow-hidden relative" style={height}>
         <div className="absolute line" style={line}></div>
-        <div className="grid-container nowrap dragscroll relative" style={container}>
+        <div className="grid-container nowrap dragscroll relative ph5-l ph0" style={container}>
           {grid}
         </div> 
       </div>
@@ -913,7 +925,7 @@ function Transition(props) {
 
 function Next(props) {
   return (
-    <section className="banner pv6 bg-white">
+    <section className="banner pv6-l pv4 bg-white">
       <div className="cf ph2-ns">
         <Link to={"../"+props.prev+"/"}> 
           <div className="fl w-100 w-50-ns pa2 tc" onClick={() => props.switchView(props.prev)}>Prev</div>
@@ -1357,6 +1369,12 @@ class Event07 extends Component {
           illustration = {this.props.data.illustration}
         />
 
+        <PhotoSwitch 
+          images={this.props.data.photoswitch} 
+          label={this.props.data.photoswitchLabel}
+          text1=""
+        />
+
         <PhotoTextFull
           position={"fr-l"}
           text1={this.props.data.photoFullText[0]}
@@ -1369,6 +1387,13 @@ class Event07 extends Component {
           color="dark"
           link={this.props.data.video[1]}
           text1={this.props.data.videoText[1]}
+        />
+
+        <Timeline
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
+          content={this.props.data.timelineContent}
         />
 
         <PhotoContrast 
@@ -1396,10 +1421,11 @@ class Event07 extends Component {
           link={this.props.data.video[3]}
           text1=""
         />
-        <Video 
+        <CenterVideo 
           videoID="05"
           link={this.props.data.video[4]}
           text1={this.props.data.videoText[4]}
+          bg={false}
         />
         
       </div>
