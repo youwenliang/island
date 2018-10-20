@@ -831,15 +831,15 @@ function PhotoAudio(props) {
 }
 
 /*13*/
-function PhotoTextMultiple(props) {
+function Timeline(props) {
   let grid = [];
   var columns = "";
   
   var height = {
-    height: "480px"
+    height: "560px"
   }
 
-  var w = $(window).width()/3 + 50 + "px";
+  var w = "480px";
 
   for (var i = 0; i < props.images.length; i++){
     var photoGridStyle = {
@@ -850,15 +850,19 @@ function PhotoTextMultiple(props) {
       backgroundPosition: "center center"
     }
     var textGridStyle = {
-      height: "160px",
+      height: "240px",
+      maxWidth: "420px",
       whiteSpace: "normal"
     }
     var photos = (
       <div className="grid-item bg-white relative" key={i}>
         <div style={photoGridStyle}></div>
-        <div style={textGridStyle} className="pa4">
-          <p className="f5 lh-copy mv0">
-          {props.text[i]+props.text[i]+props.text[i]+props.text[i]+props.text[i]+props.text[i]}
+        <div style={textGridStyle} className="pa4 center">
+          <p className="f5 fw6 lh-copy mv2 bg-white dib z4 relative">
+            {"• "+props.year[i]}
+          </p>
+          <p className="f6 lh-copy mv0">
+            {props.text[i]}
           </p>
         </div>
       </div>
@@ -869,14 +873,26 @@ function PhotoTextMultiple(props) {
 
   var container = {
     gridTemplateColumns: columns,
-    height: "4800px",
+    gridGap: "10px",
+    height: "600px",
     paddingBottom: "40px"
   }
 
+  var line = {
+    top: "505px",
+    left: 0,
+    width: "100%",
+    height: "2px",
+    backgroundColor: "rgb(0, 0, 0)",
+    opacity: 0.1,
+    zIndex: 1
+  }
+
   return (
-    <section className="flex aic relative bg-white flex-column pv6 auto-scroll">      
+    <section className="min-vh-100 flex aic relative bg-white pv6">      
       <div className="w-100 overflow-hidden" style={height}>
-        <div className="grid-container nowrap dragscroll" style={container}>
+        <div className="absolute line" style={line}></div>
+        <div className="grid-container nowrap dragscroll relative" style={container}>
           {grid}
         </div> 
       </div>
@@ -1058,6 +1074,12 @@ class Event02 extends Component {
           videoID="01"
           link={this.props.data.video[0]}
           text1={this.props.data.videoText[0]}
+        />
+
+        <Timeline
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
         />
 
         <Video 

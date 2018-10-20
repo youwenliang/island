@@ -609,6 +609,14 @@ ul.none {
   letter-spacing: .4px;
 }
 
+.f6 {
+  font-size: 1rem;
+}
+
+.f7 {
+  font-size: .875rem;
+}
+
 
 /* Navigation */
 #section-nav {
