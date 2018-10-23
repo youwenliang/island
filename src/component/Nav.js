@@ -19,15 +19,17 @@ class Nav extends Component {
   };
 
   copyLink = (e) => {
+    e.preventDefault()
     var copyButton = document.querySelector('.share-form button');
     var copyInput = document.querySelector('.share-form input');
-    var text = copyInput.select();
+    var text = copyInput.select(); // eslint-disable-line no-unused-vars
     document.execCommand('copy');
     copyInput.select();
     copyButton.innerHTML = "Copied!";
     setTimeout(function(){
       copyButton.innerHTML = "Copy Link";
     }, 1200);
+    return false;
   }
 
   render() {
@@ -46,15 +48,15 @@ class Nav extends Component {
               </Link>
               <div className="flex flex-row">
                 {timeline}
-                <button className="btn cp h2 ph3 ml3" onClick={() => this.onOpenModal()}>分享</button>
+                <button className="share btn cp h2 ph3 ml3" onClick={() => this.onOpenModal()}>分享</button>
               </div>
             </div>
           </div>
         </nav>
         <Modal open={open} onClose={this.onCloseModal}>
-          <form className="pt4 share-form flex aic jcc" action="javascript:void(0);">
+          <form className="pt4 share-form flex aic jcc">
             <input type="text" value={link}/>
-            <button className="dib w4" type="button" onClick={() => this.copyLink()}>Copy Link</button>
+            <button className="dib w4" type="button" onClick={(e) => this.copyLink(e)}>Copy Link</button>
           </form>
         </Modal>
       </div>

@@ -46,7 +46,7 @@ class Search extends Component {
     }
     $(document).ready(function(){
       console.log("swiper!");
-      var mySwiper = new Swiper ('.swiper-container', {
+      var mySwiper = new Swiper ('.swiper-container', { // eslint-disable-line no-unused-vars
         // Optional parameters
         autoHeight: true,
         allowTouchMove: true,
@@ -60,7 +60,7 @@ class Search extends Component {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         }
-      })
+      }) 
     })
   };
 

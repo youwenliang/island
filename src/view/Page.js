@@ -5,7 +5,7 @@ import {Helmet} from "react-helmet";
 import loadImage from 'image-promise';
 import data from '../data/data.js';
 import $ from 'jquery';
-import BeforeAfterSlider from 'react-before-after-slider';
+import BeforeAfterSlider from 'react-before-after-slider'; // eslint-disable-line no-unused-vars
 import ImageGallery from 'react-image-gallery';
 import Nav from '../component/Nav'
 import Modal from 'react-responsive-modal';
@@ -105,14 +105,13 @@ class Page extends Component {
           $('.progress').removeClass('active');
         }
 
-        var top_of_window = $(window).scrollTop();
-        var bottom_of_window = $(window).scrollTop()+ $(window).height();
-        var center_of_window = $(window).scrollTop()+ $(window).height()/2;
+        var top_of_window = $(window).scrollTop(); // eslint-disable-line no-unused-vars
+        var bottom_of_window = $(window).scrollTop()+ $(window).height(); // eslint-disable-line no-unused-vars
+        var center_of_window = $(window).scrollTop()+ $(window).height()/2; 
 
         $('.auto-scroll').each(function(){
           var top_of_object = $(this).offset().top;
           var bottom_of_object = $(this).offset().top + $(this).height();
-          var $this = $(this);
           if( center_of_window >= top_of_object && center_of_window <= bottom_of_object ){
             k = 0.3
           } else {
@@ -296,8 +295,6 @@ function Illustration(props) {
 
 /*04*/
 function PhotoTextFull(props) {
-  var text = ""
-  
   var fullImage = {
     height: "100vh",
     objectFit: "cover",
@@ -319,7 +316,17 @@ function PhotoTextFull(props) {
     bgcolor = "bg-white o-90";
     textcolor = "black";
   }
-
+  var text1 = null;
+  if(props.text1 !== null) {
+    text1 = (
+      <div className="cf">
+        <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
+          <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
+          <p className={"f5 lh-copy mv0 z4 relative "+textcolor}>{props.text1}</p>
+        </div>
+      </div>
+    )
+  }
   var text2 = null;
   var h = "min-vh-200"
   if(props.number === 2) {
@@ -344,12 +351,7 @@ function PhotoTextFull(props) {
         </div>
       </div>
       <div className="mw80 center ph3 w-100 z4 pre-wrap">
-        <div className="cf">
-          <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
-            <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"f5 lh-copy mv0 z4 relative "+textcolor}>{props.text1}</p>
-          </div>
-        </div>
+        {text1}
         {text2}
       </div>
     </section>
@@ -470,7 +472,7 @@ function PhotoMultiple(props) {
     }
     console.log(props.images[i]);
     var photos = (
-      <div className="grid-item bg-gray relative cp" style={item} key={i} onClick={(e) => props.onOpenModal(e.target.style.backgroundImage.split('\"')[1])}>
+      <div className="grid-item bg-gray relative cp" style={item} key={i} onClick={(e) => props.onOpenModal(e.target.style.backgroundImage.split('"')[1])}>
         <label className="absolute white" style={bottomRight}>{props.label[i]}</label>
       </div>
     )
@@ -736,7 +738,7 @@ function EndingVideo(props) {
         <div className="cf tc black w-50-l w-80-m w-100 center pa2 bg-white mb5">
           <h3>想知道{props.text}更多故事....</h3>
         </div>
-        <iframe width="560" height="315" src={props.link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+        <iframe title="playlist" width="560" height="315" src={props.link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
       </div>
     </section>
   )
@@ -757,8 +759,8 @@ function PhotoAudio(props) {
   }
 
   function calculateCurrentValue(currentTime) {
-    var current_hour = parseInt(currentTime / 3600) % 24,
-      current_minute = parseInt(currentTime / 60) % 60,
+    var current_hour = parseInt(currentTime / 3600, 10) % 24, // eslint-disable-line no-unused-vars
+      current_minute = parseInt(currentTime / 60, 10) % 60,
       current_seconds_long = currentTime % 60,
       current_seconds = current_seconds_long.toFixed(),
       current_time = (current_minute < 10 ? "0" + current_minute : current_minute) + ":" + (current_seconds < 10 ? "0" + current_seconds : current_seconds);
@@ -1125,7 +1127,7 @@ class Event02 extends Component {
         />
 
         <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
-          <img src={this.state.image}/>
+          <img src={this.state.image} alt="modal"/>
         </Modal>
 
         {/*

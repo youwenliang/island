@@ -579,22 +579,25 @@ var data = {
     },
     // ****************************************************************** I ******************************************************************
     "asia-cement-cost": {
-      "title": "挖山取石的代價",
-      "id": "事件9",
-      //CoverVideo
-      "coverTitle": "/images/titles/09.svg",
-      "coverDescription": "火藥炸裂她的心臟\n怪手挖開她的背脊\n她的身軀一點點消失\n化成水泥 蓋成樓房\n輸送帶忙碌地準備打包整座山頭\n太魯閣年輕族人問 山去了哪裡",
-      "coverVideo": "/events/asia-cement-cost/videos/I1-亞泥空拍.mp4",
-      // Taiwan
-      "taiwanText": [
-        "亞泥的地理位置",
-        "亞泥"
-      ],
-      // Illustration
-      "illustrationText": [
-        "如果要問全台灣最多礦場的縣市在哪裡？你的答案會是什麼地方？花蓮境內擁有壯麗的高山峽谷，在台灣現存的246個礦區中，花蓮占了82個，相當於三分之一。從和平溪、立霧溪、三棧溪、支亞干溪，每一條溪的上游，都是一座又一座的礦場。"
-      ],
-      "illustration": "/events/asia-cement-cost/illustrations/illustrationI.svg",
+        "title": "挖山取石的代價",
+        "id": "事件9",
+
+        //CoverVideo
+        "coverTitle": "/images/titles/09.svg",
+        "coverDescription": "火藥炸裂她的心臟\n怪手挖開她的背脊\n她的身軀一點點消失\n化成水泥 蓋成樓房\n輸送帶忙碌地準備打包整座山頭\n太魯閣年輕族人問 山去了哪裡",
+        "coverVideo": "/events/asia-cement-cost/videos/I1-亞泥空拍.mp4",
+
+        // Taiwan
+        "taiwanText": [
+            "亞泥的地理位置",
+            "亞泥"
+        ],
+
+        // Illustration
+        "illustrationText": [
+            "如果要問全台灣最多礦場的縣市在哪裡？你的答案會是什麼地方？花蓮境內擁有壯麗的高山峽谷，在台灣現存的246個礦區中，花蓮占了82個，相當於三分之一。從和平溪、立霧溪、三棧溪、支亞干溪，每一條溪的上游，都是一座又一座的礦場。"
+        ],
+        "illustration": "/events/asia-cement-cost/illustrations/illustrationI.svg",
     },
     // ****************************************************************** J ******************************************************************
     "science-park-landuse": {
@@ -608,22 +611,25 @@ var data = {
     },
     // ****************************************************************** L ******************************************************************
     "soil-pollution-tainan": {
-      "title": "焦土台鹼安順廠",
-      "id": "事件12",
-      //CoverVideo
-      "coverTitle": "/events/soil-pollution-tainan/illustrations/01title.svg",
-      "coverDescription": "一座化學工廠\n為濱海小鎮帶來短暫繁華\n也默默侵蝕這片土地\n廠區海水池裡 豐富的魚產\n不是上天給海口人的恩賜\n而是終身病痛與折磨的開端",
-      "coverVideo": "/events/soil-pollution-tainan/videos/L15-台鹼安順廠空拍2.mp4",
-      // Taiwan
-      "taiwanText": [
-        "台鹼安順廠的地理位置",
-        "台鹼安順廠"
-      ],
-      // Illustration
-      "illustrationText": [
-        "台鹼安順廠"
-      ],
-      "illustration": "/events/soil-pollution-tainan/illustrations/illustrationL.svg",
+        "title": "焦土台鹼安順廠",
+        "id": "事件12",
+
+        //CoverVideo
+        "coverTitle": "/images/titles/12.svg",
+        "coverDescription": "一座化學工廠\n為濱海小鎮帶來短暫繁華\n也默默侵蝕這片土地\n廠區海水池裡 豐富的魚產\n不是上天給海口人的恩賜\n而是終身病痛與折磨的開端",
+        "coverVideo": "/events/soil-pollution-tainan/videos/L15-台鹼安順廠空拍2.mp4",
+
+        // Taiwan
+        "taiwanText": [
+            "台鹼安順廠的地理位置",
+            "台鹼安順廠"
+        ],
+
+        // Illustration
+        "illustrationText": [
+            "台鹼安順廠"
+        ],
+        "illustration": "/events/soil-pollution-tainan/illustrations/illustrationL.svg",
     },
     // ****************************************************************** M ******************************************************************
     "event13": {

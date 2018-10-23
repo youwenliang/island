@@ -26,7 +26,7 @@ class Events extends Component {
     var num = id.split('-')[1];
     var $this = this;
     var tween = null;
-    var scale = null;
+    var scale = null; // eslint-disable-line no-unused-vars
 
     switch(topic) {
     case "1":
@@ -150,7 +150,7 @@ class Events extends Component {
           backgroundImage: 'url('+bgUrl+')',
           backgroundPosition: 'center center',
           backgroundSize: 'cover',
-          height: '600px',
+          height: '540px',
           backgroundRepeat: 'no-repeat'
     }
     var btnStyle= {
@@ -181,11 +181,11 @@ class Events extends Component {
     var topic_content = (
       <div className="cf ph2-ns white">
         {/*<h1 className="dib f2-ns f3 fw7 mv0 mr2 tracked">{event_content[this.state.topics[num]].name.split('@')[0]}</h1>*/}
-        <img src={"./images/titles/"+event_content[this.state.topics[num]].num+".svg"} height="80px"/>
+        <img src={"./images/titles/"+event_content[this.state.topics[num]].num+".svg"} height="80px" alt={event_content[this.state.topics[num]].name}/>
         <h3 className="dib f4-ns f5 fw4 o-90">{"/ "+event_content[this.state.topics[num]].name.split('@')[1]}</h3>
-        <p className="mw6 f4-ns f5 lh-copy fw4">{event_content[this.state.topics[num]].description}</p>
+        <p className="mw6 f5-ns f6 lh-copy fw4">{event_content[this.state.topics[num]].description}</p>
         <Link to={"/ourisland/"+event_content[this.state.topics[num]].url+"/"}>
-          <button className="btn cp mt2 white dib mb6" style={btnStyle}>事件連結</button>
+          <button className="btn cp mt2 white dib mb5" style={btnStyle}>事件連結</button>
         </Link>        
       </div>
     )
