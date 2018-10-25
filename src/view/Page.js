@@ -358,6 +358,52 @@ function PhotoTextFull(props) {
   )
 }
 
+function PhotoCenterTextFull(props) {
+  var fullImage = {
+    height: "100vh",
+    objectFit: "cover",
+    width: "100%"
+  }
+  var bottomRight = {
+    bottom: "0px",
+    right: "0px",
+    background: "rgba(0,0,0,.2)",
+    padding: "20px"
+  }
+  var max = {
+    maxWidth: "800px"
+  }
+  var textShadow = "text-shadow";
+  var bgColor = "";
+  var mask = "bg-dark-gray o-40";
+  if(props.bg) {
+    textShadow = "";
+    bgColor = "bg-dark-gray o-80";
+    mask = "";
+  }
+  return (
+    <section className="min-vh-200 flex aic relative">
+      <div className="w-100 h-100 absolute top-left clipping">
+        <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
+          <figure className="w-100 ma0">
+            <img className="w-100" style={fullImage} src={props.image} alt="background"/>
+          </figure>
+          <div className={mask+" w-100 h-100 absolute pn top-left z4"}/>
+          <label className="white absolute z10" style={bottomRight}>{props.label}</label>
+        </div>
+      </div>
+      <div className="w-100 center ph3 z4 relative">
+        <div className="cf flex aic">
+          <div className="w-100 w-50-l center pa4-l pa2 relative" style={max}>
+            <div className={bgColor+" w-100 h-100 absolute pn top-left"}/>
+            <p className={"pre-wrap f5 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /*05*/
 function PhotoText(props) {
   var photo, text = "";
@@ -729,6 +775,55 @@ function CenterVideo(props) {
   )
 }
 
+/*09-2*/
+function CenterSmallVideo(props) {
+  function playVideo(e) {
+    var $video = $('#video'+props.videoID);
+    if(e.target.classList.contains('pause')) {
+      e.target.classList.remove('pause');
+      $video.get(0).play();
+      $video.removeClass('clicked');
+    }
+    else {
+      e.target.classList.add('pause');
+      $video.get(0).pause();
+      $video.addClass('clicked');
+    }
+  }
+  function soundVideo(e) {
+    var $video = $('#video'+props.videoID);
+    if(e.target.classList.contains('unmute')) {
+      e.target.classList.remove('unmute');
+      $video.prop('muted', true);
+    }
+    else {
+      e.target.classList.add('unmute');
+      $video.prop('muted', false);
+    }
+  }
+  var max = {
+    maxWidth: "800px"
+  }
+  var top = {
+    top: "40px"
+  }
+
+  return (
+    <section className="min-vh-100 flex aic relative pv6-l pv4 video-content">
+      <div className="w-100 center ph3 z4 relative">
+        <div className="cf flex aic jcc w-100">
+          <div className="center relative">
+            <div className="absolute play cp z10" onClick={(e) => playVideo(e)} style={top}></div>
+            <div className="absolute sound cp z10" onClick={(e) => soundVideo(e)} style={top}></div>
+            <video className="w-100" id={'video'+props.videoID} loop playsInline muted autoPlay style={max}>
+              <source src={props.link} type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 /*10*/
 function EndingVideo(props) {
