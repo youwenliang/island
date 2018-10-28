@@ -197,9 +197,9 @@ $(document).ready(function(){
         // Variables
         // ----------------------------------------------------------
         // audio embed object
-        var playerContainer = document.getElementById('player-container'),
+        var playerContainer = document.getElementById('player-container'), // eslint-disable-line no-unused-vars
           player = document.getElementById('player'),
-          isPlaying = false,
+          isPlaying = false, // eslint-disable-line no-unused-vars
           playBtn = document.getElementById('play-btn');
 
         // Controls Listeners

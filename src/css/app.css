@@ -160,6 +160,12 @@ nav.fix .btn {
   border: 2px rgba(255,255,255,0) solid;
 }
 
+.share.btn {
+  background: white !important;
+  color: #888 !important;
+  padding-left: 40px;
+}
+
 .absolute-center {
   left: 0;
   right: 0;
@@ -437,13 +443,13 @@ nav.fix .btn {
 }
 
 .eventBg {
-  height: 600px;
+  height: 540px;
 }
 .eventBg:after {
   content: "";
   position: absolute;
   width: 100%;
-  height: 600px;
+  height: 540px;
   display: block;
   top: 0;
 }
@@ -463,7 +469,7 @@ nav.fix .btn {
 }
 
 .eventContainer {
-  background: linear-gradient(to bottom ,#222222 0px, #222222 600px, #ffffff 600px);
+  background: linear-gradient(to bottom ,#222222 0px, #222222 540px, #ffffff 540px);
 }
 
 .eventFigure {
