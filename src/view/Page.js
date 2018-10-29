@@ -420,8 +420,12 @@ function PhotoText(props) {
   } else {
     photo = "fr-l"
   }
+  var h = "min-vh-150";
+  if(props.multiple) {
+    h = "";
+  }
   return (
-    <section className="min-vh-150 flex aic relative">
+    <section className={h+" flex aic relative"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={color1+" w-100 h-100 fixed fixed-content pn flex aic"}>
           <figure className="center mw70 w-100">
@@ -433,6 +437,51 @@ function PhotoText(props) {
         <div className="cf black">
           <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 "+color2+" "+text}>
             <p className="f5 lh-copy mv0">{props.text}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/*05-2*/
+function PhotoTextFix(props) {
+  var photo, text = "";
+  var color1 = "bg-white"
+  var color2 = "bg-near-white";
+  if(props.color === "invert") {
+    color1 = "bg-near-white";
+    color2 = "bg-white";
+  }
+  if(props.order === "right") {
+    text = "order-1"
+    photo = "order-0"
+  } else {
+    text = "order-0"
+    photo = "order-1"
+  }
+  var h = "min-vh-150";
+  if(props.multiple) {
+    h = "";
+  }
+
+  var p = "pb6";
+  if(props.top) {
+    p = "pt6";
+  }
+
+  return (
+    <section className={h+" flex aic relative "+p+" "+color1}>
+      <div className="mw80 w-100 center ph3 z4 relative">
+        <div className="cf flex aic flex-column-s">
+          <div className={"w-100 w-50-l ph2 pv3 relative "+photo}>
+            <figure className="center mw70 w-100">
+              <img className="w-100" src={props.image} alt="description"/>
+            </figure>
+            <p className="f7 o-50 tc">{props.label}</p>
+          </div>
+          <div className={"w-100 w-50-l mw500 center ml5-l ph2 pv3 "+color1+" "+text}>
+            <p className="pre-wrap f5 lh-copy mv0 z4 relative black">{props.text}</p>
           </div>
         </div>
       </div>
@@ -1694,6 +1743,32 @@ class Event12 extends Component {
           link={this.props.data.video[2]}
           text1=""
         />
+
+        <PhotoCenterTextFull
+          text1 = {this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[2]}
+          label = {this.props.data.photoFullTextLabel[2]}
+        /> {/*石棺*/}
+
+        <PhotoTextFix
+          order="left"
+          color="invert"
+          text={this.props.data.photoText[1]}
+          image = {this.props.data.photoImage[1]}
+          label = {this.props.data.photoLabel[0]}
+          multiple = {true}
+          top={true}
+        /> {/*提告*/}
+
+        <PhotoTextFix
+          order="left"
+          color="invert"
+          text={this.props.data.photoText[2]}
+          image = {this.props.data.photoImage[2]}
+          label = {this.props.data.photoLabel[1]}
+          multiple = {true}
+          top={false}
+        /> {/*提告*/}
 
         <Transition text={this.props.data.transitionText[2]} />
         <EndingVideo text={"台鹼安順廠"} link={"https://youtube.com/embed/6CwZYq6vt0k?rel=0"}/>
