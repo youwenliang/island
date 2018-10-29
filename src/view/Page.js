@@ -398,7 +398,7 @@ function PhotoCenterTextFull(props) {
         <div className="cf flex aic">
           <div className="w-100 w-50-l center pa4-l pa2 relative" style={max}>
             <div className={bgColor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"pre-wrap f5 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
+            <p className={"pre-wrap f4 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
           </div>
         </div>
       </div>
@@ -840,7 +840,7 @@ function CenterVideo(props) {
         <div className="cf flex aic">
           <div className="w-100 w-50-l center pa4-l pa2 relative" style={max}>
             <div className={bgColor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"pre-wrap f5 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
+            <p className={"pre-wrap f4 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
           </div>
         </div>
       </div>
