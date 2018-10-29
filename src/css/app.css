@@ -37,6 +37,10 @@ body {
   color: rgb(124,88,72);
 }
 
+.map {
+  object-fit: cover;
+}
+
 .pre-wrap {
   white-space: pre-wrap;
 }

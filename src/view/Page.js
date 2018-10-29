@@ -317,7 +317,9 @@ function PhotoTextFull(props) {
     textcolor = "black";
   }
   var text1 = null;
-  if(props.text1 !== null) {
+  var h = "min-vh-150"
+  if(props.text1 !== "") {
+    h = "min-vh-200"
     text1 = (
       <div className="cf">
         <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
@@ -328,7 +330,7 @@ function PhotoTextFull(props) {
     )
   }
   var text2 = null;
-  var h = "min-vh-200"
+  
   if(props.number === 2) {
     h = "min-vh-300"
     text2 = (
@@ -419,7 +421,7 @@ function PhotoText(props) {
     photo = "fr-l"
   }
   return (
-    <section className="min-vh-200 flex aic relative">
+    <section className="min-vh-150 flex aic relative">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={color1+" w-100 h-100 fixed fixed-content pn flex aic"}>
           <figure className="center mw70 w-100">
@@ -430,6 +432,28 @@ function PhotoText(props) {
       <div className="mw70 center ph3 w-100 z4 pre-wrap">
         <div className="cf black">
           <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 "+color2+" "+text}>
+            <p className="f5 lh-copy mv0">{props.text}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/*05-1*/
+function MapText(props) {
+  return (
+    <section className="min-vh-150 flex aic relative">
+      <div className="w-100 h-100 absolute top-left clipping">
+        <div className="w-100 h-100 fixed fixed-content pn flex aic">
+          <figure className="center w-100 h-100">
+            <img className="w-50-l w-100 h-100 map" src={props.image} alt="description"/>
+          </figure>
+        </div>
+      </div>
+      <div className="mw70 center ph3 w-100 z4 pre-wrap">
+        <div className="cf black">
+          <div className="fr-l w-50-l mw500 mh3-l center w-100 pa4-l pa3 bg-white">
             <p className="f5 lh-copy mv0">{props.text}</p>
           </div>
         </div>
@@ -692,7 +716,7 @@ function SmallVideo(props) {
     }
   }
   return (
-    <section className="flex aic relative pv6-l pv4 video-content smallVideo">
+    <section className="min-vh-100 flex aic relative pv6-l pv4 video-content smallVideo">
       <div className="mw80 w-100 center ph3 z4 relative">
         <div className="cf flex aic flex-column-s">
           <div className="fl-l w-100 w-50-l ph2 pv3 relative">
@@ -830,7 +854,7 @@ function EndingVideo(props) {
   return (
     <section className="cover min-vh-100 flex aic relative bg-near-white pv6-l pv4">
       <div className="mw80 center ph3 z4 relative mb6">
-        <div className="cf tc black w-50-l w-80-m w-100 center pa2 bg-white mb5">
+        <div className="cf tc black w-60-l w-80-m w-100 center pv2 ph4 bg-white mb5">
           <h3>想知道{props.text}更多故事....</h3>
         </div>
         <iframe title="playlist" width="560" height="315" src={props.link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
@@ -1272,7 +1296,21 @@ class Event04 extends Component {
 }
 
 class Event05 extends Component {
+  state = {
+    open: false,
+    image: ""
+  }
+ 
+  onOpenModal = (img) => {
+    this.setState({ open: true, image: img});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
         <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
@@ -1298,10 +1336,12 @@ class Event05 extends Component {
           image = {this.props.data.photoFull[0]}
           label = {this.props.data.photoFullTextLabel[0]}
         />
-        <SmallVideo 
+
+        <Transition text={this.props.data.videoText[0]}/>
+        <Video 
           videoID="01"
           link={this.props.data.video[0]}
-          text={this.props.data.videoText[0]}
+          text1=""
         />
 
         <Video 
@@ -1311,7 +1351,7 @@ class Event05 extends Component {
           text1={this.props.data.videoText[1]}
         />
 
-        <SmallVideo 
+        <CenterSmallVideo 
           videoID="03"
           link={this.props.data.video[2]}
           text={this.props.data.videoText[2]}
@@ -1324,10 +1364,22 @@ class Event05 extends Component {
           label = {this.props.data.photoFullTextLabel[1]}
         />
 
-         <PhotoSwitch 
-          images={this.props.data.photoswitch} 
-          label={this.props.data.photoswitchLabel}
-          text1=""
+         <PhotoMultiple
+          images={this.props.data.photoMultiple} 
+          label={this.props.data.photoMultipleLabel}
+          text1={this.props.data.photoMultipleText} 
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+        </Modal>
+
+        <Video 
+          videoID="04"
+          color="dark"
+          link={this.props.data.video[3]}
+          text1={this.props.data.videoText[3]}
         />
 
         <PhotoTextFull
@@ -1603,6 +1655,48 @@ class Event12 extends Component {
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
+        <Transition text={this.props.data.transitionText[0]} />
+        <PhotoTextFull
+          text1=""
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+        />
+
+        <PhotoText
+          order="right"
+          color="invert"
+          text={this.props.data.photoText[0]}
+          image = {this.props.data.photoImage[0]}
+        /> {/*廠區*/}
+
+        <PhotoTextFull
+          text1 = {this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
+        /> {/*病變*/}
+
+        <SmallVideo 
+          videoID="01"
+          link={this.props.data.video[0]}
+          text={this.props.data.videoText[0]}
+        />
+
+        <Video 
+          videoID="02"
+          color="dark"
+          link={this.props.data.video[1]}
+          text1={this.props.data.videoText[1]}
+        />
+
+        <Transition text={this.props.data.transitionText[1]} />
+        <Video 
+          videoID="03"
+          link={this.props.data.video[2]}
+          text1=""
+        />
+
+        <Transition text={this.props.data.transitionText[2]} />
+        <EndingVideo text={"台鹼安順廠"} link={"https://youtube.com/embed/6CwZYq6vt0k?rel=0"}/>
       </div>
     );
   }
