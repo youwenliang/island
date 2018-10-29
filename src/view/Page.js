@@ -880,9 +880,11 @@ function CenterSmallVideo(props) {
   var top = {
     top: "40px"
   }
+  var color = "";
+  if(props.color === "invert") color = "bg-near-white"
 
   return (
-    <section className="min-vh-100 flex aic relative pv6-l pv4 video-content">
+    <section className={"min-vh-100 flex aic relative pv6-l pv4 video-content "+color}>
       <div className="w-100 center ph3 z4 relative">
         <div className="cf flex aic jcc w-100">
           <div className="center relative">
@@ -1659,6 +1661,62 @@ class Event09 extends Component {
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
+        />
+
+        <Transition text={this.props.data.transitionText[0]} />
+        <Video 
+          videoID="01"
+          link={this.props.data.video[0]}
+          text1=""
+        />
+
+        <PhotoTextFull
+          position={"fr-l"}
+          color="dark"
+          text1={this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+        />
+
+        <CenterSmallVideo 
+          videoID="02"
+          color="invert"
+          link={this.props.data.video[1]}
+        />
+
+        <Transition text={this.props.data.transitionText[1]} />
+        <Video 
+          videoID="03"
+          link={this.props.data.video[2]}
+          text1=""
+        />
+
+        <Transition text={this.props.data.transitionText[2]} />
+        <PhotoSwitch 
+          position={"fl-l"}
+          images={this.props.data.photoswitch1} 
+          text1=""
+          label={this.props.data.photoswitchLabel1}
+        />        
+
+        <Video 
+          videoID="04"
+          link={this.props.data.video[3]}
+          text1=""
+        />
+
+        <PhotoTextFull
+          position={"fl-l"}
+          text1={this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
+        />
+
+        <PhotoSwitch 
+          position={"fl-l"}
+          images={this.props.data.photoswitch2} 
+          text1={this.props.data.photoswitchText2}
+          label={this.props.data.photoswitchLabel2}
         />
       </div>
     );
