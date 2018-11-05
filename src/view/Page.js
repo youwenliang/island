@@ -1084,6 +1084,57 @@ function Timeline(props) {
   )
 }
 
+/*19*/
+function PhotoSlide(props) {
+  let grid = [];
+  var columns = "";
+  
+  var height = {
+    height: "100vh"
+  }
+
+  var w = "100vw";
+
+  for (var i = 0; i < props.images.length; i++){
+    var photoGridStyle = {
+      width: w,
+      height: "100vh",
+      backgroundImage: "url("+props.images[i]+")",
+      backgroundSize: "cover",
+      backgroundPosition: "center center"
+    }
+    var photos = (
+      <div className="grid-item bg-white relative" key={i}>
+        <div className="relative" style={photoGridStyle}>
+          <div className="w-50-l mw500 pa4-l pa3 absolute left-2 bottom-2">
+            <div class="bg-white o-90 w-100 h-100 absolute pn top-left"></div>
+            <p className="pre-wrap f5 lh-copy mv0 z4 relative black">
+              {props.text[i]}
+            </p>
+          </div>
+        </div> 
+      </div>
+    )
+    columns+=(w+" ");
+    grid.push(photos);
+  }
+
+  var container = {
+    gridTemplateColumns: columns,
+    height: "100vh",
+  }
+
+  return (
+    <section className="min-vh-100 flex aic relative bg-white pv6-l pv4 flex-column">      
+      <div className="w-100 overflow-hidden relative" style={height}>
+        <div className="grid-container nowrap dragscroll relative ph0" style={container}>
+          {grid}
+        </div> 
+      </div>
+    </section>
+  )
+}
+
 function Transition(props) {
   var max = {
     maxWidth: "880px"
