@@ -22,7 +22,8 @@ class Page extends Component {
     const { match: { params } } = this.props;
     this.state = {
       id: params.id,
-      view: params.id
+      view: params.id,
+      drag: false
     };
     //Here ya go
     this.props.history.listen((location, action) => {
@@ -41,18 +42,44 @@ class Page extends Component {
       id: view
     })
   }
+  componentDidUpdate(){
+    console.log('update');
+    $('.dragscroll').mousewheel(function(event, change) {
+      if($(this).hasClass('dragscroll')) {
+        var newScrollLeft = $(this).scrollLeft(),
+            width = $(this).outerWidth(),
+            scrollWidth = $(this).get(0).scrollWidth;
+        if(newScrollLeft === 0 && change > 0) ;
+        else if (scrollWidth - newScrollLeft === width && change < 0) ;
+        else {
+          this.scrollLeft -= (change * .5); //need a value to speed up the change
+          event.preventDefault();
+        }
+      }
+    });
+  }
 
   componentDidMount(){
+    var $t = this;
+    console.log('mount');
     $(document).scrollTop(0);
     document.body.classList.add('ds');
     document.getElementById('loading').classList.remove('fade');
 
-    // $('.dragscroll').scrollLeft(0);
-    // // Horizontal Scroll
-    // $('.dragscroll').mousewheel(function(event, change) {
-    //   this.scrollLeft -= (change * 1); //need a value to speed up the change
-    //   event.preventDefault();
-    // });
+    $('.dragscroll').scrollLeft(0);
+    // Horizontal Scroll
+    $('.dragscroll').mousewheel(function(event, change) {
+      console.log("scrollingmount");
+      var newScrollLeft = $(this).scrollLeft(),
+          width = $(this).outerWidth(),
+          scrollWidth = $(this).get(0).scrollWidth;
+      if(newScrollLeft === 0 && change > 0) ;
+      else if (scrollWidth - newScrollLeft === width && change < 0) ;
+      else {
+        this.scrollLeft -= (change * .5); //need a value to speed up the change
+        event.preventDefault();
+      }
+    });
 
     var images  = [];
     loadImage(images)
@@ -119,6 +146,18 @@ class Page extends Component {
           }
         });
 
+        $('.dragscroll-content').each(function(){
+          var top_of_object = $(this).offset().top;
+          if( top_of_window >= top_of_object - 20 && top_of_window <= top_of_object + 20){
+            $(window).scrollTop(top_of_object);
+            $(this).find('.grid-container').addClass('dragscroll');
+            if(!$t.state.drag) $t.setState({drag:true});
+          } else {
+            $(this).find('.grid-container').removeClass('dragscroll');
+            if($t.state.drag) $t.setState({drag:false});
+          }
+        });
+
         $('.video-content').each( function(i){
           var top_of_object = $(this).offset().top;
           var bottom_of_object = $(this).offset().top + $(this).height();
@@ -142,6 +181,7 @@ class Page extends Component {
       });
     })
   }
+
 
 
   render() {
@@ -1093,7 +1133,12 @@ function PhotoSlide(props) {
     height: "100vh"
   }
 
-  var w = "100vw";
+  var w = "90vw";
+
+  var textStyle = {
+    right: "4rem",
+    bottom: "4rem"
+  }
 
   for (var i = 0; i < props.images.length; i++){
     var photoGridStyle = {
@@ -1106,7 +1151,7 @@ function PhotoSlide(props) {
     var photos = (
       <div className="grid-item bg-white relative" key={i}>
         <div className="relative" style={photoGridStyle}>
-          <div className="w-50-l mw500 pa4-l pa3 absolute left-2 bottom-2">
+          <div className="w-50-l mw500 pa4-l pa3 absolute" style={textStyle}>
             <div class="bg-white o-90 w-100 h-100 absolute pn top-left"></div>
             <p className="pre-wrap f5 lh-copy mv0 z4 relative black">
               {props.text[i]}
@@ -1125,9 +1170,9 @@ function PhotoSlide(props) {
   }
 
   return (
-    <section className="min-vh-100 flex aic relative bg-white pv6-l pv4 flex-column">      
+    <section className="min-vh-100 flex aic relative bg-white flex-column dragscroll-content">      
       <div className="w-100 overflow-hidden relative" style={height}>
-        <div className="grid-container nowrap dragscroll relative ph0" style={container}>
+        <div className="grid-container nowrap relative ph0" style={container}>
           {grid}
         </div> 
       </div>
