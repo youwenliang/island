@@ -3,31 +3,23 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1449.1 252" enable-background="new 0 0 1449.1 252" xml:space="preserve">
-<g id="_xFFFD__x9C__x96_撅_xFFFD__6_xA0_影像_1_" opacity="0.9765">
-</g>
-<g id="_xFFFD__x9C__x96_撅_xFFFD__5_xA0_影像_1_">
-</g>
-<g id="_xFFFD__x9C__x96_撅_xFFFD__17_xA0_影像_3_">
-</g>
-<g id="_xFFFD__x9C__x96_撅_xFFFD__7_xA0_影像_1_">
-</g>
-<g id="_xFFFD__x9C__x96_撅_xFFFD__8_xA0_影像_1_">
-</g>
-<g id="_xFFFD__x9C__x96_撅_xFFFD__9_xA0_影像_1_">
-</g>
-<g id="_xFFFD__x9C__x96_撅_xFFFD__10_xA0_影像_1_">
-</g>
-<g id="_xFFFD__x9C__x96_撅_xFFFD__11_xA0_影像_1_">
-</g>
-<g id="_xFFFD__x9C__x96_撅_xFFFD__12_xA0_影像_1_">
-</g>
-<g id="_xFFFD__x9C__x96_撅_xFFFD__13_xA0_影像_1_">
-</g>
-<g id="_xFFFD__x9C__x96_撅_xFFFD__14_xA0_影像_1_">
-</g>
-<g id="_xFFFD__x9C__x96_撅_xFFFD__15_xA0_影像_1_">
-</g>
-<g id="_xFFFD__x9C__x96_撅_xFFFD__16_xA0_影像_1_">
+<style>
+	#title {
+		filter:url(#dropshadow)
+	}
+</style>
+<filter id="dropshadow" height="130%">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="8"/> <!-- stdDeviation is how much to blur -->
+  <feOffset dx="2" dy="4" result="offsetblur"/> <!-- how much to offset -->
+  <feComponentTransfer>
+    <feFuncA type="linear" slope="0.2"/> <!-- slope is the opacity of the shadow -->
+  </feComponentTransfer>
+  <feMerge> 
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+  </feMerge>
+</filter>
+<g id="title">
 	<g>
 		<path fill="#ffffff" d="M129,137c3.1-0.4,6.2-0.8,9.3-1.2c9.5-1.3,18.9-2.7,28.4-3.3c2.1-0.1,4.2-0.3,6.2,0.4
 			c2.8,0.8,4.8,2.5,5.3,5.6c0.4,2.9-0.9,5.3-3.4,6.6c-3.9,2.1-7.8,4.5-12.6,2.6c-1-0.4-2.3,0-3.5,0.1c-35.4,3.7-70.2,11.2-105,18
