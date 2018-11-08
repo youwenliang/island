@@ -17,6 +17,7 @@ import Cookies from 'universal-cookie';
 import messengerIcon from '../assets/images/messenger.png';
 import hand from '../assets/images/hand.svg';
 import timemachine from '../assets/images/timemachine.svg';
+import taiwanMap from '../assets/images/taiwan.jpg';
 
 import '@terrymun/paver/src/js/jquery.paver.js'
 import '@terrymun/paver/src/css/paver.scss'
@@ -273,7 +274,7 @@ function CoverVideo(props) {
 /*02*/
 function Taiwan(props) {
   var bgStyle = {
-    backgroundImage: "url("+ props.background +")",
+    backgroundImage: "url("+taiwanMap+")",
     backgroundSize: "cover",
     backgroundPosition: "76% center"
   }
@@ -1272,7 +1273,7 @@ class Event01 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {"/images/taiwan.jpg"}
+          
           map = {"-75px, -330px"}
         />
 
@@ -1395,7 +1396,7 @@ class Event02 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {"/images/taiwan.jpg"}
+          
           map = {"-245px, 145px"}
         />
 
@@ -1483,7 +1484,7 @@ class Event04 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {"/images/taiwan.jpg"}
+          
           map = {"-110px, -200px"}
         />
 
@@ -1521,7 +1522,7 @@ class Event05 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {"/images/taiwan.jpg"}
+          
           map = {"-110px, -200px"}
         />
 
@@ -1605,7 +1606,7 @@ class Event06 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {"/images/taiwan.jpg"}
+          
           map = {"-110px, -200px"}
         />
 
@@ -1704,7 +1705,7 @@ class Event07 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {"/images/taiwan.jpg"}
+          
           map = {"-110px, -110px"}
         />
 
@@ -1804,7 +1805,7 @@ class Event09 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {"/images/taiwan.jpg"}
+          
           map = {"-110px, -200px"}
         />
 
@@ -1904,7 +1905,7 @@ class Event12 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {"/images/taiwan.jpg"}
+          
           map = {"-110px, -200px"}
         />
 
