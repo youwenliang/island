@@ -223,7 +223,7 @@ class Page extends Component {
       phone = (<Phone/>);
     }
     return (
-      <section id={data.id}>
+      <section id={data.id} className="overflow-x-hidden">
         <Helmet>
             <title>{data.title + " - 我們的島二十週年"}</title>
         </Helmet>

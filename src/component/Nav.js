@@ -48,7 +48,7 @@ class Nav extends Component {
     if(this.props.timeline) timeline = (<a href="/ourisland/timeline/" target="_blank"><button className="btn cp h2 ph3">前往大紀事</button></a>);
     return (
       <div>
-        <nav className="w-100 top0 z10 h3 flex aic space-between">
+        <nav className="w-100 top0 z40 h3 flex aic space-between">
           <div className="bg-dark-gray w-100 h-100 absolute top0"></div>
           <div className="w-100 mw9 center ph3 relative z4">
             <div className="ph2-ns flex space-between aic white">
