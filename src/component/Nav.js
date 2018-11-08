@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 import logo from '../assets/images/logo.png';
+import shareIcon from '../assets/images/share.png';
 
 class Nav extends Component {
   constructor(props) {
@@ -36,6 +37,14 @@ class Nav extends Component {
     const { open } = this.state;
     var link = window.location.href;
     var timeline = null;
+    var share = {
+      overflow: "hidden",
+      backgroundImage: "url("+shareIcon+")",
+      backgroundSize: "20px 20px",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "15px center",
+      width: "100px"
+    }
     if(this.props.timeline) timeline = (<a href="/ourisland/timeline/" target="_blank"><button className="btn cp h2 ph3">前往大紀事</button></a>);
     return (
       <div>
@@ -48,7 +57,7 @@ class Nav extends Component {
               </Link>
               <div className="flex flex-row">
                 {timeline}
-                <button className="share btn cp h2 ph3 ml3" onClick={() => this.onOpenModal()}>分享</button>
+                <button className="share btn cp h2 ph3 ml3" style={share} onClick={() => this.onOpenModal()}>分享</button>
               </div>
             </div>
           </div>

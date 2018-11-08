@@ -6,9 +6,20 @@ import loadImage from 'image-promise';
 import data from '../data/data.js';
 import $ from 'jquery';
 import BeforeAfterSlider from 'react-before-after-slider'; // eslint-disable-line no-unused-vars
+import ReactCompareImage from 'react-compare-image';
+
 import ImageGallery from 'react-image-gallery';
 import Nav from '../component/Nav'
+import Phone from '../component/Phone'
 import Modal from 'react-responsive-modal';
+import Cookies from 'universal-cookie';
+
+import messengerIcon from '../assets/images/messenger.png';
+import hand from '../assets/images/hand.svg';
+import timemachine from '../assets/images/timemachine.svg';
+
+import '@terrymun/paver/src/js/jquery.paver.js'
+import '@terrymun/paver/src/css/paver.scss'
 
 // import mousewheel from 'jquery-mousewheel';
 // import {TweenMax} from "gsap/all";
@@ -42,44 +53,45 @@ class Page extends Component {
       id: view
     })
   }
-  componentDidUpdate(){
-    console.log('update');
-    $('.dragscroll').mousewheel(function(event, change) {
-      if($(this).hasClass('dragscroll')) {
-        var newScrollLeft = $(this).scrollLeft(),
-            width = $(this).outerWidth(),
-            scrollWidth = $(this).get(0).scrollWidth;
-        if(newScrollLeft === 0 && change > 0) ;
-        else if (scrollWidth - newScrollLeft === width && change < 0) ;
-        else {
-          this.scrollLeft -= (change * .5); //need a value to speed up the change
-          event.preventDefault();
-        }
-      }
-    });
-  }
+  // componentDidUpdate(){
+  //   console.log('update');
+  //   $('.dragscroll').mousewheel(function(event, change) {
+  //     if($(this).hasClass('dragscroll')) {
+  //       var newScrollLeft = $(this).scrollLeft(),
+  //           width = $(this).outerWidth(),
+  //           scrollWidth = $(this).get(0).scrollWidth;
+  //       if(newScrollLeft === 0 && change > 0) ;
+  //       else if (scrollWidth - newScrollLeft === width && change < 0) ;
+  //       else {
+  //         this.scrollLeft -= (change * .5); //need a value to speed up the change
+  //         event.preventDefault();
+  //       }
+  //     }
+  //   });
+  // }
 
   componentDidMount(){
     var $t = this;
     console.log('mount');
+    
     $(document).scrollTop(0);
     document.body.classList.add('ds');
     document.getElementById('loading').classList.remove('fade');
 
     $('.dragscroll').scrollLeft(0);
     // Horizontal Scroll
-    $('.dragscroll').mousewheel(function(event, change) {
-      console.log("scrollingmount");
-      var newScrollLeft = $(this).scrollLeft(),
-          width = $(this).outerWidth(),
-          scrollWidth = $(this).get(0).scrollWidth;
-      if(newScrollLeft === 0 && change > 0) ;
-      else if (scrollWidth - newScrollLeft === width && change < 0) ;
-      else {
-        this.scrollLeft -= (change * .5); //need a value to speed up the change
-        event.preventDefault();
-      }
-    });
+    // $('.dragscroll').mousewheel(function(event, change) {
+    //   console.log("scrollingmount");
+    //   var newScrollLeft = $(this).scrollLeft(),
+    //       width = $(this).outerWidth(),
+    //       scrollWidth = $(this).get(0).scrollWidth;
+    //   if(newScrollLeft === 0 && change > 0) ;
+    //   else if (scrollWidth - newScrollLeft === width && change < 0) ;
+    //   else {
+    //     this.scrollLeft -= (change * .5); //need a value to speed up the change
+    //     event.preventDefault();
+    //   }
+    // });
 
     var images  = [];
     loadImage(images)
@@ -146,17 +158,17 @@ class Page extends Component {
           }
         });
 
-        $('.dragscroll-content').each(function(){
-          var top_of_object = $(this).offset().top;
-          if( top_of_window >= top_of_object - 20 && top_of_window <= top_of_object + 20){
-            $(window).scrollTop(top_of_object);
-            $(this).find('.grid-container').addClass('dragscroll');
-            if(!$t.state.drag) $t.setState({drag:true});
-          } else {
-            $(this).find('.grid-container').removeClass('dragscroll');
-            if($t.state.drag) $t.setState({drag:false});
-          }
-        });
+        // $('.dragscroll-content').each(function(){
+        //   var top_of_object = $(this).offset().top;
+        //   if( top_of_window >= top_of_object - 20 && top_of_window <= top_of_object + 20){
+        //     $(window).scrollTop(top_of_object);
+        //     $(this).find('.grid-container').addClass('dragscroll');
+        //     if(!$t.state.drag) $t.setState({drag:true});
+        //   } else {
+        //     $(this).find('.grid-container').removeClass('dragscroll');
+        //     if($t.state.drag) $t.setState({drag:false});
+        //   }
+        // });
 
         $('.video-content').each( function(i){
           var top_of_object = $(this).offset().top;
@@ -202,6 +214,13 @@ class Page extends Component {
       'event13': <Event13 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />
     }
     let container = viewContainerMapping[this.state.view];
+    // Cookies
+    const cookies = new Cookies();
+    var phone = null;
+    if(cookies.get('firstVisit') === undefined) {
+      cookies.set('firstVisit', true, { path: '/' });
+      phone = (<Phone/>);
+    }
     return (
       <section id={data.id}>
         <Helmet>
@@ -213,6 +232,8 @@ class Page extends Component {
           <div className="bar"></div>
         </div>
         {container}
+        {phone}
+        <Messenger/>
       </section>
     );
   }
@@ -675,18 +696,19 @@ function PhotoContrast(props) {
     )
   }
   return (
-    <section className="flex aic relative bg-white flex-column pv6-l pv4">
+    <section className="flex aic relative bg-white flex-column pv6-l pv5">
         <div className="ph3 w-100 z4">
           {text}
-          <figure className="cd-image-container is-visible z4">
-             <img src={props.images[1]} alt="Original" />
-             <span className="cd-image-label" data-type="original">{props.year[0]}</span>
-             <div className="cd-resize-img"> 
-                <img src={props.images[0]} alt="Modified" />
-                <span className="cd-image-label" data-type="modified">{props.year[1]}</span>
-             </div>
-             <span className="cd-handle"></span>
-          </figure>
+          <div className="relative" style={{ maxWidth: '1024px', margin: '0 auto 2.5rem auto' }}>
+            <ReactCompareImage
+              leftImage={props.images[0]}
+              rightImage={props.images[1]}
+              sliderLineWidth={2}
+              handleSize={40}
+            />
+            <span className="mt3 right absolute bottom" data-type="original">{props.year[1]}</span>
+            <span className="mt3 left absolute bottom" data-type="modified">{props.year[0]}</span>
+          </div>
         </div>
     </section>
   )
@@ -942,14 +964,35 @@ function CenterSmallVideo(props) {
 
 /*10*/
 function EndingVideo(props) {
+  var machineStyle = {
+    bottom: "-28px",
+    width: "90vw",
+    maxWidth: "400px",
+    zIndex: 10
+  }
+  var handStyle = {
+    bottom: "-20px",
+    width: "30.375vw",
+    maxWidth: "135px",
+    transform: "translateX(70px)",
+    zIndex: 10
+  }
+  var iframe = {
+    maxWidth: "560px",
+    width: "80vw"
+  }
   return (
     <section className="cover min-vh-100 flex aic relative bg-near-white pv6-l pv4">
       <div className="mw80 center ph3 z4 relative mb6">
         <div className="cf tc black w-60-l w-80-m w-100 center pv2 ph4 bg-white mb5">
           <h3>想知道{props.text}更多故事....</h3>
         </div>
-        <iframe title="playlist" width="560" height="315" src={props.link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+        <div className="bg-white pa4">
+          <iframe style={iframe} title="playlist" width="100%" height="315" src={props.link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+        </div>
       </div>
+      <img className="absolute absolute-center" style={machineStyle} width="400px" src={timemachine} alt="timemachine"/>
+      <img className="absolute absolute-center" style={handStyle} width="135px" src={hand} alt="hand"/>
     </section>
   )
 }
@@ -1204,7 +1247,19 @@ function Next(props) {
       </div>
     </section>
   )
+}
 
+function Messenger(props) {
+  var messenger = {
+    right: "40px",
+    bottom: "40px",
+    zIndex: 18,
+  }
+  return (
+    <div className="fixed h3 w3 br-100 bg-blue flex aic jcc cp shadow-5" style={messenger}>
+      <img src={messengerIcon} width="32" height="32" alt="messenger"/>
+    </div>
+  )
 }
 
 /* Views */

@@ -23,6 +23,14 @@ $(document).ready(function(){
     var flag = false;
 	$('img').on('dragstart', function(event) { event.preventDefault(); });
 
+    
+    $('.panorama .left').mouseenter(function(){
+        // $('.panorama img').css('object-position', 0);
+    });
+    $('.panorama .right').mouseenter(function(){
+        // $('.panorama img').css('object-position', '100%');
+    });
+
 	// Show hidden div on scroll
 	$(window).scroll( function(){
 	  $('.hide').each( function(i){
