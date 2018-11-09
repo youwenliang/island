@@ -16,4 +16,9 @@ class App extends Component {
   }
 }
 
+// Deploy 取代
+// data.js ("/images -> "/ourisland/images && "/events -> "/ourisland/events)
+// app.css ("/images -> "/ourisland/images)
+// Events.js ("/images -> "/ourisland/images)
+
 export default App;

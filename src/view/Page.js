@@ -14,10 +14,12 @@ import Phone from '../component/Phone'
 import Modal from 'react-responsive-modal';
 import Cookies from 'universal-cookie';
 
+import endingV from '../assets/images/endingVideo.jpg';
 import messengerIcon from '../assets/images/messenger.png';
 import hand from '../assets/images/hand.svg';
 import timemachine from '../assets/images/timemachine.svg';
 import taiwanMap from '../assets/images/taiwan.jpg';
+import ship from '../assets/images/machinemap.svg';
 
 import '@terrymun/paver/src/js/jquery.paver.js'
 import '@terrymun/paver/src/css/paver.scss'
@@ -110,6 +112,7 @@ class Page extends Component {
       console.info(err.loaded);
     });
     $(document).ready(function(){
+      
       // Autoscroll
       var scroll = 0;
       var add = 0;
@@ -304,7 +307,7 @@ function Taiwan(props) {
         <div className="w-100 h-100 fixed fixed-content pn flex aic" style={bgStyle}>
           <figure className="absolute" style={position}>
             <label style={label}>{props.text1.split("的")[0]}</label>
-            <img src="/images/icons/machinemap.svg" width="88" height="80" alt="Taiwan"/>
+            <img src={ship} width="88" height="80" alt="Taiwan"/>
           </figure>
         </div>
       </div>
@@ -982,13 +985,21 @@ function EndingVideo(props) {
     maxWidth: "560px",
     width: "80vw"
   }
+
+  var bgTV = {
+    backgroundImage: 'url('+endingV+')',
+    backgroundSize: '100% 100%',
+    backgroundPosition: 'center 0',
+    backgroundRepeat: 'no-repeat'
+  }
+
   return (
-    <section className="cover min-vh-100 flex aic relative bg-near-white pv6-l pv4">
-      <div className="mw80 center ph3 z4 relative mb6">
-        <div className="cf tc black w-60-l w-80-m w-100 center pv2 ph4 bg-white mb5">
+    <section className="cover min-vh-100 flex aic relative bg-white pv6-l pv4">
+      <div className="center ph3-ns ph0 z4 relative mb6">
+        <div className="cf tc black w-60-l w-80-m w-100 center pv2 ph4 bg-white mb2">
           <h3>想知道{props.text}更多故事....</h3>
         </div>
-        <div className="bg-white pa4">
+        <div className="bg-white pa5 pb6" style={bgTV}>
           <iframe style={iframe} title="playlist" width="100%" height="315" src={props.link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
         </div>
       </div>
@@ -1263,7 +1274,27 @@ function Messenger(props) {
   )
 }
 
-/* Views */
+function Panorama(props) {
+  return (
+    <section className="panorama-container relative">
+      <figure className="panorama">
+        <img src="https://cdn3.photoblogstop.com/wp-content/uploads/2012/07/Sierra_HDR_Panorama_DFX8048_2280x819_Q40_wm_mini.jpg" height="100%"/>
+      </figure>
+      <div className="panorama-icon"></div>
+    </section>
+  )
+}
+
+function TimeSwitch(props) {
+
+}
+
+function InfoHelper(props) {
+
+}
+
+/**************************************************************************** Views ****************************************************************************/
+
 class Event01 extends Component {
   render() {
     return (
@@ -1475,6 +1506,48 @@ class Event03 extends Component {
 }
 
 class Event04 extends Component {
+  componentDidMount() {
+    $(document).ready(function(){
+      // Panorama
+      var leftP = 0;
+      var rightP = $('.panorama img').width() - $(window).width();
+      var scrollP = rightP/2;
+      if($(window).width() > 600) {
+        panoramaScroll();
+      } else {
+        $('.panorama').scrollLeft(scrollP);
+      }
+
+      $('.panorama').scroll(function(){
+        var rightP = $('.panorama img').width() - $(window).width();
+        var deg = 90*$('.panorama').scrollLeft()/rightP-45;
+        $('.panorama-icon').css('transform', 'rotate('+deg+'deg)');
+      })
+
+      function panoramaScroll() {
+        var rightP = $('.panorama img').width() - $(window).width();
+        var k = 0;
+        var intervalP = setInterval(function(){
+            $('.panorama').scrollLeft(scrollP);
+            scrollP+=k*10;
+            var deg = 90*$('.panorama').scrollLeft()/rightP-45;
+            $('.panorama-icon').css('transform', 'rotate('+deg+'deg)');
+        },25);
+
+        $(window).on('mousemove', function(e){
+          var x = e.clientX;
+          var s = 2*x/$(window).width() - 1;
+          k = s;
+          if(scrollP >= rightP) {
+            scrollP = rightP;
+          }
+          else if(scrollP <= leftP) {
+            scrollP = leftP;
+          }
+        });
+      }
+    });
+  }
   render() {
     return (
       <div>
@@ -1493,6 +1566,8 @@ class Event04 extends Component {
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
+
+        <Panorama/>
       </div>
     );
   }
