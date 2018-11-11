@@ -461,9 +461,9 @@ function PhotoCenterTextFull(props) {
       </div>
       <div className="w-100 center ph3 z4 relative">
         <div className="cf flex aic">
-          <div className="w-100 w-50-l center pa4-l pa2 relative" style={max}>
+          <div className="w-100 w-50-l center pa4-l pa3 relative" style={max}>
             <div className={bgColor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"pre-wrap f4 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
+            <p className={"pre-wrap f4-ns f5 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
           </div>
         </div>
       </div>
@@ -693,14 +693,14 @@ function PhotoContrast(props) {
   if(props.text !== "") {
     text = (
       <div className="mw80 center cf black mb5">
-        <div className="mw7 w-100 center bg-white">
+        <div className="mw7 w-100 center">
           <p className="f5 lh-copy mv0">{props.text}</p>
         </div>
       </div>
     )
   }
   return (
-    <section className="flex aic relative bg-white flex-column pv6-l pv5">
+    <section className={"flex aic relative flex-column pv6-l pv5 "+props.bg}>
         <div className="ph3 w-100 z4">
           {text}
           <div className="relative" style={{ maxWidth: '1024px', margin: '0 auto 2.5rem auto' }}>
@@ -831,10 +831,10 @@ function SmallVideo(props) {
     }
   }
   return (
-    <section className="min-vh-100 flex aic relative pv6-l pv4 video-content smallVideo">
+    <section className={"min-vh-100 flex aic relative pv6-l pv4 video-content smallVideo "+props.bg}>
       <div className="mw80 w-100 center ph3 z4 relative">
         <div className="cf flex aic flex-column-s">
-          <div className="fl-l w-100 w-50-l ph2 pv3 relative">
+          <div className="fl-l w-100 w-50-l ph2 pv3 relative bg-black">
             <div className="absolute play cp z10" onClick={(e) => playVideo(e)}></div>
             <div className="absolute sound cp z10" onClick={(e) => soundVideo(e)}></div>
             <video id={'video'+props.videoID} className="w-100" loop playsInline muted autoPlay>
@@ -1275,12 +1275,19 @@ function Messenger(props) {
 }
 
 function Panorama(props) {
+  var bottomRight = {
+    bottom: "0px",
+    right: "0px",
+    background: "rgba(0,0,0,.2)",
+    padding: "20px"
+  }
   return (
     <section className="panorama-container relative">
       <figure className="panorama">
-        <img src="https://cdn3.photoblogstop.com/wp-content/uploads/2012/07/Sierra_HDR_Panorama_DFX8048_2280x819_Q40_wm_mini.jpg" height="100%"/>
+        <img src={props.image} height="100%"/>
       </figure>
       <div className="panorama-icon"></div>
+      <label className="white absolute" style={bottomRight}>{props.label}</label>
     </section>
   )
 }
@@ -1567,7 +1574,54 @@ class Event04 extends Component {
           illustration = {this.props.data.illustration}
         />
 
-        <Panorama/>
+        <SmallVideo 
+          videoID="01"
+          bg={"bg-near-white"}
+          link={this.props.data.video[0]}
+          text={this.props.data.videoText[0]}
+        />
+
+        <PhotoSwitch 
+          position={"fr-l"}
+          images={this.props.data.photoswitch} 
+          text1={this.props.data.photoswitchText}
+          label={this.props.data.photoswitchLabel}
+        />
+
+        <Transition
+          text={this.props.data.panoramaText}
+        />
+        <Panorama
+          image={this.props.data.panoramaImage}
+          label={this.props.data.panoramaLabel}
+        />
+
+        <PhotoCenterTextFull
+          text1 = {this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+          bg={true}
+        />
+
+        <SmallVideo 
+          videoID="02"
+          link={this.props.data.video[1]}
+          text={this.props.data.videoText[1]}
+        />
+
+        <PhotoContrast 
+          bg={"bg-near-white"}
+          images={this.props.data.photocontrast}
+          text={this.props.data.photocontrastText}
+          year={this.props.data.photocontrastYear}
+        />
+
+        <Timeline
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
+          content={this.props.data.timelineContent}
+        />
       </div>
     );
   }
