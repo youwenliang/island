@@ -768,6 +768,44 @@ ul.none {
   max-width: 80vw;
 }
 
+.iframe {
+  max-width: 560px;
+  width: 70vw;
+}
+
+@media screen and (max-width: 30em) {
+  .iframe {
+    width: 100vw;
+  }
+}
+
+.info {
+  font-weight: bold;
+  color: white;
+  background-color: #879E5D;
+  padding: 2px 4px;
+  cursor: pointer;
+  transition: opacity .2s ease-in-out;
+}
+
+.info .infoHelper {
+  opacity: 0;
+  margin-top: -17px;
+  margin-left: 37px;
+  transition: opacity .2s ease-in-out;
+}
+
+.infoHelper p {
+  border: 2px solid #879E5D;
+}
+
+.info:hover .infoHelper {
+  opacity: 1;
+  transition: opacity .2s ease-in-out; 
+}
+
+
+
 .coverVideo-tag {
   letter-spacing: 2px;
   margin-top: 0px;

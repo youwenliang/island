@@ -389,7 +389,7 @@ function PhotoTextFull(props) {
       <div className="cf">
         <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
           <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-          <p className={"f5 lh-copy mv0 z4 relative "+textcolor}>{props.text1}</p>
+          <p className={"f5 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:props.text1}}></p>
         </div>
       </div>
     )
@@ -402,7 +402,7 @@ function PhotoTextFull(props) {
       <div className="cf mt50vh">
         <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
           <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-          <p className={"f5 lh-copy mv0 z4 relative "+textcolor}>{props.text2}</p>
+          <p className={"f5 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:props.text2}}></p>
         </div>
       </div>
     )
@@ -981,10 +981,6 @@ function EndingVideo(props) {
     transform: "translateX(70px)",
     zIndex: 10
   }
-  var iframe = {
-    maxWidth: "560px",
-    width: "80vw"
-  }
 
   var bgTV = {
     backgroundImage: 'url('+endingV+')',
@@ -994,13 +990,13 @@ function EndingVideo(props) {
   }
 
   return (
-    <section className="cover min-vh-100 flex aic relative bg-white pv6-l pv4">
-      <div className="center ph3-ns ph0 z4 relative mb6">
+    <section className="flex aic relative bg-white pv6-l pv5 overflow-y-hidden">
+      <div className="center ph3-ns ph0 z4 relative mb6 mb5-l">
         <div className="cf tc black w-60-l w-80-m w-100 center pv2 ph4 bg-white mb2">
           <h3>想知道{props.text}更多故事....</h3>
         </div>
-        <div className="bg-white pa5 pb6" style={bgTV}>
-          <iframe style={iframe} title="playlist" width="100%" height="315" src={props.link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+        <div className="bg-white pa5-ns pa0 pb6-ns pb0" style={bgTV}>
+          <iframe className="iframe" title="playlist" width="100%" height="315" src={props.link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
         </div>
       </div>
       <img className="absolute absolute-center" style={machineStyle} width="400px" src={timemachine} alt="timemachine"/>
@@ -1297,7 +1293,11 @@ function TimeSwitch(props) {
 }
 
 function InfoHelper(props) {
-
+  return (
+    <div className="absolute z10 mw5 infoHelper">
+      <p className="f7 bg-white ba b--black-30 pa3 pre-wrap lh-copy" dangerouslySetInnerHTML={{__html:props.text}}></p>
+    </div>
+  )
 }
 
 /**************************************************************************** Views ****************************************************************************/
@@ -1404,7 +1404,7 @@ class Event01 extends Component {
         />
 
         <EndingVideo text="淡水河" link={"https://www.youtube.com/embed/GW71xsyJ8TY?rel=0"}/>
-        <Next switchView={this.props.switchView} next={"reborn-erren-river"} prev={"reborn-erren-river"}/>
+        {/*<Next switchView={this.props.switchView} next={"reborn-erren-river"} prev={"reborn-erren-river"}/>*/}
       </div>
     );
   }
@@ -1825,6 +1825,13 @@ class Event06 extends Component {
 }
 
 class Event07 extends Component {
+  componentDidMount(){
+    var infoText = this.props.data.infoText;
+    $(document).ready(function(){
+      var infoHelper = '<div class="absolute z10 mw7 infoHelper pn"><p class="near-black f7 fw4 bg-white pa3 pre-wrap lh-copy">'+infoText+'</p></div>';
+      $('.info').append(infoHelper);
+    })
+  }
   render() {
     return (
       <div>
@@ -1895,7 +1902,7 @@ class Event07 extends Component {
           text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
-        />
+        />        
         <Transition text={this.props.data.videoText[3]}/>
         <Video 
           videoID="04"
