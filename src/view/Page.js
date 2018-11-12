@@ -162,6 +162,16 @@ class Page extends Component {
           }
         });
 
+        $('.timeChange').each(function(){
+          var top_of_object = $(this).offset().top;
+          var bottom_of_object = $(this).offset().top + $(this).height();
+          if( top_of_window > top_of_object && top_of_window < bottom_of_object){
+            $(this).find('.time-clipping').removeClass('fade');
+          } else {
+            $(this).find('.time-clipping').addClass('fade');
+          }
+        });
+
         // $('.dragscroll-content').each(function(){
         //   var top_of_object = $(this).offset().top;
         //   if( top_of_window >= top_of_object - 20 && top_of_window <= top_of_object + 20){
@@ -1288,8 +1298,28 @@ function Panorama(props) {
   )
 }
 
-function TimeSwitch(props) {
-
+function TimeChange(props) {
+  var z = "";
+  var h = "min-vh-150"
+  if(props.last) {
+    z = "z-1";
+    h = "min-vh-200"
+  }
+  return (
+    <section className={h+" flex aic relative timeChange bg-near-white "+z}>
+      <div className="w-100 h-100 absolute top-left time-clipping fade">
+        <div className="bg-near-white w-100 h-100 fixed fixed-content pn flex aic">
+          <div className="mw70 center ph3 w-100 h5 z4 pre-wrap">
+            <div className="cf black">
+              <div className={ props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3"}>
+                <p className="f5 lh-copy mv0" dangerouslySetInnerHTML={{__html:props.text1}}></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
 }
 
 function InfoHelper(props) {
@@ -1300,7 +1330,30 @@ function InfoHelper(props) {
   )
 }
 
-/**************************************************************************** Views ****************************************************************************/
+
+
+
+
+
+
+
+/************************************************************************************************************************* 
+
+
+
+                                                        Views
+
+
+
+*************************************************************************************************************************/
+
+
+
+
+
+
+
+
 
 class Event01 extends Component {
   render() {
@@ -1314,7 +1367,6 @@ class Event01 extends Component {
           
           map = {"-75px, -330px"}
         />
-
         <Illustration 
           number = {2}
           text1={this.props.data.illustrationText[0]}
@@ -1355,6 +1407,15 @@ class Event01 extends Component {
           image = {this.props.data.photoImage[0]}
         /> {/*圖表*/}
 
+        <TimeChange
+          position={"fr-l"}
+          text1={this.props.data.timeChangeText[0]}
+        />
+        <TimeChange
+          position={"fr-l"}
+          last={true}
+          text1={this.props.data.timeChangeText[1]}
+        />
         {/*年代比較*/}
 
         <Video 
