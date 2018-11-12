@@ -1309,9 +1309,12 @@ function TimeChange(props) {
     <section className={h+" flex aic relative timeChange bg-near-white "+z}>
       <div className="w-100 h-100 absolute top-left time-clipping fade">
         <div className="bg-near-white w-100 h-100 fixed fixed-content pn flex aic">
-          <div className="mw70 center ph3 w-100 h5 z4 pre-wrap">
+          <div className="mw70 center ph3 w-100 z4 pre-wrap">
             <div className="cf black">
-              <div className={ props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3"}>
+              <figure className="fl-l w-50-l w-100 ma0">
+                <img src={props.image} alt="description"/>
+              </figure>
+              <div className={ props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 h5"}>
                 <p className="f5 lh-copy mv0" dangerouslySetInnerHTML={{__html:props.text1}}></p>
               </div>
             </div>
@@ -1410,11 +1413,13 @@ class Event01 extends Component {
         <TimeChange
           position={"fr-l"}
           text1={this.props.data.timeChangeText[0]}
+          image={this.props.data.photoImage}
         />
         <TimeChange
           position={"fr-l"}
           last={true}
           text1={this.props.data.timeChangeText[1]}
+          image={this.props.data.photoImage}
         />
         {/*年代比較*/}
 
