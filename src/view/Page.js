@@ -1957,6 +1957,12 @@ class Event07 extends Component {
           text1={this.props.data.videoText[1]}
         />
 
+        <Transition text={this.props.data.photoSlideText}/>
+        <PhotoSlide
+          text={this.props.data.photoSlideLabel}
+          images={this.props.data.photoSlidePhoto}
+        />
+
         <Timeline
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
@@ -1964,7 +1970,8 @@ class Event07 extends Component {
           content={this.props.data.timelineContent}
         />
 
-        <PhotoContrast 
+        <PhotoContrast
+          bg={"bg-near-white"}
           images={this.props.data.photocontrast}
           text=""
           year={this.props.data.photocontrastYear}
