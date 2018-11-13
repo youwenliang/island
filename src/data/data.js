@@ -22,7 +22,7 @@ var data = {
         }, {
           "id": "1-3",
           "num": "03",
-          "name": "蟹謝讓路@墾丁恆春",
+          "name": "陸蟹闖天關@墾丁恆春",
           "image": "/images/1-3_C1.jpg",
           "icon":  "/images/icons/1-3陸蟹.png",
           "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
@@ -346,22 +346,70 @@ var data = {
     },
 // ****************************************************************** C ******************************************************************
     "land-crabs-survival": {
-      "title": "蟹謝讓路",
-      "id": "事件3"
+      "title": "陸蟹闖天關",
+      "id": "事件3",
+
+      // CoverVideo
+        "coverTitle": "/images/titles/03.svg",
+        "coverDescription": "當陸蟹媽媽抖動腹部，數十萬的蟹寶寶誕生了，不過牠們若要活下來順利長大，必須勇敢的一關闖過一關，陸蟹的一生，就是一場實境版的生存遊戲。",
+        "coverVideo": "/events/land-crabs-survival/videos/B17(2012年二仁溪兩岸廢棄物導覽).mp4",
+
+        // Taiwan
+        "taiwanText": [
+            "恆春半島的地理位置",
+            "位在屏東縣的恆春半島，是台灣的最南端，西邊是台灣海峽，南邊是巴士海峽，而東鄰太平洋，三面環海，生態環境豐富獨特，1984年台灣第一座國家公園，墾丁國家公園在此設立。"
+        ],
+
+        // Illustration
+        "illustrationText": [
+            "恆春半島是陸蟹的天堂，然而觀光開發、道路、水泥化工程以及人為捕捉，各種危險一步一步進逼，現在又遇上外來種黃瘋蟻的問題，陸蟹快要走投無路了。"
+        ],
+        "illustration": "/events/land-crabs-survival/illustrations/illustrationC.svg",
+
+        // PhotoFullText
+        "photoFull": [""],
+        "photoFullText": [""],
+        "photoFullTextLabel": [""],
+
+        // Video
+        "video": [
+            "",
+            "",
+        ],
+
+        "videoText": [
+            "",
+            "",
+        ],
+
+        // Photo Multiple
+        "photoMultiple": [
+            "",
+        ],
+
+        "photoMultipleText": "",
+
+        "photoMultipleLabel": [
+            "",
+        ],
+
     },
 // ****************************************************************** D ******************************************************************
     "dawu-fishing-port": {
       "title": "漁港的黑色幽默",
       "id": "事件4",
+      
       //CoverVideo
       "coverTitle": "/images/titles/04.svg",
       "coverDescription": "漁港變成砂石場 \n怪手挖不完 漁船出不了海\n蓋了六十年\n還沒有完工的永續工程",
       "coverVideo": "/events/dawu-fishing-port/videos/D33-新拍2018大武漁港空拍修.mp4",
+      
       // Taiwan
       "taiwanText": [
         "大武漁港的地理位置",
         "大武漁港"
       ],
+
       // Illustration
       "illustrationText": [
         "來到台東大武漁港，有時看到的不是漁船穿梭的熱鬧景象，而是卡車來回、怪手火力全開，拼命趕工的狀況，眼前的砂石似乎怎麼都挖不完，如果不說還以為這座漁港還在蓋。\n\n漁民開船出海捕魚，進港停靠，這是各漁港時時刻刻上演的場景，但是有些港口，要順利出港進港，不只要看潮汐，還要靠運氣。"
