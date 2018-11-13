@@ -21,9 +21,6 @@ import timemachine from '../assets/images/timemachine.svg';
 import taiwanMap from '../assets/images/taiwan.jpg';
 import ship from '../assets/images/machinemap.svg';
 
-import '@terrymun/paver/src/js/jquery.paver.js'
-import '@terrymun/paver/src/css/paver.scss'
-
 // import mousewheel from 'jquery-mousewheel';
 // import {TweenMax} from "gsap/all";
 
@@ -1201,6 +1198,8 @@ function PhotoSlide(props) {
     bottom: "4rem"
   }
 
+  var text = null;
+
   for (var i = 0; i < props.images.length; i++){
     var photoGridStyle = {
       width: w,
@@ -1209,15 +1208,22 @@ function PhotoSlide(props) {
       backgroundSize: "cover",
       backgroundPosition: "center center"
     }
+    if(props.text=== "") ;
+    else {
+      text = (
+        <div className="w-50-l mw500 pa4-l pa3 absolute" style={textStyle}>
+          <div class="bg-white o-90 w-100 h-100 absolute pn top-left"></div>
+          <p className="pre-wrap f5 lh-copy mv0 z4 relative black">
+            {props.text[i]}
+          </p>
+        </div>
+      )
+    }
+
     var photos = (
       <div className="grid-item bg-white relative" key={i}>
         <div className="relative" style={photoGridStyle}>
-          <div className="w-50-l mw500 pa4-l pa3 absolute" style={textStyle}>
-            <div class="bg-white o-90 w-100 h-100 absolute pn top-left"></div>
-            <p className="pre-wrap f5 lh-copy mv0 z4 relative black">
-              {props.text[i]}
-            </p>
-          </div>
+          {text}
         </div> 
       </div>
     )
@@ -1618,6 +1624,7 @@ class Event04 extends Component {
       var leftP = 0;
       var rightP = $('.panorama img').width() - $(window).width();
       var scrollP = rightP/2;
+      console.log(scrollP+"!!!");
       if($(window).width() > 600) {
         panoramaScroll();
       } else {
@@ -1631,6 +1638,7 @@ class Event04 extends Component {
       })
 
       function panoramaScroll() {
+        console.log('scroll');
         var rightP = $('.panorama img').width() - $(window).width();
         var k = 0;
         var intervalP = setInterval(function(){
@@ -1695,11 +1703,26 @@ class Event04 extends Component {
           label={this.props.data.panoramaLabel}
         />
 
+        <Transition text={this.props.data.photoSlideText}/>
+        <PhotoSlide
+          text={this.props.data.photoSlideLabel}
+          images={this.props.data.photoSlidePhoto}
+        />
+
         <PhotoCenterTextFull
           text1 = {this.props.data.photoFullText[0]}
           image = {this.props.data.photoFull[0]}
           label = {this.props.data.photoFullTextLabel[0]}
           bg={true}
+        />
+
+        <Transition
+          text={this.props.data.photoFullText[1]}
+        />
+        <PhotoTextFull
+          text1 = ""
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
         />
 
         <SmallVideo 
@@ -1720,6 +1743,17 @@ class Event04 extends Component {
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
           content={this.props.data.timelineContent}
+        />
+        <PhotoTextFull
+          position={"fr-l"}
+          text1={this.props.data.photoFullText[2]}
+          image = {this.props.data.photoFull[2]}
+          label = {this.props.data.photoFullTextLabel[2]}
+        />
+        <PhotoCenterTextFull
+          text1={this.props.data.photoFullText[3]}
+          image = {this.props.data.photoFull[3]}
+          label = {this.props.data.photoFullTextLabel[3]}
         />
       </div>
     );
