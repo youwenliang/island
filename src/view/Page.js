@@ -6,9 +6,23 @@ import loadImage from 'image-promise';
 import data from '../data/data.js';
 import $ from 'jquery';
 import BeforeAfterSlider from 'react-before-after-slider'; // eslint-disable-line no-unused-vars
+import ReactCompareImage from 'react-compare-image';
+
 import ImageGallery from 'react-image-gallery';
 import Nav from '../component/Nav'
+import Phone from '../component/Phone'
 import Modal from 'react-responsive-modal';
+import Cookies from 'universal-cookie';
+
+import endingV from '../assets/images/endingVideo.jpg';
+import messengerIcon from '../assets/images/messenger.png';
+import hand from '../assets/images/hand.svg';
+import timemachine from '../assets/images/timemachine.svg';
+import taiwanMap from '../assets/images/taiwan.jpg';
+import ship from '../assets/images/machinemap.svg';
+
+import '@terrymun/paver/src/js/jquery.paver.js'
+import '@terrymun/paver/src/css/paver.scss'
 
 // import mousewheel from 'jquery-mousewheel';
 // import {TweenMax} from "gsap/all";
@@ -22,7 +36,8 @@ class Page extends Component {
     const { match: { params } } = this.props;
     this.state = {
       id: params.id,
-      view: params.id
+      view: params.id,
+      drag: false
     };
     //Here ya go
     this.props.history.listen((location, action) => {
@@ -41,17 +56,44 @@ class Page extends Component {
       id: view
     })
   }
+  // componentDidUpdate(){
+  //   console.log('update');
+  //   $('.dragscroll').mousewheel(function(event, change) {
+  //     if($(this).hasClass('dragscroll')) {
+  //       var newScrollLeft = $(this).scrollLeft(),
+  //           width = $(this).outerWidth(),
+  //           scrollWidth = $(this).get(0).scrollWidth;
+  //       if(newScrollLeft === 0 && change > 0) ;
+  //       else if (scrollWidth - newScrollLeft === width && change < 0) ;
+  //       else {
+  //         this.scrollLeft -= (change * .5); //need a value to speed up the change
+  //         event.preventDefault();
+  //       }
+  //     }
+  //   });
+  // }
 
   componentDidMount(){
+    var $t = this;
+    console.log('mount');
+    
     $(document).scrollTop(0);
     document.body.classList.add('ds');
     document.getElementById('loading').classList.remove('fade');
 
-    // $('.dragscroll').scrollLeft(0);
-    // // Horizontal Scroll
+    $('.dragscroll').scrollLeft(0);
+    // Horizontal Scroll
     // $('.dragscroll').mousewheel(function(event, change) {
-    //   this.scrollLeft -= (change * 1); //need a value to speed up the change
-    //   event.preventDefault();
+    //   console.log("scrollingmount");
+    //   var newScrollLeft = $(this).scrollLeft(),
+    //       width = $(this).outerWidth(),
+    //       scrollWidth = $(this).get(0).scrollWidth;
+    //   if(newScrollLeft === 0 && change > 0) ;
+    //   else if (scrollWidth - newScrollLeft === width && change < 0) ;
+    //   else {
+    //     this.scrollLeft -= (change * .5); //need a value to speed up the change
+    //     event.preventDefault();
+    //   }
     // });
 
     var images  = [];
@@ -70,6 +112,7 @@ class Page extends Component {
       console.info(err.loaded);
     });
     $(document).ready(function(){
+      
       // Autoscroll
       var scroll = 0;
       var add = 0;
@@ -119,6 +162,18 @@ class Page extends Component {
           }
         });
 
+        // $('.dragscroll-content').each(function(){
+        //   var top_of_object = $(this).offset().top;
+        //   if( top_of_window >= top_of_object - 20 && top_of_window <= top_of_object + 20){
+        //     $(window).scrollTop(top_of_object);
+        //     $(this).find('.grid-container').addClass('dragscroll');
+        //     if(!$t.state.drag) $t.setState({drag:true});
+        //   } else {
+        //     $(this).find('.grid-container').removeClass('dragscroll');
+        //     if($t.state.drag) $t.setState({drag:false});
+        //   }
+        // });
+
         $('.video-content').each( function(i){
           var top_of_object = $(this).offset().top;
           var bottom_of_object = $(this).offset().top + $(this).height();
@@ -144,6 +199,7 @@ class Page extends Component {
   }
 
 
+
   render() {
     var data = pageEvent_data[this.state.id];
     const viewContainerMapping = {
@@ -162,8 +218,15 @@ class Page extends Component {
       'event13': <Event13 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />
     }
     let container = viewContainerMapping[this.state.view];
+    // Cookies
+    const cookies = new Cookies();
+    var phone = null;
+    if(cookies.get('firstVisit') === undefined) {
+      cookies.set('firstVisit', true, { path: '/' });
+      phone = (<Phone/>);
+    }
     return (
-      <section id={data.id}>
+      <section id={data.id} className="overflow-x-hidden">
         <Helmet>
             <title>{data.title + " - 我們的島二十週年"}</title>
         </Helmet>
@@ -173,6 +236,8 @@ class Page extends Component {
           <div className="bar"></div>
         </div>
         {container}
+        {phone}
+        <Messenger/>
       </section>
     );
   }
@@ -212,7 +277,7 @@ function CoverVideo(props) {
 /*02*/
 function Taiwan(props) {
   var bgStyle = {
-    backgroundImage: "url("+ props.background +")",
+    backgroundImage: "url("+taiwanMap+")",
     backgroundSize: "cover",
     backgroundPosition: "76% center"
   }
@@ -242,7 +307,7 @@ function Taiwan(props) {
         <div className="w-100 h-100 fixed fixed-content pn flex aic" style={bgStyle}>
           <figure className="absolute" style={position}>
             <label style={label}>{props.text1.split("的")[0]}</label>
-            <img src="/images/icons/machinemap.svg" width="88" height="80" alt="Taiwan"/>
+            <img src={ship} width="88" height="80" alt="Taiwan"/>
           </figure>
         </div>
       </div>
@@ -317,25 +382,27 @@ function PhotoTextFull(props) {
     textcolor = "black";
   }
   var text1 = null;
-  if(props.text1 !== null) {
+  var h = "min-vh-150"
+  if(props.text1 !== "") {
+    h = "min-vh-200"
     text1 = (
       <div className="cf">
         <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
           <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-          <p className={"f5 lh-copy mv0 z4 relative "+textcolor}>{props.text1}</p>
+          <p className={"f5 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:props.text1}}></p>
         </div>
       </div>
     )
   }
   var text2 = null;
-  var h = "min-vh-200"
+  
   if(props.number === 2) {
     h = "min-vh-300"
     text2 = (
       <div className="cf mt50vh">
         <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
           <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-          <p className={"f5 lh-copy mv0 z4 relative "+textcolor}>{props.text2}</p>
+          <p className={"f5 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:props.text2}}></p>
         </div>
       </div>
     )
@@ -394,9 +461,9 @@ function PhotoCenterTextFull(props) {
       </div>
       <div className="w-100 center ph3 z4 relative">
         <div className="cf flex aic">
-          <div className="w-100 w-50-l center pa4-l pa2 relative" style={max}>
+          <div className="w-100 w-50-l center pa4-l pa3 relative" style={max}>
             <div className={bgColor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"pre-wrap f5 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
+            <p className={"pre-wrap f4-ns f5 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
           </div>
         </div>
       </div>
@@ -418,8 +485,12 @@ function PhotoText(props) {
   } else {
     photo = "fr-l"
   }
+  var h = "min-vh-150";
+  if(props.multiple) {
+    h = "";
+  }
   return (
-    <section className="min-vh-200 flex aic relative">
+    <section className={h+" flex aic relative"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={color1+" w-100 h-100 fixed fixed-content pn flex aic"}>
           <figure className="center mw70 w-100">
@@ -430,6 +501,73 @@ function PhotoText(props) {
       <div className="mw70 center ph3 w-100 z4 pre-wrap">
         <div className="cf black">
           <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 "+color2+" "+text}>
+            <p className="f5 lh-copy mv0">{props.text}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/*05-2*/
+function PhotoTextFix(props) {
+  var photo, text = "";
+  var color1 = "bg-white"
+  var color2 = "bg-near-white";
+  if(props.color === "invert") {
+    color1 = "bg-near-white";
+    color2 = "bg-white";
+  }
+  if(props.order === "right") {
+    text = "order-1"
+    photo = "order-0"
+  } else {
+    text = "order-0"
+    photo = "order-1"
+  }
+  var h = "min-vh-150";
+  if(props.multiple) {
+    h = "";
+  }
+
+  var p = "pb6";
+  if(props.top) {
+    p = "pt6";
+  }
+
+  return (
+    <section className={h+" flex aic relative "+p+" "+color1}>
+      <div className="mw80 w-100 center ph3 z4 relative">
+        <div className="cf flex aic flex-column-s">
+          <div className={"w-100 w-50-l ph2 pv3 relative "+photo}>
+            <figure className="center mw70 w-100">
+              <img className="w-100" src={props.image} alt="description"/>
+            </figure>
+            <p className="f7 o-50 tc">{props.label}</p>
+          </div>
+          <div className={"w-100 w-50-l mw500 center ml5-l ph2 pv3 "+color1+" "+text}>
+            <p className="pre-wrap f5 lh-copy mv0 z4 relative black">{props.text}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/*05-1*/
+function MapText(props) {
+  return (
+    <section className="min-vh-150 flex aic relative">
+      <div className="w-100 h-100 absolute top-left clipping">
+        <div className="w-100 h-100 fixed fixed-content pn flex aic">
+          <figure className="center w-100 h-100">
+            <img className="w-50-l w-100 h-100 map" src={props.image} alt="description"/>
+          </figure>
+        </div>
+      </div>
+      <div className="mw70 center ph3 w-100 z4 pre-wrap">
+        <div className="cf black">
+          <div className="fr-l w-50-l mw500 mh3-l center w-100 pa4-l pa3 bg-white">
             <p className="f5 lh-copy mv0">{props.text}</p>
           </div>
         </div>
@@ -555,25 +693,26 @@ function PhotoContrast(props) {
   if(props.text !== "") {
     text = (
       <div className="mw80 center cf black mb5">
-        <div className="mw7 w-100 center bg-white">
+        <div className="mw7 w-100 center">
           <p className="f5 lh-copy mv0">{props.text}</p>
         </div>
       </div>
     )
   }
   return (
-    <section className="flex aic relative bg-white flex-column pv6-l pv4">
+    <section className={"flex aic relative flex-column pv6-l pv5 "+props.bg}>
         <div className="ph3 w-100 z4">
           {text}
-          <figure className="cd-image-container is-visible z4">
-             <img src={props.images[1]} alt="Original" />
-             <span className="cd-image-label" data-type="original">{props.year[0]}</span>
-             <div className="cd-resize-img"> 
-                <img src={props.images[0]} alt="Modified" />
-                <span className="cd-image-label" data-type="modified">{props.year[1]}</span>
-             </div>
-             <span className="cd-handle"></span>
-          </figure>
+          <div className="relative" style={{ maxWidth: '1024px', margin: '0 auto 2.5rem auto' }}>
+            <ReactCompareImage
+              leftImage={props.images[0]}
+              rightImage={props.images[1]}
+              sliderLineWidth={2}
+              handleSize={40}
+            />
+            <span className="mt3 right absolute bottom" data-type="original">{props.year[1]}</span>
+            <span className="mt3 left absolute bottom" data-type="modified">{props.year[0]}</span>
+          </div>
         </div>
     </section>
   )
@@ -692,10 +831,10 @@ function SmallVideo(props) {
     }
   }
   return (
-    <section className="flex aic relative pv6-l pv4 video-content smallVideo">
+    <section className={"min-vh-100 flex aic relative pv6-l pv4 video-content smallVideo "+props.bg}>
       <div className="mw80 w-100 center ph3 z4 relative">
         <div className="cf flex aic flex-column-s">
-          <div className="fl-l w-100 w-50-l ph2 pv3 relative">
+          <div className="fl-l w-100 w-50-l ph2 pv3 relative bg-black">
             <div className="absolute play cp z10" onClick={(e) => playVideo(e)}></div>
             <div className="absolute sound cp z10" onClick={(e) => soundVideo(e)}></div>
             <video id={'video'+props.videoID} className="w-100" loop playsInline muted autoPlay>
@@ -767,7 +906,7 @@ function CenterVideo(props) {
         <div className="cf flex aic">
           <div className="w-100 w-50-l center pa4-l pa2 relative" style={max}>
             <div className={bgColor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"pre-wrap f5 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
+            <p className={"pre-wrap f4 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
           </div>
         </div>
       </div>
@@ -807,9 +946,11 @@ function CenterSmallVideo(props) {
   var top = {
     top: "40px"
   }
+  var color = "";
+  if(props.color === "invert") color = "bg-near-white"
 
   return (
-    <section className="min-vh-100 flex aic relative pv6-l pv4 video-content">
+    <section className={"min-vh-100 flex aic relative pv6-l pv4 video-content "+color}>
       <div className="w-100 center ph3 z4 relative">
         <div className="cf flex aic jcc w-100">
           <div className="center relative">
@@ -827,14 +968,39 @@ function CenterSmallVideo(props) {
 
 /*10*/
 function EndingVideo(props) {
+  var machineStyle = {
+    bottom: "-28px",
+    width: "90vw",
+    maxWidth: "400px",
+    zIndex: 10
+  }
+  var handStyle = {
+    bottom: "-20px",
+    width: "30.375vw",
+    maxWidth: "135px",
+    transform: "translateX(70px)",
+    zIndex: 10
+  }
+
+  var bgTV = {
+    backgroundImage: 'url('+endingV+')',
+    backgroundSize: '100% 100%',
+    backgroundPosition: 'center 0',
+    backgroundRepeat: 'no-repeat'
+  }
+
   return (
-    <section className="cover min-vh-100 flex aic relative bg-near-white pv6-l pv4">
-      <div className="mw80 center ph3 z4 relative mb6">
-        <div className="cf tc black w-50-l w-80-m w-100 center pa2 bg-white mb5">
+    <section className="flex aic relative bg-white pv6-l pv5 overflow-y-hidden">
+      <div className="center ph3-ns ph0 z4 relative mb6 mb5-l">
+        <div className="cf tc black w-60-l w-80-m w-100 center pv2 ph4 bg-white mb2">
           <h3>想知道{props.text}更多故事....</h3>
         </div>
-        <iframe title="playlist" width="560" height="315" src={props.link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+        <div className="bg-white pa5-ns pa0 pb6-ns pb0" style={bgTV}>
+          <iframe className="iframe" title="playlist" width="100%" height="315" src={props.link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+        </div>
       </div>
+      <img className="absolute absolute-center" style={machineStyle} width="400px" src={timemachine} alt="timemachine"/>
+      <img className="absolute absolute-center" style={handStyle} width="135px" src={hand} alt="hand"/>
     </section>
   )
 }
@@ -1018,7 +1184,12 @@ function PhotoSlide(props) {
     height: "100vh"
   }
 
-  var w = "100vw";
+  var w = "90vw";
+
+  var textStyle = {
+    right: "4rem",
+    bottom: "4rem"
+  }
 
   for (var i = 0; i < props.images.length; i++){
     var photoGridStyle = {
@@ -1031,7 +1202,7 @@ function PhotoSlide(props) {
     var photos = (
       <div className="grid-item bg-white relative" key={i}>
         <div className="relative" style={photoGridStyle}>
-          <div className="w-50-l mw500 pa4-l pa3 absolute left-2 bottom-2">
+          <div className="w-50-l mw500 pa4-l pa3 absolute" style={textStyle}>
             <div class="bg-white o-90 w-100 h-100 absolute pn top-left"></div>
             <p className="pre-wrap f5 lh-copy mv0 z4 relative black">
               {props.text[i]}
@@ -1050,9 +1221,9 @@ function PhotoSlide(props) {
   }
 
   return (
-    <section className="min-vh-100 flex aic relative bg-white pv6-l pv4 flex-column">      
+    <section className="min-vh-100 flex aic relative bg-white flex-column dragscroll-content">      
       <div className="w-100 overflow-hidden relative" style={height}>
-        <div className="grid-container nowrap dragscroll relative ph0" style={container}>
+        <div className="grid-container nowrap relative ph0" style={container}>
           {grid}
         </div> 
       </div>
@@ -1084,10 +1255,53 @@ function Next(props) {
       </div>
     </section>
   )
+}
+
+function Messenger(props) {
+  var messenger = {
+    right: "40px",
+    bottom: "40px",
+    zIndex: 18,
+  }
+  return (
+    <div className="fixed h3 w3 br-100 bg-blue flex aic jcc cp shadow-5" style={messenger}>
+      <img src={messengerIcon} width="32" height="32" alt="messenger"/>
+    </div>
+  )
+}
+
+function Panorama(props) {
+  var bottomRight = {
+    bottom: "0px",
+    right: "0px",
+    background: "rgba(0,0,0,.2)",
+    padding: "20px"
+  }
+  return (
+    <section className="panorama-container relative">
+      <figure className="panorama">
+        <img src={props.image} height="100%"/>
+      </figure>
+      <div className="panorama-icon"></div>
+      <label className="white absolute" style={bottomRight}>{props.label}</label>
+    </section>
+  )
+}
+
+function TimeSwitch(props) {
 
 }
 
-/* Views */
+function InfoHelper(props) {
+  return (
+    <div className="absolute z10 mw5 infoHelper">
+      <p className="f7 bg-white ba b--black-30 pa3 pre-wrap lh-copy" dangerouslySetInnerHTML={{__html:props.text}}></p>
+    </div>
+  )
+}
+
+/**************************************************************************** Views ****************************************************************************/
+
 class Event01 extends Component {
   render() {
     return (
@@ -1097,7 +1311,7 @@ class Event01 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {"/images/taiwan.jpg"}
+          
           map = {"-75px, -330px"}
         />
 
@@ -1190,7 +1404,7 @@ class Event01 extends Component {
         />
 
         <EndingVideo text="淡水河" link={"https://www.youtube.com/embed/GW71xsyJ8TY?rel=0"}/>
-        <Next switchView={this.props.switchView} next={"reborn-erren-river"} prev={"reborn-erren-river"}/>
+        {/*<Next switchView={this.props.switchView} next={"reborn-erren-river"} prev={"reborn-erren-river"}/>*/}
       </div>
     );
   }
@@ -1220,7 +1434,7 @@ class Event02 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {"/images/taiwan.jpg"}
+          
           map = {"-245px, 145px"}
         />
 
@@ -1299,6 +1513,48 @@ class Event03 extends Component {
 }
 
 class Event04 extends Component {
+  componentDidMount() {
+    $(document).ready(function(){
+      // Panorama
+      var leftP = 0;
+      var rightP = $('.panorama img').width() - $(window).width();
+      var scrollP = rightP/2;
+      if($(window).width() > 600) {
+        panoramaScroll();
+      } else {
+        $('.panorama').scrollLeft(scrollP);
+      }
+
+      $('.panorama').scroll(function(){
+        var rightP = $('.panorama img').width() - $(window).width();
+        var deg = 90*$('.panorama').scrollLeft()/rightP-45;
+        $('.panorama-icon').css('transform', 'rotate('+deg+'deg)');
+      })
+
+      function panoramaScroll() {
+        var rightP = $('.panorama img').width() - $(window).width();
+        var k = 0;
+        var intervalP = setInterval(function(){
+            $('.panorama').scrollLeft(scrollP);
+            scrollP+=k*10;
+            var deg = 90*$('.panorama').scrollLeft()/rightP-45;
+            $('.panorama-icon').css('transform', 'rotate('+deg+'deg)');
+        },25);
+
+        $(window).on('mousemove', function(e){
+          var x = e.clientX;
+          var s = 2*x/$(window).width() - 1;
+          k = s;
+          if(scrollP >= rightP) {
+            scrollP = rightP;
+          }
+          else if(scrollP <= leftP) {
+            scrollP = leftP;
+          }
+        });
+      }
+    });
+  }
   render() {
     return (
       <div>
@@ -1308,7 +1564,7 @@ class Event04 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {"/images/taiwan.jpg"}
+          
           map = {"-110px, -200px"}
         />
 
@@ -1317,13 +1573,76 @@ class Event04 extends Component {
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
+
+        <SmallVideo 
+          videoID="01"
+          bg={"bg-near-white"}
+          link={this.props.data.video[0]}
+          text={this.props.data.videoText[0]}
+        />
+
+        <PhotoSwitch 
+          position={"fr-l"}
+          images={this.props.data.photoswitch} 
+          text1={this.props.data.photoswitchText}
+          label={this.props.data.photoswitchLabel}
+        />
+
+        <Transition
+          text={this.props.data.panoramaText}
+        />
+        <Panorama
+          image={this.props.data.panoramaImage}
+          label={this.props.data.panoramaLabel}
+        />
+
+        <PhotoCenterTextFull
+          text1 = {this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+          bg={true}
+        />
+
+        <SmallVideo 
+          videoID="02"
+          link={this.props.data.video[1]}
+          text={this.props.data.videoText[1]}
+        />
+
+        <PhotoContrast 
+          bg={"bg-near-white"}
+          images={this.props.data.photocontrast}
+          text={this.props.data.photocontrastText}
+          year={this.props.data.photocontrastYear}
+        />
+
+        <Timeline
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
+          content={this.props.data.timelineContent}
+        />
       </div>
     );
   }
 }
 
 class Event05 extends Component {
+  state = {
+    open: false,
+    image: ""
+  }
+ 
+  onOpenModal = (img) => {
+    this.setState({ open: true, image: img});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
         <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
@@ -1332,7 +1651,7 @@ class Event05 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {"/images/taiwan.jpg"}
+          
           map = {"-110px, -200px"}
         />
 
@@ -1349,10 +1668,12 @@ class Event05 extends Component {
           image = {this.props.data.photoFull[0]}
           label = {this.props.data.photoFullTextLabel[0]}
         />
-        <SmallVideo 
+
+        <Transition text={this.props.data.videoText[0]}/>
+        <Video 
           videoID="01"
           link={this.props.data.video[0]}
-          text={this.props.data.videoText[0]}
+          text1=""
         />
 
         <Video 
@@ -1362,7 +1683,7 @@ class Event05 extends Component {
           text1={this.props.data.videoText[1]}
         />
 
-        <SmallVideo 
+        <CenterSmallVideo 
           videoID="03"
           link={this.props.data.video[2]}
           text={this.props.data.videoText[2]}
@@ -1375,10 +1696,22 @@ class Event05 extends Component {
           label = {this.props.data.photoFullTextLabel[1]}
         />
 
-         <PhotoSwitch 
-          images={this.props.data.photoswitch} 
-          label={this.props.data.photoswitchLabel}
-          text1=""
+         <PhotoMultiple
+          images={this.props.data.photoMultiple} 
+          label={this.props.data.photoMultipleLabel}
+          text1={this.props.data.photoMultipleText} 
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+        </Modal>
+
+        <Video 
+          videoID="04"
+          color="dark"
+          link={this.props.data.video[3]}
+          text1={this.props.data.videoText[3]}
         />
 
         <PhotoTextFull
@@ -1402,7 +1735,7 @@ class Event06 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {"/images/taiwan.jpg"}
+          
           map = {"-110px, -200px"}
         />
 
@@ -1492,6 +1825,13 @@ class Event06 extends Component {
 }
 
 class Event07 extends Component {
+  componentDidMount(){
+    var infoText = this.props.data.infoText;
+    $(document).ready(function(){
+      var infoHelper = '<div class="absolute z10 mw7 infoHelper pn"><p class="near-black f7 fw4 bg-white pa3 pre-wrap lh-copy">'+infoText+'</p></div>';
+      $('.info').append(infoHelper);
+    })
+  }
   render() {
     return (
       <div>
@@ -1501,7 +1841,7 @@ class Event07 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {"/images/taiwan.jpg"}
+          
           map = {"-110px, -110px"}
         />
 
@@ -1562,7 +1902,7 @@ class Event07 extends Component {
           text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
-        />
+        />        
         <Transition text={this.props.data.videoText[3]}/>
         <Video 
           videoID="04"
@@ -1601,7 +1941,7 @@ class Event09 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {"/images/taiwan.jpg"}
+          
           map = {"-110px, -200px"}
         />
 
@@ -1609,6 +1949,62 @@ class Event09 extends Component {
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
+        />
+
+        <Transition text={this.props.data.transitionText[0]} />
+        <Video 
+          videoID="01"
+          link={this.props.data.video[0]}
+          text1=""
+        />
+
+        <PhotoTextFull
+          position={"fr-l"}
+          color="dark"
+          text1={this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+        />
+
+        <CenterSmallVideo 
+          videoID="02"
+          color="invert"
+          link={this.props.data.video[1]}
+        />
+
+        <Transition text={this.props.data.transitionText[1]} />
+        <Video 
+          videoID="03"
+          link={this.props.data.video[2]}
+          text1=""
+        />
+
+        <Transition text={this.props.data.transitionText[2]} />
+        <PhotoSwitch 
+          position={"fl-l"}
+          images={this.props.data.photoswitch1} 
+          text1=""
+          label={this.props.data.photoswitchLabel1}
+        />        
+
+        <Video 
+          videoID="04"
+          link={this.props.data.video[3]}
+          text1=""
+        />
+
+        <PhotoTextFull
+          position={"fl-l"}
+          text1={this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
+        />
+
+        <PhotoSwitch 
+          position={"fl-l"}
+          images={this.props.data.photoswitch2} 
+          text1={this.props.data.photoswitchText2}
+          label={this.props.data.photoswitchLabel2}
         />
       </div>
     );
@@ -1645,7 +2041,7 @@ class Event12 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          background = {"/images/taiwan.jpg"}
+          
           map = {"-110px, -200px"}
         />
 
@@ -1654,6 +2050,74 @@ class Event12 extends Component {
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
+        <Transition text={this.props.data.transitionText[0]} />
+        <PhotoTextFull
+          text1=""
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+        />
+
+        <PhotoText
+          order="right"
+          color="invert"
+          text={this.props.data.photoText[0]}
+          image = {this.props.data.photoImage[0]}
+        /> {/*廠區*/}
+
+        <PhotoTextFull
+          text1 = {this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
+        /> {/*病變*/}
+
+        <SmallVideo 
+          videoID="01"
+          link={this.props.data.video[0]}
+          text={this.props.data.videoText[0]}
+        />
+
+        <Video 
+          videoID="02"
+          color="dark"
+          link={this.props.data.video[1]}
+          text1={this.props.data.videoText[1]}
+        />
+
+        <Transition text={this.props.data.transitionText[1]} />
+        <Video 
+          videoID="03"
+          link={this.props.data.video[2]}
+          text1=""
+        />
+
+        <PhotoCenterTextFull
+          text1 = {this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[2]}
+          label = {this.props.data.photoFullTextLabel[2]}
+        /> {/*石棺*/}
+
+        <PhotoTextFix
+          order="left"
+          color="invert"
+          text={this.props.data.photoText[1]}
+          image = {this.props.data.photoImage[1]}
+          label = {this.props.data.photoLabel[0]}
+          multiple = {true}
+          top={true}
+        /> {/*提告*/}
+
+        <PhotoTextFix
+          order="left"
+          color="invert"
+          text={this.props.data.photoText[2]}
+          image = {this.props.data.photoImage[2]}
+          label = {this.props.data.photoLabel[1]}
+          multiple = {true}
+          top={false}
+        /> {/*提告*/}
+
+        <Transition text={this.props.data.transitionText[2]} />
+        <EndingVideo text={"台鹼安順廠"} link={"https://youtube.com/embed/6CwZYq6vt0k?rel=0"}/>
       </div>
     );
   }
