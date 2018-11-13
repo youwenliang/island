@@ -1305,19 +1305,36 @@ function TimeChange(props) {
     z = "z-1";
     h = "min-vh-200"
   }
+  var label = {
+    bottom: "0px",
+    right: "0px",
+    background: "rgba(0,0,0,.2)",
+    padding: "20px",
+    color: "white",
+    position: "absolute",
+  }
   return (
-    <section className={h+" flex aic relative timeChange bg-near-white "+z}>
+    <section className={h+" flex aic relative timeChange bg-white "+z}>
       <div className="w-100 h-100 absolute top-left time-clipping fade">
-        <div className="bg-near-white w-100 h-100 fixed fixed-content pn flex aic">
-          <div className="mw70 center ph3 w-100 z4 pre-wrap">
-            <div className="cf black">
-              <figure className="fl-l w-50-l w-100 ma0">
-                <img src={props.image} alt="description"/>
-              </figure>
-              <div className={ props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 h5"}>
-                <p className="f5 lh-copy mv0" dangerouslySetInnerHTML={{__html:props.text1}}></p>
-              </div>
+        <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
+          <div className="center ph3 w-100 z4 pre-wrap">
+            <div className="mw7 center w-100 pa4-l pa3 mb4 h5">
+              <p className="f5 lh-copy mv0" dangerouslySetInnerHTML={{__html:props.text1}}></p>
             </div>
+            <figure className="w-100 ma0 ph3">
+              <div className="w-third dib relative">
+                <img src={props.image[0]} alt="description"/>
+                <label style={label}>{props.labels[0]}</label>
+              </div>
+              <div className="w-third dib relative">
+                <img src={props.image[1]} alt="description"/>
+                <label style={label}>{props.labels[1]}</label>
+              </div>
+              <div className="w-third dib relative">
+                <img src={props.image[2]} alt="description"/>
+                <label style={label}>{props.labels[2]}</label>
+              </div>
+            </figure>
           </div>
         </div>
       </div>
@@ -1404,7 +1421,7 @@ class Event01 extends Component {
         />
 
         <PhotoText
-          order="right"
+          order="left"
           color="invert"
           text={this.props.data.photoText[0]}
           image = {this.props.data.photoImage[0]}
@@ -1413,13 +1430,15 @@ class Event01 extends Component {
         <TimeChange
           position={"fr-l"}
           text1={this.props.data.timeChangeText[0]}
-          image={this.props.data.photoImage}
+          image={this.props.data.timeChangePhotos[0]}
+          labels={this.props.data.timeChangeLabels[0]}
         />
         <TimeChange
           position={"fr-l"}
           last={true}
           text1={this.props.data.timeChangeText[1]}
-          image={this.props.data.photoImage}
+          image={this.props.data.timeChangePhotos[1]}
+          labels={this.props.data.timeChangeLabels[1]}
         />
         {/*年代比較*/}
 

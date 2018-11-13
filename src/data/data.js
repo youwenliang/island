@@ -176,6 +176,18 @@ var data = {
         "<span class='o-50'>2002</span> - <strong>2008</strong>\n\n2018年我們重回現場竟然又發現，新的垃圾與廢土還是持續堆置，可見違法棄置在都市邊緣地帶還是一再上演。"
         ],
 
+        "timeChangePhotos": [
+        ["/events/changing-tamsui-river/A28.jpg","/events/changing-tamsui-river/A29.jpg","/events/changing-tamsui-river/A30.jpg"],
+        ["/events/changing-tamsui-river/A31.jpg","/events/changing-tamsui-river/A32.jpg","/events/changing-tamsui-river/A33.jpg"]
+        ],
+
+        "timeChangeLabels": [
+        ["2002年 二重疏洪道旁的垃圾山快與高架道路同高","2002年 二重疏洪道旁的垃圾多為營建廢土","2002年 二重疏洪道因交通便利，成為垃圾棄置場"],
+        ["2018年 二重疏洪道旁已變成鐵皮工廠區","2018年 二重疏洪道下仍見到新廢棄物","2018年 二重疏洪道下仍見到新廢棄物"]
+        ],
+
+
+
         // Video
         "video": [
             "/events/changing-tamsui-river/videos/A42.mp4",
@@ -221,7 +233,7 @@ var data = {
         "photoTextLabel": [],
 
         "photoImage": [
-            "https://fakeimg.pl/600x480/?text=PhotoText&retina=1"
+            "https://fakeimg.pl/600x480/?text=Chart&retina=1"
         ],
 
         // PhotoContrast
