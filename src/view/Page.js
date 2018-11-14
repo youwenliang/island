@@ -849,7 +849,7 @@ function SmallVideo(props) {
             </video>
           </div>
           <div className="fr-l w-100 w-50-l mw500 center ml5-l ph2 pv3">
-            <p className="pre-wrap f5 lh-copy mv0 z4 relative black">{props.text}</p>
+            <p className="pre-wrap f5 lh-copy mv0 z4 relative black mt4-ns">{props.text}</p>
           </div>
         </div>
       </div>
@@ -1356,6 +1356,113 @@ function InfoHelper(props) {
   )
 }
 
+function Blog(props) {
+  var img = null;
+  var text = null;
+  var mw = "mw80 ph3";
+  var column = "flex aic flex-column-s";
+
+  let grid = [];
+  var columns = "";
+  
+  var height = {
+    height: "400px"
+  }
+  var w = "600px";
+
+  for (var i = 0; i < props.image.length; i++){
+    var item = {
+      width: w,
+      height: "400px",
+      backgroundImage: "url("+props.image[i]+")",
+      backgroundSize: "cover",
+      backgroundPosition: "center center"
+    }
+    var bottomRight = {
+      bottom: "0px",
+      right: "0px",
+      background: "rgba(0,0,0,.2)",
+      padding: "20px"
+    }
+    var photos = (
+      <div className="grid-item bg-gray relative cp" style={item} key={i} onClick={(e) => props.onOpenModal(e.target.style.backgroundImage.split('"')[1])}>
+        <label className="absolute white" style={bottomRight}>{props.label[i]}</label>
+      </div>
+    )
+    columns+=(w+" ");
+    grid.push(photos);
+  }
+
+  var container = {
+    gridTemplateColumns: columns,
+    height: "440px",
+    paddingBottom: "40px"
+  }
+
+  if(props.text === "") {
+    img = (
+      <div className="w-100">
+        <div className="fl-l w-100 w-50-l relative tc mb5 mb0-ns">
+          <img className="mb3" src={props.image[0]}/>
+          <label className="f7 mt2 o-50" >{props.label[0]}</label>
+        </div>
+        <div className="fr-l w-100 w-50-l relative tc mb5 mb0-ns">
+          <img className="mb3" src={props.image[1]}/>
+          <label className="f7 mt2 o-50" >{props.label[1]}</label>
+        </div>
+      </div>
+    )
+  }
+  else {
+    text = (
+      <div className="fr-l w-100 w-50-l mw500 center ml5-l ph2 pv3">
+        <p className="pre-wrap f5 lh-copy mv0 z4 relative black mt4-ns">{props.text}</p>
+      </div>
+    );
+  }
+  if(props.number === 1) {
+    img = (
+      <div className="fl-l w-100 w-50-l pv3 relative tc mb5 mb0-ns">
+        <img className="mb3" src={props.image[0]}/>
+        <label className="f7 mt2 o-50" >{props.label[0]}</label>
+      </div>
+    );
+  } else if(props.number === 2) {
+    img = (
+      <div className="fl-l w-100 w-50-l relative tc">
+        <img className="mb3" src={props.image[0]}/>
+        <label className="f7 mt2 o-50" >{props.label[0]}</label>
+        <img className="mb3 mt5" src={props.image[1]}/>
+        <label className="f7 mt2 o-50" >{props.label[1]}</label>
+      </div>
+    );
+  } else if(props.number >= 3) {
+    column = "";
+    mw = "";
+    text = (
+      <div className="mw7 center w-100 pa4-l pa3 mb4">
+        <p className="pre-wrap f5 lh-copy mv0 z4 relative black mt4-ns">{props.text}</p>
+      </div>
+    );
+    img = (
+      <div className="w-100 overflow-hidden" style={height}>
+        <div className="grid-container nowrap dragscroll" style={container}>
+          {grid}
+        </div> 
+      </div>
+    );
+  }
+  return (
+    <section className={"min-vh-100 flex aic relative pv6-l pv4 "+props.bg} >
+      <div className={mw+" w-100 center z4 relative"}>
+        <div className={"cf "+column}>
+          {text}
+          {img}
+        </div>
+      </div>
+    </section>
+  )
+}
 
 
 
@@ -1386,6 +1493,7 @@ class Event01 extends Component {
     return (
       <div>
         <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+
         <Taiwan
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
@@ -1744,11 +1852,32 @@ class Event04 extends Component {
           images={this.props.data.timelineImage}
           content={this.props.data.timelineContent}
         />
+        <Blog
+          number={2}
+          bg={"bg-near-white"}
+          text={this.props.data.blogText}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+        />
+
         <PhotoTextFull
           position={"fr-l"}
           text1={this.props.data.photoFullText[2]}
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
+        />
+        <Blog
+          number={0}
+          text=""
+          image={this.props.data.blogImage[1]}
+          label={this.props.data.blogLabel[1]}
+        />
+        <Blog
+          number={0}
+          bg={"bg-near-white"}
+          text=""
+          image={this.props.data.blogImage[2]}
+          label={this.props.data.blogLabel[2]}
         />
         <PhotoCenterTextFull
           text1={this.props.data.photoFullText[3]}
