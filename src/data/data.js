@@ -380,30 +380,77 @@ var data = {
 
         // PhotoFullText
         "photoFull": [""],
-        "photoFullText": [""],
+        "photoFullText": [
+        "",
+        ],
         "photoFullTextLabel": [""],
 
         // Video
         "video": [
-            "",
-            "",
+            "/events/land-crabs-survival/videos/C3.mp4",
+            "/events/land-crabs-survival/videos/C15.mp4",
+            "/events/land-crabs-survival/videos/C40-陸蟹幼體生態史動畫.mp4",
+            "/events/land-crabs-survival/videos/C55-墾丁人潮.mp4",
         ],
 
         "videoText": [
-            "",
-            "",
+            "黑夜，月光灑落在恆春半島的海面上，大腹便便的陸蟹媽媽，從洞穴裡探出頭來，牠們開始往海邊走去，準備展開一場重要的生命旅程。",
+            "碰觸到海水的陸蟹媽媽奮力的抖動腹部，數十萬隻的幼蟲瞬間釋放到海洋，這是陸蟹生命史上最動人的一刻，也是牠們與海洋切不斷的鏈結。",
+            "雖然已經長住陸地，但陸蟹的童年時光，還是必須在海裡度過，當牠一出生，可能先得躲過魚類等海洋生物的掠食，如果幸運沒有成為食物，經過約25天的浮游期，脫殼變態到大眼幼蟲的階段，才會再返回陸地生活。",
+            "更嚴重的威脅，是家鄉的變貌。\n\n墾丁國家公園的生態美景，吸引大量遊客前來，遊客數從一年200多萬人次，逐漸攀升，到了2014、2015年到達最高峰，約有八百多萬人次，數十年的光景，造就了上百家的違規旅館、民宿，還有賽車場、露營場等設施，就連大型BOT案也進駐。"
         ],
 
         // Photo Multiple
         "photoMultiple": [
-            "",
+            "/events/land-crabs-survival/C22.jpg",
+            "/events/land-crabs-survival/C23.jpg",
+            "/events/land-crabs-survival/C24.jpg",
+            "/events/land-crabs-survival/C25.jpg",
+            "/events/land-crabs-survival/C26.jpg",
+            "/events/land-crabs-survival/C27.jpg",
+            "/events/land-crabs-survival/C28.jpg",
+            "/events/land-crabs-survival/C29.jpg",
+            "/events/land-crabs-survival/C30.jpg",
+            "/events/land-crabs-survival/C31.jpg",
+            "/events/land-crabs-survival/C33.jpg",
+            "/events/land-crabs-survival/C34.jpg",
+            "/events/land-crabs-survival/C35.jpg",
+            "/events/land-crabs-survival/C36.jpg",
+            "/events/land-crabs-survival/C37.jpg",
+            "/events/land-crabs-survival/C38.jpg",
         ],
 
-        "photoMultipleText": "",
+        "photoMultipleText": "廣義的陸蟹包含在潮間帶、淡水水域及陸地上棲息的蟹類，而目前普遍探討的陸蟹，是指真正居住在陸地上，日常活動不受到潮汐影響的種類。\n\n全台灣陸蟹種類最多的地方，就在恆春半島的香蕉灣海岸林，高達30種左右，歧異度之高排名世界第一，而屏東滿州的港口溪一帶更是中型相手蟹全世界最大族群量的所在地。\n\n為什麼恆春半島會成為陸蟹的天堂，主要是因為海岸林茂密，有些地方還有湧泉，陰涼潮濕、食物充足，外加珊瑚礁岩地形孔洞多易躲藏，因而成為陸蟹喜歡的棲息環境。",
 
         "photoMultipleLabel": [
-            "",
+            "黃灰澤蟹",
+            "樹蟹",
+            "印痕仿相手蟹",
+            "奧氏後相手蟹",
+            "兇狠圓軸蟹",
+            "林投蟹",
+            "細紋方蟹",
+            "紫地蟹",
+            "中型仿相手蟹",
+            "紅指陸相手蟹",
+            "陸蟹",
+            "美麗岩相手蟹",
+            "拉氏清溪蟹",
+            "隆背張口蟹",
+            "毛足陸方蟹",
+            "方形大額蟹",
         ],
+
+        // Blog
+        "blogText": [
+          "好不容易返回陸地，找到適合的家過日子，還得隨時保持警戒。\n\n長得大，長得壯，有可能變成人們的食物；長得美則可能成為人們的寵物。\n\n像是中型仿相手蟹，紅色的身軀，並沒有為牠們帶來好運，反而招來厄運，牠們一度淪為水族市場討喜的商品，幾十元到幾百元的價格，就賣斷了中型仿相手蟹的族群生命"
+        ],
+        "blogImage": [
+        ["/events/land-crabs-survival/C82-販售.jpg"]
+        ],
+        "blogLabel": [
+        [""]
+        ]
 
     },
 // ****************************************************************** D ******************************************************************

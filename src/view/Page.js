@@ -956,9 +956,21 @@ function CenterSmallVideo(props) {
   var color = "";
   if(props.color === "invert") color = "bg-near-white"
 
+  let text = null;
+  if(props.text !== "") {
+    text = (
+      <div className="mw80 center cf black mb5">
+        <div className="mw7 w-100 center">
+          <p className="f5 lh-copy mv0">{props.text}</p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <section className={"min-vh-100 flex aic relative pv6-l pv4 video-content "+color}>
       <div className="w-100 center ph3 z4 relative">
+        {text}
         <div className="cf flex aic jcc w-100">
           <div className="center relative">
             <div className="absolute play cp z10" onClick={(e) => playVideo(e)} style={top}></div>
@@ -1252,7 +1264,7 @@ function Transition(props) {
     maxWidth: "880px"
   }
   return (
-    <section className="banner pv5-ns pv4 bg-white">
+    <section className={"banner pv5-ns pv4 "+props.bg}>
       <p className="lh-copy f5 center pre-wrap ph4-ns ph3" style={max}>{props.text}</p>
     </section>
   )
@@ -1702,7 +1714,21 @@ class Event02 extends Component {
 }
 
 class Event03 extends Component {
+  state = {
+    open: false,
+    image: ""
+  }
+ 
+  onOpenModal = (img) => {
+    this.setState({ open: true, image: img});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
         <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
@@ -1720,6 +1746,73 @@ class Event03 extends Component {
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
+
+        <CenterVideo
+          videoID="01"
+          link={this.props.data.video[0]}
+          text1={this.props.data.videoText[0]}
+          bg={false}
+        />
+
+        <Transition
+          text={this.props.data.videoText[1]}
+        />
+
+        <Video 
+          videoID="02"
+          link={this.props.data.video[1]}
+          text1=""
+        />
+
+        <PhotoMultiple
+          images={this.props.data.photoMultiple} 
+          label={this.props.data.photoMultipleLabel}
+          text={this.props.data.photoMultipleText} 
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+        </Modal>
+
+        <Transition
+          bg={"bg-near-white tc"}
+          text={"轉場文字"}
+        />
+        <Transition
+          bg={"bg-black white tc"}
+          text={"陸蟹生存第一關"}
+        />
+        
+        <CenterSmallVideo 
+          videoID="03"
+          text={this.props.data.videoText[2]}
+          link={this.props.data.video[2]}
+        />
+        <Transition
+          bg={"bg-black white tc"}
+          text={"陸蟹生存第二關"}
+        />
+        <Blog
+          number={1}
+          text={this.props.data.blogText}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+        />
+
+        <Transition
+          bg={"bg-black white tc"}
+          text={"陸蟹生存第三關"}
+        />
+        <Transition
+          text={this.props.data.videoText[3]}
+        />
+        <Video 
+          videoID="04"
+          text1=""
+          link={this.props.data.video[3]}
+        />
+
       </div>
     );
   }
@@ -1961,7 +2054,7 @@ class Event05 extends Component {
          <PhotoMultiple
           images={this.props.data.photoMultiple} 
           label={this.props.data.photoMultipleLabel}
-          text1={this.props.data.photoMultipleText} 
+          text={this.props.data.photoMultipleText} 
           onOpenModal={this.onOpenModal.bind(this)}
         />
 
