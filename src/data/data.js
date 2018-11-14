@@ -364,7 +364,7 @@ var data = {
       // CoverVideo
         "coverTitle": "/images/titles/03.svg",
         "coverDescription": "當陸蟹媽媽抖動腹部，數十萬的蟹寶寶誕生了，不過牠們若要活下來順利長大，必須勇敢的一關闖過一關，陸蟹的一生，就是一場實境版的生存遊戲。",
-        "coverVideo": "/events/land-crabs-survival/videos/B17(2012年二仁溪兩岸廢棄物導覽).mp4",
+        "coverVideo": "/events/land-crabs-survival/videos/C2陸蟹首圖.mp4",
 
         // Taiwan
         "taiwanText": [
