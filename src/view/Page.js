@@ -1781,7 +1781,7 @@ class Event03 extends Component {
         />
         <Transition
           bg={"bg-black white tc"}
-          text={"陸蟹生存第一關"}
+          text={"陸蟹生存 - 第一關"}
         />
         
         <CenterSmallVideo 
@@ -1791,7 +1791,7 @@ class Event03 extends Component {
         />
         <Transition
           bg={"bg-black white tc"}
-          text={"陸蟹生存第二關"}
+          text={"陸蟹生存 - 第二關"}
         />
         <Blog
           number={1}
@@ -1802,7 +1802,7 @@ class Event03 extends Component {
 
         <Transition
           bg={"bg-black white tc"}
-          text={"陸蟹生存第三關"}
+          text={"陸蟹生存 - 第三關"}
         />
         <Transition
           text={this.props.data.videoText[3]}
@@ -1828,7 +1828,33 @@ class Event03 extends Component {
           text1=""
           link={this.props.data.video[4]}
         />
+        <Transition
+          bg={"bg-black white tc"}
+          text={"陸蟹生存 - 第四關"}
+        />
+        <Video 
+          videoID="06"
+          text1={this.props.data.videoText[5]}
+          link={this.props.data.video[5]}
+        />
+        <CenterSmallVideo 
+          videoID="07"
+          text={this.props.data.videoText[6]}
+          link={this.props.data.video[6]}
+        />
+        <Transition
+          bg={"bg-black white tc"}
+          text={"陸蟹生存 - 魔王關"}
+        />
 
+        <Transition
+          text={this.props.data.videoText[7]}
+        />
+        <Video 
+          videoID="08"
+          text1=""
+          link={this.props.data.video[7]}
+        />
 
       </div>
     );
