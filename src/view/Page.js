@@ -841,7 +841,7 @@ function SmallVideo(props) {
     <section className={"min-vh-100 flex aic relative pv6-l pv4 video-content smallVideo "+props.bg}>
       <div className="mw80 w-100 center ph3 z4 relative">
         <div className="cf flex aic flex-column-s">
-          <div className="fl-l w-100 w-50-l ph2 pv3 relative bg-black">
+          <div className="fl-l w-100 w-50-l ph2 pv3 relative">
             <div className="absolute play cp z10" onClick={(e) => playVideo(e)}></div>
             <div className="absolute sound cp z10" onClick={(e) => soundVideo(e)}></div>
             <video id={'video'+props.videoID} className="w-100" loop playsInline muted autoPlay>
@@ -1854,6 +1854,35 @@ class Event03 extends Component {
           videoID="08"
           text1=""
           link={this.props.data.video[7]}
+        />
+        <SmallVideo 
+          videoID="09"
+          link={this.props.data.video[8]}
+          text={this.props.data.videoText[8]}
+        />
+        <PhotoCenterTextFull
+          text1 = {this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+          bg={true}
+        />
+        <Blog
+          number={1}
+          bg={"bg-near-white"}
+          text={this.props.data.blogText[2]}
+          image={this.props.data.blogImage[2]}
+          label={this.props.data.blogLabel[2]}
+        />
+        <CenterSmallVideo 
+          videoID="10"
+          text={this.props.data.videoText[9]}
+          link={this.props.data.video[9]}
+        />
+        <PhotoCenterTextFull
+          text1 = {this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
+          bg={true}
         />
 
       </div>
