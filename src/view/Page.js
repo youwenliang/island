@@ -1795,7 +1795,7 @@ class Event03 extends Component {
         />
         <Blog
           number={1}
-          text={this.props.data.blogText}
+          text={this.props.data.blogText[0]}
           image={this.props.data.blogImage[0]}
           label={this.props.data.blogLabel[0]}
         />
@@ -1812,6 +1812,23 @@ class Event03 extends Component {
           text1=""
           link={this.props.data.video[3]}
         />
+
+        <Blog
+          number={5}
+          text={this.props.data.blogText[1]}
+          image={this.props.data.blogImage[1]}
+          label={this.props.data.blogLabel[1]}
+        />
+
+        <Transition
+          text={this.props.data.videoText[4]}
+        />
+        <Video 
+          videoID="05"
+          text1=""
+          link={this.props.data.video[4]}
+        />
+
 
       </div>
     );
