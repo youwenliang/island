@@ -10,7 +10,7 @@ class Cover extends Component {
     }
     
     return (
-      <section id="cover" className="min-vh-100 bg-gray flex jcc aic">
+      <section id="cover" className="vh-100 bg-gray flex jcc aic relative">
         <div className="bg-light-gray w-100 h-100 absolute">
           <div className="bg-near-black o-20 w-100 h-100 absolute z1"/>
           <div className="videoBg">
@@ -22,9 +22,9 @@ class Cover extends Component {
         <div className="mw8 center ph3-l pv6 z1 pn">
           <div className="cf tc white w-80-ns w-90 center pa4-l">
             <img src={cover} style={titleStyle} width="960px" height="auto" alt="title" />
-            <Phone/>
           </div>
         </div>
+        <Phone/>
       </section>
     );
   }

@@ -30,32 +30,6 @@
 	.st24{fill:#DAE0E1;}
 	.st25{fill:#FEFEFD;}
 	.st26{fill:#FEFEFB;}
-
-	#t01 {
-		z-index: 1;
-	}
-	#t02 {
-		z-index: 2;
-		animation: switch 2s linear infinite 0.1s;
-	}
-	#t03 {
-		z-index: 3;
-		animation: switch 2s linear infinite;
-	}
-	@keyframes switch {
-	  0% {
-	  	opacity: 1;
-	  }
-	  5% {
-	  	opacity: 1;
-	  }
-	  6% {
-	  	opacity: 0;
-	  }
-	  100% {
-	  	opacity: 0;
-	  }
-	}
 </style>
 <g id="t01">
 	<g id="敺_x9E__xFFFD__xF880_詨_x8F__x96_蝭_x84__xFFFD__x9C__x8D__xA0_影像_4_">

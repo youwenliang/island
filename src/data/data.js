@@ -9,7 +9,7 @@ var data = {
           "name": "變遷 淡水河@新北淡水河",
           "image": "/images/1-1_A22.jpg",
           "icon":  "/images/icons/1-1淡水河.png",
-          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
+          "description": "台北人熟悉的淡水河，也曾經堆滿了垃圾？一起乘著島嶼時光機，回首垃圾山，臭氣憶當年。",
           "url": "changing-tamsui-river"
         }, {
           "id": "1-2",
@@ -17,7 +17,7 @@ var data = {
           "name": "重生 二仁溪@台南/高雄",
           "image": "/images/1-2_B6.jpg",
           "icon":  "/images/icons/1-2二仁溪.png",
-          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
+          "description": "靠著廢五金致富，卻留下污染，造就黑龍江得花多少時間與金錢，才能換回二仁溪的重生？",
           "url": "reborn-erren-river"
         }, {
           "id": "1-3",
@@ -25,7 +25,7 @@ var data = {
           "name": "陸蟹闖天關@墾丁恆春",
           "image": "/images/1-3_C1.jpg",
           "icon":  "/images/icons/1-3陸蟹.png",
-          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
+          "description": "當陸蟹媽媽抖動腹部，數十萬的蟹寶寶誕生了，不過牠們若要活下來順利長大，必須勇敢的一關闖過一關，陸蟹的一生，就是一場實境版的生存遊戲。",
           "url": "land-crabs-survival"
         }, {
           "id": "1-4",
@@ -33,7 +33,7 @@ var data = {
           "name": "漁港的黑色幽默@台東大武漁港",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/images/icons/1-4港口淤積.png",
-          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
+          "description": "漁港變成砂石場，怪手挖不完，漁船出不了海。蓋了六十年，還沒有完工的永續工程。",
           "url": "dawu-fishing-port"
         }, {
           "id": "1-5",
@@ -41,7 +41,7 @@ var data = {
           "name": "不靠海的金門後豐港@金門後豐港",
           "image": "/images/1-5_E7.jpg",
           "icon":  "/images/icons/1-5鱟.png",
-          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
+          "description": "金門後豐港，一個名稱有港，卻無法出港的地方。一個以海維生的百年漁村聚落，卻再也不能輕易地親近海。",
           "url": "kinmen-Hou-feng-kang"
         }
       ]
@@ -54,7 +54,7 @@ var data = {
           "name": "咬一口高山青翠@台中梨山",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/images/icons/2-1梨山.png",
-          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件。",
           "url": "lishan-high-mountain-farms"
         }, {
           "id": "2-2",
@@ -62,7 +62,7 @@ var data = {
           "name": "冒險 泡湯去@南投廬山",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/images/icons/2-2廬山.png",
-          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件。",
           "url": "lushan-hotspring-risk"
         }, {
           "id": "2-3",
@@ -70,7 +70,7 @@ var data = {
           "name": "攔住水又失去水@雲林湖山水庫",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/images/icons/2-3湖山水庫.png",
-          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件。",
           "url": "hushan-reservoir-lost-water"
         }, {
           "id": "2-4",
@@ -78,7 +78,7 @@ var data = {
           "name": "挖山取石的代價@花蓮亞泥",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/images/icons/2-4亞泥.png",
-          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件。",
           "url": "asia-cement-cost"
         }
       ]
@@ -91,7 +91,7 @@ var data = {
           "name": "無土時代@彰化中科四期",
           "image": "/images/3-1_J9.jpg",
           "icon":  "/images/icons/3-1中科四期.png",
-          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件。",
           "url": "science-park-landuse"
         }, {
           "id": "3-2",
@@ -99,7 +99,7 @@ var data = {
           "name": "海上的石化王國@雲林麥寮六輕",
           "image": "/images/3-2.jpg",
           "icon":  "/images/icons/3-2六輕.png",
-          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件。",
           "url": "petrochemical-kingdom"
         }, {
           "id": "3-3",
@@ -107,7 +107,7 @@ var data = {
           "name": "焦土 台鹼安順廠@台南台鹼安順廠",
           "image": "/images/3-3_L5.jpg",
           "icon":  "/images/icons/3-3台鹼.png",
-          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件。",
           "url": "soil-pollution-tainan"
         }, {
           "id": "3-4",
@@ -115,7 +115,7 @@ var data = {
           "name": "無人知曉的未爆彈@屏東赤山巖",
           "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
           "icon":  "/images/icons/3-4汞污泥.png",
-          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件．",
+          "description": "這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件，這是一小段文字介紹這個事件。",
           "url": "event13"
         }
       ]
@@ -479,7 +479,7 @@ var data = {
       
       //CoverVideo
       "coverTitle": "/images/titles/04.svg",
-      "coverDescription": "漁港變成砂石場 \n怪手挖不完 漁船出不了海\n蓋了六十年\n還沒有完工的永續工程",
+      "coverDescription": "漁港變成砂石場，怪手挖不完，漁船出不了海\n蓋了六十年，還沒有完工的永續工程",
       "coverVideo": "/events/dawu-fishing-port/videos/D33-新拍2018大武漁港空拍修.mp4",
       
       // Taiwan
@@ -609,7 +609,7 @@ var data = {
 
     //CoverVideo
     "coverTitle": "/images/titles/05.svg",
-    "coverDescription": "金門後豐港\n一個名稱有港，卻無法出港的地方。\n一個以海維生的百年漁村聚落，\n卻再也不能輕易地親近海。",
+    "coverDescription": "金門後豐港，一個名稱有港，卻無法出港的地方。\n一個以海維生的百年漁村聚落，卻再也不能輕易地親近海。",
     "coverVideo": "/events/kinmen-Hou-feng-kang/videos/E12(金門後豐港填港空拍).mp4",
 
     // Taiwan

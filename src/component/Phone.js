@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import timemachine from '../assets/images/timemachine.svg';
 import hand from '../assets/images/hand.svg';
 import phone from '../assets/images/phone_new.svg';
+import phone_stop from '../assets/images/phone_stop.svg';
 import $ from 'jquery';
 
 class Phone extends Component {
@@ -14,6 +15,7 @@ class Phone extends Component {
       })
       $(window).click(function(e){
         $('.dialog').addClass('hiding');
+        $('#phone.hiding').addClass('stop');
         $('#phone').removeClass('hiding');
       })
     })
@@ -22,22 +24,22 @@ class Phone extends Component {
     var machineStyle = {
       bottom: "-28px",
       width: "90vw",
-      maxWidth: "400px",
+      maxWidth: "320px",
       zIndex: 10
     }
     var handStyle = {
       bottom: "-20px",
       width: "30.375vw",
-      maxWidth: "135px",
-      transform: "translateX(70px)",
+      maxWidth: "108px",
+      transform: "translateX(56px)",
       zIndex: 10
     }
     var phoneStyle = {
-      bottom: "140px",
+      bottom: "110px",
       pointerEvents: "auto"
     }
     var dialog = {
-      bottom: "240px"
+      bottom: "200px"
     }
     return (
       <div>

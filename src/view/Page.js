@@ -78,6 +78,12 @@ class Page extends Component {
     document.body.classList.add('ds');
     document.getElementById('loading').classList.remove('fade');
 
+    var scrolling = false;
+    setInterval(function(){
+      scrolling = false;
+      $('.progress.active').addClass('scrolling');
+    },1000)
+
     $('.dragscroll').scrollLeft(0);
     // Horizontal Scroll
     // $('.dragscroll').mousewheel(function(event, change) {
@@ -134,6 +140,8 @@ class Page extends Component {
 
       // Scroll functions
       $(window).scroll( function(){
+        scrolling = true;
+        $('.progress.active').removeClass('scrolling');
         var th = $(document).height()-$(window).height();
         var ch = $(window).scrollTop();
         var x = 100*ch/th;
@@ -141,8 +149,10 @@ class Page extends Component {
 
         if(ch >= $(window).height()) {
           $('.progress').addClass('active');
+          $('.messenger').addClass('active');
         } else {
           $('.progress').removeClass('active');
+          $('.messenger').removeClass('active');
         }
 
         var top_of_window = $(window).scrollTop(); // eslint-disable-line no-unused-vars
@@ -225,13 +235,7 @@ class Page extends Component {
       'event13': <Event13 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />
     }
     let container = viewContainerMapping[this.state.view];
-    // Cookies
-    const cookies = new Cookies();
-    var phone = null;
-    if(cookies.get('firstVisit') === undefined) {
-      cookies.set('firstVisit', true, { path: '/' });
-      phone = (<Phone/>);
-    }
+    
     return (
       <section id={data.id} className="overflow-x-hidden">
         <Helmet>
@@ -243,8 +247,7 @@ class Page extends Component {
           <div className="bar"></div>
         </div>
         {container}
-        {phone}
-        <Messenger/>
+        {/*<Messenger/>*/}
       </section>
     );
   }
@@ -259,8 +262,21 @@ function CoverVideo(props) {
   var gradient = {
     background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.45) 100%)"
   }
+  // Cookies
+  const cookies = new Cookies();
+  var phone = null;
+  var top = null;
+  var h = (1000 - $(window).height()) / 4
+  if(cookies.get('firstVisit') === undefined) {
+    cookies.set('firstVisit', true, { path: '/' });
+    phone = (<Phone/>);
+    top = {
+      top: '-'+h+'px'
+    }
+  }
+
   return (
-    <section className="cover min-vh-100 flex aic relative video-content">
+    <section id="cover" className="vh-100 flex aic relative video-content relative">
       <div className="w-100 h-100 absolute z4 pn" style={gradient}/>
       <div className="w-100 h-100 absolute top-left clipping">
       <div className="w-100 h-100 fixed fixed-content pn">
@@ -271,12 +287,13 @@ function CoverVideo(props) {
         </div>
       </div>
       </div>
-      <div className="mw80 center ph3 w-100 z4 tc">
+      <div className="mw80 center ph4-ns ph3 w-100 z4 tc relative" style={top}>
         <img src={props.title} className="center mb3" height="150" alt="title" />
         <div className="cf white w-80-ns w-100 center ph-ns">
           <h3 className="f3-ns f4 coverVideo-tag fw4 lh-copy mb0 pre-wrap text-shadow">{props.content}</h3>
         </div>
       </div>
+      {phone}
     </section>
   )
 }
@@ -318,7 +335,7 @@ function Taiwan(props) {
           </figure>
         </div>
       </div>
-      <div className="mw80 center ph3 w-100 z4 pre-wrap">
+      <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
         <div className="cf black">
           <div className="w-50-l mw500 mh3-l center w-100 fl-l pa4-l pa3 bg-near-white">
             <h2 className="f3 fw7 lh-copy mt0">{props.text1}</h2>
@@ -348,12 +365,12 @@ function Illustration(props) {
     <section className={h+" flex aic relative"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
-          <figure className="center mw70 w-100 pr5-l">
+          <figure className="center mw70 w-100 ph4-ns">
             <img className="w-50-l w-100" src={props.illustration} alt="illustration"/>
           </figure>
         </div>
       </div>
-      <div className="mw70 center ph3 w-100 z4 pre-wrap">
+      <div className="mw70 center ph4-ns ph3 w-100 z4 pre-wrap">
         <div className="cf black">
           <div className="w-50-l mw500 mh3-l center w-100 fr-l pa4-l pa3 bg-white">
             <p className="f5 lh-copy mv0">{props.text1}</p>
@@ -382,10 +399,10 @@ function PhotoTextFull(props) {
   var bgcolor = ""
   var textcolor = ""
   if(props.color === "dark") {
-    bgcolor = "bg-dark-gray o-80";
+    bgcolor = "bg-black o-60";
     textcolor = "white";
   } else {
-    bgcolor = "bg-white o-90";
+    bgcolor = "bg-white o-85";
     textcolor = "black";
   }
   var text1 = null;
@@ -424,7 +441,7 @@ function PhotoTextFull(props) {
           <label className="white absolute" style={bottomRight}>{props.label}</label>
         </div>
       </div>
-      <div className="mw80 center ph3 w-100 z4 pre-wrap">
+      <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
         {text1}
         {text2}
       </div>
@@ -447,12 +464,12 @@ function PhotoCenterTextFull(props) {
   var max = {
     maxWidth: "800px"
   }
-  var textShadow = "text-shadow";
+  var textShadow = "text-shadow f4";
   var bgColor = "";
   var mask = "bg-dark-gray o-40";
   if(props.bg) {
-    textShadow = "";
-    bgColor = "bg-dark-gray o-80";
+    textShadow = "f5";
+    bgColor = "bg-black o-60";
     mask = "";
   }
   return (
@@ -466,11 +483,11 @@ function PhotoCenterTextFull(props) {
           <label className="white absolute z10" style={bottomRight}>{props.label}</label>
         </div>
       </div>
-      <div className="w-100 center ph3 z4 relative">
+      <div className="w-100 center ph4-ns ph3 z4 relative">
         <div className="cf flex aic">
           <div className="w-100 w-50-l center pa4-l pa3 relative" style={max}>
             <div className={bgColor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"pre-wrap f4-ns f5 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
+            <p className={"pre-wrap lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
           </div>
         </div>
       </div>
@@ -505,7 +522,7 @@ function PhotoText(props) {
           </figure>
         </div>
       </div>
-      <div className="mw70 center ph3 w-100 z4 pre-wrap">
+      <div className="mw70 center ph4-ns ph3 w-100 z4 pre-wrap">
         <div className="cf black">
           <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 "+color2+" "+text}>
             <p className="f5 lh-copy mv0">{props.text}</p>
@@ -544,7 +561,7 @@ function PhotoTextFix(props) {
 
   return (
     <section className={h+" flex aic relative "+p+" "+color1}>
-      <div className="mw80 w-100 center ph3 z4 relative">
+      <div className="mw80 w-100 center ph4-ns ph3 z4 relative">
         <div className="cf flex aic flex-column-s">
           <div className={"w-100 w-50-l ph2 pv3 relative "+photo}>
             <figure className="center mw70 w-100">
@@ -572,7 +589,7 @@ function MapText(props) {
           </figure>
         </div>
       </div>
-      <div className="mw70 center ph3 w-100 z4 pre-wrap">
+      <div className="mw70 center ph4-ns ph3 w-100 z4 pre-wrap">
         <div className="cf black">
           <div className="fr-l w-50-l mw500 mh3-l center w-100 pa4-l pa3 bg-white">
             <p className="f5 lh-copy mv0">{props.text}</p>
@@ -602,7 +619,7 @@ function PhotoSwitch(props) {
     h = "min-vh-200"
     text1 = (
       <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative "+props.position}>
-        <div className="w-100 h-100 absolute bg-dark-gray o-80 top-left"></div>
+        <div className="w-100 h-100 absolute bg-black o-60 top-left"></div>
         <p className="f5 lh-copy mv0 relative z4">{props.text1}</p>
       </div>
     )
@@ -613,7 +630,7 @@ function PhotoSwitch(props) {
     text2 = (
       <div className="cf white mt50vh">
         <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative "+props.position}>
-          <div className="w-100 h-100 absolute bg-dark-gray o-80 top-left"></div>
+          <div className="w-100 h-100 absolute bg-black o-60 top-left"></div>
           <p className="f5 lh-copy mv0 relative z4">{props.text2}</p>
         </div>
       </div>
@@ -626,7 +643,7 @@ function PhotoSwitch(props) {
           <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} autoPlay={true} showBullets={true}/>
         </div>
       </div>
-      <div className="mw80 center ph3 w-100 z4 pre-wrap">
+      <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
         <div className="cf white">
           {text1}
         </div>
@@ -679,7 +696,7 @@ function PhotoMultiple(props) {
 
   return (
     <section className="flex aic relative bg-white flex-column pv6-l pv4 auto-scroll">      
-      <div className="mw80 center cf black mb5 ph3 w-100">
+      <div className="mw80 center cf black mb5 ph4-ns ph3 w-100">
         <div className="mw7 w-100 center bg-white">
           <p className="f5 lh-copy mv0">{props.text}</p>
         </div>
@@ -708,7 +725,7 @@ function PhotoContrast(props) {
   }
   return (
     <section className={"flex aic relative flex-column pv6-l pv5 "+props.bg}>
-        <div className="ph3 w-100 z4">
+        <div className="ph4-ns ph3 w-100 z4">
           {text}
           <div className="relative" style={{ maxWidth: '1024px', margin: '0 auto 2.5rem auto' }}>
             <ReactCompareImage
@@ -717,8 +734,8 @@ function PhotoContrast(props) {
               sliderLineWidth={2}
               handleSize={40}
             />
-            <span className="mt3 right absolute bottom" data-type="original">{props.year[1]}</span>
-            <span className="mt3 left absolute bottom" data-type="modified">{props.year[0]}</span>
+            <span className="mt3 right-20 absolute white top f3 fw5" data-type="original">{props.year[1]}</span>
+            <span className="mt3 left-20 absolute white top f3 fw5" data-type="modified">{props.year[0]}</span>
           </div>
         </div>
     </section>
@@ -756,10 +773,10 @@ function Video(props) {
   var textcolor = ""
   var h = "min-vh-150"
   if(props.color === "dark") {
-    bgcolor = "bg-dark-gray o-80";
+    bgcolor = "bg-black o-60";
     textcolor = "white";
   } else {
-    bgcolor = "bg-white o-90";
+    bgcolor = "bg-white o-85";
     textcolor = "black";
   }
 
@@ -793,7 +810,7 @@ function Video(props) {
   return (
     <section className={h+" flex aic relative video-content"}>
       <div className="w-100 h-100 absolute top-left clipping">
-        <div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>
+        <div className={props.play+" fixed play cp z10"} onClick={(e) => playVideo(e)}></div>
         <div className="fixed sound cp z10" onClick={(e) => soundVideo(e)}></div>
         <div className="bg-light-gray w-100 h-100 fixed fixed-content pn">
           <div className="videoBg">
@@ -803,7 +820,7 @@ function Video(props) {
           </div>
         </div>
       </div>
-      <div className="mw80 center ph3 w-100 z4 pre-wrap">
+      <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
         {text1}
         {text2}
       </div>
@@ -839,17 +856,15 @@ function SmallVideo(props) {
   }
   return (
     <section className={"min-vh-100 flex aic relative pv6-l pv4 video-content smallVideo "+props.bg}>
-      <div className="mw80 w-100 center ph3 z4 relative">
+      <div className="mw80 w-100 center ph4-ns ph3 z4 relative">
         <div className="cf flex aic flex-column-s">
           <div className="fl-l w-100 w-50-l ph2 pv3 relative">
-            <div className="absolute play cp z10" onClick={(e) => playVideo(e)}></div>
-            <div className="absolute sound cp z10" onClick={(e) => soundVideo(e)}></div>
-            <video id={'video'+props.videoID} className="w-100" loop playsInline muted autoPlay>
+            <video id={'video'+props.videoID} className="w-100" controls loop playsInline muted autoPlay>
               <source src={props.link} type="video/mp4"/>
             </video>
           </div>
           <div className="fr-l w-100 w-50-l mw500 center ml5-l ph2 pv3">
-            <p className="pre-wrap f5 lh-copy mv0 z4 relative black mt4-ns">{props.text}</p>
+            <p className="pre-wrap f5 lh-copy mv0 z4 relative black mt0-ns mt4">{props.text}</p>
           </div>
         </div>
       </div>
@@ -891,7 +906,7 @@ function CenterVideo(props) {
   var mask = "bg-dark-gray o-40";
   if(props.bg) {
     textShadow = "";
-    bgColor = "bg-dark-gray o-80";
+    bgColor = "bg-black o-60";
     mask = "";
   }
 
@@ -899,7 +914,7 @@ function CenterVideo(props) {
     <section className="min-vh-200 flex aic relative pv6-l pv4 video-content">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={mask+" w-100 h-100 absolute pn top-left z4"}/>
-        <div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>
+        {/*<div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>*/}
         <div className="fixed sound cp z10" onClick={(e) => soundVideo(e)}></div>
         <div className="bg-light-gray w-100 h-100 fixed fixed-content pn">
           <div className="videoBg">
@@ -909,7 +924,7 @@ function CenterVideo(props) {
           </div>
         </div>
       </div>
-      <div className="w-100 center ph3 z4 relative">
+      <div className="w-100 center ph4-ns ph3 z4 relative">
         <div className="cf flex aic">
           <div className="w-100 w-50-l center pa4-l pa2 relative" style={max}>
             <div className={bgColor+" w-100 h-100 absolute pn top-left"}/>
@@ -959,7 +974,7 @@ function CenterSmallVideo(props) {
   let text = null;
   if(props.text !== "") {
     text = (
-      <div className="mw80 center cf black mb5">
+      <div className="mw80 center cf black mb5 pre-wrap">
         <div className="mw7 w-100 center">
           <p className="f5 lh-copy mv0">{props.text}</p>
         </div>
@@ -969,13 +984,11 @@ function CenterSmallVideo(props) {
 
   return (
     <section className={"min-vh-100 flex aic relative pv6-l pv4 video-content "+color}>
-      <div className="w-100 center ph3 z4 relative">
+      <div className="w-100 center ph4-ns ph3 z4 relative">
         {text}
         <div className="cf flex aic jcc w-100">
           <div className="center relative">
-            <div className="absolute play cp z10" onClick={(e) => playVideo(e)} style={top}></div>
-            <div className="absolute sound cp z10" onClick={(e) => soundVideo(e)} style={top}></div>
-            <video className="w-100" id={'video'+props.videoID} loop playsInline muted autoPlay style={max}>
+            <video className="w-100" id={'video'+props.videoID} controls loop playsInline muted autoPlay style={max}>
               <source src={props.link} type="video/mp4"/>
             </video>
           </div>
@@ -1077,7 +1090,7 @@ function PhotoAudio(props) {
 
   return (
     <section className="flex aic relative bg-white pv6-l pv4">
-      <div className="mw80 w-100 center ph3 relative">
+      <div className="mw80 w-100 center ph4-ns ph3 relative">
         <div className="cf ph2-ns">
           <div className="fl w-100 w-50-ns pa2">
             <div className="pv4">
@@ -1178,7 +1191,7 @@ function Timeline(props) {
   var content = null
 
   if(props.content !== null) {
-    content = (<p className="lh-copy f5 center pre-wrap ph4-ns ph3 mb5" style={max}>{props.content}</p>);
+    content = (<p className="lh-copy f5 center pre-wrap ph4-ns ph4-ns ph3 mb5" style={max}>{props.content}</p>);
   }
 
   return (
@@ -1224,7 +1237,7 @@ function PhotoSlide(props) {
     else {
       text = (
         <div className="w-50-l mw500 pa4-l pa3 absolute" style={textStyle}>
-          <div class="bg-white o-90 w-100 h-100 absolute pn top-left"></div>
+          <div class="bg-white o-85 w-100 h-100 absolute pn top-left"></div>
           <p className="pre-wrap f5 lh-copy mv0 z4 relative black">
             {props.text[i]}
           </p>
@@ -1292,7 +1305,7 @@ function Messenger(props) {
     zIndex: 18,
   }
   return (
-    <div className="fixed h3 w3 br-100 bg-blue flex aic jcc cp shadow-5" style={messenger}>
+    <div className="messenger fixed h3 w3 br-100 bg-blue flex aic jcc cp shadow-5" style={messenger}>
       <img src={messengerIcon} width="32" height="32" alt="messenger"/>
     </div>
   )
@@ -1335,7 +1348,7 @@ function TimeChange(props) {
     <section className={h+" flex aic relative timeChange bg-white "+z}>
       <div className="w-100 h-100 absolute top-left time-clipping fade">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
-          <div className="center ph3 w-100 z4 pre-wrap">
+          <div className="center ph4-ns ph3 w-100 z4 pre-wrap">
             <div className="mw7 center w-100 pa4-l pa3 mb4 h5">
               <p className="f5 lh-copy mv0" dangerouslySetInnerHTML={{__html:props.text1}}></p>
             </div>
@@ -1511,7 +1524,7 @@ class Event01 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-75px, -330px"}
+          map = {"-75px, -270px"}
         />
         <Illustration 
           number = {2}
@@ -1804,12 +1817,10 @@ class Event03 extends Component {
           bg={"bg-black white tc"}
           text={"陸蟹生存 - 第三關"}
         />
-        <Transition
-          text={this.props.data.videoText[3]}
-        />
         <Video 
           videoID="04"
-          text1=""
+          color={"dark"}
+          text1={this.props.data.videoText[3]}
           link={this.props.data.video[3]}
         />
 
@@ -1820,12 +1831,9 @@ class Event03 extends Component {
           label={this.props.data.blogLabel[1]}
         />
 
-        <Transition
-          text={this.props.data.videoText[4]}
-        />
-        <Video 
+        <CenterSmallVideo 
           videoID="05"
-          text1=""
+          text={this.props.data.videoText[4]}
           link={this.props.data.video[4]}
         />
         <Transition
@@ -2095,12 +2103,11 @@ class Event05 extends Component {
           image = {this.props.data.photoFull[0]}
           label = {this.props.data.photoFullTextLabel[0]}
         />
-
-        <Transition text={this.props.data.videoText[0]}/>
-        <Video 
+      
+        <SmallVideo 
           videoID="01"
           link={this.props.data.video[0]}
-          text1=""
+          text={this.props.data.videoText[0]}
         />
 
         <Video 

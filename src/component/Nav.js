@@ -56,7 +56,7 @@ class Nav extends Component {
                 <img src={logo} height="32px" alt="我們的島"/>
               </Link>
               <div className="flex flex-row">
-                {timeline}
+                {/*{timeline}*/}
                 <button className="share btn cp h2 ph3 ml3" style={share} onClick={() => this.onOpenModal()}>分享</button>
               </div>
             </div>

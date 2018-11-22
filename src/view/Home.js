@@ -14,17 +14,17 @@ var id = ['cover','topic-1','topic-2','topic-3','timeline-preview', 'cta'];
 class Home extends Component {
   componentDidMount(){
     $(document).scrollTop(0);
-    function setHeight() {
-      var windowHeight = $(window).height(),
-        $block = $('#cover, .cover');
-        if(windowHeight > 550) { // 550px is your css min-height for this block
-          $block.css('min-height', windowHeight + 'px') 
-        } else {
-          $block.css('min-height': '') 
-        }
-    }
-    setHeight();
-    $(window).on('resize orientationchange', setHeight);
+    // function setHeight() {
+    //   var windowHeight = $(window).height(),
+    //     $block = $('#cover, .cover');
+    //     if(windowHeight > 550) { // 550px is your css min-height for this block
+    //       $block.css('min-height', windowHeight + 'px') 
+    //     } else {
+    //       $block.css('min-height': '') 
+    //     }
+    // }
+    // setHeight();
+    // $(window).on('resize orientationchange', setHeight);
 
     
     $('#section-nav a').click(function(){
@@ -74,16 +74,16 @@ class Home extends Component {
         <Nav timeline={true}/>
         <Cover/>
         <Events/>
-        <Timeline/>
+        {/*<Timeline/>*/}
         <CTA/>
         {/*Progress Bar*/}
         <div id="section-nav">
-          <a className="nav-link active" href="#cover">首頁</a>
-          <a className="nav-link" href="#topic-1">主題一</a>
-          <a className="nav-link"href="#topic-2">主題二</a>
-          <a className="nav-link"href="#topic-3">主題三</a>
-          <a className="nav-link"href="#timeline-preview">大事紀</a>
-          <a className="nav-link"href="#cta">CTA</a>
+          <a className="nav-link active" href="#cover">穿梭島嶼時光機</a>
+          <a className="nav-link" href="#topic-1">水線</a>
+          <a className="nav-link"href="#topic-2">山線</a>
+          <a className="nav-link"href="#topic-3">污染線</a>
+          {/*<a className="nav-link"href="#timeline-preview">大事紀</a>*/}
+          <a className="nav-link"href="#cta">相關連結</a>
         </div>
       </div>
     );
