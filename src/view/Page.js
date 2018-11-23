@@ -643,7 +643,7 @@ function PhotoSwitch(props) {
           <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} autoPlay={true} showBullets={true}/>
         </div>
       </div>
-      <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
+      <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap pn">
         <div className="cf white">
           {text1}
         </div>
@@ -1541,18 +1541,14 @@ class Event01 extends Component {
           label={this.props.data.photoswitchLabel}
         />
 
-        {/*過場*/}
-
         <Video 
           videoID="01"
           link={this.props.data.video[0]}
           text1=""
         />
 
-        {/*過場*/}
-
         <PhotoTextFull
-          position={"fr-l"}
+          position={"fl-l"}
           color="dark"
           text1={this.props.data.photoFullText[0]}
           image = {this.props.data.photoFull[0]}
@@ -1560,11 +1556,11 @@ class Event01 extends Component {
         />
 
         <PhotoText
-          order="left"
+          order="right"
           color="invert"
           text={this.props.data.photoText[0]}
           image = {this.props.data.photoImage[0]}
-        /> {/*圖表*/}
+        />
 
         <TimeChange
           position={"fr-l"}
@@ -1579,7 +1575,6 @@ class Event01 extends Component {
           image={this.props.data.timeChangePhotos[1]}
           labels={this.props.data.timeChangeLabels[1]}
         />
-        {/*年代比較*/}
 
         <Video 
           videoID="02"
@@ -1594,22 +1589,21 @@ class Event01 extends Component {
           text1=""
         />
 
-        {/*過場*/}
-
-        <PhotoTextFull
-          position={"fl-l"}
-          color="dark"
-          text1={this.props.data.photoFullText[1]}
-          image = {this.props.data.photoFull[1]}
-          label = {this.props.data.photoFullTextLabel[1]}
-        />
-
         <PhotoTextFull
           position={"fr-l"}
           color="dark"
-          text1={this.props.data.photoFullText[2]}
+          text1={this.props.data.photoFullText[3]}
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
+        />
+
+        <PhotoTextFull
+          number={2}
+          position={"fl-l"}
+          text1={this.props.data.photoFullText[1]}
+          text2={this.props.data.photoFullText[2]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
         />
 
         <PhotoContrast 
@@ -1618,7 +1612,12 @@ class Event01 extends Component {
           year={this.props.data.photocontrastYear}
         />
 
-        {/*橫向移動背景大圖*/}
+        <PhotoContrast
+          bg={"bg-near-white"}
+          images={this.props.data.photocontrast2}
+          text={this.props.data.photocontrastText2}
+          year={this.props.data.photocontrastYear2}
+        />
 
         <CenterVideo 
           videoID="04"
@@ -1845,9 +1844,12 @@ class Event03 extends Component {
           text1={this.props.data.videoText[5]}
           link={this.props.data.video[5]}
         />
-        <CenterSmallVideo 
-          videoID="07"
+        <Transition
           text={this.props.data.videoText[6]}
+        />
+        <Video 
+          videoID="07"
+          text1=""
           link={this.props.data.video[6]}
         />
         <Transition
@@ -1890,7 +1892,7 @@ class Event03 extends Component {
           text1 = {this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
-          bg={true}
+          bg={false}
         />
 
       </div>
