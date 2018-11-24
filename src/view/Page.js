@@ -717,7 +717,7 @@ function PhotoContrast(props) {
   if(props.text !== "") {
     text = (
       <div className="mw80 center cf black mb5">
-        <div className="mw7 w-100 center">
+        <div className="mw7 w-100 center pre-wrap">
           <p className="f5 lh-copy mv0">{props.text}</p>
         </div>
       </div>
@@ -901,11 +901,11 @@ function CenterVideo(props) {
   var max = {
     maxWidth: "800px"
   }
-  var textShadow = "text-shadow";
+  var textShadow = "text-shadow f4";
   var bgColor = "";
   var mask = "bg-dark-gray o-40";
   if(props.bg) {
-    textShadow = "";
+    textShadow = "f5";
     bgColor = "bg-black o-60";
     mask = "";
   }
@@ -1025,7 +1025,7 @@ function EndingVideo(props) {
     <section className="flex aic relative bg-white pv6-l pv5 overflow-y-hidden">
       <div className="center ph3-ns ph0 z4 relative mb6 mb5-l">
         <div className="cf tc black w-60-l w-80-m w-100 center pv2 ph4 bg-white mb2">
-          <h3>想知道{props.text}更多故事....</h3>
+          <h3>{props.text}</h3>
         </div>
         <div className="bg-white pa5-ns pa0 pb6-ns pb0" style={bgTV}>
           <iframe className="iframe" title="playlist" width="100%" height="315" src={props.link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
@@ -1352,7 +1352,7 @@ function TimeChange(props) {
             <div className="mw7 center w-100 pa4-l pa3 mb4 h5">
               <p className="f5 lh-copy mv0" dangerouslySetInnerHTML={{__html:props.text1}}></p>
             </div>
-            <figure className="w-100 ma0 ph3">
+            <figure className="w-100 ma0 ph3 mt5">
               <div className="w-third dib relative">
                 <img src={props.image[0]} alt="description"/>
                 <label style={label}>{props.labels[0]}</label>
@@ -1626,7 +1626,7 @@ class Event01 extends Component {
           bg={false}
         />
 
-        <EndingVideo text="淡水河" link={"https://www.youtube.com/embed/GW71xsyJ8TY?rel=0"}/>
+        <EndingVideo text="想知道淡水河更多故事...." link={"https://www.youtube.com/embed/GW71xsyJ8TY?rel=0"}/>
         {/*<Next switchView={this.props.switchView} next={"reborn-erren-river"} prev={"reborn-erren-river"}/>*/}
       </div>
     );
@@ -1678,12 +1678,16 @@ class Event02 extends Component {
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
         />
+        <Transition
+          bg={"bg-near-white"}
+          text={this.props.data.videoText[1]}
+        />
 
         <Video 
           videoID="02"
           position="fr-l"
           link={this.props.data.video[1]}
-          text1={this.props.data.videoText[1]}
+          text1=""
         />
 
         {/*這是什麼？*/}
@@ -1719,7 +1723,7 @@ class Event02 extends Component {
           text={this.props.data.photoMultipleLabel}
         />
         */}
-        <EndingVideo text={"二仁溪"} link={"https://youtube.com/embed/aeaNKyjoXcs?rel=0"}/>
+        <EndingVideo text={"想知道二仁溪更多故事...."} link={"https://youtube.com/embed/aeaNKyjoXcs?rel=0"}/>
       </div>
     );
   }
@@ -1970,13 +1974,21 @@ class Event04 extends Component {
           link={this.props.data.video[0]}
           text={this.props.data.videoText[0]}
         />
-
+        {/*
         <PhotoSwitch 
           position={"fr-l"}
           images={this.props.data.photoswitch} 
           text1={this.props.data.photoswitchText}
           label={this.props.data.photoswitchLabel}
         />
+        */}
+
+        <Video 
+          videoID="02"
+          link={this.props.data.video[1]}
+          text1=""
+        />
+
 
         <Transition
           text={this.props.data.panoramaText}
@@ -1992,26 +2004,26 @@ class Event04 extends Component {
           images={this.props.data.photoSlidePhoto}
         />
 
-        <PhotoCenterTextFull
-          text1 = {this.props.data.photoFullText[0]}
-          image = {this.props.data.photoFull[0]}
-          label = {this.props.data.photoFullTextLabel[0]}
+        <CenterVideo 
+          videoID="06"
+          link={this.props.data.video[5]}
+          text1={this.props.data.videoText[5]}
           bg={true}
         />
 
         <Transition
           text={this.props.data.photoFullText[1]}
         />
-        <PhotoTextFull
-          text1 = ""
-          image = {this.props.data.photoFull[1]}
-          label = {this.props.data.photoFullTextLabel[1]}
+        <Video 
+          videoID="05"
+          link={this.props.data.video[4]}
+          text1=""
         />
 
         <SmallVideo 
-          videoID="02"
-          link={this.props.data.video[1]}
-          text={this.props.data.videoText[1]}
+          videoID="03"
+          link={this.props.data.video[2]}
+          text={this.props.data.videoText[2]}
         />
 
         <PhotoContrast 
@@ -2035,11 +2047,11 @@ class Event04 extends Component {
           label={this.props.data.blogLabel[0]}
         />
 
-        <PhotoTextFull
+        <Video
           position={"fr-l"}
-          text1={this.props.data.photoFullText[2]}
-          image = {this.props.data.photoFull[2]}
-          label = {this.props.data.photoFullTextLabel[2]}
+          videoID="04"
+          link={this.props.data.video[3]}
+          text1={this.props.data.videoText[3]}
         />
         <Blog
           number={0}
@@ -2059,6 +2071,7 @@ class Event04 extends Component {
           image = {this.props.data.photoFull[3]}
           label = {this.props.data.photoFullTextLabel[3]}
         />
+        <EndingVideo text="一起來關心我們的海洋" link={"https://www.youtube.com/embed/fUwZID2Bikg?rel=0"}/>
       </div>
     );
   }
@@ -2560,7 +2573,7 @@ class Event12 extends Component {
         /> {/*提告*/}
 
         <Transition text={this.props.data.transitionText[2]} />
-        <EndingVideo text={"台鹼安順廠"} link={"https://youtube.com/embed/6CwZYq6vt0k?rel=0"}/>
+        <EndingVideo text={"想知道台鹼安順廠更多故事...."} link={"https://youtube.com/embed/6CwZYq6vt0k?rel=0"}/>
       </div>
     );
   }
