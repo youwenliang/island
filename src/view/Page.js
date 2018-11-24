@@ -302,7 +302,7 @@ function CoverVideo(props) {
 function Taiwan(props) {
   var bgStyle = {
     backgroundImage: "url("+taiwanMap+")",
-    backgroundSize: "cover",
+    backgroundSize: "1680px",
     backgroundPosition: "76% center"
   }
   var position = {
@@ -314,11 +314,11 @@ function Taiwan(props) {
     transform: "translate("+props.map+")"
   }
   var l = props.text1.split("的")[0];
-  var r = (l.length-2) * 15 + 45 + "px";
+  var r = (l.length-2) * 15 + 60 + "px";
   var label = {
-    background: "rgba(0,0,0,.7)",
+    background: "#222222",
     color: "white",
-    padding: "5px 20px 5px 10px",
+    padding: "5px 10px 5px 10px",
     top: "48px",
     position: "relative",
     right: r,
@@ -327,10 +327,10 @@ function Taiwan(props) {
   }
   return (
     <section className="cover min-vh-150 flex aic relative">
-      <div className="w-100 h-100 absolute top-left clipping">
+      <div className="w-100 h-100 absolute top-left clipping bg-dark-gray">
         <div className="w-100 h-100 fixed fixed-content pn flex aic" style={bgStyle}>
           <figure className="absolute" style={position}>
-            <label style={label}>{props.text1.split("的")[0]}</label>
+            <label className="taiwan-label" style={label}>{props.text1.split("的")[0]}</label>
             <img src={ship} width="88" height="80" alt="Taiwan"/>
           </figure>
         </div>
@@ -1524,7 +1524,7 @@ class Event01 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-75px, -270px"}
+          map = {"-75px, -330px"}
         />
         <Illustration 
           number = {2}
@@ -1658,7 +1658,7 @@ class Event02 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-245px, 145px"}
+          map = {"-255px, 135px"}
         />
 
         <Illustration
@@ -1754,7 +1754,7 @@ class Event03 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-110px, -200px"}
+          map = {"-155px, 335px"}
         />
 
         <Illustration
@@ -1959,7 +1959,7 @@ class Event04 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-110px, -200px"}
+          map = {"-125px, 295px"}
         />
 
         <Illustration

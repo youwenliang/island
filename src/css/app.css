@@ -13,6 +13,21 @@ body {
   letter-spacing: 1px;
 }
 
+.taiwan-label:after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-color: #222222;
+  transform: rotate(45deg);
+  display: block;
+  position: absolute;
+  right: -3px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: -1;
+}
+
 .water-blue {
   color: rgb(54, 158, 187);
 }

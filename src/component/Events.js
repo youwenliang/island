@@ -8,6 +8,12 @@ import {TweenMax} from "gsap/all";
 import topic1 from '../assets/images/山水污染分層-01.svg';
 import topic2 from '../assets/images/山水污染分層-02.svg';
 import topic3 from '../assets/images/山水污染分層-03.svg';
+import topic1L from '../assets/images/水左.svg';
+import topic1R from '../assets/images/水右.svg';
+import topic2L from '../assets/images/山左.svg';
+import topic2R from '../assets/images/山右.svg';
+import topic3L from '../assets/images/污左.svg';
+import topic3R from '../assets/images/污右.svg';
 
 // Event Data
 const event_data = data.events;
@@ -178,6 +184,23 @@ class Events extends Component {
           backgroundRepeat: 'no-repeat'
     }
     ]
+    var topicRoute = [
+    {
+          backgroundImage: 'url('+topic1L+'), url('+topic1R+')',
+          backgroundPosition: 'calc(50% - 450px) 20px, calc(50% + 420px) 20px',
+          backgroundRepeat: 'no-repeat'
+    },
+    {
+          backgroundImage: 'url('+topic2L+'), url('+topic2R+')',
+          backgroundPosition: 'calc(50% - 450px) 20px, calc(50% + 420px) 20px',
+          backgroundRepeat: 'no-repeat'
+    },
+    {
+          backgroundImage: 'url('+topic3L+'), url('+topic3R+')',
+          backgroundPosition: 'calc(50% - 450px) 20px, calc(50% + 420px) 20px',
+          backgroundRepeat: 'no-repeat'
+    }
+    ]
     var topic_content = (
       <div className="cf ph2-ns white">
         {/*<h1 className="dib f2-ns f3 fw7 mv0 mr2 tracked">{event_content[this.state.topics[num]].name.split('@')[0]}</h1>*/}
@@ -191,8 +214,8 @@ class Events extends Component {
     )
     return (
       <section id={"topic-"+(num+1)} className="ma0 bb bw1 b--light-gray">
-        <div className="mw8 center ph3">
-          <div className="cf ph2-ns hide">
+        <div className="center ph3 hide" style={topicRoute[num]}>
+          <div className="cf ph2-ns">
             <div className="topicTitle flex aic jcc w-100 ph2 relative mt4" style={topicBg[num]}>
               <h2 className="tc dn">{topic_title}</h2>
             </div>

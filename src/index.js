@@ -78,44 +78,44 @@ $(document).ready(function(){
 		}
 	});
 
-  function initPlayers(num) {
-    // pass num in if there are multiple audio players e.g 'player' + i
+  // function initPlayers(num) {
+  //   // pass num in if there are multiple audio players e.g 'player' + i
 
-    for (var i = 0; i < num; i++) {
-      (function() {
+  //   for (var i = 0; i < num; i++) {
+  //     (function() {
 
-        // Variables
-        // ----------------------------------------------------------
-        // audio embed object
-        var playerContainer = document.getElementById('player-container'), // eslint-disable-line no-unused-vars
-          player = document.getElementById('player'),
-          isPlaying = false, // eslint-disable-line no-unused-vars
-          playBtn = document.getElementById('play-btn');
+  //       // Variables
+  //       // ----------------------------------------------------------
+  //       // audio embed object
+  //       var playerContainer = document.getElementById('player-container'), // eslint-disable-line no-unused-vars
+  //         player = document.getElementById('player'),
+  //         isPlaying = false, // eslint-disable-line no-unused-vars
+  //         playBtn = document.getElementById('play-btn');
 
-        // Controls Listeners
-        // ----------------------------------------------------------
-        if (playBtn != null) {
-          playBtn.addEventListener('click', function() {
-            togglePlay()
-          });
-        }
+  //       // Controls Listeners
+  //       // ----------------------------------------------------------
+  //       if (playBtn != null) {
+  //         playBtn.addEventListener('click', function() {
+  //           togglePlay()
+  //         });
+  //       }
 
-        // Controls & Sounds Methods
-        // ----------------------------------------------------------
-        function togglePlay() {
-          if (player.paused === false) {
-            player.pause();
-            isPlaying = false;
-            $('#play-btn').removeClass('pause');
+  //       // Controls & Sounds Methods
+  //       // ----------------------------------------------------------
+  //       function togglePlay() {
+  //         if (player.paused === false) {
+  //           player.pause();
+  //           isPlaying = false;
+  //           $('#play-btn').removeClass('pause');
 
-          } else {
-            player.play();
-            $('#play-btn').addClass('pause');
-            isPlaying = true;
-          }
-        }
-      }());
-    }
-  }
-  initPlayers(window.jQuery('#player-container').length);
+  //         } else {
+  //           player.play();
+  //           $('#play-btn').addClass('pause');
+  //           isPlaying = true;
+  //         }
+  //       }
+  //     }());
+  //   }
+  // }
+  // initPlayers(window.jQuery('#player-container').length);
 });
