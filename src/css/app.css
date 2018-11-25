@@ -172,19 +172,12 @@ nav .btn {
   color: white;
   background: none;
   box-shadow: none;
-  border: 2px white solid;
   font-weight: 700;
   padding: 0 17px;
   font-size: 16px;
 }
 
-nav.fix .btn {
-  border: 2px rgba(255,255,255,0) solid;
-}
-
 .share.btn {
-  background-color: white !important;
-  color: #888 !important;
   padding-left: 40px;
 }
 

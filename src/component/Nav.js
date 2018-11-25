@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 import logo from '../assets/images/logo.png';
-import shareIcon from '../assets/images/share.png';
+import shareIcon from '../assets/images/share.svg';
 
 class Nav extends Component {
   constructor(props) {
