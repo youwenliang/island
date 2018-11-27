@@ -80,8 +80,8 @@ class Page extends Component {
 
     var scrolling = false;
     setInterval(function(){
+      if(!$('.progress.active').hasClass('scrolling')) $('.progress.active').addClass('scrolling');
       scrolling = false;
-      $('.progress.active').addClass('scrolling');
     },1000)
 
     $('.dragscroll').scrollLeft(0);
