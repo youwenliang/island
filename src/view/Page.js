@@ -103,10 +103,13 @@ class Page extends Component {
     loadImage(images)
     .then(function (allImgs) {
       console.log(allImgs.length, 'images loaded!', allImgs);
-      setTimeout(function(){
-        document.getElementById('loading').classList.add('fade');
-        document.body.classList.remove('ds');
-      },600);
+      var vid = document.getElementById("coverVideo");
+      vid.onloadstart = function() {
+        setTimeout(function(){
+          document.getElementById('loading').classList.add('fade');
+          document.body.classList.remove('ds');
+        },600);
+      };
     })
     .catch(function (err) {
       console.error('One or more images have failed to load :(');
@@ -326,7 +329,7 @@ function Taiwan(props) {
     whiteSpace: "nowrap"
   }
   return (
-    <section className="cover min-vh-150 flex aic relative">
+    <section className="cover min-vh-150 flex aic relative bg-black">
       <div className="w-100 h-100 absolute top-left clipping bg-dark-gray">
         <div className="w-100 h-100 fixed fixed-content pn flex aic" style={bgStyle}>
           <figure className="absolute" style={position}>
@@ -432,7 +435,7 @@ function PhotoTextFull(props) {
     )
   }
   return (
-    <section className={h+" flex aic relative"}>
+    <section className={h+" flex aic relative bg-black"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
           <figure className="w-100 ma0">
@@ -473,7 +476,7 @@ function PhotoCenterTextFull(props) {
     mask = "";
   }
   return (
-    <section className="min-vh-200 flex aic relative">
+    <section className="min-vh-200 flex aic relative bg-black">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
           <figure className="w-100 ma0">
@@ -637,7 +640,7 @@ function PhotoSwitch(props) {
     )
   }
   return (
-    <section className={h+" flex aic w-100 relative bvh"}>
+    <section className={h+" flex aic w-100 relative bvh bg-black"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-light-gray w-100 h-100 fixed fixed-content">
           <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} autoPlay={true} showBullets={true}/>
@@ -808,7 +811,7 @@ function Video(props) {
   }
 
   return (
-    <section className={h+" flex aic relative video-content"}>
+    <section className={h+" flex aic relative video-content bg-black"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={props.play+" fixed play cp z10"} onClick={(e) => playVideo(e)}></div>
         <div className="fixed sound cp z10" onClick={(e) => soundVideo(e)}></div>
@@ -911,7 +914,7 @@ function CenterVideo(props) {
   }
 
   return (
-    <section className="min-vh-200 flex aic relative pv6-l pv4 video-content">
+    <section className="min-vh-200 flex aic relative pv6-l pv4 video-content bg-black">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={mask+" w-100 h-100 absolute pn top-left z4"}/>
         {/*<div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>*/}
