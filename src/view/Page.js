@@ -14,7 +14,7 @@ import Phone from '../component/Phone'
 import Modal from 'react-responsive-modal';
 import Cookies from 'universal-cookie';
 
-import endingV from '../assets/images/endingVideo.jpg';
+import endingV from '../assets/images/endingVideo.png';
 import messengerIcon from '../assets/images/messenger.png';
 import hand from '../assets/images/hand.svg';
 import timemachine from '../assets/images/timemachine.svg';
