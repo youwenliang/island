@@ -14,7 +14,7 @@ import Phone from '../component/Phone'
 import Modal from 'react-responsive-modal';
 import Cookies from 'universal-cookie';
 
-import endingV from '../assets/images/endingVideo.jpg';
+import endingV from '../assets/images/endingVideo.png';
 import messengerIcon from '../assets/images/messenger.png';
 import hand from '../assets/images/hand.svg';
 import timemachine from '../assets/images/timemachine.svg';
@@ -81,8 +81,8 @@ class Page extends Component {
 
     var scrolling = false;
     setInterval(function(){
+      if(!$('.progress.active').hasClass('scrolling')) $('.progress.active').addClass('scrolling');
       scrolling = false;
-      $('.progress.active').addClass('scrolling');
     },1000)
 
     $('.dragscroll').scrollLeft(0);
@@ -104,10 +104,13 @@ class Page extends Component {
     loadImage(images)
     .then(function (allImgs) {
       console.log(allImgs.length, 'images loaded!', allImgs);
-      setTimeout(function(){
-        document.getElementById('loading').classList.add('fade');
-        document.body.classList.remove('ds');
-      },600);
+      var vid = document.getElementById("coverVideo");
+      vid.onloadstart = function() {
+        setTimeout(function(){
+          document.getElementById('loading').classList.add('fade');
+          document.body.classList.remove('ds');
+        },600);
+      };
     })
     .catch(function (err) {
       console.error('One or more images have failed to load :(');
@@ -303,7 +306,7 @@ function CoverVideo(props) {
 function Taiwan(props) {
   var bgStyle = {
     backgroundImage: "url("+taiwanMap+")",
-    backgroundSize: "cover",
+    backgroundSize: "1680px",
     backgroundPosition: "76% center"
   }
   var position = {
@@ -315,11 +318,11 @@ function Taiwan(props) {
     transform: "translate("+props.map+")"
   }
   var l = props.text1.split("的")[0];
-  var r = (l.length-2) * 15 + 45 + "px";
+  var r = (l.length-2) * 15 + 60 + "px";
   var label = {
-    background: "rgba(0,0,0,.7)",
+    background: "#222222",
     color: "white",
-    padding: "5px 20px 5px 10px",
+    padding: "5px 10px 5px 10px",
     top: "48px",
     position: "relative",
     right: r,
@@ -327,12 +330,12 @@ function Taiwan(props) {
     whiteSpace: "nowrap"
   }
   return (
-    <section className="cover min-vh-150 flex aic relative">
-      <div className="w-100 h-100 absolute top-left clipping">
+    <section className="cover min-vh-150 flex aic relative bg-black">
+      <div className="w-100 h-100 absolute top-left clipping bg-dark-gray">
         <div className="w-100 h-100 fixed fixed-content pn flex aic" style={bgStyle}>
           <TvLine />
           <figure className="absolute" style={position}>
-            <label style={label}>{props.text1.split("的")[0]}</label>
+            <label className="taiwan-label" style={label}>{props.text1.split("的")[0]}</label>
             <img src={ship} width="88" height="80" alt="Taiwan"/>
           </figure>
         </div>
@@ -434,7 +437,7 @@ function PhotoTextFull(props) {
     )
   }
   return (
-    <section className={h+" flex aic relative"}>
+    <section className={h+" flex aic relative bg-black"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
           <figure className="w-100 ma0">
@@ -475,7 +478,7 @@ function PhotoCenterTextFull(props) {
     mask = "";
   }
   return (
-    <section className="min-vh-200 flex aic relative">
+    <section className="min-vh-200 flex aic relative bg-black">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
           <figure className="w-100 ma0">
@@ -639,7 +642,7 @@ function PhotoSwitch(props) {
     )
   }
   return (
-    <section className={h+" flex aic w-100 relative bvh"}>
+    <section className={h+" flex aic w-100 relative bvh bg-black"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-light-gray w-100 h-100 fixed fixed-content">
           <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} autoPlay={true} showBullets={true}/>
@@ -810,7 +813,7 @@ function Video(props) {
   }
 
   return (
-    <section className={h+" flex aic relative video-content"}>
+    <section className={h+" flex aic relative video-content bg-black"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={props.play+" fixed play cp z10"} onClick={(e) => playVideo(e)}></div>
         <div className="fixed sound cp z10" onClick={(e) => soundVideo(e)}></div>
@@ -913,7 +916,7 @@ function CenterVideo(props) {
   }
 
   return (
-    <section className="min-vh-200 flex aic relative pv6-l pv4 video-content">
+    <section className="min-vh-200 flex aic relative pv6-l pv4 video-content bg-black">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={mask+" w-100 h-100 absolute pn top-left z4"}/>
         {/*<div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>*/}
@@ -1533,7 +1536,7 @@ class Event01 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-75px, -270px"}
+          map = {"-75px, -330px"}
         />
         <Illustration 
           number = {2}
@@ -1667,7 +1670,7 @@ class Event02 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-245px, 145px"}
+          map = {"-255px, 135px"}
         />
 
         <Illustration
@@ -1763,7 +1766,7 @@ class Event03 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-110px, -200px"}
+          map = {"-155px, 335px"}
         />
 
         <Illustration
@@ -1968,7 +1971,7 @@ class Event04 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-110px, -200px"}
+          map = {"-125px, 295px"}
         />
 
         <Illustration

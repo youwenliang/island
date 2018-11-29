@@ -144,7 +144,7 @@ var data = {
 
         // Illustration
         "illustrationText": [
-            "總是人潮絡繹不絕的淡水河，是城市人們的出口，六百多萬人的生活和淡水河流域緊密相依。\n\n現在的你很難想像，1993年的淡水河畔，是滿天的垃圾和惡臭味，讓人想快速離開。",
+            "總是人潮絡繹不絕的淡水河，是城市人們的出口，人們的生活和淡水河流域緊密相依。\n\n現在的你很難想像，1993年的淡水河畔，是滿天的垃圾和惡臭味，讓人想快速離開。",
             "讓我們乘坐時光機，回到三十年前的淡水河。\n\n一啟航，迎面而來是陣陣臭氣，往上沿著大漢溪而上，岸邊竟有著一座又一座的「垃圾山」，沒處理的污水直接排放，河面處處漂浮垃圾。不要說什麼河岸景觀第一排，就算是在這待一分鐘，也待不下去。"
         ],
         "illustration": "/events/changing-tamsui-river/illustrations/illustrationA.svg",
@@ -159,11 +159,11 @@ var data = {
         ],
 
         "photoswitchLabel": [
-            "1992年新北市新莊區瓊林里垃圾場",
-            "1993年新北市三峽淡水河岸垃圾堆置",
-            "1993.07新北市淡水河口垃圾山",
-            "1994.新北市五股溼地廢棄垃圾",
-            "2004年新北市八里區淡水河岸垃圾場"
+            "1992年 新北市新莊區瓊林里垃圾場",
+            "1993年 新北市三峽區河岸垃圾堆置",
+            "1993年7月 新北市淡水河口垃圾山",
+            "1994年 新北市五股溼地垃圾堆置",
+            "2004年 新北市八里區河岸垃圾場"
         ],
 
         "photoswitchText": "在只求經濟發展忽視環境的七八零年代，政府並沒有完善的垃圾處理政策，當時鄉鎮公所都是自行找地堆置垃圾，海邊與河岸就成了最佳的垃圾場，長久下來不但污染河水，也影響水流。",
@@ -188,10 +188,10 @@ var data = {
 
         // Video
         "video": [
-            "/events/changing-tamsui-river/videos/A42.mp4",
-            "/events/changing-tamsui-river/videos/A41-五股二重疏洪道廢土山變遷-陳建志.mp4",
-            "/events/changing-tamsui-river/videos/A14撈鰻苗.mp4",
-            "/events/changing-tamsui-river/videos/A47-淡水河人河互動(底圖).mp4"
+            "/events/changing-tamsui-river/videos/A42大漢溪流域變遷陳建志(上好字).mp4",
+            "/events/changing-tamsui-river/videos/A41五股二重疏洪道廢土山變遷-陳建志(上好字).mp4",
+            "/events/changing-tamsui-river/videos/A14撈鰻苗(上好字).mp4",
+            "/events/changing-tamsui-river/videos/A47淡水河(底圖20181114).mp4"
         ],
 
         "videoText": [
