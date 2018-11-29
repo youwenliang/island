@@ -19,6 +19,7 @@ import messengerIcon from '../assets/images/messenger.png';
 import hand from '../assets/images/hand.svg';
 import timemachine from '../assets/images/timemachine.svg';
 import taiwanMap from '../assets/images/taiwan.jpg';
+import tvLine from '../assets/images/tvline-4.png';
 import ship from '../assets/images/machinemap.svg';
 
 // import mousewheel from 'jquery-mousewheel';
@@ -329,6 +330,7 @@ function Taiwan(props) {
     <section className="cover min-vh-150 flex aic relative">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="w-100 h-100 fixed fixed-content pn flex aic" style={bgStyle}>
+          <TvLine />
           <figure className="absolute" style={position}>
             <label style={label}>{props.text1.split("的")[0]}</label>
             <img src={ship} width="88" height="80" alt="Taiwan"/>
@@ -1377,6 +1379,13 @@ function InfoHelper(props) {
   return (
     <div className="absolute z10 mw5 infoHelper">
       <p className="f7 bg-white ba b--black-30 pa3 pre-wrap lh-copy" dangerouslySetInnerHTML={{__html:props.text}}></p>
+    </div>
+  )
+}
+
+function TvLine(props) {
+  return (
+    <div className="h-100 w-100 absolute o-30" style={{ backgroundImage: "url("+tvLine+")"}}>
     </div>
   )
 }

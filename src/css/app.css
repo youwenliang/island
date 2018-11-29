@@ -668,6 +668,13 @@ ul.none {
   align-items: center;
 }
 
+.tvline {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/images/tvline-4.png);
+}
+
 /* Loading Gif */
 #loading {
   position: fixed;
