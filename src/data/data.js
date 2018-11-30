@@ -31,7 +31,7 @@ var data = {
           "id": "1-4",
           "num": "04",
           "name": "漁港的黑色幽默@台東大武漁港",
-          "image": "https://fakeimg.pl/1200x900/000000/222222/?text=photo&retina=1",
+          "image": "/images/1-4_D32.jpg",
           "icon":  "/images/icons/1-4港口淤積.png",
           "description": "漁港變成砂石場，怪手挖不完，漁船出不了海。蓋了六十年，還沒有完工的永續工程。",
           "url": "dawu-fishing-port"

@@ -241,8 +241,7 @@ class Events extends Component {
       <div id="events" className="bg-white tl">
         <div className="bg-near-white center ph3 pv6">
           <div className="cf ph2-ns tc hide flex aic jcc flex-column">
-            <h1 className="ph2 fw7 f2 mv2">三大主題介紹</h1>
-            <h3 className="ph2 fw4 f4 mv2">三大主題介紹</h3>
+            <h3 className="ph2 fw4 f4 mv2 mw7 lh-copy o-70">我還合有似才。臺以標中草開氣上國風還過……子人開去：司險教？家間名一；印合技，招了快大起德性代而聲處用總子望醫想男。</h3>
           </div>
         </div>
         {this.topics(0)}

@@ -34,7 +34,9 @@ class Page extends Component {
     this.state = {
       id: params.id,
       view: params.id,
-      drag: false
+      drag: false,
+      interval: null,
+      scrollprogress: null
     };
     //Here ya go
     this.props.history.listen((location, action) => {
@@ -79,7 +81,7 @@ class Page extends Component {
     document.getElementById('loading').classList.remove('fade');
 
     var scrolling = false;
-    setInterval(function(){
+    $t.state.scrollprogress = setInterval(function(){
       if(!$('.progress.active').hasClass('scrolling')) $('.progress.active').addClass('scrolling');
       scrolling = false;
     },1000)
@@ -123,19 +125,19 @@ class Page extends Component {
       var scroll = 0;
       var add = 0;
       var k = 0;
-      var interval = setInterval(function(){
+      $t.state.interval = setInterval(function(){
           $('.auto-scroll .grid-container').scrollLeft(scroll + add)
           add+=k;
       },10);
 
       $('.auto-scroll .grid-container').hover(function(){
         add = 0;
-        clearInterval(interval);
+        clearInterval($t.state.interval);
         console.log("????");
       }, function(){
         var $this = $(this);
         scroll = $(this).scrollLeft();
-        interval = setInterval(function(){
+        $t.state.interval = setInterval(function(){
           $this.scrollLeft(scroll + add)
           add+=k;
         },10);
@@ -218,7 +220,10 @@ class Page extends Component {
     })
   }
 
-
+  componentWillUnmount(){
+    clearInterval(this.state.interval);
+    clearInterval(this.state.scrollprogress);
+  }
 
   render() {
     var data = pageEvent_data[this.state.id];
@@ -813,7 +818,7 @@ function Video(props) {
   return (
     <section className={h+" flex aic relative video-content bg-black"}>
       <div className="w-100 h-100 absolute top-left clipping">
-        <div className={props.play+" fixed play cp z10"} onClick={(e) => playVideo(e)}></div>
+        <div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>
         <div className="fixed sound cp z10" onClick={(e) => soundVideo(e)}></div>
         <div className="bg-light-gray w-100 h-100 fixed fixed-content pn">
           <div className="videoBg">
@@ -1240,7 +1245,7 @@ function PhotoSlide(props) {
     else {
       text = (
         <div className="w-50-l mw500 pa4-l pa3 absolute" style={textStyle}>
-          <div class="bg-white o-85 w-100 h-100 absolute pn top-left"></div>
+          <div className="bg-white o-85 w-100 h-100 absolute pn top-left"></div>
           <p className="pre-wrap f5 lh-copy mv0 z4 relative black">
             {props.text[i]}
           </p>
@@ -1908,7 +1913,14 @@ class Event03 extends Component {
 }
 
 class Event04 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      intervalP: null
+    }
+  }
   componentDidMount() {
+    var $this = this;
     $(document).ready(function(){
       // Panorama
       var leftP = 0;
@@ -1917,25 +1929,30 @@ class Event04 extends Component {
       console.log(scrollP+"!!!");
       if($(window).width() > 600) {
         panoramaScroll();
+        console.log("wide");
       } else {
         $('.panorama').scrollLeft(scrollP);
+        console.log("mobile");
       }
 
       $('.panorama').scroll(function(){
-        var rightP = $('.panorama img').width() - $(window).width();
-        var deg = 90*$('.panorama').scrollLeft()/rightP-45;
-        $('.panorama-icon').css('transform', 'rotate('+deg+'deg)');
+        if($(window).width() <= 600) {
+          var rightP = $('.panorama img').width() - $(window).width();
+          var deg = 90*$('.panorama').scrollLeft()/rightP-45;
+          $('.panorama-icon').css('transform', 'rotate('+deg+'deg)');
+        }
       })
 
       function panoramaScroll() {
         console.log('scroll');
         var rightP = $('.panorama img').width() - $(window).width();
         var k = 0;
-        var intervalP = setInterval(function(){
+        $this.state.intervalP = setInterval(function(){
             $('.panorama').scrollLeft(scrollP);
             scrollP+=k*10;
             var deg = 90*$('.panorama').scrollLeft()/rightP-45;
             $('.panorama-icon').css('transform', 'rotate('+deg+'deg)');
+            console.log(k);
         },25);
 
         $(window).on('mousemove', function(e){
@@ -1951,6 +1968,10 @@ class Event04 extends Component {
         });
       }
     });
+  }
+  componentWillUnmount(){
+    console.log('unmount');
+    clearInterval(this.state.intervalP);
   }
   render() {
     return (
