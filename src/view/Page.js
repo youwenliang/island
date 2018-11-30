@@ -986,7 +986,7 @@ function CenterSmallVideo(props) {
     text = (
       <div className="mw80 center cf black mb5 pre-wrap">
         <div className="mw7 w-100 center">
-          <p className="f5 lh-copy mv0">{props.text}</p>
+          <p className={"f5 lh-copy mv0 "+props.align}>{props.text}</p>
         </div>
       </div>
     )
@@ -1403,6 +1403,12 @@ function Blog(props) {
   var text = null;
   var mw = "mw80 ph3";
   var column = "flex aic flex-column-s";
+  var a = "order-1";
+  var b = "order-0";
+  if(props.switch) {
+    a = "order-0";
+    b = "order-1"
+  }
 
   let grid = [];
   var columns = "";
@@ -1457,21 +1463,21 @@ function Blog(props) {
   }
   else {
     text = (
-      <div className="fr-l w-100 w-50-l mw500 center ml5-l ph2 pv3">
+      <div className={b+" w-100 w-50-l mw500 center ml5-l ph2 pv3"}>
         <p className="pre-wrap f5 lh-copy mv0 z4 relative black mt4-ns">{props.text}</p>
       </div>
     );
   }
   if(props.number === 1) {
     img = (
-      <div className="fl-l w-100 w-50-l pv3 relative tc mb5 mb0-ns">
+      <div className={a+" w-100 w-50-l pv3 relative tc mb5 mb0-ns"}>
         <img className="mb3" src={props.image[0]}/>
         <label className="f7 mt2 o-50" >{props.label[0]}</label>
       </div>
     );
   } else if(props.number === 2) {
     img = (
-      <div className="fl-l w-100 w-50-l relative tc">
+      <div className={a+" w-100 w-50-l relative tc"}>
         <img className="mb3" src={props.image[0]}/>
         <label className="f7 mt2 o-50" >{props.label[0]}</label>
         <img className="mb3 mt5" src={props.image[1]}/>
@@ -2158,6 +2164,23 @@ class Event05 extends Component {
           text={this.props.data.videoText[0]}
         />
 
+        <Blog
+          number={2}
+          switch={false}
+          bg={"bg-near-white"}
+          text={this.props.data.blogText[0]}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+        />
+
+        <Blog
+          number={2}
+          switch={true}
+          text={this.props.data.blogText[1]}
+          image={this.props.data.blogImage[1]}
+          label={this.props.data.blogLabel[1]}
+        />
+
         <Video 
           videoID="02"
           color="dark"
@@ -2178,26 +2201,33 @@ class Event05 extends Component {
           label = {this.props.data.photoFullTextLabel[1]}
         />
 
-         <PhotoMultiple
-          images={this.props.data.photoMultiple} 
-          label={this.props.data.photoMultipleLabel}
-          text={this.props.data.photoMultipleText} 
-          onOpenModal={this.onOpenModal.bind(this)}
-        />
-
-        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
-          <img src={this.state.image} alt="modal"/>
-        </Modal>
-
         <Video 
           videoID="04"
-          color="dark"
           link={this.props.data.video[3]}
-          text1={this.props.data.videoText[3]}
+          text1=""
         />
 
-        <PhotoTextFull
+        <PhotoSwitch 
           position={"fl-l"}
+          images={this.props.data.photoswitch} 
+          text1={this.props.data.photoswitchText}
+          label={this.props.data.photoswitchLabel}
+        />
+
+        <Timeline
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
+          content={this.props.data.timelineContent}
+        />
+
+        <Video 
+          videoID="05"
+          link={this.props.data.video[4]}
+          text1={this.props.data.videoText[4]}
+        />
+
+        <PhotoCenterTextFull
           text1={this.props.data.photoFullText[2]}
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}

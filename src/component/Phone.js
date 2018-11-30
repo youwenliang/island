@@ -22,13 +22,13 @@ class Phone extends Component {
   }
   render() {
     var machineStyle = {
-      bottom: "-28px",
+      bottom: "-22px",
       width: "90vw",
       maxWidth: "320px",
       zIndex: 10
     }
     var handStyle = {
-      bottom: "-20px",
+      bottom: "-15.5px",
       width: "30.375vw",
       maxWidth: "108px",
       transform: "translateX(56px)",
