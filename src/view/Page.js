@@ -1358,11 +1358,11 @@ function TimeChange(props) {
     <section className={h+" flex aic relative timeChange bg-white "+z}>
       <div className="w-100 h-100 absolute top-left time-clipping fade">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
-          <div className="center ph4-ns ph3 w-100 z4 pre-wrap">
-            <div className="mw7 center w-100 pa4-l pa3 mb4 h5">
+          <div className="center ph4-ns w-100 z4 pre-wrap">
+            <div className="mw7 center w-100 pt4 ph3 h5">
               <p className="f5 lh-copy mv0" dangerouslySetInnerHTML={{__html:props.text1}}></p>
             </div>
-            <figure className="w-100 ma0 ph3 mt5">
+            <figure className="w-100 ma0">
               <div className="w-third dib relative">
                 <img src={props.image[0]} alt="description"/>
                 <label style={label}>{props.labels[0]}</label>

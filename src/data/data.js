@@ -172,8 +172,8 @@ var data = {
 
         // TimeChange
         "timeChangeText": [
-            "<span class='f3 ba b--black ph3 pv2'><strong>2002</strong> - <span class='o-20'>2008</span></span>\n\n不過有些地方，垃圾只是隱藏在腳下。\n\n例如二重疏洪道旁的建築廢土，2002 年都是露天棄置，高架道路施工時曾清除了一部分，但兩旁的廢棄物只是用柏油掩蓋，並沒有清出。",
-            "<span class='f3 ba b--black ph3 pv2'><span class='o-20'>2002</span> - <strong>2008</strong></span>\n\n2018年我們重回現場竟然又發現，新的垃圾與廢土還是持續堆置，可見違法棄置在都市邊緣地帶還是一再上演。"
+            "不過有些地方，垃圾只是隱藏在腳下。\n\n例如二重疏洪道旁的建築廢土，2002 年都是露天棄置，高架道路施工時曾清除了一部分，但兩旁的廢棄物只是用柏油掩蓋，並沒有清出。<div class='f3 mt4'><strong>2002</strong> - <span class='o-20'>2018</span></div>",
+            "\n\n2018 年我們重回現場竟然又發現，新的垃圾與廢土還是持續堆置，可見違法棄置在都市邊緣地帶還是一再上演。<div class='f3 mt4'><span class='o-20'>2002</span> - <strong>2018</strong></div>"
         ],
 
         "timeChangePhotos": [
