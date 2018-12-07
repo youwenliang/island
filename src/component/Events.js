@@ -245,8 +245,8 @@ class Events extends Component {
           </div>
         </div>
         {this.topics(0)}
-        {this.topics(1)}
-        {this.topics(2)}
+        {/* {this.topics(1)} */}
+        {/* {this.topics(2)} */}
       </div>
     );
   }
