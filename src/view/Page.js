@@ -83,8 +83,11 @@ class Page extends Component {
 
     var scrolling = false;
     $t.state.scrollprogress = setInterval(function(){
-      if(!$('.progress.active').hasClass('scrolling')) $('.progress.active').addClass('scrolling');
-      scrolling = false;
+      if(!$('.progress.active').hasClass('scrolling')) {
+        $('.progress.active').addClass('scrolling');
+        scrolling = false;
+        console.log("false scroll");
+      }
     },1000)
 
     $('.dragscroll').scrollLeft(0);
@@ -1941,7 +1944,7 @@ class Event04 extends Component {
       var leftP = 0;
       var rightP = $('.panorama img').width() - $(window).width();
       var scrollP = rightP/2;
-      console.log(scrollP+"!!!");
+      // console.log(scrollP+"!!!");
       if($(window).width() > 600) {
         panoramaScroll();
         console.log("wide");
@@ -1967,7 +1970,7 @@ class Event04 extends Component {
             scrollP+=k*10;
             var deg = 90*$('.panorama').scrollLeft()/rightP-45;
             $('.panorama-icon').css('transform', 'rotate('+deg+'deg)');
-            console.log(k);
+            // console.log(k);
         },25);
 
         $(window).on('mousemove', function(e){
