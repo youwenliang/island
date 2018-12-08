@@ -1,11 +1,11 @@
 {
-  "main.css": "static/css/main.0444ef49.css",
-  "main.css.map": "static/css/main.0444ef49.css.map",
-  "main.js": "static/js/main.54bf508a.js",
-  "main.js.map": "static/js/main.54bf508a.js.map",
+  "main.css": "static/css/main.02e0d317.css",
+  "main.css.map": "static/css/main.02e0d317.css.map",
+  "main.js": "static/js/main.9fb0c8bd.js",
+  "main.js.map": "static/js/main.9fb0c8bd.js.map",
   "static/media/Spinner.svg": "static/media/Spinner.b6ad1f4f.svg",
   "static/media/cover.mp4": "static/media/cover.87b79b16.mp4",
-  "static/media/cover.svg": "static/media/cover.cc827272.svg",
+  "static/media/cover.svg": "static/media/cover.a0f4dc75.svg",
   "static/media/endingVideo.png": "static/media/endingVideo.cefaa69d.png",
   "static/media/hand.svg": "static/media/hand.f92ac56d.svg",
   "static/media/logo.png": "static/media/logo.866cdddf.png",
@@ -22,6 +22,6 @@
   "static/media/山水污染分層-03.svg": "static/media/山水污染分層-03.045c329e.svg",
   "static/media/水右.svg": "static/media/水右.0b90667a.svg",
   "static/media/水左.svg": "static/media/水左.72536b94.svg",
-  "static/media/污右.svg": "static/media/污右.17ee57e0.svg",
+  "static/media/污右.svg": "static/media/污右.ecbb34ca.svg",
   "static/media/污左.svg": "static/media/污左.364ca8a3.svg"
 }
