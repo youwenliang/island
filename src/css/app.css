@@ -560,7 +560,7 @@ nav .btn {
 }
 
 .eventContainer {
-  background: linear-gradient(to bottom ,#222222 0px, #222222 540px, #ffffff 540px);
+  background: linear-gradient(to bottom ,#222222 0px, #222222 540px, #f4f4f4 540px);
 }
 
 .eventFigure {

@@ -6,7 +6,7 @@ var data = {
       "content": [{
           "id": "1-1",
           "num": "01",
-          "name": "變遷 淡水河@新北淡水河",
+          "name": "變遷 淡水河@台北／新北",
           "image": "/images/1-1_A22.jpg",
           "icon":  "/images/icons/1-1淡水河.png",
           "description": "台北人熟悉的淡水河，也曾經堆滿了垃圾？一起乘著島嶼時光機，回首垃圾山，臭氣憶當年。",
@@ -14,7 +14,7 @@ var data = {
         }, {
           "id": "1-2",
           "num": "02",
-          "name": "重生 二仁溪@台南/高雄",
+          "name": "重生 二仁溪@台南／高雄",
           "image": "/images/1-2_B6.jpg",
           "icon":  "/images/icons/1-2二仁溪.png",
           "description": "靠著廢五金致富，卻留下污染，造就黑龍江得花多少時間與金錢，才能換回二仁溪的重生？",
@@ -22,7 +22,7 @@ var data = {
         }, {
           "id": "1-3",
           "num": "03",
-          "name": "陸蟹闖天關@墾丁恆春",
+          "name": "陸蟹闖天關@屏東 恆春",
           "image": "/images/1-3_C1.jpg",
           "icon":  "/images/icons/1-3陸蟹.png",
           "description": "當陸蟹媽媽抖動腹部，數十萬的蟹寶寶誕生了，不過牠們若要活下來順利長大，必須勇敢的一關闖過一關，陸蟹的一生，就是一場實境版的生存遊戲。",
@@ -30,7 +30,7 @@ var data = {
         }, {
           "id": "1-4",
           "num": "04",
-          "name": "漁港的黑色幽默@台東大武漁港",
+          "name": "漁港的黑色幽默@台東 大武",
           "image": "/images/1-4_D32.jpg",
           "icon":  "/images/icons/1-4港口淤積.png",
           "description": "漁港變成砂石場，怪手挖不完，漁船出不了海。蓋了六十年，還沒有完工的永續工程。",
@@ -38,7 +38,7 @@ var data = {
         }, {
           "id": "1-5",
           "num": "05",
-          "name": "不靠海的金門後豐港@金門後豐港",
+          "name": "不靠海的金門後豐港@金門",
           "image": "/images/1-5_E7.jpg",
           "icon":  "/images/icons/1-5鱟.png",
           "description": "金門後豐港，一個名稱有港，卻無法出港的地方。一個以海維生的百年漁村聚落，卻再也不能輕易地親近海。",
@@ -172,8 +172,8 @@ var data = {
 
         // TimeChange
         "timeChangeText": [
-            "<span class='f3 ba b--black ph3 pv2'><strong>2002</strong> - <span class='o-20'>2008</span></span>\n\n不過有些地方，垃圾只是隱藏在腳下。\n\n例如二重疏洪道旁的建築廢土，2002 年都是露天棄置，高架道路施工時曾清除了一部分，但兩旁的廢棄物只是用柏油掩蓋，並沒有清出。",
-            "<span class='f3 ba b--black ph3 pv2'><span class='o-20'>2002</span> - <strong>2008</strong></span>\n\n2018年我們重回現場竟然又發現，新的垃圾與廢土還是持續堆置，可見違法棄置在都市邊緣地帶還是一再上演。"
+            "<span class='f6'>不過有些地方，垃圾只是隱藏在腳下。\n\n例如二重疏洪道旁的建築廢土，2002 年都是露天棄置，高架道路施工時曾清除了一部分，但兩旁的廢棄物只是用柏油掩蓋，並沒有清出。</span><div class='f3 mt5 tc'><strong>2002</strong> - <span class='o-20'>2018</span></div>",
+            "<span class='f6'>\n\n2018 年我們重回現場竟然又發現，新的垃圾與廢土還是持續堆置，可見違法棄置在都市邊緣地帶還是一再上演。</span><div class='f3 mt5 tc'><span class='o-20'>2002</span> - <strong>2018</strong></div>"
         ],
 
         "timeChangePhotos": [
