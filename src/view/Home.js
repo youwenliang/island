@@ -80,9 +80,10 @@ class Home extends Component {
         <div id="section-nav">
           <a className="nav-link active" href="#cover">穿梭島嶼時光機</a>
           <a className="nav-link" href="#topic-1">水線</a>
+          {/*
           <a className="nav-link"href="#topic-2">山線</a>
           <a className="nav-link"href="#topic-3">污染線</a>
-          {/*<a className="nav-link"href="#timeline-preview">大事紀</a>*/}
+          <a className="nav-link"href="#timeline-preview">大事紀</a>*/}
           <a className="nav-link"href="#cta">相關連結</a>
         </div>
       </div>

@@ -653,7 +653,7 @@ function PhotoSwitch(props) {
     <section className={h+" flex aic w-100 relative bvh bg-black"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-light-gray w-100 h-100 fixed fixed-content">
-          <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} autoPlay={true} showBullets={true}/>
+          <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} autoPlay={true} showBullets={true} slideInterval={7000}/>
         </div>
       </div>
       <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap pn">
@@ -693,7 +693,7 @@ function PhotoMultiple(props) {
     }
     console.log(props.images[i]);
     var photos = (
-      <div className="grid-item bg-gray relative cp" style={item} key={i} onClick={(e) => props.onOpenModal(e.target.style.backgroundImage.split('"')[1])}>
+      <div className="grid-item bg-gray relative cp" alt={props.label[i]} style={item} key={i} onClick={(e) => props.onOpenModal(e.target.style.backgroundImage.split('"')[1], e.target.getAttribute("alt"))}>
         <label className="absolute white" style={bottomRight}>{props.label[i]}</label>
       </div>
     )
@@ -1666,11 +1666,12 @@ class Event01 extends Component {
 class Event02 extends Component {
   state = {
     open: false,
-    image: ""
+    image: "",
+    description: ""
   }
  
-  onOpenModal = (img) => {
-    this.setState({ open: true, image: img});
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
     console.log(this.state);
   };
  
@@ -1697,10 +1698,11 @@ class Event02 extends Component {
           illustration = {this.props.data.illustration}
         />
 
-        <Video 
+        <SmallVideo 
           videoID="01"
+          bg={"bg-near-white"}
           link={this.props.data.video[0]}
-          text1={this.props.data.videoText[0]}
+          text={this.props.data.videoText[0]}
         />
 
         <Timeline
@@ -1745,6 +1747,7 @@ class Event02 extends Component {
 
         <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
           <img src={this.state.image} alt="modal"/>
+          <p className="tc mb0">{this.state.description}</p>
         </Modal>
 
         {/*
@@ -1765,8 +1768,8 @@ class Event03 extends Component {
     image: ""
   }
  
-  onOpenModal = (img) => {
-    this.setState({ open: true, image: img});
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
     console.log(this.state);
   };
  
@@ -1819,6 +1822,7 @@ class Event03 extends Component {
 
         <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
           <img src={this.state.image} alt="modal"/>
+          <p className="tc mb0">{this.state.description}</p>
         </Modal>
 
         <Transition
