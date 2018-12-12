@@ -1390,6 +1390,66 @@ function TimeChange(props) {
   )
 }
 
+function TimeChangeFull(props) {
+  var z = "";
+  var h = "min-vh-150"
+  
+  if(props.last) {
+    z = "z-1";
+    h = "min-vh-200"
+  }
+
+  var fullImage = {
+    height: "100vh",
+    objectFit: "cover",
+    width: "100%"
+  }
+  var bottomRight = {
+    bottom: "0px",
+    right: "0px",
+    background: "rgba(0,0,0,.2)",
+    padding: "20px"
+  }
+
+  var bgcolor = ""
+  var textcolor = ""
+  if(props.color === "dark") {
+    bgcolor = "bg-black o-60";
+    textcolor = "white";
+  } else {
+    bgcolor = "bg-white o-85";
+    textcolor = "black";
+  }
+  var text1 = null;
+  var h = "min-vh-150"
+  if(props.text1 !== "") {
+    h = "min-vh-200"
+    text1 = (
+      <div className="cf">
+        <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
+          <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
+          <p className={"f5 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:props.text1}}></p>
+        </div>
+      </div>
+    )
+  }
+  return (
+    <section className={h+" flex aic relative bg-black timeChange"}>
+      <div className="w-100 h-100 absolute top-left time-clipping fade">
+        <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
+          <figure className="w-100 ma0">
+            <img className="w-100" style={fullImage} src={props.image} alt="background"/>
+          </figure>
+          <label className="white absolute" style={bottomRight}>{props.label}</label>
+          <div className="absolute left-0 right-0 mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
+            {text1}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function InfoHelper(props) {
   return (
     <div className="absolute z10 mw5 infoHelper">
@@ -1627,23 +1687,36 @@ class Event01 extends Component {
           label = {this.props.data.photoFullTextLabel[2]}
         />
 
-        <PhotoTextFull
-          number={2}
+        <Blog
+          number={3}
+          text={this.props.data.blogText[0]}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+        />
+
+        <TimeChangeFull
           position={"fl-l"}
-          text1={this.props.data.photoFullText[1]}
-          text2={this.props.data.photoFullText[2]}
-          image = {this.props.data.photoFull[1]}
-          label = {this.props.data.photoFullTextLabel[1]}
+          text1={this.props.data.photoFullText[4]}
+          image = {this.props.data.photoFull[3]}
+          label = {this.props.data.photoFullTextLabel[3]}
+        />
+        <TimeChangeFull
+          position={"fl-l"}
+          last={true}
+          text1={this.props.data.photoFullText[4]}
+          image = {this.props.data.photoFull[4]}
+          label = {this.props.data.photoFullTextLabel[4]}
         />
 
         <PhotoContrast 
+          bg={"bg-white z1"}
           images={this.props.data.photocontrast}
           text={this.props.data.photocontrastText}
           year={this.props.data.photocontrastYear}
         />
 
         <PhotoContrast
-          bg={"bg-near-white"}
+          bg={"bg-near-white z1"}
           images={this.props.data.photocontrast2}
           text={this.props.data.photocontrastText2}
           year={this.props.data.photocontrastYear2}
@@ -1722,7 +1795,12 @@ class Event02 extends Component {
           text1=""
         />
 
-        {/*這是什麼？*/}
+        <Blog
+          number={4}
+          text={this.props.data.blogText[0]}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+        />
 
         <PhotoSwitch 
           number = {2} 

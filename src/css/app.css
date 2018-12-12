@@ -82,6 +82,9 @@ body {
   text-shadow: 0 2px 6px rgba(0,0,0,.5);
 }
 
+.text-stroke {
+  -webkit-text-stroke: 1px black;
+}
 
 .clipping {
   overflow: hidden;
@@ -765,7 +768,7 @@ ul.none {
 #section-nav a {
   font-size: 13px;
   letter-spacing: .5px;
-  color: #eee;
+  color: #333;
   padding-right: 35px;
   height: 25px;
   width: 25px;

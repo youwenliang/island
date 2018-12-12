@@ -206,13 +206,17 @@ var data = {
         "photoFull": [
             "/events/changing-tamsui-river/A38.jpg",
             "/events/changing-tamsui-river/A19.jpg",
-            "/events/changing-tamsui-river/A35.jpg"
+            "/events/changing-tamsui-river/A35.jpg",
+            "/events/changing-tamsui-river/A17.jpg",
+            "/events/changing-tamsui-river/A19.jpg",
         ],
 
         "photoFullTextLabel": [
             "打鳥埤人工濕地空拍",
             "2017年台北港區段徵收全景",
-            "1987年新北市八里海岸沙丘景觀"
+            "1987年新北市八里海岸沙丘景觀",
+            "1994年 台北港空拍",
+            "2017年 台北港空拍"
         ],
 
         "photoFullText": [
@@ -222,7 +226,9 @@ var data = {
 
             "在港口堤防陸續完工之後，南側海岸因為突堤效應，出現嚴重侵蝕現象，沙子逐漸往北側海岸淤積，未來可能會影響淡水河口的排洪能力。",
 
-            "人們的一舉一動，深刻的影響著淡水河，有些失去的，甚至不會再回來。像是淡水河南邊的八里海岸，曾經有著寬闊的沙丘，最高可達兩三公尺高，不過因為河砂開採，外加上游石門水庫及翡翠水庫攔截沙源，這美麗的沙丘地形，在2000年之前就已經完全消失。\n\n1987年我們留下了八里沙丘最後的身影，還沒來得及認識它，就必須和它說再見。"
+            "人們的一舉一動，深刻的影響著淡水河，有些失去的，甚至不會再回來。像是淡水河南邊的八里海岸，曾經有著寬闊的沙丘，最高可達兩三公尺高，不過因為河砂開採，外加上游石門水庫及翡翠水庫攔截沙源，這美麗的沙丘地形，在2000年之前就已經完全消失。\n\n1987年我們留下了八里沙丘最後的身影，還沒來得及認識它，就必須和它說再見。",
+
+            "台北港原為淡水新港，為了因應台灣東部的砂石西運，初期規劃建設兩座砂石專用碼頭。1999年行政院擴大營運目標與規模，計畫做為基隆港的輔助港，台北港蛻變為綜合型的大商港，並且推動台北港特定區計畫，徵收周邊私有地，當地農漁村的樣貌從此改變。"
         ],
 
         // PhotoText
@@ -253,7 +259,18 @@ var data = {
 
         "photocontrastYear2": ["1995", "2018"],
 
-        "photocontrastText2": "人們對於河流利用的價值觀，決定了它的命運，原本堆置垃圾的邊陲地帶，陸續興建人工化的步道，部分河岸土地價值更水漲船高。"
+        "photocontrastText2": "人們對於河流利用的價值觀，決定了它的命運，原本堆置垃圾的邊陲地帶，陸續興建人工化的步道，部分河岸土地價值更水漲船高。",
+
+        // Blog
+        "blogText": [
+          "輸沙減少，讓淡水河南岸的海岸線嚴重侵蝕，1990年代海岸線每年平均往後退縮25公尺左右，沙洲上的碉堡砲台沒入海中，連當地居民祖先的墳墓都失守。\n\n不過在台北港興建之後，突出海岸的堤防，改變漂沙流向，讓這片海岸出現劇烈變化，由侵蝕轉變為淤積。雖然看似多了一塊地，但是天下沒有白吃的午餐，現在換成台北港南側海岸失去沙源，日益侵蝕，甚至危及海岸公路。",
+        ],
+        "blogImage": [
+        ["/events/changing-tamsui-river/A26.jpg", "/events/changing-tamsui-river/A25.jpg", "/events/changing-tamsui-river/A24.jpg"],
+        ],
+        "blogLabel": [
+        ["1993年 新北市八里海岸嚴重侵蝕-碉堡傾倒", "1993年 新北市八里海岸嚴重侵蝕-碉堡沒入海中", "2008年 新北市八里海岸淤沙堆積-碉堡頂部"],
+        ]
 
     },
 // ****************************************************************** B ******************************************************************
@@ -314,16 +331,16 @@ var data = {
         "photoMultipleText": "不只二仁溪，根據環保署2017年的環保統計年報，台灣至今還有30多條以上河川遭到中重度污染，像是長年受到工業廢水排放的桃園黃墘溪、和石化區緊鄰的高雄後勁溪或是飽受中華紙漿廢水長年排放的花蓮溪等等，這些多年來承受污染威脅的河川，到現在還在等待清澈的一天。",
 
         "photoMultiple": [
-            "/events/reborn-erren-river/B9(1993年華紙廢水排放花蓮溪).jpg",
-            "/events/reborn-erren-river/B63-七家灣溪1993.09.10農藥及化肥導致優養化嚴重.(直式需裁).jpg",
-            "/events/reborn-erren-river/B31(2009年後勁溪).JPG",
-            "/events/reborn-erren-river/B60-2012.04桃園黃乾溪水被工業廢水污染之後還是被引進農田灌溉渠道2.jpg",
-            "/events/reborn-erren-river/B35(2012.07高雄阿公店溪上游的新園排水的畜牧廢水汙染.JPG",
-            "/events/reborn-erren-river/B42-2012年桃園觀音工業區廢水排放到富林溪.jpg",
-            "/events/reborn-erren-river/B33(2013年日月光廢水排入後勁溪).jpg",
-            "/events/reborn-erren-river/B43-2018.7雲林縣水林鄉畜牧廢水排放五汴排水.jpg",
-            "/events/reborn-erren-river/B10(2018年華紙廢水排放花蓮溪).jpg",
-            "/events/reborn-erren-river/B58-2018 .8淡水河死魚.JPG"
+            "/events/reborn-erren-river/B9.jpg",
+            "/events/reborn-erren-river/B63.jpg",
+            "/events/reborn-erren-river/B31.jpg",
+            "/events/reborn-erren-river/B60.jpg",
+            "/events/reborn-erren-river/B35.jpg",
+            "/events/reborn-erren-river/B42.jpg",
+            "/events/reborn-erren-river/B33.jpg",
+            "/events/reborn-erren-river/B43.jpg",
+            "/events/reborn-erren-river/B10.jpg",
+            "/events/reborn-erren-river/B58.jpg"
         ],
 
         "photoMultipleLabel": [
@@ -364,6 +381,17 @@ var data = {
             "/events/reborn-erren-river/B18.jpg",
             "/events/reborn-erren-river/B27.jpg",
             "/events/reborn-erren-river/B48.jpg",
+        ],
+
+        // Blog
+        "blogText": [
+          "政府用加強取締畜牧廢水、設置示範型豬舍，以及多次稽查電鍍工廠排放等手段，減少二仁溪污染量，主管單位也持續投入經費作改善，二仁溪水質從2000年的100%污染，近兩年嚴重污染河段在20％左右，成功復育了白砂崙溼地，彈塗魚、招潮蟹等生物再度現身，二仁溪河口溼地並紀錄到十多種魚類，六十多種鳥類。",
+        ],
+        "blogImage": [
+        ["/events/reborn-erren-river/B46.jpg", "/events/reborn-erren-river/B28.jpg", "/events/reborn-erren-river/B24.jpg", "/events/reborn-erren-river/B29.jpg"],
+        ],
+        "blogLabel": [
+        ["2012年 白砂崙溼地逐漸恢復生機", "2012年 溼地上常見彈塗魚等生物", "2012年 白砂崙溼地成為環境教育的基地", "2017年 高雄市茄萣舢筏協會重現消失的四手網捕魚法"],
         ]
     },
 // ****************************************************************** C ******************************************************************
@@ -570,7 +598,7 @@ var data = {
       "台灣平均約七公里就有一處漁港，密度極高，但是廢港與蚊子港也不少，在台灣224個漁港中，約有20多個漁港使用率低，有些出港的漁船一年只有個位數。\n\n2017年新北市的老梅、中角及永興漁港三處較簡易的漁港，進行設施拆除作業，花了836萬元拆了漁港曳船道及3座防波堤，恢復自然海岸。",
       "人無法勝天，歷經數十年的來回，大自然給了個答案，未來政府開始規劃要讓部分漁港轉身退場，可能轉型可能拆港，這一場漁港的荒謬劇，是否就此終止?"
       ],
-      "photoFullTextLabel": ["2017.11.12大武海岸", "2018.07花蓮鹽寮漁港", "2018.08.02新北市永興漁港拆除之後", "2012.05高雄旗津海岸工程-母子與消波塊"],
+      "photoFullTextLabel": ["2017.11.12大武海岸", "2018.07花蓮鹽寮漁港", "2018.08.02新北市永興漁港拆除之後", ""],
 
       // Photo Contrast
       "photocontrast": [
