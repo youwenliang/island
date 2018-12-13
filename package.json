@@ -62,13 +62,19 @@
   },
   "reactSnapshot": {
     "include": [
-      "/timeline/",
-      "/changing-tamsui-river/",
-      "/reborn-erren-river/",
-      "/land-crabs-survival/",
-      "/dawu-fishing-port/",
-      "/kinmen-Hou-feng-kang/"
-
+      "/timeline",
+      "/changing-tamsui-river",
+      "/reborn-erren-river",
+      "/land-crabs-survival",
+      "/dawu-fishing-port",
+      "/kinmen-Hou-feng-kang",
+      "/lishan-high-mountain-farms",
+      "/lushan-hotspring-risk",
+      "/hushan-reservoir-lost-water",
+      "/asia-cement-cost",
+      "/science-park-landuse",
+      "/petrochemical-kingdom",
+      "/soil-pollution-tainan",
     ],
     "snapshotDelay": 300
   },
