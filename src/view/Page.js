@@ -125,6 +125,8 @@ class Page extends Component {
     });
     $(document).ready(function(){
       
+
+
       // Autoscroll
       var scroll = 0;
       var add = 0;
@@ -1393,11 +1395,6 @@ function TimeChange(props) {
 function TimeChangeFull(props) {
   var z = "";
   var h = "min-vh-150"
-  
-  if(props.last) {
-    z = "z-1";
-    h = "min-vh-200"
-  }
 
   var fullImage = {
     height: "100vh",
@@ -1420,10 +1417,8 @@ function TimeChangeFull(props) {
     bgcolor = "bg-white o-85";
     textcolor = "black";
   }
-  var text1 = null;
-  var h = "min-vh-150"
+  var text1 = null; 
   if(props.text1 !== "") {
-    h = "min-vh-200"
     text1 = (
       <div className="cf">
         <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
@@ -1432,6 +1427,10 @@ function TimeChangeFull(props) {
         </div>
       </div>
     )
+  }
+  if(props.last) {
+    z = "z-1";
+    h = "min-vh-200"
   }
   return (
     <section className={h+" flex aic relative bg-black timeChange"}>
@@ -1941,6 +1940,7 @@ class Event03 extends Component {
 
         <Blog
           number={5}
+          bg={"bg-near-white"}
           text={this.props.data.blogText[1]}
           image={this.props.data.blogImage[1]}
           label={this.props.data.blogLabel[1]}
@@ -2127,9 +2127,25 @@ class Event04 extends Component {
         />
 
         <Transition text={this.props.data.photoSlideText}/>
-        <PhotoSlide
-          text={this.props.data.photoSlideLabel}
-          images={this.props.data.photoSlidePhoto}
+
+        <TimeChangeFull
+          position={"fl-l"}
+          text1={this.props.data.photoSlideLabel[0]}
+          image = {this.props.data.photoSlidePhoto[0]}
+          label = ""
+        />
+        <TimeChangeFull
+          position={"fl-l"}
+          text1={this.props.data.photoSlideLabel[1]}
+          image = {this.props.data.photoSlidePhoto[1]}
+          label = ""
+        />
+        <TimeChangeFull
+          position={"fl-l"}
+          last={true}
+          text1={this.props.data.photoSlideLabel[2]}
+          image = {this.props.data.photoSlidePhoto[2]}
+          label = ""
         />
 
         <CenterVideo 
