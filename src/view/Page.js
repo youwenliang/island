@@ -20,6 +20,7 @@ import hand from '../assets/images/hand.svg';
 import timemachine from '../assets/images/timemachine.svg';
 import taiwanMap from '../assets/images/taiwan.jpg';
 import kinmenMap from '../assets/images/kinmen.jpg';
+import googleEarthLogo from '../assets/images/google_earth.svg';
 import tvLine from '../assets/images/tvline-4.png';
 import ship from '../assets/images/machinemap.svg';
 
@@ -362,7 +363,29 @@ function Taiwan(props) {
           </div>
         </div>
       </div>
+      <GoogleEarthLogo />
     </section>
+  )
+}
+
+function GoogleEarthLogo(props) {
+  var style = {
+    backgroundImage: "url("+googleEarthLogo+")",
+    backgroundSize: "100px",
+    backgroundPosition: "8px center",
+    backgroundRepeat: "no-repeat",
+    width: "100%",
+    zIndex: "5",
+    fontSize: "0.8em",
+    position: "absolute",
+    bottom: "0",
+    color: "rgba(256,256,256,0.8)",
+    padding: "8px 0 8px 120px"
+  }
+  return (
+    <div style={style}>
+      ​​The image is from 2018/Google Earth  Data SIO,NOAA,U.S. Navy,NGA,GEBCO Image Landsat/Copemicus
+    </div>
   )
 }
 
