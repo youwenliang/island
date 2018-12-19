@@ -380,7 +380,8 @@ function GoogleEarthLogo(props) {
     position: "absolute",
     bottom: "0",
     color: "rgba(256,256,256,0.8)",
-    padding: "8px 0 8px 120px"
+    padding: "8px 8px 8px 120px",
+    textAlign: "right"
   }
   return (
     <div style={style}>
