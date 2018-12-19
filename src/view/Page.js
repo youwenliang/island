@@ -823,7 +823,7 @@ function Video(props) {
   }
 
   return (
-    <section className={h+" flex aic relative video-content bg-black"}>
+    <section className={h+" flex aic relative video-content full-video bg-black"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>
         <div className="fixed sound cp z10" onClick={(e) => soundVideo(e)}></div>
@@ -1291,9 +1291,23 @@ function Transition(props) {
   var max = {
     maxWidth: "880px"
   }
+  var objectFit = {
+    objectFit: "cover"
+  }
+  var img = null;
+  var fontSize = "f5";
+  if(props.illustration !== undefined) {
+    img = (
+      <div class="overflow-hidden w7">
+        <img src={props.illustration} height="200px" style={objectFit}/>
+      </div>
+    )
+    fontSize = "f2 fw5";
+  }
   return (
-    <section className={"banner pv5-ns pv4 "+props.bg}>
-      <p className="lh-copy f5 center pre-wrap ph4-ns ph3" style={max}>{props.text}</p>
+    <section className={props.title+" banner pv5-ns pv4 flex aic jcc flex-column-s ph3 "+props.bg}>
+      {img}
+      <p className={"dib lh-copy pre-wrap "+fontSize} style={max}>{props.text}</p>
     </section>
   )
 }
@@ -1339,6 +1353,7 @@ function Panorama(props) {
         <img src={props.image} height="100%"/>
       </figure>
       <div className="panorama-icon"></div>
+      <div className="panorama-text text-shadow">左右移動看看</div>
       <label className="white absolute" style={bottomRight}>{props.label}</label>
     </section>
   )
@@ -1907,7 +1922,9 @@ class Event03 extends Component {
           text={"轉場文字"}
         />
         <Transition
-          bg={"bg-black white tc"}
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationCrab[0]}
           text={"陸蟹生存 - 第一關"}
         />
         
@@ -1916,10 +1933,14 @@ class Event03 extends Component {
           text={this.props.data.videoText[2]}
           link={this.props.data.video[2]}
         />
+
         <Transition
-          bg={"bg-black white tc"}
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationCrab[1]}
           text={"陸蟹生存 - 第二關"}
         />
+
         <Blog
           number={1}
           text={this.props.data.blogText[0]}
@@ -1928,9 +1949,12 @@ class Event03 extends Component {
         />
 
         <Transition
-          bg={"bg-black white tc"}
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationCrab[2]}
           text={"陸蟹生存 - 第三關"}
         />
+
         <Video 
           videoID="04"
           color={"dark"}
@@ -1952,7 +1976,9 @@ class Event03 extends Component {
           link={this.props.data.video[4]}
         />
         <Transition
-          bg={"bg-black white tc"}
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationCrab[3]}
           text={"陸蟹生存 - 第四關"}
         />
         <Video 
@@ -1968,8 +1994,11 @@ class Event03 extends Component {
           text1=""
           link={this.props.data.video[6]}
         />
+
         <Transition
-          bg={"bg-black white tc"}
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationCrab[4]}
           text={"陸蟹生存 - 魔王關"}
         />
 
@@ -1998,6 +2027,11 @@ class Event03 extends Component {
           text={this.props.data.blogText[2]}
           image={this.props.data.blogImage[2]}
           label={this.props.data.blogLabel[2]}
+        />
+        <Video 
+          videoID="11"
+          text1=""
+          link={this.props.data.video[10]}
         />
         <CenterSmallVideo 
           videoID="10"
@@ -2176,13 +2210,15 @@ class Event04 extends Component {
           text={this.props.data.photocontrastText}
           year={this.props.data.photocontrastYear}
         />
-
-        <Timeline
+        <Transition
+          text={this.props.data.photoFullText[4]}
+        />
+        {/*<Timeline
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
           content={this.props.data.timelineContent}
-        />
+        />*/}
         <Blog
           number={2}
           bg={"bg-near-white"}
@@ -2190,7 +2226,18 @@ class Event04 extends Component {
           image={this.props.data.blogImage[0]}
           label={this.props.data.blogLabel[0]}
         />
-
+        <Video
+          position={"fr-l"}
+          videoID="05"
+          link={this.props.data.video[6]}
+          text1={this.props.data.videoText[6]}
+        />
+        <Blog
+          number={0}
+          text=""
+          image={this.props.data.blogImage[3]}
+          label={this.props.data.blogLabel[3]}
+        />
         <Video
           position={"fr-l"}
           videoID="04"

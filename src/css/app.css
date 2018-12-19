@@ -363,6 +363,15 @@ nav .btn {
   }
 }
 
+.transitionTitle {
+  border-top: 1px #eee solid;
+}
+
+.transitionTitle + section:not(.full-video) {
+  padding-top: 0 !important;
+  min-height: auto !important;
+}
+
 #cover, #timeline {
 	min-height: 650px;
 }
@@ -488,8 +497,22 @@ nav .btn {
   margin: auto;
   left: 0;
   right: 0;
-  bottom: 40px;
+  bottom: 60px;
   z-index: 20;
+}
+
+.panorama-text {
+  font-size: 14px;
+  text-align: center;
+  display: block;
+  color: white;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100px;
+  height: 40px;
 }
 
 @media screen and (max-width: 30em) {
