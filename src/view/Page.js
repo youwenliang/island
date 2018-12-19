@@ -318,7 +318,7 @@ function CoverVideo(props) {
 function Taiwan(props) {
   var bgStyle = {
     backgroundImage: "url("+taiwanMap+")",
-    backgroundSize: "1680px",
+    backgroundSize: "cover",
     backgroundPosition: "76% center"
   }
   if (props.kinmen === true) {
@@ -1641,7 +1641,7 @@ class Event01 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-75px, -330px"}
+          map = {"-50px, -290px"}
         />
         <Illustration 
           number = {2}
@@ -1789,7 +1789,7 @@ class Event02 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-255px, 135px"}
+          map = {"-215px, 115px"}
         />
 
         <Illustration
@@ -1892,7 +1892,7 @@ class Event03 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-155px, 335px"}
+          map = {"-135px, 225px"}
         />
 
         <Illustration
@@ -2115,7 +2115,7 @@ class Event04 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-125px, 295px"}
+          map = {"-125px, 185px"}
         />
 
         <Illustration
@@ -2275,7 +2275,7 @@ class Event05 extends Component {
           illustration = {this.props.data.taiwan}
           kinmen = {true}
           
-          map = {"-110px, -150px"}
+          map = {"-90px, -140px"}
         />
 
         <Illustration
