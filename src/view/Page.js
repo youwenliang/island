@@ -19,6 +19,7 @@ import messengerIcon from '../assets/images/messenger.png';
 import hand from '../assets/images/hand.svg';
 import timemachine from '../assets/images/timemachine.svg';
 import taiwanMap from '../assets/images/taiwan.jpg';
+import kinmenMap from '../assets/images/kinmen.jpg';
 import tvLine from '../assets/images/tvline-4.png';
 import ship from '../assets/images/machinemap.svg';
 
@@ -318,6 +319,9 @@ function Taiwan(props) {
     backgroundImage: "url("+taiwanMap+")",
     backgroundSize: "1680px",
     backgroundPosition: "76% center"
+  }
+  if (props.kinmen === true) {
+    bgStyle.backgroundImage = "url("+kinmenMap+")";
   }
   var position = {
     left: "75%",
@@ -2245,8 +2249,9 @@ class Event05 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
+          kinmen = {true}
           
-          map = {"-110px, -200px"}
+          map = {"-110px, -150px"}
         />
 
         <Illustration
