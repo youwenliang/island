@@ -224,10 +224,10 @@ class Events extends Component {
     var mask = (
       <div className="absolute w-100 h-100 top-left z4 flex aic jcc">
         <div className="absolute w-100 h-100 top-left o-70 z4" style={bgMask}></div>
-        <figure className="dib overflow-hidden br-100 bg-white z10 relative box-shadow w4 h4 flex aic jcc">
-          <img src={lockImage} width="80" height="80"/>
+        <figure className="dib overflow-hidden br-100 bg-white z10 relative box-shadow w4-ns w3 h4-ns h3 flex aic jcc mh4-ns mh3">
+          <img src={lockImage} width="70%" height="70%"/>
         </figure>
-        <h2 className="f2 tracked white dib z10 relative text-shadow">路線開通中...</h2>
+        <h2 className="f2-ns f3 tracked white dib z10 relative text-shadow">路線開通中...</h2>
       </div>
     )
 

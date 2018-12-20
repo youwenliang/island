@@ -683,7 +683,7 @@ function PhotoSwitch(props) {
     <section className={h+" flex aic w-100 relative bvh bg-black"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-light-gray w-100 h-100 fixed fixed-content">
-          <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} autoPlay={true} showBullets={true} slideInterval={7000}/>
+          <ImageGallery items={images} showFullscreenButton={false} showThumbnails={false} showPlayButton={false} autoPlay={true} showBullets={true} slideInterval={7000}/>
         </div>
       </div>
       <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap pn">
@@ -1235,7 +1235,7 @@ function Timeline(props) {
   var content = null
 
   if(props.content !== null) {
-    content = (<p className="lh-copy f5 center pre-wrap ph4-ns ph4-ns ph3 mb5" style={max}>{props.content}</p>);
+    content = (<p className="lh-copy f5 center pre-wrap ph4-ns ph4-ns ph3 mb5" style={max} dangerouslySetInnerHTML={{__html:props.content}}></p>);
   }
 
   return (
@@ -1331,7 +1331,7 @@ function Transition(props) {
         <img src={props.illustration} height="200px" style={objectFit}/>
       </div>
     )
-    fontSize = "f2 fw5";
+    fontSize = "f3 fw7 tracked";
   }
   return (
     <section className={props.title+" banner pv5-ns pv4 flex aic jcc flex-column-s ph3 "+props.bg}>
@@ -1543,7 +1543,7 @@ function Blog(props) {
       padding: "20px"
     }
     var photos = (
-      <div className="grid-item bg-gray relative cp" style={item} key={i} onClick={(e) => props.onOpenModal(e.target.style.backgroundImage.split('"')[1])}>
+      <div className="grid-item bg-gray relative cp" alt={props.label[i]} style={item} key={i} onClick={(e) => props.onOpenModal(e.target.style.backgroundImage.split('"')[1], e.target.getAttribute("alt"))}>
         <label className="absolute white" style={bottomRight}>{props.label[i]}</label>
       </div>
     )
@@ -1647,7 +1647,22 @@ function Blog(props) {
 
 
 class Event01 extends Component {
+  state = {
+    open: false,
+    image: "",
+    description: ""
+  }
+ 
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
         <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
@@ -1735,7 +1750,13 @@ class Event01 extends Component {
           text={this.props.data.blogText[0]}
           image={this.props.data.blogImage[0]}
           label={this.props.data.blogLabel[0]}
+          onOpenModal={this.onOpenModal.bind(this)}
         />
+
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+          <p className="tc mb0">{this.state.description}</p>
+        </Modal>
 
         <TimeChangeFull
           position={"fl-l"}
@@ -1822,7 +1843,7 @@ class Event02 extends Component {
         />
 
         <Timeline
-          content={"二仁溪河川整治年代列表"}
+          content={"<p class='f3 fw7 tracked mb0'>二仁溪河川整治年代列表</p>"}
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
@@ -1844,6 +1865,7 @@ class Event02 extends Component {
           text={this.props.data.blogText[0]}
           image={this.props.data.blogImage[0]}
           label={this.props.data.blogLabel[0]}
+          onOpenModal={this.onOpenModal.bind(this)}
         />
 
         <PhotoSwitch 
@@ -1887,7 +1909,8 @@ class Event02 extends Component {
 class Event03 extends Component {
   state = {
     open: false,
-    image: ""
+    image: "",
+    description: ""
   }
  
   onOpenModal = (img, des) => {
@@ -1898,8 +1921,13 @@ class Event03 extends Component {
   onCloseModal = () => {
     this.setState({ open: false });
   };
+
   render() {
     const { open } = this.state;
+    var max = {
+      maxWidth: "880px"
+    }
+
     return (
       <div>
         <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
@@ -1976,6 +2004,7 @@ class Event03 extends Component {
           text={this.props.data.blogText[0]}
           image={this.props.data.blogImage[0]}
           label={this.props.data.blogLabel[0]}
+          onOpenModal={this.onOpenModal.bind(this)}
         />
 
         <Transition
@@ -1998,6 +2027,7 @@ class Event03 extends Component {
           text={this.props.data.blogText[1]}
           image={this.props.data.blogImage[1]}
           label={this.props.data.blogLabel[1]}
+          onOpenModal={this.onOpenModal.bind(this)}
         />
 
         <CenterSmallVideo 
@@ -2016,9 +2046,15 @@ class Event03 extends Component {
           text1={this.props.data.videoText[5]}
           link={this.props.data.video[5]}
         />
-        <Transition
-          text={this.props.data.videoText[6]}
-        />
+
+        <section style={max} className="pv6-ns pv5 ph3 center">
+          <img src={this.props.data.illustrationCrab[6]} className="w-25-ns w-50" />
+          <img src={this.props.data.illustrationCrab[7]} className="w-25-ns w-50" />
+          <img src={this.props.data.illustrationCrab[8]} className="w-25-ns w-50" />
+          <img src={this.props.data.illustrationCrab[9]} className="w-25-ns w-50" />
+          <p className="lh-copy pre-wrap f5 mt5">{this.props.data.videoText[6]}</p>
+        </section>
+
         <Video 
           videoID="07"
           text1=""
@@ -2045,6 +2081,11 @@ class Event03 extends Component {
           link={this.props.data.video[8]}
           text={this.props.data.videoText[8]}
         />
+
+        <section className="ma0 flex jcc aic">
+          <img className="mw8 center" src={this.props.data.illustrationCrab[5]} width="100%"/>
+        </section>
+
         <PhotoCenterTextFull
           text1 = {this.props.data.photoFullText[0]}
           image = {this.props.data.photoFull[0]}
@@ -2057,6 +2098,7 @@ class Event03 extends Component {
           text={this.props.data.blogText[2]}
           image={this.props.data.blogImage[2]}
           label={this.props.data.blogLabel[2]}
+          onOpenModal={this.onOpenModal.bind(this)}
         />
         <Video 
           videoID="11"
@@ -2084,7 +2126,10 @@ class Event04 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      intervalP: null
+      intervalP: null,
+      open: false,
+      image: "",
+      description: ""
     }
   }
   componentDidMount() {
@@ -2141,7 +2186,17 @@ class Event04 extends Component {
     console.log('unmount');
     clearInterval(this.state.intervalP);
   }
+ 
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
         <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
@@ -2181,6 +2236,10 @@ class Event04 extends Component {
           text1=""
         />
 
+          <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+          <p className="tc mb0">{this.state.description}</p>
+        </Modal>
 
         <Transition
           text={this.props.data.panoramaText}
@@ -2267,6 +2326,7 @@ class Event04 extends Component {
           text=""
           image={this.props.data.blogImage[3]}
           label={this.props.data.blogLabel[3]}
+          onOpenModal={this.onOpenModal.bind(this)}
         />
         <Video
           position={"fr-l"}
@@ -2279,6 +2339,7 @@ class Event04 extends Component {
           text=""
           image={this.props.data.blogImage[1]}
           label={this.props.data.blogLabel[1]}
+          onOpenModal={this.onOpenModal.bind(this)}
         />
         <Blog
           number={0}
@@ -2286,6 +2347,7 @@ class Event04 extends Component {
           text=""
           image={this.props.data.blogImage[2]}
           label={this.props.data.blogLabel[2]}
+          onOpenModal={this.onOpenModal.bind(this)}
         />
         <PhotoCenterTextFull
           text1={this.props.data.photoFullText[3]}
@@ -2301,11 +2363,12 @@ class Event04 extends Component {
 class Event05 extends Component {
   state = {
     open: false,
-    image: ""
+    image: "",
+    description: ""
   }
  
-  onOpenModal = (img) => {
-    this.setState({ open: true, image: img});
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
     console.log(this.state);
   };
  
@@ -2354,6 +2417,7 @@ class Event05 extends Component {
           text={this.props.data.blogText[0]}
           image={this.props.data.blogImage[0]}
           label={this.props.data.blogLabel[0]}
+          onOpenModal={this.onOpenModal.bind(this)}
         />
 
         <Blog
@@ -2362,6 +2426,7 @@ class Event05 extends Component {
           text={this.props.data.blogText[1]}
           image={this.props.data.blogImage[1]}
           label={this.props.data.blogLabel[1]}
+          onOpenModal={this.onOpenModal.bind(this)}
         />
 
         <Video 

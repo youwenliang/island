@@ -1,6 +1,6 @@
 @import "tachyons";
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
-@import url('https://fonts.googleapis.com/css?family=Noto+Serif');
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans");
+@import url("https://fonts.googleapis.com/css?family=Noto+Serif");
 @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
 
 html {
@@ -369,12 +369,20 @@ nav .btn {
 }
 
 .transitionTitle {
+  position: relative;
+  left: 0px;
   border-top: 1px #eee solid;
 }
 
 .transitionTitle + section:not(.full-video) {
   padding-top: 0 !important;
   min-height: auto !important;
+}
+
+@media screen and (min-width: 60em) {
+  .transitionTitle {
+    left: -100px;
+  }
 }
 
 #cover, #timeline {
@@ -461,7 +469,7 @@ nav .btn {
 }
 
 .image-gallery-bullets-container {
-  display: none;
+  /*display: none;*/
 }
 
 @media screen and (max-width: 60em) {
@@ -1017,7 +1025,7 @@ ul.none {
 }
 
 #play-btn {
-  background-image: url('/images/icons/play_new.svg');
+  background-image: url("/images/icons/play_new.svg");
   background-size: cover;
   width: 75px;
   height: 75px;
@@ -1025,11 +1033,11 @@ ul.none {
 }
 
 #play-btn.pause {
-  background-image: url('/images/icons/pause_new.svg');
+  background-image: url("/images/icons/pause_new.svg");
 }
 
 .play {
-  background-image: url('/images/icons/pause_new.svg');
+  background-image: url("/images/icons/pause_new.svg");
   background-size: 32px 32px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -1041,13 +1049,13 @@ ul.none {
   border-radius: 100%;
 }
 .play.pause {
-  background-image: url('/images/icons/play_new.svg');
+  background-image: url("/images/icons/play_new.svg");
 }
 
 
 
 .sound {
-  background-image: url('/images/icons/mute.svg');
+  background-image: url("/images/icons/mute.svg");
   background-size: 32px 32px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -1060,7 +1068,7 @@ ul.none {
 }
 
 .sound.unmute {
-  background-image: url('/images/icons/unmute.svg');
+  background-image: url("/images/icons/unmute.svg");
 }
 
 .smallVideo .play {

@@ -422,6 +422,11 @@ var data = {
           "/events/land-crabs-survival/illustrations/陸蟹關卡標題1216-03.svg",
           "/events/land-crabs-survival/illustrations/陸蟹關卡標題1216-04.svg",
           "/events/land-crabs-survival/illustrations/陸蟹關卡標題1216-05.svg",
+          "/events/land-crabs-survival/illustrations/蟹謝讓路過場svg-01.svg",
+          "/events/land-crabs-survival/illustrations/Crabs die-01.svg",
+          "/events/land-crabs-survival/illustrations/Crabs die-02.svg",
+          "/events/land-crabs-survival/illustrations/Crabs die-03.svg",
+          "/events/land-crabs-survival/illustrations/Crabs die-04.svg",
         ],
 
         // PhotoFullText
