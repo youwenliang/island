@@ -19,6 +19,8 @@ import messengerIcon from '../assets/images/messenger.png';
 import hand from '../assets/images/hand.svg';
 import timemachine from '../assets/images/timemachine.svg';
 import taiwanMap from '../assets/images/taiwan.jpg';
+import kinmenMap from '../assets/images/kinmen.jpg';
+import googleEarthLogo from '../assets/images/google_earth.svg';
 import tvLine from '../assets/images/tvline-4.png';
 import ship from '../assets/images/machinemap.svg';
 
@@ -316,8 +318,11 @@ function CoverVideo(props) {
 function Taiwan(props) {
   var bgStyle = {
     backgroundImage: "url("+taiwanMap+")",
-    backgroundSize: "1680px",
+    backgroundSize: "cover",
     backgroundPosition: "76% center"
+  }
+  if (props.kinmen === true) {
+    bgStyle.backgroundImage = "url("+kinmenMap+")";
   }
   var position = {
     left: "75%",
@@ -358,7 +363,30 @@ function Taiwan(props) {
           </div>
         </div>
       </div>
+      <GoogleEarthLogo />
     </section>
+  )
+}
+
+function GoogleEarthLogo(props) {
+  var style = {
+    backgroundImage: "url("+googleEarthLogo+")",
+    backgroundSize: "100px",
+    backgroundPosition: "8px center",
+    backgroundRepeat: "no-repeat",
+    width: "100%",
+    zIndex: "5",
+    fontSize: "0.8em",
+    position: "absolute",
+    bottom: "0",
+    color: "rgba(256,256,256,0.8)",
+    padding: "8px 8px 8px 120px",
+    textAlign: "right"
+  }
+  return (
+    <div style={style}>
+      ​​The image is from 2018/Google Earth  Data SIO,NOAA,U.S. Navy,NGA,GEBCO Image Landsat/Copemicus
+    </div>
   )
 }
 
@@ -1629,7 +1657,7 @@ class Event01 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-75px, -330px"}
+          map = {"-50px, -290px"}
         />
         <Illustration 
           number = {2}
@@ -1777,7 +1805,7 @@ class Event02 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-255px, 135px"}
+          map = {"-215px, 115px"}
         />
 
         <Illustration
@@ -1881,7 +1909,7 @@ class Event03 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-155px, 335px"}
+          map = {"-135px, 225px"}
         />
 
         <Illustration
@@ -2123,7 +2151,7 @@ class Event04 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-125px, 295px"}
+          map = {"-125px, 185px"}
         />
 
         <Illustration
@@ -2294,8 +2322,9 @@ class Event05 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
+          kinmen = {true}
           
-          map = {"-110px, -200px"}
+          map = {"-90px, -140px"}
         />
 
         <Illustration
