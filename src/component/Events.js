@@ -14,6 +14,8 @@ import topic2L from '../assets/images/山左.svg';
 import topic2R from '../assets/images/山右.svg';
 import topic3L from '../assets/images/污左.svg';
 import topic3R from '../assets/images/污右.svg';
+import lockImage from '../assets/images/lock.svg';
+
 
 // Event Data
 const event_data = data.events;
@@ -143,7 +145,7 @@ class Events extends Component {
     )
   }
 
-  topics = (num) => {
+  topics = (num, lock) => {
     let list = [];
     const topic_title = event_data[num].title
     const event_content = event_data[num].content
@@ -160,9 +162,10 @@ class Events extends Component {
           backgroundRepeat: 'no-repeat'
     }
     var btnStyle= {
-        background: this.state.colors[num],
+        // background: this.state.colors[num],
         // boxShadow: '#222 0px 0px 0px 2px',
-        border: '4px solid #fff'
+        background: 'rgba(0,0,0,.1)',
+        border: '2px solid #fff'
     }
     var topicBg = [
     {
@@ -212,15 +215,24 @@ class Events extends Component {
         </Link>        
       </div>
     )
-    return (
-      <section id={"topic-"+(num+1)} className="ma0 bb bw1 b--light-gray">
-        <div className="center ph3 hide" style={topicRoute[num]}>
-          <div className="cf ph2-ns">
-            <div className="topicTitle flex aic jcc w-100 ph2 relative mt4" style={topicBg[num]}>
-              <h2 className="tc dn">{topic_title}</h2>
-            </div>
-          </div>
-        </div>
+
+    var content = null;
+    var color = this.state.colors[num];
+    var bgMask = {
+      background: color
+    }
+    var mask = (
+      <div className="absolute w-100 h-100 top-left z4 flex aic jcc">
+        <div className="absolute w-100 h-100 top-left o-70 z4" style={bgMask}></div>
+        <figure className="dib overflow-hidden br-100 bg-white z10 relative box-shadow w4 h4 flex aic jcc">
+          <img src={lockImage} width="80" height="80"/>
+        </figure>
+        <h2 className="f2 tracked white dib z10 relative text-shadow">路線開通中...</h2>
+      </div>
+    )
+
+    if(!lock) {
+      content = (
         <div className="eventContainer relative hide mt4">
           <div className="pv6-ns pv4 eventBg flex aic relative overflow-hidden">
             <div className={"bg-"+(num+1) +" w-100 h-100 absolute top0"} style={bgStyle}></div>
@@ -232,6 +244,20 @@ class Events extends Component {
             <ul className="eventBox dragscroll nowrap overflow-x-scroll dragscroll list pa0 ph2">{list}</ul>
           </div>
         </div>
+      )
+      mask = null;
+    }
+    return (
+      <section id={"topic-"+(num+1)} className="ma0 bb bw1 b--light-gray relative">
+        {mask}
+        <div className="center ph3 hide" style={topicRoute[num]}>
+          <div className="cf ph2-ns">
+            <div className="topicTitle flex aic jcc w-100 ph2 relative mv4" style={topicBg[num]}>
+              <h2 className="tc dn">{topic_title}</h2>
+            </div>
+          </div>
+        </div>
+        {content}
       </section>
     )
   }
@@ -244,9 +270,9 @@ class Events extends Component {
             <h3 className="ph2 fw4 f4 mv2 mw7 lh-copy o-90">還記得二十年前，你是什麼模樣嗎？走出家門口，熟悉的街頭巷尾改變了多少？想要知道這二十年來，台灣環境經歷了什麼樣的變遷？<br/><br/>現在就坐上小島號，和「我們的島」一起搭乘時光機，穿梭時空，回顧河流、海洋、山林以及污染開發現場。</h3>
           </div>
         </div>
-        {this.topics(0)}
-        {this.topics(1)}
-        {/* {this.topics(2)} */}
+        {this.topics(0, false)}
+        {this.topics(1, true)}
+        {this.topics(2, true)}
       </div>
     );
   }

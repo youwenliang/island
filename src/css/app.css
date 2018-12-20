@@ -169,13 +169,18 @@ button.btn {
   align-items: center;
   justify-content: center;
   padding: 0px 32px;
-  height: 56px;
+  height: 48px;
   border: none;
   box-shadow: none;
   letter-spacing: 1.6px;
-  transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  transition: all .2s ease-in-out; 
   box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.24);
   backface-visibility: hidden;
+}
+
+button.btn:hover {
+  background: white !important;
+  color: black;
 }
 
 button,
@@ -497,21 +502,21 @@ nav .btn {
   margin: auto;
   left: 0;
   right: 0;
-  bottom: 60px;
+  bottom: 30px;
   z-index: 20;
 }
 
 .panorama-text {
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
   display: block;
   color: white;
   position: absolute;
-  bottom: 10px;
+  bottom: 80px;
   left: 0;
   right: 0;
   margin: auto;
-  width: 100px;
+  width: 180px;
   height: 40px;
 }
 
@@ -587,6 +592,10 @@ nav .btn {
 
 .eventContainer {
   background: linear-gradient(to bottom ,#222222 0px, #222222 540px, #f4f4f4 540px);
+}
+
+.box-shadow {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .eventFigure {

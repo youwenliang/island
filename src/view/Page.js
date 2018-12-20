@@ -748,6 +748,7 @@ function PhotoContrast(props) {
               rightImage={props.images[1]}
               sliderLineWidth={2}
               handleSize={40}
+              sliderPositionPercentage={0.8}
             />
             <span className="mt3 right-20 absolute white top f3 fw5" data-type="original">{props.year[1]}</span>
             <span className="mt3 left-20 absolute white top f3 fw5" data-type="modified">{props.year[0]}</span>
@@ -1793,6 +1794,7 @@ class Event02 extends Component {
         />
 
         <Timeline
+          content={"二仁溪河川整治年代列表"}
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
