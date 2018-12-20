@@ -227,7 +227,7 @@ class Events extends Component {
         <figure className="dib overflow-hidden br-100 bg-white z10 relative box-shadow w4-ns w3 h4-ns h3 flex aic jcc mh4-ns mh3">
           <img src={lockImage} width="70%" height="70%"/>
         </figure>
-        <h2 className="f2-ns f3 tracked white dib z10 relative text-shadow">路線開通中...</h2>
+        <h2 className="f3-ns f4 tracked white dib z10 relative text-shadow">路線開通中...</h2>
       </div>
     )
 
@@ -250,7 +250,7 @@ class Events extends Component {
     return (
       <section id={"topic-"+(num+1)} className="ma0 bb bw1 b--light-gray relative">
         {mask}
-        <div className="center ph3 hide" style={topicRoute[num]}>
+        <div className="center ph3" style={topicRoute[num]}>
           <div className="cf ph2-ns">
             <div className="topicTitle flex aic jcc w-100 ph2 relative mv4" style={topicBg[num]}>
               <h2 className="tc dn">{topic_title}</h2>

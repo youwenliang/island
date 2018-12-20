@@ -39,8 +39,12 @@ class Page extends Component {
       view: params.id,
       drag: false,
       interval: null,
-      scrollprogress: null
+      scrollprogress: null,
+      chatbot: props.location.hash.indexOf('chatbot') > -1 ? true : false
     };
+
+    
+
     //Here ya go
     this.props.history.listen((location, action) => {
       var view = location.pathname.replace('/ourisland/','').replace('/','');
@@ -272,6 +276,15 @@ export default Page;
 
 
 /* Components */
+
+
+/*00*/
+
+function Animation(props) {
+  <section id="animationOver" className="relative">
+    <h1>Test</h1>
+  </section>
+}
 
 /*01*/
 function CoverVideo(props) {
@@ -2076,10 +2089,18 @@ class Event03 extends Component {
           text1=""
           link={this.props.data.video[7]}
         />
-        <SmallVideo 
+        <Blog
+          number={5}
+          text={this.props.data.videoText[8]}
+          image={this.props.data.blogImage[3]}
+          label={this.props.data.blogLabel[3]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+        <SmallVideo
+          bg={"bg-near-white"}
           videoID="09"
           link={this.props.data.video[8]}
-          text={this.props.data.videoText[8]}
+          text={this.props.data.videoText[9]}
         />
 
         <section className="ma0 flex jcc aic">
@@ -2092,6 +2113,19 @@ class Event03 extends Component {
           label = {this.props.data.photoFullTextLabel[0]}
           bg={true}
         />
+
+        <PhotoMultiple
+          images={this.props.data.photoMultiple2} 
+          label={this.props.data.photoMultipleLabel2}
+          text={this.props.data.photoMultipleText2} 
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Video 
+          videoID="11"
+          text1=""
+          link={this.props.data.video[10]}
+        />
         <Blog
           number={1}
           bg={"bg-near-white"}
@@ -2100,14 +2134,9 @@ class Event03 extends Component {
           label={this.props.data.blogLabel[2]}
           onOpenModal={this.onOpenModal.bind(this)}
         />
-        <Video 
-          videoID="11"
-          text1=""
-          link={this.props.data.video[10]}
-        />
         <CenterSmallVideo 
           videoID="10"
-          text={this.props.data.videoText[9]}
+          text={this.props.data.videoText[10]}
           link={this.props.data.video[9]}
         />
         <PhotoCenterTextFull
