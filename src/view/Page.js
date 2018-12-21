@@ -1586,7 +1586,7 @@ function Blog(props) {
   }
   else {
     text = (
-      <div className={b+" w-100 w-50-l mw500 center ml5-l ph2 pv3"}>
+      <div className="mw7 center w-100 pa4-l pa3 mb4">
         <p className="pre-wrap f5 lh-copy mv0 z4 relative black mt4-ns">{props.text}</p>
       </div>
     );
@@ -1598,13 +1598,23 @@ function Blog(props) {
         <label className="f7 mt2 o-50" >{props.label[0]}</label>
       </div>
     );
+    text = (
+      <div className="mw500 center w-100 w-50-l ph2 pv3 mb4">
+        <p className="pre-wrap f5 lh-copy mv0 z4 relative black mt4-ns">{props.text}</p>
+      </div>
+    );
   } else if(props.number === 2) {
+    column = "";
     img = (
-      <div className={a+" w-100 w-50-l relative tc"}>
-        <img className="mb3" src={props.image[0]}/>
-        <label className="f7 mt2 o-50" >{props.label[0]}</label>
-        <img className="mb3 mt5" src={props.image[1]}/>
-        <label className="f7 mt2 o-50" >{props.label[1]}</label>
+      <div className="w-100">
+        <div className="fl-l w-100 w-50-l relative tc mb5 mb0-ns">
+          <img className="mb3" src={props.image[0]}/>
+          <label className="f7 mt2 o-50" >{props.label[0]}</label>
+        </div>
+        <div className="fr-l w-100 w-50-l relative tc mb5 mb0-ns">
+          <img className="mb3" src={props.image[1]}/>
+          <label className="f7 mt2 o-50" >{props.label[1]}</label>
+        </div>
       </div>
     );
   } else if(props.number >= 3) {
@@ -1806,7 +1816,7 @@ class Event01 extends Component {
           bg={false}
         />
 
-        <EndingVideo text="想知道淡水河更多故事...." link={"https://www.youtube.com/embed/GW71xsyJ8TY?rel=0"}/>
+        <EndingVideo text="來收看，淡水河20年來的故事..." link={"https://www.youtube.com/embed/pJcFZSLkelU?rel=0"}/>
         {/*<Next switchView={this.props.switchView} next={"reborn-erren-river"} prev={"reborn-erren-river"}/>*/}
       </div>
     );
@@ -1913,7 +1923,7 @@ class Event02 extends Component {
           text={this.props.data.photoMultipleLabel}
         />
         */}
-        <EndingVideo text={"想知道二仁溪更多故事...."} link={"https://youtube.com/embed/aeaNKyjoXcs?rel=0"}/>
+        <EndingVideo text={"來看二仁溪，二十年來的故事...."} link={"https://youtube.com/embed/gfI8M0LGMss?rel=0"}/>
       </div>
     );
   }
@@ -1990,7 +2000,7 @@ class Event03 extends Component {
 
         <Transition
           bg={"bg-near-white tc"}
-          text={"轉場文字"}
+          text={this.props.data.transitionText[0]}
         />
         <Transition
           title={"transitionTitle"}
@@ -2042,12 +2052,6 @@ class Event03 extends Component {
           label={this.props.data.blogLabel[1]}
           onOpenModal={this.onOpenModal.bind(this)}
         />
-
-        <CenterSmallVideo 
-          videoID="05"
-          text={this.props.data.videoText[4]}
-          link={this.props.data.video[4]}
-        />
         <Transition
           title={"transitionTitle"}
           bg={"bg-white black tc"}
@@ -2059,6 +2063,19 @@ class Event03 extends Component {
           text1={this.props.data.videoText[5]}
           link={this.props.data.video[5]}
         />
+
+        <Transition
+          bg={"bg-white tc"}
+          text={this.props.data.transitionText[1]}
+        />
+
+        <CenterSmallVideo
+          color={"invert"}
+          videoID="05"
+          text={this.props.data.videoText[4]}
+          link={this.props.data.video[4]}
+        />
+        
 
         <section style={max} className="pv6-ns pv5 ph3 center">
           <img src={this.props.data.illustrationCrab[6]} className="w-25-ns w-50" />
@@ -2121,11 +2138,6 @@ class Event03 extends Component {
           onOpenModal={this.onOpenModal.bind(this)}
         />
 
-        <Video 
-          videoID="11"
-          text1=""
-          link={this.props.data.video[10]}
-        />
         <Blog
           number={1}
           bg={"bg-near-white"}
@@ -2134,6 +2146,13 @@ class Event03 extends Component {
           label={this.props.data.blogLabel[2]}
           onOpenModal={this.onOpenModal.bind(this)}
         />
+
+        <Video 
+          videoID="11"
+          text1=""
+          link={this.props.data.video[10]}
+        />
+
         <CenterSmallVideo 
           videoID="10"
           text={this.props.data.videoText[10]}
@@ -2145,7 +2164,7 @@ class Event03 extends Component {
           label = {this.props.data.photoFullTextLabel[1]}
           bg={false}
         />
-
+        <EndingVideo text={"一起來守護陸蟹"} link={"https://youtube.com/embed/KyG4mEAyv8E?rel=0"}/>
       </div>
     );
   }
@@ -2277,7 +2296,7 @@ class Event04 extends Component {
           image={this.props.data.panoramaImage}
           label={this.props.data.panoramaLabel}
         />
-
+        <Transition bg={"bg-near-white"} text={this.props.data.transitionText[0]}/>
         <Transition text={this.props.data.photoSlideText}/>
 
         <TimeChangeFull
@@ -2344,18 +2363,18 @@ class Event04 extends Component {
           image={this.props.data.blogImage[0]}
           label={this.props.data.blogLabel[0]}
         />
+        <Blog
+          number={2}
+          text={this.props.data.videoText[6]}
+          image={this.props.data.blogImage[3]}
+          label={this.props.data.blogLabel[3]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
         <Video
           position={"fr-l"}
           videoID="05"
           link={this.props.data.video[6]}
-          text1={this.props.data.videoText[6]}
-        />
-        <Blog
-          number={0}
-          text=""
-          image={this.props.data.blogImage[3]}
-          label={this.props.data.blogLabel[3]}
-          onOpenModal={this.onOpenModal.bind(this)}
+          text1={this.props.data.videoText[7]}
         />
         <Video
           position={"fr-l"}
@@ -2383,7 +2402,7 @@ class Event04 extends Component {
           image = {this.props.data.photoFull[3]}
           label = {this.props.data.photoFullTextLabel[3]}
         />
-        <EndingVideo text="一起來關心我們的海洋" link={"https://www.youtube.com/embed/fUwZID2Bikg?rel=0"}/>
+        <EndingVideo text="一起來關心我們的海岸" link={"https://www.youtube.com/embed/QCldTOv3-JM?rel=0"}/>
       </div>
     );
   }
@@ -2509,6 +2528,8 @@ class Event05 extends Component {
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
         />
+
+        <EndingVideo text={"了解更多，關於金門鱟..."} link={"https://youtube.com/embed/nlWGkBTafkc?rel=0"}/>
       </div>
     );
   }
