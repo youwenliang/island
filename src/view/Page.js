@@ -23,6 +23,7 @@ import kinmenMap from '../assets/images/kinmen.jpg';
 import googleEarthLogo from '../assets/images/google_earth.svg';
 import tvLine from '../assets/images/tvline-4.png';
 import ship from '../assets/images/machinemap.svg';
+import scrollship from '../assets/images/時光機.svg';
 
 // import mousewheel from 'jquery-mousewheel';
 // import {TweenMax} from "gsap/all";
@@ -304,6 +305,13 @@ function CoverVideo(props) {
     }
   }
 
+  var ship = {
+    left: 0,
+    right: 0,
+    margin: "0 auto",
+    bottom: "60px"
+  }
+
   return (
     <section id="cover" className="vh-100 flex aic relative video-content relative">
       <div className="w-100 h-100 absolute z4 pn" style={gradient}/>
@@ -323,6 +331,9 @@ function CoverVideo(props) {
         </div>
       </div>
       {phone}
+      <figure className="scrollship absolute w4 tc z4" style={ship}>
+        <img src={scrollship} width="100"/>
+      </figure>
     </section>
   )
 }
@@ -1459,7 +1470,7 @@ function TimeChangeFull(props) {
     width: "100%"
   }
   var bottomRight = {
-    bottom: "0px",
+    bottom: "40px",
     right: "0px",
     background: "rgba(0,0,0,.2)",
     padding: "20px"
@@ -1489,6 +1500,9 @@ function TimeChangeFull(props) {
     z = "z-1";
     h = "min-vh-200"
   }
+
+  var earth = props.earth ? <GoogleEarthLogo /> : null;
+
   return (
     <section className={h+" flex aic relative bg-black timeChange"}>
       <div className="w-100 h-100 absolute top-left time-clipping fade">
@@ -1500,6 +1514,7 @@ function TimeChangeFull(props) {
           <div className="absolute left-0 right-0 mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
             {text1}
           </div>
+          {earth}
         </div>
       </div>
     </section>
@@ -2455,8 +2470,43 @@ class Event05 extends Component {
           image = {this.props.data.photoFull[0]}
           label = {this.props.data.photoFullTextLabel[0]}
         />
+
+        <Transition
+          text={this.props.data.transitionText}
+        />
+
+        <TimeChangeFull
+          position={"fl-l"}
+          earth = {true}
+          text1=""
+          image = {this.props.data.timeChangePhotos[0]}
+          label = {this.props.data.timeChangeLabels[0]}
+        />
+        <TimeChangeFull
+          position={"fl-l"}
+          earth = {true}
+          text1=""
+          image = {this.props.data.timeChangePhotos[1]}
+          label = {this.props.data.timeChangeLabels[1]}
+        />
+        <TimeChangeFull
+          position={"fl-l"}
+          earth = {true}
+          text1=""
+          image = {this.props.data.timeChangePhotos[2]}
+          label = {this.props.data.timeChangeLabels[2]}
+        />
+        <TimeChangeFull
+          position={"fl-l"}
+          earth = {true}
+          last={true}
+          text1=""
+          image = {this.props.data.timeChangePhotos[3]}
+          label = {this.props.data.timeChangeLabels[3]}
+        />        
       
         <SmallVideo 
+          bg={"bg-white z4"}
           videoID="01"
           link={this.props.data.video[0]}
           text={this.props.data.videoText[0]}
@@ -2465,7 +2515,7 @@ class Event05 extends Component {
         <Blog
           number={2}
           switch={false}
-          bg={"bg-near-white"}
+          bg={"bg-near-white z4"}
           text={this.props.data.blogText[0]}
           image={this.props.data.blogImage[0]}
           label={this.props.data.blogLabel[0]}

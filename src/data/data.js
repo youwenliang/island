@@ -133,7 +133,7 @@ var data = {
 
         // CoverVideo
         "coverTitle": "/images/titles/01.svg",
-        "coverDescription": "台北人熟悉的淡水河，也曾經堆滿了垃圾？\n\n一起乘著島嶼時光機，回首垃圾山，臭氣憶當年。",
+        "coverDescription": "台北人熟悉的淡水河，也曾經堆滿了垃圾？\n一起乘著島嶼時光機，回首垃圾山，臭氣憶當年。",
         "coverVideo": "/events/changing-tamsui-river/videos/A18(底圖動態02).mp4",
 
         // Taiwan
@@ -241,7 +241,7 @@ var data = {
         "photoTextLabel": [],
 
         "photoImage": [
-            "https://fakeimg.pl/600x480/?text=Chart&retina=1"
+            "/events/changing-tamsui-river/illustrations/chart.svg",
         ],
 
         // PhotoContrast
@@ -738,7 +738,7 @@ var data = {
     "photoFullTextLabel": ["後豐港聚落", "後豐港灣被填平", ""],
 
     // TimeChange
-    "timeChangeText": "漁業曾經造就後豐港的繁榮，聚落前原本有片天然的灣澳，只要走出家門口，魚蝦貝類滿滿是，當地居民還會捉沙蟲，蝦子當作捕魚的餌料，這片潮間帶是他們世代傳承的豐饒之地，是重要的生計來源。\n\n不過政府看中了小三通帶來的前景，進行水頭商港的擴建開發，大規模填海造陸，水頭到後豐港的這片自然海灣被填平，計畫作為商城和遊憩區使用，後豐港從此成為不靠海的漁村。",
+    "timeChangeText": "",
 
     "timeChangeYear": [
         "2006",
@@ -747,14 +747,14 @@ var data = {
         "2018"
     ],
 
-    "timeChangePhoto": [
+    "timeChangePhotos": [
         "/events/kinmen-Hou-feng-kang/E9A.jpg",
         "/events/kinmen-Hou-feng-kang/E9B.jpg",
         "/events/kinmen-Hou-feng-kang/E9C.jpg",
         "/events/kinmen-Hou-feng-kang/E9E.jpg"
     ],
 
-    "timeChangeLabel": [
+    "timeChangeLabels": [
         "2006年後豐港聚落前還是自然海灣",
         "2010年已看出第一期填海範圍",
         "2013年後豐港聚落前的填海狀況",
@@ -848,6 +848,8 @@ var data = {
         "金門成片的高粱田，大多是和金門酒廠契作的農民所種植",
         "隨處可見的風獅爺具有鎮風避邪之意，護持著金門子民"
     ],
+
+    "transitionText": "漁業曾經造就後豐港的繁榮，聚落前原本有片天然的灣澳，只要走出家門口，魚蝦貝類滿滿是，當地居民還會捉沙蟲、蝦子當作捕魚的餌料，這片潮間帶是他們世代傳承的豐饒之地，是重要的生計來源。\n\n不過，政府看中了小三通帶來的前景，進行水頭商港的擴建開發，大規模填海造陸，水頭到後豐港的這片自然海灣被填平，計畫作為商城和遊憩區使用，後豐港從此成為不靠海的漁村。",
 
     // BlogPost (部落格 x 2)
     "blogText": [
