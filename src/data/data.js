@@ -17,7 +17,7 @@ var data = {
           "name": "重生 二仁溪@台南／高雄",
           "image": "/images/1-2_B6.jpg",
           "icon":  "/images/icons/1-2二仁溪.png",
-          "description": "靠著廢五金致富，卻留下污染，造就黑龍江得花多少時間與金錢，才能換回二仁溪的重生？",
+          "description": "靠著廢五金致富，卻留下污染，造就黑龍江。得花多少時間與金錢，才能換回二仁溪的重生？",
           "url": "reborn-erren-river"
         }, {
           "id": "1-3",
@@ -25,7 +25,7 @@ var data = {
           "name": "陸蟹闖天關@屏東 恆春",
           "image": "/images/1-3_C1.jpg",
           "icon":  "/images/icons/1-3陸蟹.png",
-          "description": "當陸蟹媽媽抖動腹部，數十萬的蟹寶寶誕生了，不過牠們若要活下來順利長大，必須勇敢的一關闖過一關，陸蟹的一生，就是一場實境版的生存遊戲。",
+          "description": "從誕生的那一刻起，牠們必須勇敢的一關闖過一關。陸蟹的一生，就是一場實境版的生存遊戲。",
           "url": "land-crabs-survival"
         }, {
           "id": "1-4",
@@ -33,7 +33,7 @@ var data = {
           "name": "漁港的黑色幽默@台東 大武",
           "image": "/images/1-4_D32.jpg",
           "icon":  "/images/icons/1-4港口淤積.png",
-          "description": "漁港變成砂石場，怪手挖不完，漁船出不了海。蓋了六十年，還沒有完工的永續工程。",
+          "description": "漁港變成砂石場，怪手挖不完，漁船出不了海。蓋了快七十年，還沒有完工的永續工程。",
           "url": "dawu-fishing-port"
         }, {
           "id": "1-5",
@@ -41,7 +41,7 @@ var data = {
           "name": "不靠海的金門後豐港@金門",
           "image": "/images/1-5_E7.jpg",
           "icon":  "/images/icons/1-5鱟.png",
-          "description": "金門後豐港，一個名稱有港，卻無法出港的地方。一個以海維生的百年漁村聚落，卻再也不能輕易地親近海。",
+          "description": "一個名稱有港，卻無法出港的地方。一個以海維生的百年漁村聚落，卻再也不能輕易地親近海。",
           "url": "kinmen-Hou-feng-kang"
         }
       ]
