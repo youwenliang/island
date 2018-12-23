@@ -379,6 +379,10 @@ nav .btn {
   min-height: auto !important;
 }
 
+.mw36 {
+  max-width: 36rem;
+}
+
 @media screen and (min-width: 60em) {
   .transitionTitle {
     left: -100px;

@@ -2533,7 +2533,7 @@ class Event05 extends Component {
           label = {this.props.data.photoFullTextLabel[2]}
         />
 
-        <EndingVideo text={"了解更多，關於金門鱟..."} link={"https://youtube.com/embed/nlWGkBTafkc?rel=0"}/>
+        <EndingVideo text={"了解更多，關於金門鱟..."} link={"https://youtube.com/embed/nlWGkBTafkc?start=716&rel=0"}/>
       </div>
     );
   }

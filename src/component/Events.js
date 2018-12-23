@@ -208,10 +208,10 @@ class Events extends Component {
       <div className="cf ph2-ns white">
         {/*<h1 className="dib f2-ns f3 fw7 mv0 mr2 tracked">{event_content[this.state.topics[num]].name.split('@')[0]}</h1>*/}
         <img src={"/images/titles/"+event_content[this.state.topics[num]].num+".svg"} height="80px" alt={event_content[this.state.topics[num]].name}/>
-        <h3 className="dib f4-ns f5 fw4 o-90">{"/ "+event_content[this.state.topics[num]].name.split('@')[1]}</h3>
-        <p className="mw6 f5-ns f6 lh-copy fw5">{event_content[this.state.topics[num]].description}</p>
+        <h3 className="dib f4-ns f5 fw4 o-90">{" "+event_content[this.state.topics[num]].name.split('@')[1]}</h3>
+        <p className="mw36 f5-ns f6 lh-copy fw5">{event_content[this.state.topics[num]].description}</p>
         <Link to={"/ourisland/"+event_content[this.state.topics[num]].url+"/"} target="_blank">
-          <button className="btn cp mt4 white dib mb5" style={btnStyle}>事件連結</button>
+          <button className="btn cp mt4 white dib mb5" style={btnStyle}>了解更多</button>
         </Link>        
       </div>
     )

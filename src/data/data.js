@@ -173,7 +173,7 @@ var data = {
         // TimeChange
         "timeChangeText": [
             "<span class='f6'>不過有些地方，垃圾只是隱藏在腳下。例如新北市五股區二重疏洪道旁的建築廢土，2002 年都是露天棄置，高架道路施工時曾清除了一部分，但兩旁的廢棄物只是用柏油掩蓋，並沒有清出。</span><div class='f3 mt5 tc'><strong>2002</strong> - <span class='o-20'>2018</span></div>",
-            "<span class='f6'>2018 年我們重回現場竟然又發現，新的垃圾與廢土還是持續堆置，可見違法棄置在都市邊緣地帶還是一再上演。</span><div class='f3 mt5 tc'><span class='o-20'>2002</span> - <strong>2018</strong></div>"
+            "<span class='f6'>2018年我們重回現場，發現當年的廢土只是用柏油掩蓋，並沒有清出。新的垃圾與廢土還是持續堆置，可見違法棄置在都市邊緣地帶還是一再上演。</span><div class='f3 mt5 tc'><span class='o-20'>2002</span> - <strong>2018</strong></div>"
         ],
 
         "timeChangePhotos": [
@@ -188,7 +188,7 @@ var data = {
 
         // Video
         "video": [
-            "/events/changing-tamsui-river/videos/A42大漢溪流域變遷陳建志(上好字).mp4",
+            "/events/changing-tamsui-river/videos/A42-1陳建志談變遷調整字幕.mp4",
             "/events/changing-tamsui-river/videos/A41-1陳建志變遷-調整字幕往上.mp4",
             "/events/changing-tamsui-river/videos/A14-1捕鰻苗-調整字幕往上.mp4",
             "/events/changing-tamsui-river/videos/A47淡水河(底圖20181114).mp4"
@@ -705,13 +705,13 @@ var data = {
 
     //CoverVideo
     "coverTitle": "/images/titles/05.svg",
-    "coverDescription": "金門後豐港，一個名稱有港，卻無法出港的地方。\n一個以海維生的百年漁村聚落，卻再也不能輕易地親近海。",
+    "coverDescription": "一個名稱有港，卻無法出港的地方。\n一個以海維生的百年漁村聚落，卻再也不能輕易地親近海。",
     "coverVideo": "/events/kinmen-Hou-feng-kang/videos/E12(金門後豐港填港空拍).mp4",
 
     // Taiwan
     "taiwanText": [
         "金門後豐港的地理位置",
-        "位在金門西南邊的一個漁村聚落，隸屬金門縣金城鎮，早期被稱為洪門港，因為相傳遠祖為明朝武將洪旭，聚落居民大多姓洪，以捕魚維生，至今已經有四五百年歷史。"
+        "位在金門西南邊的一個漁村聚落，隸屬金門縣金城鎮，早期被稱為洪門港，因為相傳遠祖為明朝武將洪旭，聚落居民大多姓洪，以捕魚維生，至今已經有四、五百年歷史。"
     ],
 
     // Illustration
@@ -724,7 +724,7 @@ var data = {
     "photoFullText": [
         "每年一百多萬人次從水頭商港往返金廈兩岸，不過很多人沒注意到，離水頭商港不遠處，有一個名為後豐港的百年漁村，它的興衰跟金門發展息息相關。",
 
-        "填海造陸之下，鱟在金門最愛的產房消失了四分之三，回想2005年，腳下踩的灘地充滿生機，現在是一片白色的死寂。", 
+        "填海造陸之下，鱟在金門最愛的產房消失了四分之三，後豐港居民洪德舜回想之前腳下踩的灘地充滿生機，現在是一片白色的死寂。", 
 
         "下一個二十年，金門又會變成什麼樣子呢？"
     ],
@@ -767,7 +767,7 @@ var data = {
         "/events/kinmen-Hou-feng-kang/videos/E9鱟爬行(乾淨版).mp4",
         "/events/kinmen-Hou-feng-kang/videos/E13鱟生活史動畫(已上字).mp4",
         "/events/kinmen-Hou-feng-kang/videos/E67洪德舜談鱟的變遷(已上好字).mp4",
-        "/events/kinmen-Hou-feng-kang/videos/E71金門結語(已上好字).mp4"
+        "/events/kinmen-Hou-feng-kang/videos/E71金門結語.mp4"
     ],
 
     "videoText": [
@@ -775,11 +775,11 @@ var data = {
 
         "鱟是一種比恐龍還古老的生物，早在四億五千萬年前，牠們的祖先就已經生活在地球上，由於海岸開發，棲地破壞，多年來在台灣本島幾乎已經很難看到鱟的蹤跡。\n\n當年因為兩岸情勢緊張，金門海岸是閒人勿進的國防要地，才意外的保留了完整棲地，讓金門成為鱟的天堂，沒想到兩岸情勢轉彎，小三通啟動，卻讓鱟面臨了另一場生存戰役。",
 
-        "全世界有四種鱟，分布在台灣中國及日本沿海的是三棘鱟，鱟的生活史相當有趣，隨著成長過程，牠們會尋找不同的棲地生活。",
+        "全世界有四種鱟，分布在台灣、中國及日本沿海的是三棘鱟，鱟的生活史相當有趣，隨著成長過程，牠們會尋找不同的棲地生活。",
 
         "",
 
-        "金門在二十年間快速變化，關心金門發展的人想說哪些話?"
+        ""
     ],
 
     // Photo Multiple
@@ -792,7 +792,7 @@ var data = {
         "/events/kinmen-Hou-feng-kang/E42.jpg",
         "/events/kinmen-Hou-feng-kang/E68.jpg",
         "/events/kinmen-Hou-feng-kang/E70.jpg",
-        "/events/kinmen-Hou-feng-kang/E58.jpg",
+        "/events/kinmen-Hou-feng-kang/E73.jpg",
         "/events/kinmen-Hou-feng-kang/E56.jpg",
         "/events/kinmen-Hou-feng-kang/E50.jpg",
         "/events/kinmen-Hou-feng-kang/E59.jpg",
@@ -801,18 +801,18 @@ var data = {
     "timelineContent": "而金門人又想要什麼樣的生活呢？\n\n1950年代兩岸情勢緊張，金門居民在砲火下求生，生活困苦發展也停滯，解除軍管之後，金門正急促的加緊腳步，想要趕上進度，然而島嶼資源有限，先天缺水，土地較貧瘠，在快速開發之下，如何留下最珍貴的事物，而不是複製以往的發展模式，找到屬於金門自己的未來呢？",
 
     "timelineText": [
-        "金門解除戰地任務，尋求定位",
-        "金馬小三通，開啟兩岸交流",
-        "金門尚義機場擴建，破壞栗喉蜂虎棲地",
-        "水頭商港周邊持續進行填海造陸工程",
-        "連接大小金門的金門大橋動工，蓋蓋停停被戲稱為選舉橋",
-        "水頭商港聯外道路闢建，破壞浯江溪口生態",
-        "雙口海岸渡假村BOT案，民眾反彈下喊停",
-        "小金門中墩出海口改善工程完工後，影響潮間帶生態",
-        "金門工商休閒園區BOT案興建中",
-        "大型開發紛紛進駐，其中昇恆昌商場結合飯店，衝擊水獺棲地",
-        "金門博奕公投，最後不同意設置博奕專區",
-        "金門從中國引水工程啟用儀式"
+        "金門解除戰地任務，尋求定位。",
+        "金馬小三通，開啟兩岸交流。",
+        "金門尚義機場擴建，破壞栗喉蜂虎棲地。",
+        "水頭商港周邊持續進行填海造陸工程。",
+        "連接大小金門的金門大橋動工，蓋蓋停停被戲稱為選舉橋。",
+        "水頭商港聯外道路闢建，破壞浯江溪口生態。",
+        "雙口海岸渡假村BOT案，民眾反彈下喊停。",
+        "小金門中墩出海口改善工程完工後，影響潮間帶生態。",
+        "金門工商休閒園區BOT案第一期風獅爺購物中心，完工營運。",
+        "昇恆昌商場結合飯店，引發影響水獺棲地及飲用水安全疑慮。",
+        "金門博奕公投，最後不同意設置博奕專區。",
+        "金門從中國引水工程啟用儀式。"
     ],
 
     "timelineYear": [
@@ -836,10 +836,10 @@ var data = {
         "/events/kinmen-Hou-feng-kang/E62-栗喉蜂虎.jpg",
         "/events/kinmen-Hou-feng-kang/E32-2011.06金門.jpg",
         "/events/kinmen-Hou-feng-kang/E65-2004.11.14金門高粱田.JPG",
-        "/events/kinmen-Hou-feng-kang/E64-2011.06金門.jpg",
+        "/events/kinmen-Hou-feng-kang/E72-2011.06金門.jpg",
     ],
 
-    "photoswitchText": "想一想，金門有什麼樣的魅力吸引觀光客呢？\n\n坑道、碉堡，隨處可見的戰地色彩；古厝、洋樓，保留完整的傳統聚落；鸕鶿、栗喉蜂虎，豐富的自然生態；風獅爺、高粱田，數不清的人文風情；這是金門的獨有的特色。",
+    "photoswitchText": "想一想，金門有什麼樣的魅力吸引觀光客呢？\n\n坑道、碉堡，隨處可見的戰地色彩；古厝、洋樓，保留完整的傳統聚落；鸕鶿、栗喉蜂虎，豐富的自然生態；風獅爺、高粱田，數不清的人文風情；這是金門獨有的特色。",
 
     "photoswitchLabel": [
         "大片閩式傳統聚落，部分修復後成為民宿，也成為觀光特色",
