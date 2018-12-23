@@ -1504,7 +1504,7 @@ function TimeChangeFull(props) {
   var earth = props.earth ? <GoogleEarthLogo text={props.earthText} /> : null;
 
   return (
-    <section className={h+" flex aic relative bg-black timeChange"}>
+    <section className={h+" flex aic relative bg-black timeChange "+z}>
       <div className="w-100 h-100 absolute top-left time-clipping fade">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
           <figure className="w-100 ma0">
@@ -1515,6 +1515,67 @@ function TimeChangeFull(props) {
             {text1}
           </div>
           {earth}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function TimeChangeSide(props) {
+
+  var z = "";
+  var h = "min-vh-150"
+
+  if(props.last) {
+    z = "z-1";
+    h = "min-vh-200"
+  }
+
+  var halfImageContain = {
+    height: "70%",
+    objectFit: "contain"
+  }
+
+  var halfImageCover = {
+    height: "100%",
+    objectFit: "cover"
+  }
+
+  var bottomRight = {
+    bottom: "0px",
+    right: "0px",
+    background: "rgba(0,0,0,.2)",
+    padding: "20px"
+  }
+
+  var content = null;
+  if(props.text1 !== "") {
+    content = (
+      <div className="fl-l w-50 pre-wrap">
+        <div className="mw500 center ml5-l ph2 pv3">
+          <div className="w-100 h-100 absolute pn top-left" />
+          <p className="pre-wrap f5 lh-copy mv0 z4 relative black mt0-ns mt4" dangerouslySetInnerHTML={{__html:props.text1}}></p>
+        </div>
+      </div>
+    )
+  } else {
+    content = (
+      <figure className="fr-l w-50 ma0 h-100 relative">
+        <img style={halfImageCover} src={props.image[1]} width="100%" alt="background"/>
+        <label className="white absolute" style={bottomRight}>{props.label}</label>
+      </figure>
+    )
+  }
+
+  
+  return (
+    <section className={h+" flex aic relative bg-white timeChange "+z}>
+      <div className="w-100 h-100 absolute top-left time-clipping fade cf">
+        <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
+          <figure className="fr-l w-50 ma0 h-100 flex aic">
+            <img style={halfImageContain} src={props.image[0]} width="100%" alt="background"/>
+          </figure>
+          {content}
         </div>
       </div>
     </section>
@@ -2271,7 +2332,6 @@ class Event04 extends Component {
     return (
       <div>
         <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
-        
         <Taiwan
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
@@ -2371,32 +2431,59 @@ class Event04 extends Component {
           content={this.props.data.timelineContent}
         />
 
-        <PhotoText
-          order="left"
-          color="invert"
-          text={this.props.data.photoText[0]}
+        <TimeChangeSide
+          text1={this.props.data.photoText[0]}
           image = {this.props.data.photoImage[0]}
         />
+        <TimeChangeSide
+          last={true}
+          text1={this.props.data.photoText[0]}
+          image = {this.props.data.photoImage[1]}
+        />
 
-        <SmallVideo 
+        <SmallVideo
+          bg={"bg-near-white z4"}
           videoID="03"
           link={this.props.data.video[2]}
           text={this.props.data.videoText[2]}
         />
 
         <PhotoContrast 
-          bg={"bg-near-white"}
+          bg={"bg-white"}
           images={this.props.data.photocontrast}
           text={this.props.data.photocontrastText}
           year={this.props.data.photocontrastYear}
         />
         <Transition
+          bg={"bg-near-white"}
           text={this.props.data.photoFullText[4]}
+        />
+
+        <TimeChangeSide
+          text1=""
+          image = {this.props.data.timeChangeSidePhotos[0]}
+          label = {this.props.data.timeChangeSideLabels[0]}
+        />
+        <TimeChangeSide
+          text1=""
+          image = {this.props.data.timeChangeSidePhotos[1]}
+          label = {this.props.data.timeChangeSideLabels[1]}
+        />
+        <TimeChangeSide
+          text1=""
+          image = {this.props.data.timeChangeSidePhotos[2]}
+          label = {this.props.data.timeChangeSideLabels[2]}
+        />
+        <TimeChangeSide
+          text1=""
+          last={true}
+          image = {this.props.data.timeChangeSidePhotos[3]}
+          label = {this.props.data.timeChangeSideLabels[3]}
         />
         
         <Blog
           number={2}
-          bg={"bg-near-white"}
+          bg={"bg-near-white z4"}
           text={this.props.data.blogText[0]}
           image={this.props.data.blogImage[0]}
           label={this.props.data.blogLabel[0]}
@@ -2404,6 +2491,7 @@ class Event04 extends Component {
         />
         <Blog
           number={2}
+          bg={"bg-white"}
           text={this.props.data.videoText[6]}
           image={this.props.data.blogImage[3]}
           label={this.props.data.blogLabel[3]}

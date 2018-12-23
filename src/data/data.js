@@ -608,11 +608,22 @@ var data = {
       "photoText": [
           "突出海岸的人工結構物，會阻擋原本沿岸流及漂沙的路徑，造成上游那一側的海岸淤沙堆積，下游側的海岸，因為沙源減少，逐漸出現侵蝕現象。"
       ],
-
-      "photoTextLabel": [],
-
       "photoImage": [
-          "/events/changing-tamsui-river/illustrations/chart.svg",
+          ["/events/dawu-fishing-port/illustrations/突1.svg"],
+          ["/events/dawu-fishing-port/illustrations/突2.svg"],
+      ],
+
+      "timeChangeSidePhotos": [
+        ["/events/dawu-fishing-port/illustrations/和美1.svg", "/events/dawu-fishing-port/D19.jpg"],
+        ["/events/dawu-fishing-port/illustrations/和美2.svg", "/events/dawu-fishing-port/D18.jpg"],
+        ["/events/dawu-fishing-port/illustrations/和美3.svg", "/events/dawu-fishing-port/D15.jpg"],
+        ["/events/dawu-fishing-port/illustrations/和美4.svg", "/events/dawu-fishing-port/D16.jpg"],
+      ],
+      "timeChangeSideLabels": [
+        "1993年 和美漁港被沙淤滿，金沙灣沙灘消失",
+        "2004年 和美漁港淤沙被抽到金沙灣養灘",
+        "2004年 補注沙源後，金沙灣海灘恢復自然景觀",
+        "2005年 金沙灣海灘沙子又大量流失"
       ],
 
       // PhotoSwitch
