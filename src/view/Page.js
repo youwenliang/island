@@ -1790,7 +1790,7 @@ class Event01 extends Component {
         <TimeChangeFull
           position={"fl-l"}
           last={true}
-          text1={this.props.data.photoFullText[4]}
+          text1={this.props.data.photoFullText[5]}
           image = {this.props.data.photoFull[4]}
           label = {this.props.data.photoFullTextLabel[4]}
         />
@@ -1866,7 +1866,7 @@ class Event02 extends Component {
         />
 
         <Timeline
-          content={"<p class='f3 fw7 tracked mb0'>二仁溪河川整治年代列表</p>"}
+          content={"<p class='f3 fw7 tracked mb0'>長達三十年，二仁溪還是無法擺脫廢五金陰影。</p>"}
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
@@ -1889,6 +1889,10 @@ class Event02 extends Component {
           image={this.props.data.blogImage[0]}
           label={this.props.data.blogLabel[0]}
           onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Transition
+          text={this.props.data.transitionText}
         />
 
         <PhotoSwitch 
@@ -1923,7 +1927,7 @@ class Event02 extends Component {
           text={this.props.data.photoMultipleLabel}
         />
         */}
-        <EndingVideo text={"來看二仁溪，二十年來的故事...."} link={"https://youtube.com/embed/gfI8M0LGMss?rel=0"}/>
+        <EndingVideo text={"來看二仁溪，二十年來承受了什麼..."} link={"https://youtube.com/embed/gfI8M0LGMss?rel=0"}/>
       </div>
     );
   }
