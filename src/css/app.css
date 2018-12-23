@@ -976,7 +976,7 @@ ul.none {
 }
 
 .scrollship {
-  animation: float 2.5s infinite ease-in-out;
+  animation: float 2s infinite ease-in-out;
 }
 
 @keyframes float {
@@ -1004,7 +1004,7 @@ ul.none {
   left: 0px;
   right: 0px;
   margin: auto;
-  animation: move 2.5s infinite ease-out;
+  animation: move 2s infinite ease-out;
   opacity: 0;
 }
 
@@ -1021,7 +1021,7 @@ ul.none {
   left: 0px;
   right: 0px;
   margin: auto;
-  animation: move 2.5s infinite ease-out .75s;
+  animation: move 2s infinite ease-out .5s;
   opacity: 0;
 }
 

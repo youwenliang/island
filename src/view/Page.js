@@ -387,7 +387,7 @@ function Taiwan(props) {
           </div>
         </div>
       </div>
-      <GoogleEarthLogo />
+      <GoogleEarthLogo text={"The image is from 2018/Google Earth  Data SIO,NOAA,U.S. Navy,NGA,GEBCO Image Landsat/Copemicus"} />
     </section>
   )
 }
@@ -409,7 +409,7 @@ function GoogleEarthLogo(props) {
   }
   return (
     <div style={style}>
-      ​​The image is from 2018/Google Earth  Data SIO,NOAA,U.S. Navy,NGA,GEBCO Image Landsat/Copemicus
+      ​​{props.text}
     </div>
   )
 }
@@ -764,7 +764,7 @@ function PhotoMultiple(props) {
   return (
     <section className="flex aic relative bg-white flex-column pv6-l pv4 auto-scroll">      
       <div className="mw80 center cf black mb5 ph4-ns ph3 w-100">
-        <div className="mw7 w-100 center bg-white">
+        <div className="mw7 w-100 center bg-white pre-wrap">
           <p className="f5 lh-copy mv0">{props.text}</p>
         </div>
       </div>
@@ -802,8 +802,8 @@ function PhotoContrast(props) {
               handleSize={40}
               sliderPositionPercentage={0.8}
             />
-            <span className="mt3 right-20 absolute white top f3 fw5" data-type="original">{props.year[1]}</span>
-            <span className="mt3 left-20 absolute white top f3 fw5" data-type="modified">{props.year[0]}</span>
+            {/*<span className="mt3 right-20 absolute white top f3 fw5" data-type="original">{props.year[1]}</span>
+            <span className="mt3 left-20 absolute white top f3 fw5" data-type="modified">{props.year[0]}</span>*/}
           </div>
         </div>
     </section>
@@ -979,7 +979,7 @@ function CenterVideo(props) {
   }
 
   return (
-    <section className="min-vh-200 flex aic relative pv6-l pv4 video-content bg-black">
+    <section className="min-vh-200 flex aic relative pv6-l pv4 video-content bg-black z4">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={mask+" w-100 h-100 absolute pn top-left z4"}/>
         {/*<div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>*/}
@@ -1501,7 +1501,7 @@ function TimeChangeFull(props) {
     h = "min-vh-200"
   }
 
-  var earth = props.earth ? <GoogleEarthLogo /> : null;
+  var earth = props.earth ? <GoogleEarthLogo text={props.earthText} /> : null;
 
   return (
     <section className={h+" flex aic relative bg-black timeChange"}>
@@ -2025,7 +2025,7 @@ class Event03 extends Component {
           title={"transitionTitle"}
           bg={"bg-white black tc"}
           illustration={this.props.data.illustrationCrab[0]}
-          text={"陸蟹生存 - 第一關"}
+          text={"弱肉強食 生死關"}
         />
         
         <CenterSmallVideo 
@@ -2038,7 +2038,7 @@ class Event03 extends Component {
           title={"transitionTitle"}
           bg={"bg-white black tc"}
           illustration={this.props.data.illustrationCrab[1]}
-          text={"陸蟹生存 - 第二關"}
+          text={"起手無回 抓去關"}
         />
 
         <Blog
@@ -2053,7 +2053,7 @@ class Event03 extends Component {
           title={"transitionTitle"}
           bg={"bg-white black tc"}
           illustration={this.props.data.illustrationCrab[2]}
-          text={"陸蟹生存 - 第三關"}
+          text={"無家可歸 難過關"}
         />
 
         <Video 
@@ -2071,17 +2071,7 @@ class Event03 extends Component {
           label={this.props.data.blogLabel[1]}
           onOpenModal={this.onOpenModal.bind(this)}
         />
-        <Transition
-          title={"transitionTitle"}
-          bg={"bg-white black tc"}
-          illustration={this.props.data.illustrationCrab[3]}
-          text={"陸蟹生存 - 第四關"}
-        />
-        <Video 
-          videoID="06"
-          text1={this.props.data.videoText[5]}
-          link={this.props.data.video[5]}
-        />
+        
 
         <Transition
           bg={"bg-white tc"}
@@ -2093,6 +2083,18 @@ class Event03 extends Component {
           videoID="05"
           text={this.props.data.videoText[4]}
           link={this.props.data.video[4]}
+        />
+
+        <Transition
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationCrab[3]}
+          text={"蟹生好卡 障礙關"}
+        />
+        <Video 
+          videoID="06"
+          text1={this.props.data.videoText[5]}
+          link={this.props.data.video[5]}
         />
         
 
@@ -2114,7 +2116,7 @@ class Event03 extends Component {
           title={"transitionTitle"}
           bg={"bg-white black tc"}
           illustration={this.props.data.illustrationCrab[4]}
-          text={"陸蟹生存 - 魔王關"}
+          text={"步步驚心 鬼門關"}
         />
 
         <Transition
@@ -2127,9 +2129,9 @@ class Event03 extends Component {
         />
         <Blog
           number={5}
-          text={this.props.data.videoText[8]}
-          image={this.props.data.blogImage[3]}
-          label={this.props.data.blogLabel[3]}
+          text={this.props.data.blogText[3]}
+          image={this.props.data.blogImage[4]}
+          label={this.props.data.blogLabel[4]}
           onOpenModal={this.onOpenModal.bind(this)}
         />
         <SmallVideo
@@ -2157,19 +2159,21 @@ class Event03 extends Component {
           onOpenModal={this.onOpenModal.bind(this)}
         />
 
-        <Blog
-          number={1}
-          bg={"bg-near-white"}
-          text={this.props.data.blogText[2]}
-          image={this.props.data.blogImage[2]}
-          label={this.props.data.blogLabel[2]}
-          onOpenModal={this.onOpenModal.bind(this)}
+        <Transition
+          text={this.props.data.transitionText[2]}
         />
 
         <Video 
-          videoID="11"
+          videoID="12"
           text1=""
           link={this.props.data.video[10]}
+        />
+
+        <SmallVideo 
+          videoID="11"
+          bg={"bg-near-white"}
+          text={this.props.data.blogText[2]}
+          link={this.props.data.video[11]}
         />
 
         <CenterSmallVideo 
@@ -2319,23 +2323,29 @@ class Event04 extends Component {
         <Transition text={this.props.data.photoSlideText}/>
 
         <TimeChangeFull
-          position={"fl-l"}
+          position={"fr-l"}
+          earth={true}
+          earthText = {"Image is from 2018/©️TerraMetrics,©️DigitalGlobe,©️CNES/Airbus"}
           text1={this.props.data.photoSlideLabel[0]}
           image = {this.props.data.photoSlidePhoto[0]}
-          label = ""
+          label = "2013年 大武漁港"
         />
         <TimeChangeFull
-          position={"fl-l"}
+          position={"fr-l"}
+          earth={true}
+          earthText = {"Image is from 2018/©️TerraMetrics,©️DigitalGlobe,©️CNES/Airbus"}
           text1={this.props.data.photoSlideLabel[1]}
           image = {this.props.data.photoSlidePhoto[1]}
-          label = ""
+          label = "2016年 大武漁港"
         />
         <TimeChangeFull
-          position={"fl-l"}
+          position={"fr-l"}
           last={true}
+          earth={true}
+          earthText = {"Image is from 2018/©️TerraMetrics,©️DigitalGlobe,©️CNES/Airbus"}
           text1={this.props.data.photoSlideLabel[2]}
           image = {this.props.data.photoSlidePhoto[2]}
-          label = ""
+          label = "2018年 大武漁港"
         />
 
         <CenterVideo 
@@ -2353,6 +2363,20 @@ class Event04 extends Component {
           link={this.props.data.video[4]}
           text1=""
         />
+  
+        <Timeline
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
+          content={this.props.data.timelineContent}
+        />
+
+        <PhotoText
+          order="left"
+          color="invert"
+          text={this.props.data.photoText[0]}
+          image = {this.props.data.photoImage[0]}
+        />
 
         <SmallVideo 
           videoID="03"
@@ -2369,18 +2393,14 @@ class Event04 extends Component {
         <Transition
           text={this.props.data.photoFullText[4]}
         />
-        {/*<Timeline
-          text={this.props.data.timelineText}
-          year={this.props.data.timelineYear}
-          images={this.props.data.timelineImage}
-          content={this.props.data.timelineContent}
-        />*/}
+        
         <Blog
           number={2}
           bg={"bg-near-white"}
-          text={this.props.data.blogText}
+          text={this.props.data.blogText[0]}
           image={this.props.data.blogImage[0]}
           label={this.props.data.blogLabel[0]}
+          onOpenModal={this.onOpenModal.bind(this)}
         />
         <Blog
           number={2}
@@ -2389,12 +2409,24 @@ class Event04 extends Component {
           label={this.props.data.blogLabel[3]}
           onOpenModal={this.onOpenModal.bind(this)}
         />
+
+        <Transition
+          bg={"bg-near-white"}
+          text={this.props.data.videoText[7]}
+        />
+
         <Video
           position={"fr-l"}
           videoID="05"
           link={this.props.data.video[6]}
-          text1={this.props.data.videoText[7]}
+          text1=""
         />
+
+        <Transition
+          bg={"bg-white tc"}
+          text={"\"你知道台灣有多少座漁港嗎？\""}
+        />
+
         <Video
           position={"fr-l"}
           videoID="04"
@@ -2402,16 +2434,16 @@ class Event04 extends Component {
           text1={this.props.data.videoText[3]}
         />
         <Blog
-          number={0}
-          text=""
+          number={2}
+          text={this.props.data.blogText[1]}
           image={this.props.data.blogImage[1]}
           label={this.props.data.blogLabel[1]}
           onOpenModal={this.onOpenModal.bind(this)}
         />
         <Blog
-          number={0}
+          number={2}
           bg={"bg-near-white"}
-          text=""
+          text={this.props.data.blogText[2]}
           image={this.props.data.blogImage[2]}
           label={this.props.data.blogLabel[2]}
           onOpenModal={this.onOpenModal.bind(this)}
@@ -2421,7 +2453,7 @@ class Event04 extends Component {
           image = {this.props.data.photoFull[3]}
           label = {this.props.data.photoFullTextLabel[3]}
         />
-        <EndingVideo text="一起來關心我們的海岸" link={"https://www.youtube.com/embed/QCldTOv3-JM?rel=0"}/>
+        <EndingVideo text="一起來關心我們的海岸" link={"https://www.youtube.com/embed/C-Au_8Y6tCc?rel=0"}/>
       </div>
     );
   }
@@ -2478,6 +2510,7 @@ class Event05 extends Component {
         <TimeChangeFull
           position={"fl-l"}
           earth = {true}
+          earthText = {"Image is from Google Earth ©️2018  DigitalGlobe"}
           text1=""
           image = {this.props.data.timeChangePhotos[0]}
           label = {this.props.data.timeChangeLabels[0]}
@@ -2485,6 +2518,7 @@ class Event05 extends Component {
         <TimeChangeFull
           position={"fl-l"}
           earth = {true}
+          earthText = {"Image is from Google Earth ©️2018  DigitalGlobe"}
           text1=""
           image = {this.props.data.timeChangePhotos[1]}
           label = {this.props.data.timeChangeLabels[1]}
@@ -2492,6 +2526,7 @@ class Event05 extends Component {
         <TimeChangeFull
           position={"fl-l"}
           earth = {true}
+          earthText = {"Image is from Google Earth ©️2018  DigitalGlobe"}
           text1=""
           image = {this.props.data.timeChangePhotos[2]}
           label = {this.props.data.timeChangeLabels[2]}
@@ -2499,6 +2534,7 @@ class Event05 extends Component {
         <TimeChangeFull
           position={"fl-l"}
           earth = {true}
+          earthText = {"Image is from Google Earth ©️2018  DigitalGlobe"}
           last={true}
           text1=""
           image = {this.props.data.timeChangePhotos[3]}
