@@ -8,6 +8,9 @@ import $ from 'jquery';
 import BeforeAfterSlider from 'react-before-after-slider'; // eslint-disable-line no-unused-vars
 import ReactCompareImage from 'react-compare-image';
 
+import { Controller, Scene } from 'react-scrollmagic';
+import { Tween } from "react-gsap";
+
 import ImageGallery from 'react-image-gallery';
 import Nav from '../component/Nav'
 import Phone from '../component/Phone'
@@ -24,6 +27,12 @@ import googleEarthLogo from '../assets/images/google_earth.svg';
 import tvLine from '../assets/images/tvline-4.png';
 import ship from '../assets/images/machinemap.svg';
 import scrollship from '../assets/images/時光機.svg';
+
+import fish1 from '../assets/images/fish-1.svg';
+import fish2 from '../assets/images/fish-2.svg';
+import fish3 from '../assets/images/fish-3.svg';
+import fish4 from '../assets/images/fish-4.svg';
+import fish5 from '../assets/images/fish-5.svg';
 
 // import mousewheel from 'jquery-mousewheel';
 // import {TweenMax} from "gsap/all";
@@ -383,7 +392,7 @@ function Taiwan(props) {
         <div className="cf black">
           <div className="w-50-l mw500 mh3-l center w-100 fl-l pa4-l pa3 bg-near-white">
             <h2 className="f3 fw7 lh-copy mt0">{props.text1}</h2>
-            <p className="f5 lh-copy mv0">{props.text2}</p>
+            <p className="f5-ns f6 lh-copy mv0">{props.text2}</p>
           </div>
         </div>
       </div>
@@ -423,7 +432,7 @@ function Illustration(props) {
     text2 = (
       <div className="cf black mt50vh">
         <div className="w-50-l mw500 mh3-l center w-100 fr-l pa4-l pa3 bg-white">
-          <p className="f5 lh-copy mv0">{props.text2}</p>
+          <p className="f5-ns f6 lh-copy mv0">{props.text2}</p>
         </div>
       </div>
     )
@@ -440,7 +449,7 @@ function Illustration(props) {
       <div className="mw70 center ph4-ns ph3 w-100 z4 pre-wrap">
         <div className="cf black">
           <div className="w-50-l mw500 mh3-l center w-100 fr-l pa4-l pa3 bg-white">
-            <p className="f5 lh-copy mv0">{props.text1}</p>
+            <p className="f5-ns f6 lh-copy mv0">{props.text1}</p>
           </div>
         </div>
         {text2}
@@ -480,7 +489,7 @@ function PhotoTextFull(props) {
       <div className="cf">
         <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
           <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-          <p className={"f5 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:props.text1}}></p>
+          <p className={"f5-ns f6 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:props.text1}}></p>
         </div>
       </div>
     )
@@ -493,7 +502,7 @@ function PhotoTextFull(props) {
       <div className="cf mt50vh">
         <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
           <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-          <p className={"f5 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:props.text2}}></p>
+          <p className={"f5-ns f6 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:props.text2}}></p>
         </div>
       </div>
     )
@@ -580,19 +589,176 @@ function PhotoText(props) {
   if(props.multiple) {
     h = "";
   }
+  
+  var fish = null;
+
+  if(props.fish) {
+    fish = (
+      <div className="absolute z4">
+        <Controller>
+          <Scene
+            triggerElement="#triggerText"
+            duration={1000}
+            pin={false}
+          >
+          {(progress) => (
+            <Tween
+              from={{
+                css: {
+                  top: '-300px',
+                  left: '100vw',
+                  rotation: -10,
+                }
+              }}
+              to={{
+                css: {
+                  top: '-200px',
+                  left: '-500px',
+                  rotation: 10,
+                }
+              }}
+              totalProgress={progress}
+              paused
+            >
+              <img className="relative" id="fish1" src={fish1} height="90"/>
+            </Tween>
+          )}        
+          </Scene>
+          <Scene
+            triggerElement="#triggerText"
+            duration={1200}
+            pin={false}
+          >
+          {(progress) => (
+            <Tween
+              from={{
+                css: {
+                  top: '-100px',
+                  left: '100vw',
+                  rotation: -10,
+                }
+              }}
+              to={{
+                css: {
+                  top: '0px',
+                  left: '-500px',
+                  rotation: 10,
+                }
+              }}
+              totalProgress={progress}
+              paused
+            >
+              <img className="relative" id="fish2" src={fish2} height="90"/>
+            </Tween>
+          )}        
+          </Scene>
+          <Scene
+            triggerElement="#triggerText"
+            duration={1400}
+            pin={false}
+          >
+          {(progress) => (
+            <Tween
+              from={{
+                css: {
+                  top: '-200px',
+                  left: '100vw',
+                  rotation: -10,
+                }
+              }}
+              to={{
+                css: {
+                  top: '-100px',
+                  left: '-500px',
+                  rotation: 10,
+                }
+              }}
+              totalProgress={progress}
+              paused
+            >
+              <img className="relative" id="fish3" src={fish3} height="90"/>
+            </Tween>
+          )}        
+          </Scene>
+          <Scene
+            triggerElement="#triggerText"
+            duration={1400}
+            pin={false}
+          >
+          {(progress) => (
+            <Tween
+              from={{
+                css: {
+                  top: '400px',
+                  left: '-1500px',
+                  rotation: -10,
+                  scaleX: -1
+                }
+              }}
+              to={{
+                css: {
+                  top: '0px',
+                  left: '100vw',
+                  rotation: 10,
+                  scaleX: -1
+                }
+              }}
+              totalProgress={progress}
+              paused
+            >
+              <img className="relative" id="fish4" src={fish4} height="90"/>
+            </Tween>
+          )}        
+          </Scene>
+          <Scene
+            triggerElement="#triggerText"
+            duration={1000}
+            pin={false}
+          >
+          {(progress) => (
+            <Tween
+              from={{
+                css: {
+                  top: '200px',
+                  left: '-1500px',
+                  rotation: -10,
+                  scaleX: -1
+                }
+              }}
+              to={{
+                css: {
+                  top: '-200px',
+                  left: '100vw',
+                  rotation: 10,
+                  scaleX: -1
+                }
+              }}
+              totalProgress={progress}
+              paused
+            >
+              <img className="relative" id="fish5" src={fish5} height="90"/>
+            </Tween>
+          )}        
+          </Scene>
+        </Controller>
+      </div>
+    )
+  }
+
   return (
     <section className={h+" flex aic relative"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={color1+" w-100 h-100 fixed fixed-content pn flex aic"}>
+          {fish}
           <figure className="center mw70 w-100">
             <img className={"w-50-l w-100 "+photo} src={props.image} alt="description"/>
           </figure>
         </div>
       </div>
-      <div className="mw70 center ph4-ns ph3 w-100 z4 pre-wrap">
+      <div className="mw70 center ph4-ns ph3 w-100 z4 pre-wrap" id="triggerText">
         <div className="cf black">
           <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 "+color2+" "+text}>
-            <p className="f5 lh-copy mv0">{props.text}</p>
+            <p className="f5-ns f6 lh-copy mv0">{props.text}</p>
           </div>
         </div>
       </div>
@@ -637,7 +803,7 @@ function PhotoTextFix(props) {
             <p className="f7 o-50 tc">{props.label}</p>
           </div>
           <div className={"w-100 w-50-l mw500 center ml5-l ph2 pv3 "+color1+" "+text}>
-            <p className="pre-wrap f5 lh-copy mv0 z4 relative black">{props.text}</p>
+            <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black">{props.text}</p>
           </div>
         </div>
       </div>
@@ -659,7 +825,7 @@ function MapText(props) {
       <div className="mw70 center ph4-ns ph3 w-100 z4 pre-wrap">
         <div className="cf black">
           <div className="fr-l w-50-l mw500 mh3-l center w-100 pa4-l pa3 bg-white">
-            <p className="f5 lh-copy mv0">{props.text}</p>
+            <p className="f5-ns f6 lh-copy mv0">{props.text}</p>
           </div>
         </div>
       </div>
@@ -687,7 +853,7 @@ function PhotoSwitch(props) {
     text1 = (
       <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative "+props.position}>
         <div className="w-100 h-100 absolute bg-black o-60 top-left"></div>
-        <p className="f5 lh-copy mv0 relative z4">{props.text1}</p>
+        <p className="f5-ns f6 lh-copy mv0 relative z4">{props.text1}</p>
       </div>
     )
   }
@@ -698,7 +864,7 @@ function PhotoSwitch(props) {
       <div className="cf white mt50vh">
         <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative "+props.position}>
           <div className="w-100 h-100 absolute bg-black o-60 top-left"></div>
-          <p className="f5 lh-copy mv0 relative z4">{props.text2}</p>
+          <p className="f5-ns f6 lh-copy mv0 relative z4">{props.text2}</p>
         </div>
       </div>
     )
@@ -765,7 +931,7 @@ function PhotoMultiple(props) {
     <section className="flex aic relative bg-white flex-column pv6-l pv4 auto-scroll">      
       <div className="mw80 center cf black mb5 ph4-ns ph3 w-100">
         <div className="mw7 w-100 center bg-white pre-wrap">
-          <p className="f5 lh-copy mv0">{props.text}</p>
+          <p className="f5-ns f6 lh-copy mv0">{props.text}</p>
         </div>
       </div>
       <div className="w-100 overflow-hidden" style={height}>
@@ -785,7 +951,7 @@ function PhotoContrast(props) {
     text = (
       <div className="mw80 center cf black mb5">
         <div className="mw7 w-100 center pre-wrap">
-          <p className="f5 lh-copy mv0">{props.text}</p>
+          <p className="f5-ns f6 lh-copy mv0">{props.text}</p>
         </div>
       </div>
     )
@@ -855,7 +1021,7 @@ function Video(props) {
         <div className="cf">
           <div className={props.position+" w-50-l mw500 mh3-l mh3-l center w-100 pa4-l pa3 relative"}>
             <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"pre-wrap f5 lh-copy mv0 z4 relative "+textcolor}>{props.text1}</p>
+            <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative "+textcolor}>{props.text1}</p>
           </div>
         </div>
       
@@ -869,7 +1035,7 @@ function Video(props) {
       <div className="cf mt50vh">
         <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
           <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-          <p className={"pre-wrap f5 lh-copy mv0 z4 relative "+textcolor}>{props.text2}</p>
+          <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative "+textcolor}>{props.text2}</p>
         </div>
       </div>
     )
@@ -932,7 +1098,7 @@ function SmallVideo(props) {
             </video>
           </div>
           <div className="fr-l w-100 w-50-l mw500 center ml5-l ph2 pv3">
-            <p className="pre-wrap f5 lh-copy mv0 z4 relative black mt0-ns mt4">{props.text}</p>
+            <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4">{props.text}</p>
           </div>
         </div>
       </div>
@@ -1044,7 +1210,7 @@ function CenterSmallVideo(props) {
     text = (
       <div className="mw80 center cf black mb5 pre-wrap">
         <div className="mw7 w-100 center">
-          <p className={"f5 lh-copy mv0 "+props.align}>{props.text}</p>
+          <p className={"f5-ns f6 lh-copy mv0 "+props.align}>{props.text}</p>
         </div>
       </div>
     )
@@ -1186,7 +1352,7 @@ function PhotoAudio(props) {
                   <small className="fr end-time pt2">00:00</small>
                 </div>
               </div>
-              <p className="f5 lh-copy mv4">{props.text}</p>
+              <p className="f5-ns f6 lh-copy mv4">{props.text}</p>
             </div>
           </div>
         </div>
@@ -1223,7 +1389,7 @@ function Timeline(props) {
       <div className="grid-item bg-white relative" key={i}>
         <div style={photoGridStyle}></div>
         <div style={textGridStyle} className="pa4 center">
-          <p className="f5 fw6 lh-copy mv2 bg-white dib z4 relative pr2">
+          <p className="f5-ns f6 fw6 lh-copy mv2 bg-white dib z4 relative pr2">
             {"• "+props.year[i]}
           </p>
           <p className="f6 lh-copy mv0">
@@ -1259,7 +1425,7 @@ function Timeline(props) {
   var content = null
 
   if(props.content !== null) {
-    content = (<p className="lh-copy f5 center pre-wrap ph4-ns ph4-ns ph3 mb5" style={max} dangerouslySetInnerHTML={{__html:props.content}}></p>);
+    content = (<p className="lh-copy f5-ns f6 center pre-wrap ph4-ns ph4-ns ph3 mb5" style={max} dangerouslySetInnerHTML={{__html:props.content}}></p>);
   }
 
   return (
@@ -1306,7 +1472,7 @@ function PhotoSlide(props) {
       text = (
         <div className="w-50-l mw500 pa4-l pa3 absolute" style={textStyle}>
           <div className="bg-white o-85 w-100 h-100 absolute pn top-left"></div>
-          <p className="pre-wrap f5 lh-copy mv0 z4 relative black">
+          <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black">
             {props.text[i]}
           </p>
         </div>
@@ -1491,7 +1657,7 @@ function TimeChangeFull(props) {
       <div className="cf">
         <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
           <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-          <p className={"f5 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:props.text1}}></p>
+          <p className={"f5-ns f6 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:props.text1}}></p>
         </div>
       </div>
     )
@@ -1554,7 +1720,7 @@ function TimeChangeSide(props) {
       <div className="fl-l w-50 pre-wrap">
         <div className="mw500 center ml5-l ph2 pv3">
           <div className="w-100 h-100 absolute pn top-left" />
-          <p className="pre-wrap f5 lh-copy mv0 z4 relative black mt0-ns mt4" dangerouslySetInnerHTML={{__html:props.text1}}></p>
+          <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4" dangerouslySetInnerHTML={{__html:props.text1}}></p>
         </div>
       </div>
     )
@@ -1615,7 +1781,7 @@ function Blog(props) {
   var height = {
     height: "400px"
   }
-  var w = "600px";
+  var w = "768px";
 
   for (var i = 0; i < props.image.length; i++){
     var item = {
@@ -1643,7 +1809,8 @@ function Blog(props) {
   var container = {
     gridTemplateColumns: columns,
     height: "440px",
-    paddingBottom: "40px"
+    paddingBottom: "40px",
+    justifyContent: "start"
   }
 
   if(props.text === "") {
@@ -1663,7 +1830,7 @@ function Blog(props) {
   else {
     text = (
       <div className="mw7 center w-100 pa4-l pa3 mb4">
-        <p className="pre-wrap f5 lh-copy mv0 z4 relative black mt4-ns">{props.text}</p>
+        <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt4-ns">{props.text}</p>
       </div>
     );
   }
@@ -1676,7 +1843,7 @@ function Blog(props) {
     );
     text = (
       <div className="mw500 center w-100 w-50-l ph2 pv3 mb4">
-        <p className="pre-wrap f5 lh-copy mv0 z4 relative black mt4-ns">{props.text}</p>
+        <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt4-ns">{props.text}</p>
       </div>
     );
   } else if(props.number === 2) {
@@ -1698,7 +1865,7 @@ function Blog(props) {
     mw = "";
     text = (
       <div className="mw7 center w-100 pa4-l pa3 mb4">
-        <p className="pre-wrap f5 lh-copy mv0 z4 relative black mt4-ns">{props.text}</p>
+        <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt4-ns">{props.text}</p>
       </div>
     );
     img = (
@@ -1807,6 +1974,7 @@ class Event01 extends Component {
           color="invert"
           text={this.props.data.photoText[0]}
           image = {this.props.data.photoImage[0]}
+          fish={true}
         />
 
         <TimeChange
@@ -2164,7 +2332,7 @@ class Event03 extends Component {
           <img src={this.props.data.illustrationCrab[7]} className="w-25-ns w-50" />
           <img src={this.props.data.illustrationCrab[8]} className="w-25-ns w-50" />
           <img src={this.props.data.illustrationCrab[9]} className="w-25-ns w-50" />
-          <p className="lh-copy pre-wrap f5 mt5">{this.props.data.videoText[6]}</p>
+          <p className="lh-copy pre-wrap f5-ns f6 mt5">{this.props.data.videoText[6]}</p>
         </section>
 
         <Video 

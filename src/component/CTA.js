@@ -19,7 +19,7 @@ class CTA extends Component {
                     <img src={cta1} width="210" height="210"/>
                   </figure>
                   <p className="f4 fw5 mt0">島FB</p>
-                  <p className="f5 fw4">加入粉絲  掌握最新資訊</p>
+                  <p className="f5-ns f6 fw4">加入粉絲  掌握最新資訊</p>
                 </div>
               </a>
             </div>
@@ -30,7 +30,7 @@ class CTA extends Component {
                     <img src={cta2} width="210" height="210"/>
                   </figure>
                   <p className="f4 fw5 mt0">島Youtube</p>
-                  <p className="f5 fw4">訂閱影音  隨時看不漏失</p>
+                  <p className="f5-ns f6 fw4">訂閱影音  隨時看不漏失</p>
                 </div>
               </a>
             </div>
@@ -41,7 +41,7 @@ class CTA extends Component {
                     <img src={cta3} width="210" height="210"/>
                   </figure>
                   <p className="f4 fw5 mt0">島官網</p>
-                  <p className="f5 fw4">詳細收集  20年環境報導</p>
+                  <p className="f5-ns f6 fw4">詳細收集  20年環境報導</p>
                 </div>
               </a>
             </div>

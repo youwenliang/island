@@ -774,6 +774,13 @@ ul.none {
   letter-spacing: .4px;
 }
 
+@media screen and (min-width: 30em) {
+  .f5-ns {
+    font-size: 1.125rem;
+    letter-spacing: .4px;
+  }
+}
+
 .f6 {
   font-size: 1rem;
 }
