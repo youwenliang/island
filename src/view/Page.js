@@ -34,6 +34,10 @@ import fish3 from '../assets/images/fish-3.svg';
 import fish4 from '../assets/images/fish-4.svg';
 import fish5 from '../assets/images/fish-5.svg';
 
+import cta1 from '../assets/images/CTA-Icons-1.svg';
+import cta2 from '../assets/images/CTA-Icons-2.svg';
+import cta3 from '../assets/images/CTA-Icons-3.svg';
+
 // import mousewheel from 'jquery-mousewheel';
 // import {TweenMax} from "gsap/all";
 
@@ -66,6 +70,8 @@ class Page extends Component {
     });
   }
   switchView = (view) => {
+    document.body.classList.add('ds');
+    document.getElementById('loading').classList.remove('fade');
     $(document).scrollTop(0);
     this.setState({
       view: view,
@@ -88,6 +94,13 @@ class Page extends Component {
   //     }
   //   });
   // }
+
+  componentDidUpdate() {
+    setTimeout(function(){
+      document.getElementById('loading').classList.add('fade');
+      document.body.classList.remove('ds');
+    },600);
+  }
 
   componentDidMount(){
     var $t = this;
@@ -361,8 +374,8 @@ function Taiwan(props) {
     left: "75%",
     top: "50%",
     margin: 0,
-    width: "88px",
-    height: "80px",
+    width: "100px",
+    height: "100px",
     transform: "translate("+props.map+")"
   }
   var l = props.text1.split("的")[0];
@@ -371,7 +384,7 @@ function Taiwan(props) {
     background: "#222222",
     color: "white",
     padding: "5px 10px 5px 10px",
-    top: "48px",
+    top: "57px",
     position: "relative",
     right: r,
     zIndex: "-1",
@@ -382,9 +395,9 @@ function Taiwan(props) {
       <div className="w-100 h-100 absolute top-left clipping bg-dark-gray">
         <div className="w-100 h-100 fixed fixed-content pn flex aic" style={bgStyle}>
           <TvLine />
-          <figure className="absolute" style={position}>
-            <label className="taiwan-label" style={label}>{props.text1.split("的")[0]}</label>
-            <img src={ship} width="88" height="80" alt="Taiwan"/>
+          <figure className="absolute floatship" style={position}>
+            <label className="taiwan-label f5" style={label}>{props.text1.split("的")[0]}</label>
+            <img src={scrollship} width="100" height="100" alt="Taiwan"/>
           </figure>
         </div>
       </div>
@@ -591,8 +604,13 @@ function PhotoText(props) {
   }
   
   var fish = null;
+  var info = null;
+
 
   if(props.fish) {
+    info = (
+      <p className="w-50-l w-100 f6 fw7 tc">資料來源：環保署統計年報</p>
+    )
     fish = (
       <div className="absolute z4">
         <Controller>
@@ -752,13 +770,14 @@ function PhotoText(props) {
           {fish}
           <figure className="center mw70 w-100">
             <img className={"w-50-l w-100 "+photo} src={props.image} alt="description"/>
+            {info}
           </figure>
         </div>
       </div>
       <div className="mw70 center ph4-ns ph3 w-100 z4 pre-wrap" id="triggerText">
         <div className="cf black">
           <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 "+color2+" "+text}>
-            <p className="f5-ns f6 lh-copy mv0">{props.text}</p>
+            <p className="f5-ns f6 lh-copy mv0" dangerouslySetInnerHTML={{__html:props.text}}></p>
           </div>
         </div>
       </div>
@@ -928,10 +947,10 @@ function PhotoMultiple(props) {
   }
 
   return (
-    <section className="flex aic relative bg-white flex-column pv6-l pv4 auto-scroll">      
+    <section className="flex aic relative bg-white flex-column pt6-l pt4 auto-scroll">      
       <div className="mw80 center cf black mb5 ph4-ns ph3 w-100">
         <div className="mw7 w-100 center bg-white pre-wrap">
-          <p className="f5-ns f6 lh-copy mv0">{props.text}</p>
+          <p className="f5-ns f6 lh-copy mv0" dangerouslySetInnerHTML={{__html:props.text}}></p>
         </div>
       </div>
       <div className="w-100 overflow-hidden" style={height}>
@@ -956,11 +975,17 @@ function PhotoContrast(props) {
       </div>
     )
   }
+  let label = null
+  if(props.label !== "") {
+    label = (
+      <label className="f7 mt3 o-50" >{props.label}</label>
+    )
+  }
   return (
     <section className={"flex aic relative flex-column pv6-l pv5 "+props.bg}>
         <div className="ph4-ns ph3 w-100 z4">
           {text}
-          <div className="relative" style={{ maxWidth: '1024px', margin: '0 auto 2.5rem auto' }}>
+          <div className="photoContrast relative tc" style={{ maxWidth: '1024px', margin: '0 auto 2.5rem auto' }}>
             <ReactCompareImage
               leftImage={props.images[0]}
               rightImage={props.images[1]}
@@ -968,6 +993,7 @@ function PhotoContrast(props) {
               handleSize={40}
               sliderPositionPercentage={0.8}
             />
+            {label}
             {/*<span className="mt3 right-20 absolute white top f3 fw5" data-type="original">{props.year[1]}</span>
             <span className="mt3 left-20 absolute white top f3 fw5" data-type="modified">{props.year[0]}</span>*/}
           </div>
@@ -1089,11 +1115,11 @@ function SmallVideo(props) {
     }
   }
   return (
-    <section className={"min-vh-100 flex aic relative pv6-l pv4 video-content smallVideo "+props.bg}>
+    <section className={"flex aic relative pv6-l pv4 video-content smallVideo "+props.bg}>
       <div className="mw80 w-100 center ph4-ns ph3 z4 relative">
         <div className="cf flex aic flex-column-s">
           <div className="fl-l w-100 w-50-l ph2 pv3 relative">
-            <video id={'video'+props.videoID} className="w-100" controls loop playsInline muted autoPlay>
+            <video id={'video'+props.videoID} className="w-100" controls controlsList="nodownload" loop playsInline muted autoPlay>
               <source src={props.link} type="video/mp4"/>
             </video>
           </div>
@@ -1222,7 +1248,7 @@ function CenterSmallVideo(props) {
         {text}
         <div className="cf flex aic jcc w-100">
           <div className="center relative">
-            <video className="w-100" id={'video'+props.videoID} controls loop playsInline muted autoPlay style={max}>
+            <video className="w-100" id={'video'+props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay style={max}>
               <source src={props.link} type="video/mp4"/>
             </video>
           </div>
@@ -1431,6 +1457,7 @@ function Timeline(props) {
   return (
     <section className="min-vh-100 flex aic relative bg-white pv6-l pv4 flex-column">      
       {content}
+      <p className='f6 o-50 tc mb4'>{"<<往左滑看更多"}</p>
       <div className="w-100 overflow-hidden relative" style={height}>
         <div className="absolute line" style={line}></div>
         <div className="grid-container nowrap dragscroll relative ph5-l ph0" style={container}>
@@ -1507,9 +1534,6 @@ function PhotoSlide(props) {
 }
 
 function Transition(props) {
-  var max = {
-    maxWidth: "880px"
-  }
   var objectFit = {
     objectFit: "cover"
   }
@@ -1517,16 +1541,16 @@ function Transition(props) {
   var fontSize = "f5";
   if(props.illustration !== undefined) {
     img = (
-      <div class="overflow-hidden w7">
+      <div className="overflow-hidden w7">
         <img src={props.illustration} height="200px" style={objectFit}/>
       </div>
     )
-    fontSize = "f3 fw7 tracked";
+    fontSize = "f2rem fw7 tracked";
   }
   return (
     <section className={props.title+" banner pv5-ns pv4 flex aic jcc flex-column-s ph3 "+props.bg}>
       {img}
-      <p className={"dib lh-copy pre-wrap "+fontSize} style={max}>{props.text}</p>
+      <p className={"dib mw7 lh-copy pre-wrap "+fontSize}>{props.text}</p>
     </section>
   )
 }
@@ -1633,6 +1657,7 @@ function TimeChangeFull(props) {
   var fullImage = {
     height: "100vh",
     objectFit: "cover",
+    objectPosition: "center 64px",
     width: "100%"
   }
   var bottomRight = {
@@ -1698,13 +1723,13 @@ function TimeChangeSide(props) {
   }
 
   var halfImageContain = {
-    height: "70%",
+    height: "60%",
     objectFit: "contain"
   }
 
   var halfImageCover = {
-    height: "100%",
-    objectFit: "cover"
+    width: "90%",
+    objectFit: "contain"
   }
 
   var bottomRight = {
@@ -1726,9 +1751,9 @@ function TimeChangeSide(props) {
     )
   } else {
     content = (
-      <figure className="fr-l w-50 ma0 h-100 relative">
-        <img style={halfImageCover} src={props.image[1]} width="100%" alt="background"/>
-        <label className="white absolute" style={bottomRight}>{props.label}</label>
+      <figure className="fr-l w-50 ma0 h-100 relative tc flex jcc flex-column">
+        <img style={halfImageCover} src={props.image[1]} width="90%" alt="background"/>
+        <label className="f7 mt3 o-50 w-90" >{props.label}</label>
       </figure>
     )
   }
@@ -1758,7 +1783,7 @@ function InfoHelper(props) {
 
 function TvLine(props) {
   return (
-    <div className="h-100 w-100 absolute o-30" style={{ backgroundImage: "url("+tvLine+")"}}>
+    <div className="h-100 w-100 absolute o-10" style={{ backgroundImage: "url("+tvLine+")"}}>
     </div>
   )
 }
@@ -1781,7 +1806,8 @@ function Blog(props) {
   var height = {
     height: "400px"
   }
-  var w = "768px";
+  var w = "660px";
+  var len = "count"+props.image.length;
 
   for (var i = 0; i < props.image.length; i++){
     var item = {
@@ -1830,7 +1856,7 @@ function Blog(props) {
   else {
     text = (
       <div className="mw7 center w-100 pa4-l pa3 mb4">
-        <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt4-ns">{props.text}</p>
+        <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black">{props.text}</p>
       </div>
     );
   }
@@ -1843,7 +1869,7 @@ function Blog(props) {
     );
     text = (
       <div className="mw500 center w-100 w-50-l ph2 pv3 mb4">
-        <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt4-ns">{props.text}</p>
+        <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black">{props.text}</p>
       </div>
     );
   } else if(props.number === 2) {
@@ -1865,19 +1891,19 @@ function Blog(props) {
     mw = "";
     text = (
       <div className="mw7 center w-100 pa4-l pa3 mb4">
-        <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt4-ns">{props.text}</p>
+        <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black">{props.text}</p>
       </div>
     );
     img = (
       <div className="w-100 overflow-hidden" style={height}>
-        <div className="grid-container nowrap dragscroll" style={container}>
+        <div className={"grid-container nowrap dragscroll "+len} style={container}>
           {grid}
         </div> 
       </div>
     );
   }
   return (
-    <section className={"min-vh-100 flex aic relative pv6-l pv4 "+props.bg} >
+    <section className={"flex aic relative pv6-l pv4 "+props.bg} >
       <div className={mw+" w-100 center z4 relative"}>
         <div className={"cf "+column}>
           {text}
@@ -1888,8 +1914,83 @@ function Blog(props) {
   )
 }
 
+function More(props) {
+  var border = {
+    borderTop: "1px #eee solid"
+  }
+
+  var len = props.link.length;
+  var links = [];
+  for(var i = 0; i < len; i++) {
+    var link = (
+      <div className="fl w-100 w-50-ns pa2" key={i}>
+        <div className="bg-white pv2 f4 fw5">
+          <a className="bb bw2 b--blue" href={props.link[i]} target="_blank">
+            {props.title[i]}
+          </a>
+        </div>
+      </div>
+    )
+    links.push(link);
+  }
 
 
+  return(
+    <section id="more" className="bg-white pv6-l pv4" style={border}>
+      <div className="mw8 center ph3">
+        <div className="cf ph2-ns tc">
+          <h1 className="ph2 fw7 tracked mb5-l mb4 ">延伸閱讀</h1>
+          {links}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+
+function CTA(props) {
+    return (
+      <section id="cta" className="bg-near-white pv6-l pv4">
+        <div className="mw8 center ph3">
+          <div className="cf ph2-ns tc">
+            <div className="fl w-third-l w-100 pa2 cp">
+              <Link to="/ourisland">
+                <div className="pv3 pa4 tc ctaBox bg-white">
+                  <figure className="w5 h5 center mv0 flex aic jcc">
+                    <img src={cta1} width="210" height="210"/>
+                  </figure>
+                  <p className="f3-ns f4 fw5 mt0 mb2">回首頁</p>
+                  <p className="f5-ns f6 fw4 o-60">加入粉絲  掌握最新資訊</p>
+                </div>
+              </Link>
+            </div>
+            <div className="fl w-third-l w-100 pa2 cp">
+              <Link to={"../"+props.next+"/"}> 
+                <div className="pv3 pa4 tc ctaBox bg-white" onClick={() => props.switchView(props.next)}>
+                  <figure className="w5 h5 center mv0 flex aic jcc">
+                    <img src={cta2} width="210" height="210"/>
+                  </figure>
+                  <p className="f3-ns f4 fw5 mt0 mb2">下一篇</p>
+                  <p className="f5-ns f6 fw4 o-60">訂閱影音  隨時看不漏失</p>
+                </div>
+              </Link>
+            </div>
+            <div className="fl w-third-l w-100 pa2 cp">
+              <a href="https://ourisland.pts.org.tw/" target="_blank">
+                <div className="pv3 pa4 tc ctaBox bg-white">
+                  <figure className="w5 h5 center mv0 flex aic jcc">
+                    <img src={cta3} width="210" height="210"/>
+                  </figure>
+                  <p className="f3-ns f4 fw5 mt0 mb2">島官網</p>
+                  <p className="f5-ns f6 fw4 o-60">詳細收集  20年環境報導</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+}
 
 
 
@@ -2044,6 +2145,7 @@ class Event01 extends Component {
           images={this.props.data.photocontrast}
           text={this.props.data.photocontrastText}
           year={this.props.data.photocontrastYear}
+          label=""
         />
 
         <PhotoContrast
@@ -2051,6 +2153,7 @@ class Event01 extends Component {
           images={this.props.data.photocontrast2}
           text={this.props.data.photocontrastText2}
           year={this.props.data.photocontrastYear2}
+          label=""
         />
 
         <CenterVideo 
@@ -2062,6 +2165,8 @@ class Event01 extends Component {
 
         <EndingVideo text="來收看，淡水河20年來的故事..." link={"https://www.youtube.com/embed/pJcFZSLkelU?rel=0"}/>
         {/*<Next switchView={this.props.switchView} next={"reborn-erren-river"} prev={"reborn-erren-river"}/>*/}
+        <More link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
+        <CTA switchView={this.props.switchView} next={"reborn-erren-river"} />
       </div>
     );
   }
@@ -2110,7 +2215,7 @@ class Event02 extends Component {
         />
 
         <Timeline
-          content={"<p class='f3 fw7 tracked mb0'>長達三十年，二仁溪還是無法擺脫廢五金陰影。</p>"}
+          content={"<p className='f3 fw7 tracked mb0'>長達三十年，二仁溪還是無法擺脫廢五金陰影。</p>"}
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
@@ -2136,6 +2241,7 @@ class Event02 extends Component {
         />
 
         <Transition
+          bg={"bg-near-white"}
           text={this.props.data.transitionText}
         />
 
@@ -2172,6 +2278,8 @@ class Event02 extends Component {
         />
         */}
         <EndingVideo text={"來看二仁溪，二十年來承受了什麼..."} link={"https://youtube.com/embed/gfI8M0LGMss?rel=0"}/>
+        <More link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
+        <CTA switchView={this.props.switchView} next={"land-crabs-survival"} />
       </div>
     );
   }
@@ -2208,7 +2316,7 @@ class Event03 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-175px, 345px"}
+          map = {"-175px, 325px"}
         />
 
         <Illustration
@@ -2247,7 +2355,7 @@ class Event03 extends Component {
         </Modal>
 
         <Transition
-          bg={"bg-near-white tc"}
+          bg={"bg-blue white tc"}
           text={this.props.data.transitionText[0]}
         />
         <Transition
@@ -2303,7 +2411,7 @@ class Event03 extends Component {
         
 
         <Transition
-          bg={"bg-white tc"}
+          bg={"bg-blue white tc"}
           text={this.props.data.transitionText[1]}
         />
 
@@ -2337,7 +2445,8 @@ class Event03 extends Component {
 
         <Video 
           videoID="07"
-          text1=""
+          position={"fr-l"}
+          text1={this.props.data.videoText[11]}
           link={this.props.data.video[6]}
         />
 
@@ -2417,6 +2526,8 @@ class Event03 extends Component {
           bg={false}
         />
         <EndingVideo text={"一起來守護陸蟹"} link={"https://youtube.com/embed/KyG4mEAyv8E?rel=0"}/>
+        <More link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
+        <CTA switchView={this.props.switchView} next={"dawu-fishing-port"} />
       </div>
     );
   }
@@ -2505,7 +2616,7 @@ class Event04 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-125px, 185px"}
+          map = {"-125px, 265px"}
         />
 
         <Illustration
@@ -2621,6 +2732,7 @@ class Event04 extends Component {
           images={this.props.data.photocontrast}
           text={this.props.data.photocontrastText}
           year={this.props.data.photocontrastYear}
+          label={this.props.data.photocontrastLabel}
         />
         <Transition
           bg={"bg-near-white"}
@@ -2667,7 +2779,7 @@ class Event04 extends Component {
         />
 
         <Transition
-          bg={"bg-near-white"}
+          bg={"bg-blue white tc"}
           text={this.props.data.videoText[7]}
         />
 
@@ -2679,8 +2791,8 @@ class Event04 extends Component {
         />
 
         <Transition
-          bg={"bg-white tc"}
-          text={"\"你知道台灣有多少座漁港嗎？\""}
+          bg={"bg-blue white tc"}
+          text={"你知道台灣有多少座漁港嗎？"}
         />
 
         <Video
@@ -2710,6 +2822,8 @@ class Event04 extends Component {
           label = {this.props.data.photoFullTextLabel[3]}
         />
         <EndingVideo text="一起來關心我們的海岸" link={"https://www.youtube.com/embed/C-Au_8Y6tCc?rel=0"}/>
+        <More link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
+        <CTA switchView={this.props.switchView} next={"kinmen-Hou-feng-kang"} />
       </div>
     );
   }
@@ -2805,7 +2919,7 @@ class Event05 extends Component {
         />
 
         <Blog
-          number={2}
+          number={4}
           switch={false}
           bg={"bg-near-white z4"}
           text={this.props.data.blogText[0]}
@@ -2814,14 +2928,10 @@ class Event05 extends Component {
           onOpenModal={this.onOpenModal.bind(this)}
         />
 
-        <Blog
-          number={2}
-          switch={true}
-          text={this.props.data.blogText[1]}
-          image={this.props.data.blogImage[1]}
-          label={this.props.data.blogLabel[1]}
-          onOpenModal={this.onOpenModal.bind(this)}
-        />
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+          <p className="tc mb0">{this.state.description}</p>
+        </Modal>
 
         <Video 
           videoID="02"
@@ -2876,6 +2986,8 @@ class Event05 extends Component {
         />
 
         <EndingVideo text={"了解更多，關於金門鱟..."} link={"https://youtube.com/embed/nlWGkBTafkc?start=716&rel=0"}/>
+        <More link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
+        <CTA switchView={this.props.switchView} next={"changing-tamsui-river"} />
       </div>
     );
   }
@@ -2984,7 +3096,7 @@ class Event07 extends Component {
   componentDidMount(){
     var infoText = this.props.data.infoText;
     $(document).ready(function(){
-      var infoHelper = '<div class="absolute z10 mw7 infoHelper pn"><p class="near-black f7 fw4 bg-white pa3 pre-wrap lh-copy">'+infoText+'</p></div>';
+      var infoHelper = '<div className="absolute z10 mw7 infoHelper pn"><p className="near-black f7 fw4 bg-white pa3 pre-wrap lh-copy">'+infoText+'</p></div>';
       $('.info').append(infoHelper);
     })
   }

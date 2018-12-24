@@ -64,6 +64,10 @@ body {
   line-height: 1.95;
 }
 
+.lh-normal {
+  line-height: 1.5;
+}
+
 .bvh {
   backface-visibility: hidden;
 }
@@ -179,6 +183,10 @@ button.btn {
 }
 
 button.btn:hover {
+  background-size: 24px 24px !important;
+}
+
+button.btn-ghost:hover {
   background: white !important;
   color: black;
 }
@@ -307,6 +315,15 @@ nav .btn {
 @media (max-aspect-ratio: 16/9) { .videoBg > video { width: 100%;}}
 @supports (object-fit: cover) {.videoBg > video { top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }}
 
+
+.bg-blue {
+  background: #3A85A6;
+}
+
+.bg-blue p {
+  font-size: 1.375rem !important;
+}
+
 .flex {
   display: flex;
 }
@@ -368,6 +385,15 @@ nav .btn {
   }
 }
 
+.b--blue {
+  transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+.b--blue:hover {
+  transform: scale3d(1.3,1.3,1.3) !important;
+  transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
 .transitionTitle {
   position: relative;
   left: 0px;
@@ -387,6 +413,10 @@ nav .btn {
   .transitionTitle {
     left: -100px;
   }
+}
+
+.photoContrast > div {
+  margin-bottom: 1rem;
 }
 
 #cover, #timeline {
@@ -743,9 +773,9 @@ ul.none {
   width: 100%;
   height: 100vh;
   background-color: #fff;
-  background-image: url(assets/images/Spinner.svg);
+  background-image: url(assets/images/loading.gif);
   background-repeat: no-repeat;
-  background-size: 50px;
+  background-size: 240px;
   background-position: center center;
   opacity: 1;
   z-index: 100;
@@ -762,6 +792,41 @@ ul.none {
   .storyItem:nth-child(1) {
     /*margin-left: calc((100vw - 64rem)/2);*/
   }
+}
+
+@media screen and (min-width: 1980px) {
+  .count3 {
+    justify-content: center !important;
+  }
+}
+
+.count3 {
+  justify-content: start;
+}
+
+@media screen and (min-width: 2640px) {
+  .count4 {
+    justify-content: center !important;
+  }
+}
+
+.count4 {
+  justify-content: start;
+}
+
+.grid-more:before {
+  content:'<< 往左滑看更多';
+  display: block;
+  opacity: .5;
+  position: absolute;
+  top: -50px;
+  right: 40px;
+  color: black;
+  font-size: 1rem;
+}
+
+.f2rem {
+  font-size: 1.75rem;
 }
 
 .f3 {
@@ -982,7 +1047,7 @@ ul.none {
   }
 }
 
-.scrollship {
+.floatship {
   animation: float 2s infinite ease-in-out;
 }
 
@@ -1433,7 +1498,7 @@ ul.none {
     width: 100%; }
   .image-gallery-slide .image-gallery-description {
     background: rgba(0, 0, 0, 0.4);
-    bottom: 90px;
+    bottom: 40px;
     color: #fff;
     right: 0;
     line-height: 1;

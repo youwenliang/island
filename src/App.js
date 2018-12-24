@@ -6,9 +6,18 @@ import Footer from './component/Footer'
 
 class App extends Component {
   render() {
+  	var percentage = {
+	  	position: "relative",
+	    top: "120px",
+	    left: "10px",
+	    fontWeight: 700,
+	    fontSize: "24px"
+	}
     return (
       <div className="App">
-        <div id="loading"></div>
+        <div id="loading" className="flex aic jcc">
+        	<p style={percentage}>100%</p>
+        </div>
         <Main/>
         <Footer/>
       </div>
