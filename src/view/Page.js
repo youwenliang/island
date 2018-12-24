@@ -2208,7 +2208,7 @@ class Event03 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-135px, 225px"}
+          map = {"-175px, 345px"}
         />
 
         <Illustration
