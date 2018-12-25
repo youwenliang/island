@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import timemachine from '../assets/images/timemachine.svg';
 import hand from '../assets/images/hand.svg';
 import phone from '../assets/images/phone_new.svg';
-import phone_stop from '../assets/images/phone_stop.svg';
+import phone_stop from '../assets/images/phone_stop.svg'; // eslint-disable-line no-unused-vars
 import $ from 'jquery';
 
 class Phone extends Component {

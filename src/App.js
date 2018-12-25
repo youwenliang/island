@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div className="App">
         <div id="loading" className="flex aic jcc">
-        	<p style={percentage}>100%</p>
+        	<p className="progress-view" style={percentage}>0%</p>
         </div>
         <Main/>
         <Footer/>

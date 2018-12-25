@@ -1,8 +1,8 @@
-/*global FB*/
+/*global FB*/ // eslint-disable-line no-unused-vars
 import React, { Component } from 'react';
 import {Helmet} from "react-helmet";
 import Cover from '../component/Cover'
-import Timeline from '../component/Timeline'
+import Timeline from '../component/Timeline' // eslint-disable-line no-unused-vars
 import Events from '../component/Events'
 import CTA from '../component/CTA'
 import Nav from '../component/Nav'
@@ -51,10 +51,21 @@ class Home extends Component {
     loadImage(images)
     .then(function (allImgs) {
       console.log(allImgs.length, 'images loaded!', allImgs);
-      setTimeout(function(){
-        document.getElementById('loading').classList.add('fade');
-        document.body.classList.remove('ds');
-      },600);
+
+      var p = 0;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (p >= 100) {
+          clearInterval(id);
+          setTimeout(function(){
+            document.getElementById('loading').classList.add('fade');
+            document.body.classList.remove('ds');
+          },600);
+        } else {
+          p++; 
+          $('.progress-view').text(p+'%');
+        }
+      }
     })
     .catch(function (err) {
       console.error('One or more images have failed to load :(');

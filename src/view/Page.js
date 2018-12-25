@@ -1,4 +1,4 @@
-/*global FB*/
+/*global FB*/ // eslint-disable-line no-unused-vars
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {Helmet} from "react-helmet";
@@ -25,7 +25,7 @@ import taiwanMap from '../assets/images/taiwan.jpg';
 import kinmenMap from '../assets/images/kinmen.jpg';
 import googleEarthLogo from '../assets/images/google_earth.svg';
 import tvLine from '../assets/images/tvline-4.png';
-import ship from '../assets/images/machinemap.svg';
+import ship from '../assets/images/machinemap.svg'; // eslint-disable-line no-unused-vars
 import scrollship from '../assets/images/時光機.svg';
 
 import fish1 from '../assets/images/fish-1.svg';
@@ -96,10 +96,20 @@ class Page extends Component {
   // }
 
   componentDidUpdate() {
-    setTimeout(function(){
-      document.getElementById('loading').classList.add('fade');
-      document.body.classList.remove('ds');
-    },600);
+    var p = 0;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (p >= 100) {
+        clearInterval(id);
+        setTimeout(function(){
+          document.getElementById('loading').classList.add('fade');
+          document.body.classList.remove('ds');
+        },600);
+      } else {
+        p++; 
+        $('.progress-view').text(p+'%');
+      }
+    }
   }
 
   componentDidMount(){
@@ -140,10 +150,20 @@ class Page extends Component {
       console.log(allImgs.length, 'images loaded!', allImgs);
       var vid = document.getElementById("coverVideo");
       vid.onloadstart = function() {
-        setTimeout(function(){
-          document.getElementById('loading').classList.add('fade');
-          document.body.classList.remove('ds');
-        },600);
+        var p = 0;
+        var id = setInterval(frame, 10);
+        function frame() {
+          if (p >= 100) {
+            clearInterval(id);
+            setTimeout(function(){
+              document.getElementById('loading').classList.add('fade');
+              document.body.classList.remove('ds');
+            },600);
+          } else {
+            p++; 
+            $('.progress-view').text(p+'%');
+          }
+        }
       };
     })
     .catch(function (err) {
@@ -1976,7 +1996,7 @@ function CTA(props) {
               </Link>
             </div>
             <div className="fl w-third-l w-100 pa2 cp">
-              <a href="https://ourisland.pts.org.tw/" target="_blank">
+              <a href="https://ourisland.pts.org.tw/" target="_blank" rel="noopener noreferrer">
                 <div className="pv3 pa4 tc ctaBox bg-white">
                   <figure className="w5 h5 center mv0 flex aic jcc">
                     <img src={cta3} width="210" height="210"/>

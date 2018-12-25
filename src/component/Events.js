@@ -15,6 +15,7 @@ import topic2R from '../assets/images/山右.svg';
 import topic3L from '../assets/images/污左.svg';
 import topic3R from '../assets/images/污右.svg';
 import lockImage from '../assets/images/lock.svg';
+import loading from '../assets/images/loading.gif';
 
 
 // Event Data
@@ -216,7 +217,7 @@ class Events extends Component {
       </div>
     )
 
-    var content = null;
+    var content_event = null;
     var opacity = "o-50"
     var color = this.state.colors[num];
     var bgMask = {
@@ -229,15 +230,15 @@ class Events extends Component {
       <div className="absolute w-100 h-100 top-left z4 flex aic jcc">
         <div className="absolute w-100 h-100 top-left o-60 z4" style={bgMask}></div>
         <figure className="dib overflow-hidden br-100 bg-white z10 relative box-shadow w4-ns w3 h4-ns h3 flex aic jcc mh4-ns mh3">
-          <img src={lockImage} width="65%" height="65%" style={rotate}/>
+          <img src={lockImage} width="65%" height="65%" style={rotate} alt="lock" />
         </figure>
-        <h2 className="f3-ns f4 tracked white dib z10 relative text-shadow">路線開通中...</h2>
+        <h2 className="f3-ns f4 fw5 tracked white dib z10 relative text-shadow">路線開通中...</h2>
       </div>
     )
 
     if(!lock) {
       opacity = ""
-      content = (
+      content_event = (
         <div className="eventContainer relative hide mt4">
           <div className="pv6-ns pv4 eventBg flex aic relative overflow-hidden">
             <div className={"bg-"+(num+1) +" w-100 h-100 absolute top0"} style={bgStyle}></div>
@@ -262,7 +263,7 @@ class Events extends Component {
             </div>
           </div>
         </div>
-        {content}
+        {content_event}
       </section>
     )
   }
@@ -271,9 +272,12 @@ class Events extends Component {
     return (
       <div id="events" className="bg-white tl">
         <div className="bg-near-white center ph3 pv5">
-          <div className="cf ph2-ns tl flex aic jcc flex-column hide">
-            <h3 className="ph2 fw4 f4-ns f5 mb0 mt3 mw7 lh-copy o-80 tc">還記得二十年前，你是什麼模樣嗎？走出家門口，熟悉的街頭巷尾改變了多少？<br className="dn db-l"/>想要知道這二十年來，台灣環境經歷了什麼樣的變遷？</h3>
-            <h3 className="ph2 fw4 f4-ns f5 mt0 mb3 mw7 lh-copy o-80 tc"><br/>現在就坐上小島號，和「我們的島」一起搭乘時光機，穿梭時空，<br className="dn db-l"/>回顧河流、海洋、山林以及污染開發現場。</h3>
+          <div className="cf ph2-ns tl flex aic jcc flex-column">
+            <figure className="overflow-hidden br-100 w4 h4 bg-white hide">
+              <img src={loading} width="124" alt="時光機" />
+            </figure>
+            <h3 className="ph2 fw4 f4-ns f5 mb0 mt3 mw7 lh-copy o-80 tc hide">還記得二十年前，你是什麼模樣嗎？走出家門口，熟悉的街頭巷尾改變了多少？<br className="dn db-l"/>想要知道這二十年來，台灣環境經歷了什麼樣的變遷？</h3>
+            <h3 className="ph2 fw4 f4-ns f5 mt0 mb3 mw7 lh-copy o-80 tc hide"><br/>現在就坐上小島號，和「我們的島」一起搭乘時光機，穿梭時空，<br className="dn db-l"/>回顧河流、海洋、山林以及污染開發現場。</h3>
           </div>
         </div>
         {this.topics(0, false)}

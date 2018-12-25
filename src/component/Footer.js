@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 class Footer extends Component {
   render() {
     return (
       <section id="footer" className="bg-dark-gray pv4">
-        <div className="mw80 center ph3">
+        <div className="mw8 center ph3">
           <div className="cf ph2-ns tl">
             <div className="fl w-100 w-50-ns pa2">
               <div className="white pv2">

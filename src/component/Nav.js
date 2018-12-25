@@ -36,7 +36,7 @@ class Nav extends Component {
   render() {
     const { open } = this.state;
     var link = window.location.href;
-    var timeline = null;
+    // var timeline = null;
     var share = {
       overflow: "hidden",
       backgroundImage: "url("+shareIcon+")",
@@ -45,7 +45,7 @@ class Nav extends Component {
       backgroundPosition: "15px center",
       width: "100px"
     }
-    if(this.props.timeline) timeline = (<a href="/ourisland/timeline/" target="_blank"><button className="btn cp h2 ph3">前往大紀事</button></a>);
+    // if(this.props.timeline) timeline = (<a href="/ourisland/timeline/" target="_blank"><button className="btn cp h2 ph3">前往大紀事</button></a>);
     return (
       <div>
         <nav className="w-100 top0 z40 h3 flex aic space-between">
