@@ -1763,8 +1763,8 @@ function TimeChangeSide(props) {
   }
 
   var halfImageContain = {
-    height: "60%",
-    objectFit: "contain"
+    height: props.cover ? "100%" : "60%",
+    objectFit: props.cover ? "cover" : "contain"
   }
 
   var halfImageCover = {
@@ -2718,37 +2718,32 @@ class Event04 extends Component {
           label={this.props.data.panoramaLabel}
         />
         <Transition bg={"bg-near-white"} text={this.props.data.transitionText[0]}/>
-
-        <TimeChangeFull
-          position={"fr-l"}
-          earth={true}
-          earthText = {"Image is from 2018/©️TerraMetrics,©️DigitalGlobe,©️CNES/Airbus"}
+        
+        <TimeChangeSide
+          cover={true}
           text1={this.props.data.photoSlideLabel[0]}
           image = {this.props.data.photoSlidePhoto[0]}
           label = "2013年 大武漁港"
         />
-        <TimeChangeFull
-          position={"fr-l"}
-          earth={true}
-          earthText = {"Image is from 2018/©️TerraMetrics,©️DigitalGlobe,©️CNES/Airbus"}
+        <TimeChangeSide
+          cover={true}
           text1={this.props.data.photoSlideLabel[1]}
           image = {this.props.data.photoSlidePhoto[1]}
           label = "2016年 大武漁港"
         />
-        <TimeChangeFull
-          position={"fr-l"}
-          last={true}
-          earth={true}
-          earthText = {"Image is from 2018/©️TerraMetrics,©️DigitalGlobe,©️CNES/Airbus"}
+        <TimeChangeSide
+          cover={true}
           text1={this.props.data.photoSlideLabel[2]}
+          last={true}
           image = {this.props.data.photoSlidePhoto[2]}
           label = "2018年 大武漁港"
         />
 
-        <Transition text={this.props.data.photoSlideText}/>
+        <Transition bg={"bg-near-white z4"} text={this.props.data.photoSlideText}/>
 
         <CenterVideo 
           videoID="06"
+          sound={true}
           link={this.props.data.video[5]}
           text1={this.props.data.videoText[5]}
           bg={true}
@@ -2761,6 +2756,7 @@ class Event04 extends Component {
           videoID="05"
           link={this.props.data.video[4]}
           text1=""
+          sound={true}
         />
   
         <Timeline
@@ -2829,23 +2825,29 @@ class Event04 extends Component {
           label={this.props.data.blogLabel[0]}
           onOpenModal={this.onOpenModal.bind(this)}
         />
-        <Blog
-          number={2}
-          bg={"bg-white"}
-          text={this.props.data.videoText[6]}
-          image={this.props.data.blogImage[3]}
-          label={this.props.data.blogLabel[3]}
-          onOpenModal={this.onOpenModal.bind(this)}
+
+        <TimeChangeFull
+          position={"fl-l"}
+          text1={this.props.data.videoText[6]}
+          image={this.props.data.blogImage[3][0]}
+          label = {this.props.data.blogLabel[3][0]}
+        />
+        <TimeChangeFull
+          position={"fl-l"}
+          last={true}
+          text1={this.props.data.videoText[6]}
+          image={this.props.data.blogImage[3][1]}
+          label = {this.props.data.blogLabel[3][1]}
         />
 
         <Transition
-          bg={"bg-blue white tc"}
+          bg={"bg-blue white tc z4"}
           text={this.props.data.videoText[7]}
         />
 
         <Video
           position={"fr-l"}
-          videoID="05"
+          videoID="07"
           link={this.props.data.video[6]}
           text1=""
         />

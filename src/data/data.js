@@ -663,7 +663,7 @@ var data = {
 
       // PhotoText
       "photoText": [
-          "突出海岸的人工結構物，會阻擋原本沿岸流及漂沙的路徑，造成上游那一側的海岸淤沙堆積，下游側的海岸，因為沙源減少，逐漸出現侵蝕現象。"
+          "<p class='f3 fw7 tracked mb0'>你知道什麼是突堤效應嗎?<p>突出海岸的人工結構物，會阻擋原本沿岸流及漂沙的路徑，造成上游那一側的海岸淤沙堆積，下游側的海岸，因為沙源減少，逐漸出現侵蝕現象。"
       ],
       "photoImage": [
           ["/events/dawu-fishing-port/illustrations/突1.svg"],
@@ -716,9 +716,9 @@ var data = {
         "2018年\n興建突堤和離岸堤加上回填土方，海岸線往外延伸，漂沙卻回堵大武漁港。"
       ],
       "photoSlidePhoto": [
-        "/events/dawu-fishing-port/D40-2013年大武漁港.jpg",
-        "/events/dawu-fishing-port/D42-2016年大武漁港.jpg",
-        "/events/dawu-fishing-port/D43-2018年大武漁港.jpg",
+        ["/events/dawu-fishing-port/D40-2013年大武漁港.jpg"],
+        ["/events/dawu-fishing-port/D42-2016年大武漁港.jpg"],
+        ["/events/dawu-fishing-port/D43-2018年大武漁港.jpg"],
       ],
 
       // PhotoFullText
