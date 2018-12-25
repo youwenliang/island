@@ -872,7 +872,7 @@ var data = {
     // Video
     "video": [
         "/events/kinmen-Hou-feng-kang/videos/E41拜海儀式(已上字).mp4",
-        "/events/kinmen-Hou-feng-kang/videos/E9鱟爬行(乾淨版).mp4",
+        "/events/kinmen-Hou-feng-kang/videos/E9修-1225鱟爬行(拿掉旁白).mp4",
         "/events/kinmen-Hou-feng-kang/videos/E13鱟生活史動畫(已上字).mp4",
         "/events/kinmen-Hou-feng-kang/videos/E67洪德舜談鱟的變遷(已上好字).mp4",
         "/events/kinmen-Hou-feng-kang/videos/E71金門結語.mp4"

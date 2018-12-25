@@ -320,15 +320,6 @@ export default Page;
 
 /* Components */
 
-
-/*00*/
-
-function Animation(props) {
-  <section id="animationOver" className="relative">
-    <h1>Test</h1>
-  </section>
-}
-
 /*01*/
 function CoverVideo(props) {
   var gradient = {
@@ -354,8 +345,9 @@ function CoverVideo(props) {
     bottom: "60px"
   }
 
+
   return (
-    <section id="cover" className="vh-100 flex aic relative video-content relative">
+    <section id={props.id} className="vh-100 flex aic relative video-content relative">
       <div className="w-100 h-100 absolute z4 pn" style={gradient}/>
       <div className="w-100 h-100 absolute top-left clipping">
       <div className="w-100 h-100 fixed fixed-content pn">
@@ -411,7 +403,7 @@ function Taiwan(props) {
     whiteSpace: "nowrap"
   }
   return (
-    <section className="cover min-vh-150 flex aic relative bg-black">
+    <section id={props.id} className="cover min-vh-150 flex aic relative bg-black">
       <div className="w-100 h-100 absolute top-left clipping bg-dark-gray">
         <div className="w-100 h-100 fixed fixed-content pn flex aic" style={bgStyle}>
           <TvLine />
@@ -471,7 +463,7 @@ function Illustration(props) {
     )
   }
   return (
-    <section className={h+" flex aic relative"}>
+    <section id={props.id} className={h+" flex aic relative"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
           <figure className="center mw70 w-100 ph4-ns">
@@ -541,7 +533,7 @@ function PhotoTextFull(props) {
     )
   }
   return (
-    <section className={h+" flex aic relative bg-black"}>
+    <section id={props.id} className={h+" flex aic relative bg-black"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
           <figure className="w-100 ma0">
@@ -582,7 +574,7 @@ function PhotoCenterTextFull(props) {
     mask = "";
   }
   return (
-    <section className="min-vh-200 flex aic relative bg-black">
+    <section id={props.id} className="min-vh-200 flex aic relative bg-black">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
           <figure className="w-100 ma0">
@@ -784,7 +776,7 @@ function PhotoText(props) {
   }
 
   return (
-    <section className={h+" flex aic relative"}>
+    <section id={props.id} className={h+" flex aic relative"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={color1+" w-100 h-100 fixed fixed-content pn flex aic"}>
           {fish}
@@ -832,7 +824,7 @@ function PhotoTextFix(props) {
   }
 
   return (
-    <section className={h+" flex aic relative "+p+" "+color1}>
+    <section id={props.id} className={h+" flex aic relative "+p+" "+color1}>
       <div className="mw80 w-100 center ph4-ns ph3 z4 relative">
         <div className="cf flex aic flex-column-s">
           <div className={"w-100 w-50-l ph2 pv3 relative "+photo}>
@@ -853,7 +845,7 @@ function PhotoTextFix(props) {
 /*05-1*/
 function MapText(props) {
   return (
-    <section className="min-vh-150 flex aic relative">
+    <section id={props.id} className="min-vh-150 flex aic relative">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="w-100 h-100 fixed fixed-content pn flex aic">
           <figure className="center w-100 h-100">
@@ -909,7 +901,7 @@ function PhotoSwitch(props) {
     )
   }
   return (
-    <section className={h+" flex aic w-100 relative bvh bg-black"}>
+    <section id={props.id} className={h+" flex aic w-100 relative bvh bg-black"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-light-gray w-100 h-100 fixed fixed-content">
           <ImageGallery items={images} showFullscreenButton={false} showThumbnails={false} showPlayButton={false} autoPlay={true} showBullets={true} slideInterval={7000}/>
@@ -967,7 +959,7 @@ function PhotoMultiple(props) {
   }
 
   return (
-    <section className="flex aic relative bg-white flex-column pt6-l pt4 auto-scroll">      
+    <section id={props.id} className="flex aic relative bg-white flex-column pt6-l pt4 auto-scroll">      
       <div className="mw80 center cf black mb5 ph4-ns ph3 w-100">
         <div className="mw7 w-100 center bg-white pre-wrap">
           <p className="f5-ns f6 lh-copy mv0" dangerouslySetInnerHTML={{__html:props.text}}></p>
@@ -1002,7 +994,7 @@ function PhotoContrast(props) {
     )
   }
   return (
-    <section className={"flex aic relative flex-column pv6-l pv5 "+props.bg}>
+    <section id={props.id} className={"flex aic relative flex-column pv6-l pv5 "+props.bg}>
         <div className="ph4-ns ph3 w-100 z4">
           {text}
           <div className="photoContrast relative tc" style={{ maxWidth: '1024px', margin: '0 auto 2.5rem auto' }}>
@@ -1086,17 +1078,31 @@ function Video(props) {
       </div>
     )
   }
+  
+  var unmuteTag = "";
+  var $video = $('#video'+props.videoID);
+  var video = (
+    <video id={'video'+props.videoID} loop playsInline muted>
+      <source src={props.link} type="video/mp4"/>
+    </video>
+  )
+  if(props.sound) {
+    unmuteTag = "unmute";
+    var video = (
+      <video id={'video'+props.videoID} loop playsInline>
+        <source src={props.link} type="video/mp4"/>
+      </video>
+    )
+  }
 
   return (
-    <section className={h+" flex aic relative video-content full-video bg-black"}>
+    <section id={props.id} className={h+" flex aic relative video-content full-video bg-black"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>
-        <div className="fixed sound cp z10" onClick={(e) => soundVideo(e)}></div>
+        <div className={unmuteTag+" fixed sound cp z10"} onClick={(e) => soundVideo(e)}></div>
         <div className="bg-light-gray w-100 h-100 fixed fixed-content pn">
           <div className="videoBg">
-            <video id={'video'+props.videoID} loop playsInline muted autoPlay>
-              <source src={props.link} type="video/mp4"/>
-            </video>
+            {video}
           </div>
         </div>
       </div>
@@ -1135,7 +1141,7 @@ function SmallVideo(props) {
     }
   }
   return (
-    <section className={"flex aic relative pv6-l pv4 video-content smallVideo "+props.bg}>
+    <section id={props.id} className={"flex aic relative pv6-l pv4 video-content smallVideo "+props.bg}>
       <div className="mw80 w-100 center ph4-ns ph3 z4 relative">
         <div className="cf flex aic flex-column-s">
           <div className="fl-l w-100 w-50-l ph2 pv3 relative">
@@ -1190,17 +1196,31 @@ function CenterVideo(props) {
     mask = "";
   }
 
+  var unmuteTag = "";
+  var $video = $('#video'+props.videoID);
+  var video = (
+    <video id={'video'+props.videoID} loop playsInline muted>
+      <source src={props.link} type="video/mp4"/>
+    </video>
+  )
+  if(props.sound) {
+    unmuteTag = "unmute";
+    var video = (
+      <video id={'video'+props.videoID} loop playsInline>
+        <source src={props.link} type="video/mp4"/>
+      </video>
+    )
+  }
+
   return (
-    <section className="min-vh-200 flex aic relative pv6-l pv4 video-content bg-black z4">
+    <section id={props.id} className="min-vh-200 flex aic relative pv6-l pv4 video-content bg-black z4">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={mask+" w-100 h-100 absolute pn top-left z4"}/>
         {/*<div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>*/}
-        <div className="fixed sound cp z10" onClick={(e) => soundVideo(e)}></div>
+        <div className={unmuteTag+" fixed sound cp z10"} onClick={(e) => soundVideo(e)}></div>
         <div className="bg-light-gray w-100 h-100 fixed fixed-content pn">
           <div className="videoBg">
-            <video id={'video'+props.videoID} loop playsInline muted autoPlay>
-              <source src={props.link} type="video/mp4"/>
-            </video>
+            {video}
           </div>
         </div>
       </div>
@@ -1263,7 +1283,7 @@ function CenterSmallVideo(props) {
   }
 
   return (
-    <section className={"min-vh-100 flex aic relative pv6-l pv4 video-content "+color}>
+    <section id={props.id} className={"min-vh-100 flex aic relative pv6-l pv4 video-content "+color}>
       <div className="w-100 center ph4-ns ph3 z4 relative">
         {text}
         <div className="cf flex aic jcc w-100">
@@ -1302,7 +1322,7 @@ function EndingVideo(props) {
   }
 
   return (
-    <section className="flex aic relative bg-white pv6-l pv5 overflow-y-hidden">
+    <section id={props.id} className="flex aic relative bg-white pv6-l pv5 overflow-y-hidden">
       <div className="center ph3-ns ph0 z4 relative mb6 mb5-l">
         <div className="cf tc black w-60-l w-80-m w-100 center pv2 ph4 bg-white mb2">
           <h3>{props.text}</h3>
@@ -1369,7 +1389,7 @@ function PhotoAudio(props) {
   };
 
   return (
-    <section className="flex aic relative bg-white pv6-l pv4">
+    <section id={props.id} className="flex aic relative bg-white pv6-l pv4">
       <div className="mw80 w-100 center ph4-ns ph3 relative">
         <div className="cf ph2-ns">
           <div className="fl w-100 w-50-ns pa2">
@@ -1475,7 +1495,7 @@ function Timeline(props) {
   }
 
   return (
-    <section className="min-vh-100 flex aic relative bg-white pv6-l pv4 flex-column">      
+    <section id={props.id} className="min-vh-100 flex aic relative bg-white pv6-l pv4 flex-column">      
       {content}
       <p className='f6 o-50 tc mb4'>{"<<往左滑看更多"}</p>
       <div className="w-100 overflow-hidden relative" style={height}>
@@ -1543,7 +1563,7 @@ function PhotoSlide(props) {
   }
 
   return (
-    <section className="min-vh-100 flex aic relative bg-white flex-column dragscroll-content">      
+    <section id={props.id} className="min-vh-100 flex aic relative bg-white flex-column dragscroll-content">      
       <div className="w-100 overflow-hidden relative" style={height}>
         <div className="grid-container nowrap relative ph0" style={container}>
           {grid}
@@ -1568,7 +1588,7 @@ function Transition(props) {
     fontSize = "f2rem fw7 tracked";
   }
   return (
-    <section className={props.title+" banner pv5-ns pv4 flex aic jcc flex-column-s ph3 "+props.bg}>
+    <section id={props.id} className={props.title+" banner pv5-ns pv4 flex aic jcc flex-column-s ph3 "+props.bg}>
       {img}
       <p className={"dib mw7 lh-copy pre-wrap "+fontSize}>{props.text}</p>
     </section>
@@ -1577,7 +1597,7 @@ function Transition(props) {
 
 function Next(props) {
   return (
-    <section className="banner pv6-l pv4 bg-white">
+    <section id={props.id} className="banner pv6-l pv4 bg-white">
       <div className="cf ph2-ns">
         <Link to={"../"+props.prev+"/"}> 
           <div className="fl w-100 w-50-ns pa2 tc" onClick={() => props.switchView(props.prev)}>Prev</div>
@@ -1611,7 +1631,7 @@ function Panorama(props) {
     padding: "20px"
   }
   return (
-    <section className="panorama-container relative">
+    <section id={props.id} className="panorama-container relative">
       <figure className="panorama">
         <img src={props.image} height="100%"/>
       </figure>
@@ -1642,7 +1662,7 @@ function TimeChange(props) {
     textAlign: "center"
   }
   return (
-    <section className={h+" flex aic relative timeChange bg-white "+z}>
+    <section id={props.id} className={h+" flex aic relative timeChange bg-white "+z}>
       <div className="w-100 h-100 absolute top-left time-clipping fade">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
           <div className="center w-100 z4 pre-wrap">
@@ -1715,7 +1735,7 @@ function TimeChangeFull(props) {
   var earth = props.earth ? <GoogleEarthLogo text={props.earthText} /> : null;
 
   return (
-    <section className={h+" flex aic relative bg-black timeChange "+z}>
+    <section id={props.id} className={h+" flex aic relative bg-black timeChange "+z}>
       <div className="w-100 h-100 absolute top-left time-clipping fade">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
           <figure className="w-100 ma0">
@@ -1780,7 +1800,7 @@ function TimeChangeSide(props) {
 
   
   return (
-    <section className={h+" flex aic relative bg-white timeChange "+z}>
+    <section id={props.id} className={h+" flex aic relative bg-white timeChange "+z}>
       <div className="w-100 h-100 absolute top-left time-clipping fade cf">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
           <figure className="fr-l w-50 ma0 h-100 flex aic">
@@ -1923,7 +1943,7 @@ function Blog(props) {
     );
   }
   return (
-    <section className={"flex aic relative pv6-l pv4 "+props.bg} >
+    <section id={props.id} className={"flex aic relative pv6-l pv4 "+props.bg} >
       <div className={mw+" w-100 center z4 relative"}>
         <div className={"cf "+column}>
           {text}
@@ -1956,7 +1976,7 @@ function More(props) {
 
 
   return(
-    <section id="more" className="bg-white pv6-l pv4" style={border}>
+    <section id={props.id} className="bg-white pv6-l pv4" style={border}>
       <div className="mw8 center ph3">
         <div className="cf ph2-ns tc">
           <h1 className="ph2 fw7 tracked mb5-l mb4 ">延伸閱讀</h1>
@@ -1970,7 +1990,7 @@ function More(props) {
 
 function CTA(props) {
     return (
-      <section id="cta" className="bg-near-white pv6-l pv4">
+      <section id={props.id} className="bg-near-white pv6-l pv4">
         <div className="mw8 center ph3">
           <div className="cf ph2-ns tc">
             <div className="fl w-third-l w-100 pa2 cp">
@@ -2052,16 +2072,18 @@ class Event01 extends Component {
     const { open } = this.state;
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
 
         <Taiwan
+          id={"2-taiwan"}
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
           map = {"-50px, -290px"}
         />
-        <Illustration 
+        <Illustration
+          id={"3-illustration"}
           number = {2}
           text1={this.props.data.illustrationText[0]}
           text2={this.props.data.illustrationText[1]}
@@ -2069,6 +2091,7 @@ class Event01 extends Component {
         />
 
         <PhotoSwitch
+          id={"4-photoSwitch"}
           number = {2} 
           images={this.props.data.photoswitch} 
           text1={this.props.data.photoswitchText}
@@ -2077,12 +2100,14 @@ class Event01 extends Component {
         />
 
         <Video 
+          id={"5-video"}
           videoID="01"
           link={this.props.data.video[0]}
           text1=""
         />
 
         <PhotoTextFull
+          id={"6-photoTextFull"}
           position={"fl-l"}
           color="dark"
           text1={this.props.data.photoFullText[0]}
@@ -2091,6 +2116,7 @@ class Event01 extends Component {
         />
 
         <PhotoText
+          id={"7-photoText"}
           order="right"
           color="invert"
           text={this.props.data.photoText[0]}
@@ -2099,12 +2125,14 @@ class Event01 extends Component {
         />
 
         <TimeChange
+          id={"8-timeChange"}
           position={"fr-l"}
           text1={this.props.data.timeChangeText[0]}
           image={this.props.data.timeChangePhotos[0]}
           labels={this.props.data.timeChangeLabels[0]}
         />
         <TimeChange
+          id={"9-timeChange"}
           position={"fr-l"}
           last={true}
           text1={this.props.data.timeChangeText[1]}
@@ -2113,19 +2141,22 @@ class Event01 extends Component {
         />
 
         <Video 
+          id={"10-video"}
           videoID="02"
           link={this.props.data.video[1]}
           text1={this.props.data.videoText[0]}
         />
 
-        <Transition text={this.props.data.videoText[1]} />
-        <Video 
+        <Transition id={"11-transition"} text={this.props.data.videoText[1]} />
+        <Video
+          id={"12-video"}
           videoID="03"
           link={this.props.data.video[2]}
           text1=""
         />
 
         <PhotoTextFull
+          id={"13-photoTextFull"}
           position={"fr-l"}
           color="dark"
           text1={this.props.data.photoFullText[3]}
@@ -2134,6 +2165,7 @@ class Event01 extends Component {
         />
 
         <Blog
+          id={"14-blog"}
           number={3}
           text={this.props.data.blogText[0]}
           image={this.props.data.blogImage[0]}
@@ -2147,12 +2179,14 @@ class Event01 extends Component {
         </Modal>
 
         <TimeChangeFull
+          id={"15-timeChangeFull"}
           position={"fl-l"}
           text1={this.props.data.photoFullText[4]}
           image = {this.props.data.photoFull[3]}
           label = {this.props.data.photoFullTextLabel[3]}
         />
         <TimeChangeFull
+          id={"16-timeChangeFull"}
           position={"fl-l"}
           last={true}
           text1={this.props.data.photoFullText[5]}
@@ -2160,7 +2194,8 @@ class Event01 extends Component {
           label = {this.props.data.photoFullTextLabel[4]}
         />
 
-        <PhotoContrast 
+        <PhotoContrast
+          id={"17-photoContrast"} 
           bg={"bg-white z1"}
           images={this.props.data.photocontrast}
           text={this.props.data.photocontrastText}
@@ -2169,6 +2204,7 @@ class Event01 extends Component {
         />
 
         <PhotoContrast
+          id={"18-photoContrast"} 
           bg={"bg-near-white z1"}
           images={this.props.data.photocontrast2}
           text={this.props.data.photocontrastText2}
@@ -2177,16 +2213,17 @@ class Event01 extends Component {
         />
 
         <CenterVideo 
+          id={"19-centerVideo"} 
           videoID="04"
           link={this.props.data.video[3]}
           text1={this.props.data.videoText[2]}
           bg={false}
         />
 
-        <EndingVideo text="來收看，淡水河20年來的故事..." link={"https://www.youtube.com/embed/pJcFZSLkelU?rel=0"}/>
+        <EndingVideo id={"20-endingVideo"} text="來收看，淡水河20年來的故事..." link={"https://www.youtube.com/embed/pJcFZSLkelU?rel=0"}/>
         {/*<Next switchView={this.props.switchView} next={"reborn-erren-river"} prev={"reborn-erren-river"}/>*/}
-        <More link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
-        <CTA switchView={this.props.switchView} next={"reborn-erren-river"} />
+        <More id={"21-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
+        <CTA id={"22-cta"} switchView={this.props.switchView} next={"reborn-erren-river"} />
       </div>
     );
   }
@@ -2235,7 +2272,7 @@ class Event02 extends Component {
         />
 
         <Timeline
-          content={"<p className='f3 fw7 tracked mb0'>長達三十年，二仁溪還是無法擺脫廢五金陰影。</p>"}
+          content={"<p class='f3 fw7 tracked mb0'>長達三十年，二仁溪還是無法擺脫廢五金陰影。</p>"}
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
@@ -2346,6 +2383,7 @@ class Event03 extends Component {
         />
 
         <CenterVideo
+          sound={true}
           videoID="01"
           link={this.props.data.video[0]}
           text1={this.props.data.videoText[0]}
@@ -2449,6 +2487,7 @@ class Event03 extends Component {
           text={"蟹生好卡 障礙關"}
         />
         <Video 
+          sound={true}
           videoID="06"
           text1={this.props.data.videoText[5]}
           link={this.props.data.video[5]}
@@ -2679,7 +2718,6 @@ class Event04 extends Component {
           label={this.props.data.panoramaLabel}
         />
         <Transition bg={"bg-near-white"} text={this.props.data.transitionText[0]}/>
-        <Transition text={this.props.data.photoSlideText}/>
 
         <TimeChangeFull
           position={"fr-l"}
@@ -2706,6 +2744,8 @@ class Event04 extends Component {
           image = {this.props.data.photoSlidePhoto[2]}
           label = "2018年 大武漁港"
         />
+
+        <Transition text={this.props.data.photoSlideText}/>
 
         <CenterVideo 
           videoID="06"
@@ -2956,6 +2996,7 @@ class Event05 extends Component {
         <Video 
           videoID="02"
           color="dark"
+          sound={true}
           link={this.props.data.video[1]}
           text1={this.props.data.videoText[1]}
         />
