@@ -1023,7 +1023,7 @@ function PhotoMultiple(props) {
     <section id={props.id} className={"flex aic relative bg-white flex-column pt6-l pt5 "+auto}>      
       <div className="mw80 center cf black mb5 ph4-ns ph3 w-100">
         <div className="mw7 w-100 center bg-white pre-wrap">
-          <p className="f5-ns f6 lh-copy mv0" dangerouslySetInnerHTML={{__html:props.text}}></p>
+          <p className="f5-ns f6 lh-copy mv0 ph4-ns ph3" dangerouslySetInnerHTML={{__html:props.text}}></p>
         </div>
       </div>
       <div className="w-100 overflow-hidden" style={height}>
@@ -1043,7 +1043,7 @@ function PhotoContrast(props) {
     text = (
       <div className="mw80 center cf black mb5 ph4-ns ph3 ">
         <div className="mw7 w-100 center pre-wrap">
-          <p className="f5-ns f6 lh-copy mv0">{props.text}</p>
+          <p className="f5-ns f6 lh-copy mv0 ph4-ns ph3">{props.text}</p>
         </div>
       </div>
     )
@@ -1123,7 +1123,7 @@ function Video(props) {
         <div className="">
           <div className={props.position+" w-50-l mw500 mh3-l mh3-l center w-100 pa4-l relative mt0-l mt4"}>
             <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative "+textcolor}>{props.text1}</p>
+            <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative ph0-l ph3 "+textcolor}>{props.text1}</p>
           </div>
         </div>
       
@@ -1141,7 +1141,7 @@ function Video(props) {
       <div className="mt50vh">
         <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l relative mt0-l mt4"}>
           <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-          <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative "+textcolor}>{props.text2}</p>
+          <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative ph0-l ph3 "+textcolor}>{props.text2}</p>
         </div>
       </div>
     )
@@ -1241,7 +1241,7 @@ function SmallVideo(props) {
             </video>
           </div>
           <div className="fr-l w-100 w-50-l mw500 center ml5-l ph4-ns ph3 pv3">
-            <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph2">{props.text}</p>
+            <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph0-ns ph3">{props.text}</p>
           </div>
         </div>
       </div>
@@ -1278,11 +1278,11 @@ function CenterVideo(props) {
   var max = {
     maxWidth: "800px"
   }
-  var textShadow = "text-shadow f4";
+  var textShadow = "text-shadow f4-ns f5";
   var bgColor = "";
   var mask = "bg-dark-gray o-40";
   if(props.bg) {
-    textShadow = "f5";
+    textShadow = "f5-ns f6";
     bgColor = "bg-black o-60";
     mask = "";
   }
@@ -1304,7 +1304,7 @@ function CenterVideo(props) {
   }
 
   return (
-    <section id={props.id} className="min-vh-200 flex aic relative pv6-l pv5 video-content bg-black z4">
+    <section id={props.id} className="min-vh-150 flex aic relative pv6-l pv5 video-content bg-black z4">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={mask+" w-100 h-100 absolute pn top-left z4"}/>
         {/*<div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>*/}
@@ -1317,7 +1317,7 @@ function CenterVideo(props) {
       </div>
       <div className="w-100 center ph4-ns ph3 z4 relative">
         <div className="cf flex aic">
-          <div className="w-100 w-50-l center pa4-l pa2 relative" style={max}>
+          <div className="w-100 w-50-l center pa4-l pa3 relative" style={max}>
             <div className={bgColor+" w-100 h-100 absolute pn top-left"}/>
             <p className={"pre-wrap f4 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
           </div>
@@ -1366,7 +1366,7 @@ function CenterSmallVideo(props) {
   if(props.text !== "") {
     text = (
       <div className="mw80 center black mb5-ns mb4 pre-wrap">
-        <div className="mw7 w-100 center ph2 pv3">
+        <div className="mw7 w-100 center ph3 pv3">
           <p className={"f5-ns f6 lh-copy mv0 "+props.align}>{props.text}</p>
         </div>
       </div>
@@ -1583,12 +1583,14 @@ function Timeline(props) {
   var content = null
 
   if(props.content !== null) {
-    content = (<p className="lh-copy f5-ns f6 center pre-wrap ph4-ns ph4-ns ph3 mb5" style={max} dangerouslySetInnerHTML={{__html:props.content}}></p>);
+    content = (<p className="lh-copy f5-ns f6 center pre-wrap ph4-ns ph3 mb5" style={max} dangerouslySetInnerHTML={{__html:props.content}}></p>);
   }
 
   return (
     <section id={props.id} className="min-vh-100 flex aic relative bg-white pv6-l pv5 flex-column">      
-      {content}
+      <div className="ma0 ph3">
+        {content}
+      </div>
       <p className='f6 o-50 tc mb4'>{"<<往左滑看更多"}</p>
       <div className="w-100 overflow-hidden relative" style={height}>
         <div className="absolute line" style={line}></div>
@@ -1680,9 +1682,9 @@ function Transition(props) {
     fontSize = "f2rem fw7 tracked mv0";
   }
   return (
-    <section id={props.id} className={props.title+" banner pv5-ns pv4 flex aic jcc flex-column-s ph3 z4 "+props.bg}>
+    <section id={props.id} className={props.title+" banner pv5-ns pv4 flex aic jcc flex-column-s ph4-ns ph3 z4 "+props.bg}>
       {img}
-      <p className={"dib mw7 lh-copy pre-wrap "+fontSize} dangerouslySetInnerHTML={{__html:props.text}}></p>
+      <p className={"dib mw7 lh-copy pre-wrap ph4-ns ph3 "+fontSize} dangerouslySetInnerHTML={{__html:props.text}}></p>
     </section>
   )
 }
@@ -2018,7 +2020,7 @@ function Blog(props) {
       </div>
     );
     text = (
-      <div className="mw500 center w-100 w-50-l ph2 pv3 mb4">
+      <div className="mw500 center w-100 w-50-l ph3 pv3 mb4">
         <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black">{props.text}</p>
       </div>
     );
@@ -2041,7 +2043,7 @@ function Blog(props) {
     mw = "";
     text = (
       <div className="mw7 center w-100 pa4-l pa3 mb4">
-        <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black">{props.text}</p>
+        <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black ph4-ns ph3">{props.text}</p>
       </div>
     );
     img = (
@@ -2074,7 +2076,7 @@ function More(props) {
   for(var i = 0; i < len; i++) {
     var link = (
       <div className="fl w-100 w-50-ns pa2" key={i}>
-        <div className="bg-white pv2 f4 fw5">
+        <div className="bg-white pv2 f4-ns f5 fw5">
           <a className="bb bw2 b--blue" href={props.link[i]} target="_blank">
             {props.title[i]}
           </a>
@@ -2089,7 +2091,7 @@ function More(props) {
     <section id={props.id} className="bg-white pv6-l pv5" style={border}>
       <div className="mw8 center ph3">
         <div className="cf ph2-ns tc">
-          <h1 className="ph2 fw7 tracked mb5-l mb4 ">延伸閱讀</h1>
+          <h1 className="ph2 fw7 tracked mb5-l mb4 f2rem">延伸閱讀</h1>
           {links}
         </div>
       </div>
@@ -2633,7 +2635,7 @@ class Event03 extends Component {
           <img src={this.props.data.illustrationCrab[7]} className="w-25-ns w-50" />
           <img src={this.props.data.illustrationCrab[8]} className="w-25-ns w-50" />
           <img src={this.props.data.illustrationCrab[9]} className="w-25-ns w-50" />
-          <p className="lh-copy pre-wrap f5-ns f6 mt5">{this.props.data.videoText[6]}</p>
+          <p className="lh-copy pre-wrap f5-ns f6 mt5 ph3">{this.props.data.videoText[6]}</p>
         </section>
 
         <Video 
