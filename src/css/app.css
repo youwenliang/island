@@ -339,6 +339,27 @@ nav .btn {
   font-size: 1.375rem !important;
 }
 
+.bg-blue p:before {
+  content:'';
+  width: 60px;
+  height: 60px;
+  background-image: url("assets/images/quote左.svg");
+  background-size: contain;
+  position: absolute;
+  transform: translate3d(-70px, -20px, 0);
+  opacity: .4;
+}
+.bg-blue p:after {
+  content:'';
+  width: 60px;
+  height: 60px;
+  background-image: url("assets/images/quote右.svg");
+  background-size: contain;
+  position: absolute;
+  transform: translate3d(0px, 10px, 0);
+  opacity: .4;
+}
+
 @media screen and (max-width: 30em) {
 
   .bg-blue p {

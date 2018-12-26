@@ -2,11 +2,19 @@ import React, { Component } from 'react';
 import coverVideo from '../assets/videos/cover.mp4';
 import cover from '../assets/images/cover.svg';
 import Phone from '../component/Phone';
+import scrollship from '../assets/images/時光機.svg';
 
 class Cover extends Component {
   render() {
     var titleStyle = {
       transform: "translateY(-50px)"
+    }
+
+    var ship = {
+      left: 0,
+      right: 0,
+      margin: "0 auto",
+      bottom: "60px"
     }
     
     return (
@@ -24,7 +32,10 @@ class Cover extends Component {
             <img src={cover} style={titleStyle} width="960px" height="auto" alt="title" />
           </div>
         </div>
-        <Phone/>
+        {/*<Phone/>*/}
+        <figure className="scrollship absolute w4 tc z4" style={ship}>
+          <img src={scrollship} width="100" alt="請往下滑動" />
+        </figure>
       </section>
     );
   }
