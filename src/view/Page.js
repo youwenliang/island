@@ -1888,7 +1888,7 @@ function TimeChangeSide(props) {
       <div className="fl-l w-50-l w-100 pre-wrap">
         <div className="mw500 center ml5-l ph3 pv3">
           <div className="w-100 h-100 absolute pn top-left" />
-          <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4" dangerouslySetInnerHTML={{__html:props.text1}}></p>
+          <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph3" dangerouslySetInnerHTML={{__html:props.text1}}></p>
         </div>
       </div>
     )
@@ -2043,7 +2043,7 @@ function Blog(props) {
     mw = "";
     text = (
       <div className="mw7 center w-100 pa4-l pa3 mb4">
-        <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black ph4-ns ph3">{props.text}</p>
+        <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black ph0-ns ph3">{props.text}</p>
       </div>
     );
     img = (
