@@ -343,14 +343,14 @@ function CoverVideo(props) {
   var top = {
     top: '-45px'
   }
-  var h = (1000 - $(window).height()) / 4
-  if(cookies.get('firstVisit') === undefined) {
-    cookies.set('firstVisit', true, { path: '/' });
-    phone = (<Phone/>);
-    top = {
-      top: '-'+h+'px'
-    }
-  }
+  // var h = (1000 - $(window).height()) / 4
+  // if(cookies.get('firstVisit') === undefined) {
+  //   cookies.set('firstVisit', true, { path: '/' });
+  //   phone = (<Phone/>);
+  //   top = {
+  //     top: '-'+h+'px'
+  //   }
+  // }
 
   var ship = {
     left: 0,
@@ -373,14 +373,14 @@ function CoverVideo(props) {
       </div>
       </div>
       <div className="mw80 center ph4-ns ph3 w-100 z4 tc relative" style={top}>
-        <img src={props.title} className="center mb3" height="150" alt="title" />
+        <img src={props.title} className="center mb3" height="150" alt={props.name} />
         <div className="cf white w-80-ns w-100 center ph-ns">
           <h3 className="f3-ns f4 coverVideo-tag fw4 lh-copy mb0 pre-wrap text-shadow" dangerouslySetInnerHTML={{__html:props.content}}></h3>
         </div>
       </div>
       {phone}
       <figure className="scrollship absolute w4 tc z4" style={ship}>
-        <img src={scrollship} width="100"/>
+        <img src={scrollship} width="100" alt="請往下滑動" />
       </figure>
     </section>
   )
@@ -409,12 +409,13 @@ function Taiwan(props) {
   var label = {
     background: "#222222",
     color: "white",
-    padding: "5px 10px 5px 10px",
-    top: "57px",
+    padding: "10px 12px",
+    top: "67px",
     position: "relative",
     right: r,
     zIndex: "-1",
-    whiteSpace: "nowrap"
+    whiteSpace: "nowrap",
+    display: "inline-block"
   }
   return (
     <section id={props.id} className="cover min-vh-150 flex aic relative bg-black">
@@ -422,8 +423,8 @@ function Taiwan(props) {
         <div className="w-100 h-100 fixed fixed-content pn flex aic" style={bgStyle}>
           <TvLine />
           <figure className="absolute floatship" style={position}>
-            <label className="taiwan-label f5" style={label}>{props.text1.split("的")[0]}</label>
-            <img src={scrollship} width="100" height="100" alt="Taiwan"/>
+            <label className="taiwan-label f5 tl" style={label}>{props.text1.split("的")[0]}</label>
+            <img src={scrollship} width="100" height="100" alt="時光機"/>
           </figure>
         </div>
       </div>
@@ -548,6 +549,12 @@ function PhotoTextFull(props) {
   }
   var text1 = null;
   var h = "min-vh-150"
+  
+  var label_content = null;
+  if(props.label !== "") {
+    label_content = (<label className="white absolute lh-normal f6-ns f7 pn" style={bottomRight}>{props.label}</label>)
+  }
+
   if(props.text1 !== "") {
     h = "min-vh-200"
     text1 = (
@@ -579,7 +586,7 @@ function PhotoTextFull(props) {
           <figure className="w-100 ma0">
             <img className="w-100" style={fullImage} src={props.image} alt="background"/>
           </figure>
-          <label className="white absolute lh-normal f6-ns f7 pn" style={bottomRight}>{props.label}</label>
+          {label_content}
         </div>
       </div>
       <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
@@ -692,7 +699,7 @@ function PhotoText(props) {
               totalProgress={progress}
               paused
             >
-              <img className="relative" id="fish1" src={fish1} height="90"/>
+              <img className="relative" id="fish1" src={fish1} height="90" alt="fish"/>
             </Tween>
           )}        
           </Scene>
@@ -720,7 +727,7 @@ function PhotoText(props) {
               totalProgress={progress}
               paused
             >
-              <img className="relative" id="fish2" src={fish2} height="90"/>
+              <img className="relative" id="fish2" src={fish2} height="90" alt="fish"/>
             </Tween>
           )}        
           </Scene>
@@ -748,7 +755,7 @@ function PhotoText(props) {
               totalProgress={progress}
               paused
             >
-              <img className="relative" id="fish3" src={fish3} height="90"/>
+              <img className="relative" id="fish3" src={fish3} height="90" alt="fish"/>
             </Tween>
           )}        
           </Scene>
@@ -778,7 +785,7 @@ function PhotoText(props) {
               totalProgress={progress}
               paused
             >
-              <img className="relative" id="fish4" src={fish4} height="90"/>
+              <img className="relative" id="fish4" src={fish4} height="90" alt="fish"/>
             </Tween>
           )}        
           </Scene>
@@ -808,7 +815,7 @@ function PhotoText(props) {
               totalProgress={progress}
               paused
             >
-              <img className="relative" id="fish5" src={fish5} height="90"/>
+              <img className="relative" id="fish5" src={fish5} height="90" alt="fish"/>
             </Tween>
           )}        
           </Scene>
@@ -1163,9 +1170,11 @@ function Video(props) {
     )
   }
 
+  var playButton = props.playing ? (<div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>) : null
+
   var video_content = (
       <div className="w-100 h-100 absolute top-left clipping">
-        <div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>
+        {playButton}
         <div className={unmuteTag+" fixed sound cp z10"} onClick={(e) => soundVideo(e)}></div>
         <div className="bg-light-gray w-100 h-100 fixed fixed-content pn">
           <div className="videoBg">
@@ -1676,7 +1685,7 @@ function Transition(props) {
   if(props.illustration !== undefined) {
     img = (
       <div className="overflow-hidden w7">
-        <img src={props.illustration} height="200px" style={objectFit}/>
+        <img src={props.illustration} height="200px" style={objectFit} alt="illustration" />
       </div>
     )
     fontSize = "f2rem fw7 tracked mv0";
@@ -1727,7 +1736,7 @@ function Panorama(props) {
   return (
     <section id={props.id} className="panorama-container relative">
       <figure className="panorama">
-        <img src={props.image} height="100%"/>
+        <img src={props.image} height="100%" alt="panorama" />
       </figure>
       <div className="panorama-icon"></div>
       <div className="panorama-text text-shadow">左右移動看看</div>
@@ -1793,7 +1802,7 @@ function TimeChangeFull(props) {
   var fullImage = {
     height: "100vh",
     objectFit: "cover",
-    objectPosition: "center 64px",
+    objectPosition: "center 22px",
     width: "100%"
   }
   var bottomRight = {
@@ -1816,7 +1825,7 @@ function TimeChangeFull(props) {
   if(props.text1 !== "") {
     text1 = (
       <div className="cf">
-        <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
+        <div className={props.position+" mw500 mh3-l center pa4-l pa3 relative"}>
           <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
           <p className={"f5-ns f6 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:props.text1}}></p>
         </div>
@@ -1828,6 +1837,8 @@ function TimeChangeFull(props) {
     h = "min-vh-200"
   }
 
+  var label_content = props.label !== "" ? (<label className="white absolute lh-normal z10 f6-ns f7 pn" style={bottomRight}>{props.label}</label>) : null;
+
   var earth = props.earth ? <GoogleEarthLogo text={props.earthText} /> : null;
 
   return (
@@ -1837,7 +1848,7 @@ function TimeChangeFull(props) {
           <figure className="w-100 ma0">
             <img className="w-100" style={fullImage} src={props.image} alt="background"/>
           </figure>
-          <label className="white absolute lh-normal z10 f6-ns f7 pn" style={bottomRight}>{props.label}</label>
+          {label_content}
           <div className="absolute left-0 right-0 mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
             {text1}
           </div>
@@ -1944,6 +1955,7 @@ function Blog(props) {
   }
 
   var mobile = $(window).width() <= 959 ? true : false;
+  var hint = mobile ? null : (<p className='f6 o-50 tc mt4'>{"<<往左滑看更多"}</p>)
 
   let grid = [];
   var columns = "";
@@ -1954,7 +1966,7 @@ function Blog(props) {
   var h = "200px";
   var len = "count"+props.image.length;
   var height = {
-    height: mobile ? props.image.length*200+"px" : "400px"
+    height: mobile ? props.image.length*200+"px" : "466px"
   }
 
   for (var i = 0; i < props.image.length; i++){
@@ -1995,11 +2007,11 @@ function Blog(props) {
     img = (
       <div className="w-100">
         <div className="fl-l w-100 w-50-l relative tc mb5 mb0-ns">
-          <img className="mb3" src={props.image[0]}/>
+          <img className="mb3" src={props.image[0]} alt={props.label[0]}/>
           <label className="f7 mt2 o-50 lh-normal" >{props.label[0]}</label>
         </div>
         <div className="fr-l w-100 w-50-l relative tc mb0">
-          <img className="mb3" src={props.image[1]}/>
+          <img className="mb3" src={props.image[1]} alt={props.label[1]}/>
           <label className="f7 mt2 o-50 lh-normal" >{props.label[1]}</label>
         </div>
       </div>
@@ -2015,7 +2027,7 @@ function Blog(props) {
   if(props.number === 1) {
     img = (
       <div className={a+" w-100 w-50-l pv3 relative tc mb0"}>
-        <img className="mb3" src={props.image[0]}/>
+        <img className="mb3" src={props.image[0]} alt={props.label[0]}/>
         <label className="f7 mt2 o-50 lh-normal" >{props.label[0]}</label>
       </div>
     );
@@ -2029,11 +2041,11 @@ function Blog(props) {
     img = (
       <div className="w-100">
         <div className="fl-l w-100 w-50-l relative tc mb5 mb0-ns">
-          <img className="mb3" src={props.image[0]}/>
+          <img className="mb3" src={props.image[0]} alt={props.label[0]}/>
           <label className="f7 mt2 o-50 lh-normal" >{props.label[0]}</label>
         </div>
         <div className="fr-l w-100 w-50-l relative tc mb5 mb0-ns">
-          <img className="mb3" src={props.image[1]}/>
+          <img className="mb3" src={props.image[1]} alt={props.label[1]}/>
           <label className="f7 mt2 o-50 lh-normal" >{props.label[1]}</label>
         </div>
       </div>
@@ -2048,6 +2060,7 @@ function Blog(props) {
     );
     img = (
       <div className="w-100 overflow-hidden" style={height}>
+        {hint}
         <div className={"grid-container nowrap dragscroll "+len} style={container}>
           {grid}
         </div> 
@@ -2091,7 +2104,7 @@ function More(props) {
     <section id={props.id} className="bg-white pv6-l pv5" style={border}>
       <div className="mw8 center ph3">
         <div className="cf ph2-ns tc">
-          <h1 className="ph2 fw7 tracked mb5-l mb4 f2rem">延伸閱讀</h1>
+          <h1 className="ph2 fw7 tracked mb5-l mb4 f2rem">同場加映</h1>
           {links}
         </div>
       </div>
@@ -2109,7 +2122,7 @@ function CTA(props) {
               <Link to="/ourisland">
                 <div className="pv3 pa4 tc ctaBox bg-white">
                   <figure className="w5 h5 center mv0 flex aic jcc">
-                    <img src={cta1} width="210" height="210"/>
+                    <img src={cta1} width="210" height="210" alt="回首頁"/>
                   </figure>
                   <p className="f3-ns f4 fw5 mt0 mb2">回首頁</p>
                   <p className="f5-ns f6 fw4 o-60">加入粉絲  掌握最新資訊</p>
@@ -2120,7 +2133,7 @@ function CTA(props) {
               <Link to={"../"+props.next+"/"}> 
                 <div className="pv3 pa4 tc ctaBox bg-white" onClick={() => props.switchView(props.next)}>
                   <figure className="w5 h5 center mv0 flex aic jcc">
-                    <img src={cta2} width="210" height="210"/>
+                    <img src={cta2} width="210" height="210" alt="下一篇"/>
                   </figure>
                   <p className="f3-ns f4 fw5 mt0 mb2">下一篇</p>
                   <p className="f5-ns f6 fw4 o-60">訂閱影音  隨時看不漏失</p>
@@ -2131,7 +2144,7 @@ function CTA(props) {
               <a href="https://ourisland.pts.org.tw/" target="_blank" rel="noopener noreferrer">
                 <div className="pv3 pa4 tc ctaBox bg-white">
                   <figure className="w5 h5 center mv0 flex aic jcc">
-                    <img src={cta3} width="210" height="210"/>
+                    <img src={cta3} width="210" height="210" alt="大事記"/>
                   </figure>
                   <p className="f3-ns f4 fw5 mt0 mb2">島官網</p>
                   <p className="f5-ns f6 fw4 o-60">詳細收集  20年環境報導</p>
@@ -2184,7 +2197,7 @@ class Event01 extends Component {
     const { open } = this.state;
     return (
       <div>
-        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
 
         <Taiwan
           id={"2-taiwan"}
@@ -2192,7 +2205,7 @@ class Event01 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-50px, -290px"}
+          map = {"-80px, -370px"}
         />
         <Illustration
           id={"3-illustration"}
@@ -2216,6 +2229,7 @@ class Event01 extends Component {
           videoID="01"
           link={this.props.data.video[0]}
           text1=""
+          playing={true}
         />
 
         <PhotoTextFull
@@ -2258,6 +2272,7 @@ class Event01 extends Component {
           videoID="02"
           link={this.props.data.video[1]}
           text1={this.props.data.videoText[0]}
+          playing={true}
         />
 
         <Transition id={"11-transition"} bg={"bg-white"} text={this.props.data.videoText[1]} />
@@ -2361,7 +2376,7 @@ class Event02 extends Component {
     const { open } = this.state;
     return (
       <div>
-        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
           id={"2-taiwan"} 
@@ -2369,7 +2384,7 @@ class Event02 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-215px, 115px"}
+          map = {"-285px, 160px"}
         />
 
         <Illustration
@@ -2406,6 +2421,7 @@ class Event02 extends Component {
           position="fr-l"
           link={this.props.data.video[1]}
           text1=""
+          playing={true}
         />
 
         <Blog
@@ -2437,6 +2453,7 @@ class Event02 extends Component {
           videoID="03"
           link={this.props.data.video[2]}
           text1=""
+          playing={true}
         />
 
         <PhotoMultiple
@@ -2484,7 +2501,7 @@ class Event03 extends Component {
 
     return (
       <div>
-        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
           id={"2-taiwan"} 
@@ -2492,7 +2509,7 @@ class Event03 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-175px, 325px"}
+          map = {"-185px, 335px"}
         />
 
         <Illustration
@@ -2587,6 +2604,7 @@ class Event03 extends Component {
           color={"dark"}
           text1={this.props.data.videoText[3]}
           link={this.props.data.video[3]}
+          playing={true}
         />
 
         <Blog
@@ -2627,14 +2645,15 @@ class Event03 extends Component {
           videoID="06"
           text1={this.props.data.videoText[5]}
           link={this.props.data.video[5]}
+          playing={true}
         />
         
 
         <section id={"20-transition"}  style={max} className="pv6-ns pv5 ph3 center">
-          <img src={this.props.data.illustrationCrab[6]} className="w-25-ns w-50" />
-          <img src={this.props.data.illustrationCrab[7]} className="w-25-ns w-50" />
-          <img src={this.props.data.illustrationCrab[8]} className="w-25-ns w-50" />
-          <img src={this.props.data.illustrationCrab[9]} className="w-25-ns w-50" />
+          <img src={this.props.data.illustrationCrab[6]} className="w-25-ns w-50" alt="illustration" />
+          <img src={this.props.data.illustrationCrab[7]} className="w-25-ns w-50" alt="illustration" />
+          <img src={this.props.data.illustrationCrab[8]} className="w-25-ns w-50" alt="illustration" />
+          <img src={this.props.data.illustrationCrab[9]} className="w-25-ns w-50" alt="illustration" />
           <p className="lh-copy pre-wrap f5-ns f6 mt5 ph3">{this.props.data.videoText[6]}</p>
         </section>
 
@@ -2644,6 +2663,7 @@ class Event03 extends Component {
           position={"fr-l"}
           text1={this.props.data.videoText[11]}
           link={this.props.data.video[6]}
+          playing={true}
         />
 
         <Transition
@@ -2663,6 +2683,7 @@ class Event03 extends Component {
           videoID="08"
           text1=""
           link={this.props.data.video[7]}
+          playing={true}
         />
         <Blog
           id={"25-blog"} 
@@ -2681,7 +2702,7 @@ class Event03 extends Component {
         />
 
         <section id={"27-illustration"} className="ma0 flex jcc aic">
-          <img className="mw8 center" src={this.props.data.illustrationCrab[5]} width="100%"/>
+          <img className="mw8 center" src={this.props.data.illustrationCrab[5]} width="100%" alt="illustration" />
         </section>
 
         <PhotoCenterTextFull
@@ -2710,6 +2731,7 @@ class Event03 extends Component {
           videoID="12"
           text1=""
           link={this.props.data.video[10]}
+          playing={true}
         />
 
         <SmallVideo
@@ -2733,6 +2755,7 @@ class Event03 extends Component {
           label = {this.props.data.photoFullTextLabel[1]}
           bg={false}
         />
+        <p className="w-100 tr f6 pa3 mv0 o-50 lh-normal">諮詢顧問及影像提供：劉烘昌</p>
         <EndingVideo id={"35-endingVideo"} text={"一起來守護陸蟹"} link={"https://youtube.com/embed/KyG4mEAyv8E?rel=0"}/>
         <More id={"36-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
         <CTA id={"37-cta"} switchView={this.props.switchView} next={"dawu-fishing-port"} />
@@ -2818,7 +2841,7 @@ class Event04 extends Component {
     const { open } = this.state;
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         <Taiwan
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
@@ -2852,6 +2875,7 @@ class Event04 extends Component {
           videoID="02"
           link={this.props.data.video[1]}
           text1=""
+          playing={true}
         />
 
           <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
@@ -2906,6 +2930,7 @@ class Event04 extends Component {
           link={this.props.data.video[4]}
           text1=""
           sound={true}
+          playing={false}
         />
   
         <Timeline
@@ -2990,7 +3015,7 @@ class Event04 extends Component {
         />
 
         <Transition
-          bg={"bg-blue white tc z4"}
+          bg={"bg-white tc z4"}
           text={this.props.data.videoText[7]}
         />
 
@@ -3059,7 +3084,7 @@ class Event05 extends Component {
     const { open } = this.state;
     return (
       <div>
-        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
           id={"2-taiwan"}
@@ -3096,38 +3121,42 @@ class Event05 extends Component {
           id={"6-timeChangeFull"}
           position={"fl-l"}
           earth = {true}
+          color={"dark"}
           earthText = {"Image is from Google Earth ©️2018  DigitalGlobe"}
-          text1=""
+          text1={this.props.data.timeChangeLabels[0]}
           image = {this.props.data.timeChangePhotos[0]}
-          label = {this.props.data.timeChangeLabels[0]}
+          label = ""
         />
         <TimeChangeFull
           id={"7-timeChangeFull"}
           position={"fl-l"}
           earth = {true}
+          color={"dark"}
           earthText = {"Image is from Google Earth ©️2018  DigitalGlobe"}
-          text1=""
+          text1={this.props.data.timeChangeLabels[1]}
           image = {this.props.data.timeChangePhotos[1]}
-          label = {this.props.data.timeChangeLabels[1]}
+          label = ""
         />
         <TimeChangeFull
           id={"8-timeChangeFull"}
           position={"fl-l"}
           earth = {true}
+          color={"dark"}
           earthText = {"Image is from Google Earth ©️2018  DigitalGlobe"}
-          text1=""
+          text1={this.props.data.timeChangeLabels[2]}
           image = {this.props.data.timeChangePhotos[2]}
-          label = {this.props.data.timeChangeLabels[2]}
+          label = ""
         />
         <TimeChangeFull
           id={"9-timeChangeFull"}
           position={"fl-l"}
           earth = {true}
+          color={"dark"}
           earthText = {"Image is from Google Earth ©️2018  DigitalGlobe"}
           last={true}
-          text1=""
+          text1={this.props.data.timeChangeLabels[3]}
           image = {this.props.data.timeChangePhotos[3]}
-          label = {this.props.data.timeChangeLabels[3]}
+          label = ""
         />        
       
         <SmallVideo
@@ -3183,6 +3212,7 @@ class Event05 extends Component {
           videoID="04"
           link={this.props.data.video[3]}
           text1=""
+          playing={true}
         />
 
         <PhotoSwitch 
@@ -3206,6 +3236,7 @@ class Event05 extends Component {
           videoID="05"
           link={this.props.data.video[4]}
           text1={this.props.data.videoText[4]}
+          playing={true}
         />
 
         <PhotoCenterTextFull

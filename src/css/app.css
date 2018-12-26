@@ -11,6 +11,7 @@ body {
 	overflow-x: hidden;
   font-family: 'PingFang TC', 'Noto Sans TC' sans-serif;
   letter-spacing: 1px;
+  text-align: justify;
 }
 
 
@@ -1069,6 +1070,10 @@ ul.none {
   .progress {
     display: block;
   }
+}
+
+.text-align-justify {
+  text-align: justify;
 }
 
 .scrollship {

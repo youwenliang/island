@@ -12,7 +12,7 @@ class Footer extends Component {
                 <p className="f6 o-70 fw4 lh-copy underline">
                   <a href="https://www.flickr.com/photos/kechinyuan/" target="_blank" rel="noopener noreferrer">環境照片資料庫：柯金源 </a>
                   <br/>
-                  <a href="https://cyberisland.teldap.tw/graphyer" target="_blank" rel="noopener noreferrer">中研院 數位島嶼計畫</a>
+                  <a href="https://cyberisland.teldap.tw/" target="_blank" rel="noopener noreferrer">中研院 數位島嶼</a>
                   <br/>
                   <a href="https://www.taipeibiennial.org/2018" target="_blank" rel="noopener noreferrer">臺北市立美術館 後自然：美術館作為一個生態系統</a>
                 </p>
