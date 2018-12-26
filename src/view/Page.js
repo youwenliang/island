@@ -2248,9 +2248,10 @@ class Event02 extends Component {
     const { open } = this.state;
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
+          id={"2-taiwan"} 
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
@@ -2259,12 +2260,14 @@ class Event02 extends Component {
         />
 
         <Illustration
+          id={"3-illustration"} 
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
 
         <SmallVideo 
+          id={"4-smallVideo"} 
           videoID="01"
           bg={"bg-near-white"}
           link={this.props.data.video[0]}
@@ -2272,17 +2275,20 @@ class Event02 extends Component {
         />
 
         <Timeline
-          content={"<p class='f3 fw7 tracked mb0'>長達三十年，二仁溪還是無法擺脫廢五金陰影。</p>"}
+          id={"5-timeline"} 
+          content={"<p class='f3 fw7 tracked mb0 lh-normal'>長達三十年，二仁溪還是無法擺脫廢五金陰影。</p>"}
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
         />
         <Transition
+          id={"6-transition"} 
           bg={"bg-near-white"}
           text={this.props.data.videoText[1]}
         />
 
         <Video 
+          id={"7-video"} 
           videoID="02"
           position="fr-l"
           link={this.props.data.video[1]}
@@ -2290,6 +2296,7 @@ class Event02 extends Component {
         />
 
         <Blog
+          id={"8-blog"} 
           number={4}
           text={this.props.data.blogText[0]}
           image={this.props.data.blogImage[0]}
@@ -2298,11 +2305,13 @@ class Event02 extends Component {
         />
 
         <Transition
+          id={"9-transition"} 
           bg={"bg-near-white"}
           text={this.props.data.transitionText}
         />
 
         <PhotoSwitch 
+          id={"10-photoSwitch"} 
           number = {2} 
           images={this.props.data.photoswitch} 
           text1={this.props.data.photoswitchText}
@@ -2311,12 +2320,14 @@ class Event02 extends Component {
         />
 
         <Video 
+          id={"11-video"} 
           videoID="03"
           link={this.props.data.video[2]}
           text1=""
         />
 
         <PhotoMultiple
+          id={"12-photoMultiple"} 
           text={this.props.data.photoMultipleText}
           images={this.props.data.photoMultiple}
           label={this.props.data.photoMultipleLabel}
@@ -2328,15 +2339,9 @@ class Event02 extends Component {
           <p className="tc mb0">{this.state.description}</p>
         </Modal>
 
-        {/*
-        <PhotoTextMultiple
-          images={this.props.data.photoMultiple}
-          text={this.props.data.photoMultipleLabel}
-        />
-        */}
-        <EndingVideo text={"來看二仁溪，二十年來承受了什麼..."} link={"https://youtube.com/embed/gfI8M0LGMss?rel=0"}/>
-        <More link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
-        <CTA switchView={this.props.switchView} next={"land-crabs-survival"} />
+        <EndingVideo id={"13-endingVideo"} text={"來看二仁溪，二十年來承受了什麼..."} link={"https://youtube.com/embed/gfI8M0LGMss?rel=0"}/>
+        <More id={"14-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
+        <CTA id={"15-cta"} switchView={this.props.switchView} next={"land-crabs-survival"} />
       </div>
     );
   }
@@ -2366,9 +2371,10 @@ class Event03 extends Component {
 
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
+          id={"2-taiwan"} 
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
@@ -2377,12 +2383,14 @@ class Event03 extends Component {
         />
 
         <Illustration
+          id={"3-illustration"} 
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
 
         <CenterVideo
+          id={"4-centerVideo"} 
           sound={true}
           videoID="01"
           link={this.props.data.video[0]}
@@ -2391,16 +2399,19 @@ class Event03 extends Component {
         />
 
         <Transition
+          id={"5-transition"} 
           text={this.props.data.videoText[1]}
         />
 
-        <Video 
+        <Video
+          id={"6-video"} 
           videoID="02"
           link={this.props.data.video[1]}
           text1=""
         />
 
         <PhotoMultiple
+          id={"7-photoMultiple"} 
           images={this.props.data.photoMultiple} 
           label={this.props.data.photoMultipleLabel}
           text={this.props.data.photoMultipleText} 
@@ -2413,23 +2424,27 @@ class Event03 extends Component {
         </Modal>
 
         <Transition
+          id={"8-transition"} 
           bg={"bg-blue white tc"}
           text={this.props.data.transitionText[0]}
         />
         <Transition
+          id={"9-transition"} 
           title={"transitionTitle"}
           bg={"bg-white black tc"}
           illustration={this.props.data.illustrationCrab[0]}
           text={"弱肉強食 生死關"}
         />
         
-        <CenterSmallVideo 
+        <CenterSmallVideo
+          id={"10-centerSmallVideo"}  
           videoID="03"
           text={this.props.data.videoText[2]}
           link={this.props.data.video[2]}
         />
 
         <Transition
+          id={"11-transition"} 
           title={"transitionTitle"}
           bg={"bg-white black tc"}
           illustration={this.props.data.illustrationCrab[1]}
@@ -2437,6 +2452,7 @@ class Event03 extends Component {
         />
 
         <Blog
+          id={"12-blog"} 
           number={1}
           text={this.props.data.blogText[0]}
           image={this.props.data.blogImage[0]}
@@ -2445,6 +2461,7 @@ class Event03 extends Component {
         />
 
         <Transition
+          id={"13-transition"} 
           title={"transitionTitle"}
           bg={"bg-white black tc"}
           illustration={this.props.data.illustrationCrab[2]}
@@ -2452,6 +2469,7 @@ class Event03 extends Component {
         />
 
         <Video 
+          id={"14-video"} 
           videoID="04"
           color={"dark"}
           text1={this.props.data.videoText[3]}
@@ -2459,6 +2477,7 @@ class Event03 extends Component {
         />
 
         <Blog
+          id={"15-blog"} 
           number={5}
           bg={"bg-near-white"}
           text={this.props.data.blogText[1]}
@@ -2469,11 +2488,13 @@ class Event03 extends Component {
         
 
         <Transition
+          id={"16-transition"} 
           bg={"bg-blue white tc"}
           text={this.props.data.transitionText[1]}
         />
 
         <CenterSmallVideo
+          id={"17-centerSmallVideo"} 
           color={"invert"}
           videoID="05"
           text={this.props.data.videoText[4]}
@@ -2481,12 +2502,14 @@ class Event03 extends Component {
         />
 
         <Transition
+          id={"18-transition"} 
           title={"transitionTitle"}
           bg={"bg-white black tc"}
           illustration={this.props.data.illustrationCrab[3]}
           text={"蟹生好卡 障礙關"}
         />
         <Video 
+          id={"19-transition"} 
           sound={true}
           videoID="06"
           text1={this.props.data.videoText[5]}
@@ -2494,7 +2517,7 @@ class Event03 extends Component {
         />
         
 
-        <section style={max} className="pv6-ns pv5 ph3 center">
+        <section id={"20-transition"}  style={max} className="pv6-ns pv5 ph3 center">
           <img src={this.props.data.illustrationCrab[6]} className="w-25-ns w-50" />
           <img src={this.props.data.illustrationCrab[7]} className="w-25-ns w-50" />
           <img src={this.props.data.illustrationCrab[8]} className="w-25-ns w-50" />
@@ -2503,6 +2526,7 @@ class Event03 extends Component {
         </section>
 
         <Video 
+          id={"21-video"} 
           videoID="07"
           position={"fr-l"}
           text1={this.props.data.videoText[11]}
@@ -2510,6 +2534,7 @@ class Event03 extends Component {
         />
 
         <Transition
+          id={"22-transition"} 
           title={"transitionTitle"}
           bg={"bg-white black tc"}
           illustration={this.props.data.illustrationCrab[4]}
@@ -2517,14 +2542,17 @@ class Event03 extends Component {
         />
 
         <Transition
+          id={"23-transition"} 
           text={this.props.data.videoText[7]}
         />
         <Video 
+          id={"24-video"} 
           videoID="08"
           text1=""
           link={this.props.data.video[7]}
         />
         <Blog
+          id={"25-blog"} 
           number={5}
           text={this.props.data.blogText[3]}
           image={this.props.data.blogImage[4]}
@@ -2532,17 +2560,19 @@ class Event03 extends Component {
           onOpenModal={this.onOpenModal.bind(this)}
         />
         <SmallVideo
+          id={"26-smallVideo"} 
           bg={"bg-near-white"}
           videoID="09"
           link={this.props.data.video[8]}
           text={this.props.data.videoText[9]}
         />
 
-        <section className="ma0 flex jcc aic">
+        <section id={"27-illustration"} className="ma0 flex jcc aic">
           <img className="mw8 center" src={this.props.data.illustrationCrab[5]} width="100%"/>
         </section>
 
         <PhotoCenterTextFull
+          id={"28-photoCenterTextFull"} 
           text1 = {this.props.data.photoFullText[0]}
           image = {this.props.data.photoFull[0]}
           label = {this.props.data.photoFullTextLabel[0]}
@@ -2550,6 +2580,7 @@ class Event03 extends Component {
         />
 
         <PhotoMultiple
+          id={"29-photoMultiple"} 
           images={this.props.data.photoMultiple2} 
           label={this.props.data.photoMultipleLabel2}
           text={this.props.data.photoMultipleText2} 
@@ -2557,16 +2588,19 @@ class Event03 extends Component {
         />
 
         <Transition
+          id={"30-transition"} 
           text={this.props.data.transitionText[2]}
         />
 
         <Video 
+          id={"31-video"} 
           videoID="12"
           text1=""
           link={this.props.data.video[10]}
         />
 
-        <SmallVideo 
+        <SmallVideo
+          id={"32-smallVideo"}  
           videoID="11"
           bg={"bg-near-white"}
           text={this.props.data.blogText[2]}
@@ -2574,19 +2608,21 @@ class Event03 extends Component {
         />
 
         <CenterSmallVideo 
+          id={"33-centerSmallVideo"} 
           videoID="10"
           text={this.props.data.videoText[10]}
           link={this.props.data.video[9]}
         />
         <PhotoCenterTextFull
+          id={"34-photoCenterTextFull"} 
           text1 = {this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
           bg={false}
         />
-        <EndingVideo text={"一起來守護陸蟹"} link={"https://youtube.com/embed/KyG4mEAyv8E?rel=0"}/>
-        <More link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
-        <CTA switchView={this.props.switchView} next={"dawu-fishing-port"} />
+        <EndingVideo id={"35-endingVideo"} text={"一起來守護陸蟹"} link={"https://youtube.com/embed/KyG4mEAyv8E?rel=0"}/>
+        <More id={"36-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
+        <CTA id={"37-cta"} switchView={this.props.switchView} next={"dawu-fishing-port"} />
       </div>
     );
   }
@@ -2910,9 +2946,10 @@ class Event05 extends Component {
     const { open } = this.state;
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
+          id={"2-taiwan"}
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
@@ -2922,12 +2959,14 @@ class Event05 extends Component {
         />
 
         <Illustration
+          id={"3-illustration"}
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
 
         <PhotoTextFull
+          id={"4-photoTextFull"}
           position={"fr-l"}
           color={"dark"}
           text1={this.props.data.photoFullText[0]}
@@ -2936,10 +2975,12 @@ class Event05 extends Component {
         />
 
         <Transition
+          id={"5-transition"}
           text={this.props.data.transitionText}
         />
 
         <TimeChangeFull
+          id={"6-timeChangeFull"}
           position={"fl-l"}
           earth = {true}
           earthText = {"Image is from Google Earth ©️2018  DigitalGlobe"}
@@ -2948,6 +2989,7 @@ class Event05 extends Component {
           label = {this.props.data.timeChangeLabels[0]}
         />
         <TimeChangeFull
+          id={"7-timeChangeFull"}
           position={"fl-l"}
           earth = {true}
           earthText = {"Image is from Google Earth ©️2018  DigitalGlobe"}
@@ -2956,6 +2998,7 @@ class Event05 extends Component {
           label = {this.props.data.timeChangeLabels[1]}
         />
         <TimeChangeFull
+          id={"8-timeChangeFull"}
           position={"fl-l"}
           earth = {true}
           earthText = {"Image is from Google Earth ©️2018  DigitalGlobe"}
@@ -2964,6 +3007,7 @@ class Event05 extends Component {
           label = {this.props.data.timeChangeLabels[2]}
         />
         <TimeChangeFull
+          id={"9-timeChangeFull"}
           position={"fl-l"}
           earth = {true}
           earthText = {"Image is from Google Earth ©️2018  DigitalGlobe"}
@@ -2973,7 +3017,8 @@ class Event05 extends Component {
           label = {this.props.data.timeChangeLabels[3]}
         />        
       
-        <SmallVideo 
+        <SmallVideo
+          id={"10-smallVideo"} 
           bg={"bg-white z4"}
           videoID="01"
           link={this.props.data.video[0]}
@@ -2981,6 +3026,7 @@ class Event05 extends Component {
         />
 
         <Blog
+          id={"11-blog"}
           number={4}
           switch={false}
           bg={"bg-near-white z4"}
@@ -2995,7 +3041,8 @@ class Event05 extends Component {
           <p className="tc mb0">{this.state.description}</p>
         </Modal>
 
-        <Video 
+        <Video
+          id={"12-video"} 
           videoID="02"
           color="dark"
           sound={true}
@@ -3003,13 +3050,15 @@ class Event05 extends Component {
           text1={this.props.data.videoText[1]}
         />
 
-        <CenterSmallVideo 
+        <CenterSmallVideo
+          id={"13-centerSmallVideo"} 
           videoID="03"
           link={this.props.data.video[2]}
           text={this.props.data.videoText[2]}
         />
 
         <PhotoTextFull
+          id={"14-photoTextFull"}
           position={"fl-l"}
           text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
@@ -3017,12 +3066,14 @@ class Event05 extends Component {
         />
 
         <Video 
+          id={"15-video"}
           videoID="04"
           link={this.props.data.video[3]}
           text1=""
         />
 
         <PhotoSwitch 
+          id={"16-photoSwitch"}
           position={"fl-l"}
           images={this.props.data.photoswitch} 
           text1={this.props.data.photoswitchText}
@@ -3030,6 +3081,7 @@ class Event05 extends Component {
         />
 
         <Timeline
+          id={"17-timeline"}
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
@@ -3037,20 +3089,22 @@ class Event05 extends Component {
         />
 
         <Video 
+          id={"18-video"}
           videoID="05"
           link={this.props.data.video[4]}
           text1={this.props.data.videoText[4]}
         />
 
         <PhotoCenterTextFull
+          id={"19-photoCenterFull"}
           text1={this.props.data.photoFullText[2]}
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
         />
 
-        <EndingVideo text={"了解更多，關於金門鱟..."} link={"https://youtube.com/embed/nlWGkBTafkc?start=716&rel=0"}/>
-        <More link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
-        <CTA switchView={this.props.switchView} next={"changing-tamsui-river"} />
+        <EndingVideo id={"20-endingVideo"} text={"了解更多，關於金門鱟..."} link={"https://youtube.com/embed/nlWGkBTafkc?start=716&rel=0"}/>
+        <More id={"21-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
+        <CTA id={"22-cta"} switchView={this.props.switchView} next={"changing-tamsui-river"} />
       </div>
     );
   }
