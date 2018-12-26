@@ -7,11 +7,11 @@ import cta3 from '../assets/images/CTA-Icons-3.svg';
 class CTA extends Component {
   render() {
     return (
-      <section id="cta" className="bg-near-white pv6-l pv4">
+      <section id="cta" className="bg-near-white pv6-l pv5">
         <div className="mw8 center ph3">
           <div className="cf ph2-ns tc hide">
-            <h1 className="ph2 fw7 tracked">邀請你一起關心環境</h1>
-            <h3 className="ph2 mb5-l mb4 fw4 lh-copy mw6 center">一起關心環境大小事一起關心環境大小事一起關心環境大小事一起關心環境大小事一起關心環</h3>
+            <h1 className="ph2 fw7 tracked f2rem">邀請你一起關心環境</h1>
+            <h3 className="ph2 mb5-l mb4 fw4 lh-normal mw6 center">一起關心環境大小事一起關心環境大小事一起關心環境大小事一起關心環境大小事一起關心環</h3>
             <div className="fl w-third-l w-100 pa2 cp hide">
               <a href="https://www.facebook.com/PTSourisland/" target="_blank" rel="noopener noreferrer">
                 <div className="pv3 pa4 tc ctaBox bg-white">

@@ -465,27 +465,50 @@ function GoogleEarthLogo(props) {
 /*03*/
 function Illustration(props) {
   var text2 = null;
+  var mobile = $(window).width() <= 959 ? true : false;
+
   var h = "min-vh-150"
+  var mt50vh = "mt50vh"
   if(props.number === 2) {
     h = "min-vh-200"
+    if(mobile) {
+      h = "";
+      mt50vh = "mt3"
+    }
     text2 = (
-      <div className="cf black mt50vh">
+      <div className={"cf black "+mt50vh}>
         <div className="w-50-l mw500 mh3-l center w-100 fr-l pa4-l pa3 bg-white">
           <p className="f5-ns f6 lh-copy mv0">{props.text2}</p>
         </div>
       </div>
     )
   }
+
+  if(mobile) {
+    h = "";
+  }
+
+  var illustration_content_1 = mobile ? null : (
+    <figure className="center mw70 w-100 ph4-ns">
+      <img className="w-50-l w-100" src={props.illustration} alt="illustration"/>
+    </figure>
+  )
+
+  var illustration_content_2 = mobile ? (
+    <figure className="center mw70 w-100 ph4-ns">
+      <img className="w-50-l w-100" src={props.illustration} alt="illustration"/>
+    </figure>
+  ) : null
+
   return (
-    <section id={props.id} className={h+" flex aic relative"}>
+    <section id={props.id} className={h+" flex aic relative pv6-l pv5"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
-          <figure className="center mw70 w-100 ph4-ns">
-            <img className="w-50-l w-100" src={props.illustration} alt="illustration"/>
-          </figure>
+          {illustration_content_1}
         </div>
       </div>
       <div className="mw70 center ph4-ns ph3 w-100 z4 pre-wrap">
+        {illustration_content_2}
         <div className="cf black">
           <div className="w-50-l mw500 mh3-l center w-100 fr-l pa4-l pa3 bg-white">
             <p className="f5-ns f6 lh-copy mv0">{props.text1}</p>
@@ -499,16 +522,19 @@ function Illustration(props) {
 
 /*04*/
 function PhotoTextFull(props) {
+  var mobile = $(window).width() <= 959 ? true : false;
+
   var fullImage = {
     height: "100vh",
     objectFit: "cover",
-    width: "100%"
+    width: "100%",
+    objectPosition: props.objectP
   }
   var bottomRight = {
     bottom: "0px",
     right: "0px",
     background: "rgba(0,0,0,.2)",
-    padding: "20px"
+    padding: mobile ? "10px" : "20px"
   }
 
   var bgcolor = ""
@@ -553,7 +579,7 @@ function PhotoTextFull(props) {
           <figure className="w-100 ma0">
             <img className="w-100" style={fullImage} src={props.image} alt="background"/>
           </figure>
-          <label className="white absolute" style={bottomRight}>{props.label}</label>
+          <label className="white absolute lh-normal f6-ns f7 pn" style={bottomRight}>{props.label}</label>
         </div>
       </div>
       <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
@@ -565,6 +591,7 @@ function PhotoTextFull(props) {
 }
 
 function PhotoCenterTextFull(props) {
+  var mobile = $(window).width() <= 959 ? true : false;
   var fullImage = {
     height: "100vh",
     objectFit: "cover",
@@ -574,16 +601,16 @@ function PhotoCenterTextFull(props) {
     bottom: "0px",
     right: "0px",
     background: "rgba(0,0,0,.2)",
-    padding: "20px"
+    padding: mobile ? "10px" : "20px"
   }
   var max = {
     maxWidth: "800px"
   }
-  var textShadow = "text-shadow f4";
+  var textShadow = "text-shadow f4-ns f5";
   var bgColor = "";
   var mask = "bg-dark-gray o-40";
   if(props.bg) {
-    textShadow = "f5";
+    textShadow = "f5-ns f6";
     bgColor = "bg-black o-60";
     mask = "";
   }
@@ -595,7 +622,7 @@ function PhotoCenterTextFull(props) {
             <img className="w-100" style={fullImage} src={props.image} alt="background"/>
           </figure>
           <div className={mask+" w-100 h-100 absolute pn top-left z4"}/>
-          <label className="white absolute z10" style={bottomRight}>{props.label}</label>
+          <label className="white absolute lh-normal z10 f6-ns f7 pn" style={bottomRight}>{props.label}</label>
         </div>
       </div>
       <div className="w-100 center ph4-ns ph3 z4 relative">
@@ -612,6 +639,7 @@ function PhotoCenterTextFull(props) {
 
 /*05*/
 function PhotoText(props) {
+  var mobile = $(window).width() <= 959 ? true : false;
   var photo, text = "";
   var color1 = "bg-white"
   var color2 = "bg-near-white";
@@ -789,19 +817,32 @@ function PhotoText(props) {
     )
   }
 
+  var photo_content_1 = mobile ? null : (
+    <figure className="center mw70 w-100">
+      <img className={"w-50-l w-100 "+photo} src={props.image} alt="description"/>
+      {info}
+    </figure>
+  )
+  var photo_content_2 = mobile ? (
+    <figure className="center mw70 w-100 bg-white pa3">
+      <img className={"w-50-l w-100 "+photo} src={props.image} alt="description"/>
+      {info}
+    </figure>
+  ) : null
+
+  if(mobile) h = "";
+
   return (
-    <section id={props.id} className={h+" flex aic relative"}>
+    <section id={props.id} className={h+" flex aic relative pv6-l pv5"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={color1+" w-100 h-100 fixed fixed-content pn flex aic"}>
           {fish}
-          <figure className="center mw70 w-100">
-            <img className={"w-50-l w-100 "+photo} src={props.image} alt="description"/>
-            {info}
-          </figure>
+          {photo_content_1}
         </div>
       </div>
       <div className="mw70 center ph4-ns ph3 w-100 z4 pre-wrap" id="triggerText">
         <div className="cf black">
+          {photo_content_2}
           <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 "+color2+" "+text}>
             <p className="f5-ns f6 lh-copy mv0" dangerouslySetInnerHTML={{__html:props.text}}></p>
           </div>
@@ -955,10 +996,10 @@ function PhotoMultiple(props) {
       bottom: "0px",
       right: "0px",
       background: "rgba(0,0,0,.2)",
-      padding: "20px"
+      padding: mobile ? "10px" :" 20px"
     }
     
-    var label_content = mobile ? "" : (<label className="absolute white" style={bottomRight}>{props.label[i]}</label>);
+    var label_content = mobile ? "" : (<label className="white absolute lh-normal z10 f6-ns f7 pn" style={bottomRight}>{props.label[i]}</label>);
 
 
     var photos = (
@@ -1010,7 +1051,7 @@ function PhotoContrast(props) {
   let label = null
   if(props.label !== "") {
     label = (
-      <label className="f7 mt3 o-50" >{props.label}</label>
+      <label className="f7 mt3 o-50 lh-normal" >{props.label}</label>
     )
   }
   return (
@@ -1074,10 +1115,13 @@ function Video(props) {
 
   if(props.text1 !== "") {
     h = "min-vh-200"
-    if($(window).width() <= 959) bgcolor = "transparent";
+    if($(window).width() <= 959) {
+      bgcolor = "transparent";
+      textcolor = "black";
+    }
     text1 = (
-        <div className="cf">
-          <div className={props.position+" w-50-l mw500 mh3-l mh3-l center w-100 pa4-l relative mt0-l mt3"}>
+        <div className="">
+          <div className={props.position+" w-50-l mw500 mh3-l mh3-l center w-100 pa4-l relative mt0-l mt4"}>
             <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
             <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative "+textcolor}>{props.text1}</p>
           </div>
@@ -1089,10 +1133,13 @@ function Video(props) {
   var text2 = null;
   if(props.number === 2) {
     h = "min-vh-300"
-    if($(window).width() <= 959) bgcolor = "transparent";
+    if($(window).width() <= 959) {
+      bgcolor = "transparent";
+      textcolor = "black";
+    }
     text2 = (
-      <div className="cf mt50vh">
-        <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l relative mt0-l mt3"}>
+      <div className="mt50vh">
+        <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l relative mt0-l mt4"}>
           <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
           <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative "+textcolor}>{props.text2}</p>
         </div>
@@ -1318,8 +1365,8 @@ function CenterSmallVideo(props) {
   let text = null;
   if(props.text !== "") {
     text = (
-      <div className="mw80 center cf black mb5 pre-wrap">
-        <div className="mw7 w-100 center">
+      <div className="mw80 center black mb5-ns mb4 pre-wrap">
+        <div className="mw7 w-100 center ph2 pv3">
           <p className={"f5-ns f6 lh-copy mv0 "+props.align}>{props.text}</p>
         </div>
       </div>
@@ -1327,10 +1374,10 @@ function CenterSmallVideo(props) {
   }
 
   return (
-    <section id={props.id} className={"min-vh-100 flex aic relative pv6-l pv5 video-content "+color}>
+    <section id={props.id} className={"flex aic relative pv6-l pv5 video-content "+color}>
       <div className="w-100 center ph4-ns ph3 z4 relative">
         {text}
-        <div className="cf flex aic jcc w-100">
+        <div className="cf flex aic jcc w-100 pv3">
           <div className="center relative">
             <video className="w-100" id={'video'+props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay style={max}>
               <source src={props.link} type="video/mp4"/>
@@ -1481,6 +1528,7 @@ function Timeline(props) {
   }
 
   var w = "480px";
+  var mobile = $(window).width() <= 959 ? true : false;
 
   for (var i = 0; i < props.images.length; i++){
     var photoGridStyle = {
@@ -1629,12 +1677,12 @@ function Transition(props) {
         <img src={props.illustration} height="200px" style={objectFit}/>
       </div>
     )
-    fontSize = "f2rem fw7 tracked";
+    fontSize = "f2rem fw7 tracked mv0";
   }
   return (
     <section id={props.id} className={props.title+" banner pv5-ns pv4 flex aic jcc flex-column-s ph3 z4 "+props.bg}>
       {img}
-      <p className={"dib mw7 lh-copy pre-wrap "+fontSize}>{props.text}</p>
+      <p className={"dib mw7 lh-copy pre-wrap "+fontSize} dangerouslySetInnerHTML={{__html:props.text}}></p>
     </section>
   )
 }
@@ -1681,7 +1729,7 @@ function Panorama(props) {
       </figure>
       <div className="panorama-icon"></div>
       <div className="panorama-text text-shadow">左右移動看看</div>
-      <label className="white absolute" style={bottomRight}>{props.label}</label>
+      <label className="white absolute lh-normal z10 f6-ns f7 pn db-ns dn" style={bottomRight}>{props.label}</label>
     </section>
   )
 }
@@ -1703,7 +1751,8 @@ function TimeChange(props) {
     boxSizing: "border-box",
     width: "100%",
     fontSize: ".875em",
-    textAlign: "center"
+    textAlign: "center",
+    lineHeight: 1.5
   }
   return (
     <section id={props.id} className={h+" flex aic relative timeChange bg-white "+z}>
@@ -1735,6 +1784,7 @@ function TimeChange(props) {
 }
 
 function TimeChangeFull(props) {
+  var mobile = $(window).width() <= 959 ? true : false;
   var z = "";
   var h = "min-vh-150"
 
@@ -1748,7 +1798,7 @@ function TimeChangeFull(props) {
     bottom: "40px",
     right: "0px",
     background: "rgba(0,0,0,.2)",
-    padding: "20px"
+    padding: mobile ? "10px" : "20px"
   }
 
   var bgcolor = ""
@@ -1785,7 +1835,7 @@ function TimeChangeFull(props) {
           <figure className="w-100 ma0">
             <img className="w-100" style={fullImage} src={props.image} alt="background"/>
           </figure>
-          <label className="white absolute" style={bottomRight}>{props.label}</label>
+          <label className="white absolute lh-normal z10 f6-ns f7 pn" style={bottomRight}>{props.label}</label>
           <div className="absolute left-0 right-0 mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
             {text1}
           </div>
@@ -1805,14 +1855,21 @@ function TimeChangeSide(props) {
     z = "z-1";
     h = "min-vh-200"
   }
+  var mobile = $(window).width() <= 959 ? true : false;
+
+  var imgH = "100%";
+  if(!props.cover) {
+    if(props.mobile) imgH = "80%";
+    else imgH = "60%";
+  }
 
   var halfImageContain = {
-    height: props.cover ? "100%" : "60%",
+    height: imgH,
     objectFit: props.cover ? "cover" : "contain"
   }
 
   var halfImageCover = {
-    width: "90%",
+    width: mobile ? "100%" :"90%",
     objectFit: "contain"
   }
 
@@ -1820,14 +1877,14 @@ function TimeChangeSide(props) {
     bottom: "0px",
     right: "0px",
     background: "rgba(0,0,0,.2)",
-    padding: "20px"
+    padding: mobile ? "10px" : "20px"
   }
 
   var content = null;
   if(props.text1 !== "") {
     content = (
-      <div className="fl-l w-50 pre-wrap">
-        <div className="mw500 center ml5-l ph2 pv3">
+      <div className="fl-l w-50-l w-100 pre-wrap">
+        <div className="mw500 center ml5-l ph3 pv3">
           <div className="w-100 h-100 absolute pn top-left" />
           <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4" dangerouslySetInnerHTML={{__html:props.text1}}></p>
         </div>
@@ -1835,9 +1892,9 @@ function TimeChangeSide(props) {
     )
   } else {
     content = (
-      <figure className="fr-l w-50 ma0 h-100 relative tc flex jcc flex-column">
+      <figure className="fr-l w-50-l w-100 ma0 h-100-l h-50 relative tc flex jcc flex-column">
         <img style={halfImageCover} src={props.image[1]} width="90%" alt="background"/>
-        <label className="f7 mt3 o-50 w-90" >{props.label}</label>
+        <label className="f7 mt3 o-50 w-90-l w-100 mb4 lh-normal" >{props.label}</label>
       </figure>
     )
   }
@@ -1846,8 +1903,8 @@ function TimeChangeSide(props) {
   return (
     <section id={props.id} className={h+" flex aic relative bg-white timeChange "+z}>
       <div className="w-100 h-100 absolute top-left time-clipping fade cf">
-        <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
-          <figure className="fr-l w-50 ma0 h-100 flex aic">
+        <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic flex-column-s">
+          <figure className="fr-l w-50-l w-100 ma0 h-100-l h-75 flex aic">
             <img style={halfImageContain} src={props.image[0]} width="100%" alt="background"/>
           </figure>
           {content}
@@ -1888,12 +1945,15 @@ function Blog(props) {
 
   let grid = [];
   var columns = "";
+  var rows = "";
   
-  var height = {
-    height: mobile ? "200px" : "400px"
-  }
-  var w = mobile ? "300px" : "660px";
+  
+  var w = mobile ? "100vw" : "660px";
+  var h = "200px";
   var len = "count"+props.image.length;
+  var height = {
+    height: mobile ? props.image.length*200+"px" : "400px"
+  }
 
   for (var i = 0; i < props.image.length; i++){
     var item = {
@@ -1907,24 +1967,26 @@ function Blog(props) {
       bottom: "0px",
       right: "0px",
       background: "rgba(0,0,0,.2)",
-      padding: "20px"
+      padding: mobile ? "10px" : "20px"
     }
 
-    var label_content = mobile ? null : (<label className="absolute white" style={bottomRight}>{props.label[i]}</label>)
+    var label_content = (<label className="white absolute lh-normal z10 f6-ns f7 pn" style={bottomRight}>{props.label[i]}</label>)
     var photos = (
       <div className="grid-item bg-gray relative cp" alt={props.label[i]} style={item} key={i} onClick={(e) => props.onOpenModal(e.target.style.backgroundImage.split('"')[1], e.target.getAttribute("alt"))}>
         {label_content}
       </div>
     )
     columns+=(w+" ");
+    rows+=(h+" ");
     grid.push(photos);
   }
 
   var container = {
-    gridTemplateColumns: columns,
-    height: mobile ? "240px" : "440px",
+    gridTemplateColumns: mobile ? "100vw" : columns,
+    gridTemplateRows: mobile ? h : null,
+    height: mobile ? props.image.length*200+40+"px" : "440px",
     paddingBottom: "40px",
-    justifyContent: "start"
+    justifyContent: "start",
   }
 
   if(props.text === "") {
@@ -1932,11 +1994,11 @@ function Blog(props) {
       <div className="w-100">
         <div className="fl-l w-100 w-50-l relative tc mb5 mb0-ns">
           <img className="mb3" src={props.image[0]}/>
-          <label className="f7 mt2 o-50" >{props.label[0]}</label>
+          <label className="f7 mt2 o-50 lh-normal" >{props.label[0]}</label>
         </div>
-        <div className="fr-l w-100 w-50-l relative tc mb5 mb0-ns">
+        <div className="fr-l w-100 w-50-l relative tc mb0">
           <img className="mb3" src={props.image[1]}/>
-          <label className="f7 mt2 o-50" >{props.label[1]}</label>
+          <label className="f7 mt2 o-50 lh-normal" >{props.label[1]}</label>
         </div>
       </div>
     )
@@ -1950,9 +2012,9 @@ function Blog(props) {
   }
   if(props.number === 1) {
     img = (
-      <div className={a+" w-100 w-50-l pv3 relative tc mb5 mb0-ns"}>
+      <div className={a+" w-100 w-50-l pv3 relative tc mb0"}>
         <img className="mb3" src={props.image[0]}/>
-        <label className="f7 mt2 o-50" >{props.label[0]}</label>
+        <label className="f7 mt2 o-50 lh-normal" >{props.label[0]}</label>
       </div>
     );
     text = (
@@ -1966,11 +2028,11 @@ function Blog(props) {
       <div className="w-100">
         <div className="fl-l w-100 w-50-l relative tc mb5 mb0-ns">
           <img className="mb3" src={props.image[0]}/>
-          <label className="f7 mt2 o-50" >{props.label[0]}</label>
+          <label className="f7 mt2 o-50 lh-normal" >{props.label[0]}</label>
         </div>
         <div className="fr-l w-100 w-50-l relative tc mb5 mb0-ns">
           <img className="mb3" src={props.image[1]}/>
-          <label className="f7 mt2 o-50" >{props.label[1]}</label>
+          <label className="f7 mt2 o-50 lh-normal" >{props.label[1]}</label>
         </div>
       </div>
     );
@@ -2157,6 +2219,7 @@ class Event01 extends Component {
         <PhotoTextFull
           id={"6-photoTextFull"}
           position={"fl-l"}
+          objectP={"65%"}
           color="dark"
           text1={this.props.data.photoFullText[0]}
           image = {this.props.data.photoFull[0]}
@@ -2223,7 +2286,7 @@ class Event01 extends Component {
 
         <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
           <img src={this.state.image} alt="modal"/>
-          <p className="tc mb0">{this.state.description}</p>
+          <p className="tc mb0 lh-normal pn">{this.state.description}</p>
         </Modal>
 
         <TimeChangeFull
@@ -2384,7 +2447,7 @@ class Event02 extends Component {
 
         <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
           <img src={this.state.image} alt="modal"/>
-          <p className="tc mb0">{this.state.description}</p>
+          <p className="tc mb0 lh-normal pn">{this.state.description}</p>
         </Modal>
 
         <EndingVideo id={"13-endingVideo"} text={"來看二仁溪，二十年來承受了什麼..."} link={"https://youtube.com/embed/gfI8M0LGMss?rel=0"}/>
@@ -2468,7 +2531,7 @@ class Event03 extends Component {
 
         <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
           <img src={this.state.image} alt="modal"/>
-          <p className="tc mb0">{this.state.description}</p>
+          <p className="tc mb0 lh-normal pn">{this.state.description}</p>
         </Modal>
 
         <Transition
@@ -2527,7 +2590,7 @@ class Event03 extends Component {
         <Blog
           id={"15-blog"} 
           number={5}
-          bg={"bg-near-white"}
+          bg={"bg-white"}
           text={this.props.data.blogText[1]}
           image={this.props.data.blogImage[1]}
           label={this.props.data.blogLabel[1]}
@@ -2791,7 +2854,7 @@ class Event04 extends Component {
 
           <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
           <img src={this.state.image} alt="modal"/>
-          <p className="tc mb0">{this.state.description}</p>
+          <p className="tc mb0 lh-normal pn">{this.state.description}</p>
         </Modal>
 
         <Transition
@@ -3086,7 +3149,7 @@ class Event05 extends Component {
 
         <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
           <img src={this.state.image} alt="modal"/>
-          <p className="tc mb0">{this.state.description}</p>
+          <p className="tc mb0 lh-normal pn">{this.state.description}</p>
         </Modal>
 
         <Video

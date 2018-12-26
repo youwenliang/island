@@ -240,7 +240,7 @@ nav .btn {
   bottom: 100px;
 }
 
-.banner + .video-content {
+.banner + .full-video {
   padding-top: 0 !important;
 }
 
@@ -336,6 +336,13 @@ nav .btn {
 
 .bg-blue p {
   font-size: 1.375rem !important;
+}
+
+@media screen and (max-width: 30em) {
+
+  .bg-blue p {
+    font-size: 1.2rem !important;
+  }
 }
 
 .flex {
