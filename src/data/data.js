@@ -133,7 +133,7 @@ var data = {
 
         // CoverVideo
         "coverTitle": "/images/titles/01.svg",
-        "coverDescription": "台北人熟悉的淡水河，也曾經堆滿了垃圾？\n一起乘著島嶼時光機，回首垃圾山，臭氣憶當年。",
+        "coverDescription": "台北人熟悉的淡水河，也曾經堆滿了垃圾？<br class='db-ns dn'/>一起乘著島嶼時光機，回首垃圾山，臭氣憶當年。",
         "coverVideo": "/events/changing-tamsui-river/videos/A18(底圖動態02).mp4",
 
         // Taiwan
@@ -298,7 +298,7 @@ var data = {
 
         // CoverVideo
         "coverTitle": "/images/titles/02.svg",
-        "coverDescription": "靠著廢五金致富，卻留下污染，造就黑龍江。\n得花多少時間與金錢，才能換回二仁溪的重生？",
+        "coverDescription": "靠著廢五金致富，卻留下污染，造就黑龍江。<br class='db-ns dn'/>得花多少時間與金錢，才能換回二仁溪的重生？",
         "coverVideo": "/events/reborn-erren-river/videos/B55-2018年二仁溪底圖.mp4",
 
         // Taiwan
@@ -438,7 +438,7 @@ var data = {
 
       // CoverVideo
         "coverTitle": "/images/titles/03.svg",
-        "coverDescription": "從誕生的那一刻起，牠們必須勇敢的一關闖過一關。\n陸蟹的一生，就是一場實境版的生存遊戲。",
+        "coverDescription": "從誕生的那一刻起，牠們必須勇敢的一關闖過一關。<br class='db-ns dn'/>陸蟹的一生，就是一場實境版的生存遊戲。",
         "coverVideo": "/events/land-crabs-survival/videos/C2陸蟹首圖.mp4",
 
         // Taiwan
@@ -624,7 +624,7 @@ var data = {
       
       //CoverVideo
       "coverTitle": "/images/titles/04.svg",
-      "coverDescription": "漁港變成砂石場，怪手挖不完，漁船出不了海。\n蓋了快七十年，還沒有完工的永續工程。",
+      "coverDescription": "漁港變成砂石場，怪手挖不完，漁船出不了海。<br class='db-ns dn'/>蓋了快七十年，還沒有完工的永續工程。",
       "coverVideo": "/events/dawu-fishing-port/videos/D33-新拍2018大武漁港空拍修.mp4",
       
       // Taiwan
@@ -813,7 +813,7 @@ var data = {
 
     //CoverVideo
     "coverTitle": "/images/titles/05.svg",
-    "coverDescription": "一個名稱有港，卻無法出港的地方。\n一個以海維生的百年漁村聚落，卻再也不能輕易地親近海。",
+    "coverDescription": "一個名稱有港，卻無法出港的地方。<br class='db-ns dn'/>一個以海維生的百年漁村聚落，卻再也不能輕易地親近海。",
     "coverVideo": "/events/kinmen-Hou-feng-kang/videos/E12(金門後豐港填港空拍).mp4",
 
     // Taiwan

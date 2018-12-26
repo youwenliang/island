@@ -13,6 +13,8 @@ body {
   letter-spacing: 1px;
 }
 
+
+
 .taiwan-label:after {
   content: '';
   width: 20px;
@@ -238,16 +240,28 @@ nav .btn {
   bottom: 100px;
 }
 
+.banner + .video-content {
+  padding-top: 0 !important;
+}
+
+.min-vh-100 {
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
 .min-vh-150 {
   min-height: 150vh;
+  min-height: calc(var(--vh, 1vh) * 150);
 }
 
 .min-vh-200 {
   min-height: 240vh;
+  min-height: calc(var(--vh, 1vh) * 240);
 }
 
 .min-vh-300 {
   min-height: 340vh;
+  min-height: calc(var(--vh, 1vh) * 340);
 }
 
 .mw80 {
@@ -1501,7 +1515,7 @@ ul.none {
     bottom: 40px;
     color: #fff;
     right: 0;
-    line-height: 1;
+    line-height: 1.5;
     padding: 20px;
     position: absolute;
     white-space: normal; }

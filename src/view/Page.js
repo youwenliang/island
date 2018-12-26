@@ -98,6 +98,7 @@ class Page extends Component {
   componentDidUpdate() {
     var p = 0;
     var id = setInterval(frame, 10);
+
     function frame() {
       if (p >= 100) {
         clearInterval(id);
@@ -119,6 +120,11 @@ class Page extends Component {
     $(document).scrollTop(0);
     document.body.classList.add('ds');
     document.getElementById('loading').classList.remove('fade');
+
+    // $('.video-content').each( function(i){
+    //   var $this = $(this);
+    //   $this.find('video').get(0).pause()
+    // });
 
     var scrolling = false;
     $t.state.scrollprogress = setInterval(function(){
@@ -219,16 +225,6 @@ class Page extends Component {
         var bottom_of_window = $(window).scrollTop()+ $(window).height(); // eslint-disable-line no-unused-vars
         var center_of_window = $(window).scrollTop()+ $(window).height()/2; 
 
-        $('.auto-scroll').each(function(){
-          var top_of_object = $(this).offset().top;
-          var bottom_of_object = $(this).offset().top + $(this).height();
-          if( center_of_window >= top_of_object && center_of_window <= bottom_of_object ){
-            k = 0.3
-          } else {
-            k = 0;
-          }
-        });
-
         $('.timeChange').each(function(){
           var top_of_object = $(this).offset().top;
           var bottom_of_object = $(this).offset().top + $(this).height();
@@ -251,6 +247,22 @@ class Page extends Component {
         //   }
         // });
 
+        if($(window).width() > 959) {
+
+        $('.auto-scroll').each(function(){
+          var top_of_object = $(this).offset().top;
+          var bottom_of_object = $(this).offset().top + $(this).height();
+          if( center_of_window >= top_of_object && center_of_window <= bottom_of_object ){
+            k = 0.3
+          } else {
+            k = 0;
+          }
+        });
+
+
+        
+
+        }
         $('.video-content').each( function(i){
           var top_of_object = $(this).offset().top;
           var bottom_of_object = $(this).offset().top + $(this).height();
@@ -328,7 +340,9 @@ function CoverVideo(props) {
   // Cookies
   const cookies = new Cookies();
   var phone = null;
-  var top = null;
+  var top = {
+    top: '-45px'
+  }
   var h = (1000 - $(window).height()) / 4
   if(cookies.get('firstVisit') === undefined) {
     cookies.set('firstVisit', true, { path: '/' });
@@ -361,7 +375,7 @@ function CoverVideo(props) {
       <div className="mw80 center ph4-ns ph3 w-100 z4 tc relative" style={top}>
         <img src={props.title} className="center mb3" height="150" alt="title" />
         <div className="cf white w-80-ns w-100 center ph-ns">
-          <h3 className="f3-ns f4 coverVideo-tag fw4 lh-copy mb0 pre-wrap text-shadow">{props.content}</h3>
+          <h3 className="f3-ns f4 coverVideo-tag fw4 lh-copy mb0 pre-wrap text-shadow" dangerouslySetInnerHTML={{__html:props.content}}></h3>
         </div>
       </div>
       {phone}
@@ -921,17 +935,18 @@ function PhotoSwitch(props) {
 function PhotoMultiple(props) {
   let grid = [];
   var columns = "";
+  var mobile = $(window).width() <= 959 ? true : false;
   
   var height = {
-    height: "640px"
+    height: mobile ? "400px" : "640px"
   }
 
-  var w = "500px";
+  var w = mobile ? "300px" : "500px";
 
   for (var i = 0; i < props.images.length; i++){
     var item = {
       width: w,
-      height: "320px",
+      height: mobile ? "200px" : "320px",
       backgroundImage: "url("+props.images[i]+")",
       backgroundSize: "cover",
       backgroundPosition: "center center"
@@ -942,10 +957,13 @@ function PhotoMultiple(props) {
       background: "rgba(0,0,0,.2)",
       padding: "20px"
     }
-    console.log(props.images[i]);
+    
+    var label_content = mobile ? "" : (<label className="absolute white" style={bottomRight}>{props.label[i]}</label>);
+
+
     var photos = (
       <div className="grid-item bg-gray relative cp" alt={props.label[i]} style={item} key={i} onClick={(e) => props.onOpenModal(e.target.style.backgroundImage.split('"')[1], e.target.getAttribute("alt"))}>
-        <label className="absolute white" style={bottomRight}>{props.label[i]}</label>
+        {label_content}
       </div>
     )
     if(i%2 === 0) columns+=(w+" ");
@@ -954,12 +972,14 @@ function PhotoMultiple(props) {
 
   var container = {
     gridTemplateColumns: columns,
-    height: "680px",
+    height: mobile ? "440px" : "680px",
     paddingBottom: "40px"
   }
 
+  var auto = mobile ? "":"auto-scroll"
+
   return (
-    <section id={props.id} className="flex aic relative bg-white flex-column pt6-l pt4 auto-scroll">      
+    <section id={props.id} className={"flex aic relative bg-white flex-column pt6-l pt5 "+auto}>      
       <div className="mw80 center cf black mb5 ph4-ns ph3 w-100">
         <div className="mw7 w-100 center bg-white pre-wrap">
           <p className="f5-ns f6 lh-copy mv0" dangerouslySetInnerHTML={{__html:props.text}}></p>
@@ -980,7 +1000,7 @@ function PhotoContrast(props) {
   let text = null;
   if(props.text !== "") {
     text = (
-      <div className="mw80 center cf black mb5">
+      <div className="mw80 center cf black mb5 ph4-ns ph3 ">
         <div className="mw7 w-100 center pre-wrap">
           <p className="f5-ns f6 lh-copy mv0">{props.text}</p>
         </div>
@@ -995,9 +1015,9 @@ function PhotoContrast(props) {
   }
   return (
     <section id={props.id} className={"flex aic relative flex-column pv6-l pv5 "+props.bg}>
-        <div className="ph4-ns ph3 w-100 z4">
+        <div className="w-100 z4">
           {text}
-          <div className="photoContrast relative tc" style={{ maxWidth: '1024px', margin: '0 auto 2.5rem auto' }}>
+          <div className="photoContrast relative tc" style={{ maxWidth: '1024px', margin: '0 auto' }}>
             <ReactCompareImage
               leftImage={props.images[0]}
               rightImage={props.images[1]}
@@ -1054,10 +1074,10 @@ function Video(props) {
 
   if(props.text1 !== "") {
     h = "min-vh-200"
+    if($(window).width() <= 959) bgcolor = "transparent";
     text1 = (
-      
         <div className="cf">
-          <div className={props.position+" w-50-l mw500 mh3-l mh3-l center w-100 pa4-l pa3 relative"}>
+          <div className={props.position+" w-50-l mw500 mh3-l mh3-l center w-100 pa4-l relative mt0-l mt3"}>
             <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
             <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative "+textcolor}>{props.text1}</p>
           </div>
@@ -1069,9 +1089,10 @@ function Video(props) {
   var text2 = null;
   if(props.number === 2) {
     h = "min-vh-300"
+    if($(window).width() <= 959) bgcolor = "transparent";
     text2 = (
       <div className="cf mt50vh">
-        <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
+        <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l relative mt0-l mt3"}>
           <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
           <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative "+textcolor}>{props.text2}</p>
         </div>
@@ -1082,7 +1103,7 @@ function Video(props) {
   var unmuteTag = "";
   var $video = $('#video'+props.videoID);
   var video = (
-    <video id={'video'+props.videoID} loop playsInline muted>
+    <video id={'video'+props.videoID} loop playsInline muted autoPlay>
       <source src={props.link} type="video/mp4"/>
     </video>
   )
@@ -1095,8 +1116,7 @@ function Video(props) {
     )
   }
 
-  return (
-    <section id={props.id} className={h+" flex aic relative video-content full-video bg-black"}>
+  var video_content = (
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>
         <div className={unmuteTag+" fixed sound cp z10"} onClick={(e) => soundVideo(e)}></div>
@@ -1106,10 +1126,34 @@ function Video(props) {
           </div>
         </div>
       </div>
+  )
+
+  var text_content = (
       <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
         {text1}
         {text2}
       </div>
+  )
+
+  if($(window).width() <= 959) {
+    h = "pv5 bg-near-white";
+    var mb4 = ""
+    if(props.text1 !== "") mb4 = "mb4"
+    video_content = (
+      <div className={"cf flex aic jcc w-100" + mb4}>
+        <div className="center relative">
+          <video className="w-100" id={'video'+props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay>
+            <source src={props.link} type="video/mp4"/>
+          </video>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <section id={props.id} className={h+" flex aic flex-column-s relative video-content full-video bg-black"}>
+      {video_content}
+      {text_content}
     </section>
   )
 }
@@ -1141,16 +1185,16 @@ function SmallVideo(props) {
     }
   }
   return (
-    <section id={props.id} className={"flex aic relative pv6-l pv4 video-content smallVideo "+props.bg}>
-      <div className="mw80 w-100 center ph4-ns ph3 z4 relative">
+    <section id={props.id} className={"flex aic relative pv6-l pv5 video-content smallVideo "+props.bg}>
+      <div className="mw80 w-100 center z4 relative">
         <div className="cf flex aic flex-column-s">
-          <div className="fl-l w-100 w-50-l ph2 pv3 relative">
+          <div className="fl-l w-100 w-50-l ph2-l pv3 relative">
             <video id={'video'+props.videoID} className="w-100" controls controlsList="nodownload" loop playsInline muted autoPlay>
               <source src={props.link} type="video/mp4"/>
             </video>
           </div>
-          <div className="fr-l w-100 w-50-l mw500 center ml5-l ph2 pv3">
-            <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4">{props.text}</p>
+          <div className="fr-l w-100 w-50-l mw500 center ml5-l ph4-ns ph3 pv3">
+            <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph2">{props.text}</p>
           </div>
         </div>
       </div>
@@ -1199,7 +1243,7 @@ function CenterVideo(props) {
   var unmuteTag = "";
   var $video = $('#video'+props.videoID);
   var video = (
-    <video id={'video'+props.videoID} loop playsInline muted>
+    <video id={'video'+props.videoID} loop playsInline muted autoPlay>
       <source src={props.link} type="video/mp4"/>
     </video>
   )
@@ -1213,7 +1257,7 @@ function CenterVideo(props) {
   }
 
   return (
-    <section id={props.id} className="min-vh-200 flex aic relative pv6-l pv4 video-content bg-black z4">
+    <section id={props.id} className="min-vh-200 flex aic relative pv6-l pv5 video-content bg-black z4">
       <div className="w-100 h-100 absolute top-left clipping">
         <div className={mask+" w-100 h-100 absolute pn top-left z4"}/>
         {/*<div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>*/}
@@ -1283,7 +1327,7 @@ function CenterSmallVideo(props) {
   }
 
   return (
-    <section id={props.id} className={"min-vh-100 flex aic relative pv6-l pv4 video-content "+color}>
+    <section id={props.id} className={"min-vh-100 flex aic relative pv6-l pv5 video-content "+color}>
       <div className="w-100 center ph4-ns ph3 z4 relative">
         {text}
         <div className="cf flex aic jcc w-100">
@@ -1389,7 +1433,7 @@ function PhotoAudio(props) {
   };
 
   return (
-    <section id={props.id} className="flex aic relative bg-white pv6-l pv4">
+    <section id={props.id} className="flex aic relative bg-white pv6-l pv5">
       <div className="mw80 w-100 center ph4-ns ph3 relative">
         <div className="cf ph2-ns">
           <div className="fl w-100 w-50-ns pa2">
@@ -1495,7 +1539,7 @@ function Timeline(props) {
   }
 
   return (
-    <section id={props.id} className="min-vh-100 flex aic relative bg-white pv6-l pv4 flex-column">      
+    <section id={props.id} className="min-vh-100 flex aic relative bg-white pv6-l pv5 flex-column">      
       {content}
       <p className='f6 o-50 tc mb4'>{"<<往左滑看更多"}</p>
       <div className="w-100 overflow-hidden relative" style={height}>
@@ -1578,7 +1622,7 @@ function Transition(props) {
     objectFit: "cover"
   }
   var img = null;
-  var fontSize = "f5";
+  var fontSize = "f5-ns f6";
   if(props.illustration !== undefined) {
     img = (
       <div className="overflow-hidden w7">
@@ -1588,7 +1632,7 @@ function Transition(props) {
     fontSize = "f2rem fw7 tracked";
   }
   return (
-    <section id={props.id} className={props.title+" banner pv5-ns pv4 flex aic jcc flex-column-s ph3 "+props.bg}>
+    <section id={props.id} className={props.title+" banner pv5-ns pv4 flex aic jcc flex-column-s ph3 z4 "+props.bg}>
       {img}
       <p className={"dib mw7 lh-copy pre-wrap "+fontSize}>{props.text}</p>
     </section>
@@ -1597,7 +1641,7 @@ function Transition(props) {
 
 function Next(props) {
   return (
-    <section id={props.id} className="banner pv6-l pv4 bg-white">
+    <section id={props.id} className="banner pv6-l pv5 bg-white">
       <div className="cf ph2-ns">
         <Link to={"../"+props.prev+"/"}> 
           <div className="fl w-100 w-50-ns pa2 tc" onClick={() => props.switchView(props.prev)}>Prev</div>
@@ -1840,19 +1884,21 @@ function Blog(props) {
     b = "order-1"
   }
 
+  var mobile = $(window).width() <= 959 ? true : false;
+
   let grid = [];
   var columns = "";
   
   var height = {
-    height: "400px"
+    height: mobile ? "200px" : "400px"
   }
-  var w = "660px";
+  var w = mobile ? "300px" : "660px";
   var len = "count"+props.image.length;
 
   for (var i = 0; i < props.image.length; i++){
     var item = {
       width: w,
-      height: "400px",
+      height: mobile ? "200px" : "400px",
       backgroundImage: "url("+props.image[i]+")",
       backgroundSize: "cover",
       backgroundPosition: "center center"
@@ -1863,9 +1909,11 @@ function Blog(props) {
       background: "rgba(0,0,0,.2)",
       padding: "20px"
     }
+
+    var label_content = mobile ? null : (<label className="absolute white" style={bottomRight}>{props.label[i]}</label>)
     var photos = (
       <div className="grid-item bg-gray relative cp" alt={props.label[i]} style={item} key={i} onClick={(e) => props.onOpenModal(e.target.style.backgroundImage.split('"')[1], e.target.getAttribute("alt"))}>
-        <label className="absolute white" style={bottomRight}>{props.label[i]}</label>
+        {label_content}
       </div>
     )
     columns+=(w+" ");
@@ -1874,7 +1922,7 @@ function Blog(props) {
 
   var container = {
     gridTemplateColumns: columns,
-    height: "440px",
+    height: mobile ? "240px" : "440px",
     paddingBottom: "40px",
     justifyContent: "start"
   }
@@ -1943,7 +1991,7 @@ function Blog(props) {
     );
   }
   return (
-    <section id={props.id} className={"flex aic relative pv6-l pv4 "+props.bg} >
+    <section id={props.id} className={"flex aic relative pv6-l pv5 "+props.bg} >
       <div className={mw+" w-100 center z4 relative"}>
         <div className={"cf "+column}>
           {text}
@@ -1976,7 +2024,7 @@ function More(props) {
 
 
   return(
-    <section id={props.id} className="bg-white pv6-l pv4" style={border}>
+    <section id={props.id} className="bg-white pv6-l pv5" style={border}>
       <div className="mw8 center ph3">
         <div className="cf ph2-ns tc">
           <h1 className="ph2 fw7 tracked mb5-l mb4 ">延伸閱讀</h1>
@@ -1990,7 +2038,7 @@ function More(props) {
 
 function CTA(props) {
     return (
-      <section id={props.id} className="bg-near-white pv6-l pv4">
+      <section id={props.id} className="bg-near-white pv6-l pv5">
         <div className="mw8 center ph3">
           <div className="cf ph2-ns tc">
             <div className="fl w-third-l w-100 pa2 cp">
@@ -2147,7 +2195,7 @@ class Event01 extends Component {
           text1={this.props.data.videoText[0]}
         />
 
-        <Transition id={"11-transition"} text={this.props.data.videoText[1]} />
+        <Transition id={"11-transition"} bg={"bg-white"} text={this.props.data.videoText[1]} />
         <Video
           id={"12-video"}
           videoID="03"
