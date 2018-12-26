@@ -9,7 +9,7 @@ import {TweenMax} from "gsap/all";
 import ScrollMagic from 'scrollmagic'; // eslint-disable-line no-unused-vars
 
 render((
-<BrowserRouter basename="ourisland">
+<BrowserRouter basename="island20">
 	<App />
 </BrowserRouter>), 
 document.getElementById('root'));

@@ -609,6 +609,7 @@ var data = {
           "https://www.youtube.com/watch?v=fPjEwsaQOk8",
           "https://ourisland.pts.org.tw/content/%E5%A1%91%E8%86%A0%E5%AF%84%E5%B1%85%E8%9F%B9",
           "https://ourisland.pts.org.tw/content/%E5%BE%8C%E7%81%A3%E6%BF%95%E5%9C%B0%E7%9A%84%E9%99%B8%E8%9F%B9%E5%8D%B1%E6%A9%9F",
+          "https://ourisland.pts.org.tw/content/%E7%B4%85%E8%9F%B9%E6%B6%88%E5%A4%B1%E8%A8%98",
           "https://ourisland.pts.org.tw/content/%E6%A4%B0%E5%AD%90%E8%9F%B9%E7%9A%84party",
           "https://ourisland.pts.org.tw/content/%E5%88%A5%E8%AE%93%E9%99%B8%E8%9F%B9%E5%B0%91%E5%AD%90%E5%8C%96",
         ],

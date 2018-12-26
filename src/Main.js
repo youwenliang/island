@@ -9,9 +9,9 @@ class Main extends Component {
     return (
       <main>
         <Switch>
-          <Route exact path='/ourisland' component={Home} />
-          <Route path='/ourisland/timeline/' component={Search} />
-          <Route path='/ourisland/:id/' component={Page} />
+          <Route exact path='/island20' component={Home} />
+          <Route path='/island20/timeline/' component={Search} />
+          <Route path='/island20/:id/' component={Page} />
         </Switch>
       </main>
     );

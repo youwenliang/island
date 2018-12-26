@@ -1,5 +1,5 @@
 {
-  "name": "ourisland",
+  "name": "island20",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -80,5 +80,5 @@
     ],
     "snapshotDelay": 300
   },
-  "homepage": "https://youwenliang.github.io/ourisland"
+  "homepage": "https://youwenliang.github.io/island20"
 }

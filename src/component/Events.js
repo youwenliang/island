@@ -135,7 +135,7 @@ class Events extends Component {
   event = (content, i) => {
     return (
       <li className="eventItem item dib center tc" key={i} onMouseEnter={() => this.handleMouseEnter(content.id)}>
-        <Link to={"/ourisland/"+content.url+"/"} target="_blank">
+        <Link to={"/island20/"+content.url+"/"} target="_blank">
         <figure className="eventFigure circle-10 br-100 ma3 bg-white flex aic jcc">
           <img src={content.icon} width="120" height="120" alt={content.name} />
         </figure>
@@ -211,7 +211,7 @@ class Events extends Component {
         <img src={"/images/titles/"+event_content[this.state.topics[num]].num+".svg"} height="80px" alt={event_content[this.state.topics[num]].name}/>
         <h3 className="dib f4-ns f5 fw4 o-90">{" "+event_content[this.state.topics[num]].name.split('@')[1]}</h3>
         <p className="mw6 f5-ns f6 lh-copy fw5">{event_content[this.state.topics[num]].description}</p>
-        <Link to={"/ourisland/"+event_content[this.state.topics[num]].url+"/"} target="_blank">
+        <Link to={"/island20/"+event_content[this.state.topics[num]].url+"/"} target="_blank">
           <button className="btn btn-ghost cp mt4 white dib mb5" style={btnStyle}>了解更多</button>
         </Link>        
       </div>

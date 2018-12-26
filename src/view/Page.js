@@ -61,7 +61,7 @@ class Page extends Component {
 
     //Here ya go
     this.props.history.listen((location, action) => {
-      var view = location.pathname.replace('/ourisland/','').replace('/','');
+      var view = location.pathname.replace('/island20/','').replace('/','');
       $(document).scrollTop(0);
       this.setState({
         view: view,
@@ -2119,7 +2119,7 @@ function CTA(props) {
         <div className="mw8 center ph3">
           <div className="cf ph2-ns tc">
             <div className="fl w-third-l w-100 pa2 cp">
-              <Link to="/ourisland">
+              <Link to="/island20">
                 <div className="pv3 pa4 tc ctaBox bg-white">
                   <figure className="w5 h5 center mv0 flex aic jcc">
                     <img src={cta1} width="210" height="210" alt="回首頁"/>

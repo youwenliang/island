@@ -52,7 +52,7 @@ class Nav extends Component {
           <div className="bg-dark-gray w-100 h-100 absolute top0"></div>
           <div className="w-100 mw9 center ph3 relative z4">
             <div className="ph2-ns flex space-between aic white">
-              <Link to="/ourisland">
+              <Link to="/island20">
                 <img src={logo} height="32px" alt="我們的島"/>
               </Link>
               <div className="flex flex-row">
