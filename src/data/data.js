@@ -130,6 +130,7 @@ var data = {
 
         "title": "變遷 淡水河",
         "id": "事件1",
+        "code": "/events/changing-tamsui-river/videos/coverA.png",
 
         // CoverVideo
         "coverTitle": "/images/titles/01.svg",
@@ -297,6 +298,7 @@ var data = {
     "reborn-erren-river": {
         "title": "重生 二仁溪",
         "id": "事件2",
+        "code": "/events/reborn-erren-river/videos/coverB.png",
 
         // CoverVideo
         "coverTitle": "/images/titles/02.svg",
@@ -439,6 +441,7 @@ var data = {
     "land-crabs-survival": {
       "title": "陸蟹闖天關",
       "id": "事件3",
+      "code": "/events/land-crabs-survival/videos/coverC.png",
 
       // CoverVideo
         "coverTitle": "/images/titles/03.svg",
@@ -627,6 +630,7 @@ var data = {
     "dawu-fishing-port": {
       "title": "漁港的黑色幽默",
       "id": "事件4",
+      "code": "/events/dawu-fishing-port/videos/coverD.png",
       
       //CoverVideo
       "coverTitle": "/images/titles/04.svg",
@@ -818,6 +822,7 @@ var data = {
     "kinmen-Hou-feng-kang": {
     "title": "不靠海的金門後豐港",
     "id": "事件5",
+    "code": "/events/kinmen-Hou-feng-kang/videos/coverE.png",
 
     //CoverVideo
     "coverTitle": "/images/titles/05.svg",

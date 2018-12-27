@@ -366,7 +366,7 @@ function CoverVideo(props) {
       <div className="w-100 h-100 absolute top-left clipping">
       <div className="w-100 h-100 fixed fixed-content pn">
         <div className="videoBg">
-          <video id="coverVideo" muted loop autoPlay playsInline>
+          <video id="coverVideo" muted loop autoPlay playsInline poster={props.code}>
             <source src={props.link} type="video/mp4"/>
           </video>
         </div>
@@ -2224,7 +2224,7 @@ class Event01 extends Component {
     const { open } = this.state;
     return (
       <div>
-        <CoverVideo id={"1-coverVideo"} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} code={this.props.data.code} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
 
         <Taiwan
           id={"2-taiwan"}
@@ -2405,7 +2405,7 @@ class Event02 extends Component {
     const { open } = this.state;
     return (
       <div>
-        <CoverVideo id={"1-coverVideo"} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} code={this.props.data.code} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
           id={"2-taiwan"} 
@@ -2530,7 +2530,7 @@ class Event03 extends Component {
 
     return (
       <div>
-        <CoverVideo id={"1-coverVideo"} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} code={this.props.data.code} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
           id={"2-taiwan"} 
@@ -2870,7 +2870,7 @@ class Event04 extends Component {
     const { open } = this.state;
     return (
       <div>
-        <CoverVideo name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo code={this.props.data.code} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         <Taiwan
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
@@ -3115,7 +3115,7 @@ class Event05 extends Component {
     const { open } = this.state;
     return (
       <div>
-        <CoverVideo id={"1-coverVideo"} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} code={this.props.data.code} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
           id={"2-taiwan"}
