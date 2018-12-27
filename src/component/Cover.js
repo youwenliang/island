@@ -3,6 +3,7 @@ import coverVideo from '../assets/videos/cover.mp4';
 import cover from '../assets/images/cover.svg';
 import Phone from '../component/Phone';
 import scrollship from '../assets/images/時光機.svg';
+import panel from '../assets/videos/timemachine.gif';
 
 class Cover extends Component {
   render() {
@@ -14,7 +15,7 @@ class Cover extends Component {
       left: 0,
       right: 0,
       margin: "0 auto",
-      bottom: "60px"
+      bottom: "0"
     }
     
     return (
@@ -33,9 +34,10 @@ class Cover extends Component {
           </div>
         </div>
         {/*<Phone/>*/}
-        <figure className="scrollship absolute w4 tc z4" style={ship}>
-          <img src={scrollship} width="100" alt="請往下滑動" />
-        </figure>
+        <figure className="absolute z4 tc" style={ship}>
+          {/*<img src={scrollship} width="100" alt="請往下滑動" />*/}
+          <img src={panel} width="450" alt="操作台" />
+        </figure>*/}
       </section>
     );
   }

@@ -8,6 +8,7 @@ import CTA from '../component/CTA'
 import Nav from '../component/Nav'
 import $ from 'jquery';
 import loadImage from 'image-promise';
+//import thumbnail from '../assets/thumbnail/home.png';
 
 var id = ['cover','topic-1','topic-2','topic-3','timeline-preview', 'cta'];
 
@@ -80,7 +81,13 @@ class Home extends Component {
     return (
       <div>
         <Helmet>
-            <title>穿梭島嶼時光機 - 我們的島二十週年</title>
+          <title>穿梭島嶼時光機 - 我們的島二十週年</title>
+          <meta name="description" content="還記得二十年前，你是什麼模樣嗎？走出家門口，熟悉的街頭巷尾改變了多少？想要知道這二十年來，台灣環境經歷了什麼樣的變遷？現在就坐上小島號，和「我們的島」一起搭乘時光機，穿梭時空，回顧河流、海洋、山林以及污染開發現場。" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:title" content="穿梭島嶼時光機 - 我們的島二十週年" />
+          <meta property="og:description" content="還記得二十年前，你是什麼模樣嗎？走出家門口，熟悉的街頭巷尾改變了多少？想要知道這二十年來，台灣環境經歷了什麼樣的變遷？現在就坐上小島號，和「我們的島」一起搭乘時光機，穿梭時空，回顧河流、海洋、山林以及污染開發現場。" />
+          {/*<meta property="og:image" content={thumbnail} />*/}
         </Helmet>
         <Nav timeline={true}/>
         <Cover/>

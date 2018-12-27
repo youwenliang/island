@@ -14,7 +14,9 @@ body {
   text-align: justify;
 }
 
-
+#footer p {
+  letter-spacing: 0.04em;
+}
 
 .taiwan-label:after {
   content: '';
@@ -665,6 +667,19 @@ nav .btn {
   height: 10rem;
 }
 
+@media screen and (max-width: 30em) {
+  .circle-10 {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+  .event {
+    height: 220px;
+  }
+
+}
+
+
+
 #topic-1 .eventBg:after {
   background-color: rgba(34,79,99,.4);
 }
@@ -898,6 +913,10 @@ ul.none {
 
 .f7 {
   font-size: .875rem;
+}
+
+.f8 {
+  font-size: .8rem;
 }
 
 .order-1 {
@@ -1216,7 +1235,7 @@ ul.none {
 }
 
 #play-btn {
-  background-image: url("/images/icons/play_new.svg");
+  background-image: url("/island20/images/icons/play_new.svg");
   background-size: cover;
   width: 75px;
   height: 75px;
@@ -1224,11 +1243,11 @@ ul.none {
 }
 
 #play-btn.pause {
-  background-image: url("/images/icons/pause_new.svg");
+  background-image: url("/island20/images/icons/pause_new.svg");
 }
 
 .play {
-  background-image: url("/images/icons/pause_new.svg");
+  background-image: url("/island20/images/icons/pause_new.svg");
   background-size: 32px 32px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -1240,13 +1259,13 @@ ul.none {
   border-radius: 100%;
 }
 .play.pause {
-  background-image: url("/images/icons/play_new.svg");
+  background-image: url("/island20/images/icons/play_new.svg");
 }
 
 
 
 .sound {
-  background-image: url("/images/icons/mute.svg");
+  background-image: url("/island20/images/icons/mute.svg");
   background-size: 32px 32px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -1259,7 +1278,7 @@ ul.none {
 }
 
 .sound.unmute {
-  background-image: url("/images/icons/unmute.svg");
+  background-image: url("/island20/images/icons/unmute.svg");
 }
 
 .smallVideo .play {
