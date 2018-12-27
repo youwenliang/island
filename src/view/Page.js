@@ -1745,6 +1745,28 @@ function Panorama(props) {
   )
 }
 
+function Bullets(props) {
+  var count = props.count;
+  var active = count.split('-')[0];
+  var total = count.split('-')[1];
+  
+  var buttons = [];
+  for (var i = 0; i < total; i++) {
+    var temp = null;
+    if(i === active - 1) temp = (<button type="button" className="active image-gallery-bullet" aria-pressed="false" aria-label="Go to Slide 1"></button>)
+    else temp = (<button type="button" className="image-gallery-bullet" aria-pressed="false" aria-label="Go to Slide 1"></button>)
+    buttons.push(temp);
+  }
+
+  return (
+    <div class="image-gallery-bullets">
+      <div class="image-gallery-bullets-container" role="navigation" aria-label="Bullet Navigation">
+        {buttons}
+      </div>
+    </div>
+  )
+}
+
 function TimeChange(props) {
   var z = "";
   var h = "min-vh-150"
@@ -1814,9 +1836,13 @@ function TimeChangeFull(props) {
 
   var bgcolor = ""
   var textcolor = ""
+  var up = null;
   if(props.color === "dark") {
-    bgcolor = "bg-black o-60";
+    bgcolor = "bg-black o-20";
     textcolor = "white";
+    up = {
+      top: "18%"
+    }
   } else {
     bgcolor = "bg-white o-85";
     textcolor = "black";
@@ -1849,10 +1875,11 @@ function TimeChangeFull(props) {
             <img className="w-100" style={fullImage} src={props.image} alt="background"/>
           </figure>
           {label_content}
-          <div className="absolute left-0 right-0 mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
+          <div className="absolute left-0 right-0 mw80 center ph4-ns ph3 w-100 z4 pre-wrap" style={up}>
             {text1}
           </div>
           {earth}
+          <Bullets count={props.count}/>
         </div>
       </div>
     </section>
@@ -2312,6 +2339,7 @@ class Event01 extends Component {
           text1={this.props.data.photoFullText[4]}
           image = {this.props.data.photoFull[3]}
           label = {this.props.data.photoFullTextLabel[3]}
+          count="1-2"
         />
         <TimeChangeFull
           id={"16-timeChangeFull"}
@@ -2320,6 +2348,7 @@ class Event01 extends Component {
           text1={this.props.data.photoFullText[5]}
           image = {this.props.data.photoFull[4]}
           label = {this.props.data.photoFullTextLabel[4]}
+          count="2-2"
         />
 
         <PhotoContrast
@@ -3005,6 +3034,7 @@ class Event04 extends Component {
           text1={this.props.data.videoText[6]}
           image={this.props.data.blogImage[3][0]}
           label = {this.props.data.blogLabel[3][0]}
+          count="1-2"
         />
         <TimeChangeFull
           position={"fl-l"}
@@ -3012,6 +3042,7 @@ class Event04 extends Component {
           text1={this.props.data.videoText[6]}
           image={this.props.data.blogImage[3][1]}
           label = {this.props.data.blogLabel[3][1]}
+          count="2-2"
         />
 
         <Transition
@@ -3126,6 +3157,7 @@ class Event05 extends Component {
           text1={this.props.data.timeChangeLabels[0]}
           image = {this.props.data.timeChangePhotos[0]}
           label = ""
+          count="1-4"
         />
         <TimeChangeFull
           id={"7-timeChangeFull"}
@@ -3136,6 +3168,7 @@ class Event05 extends Component {
           text1={this.props.data.timeChangeLabels[1]}
           image = {this.props.data.timeChangePhotos[1]}
           label = ""
+          count="2-4"
         />
         <TimeChangeFull
           id={"8-timeChangeFull"}
@@ -3146,6 +3179,7 @@ class Event05 extends Component {
           text1={this.props.data.timeChangeLabels[2]}
           image = {this.props.data.timeChangePhotos[2]}
           label = ""
+          count="3-4"
         />
         <TimeChangeFull
           id={"9-timeChangeFull"}
@@ -3157,6 +3191,7 @@ class Event05 extends Component {
           text1={this.props.data.timeChangeLabels[3]}
           image = {this.props.data.timeChangePhotos[3]}
           label = ""
+          count="4-4"
         />        
       
         <SmallVideo
