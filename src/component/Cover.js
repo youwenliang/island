@@ -4,6 +4,7 @@ import cover from '../assets/images/cover.svg';
 import Phone from '../component/Phone';
 import scrollship from '../assets/images/時光機.svg';
 import panel from '../assets/videos/timemachine.gif';
+import numbers from '../assets/videos/numbers.mov';
 
 class Cover extends Component {
   render() {
@@ -38,6 +39,7 @@ class Cover extends Component {
           {/*<img src={scrollship} width="100" alt="請往下滑動" />*/}
           <img src={panel} width="450" alt="操作台" />
         </figure>*/}
+        <video className="absolute" id="numbers" src={numbers} width="200" height="60" name="numbers"></video>
       </section>
     );
   }

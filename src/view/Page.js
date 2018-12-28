@@ -37,6 +37,8 @@ import fish5 from '../assets/images/fish-5.svg';
 import cta1 from '../assets/images/CTA-Icons-1.svg';
 import cta2 from '../assets/images/CTA-Icons-2.svg';
 import cta3 from '../assets/images/CTA-Icons-3.svg';
+import ctap2 from '../assets/images/pageCTA-1.svg';
+import ctap1 from '../assets/images/pageCTA-2.svg';
 
 // import mousewheel from 'jquery-mousewheel';
 // import {TweenMax} from "gsap/all";
@@ -1626,6 +1628,7 @@ function Timeline(props) {
     var photos = (
       <div className="grid-item bg-white relative" key={i}>
         <div style={photoGridStyle}></div>
+        {text_content}
       </div>
     )
     columns+=(w+" ");
@@ -1966,13 +1969,13 @@ function TimeChangeSide(props) {
 
   var imgH = "100%";
   if(!props.cover) {
-    if(props.mobile) imgH = "80%";
-    else imgH = "60%";
+    imgH = mobile ? "80%" : "60%";
   }
 
   var halfImageContain = {
     height: imgH,
-    objectFit: props.cover ? "cover" : "contain"
+    objectFit: props.cover ? "cover" : "contain",
+    marginTop: mobile ? "66px" : "0"
   }
 
   var halfImageCover = {
@@ -1987,6 +1990,8 @@ function TimeChangeSide(props) {
     padding: mobile ? "10px" : "20px"
   }
 
+  var mb = mobile ? {margin: "20px 0"} : {margin: "0"}
+
   var content = null;
   if(props.text1 !== "") {
     content = (
@@ -1999,7 +2004,7 @@ function TimeChangeSide(props) {
     )
   } else {
     content = (
-      <figure className="fr-l w-50-l w-100 ma0 h-100-l h-50 relative tc flex jcc flex-column">
+      <figure className="fr-l w-50-l w-100 h-100-l h-50 relative tc flex jcc flex-column" style={mb}>
         <img style={halfImageCover} src={props.image[1]} width="90%" alt="background"/>
         <label className="f7 mt3 o-50 w-90-l w-100 mb4 lh-normal" >{props.label}</label>
       </figure>
@@ -2216,10 +2221,10 @@ function CTA(props) {
               <Link to="/island20">
                 <div className="pv3 pa4 tc ctaBox bg-white">
                   <figure className="w5 h5 center mv0 flex aic jcc">
-                    <img src={cta1} width="210" height="210" alt="回首頁"/>
+                    <img src={ctap1} width="210" height="210" alt="回首頁"/>
                   </figure>
                   <p className="f3-ns f4 fw5 mt0 mb2">回首頁</p>
-                  <p className="f5-ns f6 fw4 o-60">加入粉絲  掌握最新資訊</p>
+                  <p className="f5-ns f6 fw4 o-60">穿梭島嶼時光機</p>
                 </div>
               </Link>
             </div>
@@ -2227,10 +2232,10 @@ function CTA(props) {
               <Link to={"../"+props.next+"/"}> 
                 <div className="pv3 pa4 tc ctaBox bg-white" onClick={() => props.switchView(props.next)}>
                   <figure className="w5 h5 center mv0 flex aic jcc">
-                    <img src={cta2} width="210" height="210" alt="下一篇"/>
+                    <img src={ctap2} width="210" height="210" alt="下一篇"/>
                   </figure>
                   <p className="f3-ns f4 fw5 mt0 mb2">下一篇</p>
-                  <p className="f5-ns f6 fw4 o-60">訂閱影音  隨時看不漏失</p>
+                  <p className="f5-ns f6 fw4 o-60">{props.nextN}</p>
                 </div>
               </Link>
             </div>
@@ -2241,7 +2246,7 @@ function CTA(props) {
                     <img src={cta3} width="210" height="210" alt="大事記"/>
                   </figure>
                   <p className="f3-ns f4 fw5 mt0 mb2">島官網</p>
-                  <p className="f5-ns f6 fw4 o-60">詳細收集  20年環境報導</p>
+                  <p className="f5-ns f6 fw4 o-60">了解更多我們的島</p>
                 </div>
               </a>
             </div>
@@ -2447,7 +2452,7 @@ class Event01 extends Component {
         <EndingVideo id={"20-endingVideo"} text="來收看，淡水河20年來的故事..." link={"https://www.youtube.com/embed/pJcFZSLkelU?rel=0"}/>
         {/*<Next switchView={this.props.switchView} next={"reborn-erren-river"} prev={"reborn-erren-river"}/>*/}
         <More id={"21-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
-        <CTA id={"22-cta"} switchView={this.props.switchView} next={"reborn-erren-river"} />
+        <CTA id={"22-cta"} switchView={this.props.switchView} next={"reborn-erren-river"} nextN={"重生 二仁溪"}/>
       </div>
     );
   }
@@ -2567,7 +2572,7 @@ class Event02 extends Component {
 
         <EndingVideo id={"13-endingVideo"} text={"來看二仁溪，二十年來承受了什麼..."} link={"https://youtube.com/embed/gfI8M0LGMss?rel=0"}/>
         <More id={"14-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
-        <CTA id={"15-cta"} switchView={this.props.switchView} next={"land-crabs-survival"} />
+        <CTA id={"15-cta"} switchView={this.props.switchView} next={"land-crabs-survival"}  nextN={"陸蟹闖天關"}/>
       </div>
     );
   }
@@ -2872,7 +2877,7 @@ class Event03 extends Component {
         <p className="w-100 tr f6 pa3 mv0 o-50 lh-normal">諮詢顧問及影像提供：劉烘昌</p>
         <EndingVideo id={"37-endingVideo"} text={"一起來守護陸蟹"} link={"https://youtube.com/embed/KyG4mEAyv8E?rel=0"}/>
         <More id={"38-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
-        <CTA id={"39-cta"} switchView={this.props.switchView} next={"dawu-fishing-port"} />
+        <CTA id={"39-cta"} switchView={this.props.switchView} next={"dawu-fishing-port"} nextN={"漁港的黑色幽默"}/>
       </div>
     );
   }
@@ -3207,7 +3212,7 @@ class Event04 extends Component {
         />
         <EndingVideo id={"36-endingVideo"} text="一起來關心我們的海岸" link={"https://www.youtube.com/embed/C-Au_8Y6tCc?rel=0"}/>
         <More id={"37-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
-        <CTA id={"38-cta"} switchView={this.props.switchView} next={"kinmen-Hou-feng-kang"} />
+        <CTA id={"38-cta"} switchView={this.props.switchView} next={"kinmen-Hou-feng-kang"} nextN={"不靠海的金門後豐港"}/>
       </div>
     );
   }
@@ -3411,7 +3416,7 @@ class Event05 extends Component {
 
         <EndingVideo id={"21-endingVideo"} text={"了解更多，關於金門鱟..."} link={"https://youtube.com/embed/nlWGkBTafkc?start=716&rel=0"}/>
         <More id={"21-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
-        <CTA id={"23-cta"} switchView={this.props.switchView} next={"changing-tamsui-river"} />
+        <CTA id={"23-cta"} switchView={this.props.switchView} next={"changing-tamsui-river"} nextN={"變遷 淡水河"}/>
       </div>
     );
   }
