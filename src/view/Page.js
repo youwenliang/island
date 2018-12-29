@@ -225,15 +225,19 @@ class Page extends Component {
         var bottom_of_window = $(window).scrollTop()+ $(window).height(); // eslint-disable-line no-unused-vars
         var center_of_window = $(window).scrollTop()+ $(window).height()/2; 
 
-        $('.timeChange').each(function(){
-          var top_of_object = $(this).offset().top;
-          var bottom_of_object = $(this).offset().top + $(this).height();
-          if( top_of_window > top_of_object && top_of_window < bottom_of_object){
-            $(this).find('.time-clipping').removeClass('fade');
-          } else {
-            $(this).find('.time-clipping').addClass('fade');
-          }
-        });
+        if ($(window).width() <= 959) {
+          $('.timeChange .time-clipping').removeClass('fade');
+        } else {
+          $('.timeChange').each(function(){
+            var top_of_object = $(this).offset().top;
+            var bottom_of_object = $(this).offset().top + $(this).height();
+            if( top_of_window > top_of_object && top_of_window < bottom_of_object){
+              $(this).find('.time-clipping').removeClass('fade');
+            } else {
+              $(this).find('.time-clipping').addClass('fade');
+            }
+          });
+        }
 
         // $('.dragscroll-content').each(function(){
         //   var top_of_object = $(this).offset().top;
@@ -1769,8 +1773,8 @@ function Bullets(props) {
 
 function TimeChange(props) {
   var z = "";
-  var h = "min-vh-150"
-  if(props.last) {
+  var h = "min-vh-180"
+  if(props.last && $(window).width() > 959) {
     z = "z-1";
     h = "min-vh-200"
   }
@@ -1790,21 +1794,21 @@ function TimeChange(props) {
   return (
     <section id={props.id} className={h+" flex aic relative timeChange bg-white "+z}>
       <div className="w-100 h-100 absolute top-left time-clipping fade">
-        <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
+        <div className="bg-white w-100 h-100-m h-100-l fixed-ns fixed-content pn flex aic">
           <div className="center w-100 z4 pre-wrap">
-            <div className="mw7 center w-100 pt4 ph3 h5">
+            <div className="mw7 mt5 mt0-ns center w-100 pt4 ph3 h5">
               <p className="lh-copy mv0 dark-gray" dangerouslySetInnerHTML={{__html:props.text1}}></p>
             </div>
-            <figure className="w-100 ma0">
-              <div className="w-third pr1 dib relative">
+            <figure className="w-100 flex flex-wrap flex-nowrap-ns ma0">
+              <div className="relative mr2-ns">
                 <img src={props.image[0]} alt="description"/>
                 <label style={label}>{props.labels[0]}</label>
               </div>
-              <div className="w-third pr1 dib relative">
+              <div className="relative mr2-ns">
                 <img src={props.image[1]} alt="description"/>
                 <label style={label}>{props.labels[1]}</label>
               </div>
-              <div className="w-third dib relative">
+              <div className="relative">
                 <img src={props.image[2]} alt="description"/>
                 <label style={label}>{props.labels[2]}</label>
               </div>
@@ -1870,7 +1874,7 @@ function TimeChangeFull(props) {
   return (
     <section id={props.id} className={h+" flex aic relative bg-black timeChange "+z}>
       <div className="w-100 h-100 absolute top-left time-clipping fade">
-        <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
+        <div className="bg-white w-100 h-100 fixed-ns fixed-content-ns pn flex aic">
           <figure className="w-100 ma0">
             <img className="w-100" style={fullImage} src={props.image} alt="background"/>
           </figure>

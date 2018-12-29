@@ -311,6 +311,16 @@ nav .btn {
   transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+@media screen and (min-width: 30em) {
+  .fixed-content-ns {
+    /*opacity: 0;*/
+    top: 0;
+    z-index: 1;
+    backface-visibility: hidden;
+    transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+}
+
 .fixed-content.active {
   /*opacity: 1;*/
   pointer-events: auto !important;

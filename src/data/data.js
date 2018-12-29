@@ -172,8 +172,8 @@ var data = {
 
         // TimeChange
         "timeChangeText": [
-            "<span class='f6'>不過有些地方，垃圾只是隱藏在腳下。例如新北市五股區二重疏洪道旁的建築廢土，2002 年都是露天棄置，高架道路施工時曾清除了一部分，但兩旁的廢棄物只是用柏油掩蓋，並沒有清出。</span><div class='f3 mt5 tc'><strong>2002</strong> - <span class='o-20'>2018</span></div>",
-            "<span class='f6'>2018年我們重回現場，發現當年的廢土只是用柏油掩蓋，並沒有清出。新的垃圾與廢土還是持續堆置，可見違法棄置在都市邊緣地帶還是一再上演。</span><div class='f3 mt5 tc'><span class='o-20'>2002</span> - <strong>2018</strong></div>"
+            "<span class='f5'>不過有些地方，垃圾只是隱藏在腳下。例如新北市五股區二重疏洪道旁的建築廢土，2002 年都是露天棄置，高架道路施工時曾清除了一部分，但兩旁的廢棄物只是用柏油掩蓋，並沒有清出。</span><div class='f3 mt5 tc dn db-ns'><strong>2002</strong> - <span class='o-20'>2018</span></div>",
+            "<span class='f5'>2018年我們重回現場，發現當年的廢土只是用柏油掩蓋，並沒有清出。新的垃圾與廢土還是持續堆置，可見違法棄置在都市邊緣地帶還是一再上演。</span><div class='f3 mt5 tc dn db-ns'><span class='o-20'>2002</span> - <strong>2018</strong></div>"
         ],
 
         "timeChangePhotos": [
