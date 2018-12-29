@@ -1172,6 +1172,24 @@ ul.none {
   }
 }
 
+.floatship {
+  animation: landing 2s infinite ease-in-out;
+}
+
+@keyframes landing {
+  0% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+
+
 /* grid */
 .grid-container {
   display: grid;

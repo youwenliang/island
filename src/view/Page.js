@@ -21,8 +21,8 @@ import endingV from '../assets/images/endingVideo.png';
 import messengerIcon from '../assets/images/messenger.png';
 import hand from '../assets/images/hand.svg';
 import timemachine from '../assets/images/timemachine.svg';
-import taiwanMap from '../assets/images/taiwan.jpg';
-import kinmenMap from '../assets/images/kinmen.jpg';
+import taiwanMap from '../assets/images/taiwan-static.png';
+import kinmenMap from '../assets/images/kinmen-static.png';
 import googleEarthLogo from '../assets/images/google_earth.svg';
 import tvLine from '../assets/images/tvline-4.png';
 import ship from '../assets/images/machinemap.svg'; // eslint-disable-line no-unused-vars
@@ -395,18 +395,20 @@ function Taiwan(props) {
   var bgStyle = {
     backgroundImage: "url("+taiwanMap+")",
     backgroundSize: "cover",
-    backgroundPosition: "76% center"
+    width: "100%",
+    padding: "28.125% 0",
+    borderTop: props.primaryColor+ " .25rem solid",
+    borderBottom: props.primaryColor+ " .25rem solid",
   }
   if (props.kinmen === true) {
     bgStyle.backgroundImage = "url("+kinmenMap+")";
   }
   var position = {
-    left: "75%",
-    top: "50%",
+    left: props.shipPosition.l,
+    top: props.shipPosition.t,
     margin: 0,
-    width: "100px",
-    height: "100px",
-    transform: "translate("+props.map+")"
+    width: "15%",
+    height: "15%"
   }
   var l = props.text1.split("的")[0];
   var r = (l.length-2) * 15 + 60 + "px";
@@ -422,26 +424,34 @@ function Taiwan(props) {
     display: "inline-block"
   }
   return (
-    <section id={props.id} className="cover min-vh-150 flex aic relative bg-black">
-      <div className="w-100 h-100 absolute top-left clipping bg-dark-gray">
-        <div className="w-100 h-100 fixed fixed-content pn flex aic" style={bgStyle}>
-          <TvLine />
+    <section id={props.id} className="flex aic bg-near-white pv5 pv6-ns ph4 ph0-ns flex-wrap">
+      <div className="bg-near-white w-100 w-50-ns">
+        <div className="relative" style={bgStyle}>
+          <Overlay overlayColor={props.primaryColor} />
           <figure className="absolute floatship" style={position}>
-            <label className="taiwan-label f5 tl" style={label}>{props.text1.split("的")[0]}</label>
-            <img src={scrollship} width="100" height="100" alt="時光機"/>
+            {/* <label className="taiwan-label f5 tl" style={label}>{props.text1.split("的")[0]}</label> */}
+            <img src={scrollship} alt="時光機"/>
           </figure>
+          {/* <GoogleEarthLogo text={"The image is from 2018/Google Earth  Data SIO,NOAA,U.S. Navy,NGA,GEBCO Image Landsat/Copemicus"} /> */}
         </div>
       </div>
-      <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
-        <div className="cf black">
-          <div className="w-50-l mw500 mh3-l center w-100 fl-l pa4-l pa3 bg-near-white">
-            <h2 className="f3 fw7 lh-copy mt0">{props.text1}</h2>
-            <p className="f5-ns f6 lh-copy mv0">{props.text2}</p>
-          </div>
-        </div>
+      <div className="pt4 pa5-ns w-100 w-50-ns">
+        <h2 className="mh4-l f6 fw7 lh-copy mt0">{props.text1}</h2>
+        <p className="mh4-l f5-ns f6 lh-copy mv0">{props.text2}</p>
       </div>
-      <GoogleEarthLogo text={"The image is from 2018/Google Earth  Data SIO,NOAA,U.S. Navy,NGA,GEBCO Image Landsat/Copemicus"} />
     </section>
+  )
+}
+
+function Overlay(props) {
+  var style = {
+    left: "0",
+    top: "0",
+    backgroundColor: props.overlayColor
+  }
+  return (
+    <div className="w-100 h-100 absolute o-20" style={style}>
+    </div>
   )
 }
 
@@ -2235,8 +2245,8 @@ class Event01 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          
-          map = {"-80px, -370px"}
+          primaryColor = {"#399DBB"}
+          shipPosition = {{l: "51%", t:"-8%"}}
         />
         <Illustration
           id={"3-illustration"}
@@ -2416,8 +2426,8 @@ class Event02 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          
-          map = {"-285px, 160px"}
+          primaryColor = {"#399DBB"}
+          shipPosition = {{l: "35%", t:"47%"}}
         />
 
         <Illustration
@@ -2541,8 +2551,8 @@ class Event03 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          
-          map = {"-185px, 335px"}
+          primaryColor = {"#399DBB"}
+          shipPosition = {{l: "42%", t:"65%"}}
         />
 
         <Illustration
@@ -2879,8 +2889,8 @@ class Event04 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          
-          map = {"-125px, 265px"}
+          primaryColor = {"#399DBB"}
+          shipPosition = {{l: "44%", t:"58%"}}
         />
 
         <Illustration
@@ -3127,8 +3137,8 @@ class Event05 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           kinmen = {true}
-          
-          map = {"-90px, -140px"}
+          primaryColor = {"#399DBB"}
+          shipPosition = {{l: "32%", t:"47%"}}
         />
 
         <Illustration
@@ -3304,7 +3314,7 @@ class Event06 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-110px, -200px"}
+          shipPosition = {{l: "0%", t:"0%"}}
         />
 
         <Illustration
@@ -3410,7 +3420,7 @@ class Event07 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-110px, -110px"}
+          shipPosition = {{l: "0%", t:"0%"}}
         />
 
         <Video 
@@ -3517,7 +3527,7 @@ class Event09 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-110px, -200px"}
+          shipPosition = {{l: "0%", t:"0%"}}
         />
 
         <Illustration
@@ -3617,7 +3627,7 @@ class Event12 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-110px, -200px"}
+          shipPosition = {{l: "0%", t:"0%"}}
         />
 
         <Illustration
