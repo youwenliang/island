@@ -313,6 +313,16 @@ nav .btn {
   transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+@media screen and (min-width: 30em) {
+  .fixed-content-ns {
+    /*opacity: 0;*/
+    top: 0;
+    z-index: 1;
+    backface-visibility: hidden;
+    transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+}
+
 .fixed-content.active {
   /*opacity: 1;*/
   pointer-events: auto !important;
@@ -1179,6 +1189,26 @@ ul.none {
     opacity: 0;
     background-position: center 20px;
   }
+}
+
+.floatship {
+  animation: landing 2s infinite ease-in-out;
+}
+
+@keyframes landing {
+  0% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.sharing a:hover {
+  opacity: .5;
 }
 
 /* grid */

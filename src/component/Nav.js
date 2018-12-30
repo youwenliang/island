@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 import logo from '../assets/images/logo.png';
+import facebookLogo from '../assets/images/facebook-logo.svg';
+import lineLogo from '../assets/images/line-logo.svg';
 import shareIcon from '../assets/images/share.svg';
+import scrollship from '../assets/images/時光機.svg';
 
 class Nav extends Component {
   constructor(props) {
@@ -63,10 +66,26 @@ class Nav extends Component {
           </div>
         </nav>
         <Modal open={open} onClose={this.onCloseModal}>
-          <form className="pt4 share-form flex aic jcc">
-            <input type="text" value={link}/>
-            <button className="dib w4" type="button" onClick={(e) => this.copyLink(e)}>Copy Link</button>
-          </form>
+          <div className="pa3">
+            <div className="w-100">
+              <figure className="floatship w-30" style={{margin: "0 auto"}}>
+                <img src={scrollship} alt="時光機"/>
+              </figure>
+            </div>
+            <div className="w-100 f6 tc mv3 fw7">
+              帶著訊息前往新的地方⋯⋯
+            </div>
+            <div className="w-100 flex sharing">
+              <div style={{margin: "0 auto"}}>
+                <img src={facebookLogo} height="60px" alt="分享至 Facebook"/>
+                <img src={lineLogo} height="60px" alt="分享至 Line"/>
+              </div>
+            </div>
+            <form className="pt4 share-form flex aic jcc">
+              <input className="pv2 mr1 bn f7" type="text" value={link} />
+              <button className="dib w4 bg-near-white bn pv2 f7" type="button" onClick={(e) => this.copyLink(e)}>Copy Link</button>
+            </form>
+          </div>
         </Modal>
       </div>
     );
