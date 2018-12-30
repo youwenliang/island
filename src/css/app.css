@@ -14,7 +14,9 @@ body {
   text-align: justify;
 }
 
-
+#footer p {
+  letter-spacing: 0.04em;
+}
 
 .taiwan-label:after {
   content: '';
@@ -598,7 +600,7 @@ nav .btn {
   left: 0;
   right: 0;
   bottom: 30px;
-  z-index: 20;
+  z-index: 9;
 }
 
 .panorama-text {
@@ -674,6 +676,19 @@ nav .btn {
   width: 10rem;
   height: 10rem;
 }
+
+@media screen and (max-width: 30em) {
+  .circle-10 {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+  .event {
+    height: 220px;
+  }
+
+}
+
+
 
 #topic-1 .eventBg:after {
   background-color: rgba(34,79,99,.4);
@@ -908,6 +923,10 @@ ul.none {
 
 .f7 {
   font-size: .875rem;
+}
+
+.f8 {
+  font-size: .8rem;
 }
 
 .order-1 {
