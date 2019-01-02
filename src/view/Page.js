@@ -1597,7 +1597,12 @@ function Timeline(props) {
   }
 
   var mobile = $(window).width() <= 959 ? true : false;
-  var w = mobile ? "100vw" : "480px";
+  var w = ""
+  if(!special) w = "480px"
+  else {
+    if(mobile) w = "320px"
+    else w = "360px"
+  }
 
 
   for (var i = 0; i < props.images.length; i++){
@@ -1605,7 +1610,8 @@ function Timeline(props) {
       width: w,
       height: special ? "560px" : "320px",
       backgroundImage: "url("+props.images[i]+")",
-      backgroundSize: "cover",
+      backgroundSize: special ? "contain" : "cover",
+      backgroundRepeat: "no-repeat",
       backgroundPosition: "center center"
     }
     var textGridStyle = {
@@ -1894,7 +1900,7 @@ function TimeChangeFull(props) {
   var fullImage = {
     height: "100vh",
     objectFit: "cover",
-    objectPosition: "center 22px",
+    objectPosition: props.move ? "30% 22px" : "center 22px",
     width: "100%"
   }
   var bottomRight = {
@@ -3280,6 +3286,7 @@ class Event05 extends Component {
           image = {this.props.data.timeChangePhotos[0]}
           label = ""
           count="1-4"
+          move={true}
         />
         <TimeChangeFull
           id={"7-timeChangeFull"}
@@ -3291,6 +3298,7 @@ class Event05 extends Component {
           image = {this.props.data.timeChangePhotos[1]}
           label = ""
           count="2-4"
+          move={true}
         />
         <TimeChangeFull
           id={"8-timeChangeFull"}
@@ -3302,6 +3310,7 @@ class Event05 extends Component {
           image = {this.props.data.timeChangePhotos[2]}
           label = ""
           count="3-4"
+          move={true}
         />
         <TimeChangeFull
           id={"9-timeChangeFull"}
@@ -3314,6 +3323,7 @@ class Event05 extends Component {
           image = {this.props.data.timeChangePhotos[3]}
           label = ""
           count="4-4"
+          move={true}
         />        
       
         <SmallVideo
