@@ -10,62 +10,59 @@ import $ from 'jquery';
 import loadImage from 'image-promise';
 import thumbnail from '../assets/thumbnail/home.jpg';
 
-var id = ['cover','topic-1','topic-2','topic-3','timeline-preview', 'cta'];
+// var id = ['cover','topic-1','topic-2','topic-3','timeline-preview', 'cta'];
 
 class Home extends Component {
+  componentDidUpdate(){
+    $(document).ready(function(){
+      let vh = window.innerHeight * 0.01;
+      $('.vh-100').css('height', 100 * vh+'px');
+      $('.min-vh-100').css('min-height', 100 * vh+'px');
+      $('.min-vh-150').css('min-height', 150 * vh+'px');
+      $('.min-vh-180').css('min-height', 180 * vh+'px');
+      $('.min-vh-200').css('min-height', 240 * vh+'px');
+      $('.min-vh-300').css('min-height', 340 * vh+'px');
+    });
+  }
   componentDidMount(){
     $(document).scrollTop(0);
-    // function setHeight() {
-    //   var windowHeight = $(window).height(),
-    //     $block = $('#cover, .cover');
-    //     if(windowHeight > 550) { // 550px is your css min-height for this block
-    //       $block.css('min-height', windowHeight + 'px') 
-    //     } else {
-    //       $block.css('min-height': '') 
-    //     }
-    // }
-    // setHeight();
-    // $(window).on('resize orientationchange', setHeight);
-
     
-    $('#section-nav a').click(function(){
-      $('html, body').animate({
-          scrollTop: $( $.attr(this, 'href') ).offset().top - 66
-      }, 800);
-      return false;
-    });
-    $(window).scroll( function(){
-      for (var i = 0; i < 6; i++) {
-        if($('#'+id[i]).length >= 1) {
-          if($(window).scrollTop() >= $('#'+id[i]).offset().top - $(window).height()/2) {
-            $('.active').removeClass('active');
-            $('a[href="#'+id[i]+'"]').addClass('active');
-          }
-        }
-      }
-    });
-
     document.body.classList.add('ds');
     document.getElementById('loading').classList.remove('fade');
 
-    var images  = [];
-    loadImage(images)
-    .then(function (allImgs) {
-      console.log(allImgs.length, 'images loaded!', allImgs);
-
-      var p = 0;
-      var id = setInterval(frame, 10);
-      function frame() {
-        if (p >= 100) {
-          clearInterval(id);
+    // var images  = [];
+    var images  = ["/island20/images/1-1_A22.jpg","/island20/images/1-2_B6.jpg","/island20/images/1-3_C1.jpg","/island20/images/1-4_D32.jpg","/island20/images/1-5_E7.jpg"];
+    var loaded = false;
+    var p = 0;
+    var id = setInterval(frame, 10);
+    
+    function frame() {
+      console.log(loaded)
+      if (p >= 100) {
+        if(loaded) {
           setTimeout(function(){
             document.getElementById('loading').classList.add('fade');
             document.body.classList.remove('ds');
-          },600);
-        } else {
-          p++; 
-          $('.progress-view').text(p+'%');
+          },400);
+          clearInterval(id);
         }
+      } else {
+        p++; 
+        $('.progress-view').text(p+'%');
+      }
+    }
+    // var images  = [];
+    loadImage(images)
+    .then(function (allImgs) {
+      console.log(allImgs.length, 'images loaded!', allImgs);
+      loaded = true;
+
+      if(p >= 100) {
+        clearInterval(id);
+        setTimeout(function(){
+          document.getElementById('loading').classList.add('fade');
+          document.body.classList.remove('ds');
+        },400);
       }
     })
     .catch(function (err) {
@@ -73,6 +70,45 @@ class Home extends Component {
       console.error(err.errored);
       console.info('But these loaded fine:');
       console.info(err.loaded);
+    });
+      
+    $(document).ready(function(){
+      let vh = window.innerHeight * 0.01;
+      $('.vh-100').css('height', 100 * vh+'px');
+      $('.min-vh-100').css('min-height', 100 * vh+'px');
+      $('.min-vh-150').css('min-height', 150 * vh+'px');
+      $('.min-vh-180').css('min-height', 180 * vh+'px');
+      $('.min-vh-200').css('min-height', 240 * vh+'px');
+      $('.min-vh-300').css('min-height', 340 * vh+'px');
+      // function setHeight() {
+      //   var windowHeight = $(window).height(),
+      //     $block = $('#cover, .cover');
+      //     if(windowHeight > 550) { // 550px is your css min-height for this block
+      //       $block.css('min-height', windowHeight + 'px') 
+      //     } else {
+      //       $block.css('min-height': '') 
+      //     }
+      // }
+      // setHeight();
+      // $(window).on('resize orientationchange', setHeight);
+
+      
+      // $('#section-nav a').click(function(){
+      //   $('html, body').animate({
+      //       scrollTop: $( $.attr(this, 'href') ).offset().top - 66
+      //   }, 800);
+      //   return false;
+      // });
+      // $(window).scroll( function(){
+      //   for (var i = 0; i < 6; i++) {
+      //     if($('#'+id[i]).length >= 1) {
+      //       if($(window).scrollTop() >= $('#'+id[i]).offset().top - $(window).height()/2) {
+      //         $('.active').removeClass('active');
+      //         $('a[href="#'+id[i]+'"]').addClass('active');
+      //       }
+      //     }
+      //   }
+      // });
     });
     
   }

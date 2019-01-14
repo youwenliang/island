@@ -27,15 +27,7 @@ class Cover extends Component {
 
   render() {
     var titleStyle = {
-      transform: "translateY(-50px)"
-    }
-
-    var ship = {
-      left: '50%',
-      transform: "translateX(-50%)",
-      margin: "0 auto",
-      bottom: "0",
-      width: "450px"
+      transform: "translateY(-30px)"
     }
 
     var numberStyle = {
@@ -51,18 +43,18 @@ class Cover extends Component {
         <div className="bg-light-gray w-100 h-100 absolute">
           <div className="bg-near-black o-20 w-100 h-100 absolute z1"/>
           <div className="videoBg">
-            <video id="video" muted loop autoPlay playsInline>
+            <video id="coverVideo" muted loop autoPlay playsInline>
               <source src={coverVideo} type="video/mp4"/>
             </video>
           </div>
         </div>
-        <div className="mw8 center ph3-l pv6 z1 pn">
+        <div className="mw8 center ph3-l pv6 z1 pn absolute">
           <div className="cf tc white w-80-ns w-90 center pa4-l">
             <img src={cover} style={titleStyle} width="960px" height="auto" alt="title" />
           </div>
         </div>
         {/*<Phone/>*/}
-        <figure className="absolute z4 tc" style={ship}>
+        <figure className="absolute z4 tc" id="timeMachine">
           {/*<img src={scrollship} width="100" alt="請往下滑動" />*/}
           <img id="panel" src={panel} width="450" alt="操作台" />
           <img id="numbers" src={numbers1} width="100" alt="年代表" style={numberStyle}/>

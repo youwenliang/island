@@ -175,8 +175,8 @@ var data = {
 
         // TimeChange
         "timeChangeText": [
-            "<span class='f6'>不過有些地方，垃圾只是隱藏在腳下。例如新北市五股區二重疏洪道旁的建築廢土，2002 年都是露天棄置，高架道路施工時曾清除了一部分，但兩旁的廢棄物只是用柏油掩蓋，並沒有清出。</span><div class='f3 mt5 tc'><strong>2002</strong> - <span class='o-20'>2018</span></div>",
-            "<span class='f6'>2018年我們重回現場，發現當年的廢土只是用柏油掩蓋，並沒有清出。新的垃圾與廢土還是持續堆置，可見違法棄置在都市邊緣地帶還是一再上演。</span><div class='f3 mt5 tc'><span class='o-20'>2002</span> - <strong>2018</strong></div>"
+          "<span class='f5-ns f6'>不過有些地方，垃圾只是隱藏在腳下。例如新北市五股區二重疏洪道旁的建築廢土，2002 年都是露天棄置，高架道路施工時曾清除了一部分，但兩旁的廢棄物只是用柏油掩蓋，並沒有清出。</span><span class='f3 mt4 tc db'><strong>2002</strong> - <span class='o-20'>2018</span></span>",
+          "<span class='f5-ns f6'>2018年我們重回現場，發現當年的廢土只是用柏油掩蓋，並沒有清出。新的垃圾與廢土還是持續堆置，可見違法棄置在都市邊緣地帶還是一再上演。<br/><br/></span><span class='f3 mt4 tc db'><span class='o-20'>2002</span> - <strong>2018</strong></span>"
         ],
 
         "timeChangePhotos": [
@@ -238,7 +238,7 @@ var data = {
 
         // PhotoText
         "photoText": [
-            "歷經三十年的整治，移除垃圾、污水截流，淡水河水質終於改善。根據環保署調查資料，淡水河本流河段魚種從1980年代只有十餘種，到2011年已增到有50種左右，主要魚種有大頭鰱、鯉魚、鯽魚等等。\n\n另外在較上游的新店溪河段，消失已久的洄游性魚類日本禿頭鯊、總統魚等也重現蹤跡。近年來更有人發現，在新店溪消失長達半世紀的香魚，出現在碧潭一帶。\n\n<p class='f7 o-50'><strong>＊什麼是河川污染指標？</strong>\n河川污染指標是環保署目前用來評估河川水質之綜合性指標，以水中溶氧量、生化需氧量、懸浮固體、氨氮等四項水質參數之濃度值，來判定水質污染程度，可分為未受/稍受污染、輕度污染、中度污染及嚴重污染，4個等級。</p>"
+            "歷經三十年的整治，移除垃圾、污水截流，淡水河水質終於改善。根據環保署調查資料，淡水河本流河段魚種從1980年代只有十餘種，到2011年已增到有50種左右，主要魚種有大頭鰱、鯉魚、鯽魚等等。\n\n另外在較上游的新店溪河段，消失已久的洄游性魚類日本禿頭鯊、總統魚等也重現蹤跡。近年來更有人發現，在新店溪消失長達半世紀的香魚，出現在碧潭一帶。\n\n<p class='f7 o-50 mv0'><strong>＊什麼是河川污染指標？</strong>\n河川污染指標是環保署目前用來評估河川水質之綜合性指標，以水中溶氧量、生化需氧量、懸浮固體、氨氮等四項水質參數之濃度值，來判定水質污染程度，可分為未受/稍受污染、輕度污染、中度污染及嚴重污染，4個等級。</p>"
         ],
 
         "photoTextLabel": [],
@@ -521,7 +521,7 @@ var data = {
         ],
 
         "transitionText": [
-          "從誕生開始，有些大型陸蟹，大約只有百萬分之一的機會可以活下來。", 
+          "從誕生開始，有些大型陸蟹，大約只有百萬分之一的機會能活下來。", 
           "消失，像一種毒氣蔓延，慢慢的，一點一點，<br class='db-ns dn'/>在沒有知覺中，侵蝕著每一吋神經，最後毫無氣息。",
           "當地居民募集貝殼，在許多海岸的角落，成立寄居蟹專屬的房屋仲介所，讓牠們來換個舒服的新家，現在不只很少見到背著垃圾殼的陸寄居蟹，數量更增加了，目前幾乎所有種類的陸蟹都在走下坡，只有陸寄居蟹往正向發展。"
         ],
@@ -682,7 +682,7 @@ var data = {
           "/island20/events/dawu-fishing-port/videos/D52大武清淤短片2018(有上字).mp4",
           "/island20/events/dawu-fishing-port/videos/D65鹽寮船長變遷.mp4",
           "/island20/events/dawu-fishing-port/videos/D51-廢港底圖影音.mp4",
-          "/island20/events/dawu-fishing-port/videos/D49-2018.07花蓮鹽寮空拍2.mp4",
+          "/island20/events/dawu-fishing-port/videos/D49-201807花蓮鹽寮空拍2.mp4",
           "/island20/events/dawu-fishing-port/videos/D53大武海岸消波塊短片.mp4",
           "/island20/events/dawu-fishing-port/videos/D66-五甲漁港淤港.mp4"
       ],
@@ -700,7 +700,10 @@ var data = {
 
       // PhotoText
       "photoText": [
-          "<p class='f3 fw7 tracked mb0'>你知道什麼是突堤效應嗎?<p>突出海岸的人工結構物，會阻擋原本沿岸流及漂沙的路徑，造成上游那一側的海岸淤沙堆積，下游側的海岸，因為沙源減少，逐漸出現侵蝕現象。"
+        "突出海岸的人工結構物，會阻擋原本沿岸流及漂沙的路徑，造成上游那一側的海岸淤沙堆積，下游側的海岸，因為沙源減少，逐漸出現侵蝕現象。"
+      ],
+      "photoTitle": [
+        "你知道什麼是突堤效應嗎？"
       ],
       "photoImage": [
           ["/island20/events/dawu-fishing-port/illustrations/突1.svg"],
@@ -748,9 +751,14 @@ var data = {
       // PhotoSlide
       "photoSlideText": "在地方政治與民意的壓力下，政府年年編列大武漁港港口改善工程與清淤經費，為了攔阻漂沙，北岸的防波堤愈蓋愈長，港區的防沙牆也愈蓋愈高，數十年來，花費大武漁港整理門面及修修補補的經費，約數十億元，而突出海面的北防波堤，後續還帶來了海岸侵蝕的危機，產生另一處新的錢坑。",
       "photoSlideLabel": [
-        "2013年\n淤沙像一道堤防，幾乎堵住大武漁港的港嘴。\n\n",
-        "2016年\n南側海岸線往內退縮，興建突堤與離岸堤來護岸，大武漁港淤沙未減。",
-        "2018年\n興建突堤和離岸堤加上回填土方，海岸線往外延伸，漂沙卻回堵大武漁港。"
+        "淤沙像一道堤防，幾乎堵住大武漁港的港嘴。\n",
+        "南側海岸線往內退縮，興建突堤與離岸堤來護岸，大武漁港淤沙未減。",
+        "興建突堤和離岸堤加上回填土方，海岸線往外延伸，漂沙卻回堵大武漁港。"
+      ],
+      "photoSlideTitle": [
+        "2013年",
+        "2016年",
+        "2018年"
       ],
       "photoSlidePhoto": [
         ["/island20/events/dawu-fishing-port/D40-2013年大武漁港.jpg"],
@@ -843,7 +851,13 @@ var data = {
           "2004年 海岸巡禮",
           "2008年 台灣海岸十年",
           "2013年 陷落的海岸線"
-        ]
+        ],
+        "timeChangeSideImage": [
+          "/island20/events/dawu-fishing-port/illustrations/公視圖檔-22.png",
+          "/island20/events/dawu-fishing-port/illustrations/公視圖檔-23.png",
+          "/island20/events/dawu-fishing-port/illustrations/公視圖檔-24.png",
+          "/island20/events/dawu-fishing-port/illustrations/公視圖檔-25.png",
+        ],
     },
 // ****************************************************************** E ******************************************************************
     "kinmen-Hou-feng-kang": {
@@ -1001,7 +1015,10 @@ var data = {
 
     "transitionText": "漁業曾經造就後豐港的繁榮，聚落前原本有片天然的灣澳，只要走出家門口，魚蝦貝類滿滿是，當地居民還會捉沙蟲、蝦子當作捕魚的餌料，這片潮間帶是他們世代傳承的豐饒之地，是重要的生計來源。\n\n不過，政府看中了小三通帶來的前景，進行水頭商港的擴建開發，大規模填海造陸，水頭到後豐港的這片自然海灣被填平，計畫作為商城和遊憩區使用，後豐港從此成為不靠海的漁村。",
     "photoText": "由於小三通的觀光人數，不如預期，填海至今，原本預計2016年執行完成的發展計劃，目前仍是荒廢一片，諷刺著招商美夢。",
-    "photoImage": "/island20/events/kinmen-Hou-feng-kang/illustrations/電腦版.svg",
+    "photoImage": [
+      ["/island20/events/kinmen-Hou-feng-kang/illustrations/電腦版.svg"], 
+      ["/island20/events/kinmen-Hou-feng-kang/E9E_side.jpg"]
+    ],
 
     // BlogPost (部落格 x 2)
     "blogText": [

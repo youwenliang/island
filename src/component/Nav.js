@@ -1,8 +1,12 @@
+/*global FB*/
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 import logo from '../assets/images/logo.png';
+import facebookLogo from '../assets/images/facebook-logo.svg';
+import lineLogo from '../assets/images/line-logo.svg';
 import shareIcon from '../assets/images/share.svg';
+import scrollship from '../assets/images/時光機.svg';
 
 class Nav extends Component {
   constructor(props) {
@@ -33,6 +37,15 @@ class Nav extends Component {
     return false;
   }
 
+  socialShare = () => {
+    if (typeof FB !== 'undefined') {
+      FB.ui({
+        method: 'share',
+        href: window.location.href
+      }, function(response){});
+    }
+  }
+
   render() {
     const { open } = this.state;
     var link = window.location.href;
@@ -45,6 +58,7 @@ class Nav extends Component {
       backgroundPosition: "15px center",
       width: "100px"
     }
+    var url = "http://line.naver.jp/R/msg/text/?穿梭島嶼時光機 - 我們的島二十週年%0D%0A"+link;
     // if(this.props.timeline) timeline = (<a href="/ourisland/timeline/" target="_blank"><button className="btn cp h2 ph3">前往大紀事</button></a>);
     return (
       <div>
@@ -52,7 +66,7 @@ class Nav extends Component {
           <div className="bg-dark-gray w-100 h-100 absolute top0"></div>
           <div className="w-100 mw9 center ph3 relative z4">
             <div className="ph2-ns flex space-between aic white">
-              <Link to="/island20">
+              <Link to="/island20/">
                 <img src={logo} height="32px" alt="我們的島"/>
               </Link>
               <div className="flex flex-row">
@@ -63,10 +77,28 @@ class Nav extends Component {
           </div>
         </nav>
         <Modal open={open} onClose={this.onCloseModal}>
-          <form className="pt4 share-form flex aic jcc">
-            <input type="text" value={link}/>
-            <button className="dib w4" type="button" onClick={(e) => this.copyLink(e)}>Copy Link</button>
-          </form>
+          <div className="pa3">
+            <div className="w-100">
+              <figure className="floatship w-30" style={{margin: "0 auto"}}>
+                <img src={scrollship} alt="時光機"/>
+              </figure>
+            </div>
+            <div className="w-100 f6 tc mv3 fw7">
+              帶著訊息前往新的地方⋯⋯
+            </div>
+            <div className="w-100 flex sharing">
+              <div className="pn" style={{margin: "0 auto"}}>
+                <img className="pauto mh2 br2 cp" src={facebookLogo} height="60px" alt="分享至 Facebook" onClick={this.socialShare}/>
+                <a href={url} target="_blank" rel="noopener noreferrer">
+                  <img className="pauto mh2 br2 cp" src={lineLogo} height="60px" alt="分享至 Line"/>
+                </a>
+              </div>
+            </div>
+            <form className="pt4 share-form flex aic jcc">
+              <input className="pv2 mr1 bn f7" type="text" value={link} />
+              <button className="dib w4 bg-near-white bn pv2 f7 br2" type="button" onClick={(e) => this.copyLink(e)}>複製連結</button>
+            </form>
+          </div>
         </Modal>
       </div>
     );

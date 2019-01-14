@@ -3,30 +3,31 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {Helmet} from "react-helmet";
 import loadImage from 'image-promise';
+import canAutoPlay from 'can-autoplay'; // eslint-disable-line no-unused-vars
 import data from '../data/data.js';
 import $ from 'jquery';
 import BeforeAfterSlider from 'react-before-after-slider'; // eslint-disable-line no-unused-vars
 import ReactCompareImage from 'react-compare-image';
+import Cookies from 'universal-cookie';
 
 import { Controller, Scene } from 'react-scrollmagic';
 import { Tween } from "react-gsap";
 
 import ImageGallery from 'react-image-gallery';
 import Nav from '../component/Nav'
-import Phone from '../component/Phone'
+import Phone from '../component/Phone' // eslint-disable-line no-unused-vars
 import Modal from 'react-responsive-modal';
-import Cookies from 'universal-cookie';
 
 import endingV from '../assets/images/endingVideo.png';
 import messengerIcon from '../assets/images/messenger.png';
-import hand from '../assets/images/hand.svg';
-import timemachine from '../assets/images/timemachine.svg';
-import taiwanMap from '../assets/images/taiwan.jpg';
-import kinmenMap from '../assets/images/kinmen.jpg';
+import timemachinehand from '../assets/images/timemachinehand.svg';
+import taiwanMap from '../assets/images/taiwan-static.png';
+import kinmenMap from '../assets/images/kinmen-static.png';
 import googleEarthLogo from '../assets/images/google_earth.svg';
 import tvLine from '../assets/images/tvline-4.png';
 import ship from '../assets/images/machinemap.svg'; // eslint-disable-line no-unused-vars
 import scrollship from '../assets/images/時光機.svg';
+import placeholder from '../assets/images/placeholder.jpg';
 
 import fish1 from '../assets/images/fish-1.svg';
 import fish2 from '../assets/images/fish-2.svg';
@@ -34,11 +35,16 @@ import fish3 from '../assets/images/fish-3.svg';
 import fish4 from '../assets/images/fish-4.svg';
 import fish5 from '../assets/images/fish-5.svg';
 
-import cta1 from '../assets/images/CTA-Icons-1.svg';
-import cta2 from '../assets/images/CTA-Icons-2.svg';
+import cta1 from '../assets/images/CTA-Icons-1.svg'; // eslint-disable-line no-unused-vars
+import cta2 from '../assets/images/CTA-Icons-2.svg'; // eslint-disable-line no-unused-vars
 import cta3 from '../assets/images/CTA-Icons-3.svg';
 import ctap2 from '../assets/images/pageCTA-1.svg';
 import ctap1 from '../assets/images/pageCTA-2.svg';
+
+import success from '../assets/images/我們的島cover-08.svg';
+import successTitle from '../assets/images/我們的島cover-09.svg';
+import successBg1 from '../assets/images/我們的島cover-10.svg';
+import successBg2 from '../assets/images/我們的島cover-11.svg'; // eslint-disable-line no-unused-vars
 
 // import mousewheel from 'jquery-mousewheel';
 // import {TweenMax} from "gsap/all";
@@ -57,10 +63,8 @@ class Page extends Component {
       interval: null,
       interval2: null,
       scrollprogress: null,
-      chatbot: props.location.hash.indexOf('chatbot') > -1 ? true : false
+      loaded: false
     };
-
-    
 
     //Here ya go
     this.props.history.listen((location, action) => {
@@ -68,8 +72,15 @@ class Page extends Component {
       $(document).scrollTop(0);
       this.setState({
         view: view,
-        id: view
-      })
+        id: view,
+        drag: false,
+        interval: null,
+        interval2: null,
+        scrollprogress: null
+      });
+      clearInterval(this.state.interval);
+      clearInterval(this.state.interval2);
+      clearInterval(this.state.scrollprogress);
     });
   }
   switchView = (view) => {
@@ -78,8 +89,15 @@ class Page extends Component {
     $(document).scrollTop(0);
     this.setState({
       view: view,
-      id: view
-    })
+      id: view,
+      drag: false,
+      interval: null,
+      interval2: null,
+      scrollprogress: null
+    });
+    clearInterval(this.state.interval);
+    clearInterval(this.state.interval2);
+    clearInterval(this.state.scrollprogress);
   }
   // componentDidUpdate(){
   //   console.log('update');
@@ -98,82 +116,58 @@ class Page extends Component {
   //   });
   // }
 
-  componentDidUpdate() {
-    var p = 0;
-    var id = setInterval(frame, 10);
-
-    function frame() {
-      if (p >= 100) {
-        clearInterval(id);
-        setTimeout(function(){
-          document.getElementById('loading').classList.add('fade');
-          document.body.classList.remove('ds');
-        },600);
-      } else {
-        p++; 
-        $('.progress-view').text(p+'%');
-      }
-    }
-  }
-
-  componentDidMount(){
+  componentDidUpdate(){
     var $t = this;
-    console.log('mount');
+    const cookies = new Cookies();
     
     $(document).scrollTop(0);
     document.body.classList.add('ds');
     document.getElementById('loading').classList.remove('fade');
 
-    // $('.video-content').each( function(i){
-    //   var $this = $(this);
-    //   $this.find('video').get(0).pause()
-    // });
-
-    var scrolling = false;
-    $t.state.scrollprogress = setInterval(function(){
-      if(!$('.progress.active').hasClass('scrolling')) {
-        $('.progress.active').addClass('scrolling');
-        scrolling = false;
-        console.log("false scroll");
+    var data = pageEvent_data[this.state.id];
+    var images  = [data.code];
+    // var images  = [];
+    var loaded = false;
+    var p = 0;
+    var id = setInterval(frame, 10);
+    
+    function frame() {
+      //console.log(loaded)
+      if (p >= 100) {
+        if(loaded) {
+          if(cookies.get('firstVisit') === undefined) {
+            cookies.set('firstVisit', true, { path: '/' });
+            // window.location.reload();
+          }
+          setTimeout(function(){
+            document.getElementById('loading').classList.add('fade');
+            document.body.classList.remove('ds');
+          },400);
+          clearInterval(id);
+        }
+      } else {
+        p++; 
+        $('.progress-view').text(p+'%');
       }
-    },1000)
-
-    $('.dragscroll').scrollLeft(0);
-    // Horizontal Scroll
-    // $('.dragscroll').mousewheel(function(event, change) {
-    //   console.log("scrollingmount");
-    //   var newScrollLeft = $(this).scrollLeft(),
-    //       width = $(this).outerWidth(),
-    //       scrollWidth = $(this).get(0).scrollWidth;
-    //   if(newScrollLeft === 0 && change > 0) ;
-    //   else if (scrollWidth - newScrollLeft === width && change < 0) ;
-    //   else {
-    //     this.scrollLeft -= (change * .5); //need a value to speed up the change
-    //     event.preventDefault();
-    //   }
-    // });
-
-    var images  = [];
+    }
+    // var images  = [];
     loadImage(images)
     .then(function (allImgs) {
       console.log(allImgs.length, 'images loaded!', allImgs);
-      var vid = document.getElementById("coverVideo");
-      vid.onloadstart = function() {
-        var p = 0;
-        var id = setInterval(frame, 10);
-        function frame() {
-          if (p >= 100) {
-            clearInterval(id);
-            setTimeout(function(){
-              document.getElementById('loading').classList.add('fade');
-              document.body.classList.remove('ds');
-            },600);
-          } else {
-            p++; 
-            $('.progress-view').text(p+'%');
-          }
+      console.log($t.state.view);
+      loaded = true;
+
+      if(p >= 100) {
+        clearInterval(id);
+        if(cookies.get('firstVisit') === undefined) {
+          cookies.set('firstVisit', true, { path: '/' });
+          // window.location.reload();
         }
-      };
+        setTimeout(function(){
+          document.getElementById('loading').classList.add('fade');
+          document.body.classList.remove('ds');
+        },400);
+      }
     })
     .catch(function (err) {
       console.error('One or more images have failed to load :(');
@@ -181,9 +175,44 @@ class Page extends Component {
       console.info('But these loaded fine:');
       console.info(err.loaded);
     });
-    $(document).ready(function(){
-      
 
+      // $('.video-content').each( function(i){
+      //   var $this = $(this);
+      //   $this.find('video').get(0).pause()
+      // });
+
+      var scrolling = false;
+      $t.state.scrollprogress = setInterval(function(){
+        if(!$('.progress.active').hasClass('scrolling')) {
+          $('.progress.active').addClass('scrolling');
+          scrolling = false;
+          // console.log("false scroll");
+        }
+      },1000)
+
+      $('.dragscroll').scrollLeft(0);
+      // Horizontal Scroll
+      // $('.dragscroll').mousewheel(function(event, change) {
+      //   console.log("scrollingmount");
+      //   var newScrollLeft = $(this).scrollLeft(),
+      //       width = $(this).outerWidth(),
+      //       scrollWidth = $(this).get(0).scrollWidth;
+      //   if(newScrollLeft === 0 && change > 0) ;
+      //   else if (scrollWidth - newScrollLeft === width && change < 0) ;
+      //   else {
+      //     this.scrollLeft -= (change * .5); //need a value to speed up the change
+      //     event.preventDefault();
+      //   }
+      // });
+
+      $(document).ready(function(){
+        let vh = window.innerHeight * 0.01;
+        $('.vh-100').css('height', 100 * vh+'px');
+        $('.min-vh-100').css('min-height', 100 * vh+'px');
+        $('.min-vh-150').css('min-height', 150 * vh+'px');
+        $('.min-vh-180').css('min-height', 180 * vh+'px');
+        $('.min-vh-200').css('min-height', 240 * vh+'px');
+        $('.min-vh-300').css('min-height', 340 * vh+'px');
 
       // Autoscroll
       var scroll = 0;
@@ -248,13 +277,32 @@ class Page extends Component {
         var bottom_of_window = $(window).scrollTop()+ $(window).height(); // eslint-disable-line no-unused-vars
         var center_of_window = $(window).scrollTop()+ $(window).height()/2; 
 
+        if ($(window).width() <= 959) {
+          $('.timeChange-text .time-clipping').removeClass('fade');
+        } else {
+          $('.timeChange-text').each(function(){
+            var top_of_object = $(this).offset().top;
+            var bottom_of_object = $(this).offset().top + $(this).height();
+            if( top_of_window > top_of_object && top_of_window < bottom_of_object){
+              $(this).find('.time-clipping').removeClass('fade');
+            } else {
+              $(this).find('.time-clipping').addClass('fade');
+            }
+          });
+        }
+
         $('.timeChange').each(function(){
           var top_of_object = $(this).offset().top;
           var bottom_of_object = $(this).offset().top + $(this).height();
           if( top_of_window > top_of_object && top_of_window < bottom_of_object){
-            $(this).find('.time-clipping').removeClass('fade');
+            $(this).find('.time-clipping:not(.first)').removeClass('fade');
           } else {
-            $(this).find('.time-clipping').addClass('fade');
+            $(this).find('.time-clipping:not(.first)').addClass('fade');
+          }
+          if( bottom_of_window > top_of_object && top_of_window < bottom_of_object){
+            $(this).find('.time-clipping.first').removeClass('fade');
+          } else {
+            $(this).find('.time-clipping.first').addClass('fade');
           }
         });
 
@@ -276,7 +324,240 @@ class Page extends Component {
           var top_of_object = $(this).offset().top;
           var bottom_of_object = $(this).offset().top + $(this).height();
           if( center_of_window >= top_of_object && center_of_window <= bottom_of_object ){
-            k = 0.3
+            k = 0.3;
+          } else {
+            k = 0;
+          }
+          // console.log(scroll+'-'+add+'-'+k+"1111");
+          // console.log(scroll2+'-'+add2+'-'+k2+"2222");
+        });
+
+        $('.auto-scroll-2').each(function(){
+          var top_of_object = $(this).offset().top;
+          var bottom_of_object = $(this).offset().top + $(this).height();
+          if( center_of_window >= top_of_object && center_of_window <= bottom_of_object ){
+            k2 = 0.3
+          } else {
+            k2 = 0;
+          }
+          // console.log(scroll+'-'+add+'-'+k+"111");
+          // console.log(scroll2+'-'+add2+'-'+k2+"222");
+        });
+        
+        }
+      });
+    })
+  }
+
+  componentDidMount(){
+
+    var $t = this;
+    const cookies = new Cookies();
+    
+    $(document).scrollTop(0);
+    document.body.classList.add('ds');
+    document.getElementById('loading').classList.remove('fade');
+
+    var data = pageEvent_data[this.state.id];
+    var images  = [data.code];
+    // var images  = [];
+    var loaded = false;
+    var p = 0;
+    var id = setInterval(frame, 10);
+    
+    function frame() {
+      //console.log(loaded)
+      if (p >= 100) {
+        if(loaded) {
+          if(cookies.get('firstVisit') === undefined) {
+            cookies.set('firstVisit', true, { path: '/' });
+            window.location.reload();
+          }
+          setTimeout(function(){
+            document.getElementById('loading').classList.add('fade');
+            document.body.classList.remove('ds');
+          },400);
+          clearInterval(id);
+        }
+      } else {
+        p++; 
+        $('.progress-view').text(p+'%');
+      }
+    }
+    // var images  = [];
+    loadImage(images)
+    .then(function (allImgs) {
+      console.log(allImgs.length, 'images loaded!', allImgs);
+      loaded = true;
+
+      if(p >= 100) {
+        clearInterval(id);
+        if(cookies.get('firstVisit') === undefined) {
+          cookies.set('firstVisit', true, { path: '/' });
+          window.location.reload();
+        }
+        setTimeout(function(){
+          document.getElementById('loading').classList.add('fade');
+          document.body.classList.remove('ds');
+        },400);
+      }
+    })
+    .catch(function (err) {
+      console.error('One or more images have failed to load :(');
+      console.error(err.errored);
+      console.info('But these loaded fine:');
+      console.info(err.loaded);
+    });
+
+      // $('.video-content').each( function(i){
+      //   var $this = $(this);
+      //   $this.find('video').get(0).pause()
+      // });
+
+      var scrolling = false;
+      $t.state.scrollprogress = setInterval(function(){
+        if(!$('.progress.active').hasClass('scrolling')) {
+          $('.progress.active').addClass('scrolling');
+          scrolling = false;
+          // console.log("false scroll");
+        }
+      },1000)
+
+      $('.dragscroll').scrollLeft(0);
+      // Horizontal Scroll
+      // $('.dragscroll').mousewheel(function(event, change) {
+      //   console.log("scrollingmount");
+      //   var newScrollLeft = $(this).scrollLeft(),
+      //       width = $(this).outerWidth(),
+      //       scrollWidth = $(this).get(0).scrollWidth;
+      //   if(newScrollLeft === 0 && change > 0) ;
+      //   else if (scrollWidth - newScrollLeft === width && change < 0) ;
+      //   else {
+      //     this.scrollLeft -= (change * .5); //need a value to speed up the change
+      //     event.preventDefault();
+      //   }
+      // });
+
+      $(document).ready(function(){
+        let vh = window.innerHeight * 0.01;
+        $('.vh-100').css('height', 100 * vh+'px');
+        $('.min-vh-100').css('min-height', 100 * vh+'px');
+        $('.min-vh-150').css('min-height', 150 * vh+'px');
+        $('.min-vh-180').css('min-height', 180 * vh+'px');
+        $('.min-vh-200').css('min-height', 240 * vh+'px');
+        $('.min-vh-300').css('min-height', 340 * vh+'px');
+
+      // Autoscroll
+      var scroll = 0;
+      var add = 0;
+      var k = 0;
+      $t.state.interval = setInterval(function(){
+          $('.auto-scroll .grid-container').scrollLeft(scroll + add)
+          add+=k;
+      },10);
+
+      $('.auto-scroll .grid-container').hover(function(){
+        add = 0;
+        clearInterval($t.state.interval);
+      }, function(){
+        var $this = $(this);
+        scroll = $(this).scrollLeft();
+        $t.state.interval = setInterval(function(){
+          $this.scrollLeft(scroll + add)
+          add+=k;
+        },10);
+      });
+
+      // Autoscroll2
+      var scroll2 = 0;
+      var add2 = 0;
+      var k2 = 0;
+      $t.state.interval2 = setInterval(function(){
+          $('.auto-scroll-2 .grid-container').scrollLeft(scroll2 + add2)
+          add2+=k2;
+      },10);
+
+      $('.auto-scroll-2 .grid-container').hover(function(){
+        add2 = 0;
+        clearInterval($t.state.interval2);
+      }, function(){
+        var $this = $(this);
+        scroll2 = $(this).scrollLeft();
+        $t.state.interval2 = setInterval(function(){
+          $this.scrollLeft(scroll2 + add2)
+          add2+=k2;
+        },10);
+      });
+
+      // Scroll functions
+      $(window).scroll( function(){
+        scrolling = true;
+        $('.progress.active').removeClass('scrolling');
+        var th = $(document).height()-$(window).height();
+        var ch = $(window).scrollTop();
+        var x = 100*ch/th;
+        $('.progress .bar').css('height', x + '%');
+
+        if(ch >= $(window).height()) {
+          $('.progress').addClass('active');
+          $('.messenger').addClass('active');
+        } else {
+          $('.progress').removeClass('active');
+          $('.messenger').removeClass('active');
+        }
+
+        var top_of_window = $(window).scrollTop(); // eslint-disable-line no-unused-vars
+        var bottom_of_window = $(window).scrollTop()+ $(window).height(); // eslint-disable-line no-unused-vars
+        var center_of_window = $(window).scrollTop()+ $(window).height()/2; 
+
+        if ($(window).width() <= 959) {
+          $('.timeChange-text .time-clipping').removeClass('fade');
+        } else {
+          $('.timeChange-text').each(function(){
+            var top_of_object = $(this).offset().top;
+            var bottom_of_object = $(this).offset().top + $(this).height();
+            if( top_of_window > top_of_object && top_of_window < bottom_of_object){
+              $(this).find('.time-clipping').removeClass('fade');
+            } else {
+              $(this).find('.time-clipping').addClass('fade');
+            }
+          });
+        }
+
+        $('.timeChange').each(function(){
+          var top_of_object = $(this).offset().top;
+          var bottom_of_object = $(this).offset().top + $(this).height();
+          if( top_of_window > top_of_object && top_of_window < bottom_of_object){
+            $(this).find('.time-clipping:not(.first)').removeClass('fade');
+          } else {
+            $(this).find('.time-clipping:not(.first)').addClass('fade');
+          }
+          if( bottom_of_window > top_of_object && top_of_window < bottom_of_object){
+            $(this).find('.time-clipping.first').removeClass('fade');
+          } else {
+            $(this).find('.time-clipping.first').addClass('fade');
+          }
+        });
+
+        // $('.dragscroll-content').each(function(){
+        //   var top_of_object = $(this).offset().top;
+        //   if( top_of_window >= top_of_object - 20 && top_of_window <= top_of_object + 20){
+        //     $(window).scrollTop(top_of_object);
+        //     $(this).find('.grid-container').addClass('dragscroll');
+        //     if(!$t.state.drag) $t.setState({drag:true});
+        //   } else {
+        //     $(this).find('.grid-container').removeClass('dragscroll');
+        //     if($t.state.drag) $t.setState({drag:false});
+        //   }
+        // });
+
+        if($(window).width() > 959) {
+
+        $('.auto-scroll').each(function(){
+          var top_of_object = $(this).offset().top;
+          var bottom_of_object = $(this).offset().top + $(this).height();
+          if( center_of_window >= top_of_object && center_of_window <= bottom_of_object ){
+            k = 0.3;
           } else {
             k = 0;
           }
@@ -291,31 +572,8 @@ class Page extends Component {
             k2 = 0;
           }
         });
-
-
         
-
         }
-        $('.video-content').each( function(i){
-          var top_of_object = $(this).offset().top;
-          var bottom_of_object = $(this).offset().top + $(this).height();
-          
-          var $this = $(this);
-          if( center_of_window >= top_of_object && center_of_window <= bottom_of_object ){
-            if($this.find('video').get(0).paused) {
-              if($this.find('video').hasClass('clicked')) ;
-              else {
-                $this.find('video').get(0).play();
-                $this.find('.play').removeClass('pause');
-              }
-            }
-          } else {
-            if(!$this.find('video').get(0).paused) {
-              $this.find('video').get(0).pause();
-              $this.find('.play').addClass('pause');
-            }
-          }
-        });
       });
     })
   }
@@ -372,25 +630,53 @@ export default Page;
 
 /* Components */
 
+function ChatBot(props) {
+  var chatbot = {
+    backgroundColor: "#cddbdd"
+  }
+  var successStyle = {
+    width: "40vw",
+    maxWidth: "300px"
+  }
+  var successBg = {
+    backgroundImage: "url("+successBg1+")",
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    maxWidth: "220px"
+  }
+
+  var dn = "dn";
+  if(props.display) dn = "flex aic";
+
+  return (
+    <section id={props.id} className={"pv5-l pv4 relative "+dn} style={chatbot}>
+      <div className="mw8 center ph3 w-100">
+        <div className="cf">
+          <div className="fl w-50 pa2 tc">
+            <img src={success} style={successStyle} alt="Success"/>
+          </div>
+          <div className="fl w-50 pa2 tc mw500">
+            <img src={successTitle} width="100%" alt="任務完成"/>
+            <p className="f3-ns f6 fw5 mt2 mb3 pa0 lh-copy nowrap">快，回去找9526吧！</p>
+            <a href="https://m.me/742639746135059" rel="noopener noreferrer"><div style={successBg} className="w-50-l w-90 h4-ns h3 db center cp"></div></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /*01*/
 function CoverVideo(props) {
   var gradient = {
     background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.45) 100%)"
   }
-  // Cookies
-  const cookies = new Cookies();
+  
   var phone = null;
   var top = {
     top: '-45px'
   }
-  // var h = (1000 - $(window).height()) / 4
-  // if(cookies.get('firstVisit') === undefined) {
-  //   cookies.set('firstVisit', true, { path: '/' });
-  //   phone = (<Phone/>);
-  //   top = {
-  //     top: '-'+h+'px'
-  //   }
-  // }
 
   var ship = {
     left: 0,
@@ -401,21 +687,21 @@ function CoverVideo(props) {
 
 
   return (
-    <section id={props.id} className="vh-100 flex aic relative video-content relative">
-      <div className="w-100 h-100 absolute z4 pn" style={gradient}/>
+    <section id={props.id} className="vh-100 flex aic relative">
+      <div className="w-100 h-100 absolute z4 pn" style={gradient}></div>
       <div className="w-100 h-100 absolute top-left clipping">
       <div className="w-100 h-100 fixed fixed-content pn">
         <div className="videoBg">
-          <video id="coverVideo" muted loop autoPlay playsInline poster={props.code}>
+          <video id="coverVideo" muted loop autoPlay playsInline poster={props.code} data-autoplay-fallback="muted" preload="auto">
             <source src={props.link} type="video/mp4"/>
           </video>
         </div>
       </div>
       </div>
-      <div className="mw80 center ph4-ns ph3 w-100 z4 tc relative" style={top}>
+      <div className="mw80 center ph4 w-100 z4 tc relative" style={top}>
         <img src={props.title} className="center mb3" height="150" alt={props.name} />
         <div className="cf white w-80-ns w-100 center ph-ns">
-          <h3 className="f3-ns f4 coverVideo-tag fw4 lh-copy mb0 pre-wrap text-shadow" dangerouslySetInnerHTML={{__html:props.content}}></h3>
+          <h3 className="f3-ns f5 coverVideo-tag fw4 lh-copy mb0 pre-wrap text-shadow" dangerouslySetInnerHTML={{__html:props.content}}></h3>
         </div>
       </div>
       {phone}
@@ -427,57 +713,83 @@ function CoverVideo(props) {
 }
 
 /*02*/
-function Taiwan(props) {
-  var bgStyle = {
-    backgroundImage: "url("+taiwanMap+")",
-    backgroundSize: "cover",
-    backgroundPosition: "76% center"
+class Taiwan extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobile: false
+    };
   }
-  if (props.kinmen === true) {
-    bgStyle.backgroundImage = "url("+kinmenMap+")";
+  componentDidMount(){
+    var $this = this;
+    $(document).ready(function(){
+      if($(window).width() <= 959) $this.setState({mobile:true});
+    });
   }
-  var position = {
-    left: "75%",
-    top: "50%",
-    margin: 0,
-    width: "100px",
-    height: "100px",
-    transform: "translate("+props.map+")"
-  }
-  var l = props.text1.split("的")[0];
-  var r = (l.length-2) * 15 + 60 + "px";
-  var label = {
-    background: "#222222",
-    color: "white",
-    padding: "10px 12px",
-    top: "67px",
-    position: "relative",
-    right: r,
-    zIndex: "-1",
-    whiteSpace: "nowrap",
-    display: "inline-block"
-  }
-  return (
-    <section id={props.id} className="cover min-vh-150 flex aic relative bg-black">
-      <div className="w-100 h-100 absolute top-left clipping bg-dark-gray">
-        <div className="w-100 h-100 fixed fixed-content pn flex aic" style={bgStyle}>
-          <TvLine />
-          <figure className="absolute floatship" style={position}>
-            <label className="taiwan-label f5 tl" style={label}>{props.text1.split("的")[0]}</label>
-            <img src={scrollship} width="100" height="100" alt="時光機"/>
-          </figure>
-        </div>
-      </div>
-      <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
-        <div className="cf black">
-          <div className="w-50-l mw500 mh3-l center w-100 fl-l pa4-l pa3 bg-near-white">
-            <h2 className="f3 fw7 lh-copy mt0">{props.text1}</h2>
-            <p className="f5-ns f6 lh-copy mv0">{props.text2}</p>
+
+  render(){
+    var bgStyle = {
+      backgroundImage: "url("+taiwanMap+")",
+      backgroundSize: "cover",
+      width: "100%",
+      padding: "28.125% 0",
+      borderTop: this.props.primaryColor+ " .25rem solid",
+      borderBottom: this.props.primaryColor+ " .25rem solid",
+      marginLeft: this.state.mobile ? "0" : "2.5rem"
+    }
+    if (this.props.kinmen === true) {
+      bgStyle.backgroundImage = "url("+kinmenMap+")";
+    }
+    var position = {
+      left: this.props.shipPositionL,
+      top: this.props.shipPositionT,
+      margin: 0,
+      width: "15%",
+      height: "15%"
+    }
+    var l = this.props.text1.split("的")[0];
+    var r = (l.length-2) * 15 + 60 + "px";
+    var label = {
+      background: "#222222",
+      color: "white",
+      padding: "10px 12px",
+      top: "67px",
+      position: "relative",
+      right: r,
+      zIndex: "-1",
+      whiteSpace: "nowrap",
+      display: "inline-block"
+    }
+    return (
+      <section id={this.props.id} className="flex aic bg-near-white pv5 pv6-l ph4-ns ph3 ph0-l flex-wrap">
+        <div className="bg-near-white w-100 w-50-l">
+          <div className="relative" style={bgStyle}>
+            <Overlay overlayColor={this.props.primaryColor} />
+            <figure className="absolute floatship" style={position}>
+              {/* <label className="taiwan-label f5 tl" style={label}>{this.props.text1.split("的")[0]}</label> */}
+              <img src={scrollship} alt="時光機"/>
+            </figure>
           </div>
         </div>
-      </div>
-      <GoogleEarthLogo text={"The image is from 2018/Google Earth  Data SIO,NOAA,U.S. Navy,NGA,GEBCO Image Landsat/Copemicus"} />
-    </section>
+        <div className="pt4 pa4-l pa3 w-100 w-40-l ml4-l">
+          <h2 className="mh4-l f4-ns f5 fw7 lh-copy mt0">{this.props.text1}</h2>
+          <p className="mh4-l f5-ns f6 lh-copy mv0 mw500">{this.props.text2}</p>
+        </div>
+        {/* <GoogleEarthLogo text={"The image is from 2018/Google Earth  Data SIO,NOAA,U.S. Navy,NGA,GEBCO Image Landsat/Copemicus"} /> */}
+      </section>
+    )
+  }
+}
+
+function Overlay(props) {
+  var style = {
+    left: "0",
+    top: "0",
+    backgroundColor: props.overlayColor
+  }
+  return (
+    <div className="w-100 h-100 absolute o-20" style={style}>
+    </div>
   )
 }
 
@@ -504,415 +816,470 @@ function GoogleEarthLogo(props) {
 }
 
 /*03*/
-function Illustration(props) {
-  var text2 = null;
-  var mobile = $(window).width() <= 959 ? true : false;
-
-  var h = "min-vh-150"
-  var mt50vh = "mt50vh"
-  if(props.number === 2) {
-    h = "min-vh-200"
-    if(mobile) {
-      h = "";
-      mt50vh = "mt3"
-    }
-    text2 = (
-      <div className={"cf black "+mt50vh}>
-        <div className="w-50-l mw500 mh3-l center w-100 fr-l pa4-l pa3 bg-white">
-          <p className="f5-ns f6 lh-copy mv0">{props.text2}</p>
-        </div>
-      </div>
-    )
+class Illustration extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobile: false
+    };
   }
-
-  if(mobile) {
-    h = "";
+  componentDidMount(){
+    var $this = this;
+    $(document).ready(function(){
+      if($(window).width() <= 959) $this.setState({mobile:true});
+    });
   }
+  render(){
+    var text2 = null;
 
-  var illustration_content_1 = mobile ? null : (
-    <figure className="center mw70 w-100 ph4-ns">
-      <img className="w-50-l w-100" src={props.illustration} alt="illustration"/>
-    </figure>
-  )
-
-  var illustration_content_2 = mobile ? (
-    <figure className="center mw70 w-100 ph4-ns">
-      <img className="w-50-l w-100" src={props.illustration} alt="illustration"/>
-    </figure>
-  ) : null
-
-  return (
-    <section id={props.id} className={h+" flex aic relative pv6-l pv5"}>
-      <div className="w-100 h-100 absolute top-left clipping">
-        <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
-          {illustration_content_1}
-        </div>
-      </div>
-      <div className="mw70 center ph4-ns ph3 w-100 z4 pre-wrap">
-        {illustration_content_2}
-        <div className="cf black">
+    var h = "min-vh-150"
+    var mt50vh = "cf mt50vh"
+    if(this.props.number === 2) {
+      h = "min-vh-200"
+      if(this.state.mobile) {
+        h = "";
+        mt50vh = "mt0"
+      }
+      text2 = (
+        <div className={"black "+mt50vh}>
           <div className="w-50-l mw500 mh3-l center w-100 fr-l pa4-l pa3 bg-white">
-            <p className="f5-ns f6 lh-copy mv0">{props.text1}</p>
+            <p className="f5-ns f6 lh-copy mv0">{this.props.text2}</p>
           </div>
         </div>
-        {text2}
-      </div>
-    </section>
-  )
+      )
+    }
+
+    if(this.state.mobile) {
+      h = "";
+    }
+
+    var illustration_content_1 = this.state.mobile ? null : (
+      <figure className="center mw70 w-100 ph4-ns">
+        <img className="w-50-l w-100" src={this.props.illustration} alt="illustration"/>
+      </figure>
+    )
+
+    var illustration_content_2 = this.state.mobile ? (
+      <figure className="center mw70 w-100 ph4-ns">
+        <img className="w-50-l w-100" src={this.props.illustration} alt="illustration"/>
+      </figure>
+    ) : null
+
+    return (
+      <section id={this.props.id} className={h+" flex aic relative pv6-l pv5"}>
+        <div className="w-100 h-100 absolute top-left clipping">
+          <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
+            {illustration_content_1}
+          </div>
+        </div>
+        <div className="mw70 center ph4-ns ph3 w-100 z4 pre-wrap">
+          {illustration_content_2}
+          <div className="cf black">
+            <div className="w-50-l mw500 mh3-l center w-100 fr-l pa4-l pa3 bg-white">
+              <p className="f5-ns f6 lh-copy mv0">{this.props.text1}</p>
+            </div>
+          </div>
+          {text2}
+        </div>
+      </section>
+    )
+  }
 }
 
 /*04*/
-function PhotoTextFull(props) {
-  var mobile = $(window).width() <= 959 ? true : false;
-
-  var fullImage = {
-    height: mobile && props.switch ? "auto" : "100vh",
-    objectFit: "cover",
-    width: "100%",
-    objectPosition: mobile && props.switch ? "center center" : props.objectP
+class PhotoTextFull extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobile: false
+    };
   }
-  var bottomRight = {
-    bottom: "0px",
-    right: "0px",
-    background: "rgba(0,0,0,.2)",
-    padding: mobile ? "10px" : "20px"
+  componentDidMount(){
+    var $this = this;
+    $(document).ready(function(){
+      if($(window).width() <= 959) $this.setState({mobile:true});
+    });
   }
 
-  var bgcolor = ""
-  var textcolor = ""
-  if(props.color === "dark") {
-    bgcolor = mobile && props.switch ? "bg-white" : "bg-black o-60";
-    textcolor = mobile && props.switch ? "black" : "white";
-  } else {
-    bgcolor = "bg-white o-85";
-    textcolor = "black";
-  }
-  var text1 = null;
-  var h = "min-vh-150"
-  
-  var label_content = null;
-  if(props.label !== "") {
-    label_content = (<label className="white absolute lh-normal f6-ns f8 pn" style={bottomRight}>{props.label}</label>)
-  }
+  render(){
 
-  if(props.text1 !== "") {
-    h = "min-vh-200"
-    text1 = (
-      <div className="cf">
-        <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
-          <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-          <p className={"f5-ns f6 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:props.text1}}></p>
-        </div>
-      </div>
-    )
-  }
+    var fullImage = {
+      height: this.state.mobile && this.props.switch ? "auto" : "100vh",
+      objectFit: "cover",
+      width: "100%",
+      objectPosition: this.state.mobile && this.props.switch ? "center center" : this.props.objectP
+    }
+    var bottomRight = {
+      bottom: this.state.mobile ? "45px": "0",
+      right: "0",
+      background: "rgba(0,0,0,.2)",
+      padding: this.state.mobile ? "10px" : "20px"
+    }
 
-  var new_image = props.image;
-  if(props.switch && mobile) {
-    new_image = new_image.replace('電腦版','手機版');
-  }
+    var bgcolor = ""
+    var textcolor = ""
+    if(this.props.color === "dark") {
+      bgcolor = this.state.mobile && this.props.switch ? "bg-white" : "bg-black o-60";
+      textcolor = this.state.mobile && this.props.switch ? "black" : "white";
+    } else {
+      bgcolor = "bg-white o-85";
+      textcolor = "black";
+    }
+    var text1 = null;
+    var h = "min-vh-150"
+    
+    var label_content = null;
+    if(this.props.label !== "") {
+      label_content = (<label className="white absolute lh-normal f6-ns f8 pn" style={bottomRight}>{this.props.label}</label>)
+    }
 
-
-  var text2 = null;
-  var image_content = mobile && props.switch ? null : (<figure className="w-100 ma0">
-            <img className="w-100" style={fullImage} src={new_image} alt="background"/>
-          </figure>);
-  var image_content2 = mobile && props.switch ? (<figure className="w-100 ma0">
-            <img className="w-100" style={fullImage} src={new_image} alt="background"/>
-          </figure>) : null;
-  
-  if(props.number === 2) {
-    h = "min-vh-300"
-    text2 = (
-      <div className="cf mt50vh">
-        <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
-          <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-          <p className={"f5-ns f6 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:props.text2}}></p>
-        </div>
-      </div>
-    )
-  }
-
-  if(mobile && props.switch) h = "";
-
-  return (
-    <section id={props.id} className={h+" flex aic relative bg-black pv6-l pv5"}>
-      <div className="w-100 h-100 absolute top-left clipping">
-        <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
-          {image_content}
-          {label_content}
-        </div>
-      </div>
-      <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
-        {image_content2}
-        {text1}
-        {text2}
-      </div>
-    </section>
-  )
-}
-
-function PhotoCenterTextFull(props) {
-  var mobile = $(window).width() <= 959 ? true : false;
-  var fullImage = {
-    height: "100vh",
-    objectFit: "cover",
-    width: "100%",
-    objectPosition: props.objectP
-  }
-  var bottomRight = {
-    bottom: "0px",
-    right: "0px",
-    background: "rgba(0,0,0,.2)",
-    padding: mobile ? "10px" : "20px"
-  }
-  var max = {
-    maxWidth: "800px"
-  }
-  var textShadow = "text-shadow f4-ns f5";
-  var bgColor = "";
-  var mask = "bg-dark-gray o-40";
-  if(props.bg) {
-    textShadow = "f5-ns f6";
-    bgColor = "bg-black o-60";
-    mask = "";
-  }
-  return (
-    <section id={props.id} className="min-vh-200 flex aic relative bg-black">
-      <div className="w-100 h-100 absolute top-left clipping">
-        <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
-          <figure className="w-100 ma0">
-            <img className="w-100" style={fullImage} src={props.image} alt="background"/>
-          </figure>
-          <div className={mask+" w-100 h-100 absolute pn top-left z4"}/>
-          <label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{props.label}</label>
-        </div>
-      </div>
-      <div className="w-100 center ph4-ns ph3 z4 relative">
-        <div className="cf flex aic">
-          <div className="w-100 w-50-l center pa4-l pa3 relative" style={max}>
-            <div className={bgColor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"pre-wrap lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
+    if(this.props.text1 !== "") {
+      h = "min-vh-200"
+      text1 = (
+        <div className="cf">
+          <div className={this.props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
+            <div className={bgcolor+" w-100 h-100 absolute pn top-left"}></div>
+            <p className={"f5-ns f6 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:this.props.text1}}></p>
           </div>
         </div>
-      </div>
-    </section>
-  )
+      )
+    }
+
+    var new_image = this.props.image;
+    if(this.props.switch && this.state.mobile) {
+      new_image = new_image.replace('電腦版','手機版');
+    }
+
+
+    var text2 = null;
+    var image_content = this.state.mobile && this.props.switch ? null : (<figure className="w-100 ma0">
+              <img className="w-100" style={fullImage} src={new_image} alt="background"/>
+            </figure>);
+    var image_content2 = this.state.mobile && this.props.switch ? (<figure className="w-100 ma0">
+              <img className="w-100" style={fullImage} src={new_image} alt="background"/>
+            </figure>) : null;
+    
+    if(this.props.number === 2) {
+      h = "min-vh-300"
+      text2 = (
+        <div className="cf mt50vh">
+          <div className={this.props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
+            <div className={bgcolor+" w-100 h-100 absolute pn top-left"}></div>
+            <p className={"f5-ns f6 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:this.props.text2}}></p>
+          </div>
+        </div>
+      )
+    }
+
+    if(this.state.mobile && this.props.switch) h = "";
+
+    return (
+      <section id={this.props.id} className={h+" flex aic relative pv6-l pv5"}>
+        <div className="w-100 h-100 absolute top-left clipping">
+          <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
+            {image_content}
+            {label_content}
+          </div>
+        </div>
+        <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
+          {image_content2}
+          {text1}
+          {text2}
+        </div>
+      </section>
+    )
+  }
+}
+
+class PhotoCenterTextFull extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobile: false
+    };
+  }
+  componentDidMount(){
+    var $this = this;
+    $(document).ready(function(){
+      if($(window).width() <= 959) $this.setState({mobile:true});
+    });
+  }
+
+  render(){
+    var fullImage = {
+      height: "100vh",
+      objectFit: "cover",
+      width: "100%",
+      objectPosition: this.props.objectP
+    }
+    var bottomRight = {
+      bottom: this.state.mobile ? "45px": "0",
+      right: "0px",
+      background: "rgba(0,0,0,.2)",
+      padding: this.state.mobile ? "10px" : "20px"
+    }
+    var max = {
+      maxWidth: "800px"
+    }
+    var textShadow = "text-shadow f4-ns f5";
+    var bgColor = "";
+    var mask = "bg-dark-gray o-40";
+    if(this.props.bg) {
+      textShadow = "f5-ns f6";
+      bgColor = "bg-black o-60";
+      mask = "";
+    }
+    return (
+      <section id={this.props.id} className="min-vh-200 flex aic relative bg-black">
+        <div className="w-100 h-100 absolute top-left clipping">
+          <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
+            <figure className="w-100 ma0">
+              <img className="w-100" style={fullImage} src={this.props.image} alt="background"/>
+            </figure>
+            <div className={mask+" w-100 h-100 absolute pn top-left z4"}></div>
+            <label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{this.props.label}</label>
+          </div>
+        </div>
+        <div className="w-100 center ph4-ns ph3 z4 relative">
+          <div className="cf flex aic">
+            <div className="w-100 w-50-l center pa4-l pa3 relative" style={max}>
+              <div className={bgColor+" w-100 h-100 absolute pn top-left"}></div>
+              <p className={"pre-wrap lh-copy mv0 z4 relative white "+textShadow}>{this.props.text1}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
 }
 
 /*05*/
-function PhotoText(props) {
-  var mobile = $(window).width() <= 959 ? true : false;
-  var photo, text = "";
-  var color1 = "bg-white"
-  var color2 = "bg-near-white";
-  if(props.color === "invert") {
-    color1 = "bg-near-white";
-    color2 = "bg-white";
+class PhotoText extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobile: false
+    };
   }
-  if(props.order === "right") {
-    text = "fr-l"
-  } else {
-    photo = "fr-l"
-  }
-  var h = "min-vh-150";
-  if(props.multiple) {
-    h = "";
-  }
-  
-  var fish = null;
-  var info = null;
-
-
-  if(props.fish) {
-    info = (
-      <p className="w-50-l w-100 f6 fw7 tc">資料來源：環保署統計年報</p>
-    )
-    fish = (
-      <div className="absolute z4">
-        <Controller>
-          <Scene
-            triggerElement="#triggerText"
-            duration={1000}
-            pin={false}
-          >
-          {(progress) => (
-            <Tween
-              from={{
-                css: {
-                  top: '-300px',
-                  left: '100vw',
-                  rotation: -10,
-                }
-              }}
-              to={{
-                css: {
-                  top: '-200px',
-                  left: '-500px',
-                  rotation: 10,
-                }
-              }}
-              totalProgress={progress}
-              paused
-            >
-              <img className="relative" id="fish1" src={fish1} height="90" alt="fish"/>
-            </Tween>
-          )}        
-          </Scene>
-          <Scene
-            triggerElement="#triggerText"
-            duration={1200}
-            pin={false}
-          >
-          {(progress) => (
-            <Tween
-              from={{
-                css: {
-                  top: '-100px',
-                  left: '100vw',
-                  rotation: -10,
-                }
-              }}
-              to={{
-                css: {
-                  top: '0px',
-                  left: '-500px',
-                  rotation: 10,
-                }
-              }}
-              totalProgress={progress}
-              paused
-            >
-              <img className="relative" id="fish2" src={fish2} height="90" alt="fish"/>
-            </Tween>
-          )}        
-          </Scene>
-          <Scene
-            triggerElement="#triggerText"
-            duration={1400}
-            pin={false}
-          >
-          {(progress) => (
-            <Tween
-              from={{
-                css: {
-                  top: '-200px',
-                  left: '100vw',
-                  rotation: -10,
-                }
-              }}
-              to={{
-                css: {
-                  top: '-100px',
-                  left: '-500px',
-                  rotation: 10,
-                }
-              }}
-              totalProgress={progress}
-              paused
-            >
-              <img className="relative" id="fish3" src={fish3} height="90" alt="fish"/>
-            </Tween>
-          )}        
-          </Scene>
-          <Scene
-            triggerElement="#triggerText"
-            duration={1400}
-            pin={false}
-          >
-          {(progress) => (
-            <Tween
-              from={{
-                css: {
-                  top: '400px',
-                  left: '-1500px',
-                  rotation: -10,
-                  scaleX: -1
-                }
-              }}
-              to={{
-                css: {
-                  top: '0px',
-                  left: '100vw',
-                  rotation: 10,
-                  scaleX: -1
-                }
-              }}
-              totalProgress={progress}
-              paused
-            >
-              <img className="relative" id="fish4" src={fish4} height="90" alt="fish"/>
-            </Tween>
-          )}        
-          </Scene>
-          <Scene
-            triggerElement="#triggerText"
-            duration={1000}
-            pin={false}
-          >
-          {(progress) => (
-            <Tween
-              from={{
-                css: {
-                  top: '200px',
-                  left: '-1500px',
-                  rotation: -10,
-                  scaleX: -1
-                }
-              }}
-              to={{
-                css: {
-                  top: '-200px',
-                  left: '100vw',
-                  rotation: 10,
-                  scaleX: -1
-                }
-              }}
-              totalProgress={progress}
-              paused
-            >
-              <img className="relative" id="fish5" src={fish5} height="90" alt="fish"/>
-            </Tween>
-          )}        
-          </Scene>
-        </Controller>
-      </div>
-    )
+  componentDidMount(){
+    var $this = this;
+    $(document).ready(function(){
+      if($(window).width() <= 959) $this.setState({mobile:true});
+    });
   }
 
-  var photo_content_1 = mobile ? null : (
-    <figure className="center mw70 w-100">
-      <img className={"w-50-l w-100 "+photo} src={props.image} alt="description"/>
-      {info}
-    </figure>
-  )
-  var photo_content_2 = mobile ? (
-    <figure className="center mw70 w-100 bg-white pa3">
-      <img className={"w-50-l w-100 "+photo} src={props.image} alt="description"/>
-      {info}
-    </figure>
-  ) : null
+  render(){
+    var photo, text = "";
+    var color1 = "bg-white"
+    var color2 = "bg-near-white";
+    if(this.props.color === "invert") {
+      color1 = "bg-near-white";
+      color2 = "bg-white";
+    }
+    if(this.props.order === "right") {
+      text = "fr-l"
+    } else {
+      photo = "fr-l"
+    }
+    var h = "min-vh-150";
+    if(this.props.multiple) {
+      h = "";
+    }
+    
+    var fish = null;
+    var info = null;
 
-  if(mobile) h = "";
 
-  return (
-    <section id={props.id} className={h+" flex aic relative pv6-l pv5"}>
-      <div className="w-100 h-100 absolute top-left clipping">
-        <div className={color1+" w-100 h-100 fixed fixed-content pn flex aic"}>
-          {fish}
-          {photo_content_1}
+    if(this.props.fish) {
+      info = (
+        <p className="w-50-l w-100 f6 fw7 tc">資料來源：環保署統計年報</p>
+      )
+      fish = (
+        <div className="absolute z4">
+          <Controller>
+            <Scene
+              triggerElement="#triggerText"
+              duration={1600}
+              pin={false}
+            >
+            {(progress) => (
+              <Tween
+                from={{
+                  css: {
+                    top: '-300px',
+                    left: '100vw',
+                    rotation: -10,
+                  }
+                }}
+                to={{
+                  css: {
+                    top: '-200px',
+                    left: '-500px',
+                    rotation: 10,
+                  }
+                }}
+                totalProgress={progress}
+                paused
+              >
+                <img className="relative" id="fish1" src={fish1} height="90" alt="fish"/>
+              </Tween>
+            )}        
+            </Scene>
+            <Scene
+              triggerElement="#triggerText"
+              duration={1800}
+              pin={false}
+            >
+            {(progress) => (
+              <Tween
+                from={{
+                  css: {
+                    top: '0px',
+                    left: '100vw',
+                    rotation: -10,
+                  }
+                }}
+                to={{
+                  css: {
+                    top: '100px',
+                    left: '-500px',
+                    rotation: 10,
+                  }
+                }}
+                totalProgress={progress}
+                paused
+              >
+                <img className="relative" id="fish2" src={fish2} height="90" alt="fish"/>
+              </Tween>
+            )}        
+            </Scene>
+            <Scene
+              triggerElement="#triggerText"
+              duration={1400}
+              pin={false}
+            >
+            {(progress) => (
+              <Tween
+                from={{
+                  css: {
+                    top: '-200px',
+                    left: '100vw',
+                    rotation: -10,
+                  }
+                }}
+                to={{
+                  css: {
+                    top: '-100px',
+                    left: '-500px',
+                    rotation: 10,
+                  }
+                }}
+                totalProgress={progress}
+                paused
+              >
+                <img className="relative" id="fish3" src={fish3} height="90" alt="fish"/>
+              </Tween>
+            )}        
+            </Scene>
+            <Scene
+              triggerElement="#triggerText"
+              duration={1400}
+              pin={false}
+            >
+            {(progress) => (
+              <Tween
+                from={{
+                  css: {
+                    top: '400px',
+                    left: '-1500px',
+                    rotation: -10,
+                    scaleX: -1
+                  }
+                }}
+                to={{
+                  css: {
+                    top: '0px',
+                    left: '100vw',
+                    rotation: 10,
+                    scaleX: -1
+                  }
+                }}
+                totalProgress={progress}
+                paused
+              >
+                <img className="relative" id="fish4" src={fish4} height="90" alt="fish"/>
+              </Tween>
+            )}        
+            </Scene>
+            <Scene
+              triggerElement="#triggerText"
+              duration={1000}
+              pin={false}
+            >
+            {(progress) => (
+              <Tween
+                from={{
+                  css: {
+                    top: '200px',
+                    left: '-1500px',
+                    rotation: -10,
+                    scaleX: -1
+                  }
+                }}
+                to={{
+                  css: {
+                    top: '-200px',
+                    left: '100vw',
+                    rotation: 10,
+                    scaleX: -1
+                  }
+                }}
+                totalProgress={progress}
+                paused
+              >
+                <img className="relative" id="fish5" src={fish5} height="90" alt="fish"/>
+              </Tween>
+            )}        
+            </Scene>
+          </Controller>
         </div>
-      </div>
-      <div className="mw70 center ph4-ns ph3 w-100 z4 pre-wrap" id="triggerText">
-        <div className="cf black">
-          {photo_content_2}
-          <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 "+color2+" "+text}>
-            <p className="f5-ns f6 lh-copy mv0" dangerouslySetInnerHTML={{__html:props.text}}></p>
+      )
+    }
+
+    var photo_content_1 = this.state.mobile ? null : (
+      <figure className="center mw70 w-100 o-90 o-100-ns">
+        <img className={"w-50-l w-100 "+photo} src={this.props.image} alt="description"/>
+        {info}
+      </figure>
+    )
+    var photo_content_2 = this.state.mobile ? (
+      <figure className="center mw70 w-100 bg-white pa3 o-90">
+        <img className={"w-50-l w-100 "+photo} src={this.props.image} alt="description"/>
+        {info}
+      </figure>
+    ) : null
+
+    if(this.state.mobile) h = "";
+
+    return (
+      <section id={this.props.id} className={h+" flex aic relative pv6-l pv5"}>
+        <div className="w-100 h-100 absolute top-left clipping">
+          <div className={color1+" w-100 h-100 fixed fixed-content pn flex aic"}>
+            {fish}
+            {photo_content_1}
           </div>
         </div>
-      </div>
-    </section>
-  )
+        <div className="mw70 center ph4-ns ph3 w-100 z4 pre-wrap" id="triggerText">
+          <div className="cf black">
+            {photo_content_2}
+            <div className={"w-50-l mw500 mh3-l center w-100 o-90 pa4-l pa3 "+color2+" "+text}>
+              <p className="f5-ns f6 lh-copy mv0" dangerouslySetInnerHTML={{__html:this.props.text}}></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
 }
 
 /*05-2*/
@@ -1019,9 +1386,9 @@ function PhotoSwitch(props) {
     )
   }
   return (
-    <section id={props.id} className={h+" flex aic w-100 relative bvh bg-black"}>
+    <section id={props.id} className={h+" flex aic w-100 relative bvh"}>
       <div className="w-100 h-100 absolute top-left clipping">
-        <div className="bg-light-gray w-100 h-100 fixed fixed-content">
+        <div className="w-100 h-100 fixed fixed-content">
           <ImageGallery items={images} showFullscreenButton={false} showThumbnails={false} showPlayButton={false} autoPlay={true} showBullets={true} slideInterval={7000}/>
         </div>
       </div>
@@ -1036,464 +1403,818 @@ function PhotoSwitch(props) {
 }
 
 /*07*/
-function PhotoMultiple(props) {
-  let grid = [];
-  var columns = "";
-  var mobile = $(window).width() <= 959 ? true : false;
-  var hint = mobile ? (<p className='f6 o-50 tc mt4'>{"<<往左滑看更多"}</p>) : null;
-
-  var height = {
-    height: mobile ? "466px" : "640px"
+class PhotoMultiple extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobile: false
+    };
+  }
+  componentDidMount(){
+    var $this = this;
+    $(document).ready(function(){
+      if($(window).width() <= 959) $this.setState({mobile:true});
+    });
   }
 
-  var w = mobile ? "300px" : "500px";
+  render(){
 
-  for (var i = 0; i < props.images.length; i++){
-    var item = {
-      width: w,
-      height: mobile ? "200px" : "320px",
-      backgroundImage: "url("+props.images[i]+")",
-      backgroundSize: "cover",
-      backgroundPosition: "center center"
+    let grid = [];
+    var columns = "";
+    var hint = this.state.mobile ? (<p className='f6 o-50 tc mt4'>{"◂◂ 往左滑看更多"}</p>) : null;
+
+    var height = {
+      height: this.state.mobile ? "466px" : "640px"
     }
-    var bottomRight = {
-      bottom: "0px",
-      right: "0px",
-      background: "rgba(0,0,0,.2)",
-      padding: mobile ? "10px" :" 20px"
+
+    var w = this.state.mobile ? "300px" : "500px";
+
+    for (var i = 0; i < this.props.images.length; i++){
+      var item = {
+        width: w,
+        height: this.state.mobile ? "200px" : "320px",
+        backgroundImage: "url("+this.props.images[i]+")",
+        backgroundSize: "cover",
+        backgroundPosition: "center center"
+      }
+      var bottomRight = {
+        bottom: "0px",
+        right: "0px",
+        background: "rgba(0,0,0,.2)",
+        padding: this.state.mobile ? "10px" :" 20px"
+      }
+      
+      var label_content = (<label className="white absolute lh-normal z10 f6-l f8 pn" style={bottomRight}>{this.props.label[i]}</label>);
+
+
+      var photos = (
+        <div className="grid-item bg-gray relative cp" alt={this.props.label[i]} style={item} key={i} onClick={(e) => this.props.onOpenModal(e.target.style.backgroundImage.split('"')[1], e.target.getAttribute("alt"))}>
+          {label_content}
+        </div>
+      )
+      if(i%2 === 0) columns+=(w+" ");
+      grid.push(photos);
+    }
+
+    var container = {
+      gridTemplateColumns: columns,
+      height: this.state.mobile ? "440px" : "680px",
+      paddingBottom: "40px"
     }
     
-    var label_content = (<label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{props.label[i]}</label>);
+    var auto = this.props.second === "auto-scroll-2" ? this.props.second : "auto-scroll" 
+    if(this.state.mobile) auto = "";
 
-
-    var photos = (
-      <div className="grid-item bg-gray relative cp" alt={props.label[i]} style={item} key={i} onClick={(e) => props.onOpenModal(e.target.style.backgroundImage.split('"')[1], e.target.getAttribute("alt"))}>
-        {label_content}
-      </div>
-    )
-    if(i%2 === 0) columns+=(w+" ");
-    grid.push(photos);
-  }
-
-  var container = {
-    gridTemplateColumns: columns,
-    height: mobile ? "440px" : "680px",
-    paddingBottom: "40px"
-  }
-
-  var auto = mobile ? "":"auto-scroll"
-  auto = props.second === "auto-scroll-2" ? "" : "auto-scroll" 
-
-  return (
-    <section id={props.id} className={props.second+" flex aic relative bg-white flex-column pt6-l pt5 "+auto}>      
-      <div className="mw80 center cf black mb5 ph4-ns ph3 w-100">
-        <div className="mw7 w-100 center bg-white pre-wrap">
-          <p className="f5-ns f6 lh-copy mv0 ph4-ns ph3" dangerouslySetInnerHTML={{__html:props.text}}></p>
-        </div>
-      </div>
-      <div className="w-100 overflow-hidden" style={height}>
-       {hint}
-       <div className="grid-container nowrap dragscroll" style={container}>
-          {grid}
-        </div> 
-      </div>
-    </section>
-  )
-}
-
-
-/*08*/
-function PhotoContrast(props) {
-  let text = null;
-  if(props.text !== "") {
-    text = (
-      <div className="mw80 center cf black mb5 ph4-ns ph3 ">
-        <div className="mw7 w-100 center pre-wrap">
-          <p className="f5-ns f6 lh-copy mv0 ph4-ns ph3">{props.text}</p>
-        </div>
-      </div>
-    )
-  }
-  let label = null
-  if(props.label !== "") {
-    label = (
-      <label className="f7 mt3 o-50 lh-normal" >{props.label}</label>
-    )
-  }
-  return (
-    <section id={props.id} className={"flex aic relative flex-column pv6-l pv5 "+props.bg}>
-        <div className="w-100 z4">
-          {text}
-          <div className="photoContrast relative tc" style={{ maxWidth: '1024px', margin: '0 auto' }}>
-            <ReactCompareImage
-              leftImage={props.images[0]}
-              rightImage={props.images[1]}
-              sliderLineWidth={2}
-              handleSize={40}
-              sliderPositionPercentage={0.8}
-            />
-            {label}
-            {/*<span className="mt3 right-20 absolute white top f3 fw5" data-type="original">{props.year[1]}</span>
-            <span className="mt3 left-20 absolute white top f3 fw5" data-type="modified">{props.year[0]}</span>*/}
+    return (
+      <section id={this.props.id} className={"flex aic relative bg-white flex-column pt6-l pt5 "+auto}>      
+        <div className="mw80 center cf black mb5-ns mb3 ph4-ns ph3 w-100">
+          <div className="mw7 w-100 center bg-white pre-wrap">
+            <p className="f5-ns f6 lh-copy mv0 ph4-l ph3" dangerouslySetInnerHTML={{__html:this.props.text}}></p>
           </div>
         </div>
-    </section>
-  )
+        <div className="w-100 overflow-hidden" style={height}>
+         {hint}
+         <div className="grid-container nowrap dragscroll" style={container}>
+            {grid}
+          </div> 
+        </div>
+      </section>
+    )
+  }
+}
+
+/*08*/
+class PhotoContrast extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: false
+    };
+  }
+  componentDidMount(){
+    var $this = this;
+    $(document).ready(function(){
+      $(window).scroll(function(){
+        if(!$this.state.active) {
+          $this.setState({active:true});
+        }
+      });
+    });
+
+  }
+  render() {
+    let text = null;
+    if(this.props.text !== "") {
+      text = (
+        <div className="mw80 center cf black mb5 ph4-ns ph3 ">
+          <div className="mw7 w-100 center pre-wrap">
+            <p className="f5-ns f6 lh-copy mv0 ph4-l ph3">{this.props.text}</p>
+          </div>
+        </div>
+      )
+    }
+    let label = null
+    if(this.props.label !== "") {
+      label = (
+        <label className="f7-ns f8 mt3 o-50 lh-normal mh2" >{this.props.label}</label>
+      )
+    }
+    var contrastStyle = {
+      maxWidth: '1024px', 
+      margin: '0 auto'
+    }
+
+    var contrastComponent = this.state.active ? (
+      <ReactCompareImage
+        leftImage={this.props.images[0]}
+        rightImage={this.props.images[1]}
+        sliderLineWidth={2}
+        handleSize={40}
+        autoReloadSpan={100}
+        sliderPositionPercentage={0.8}
+      />
+    ) : null;
+
+    return (
+      <section id={this.props.id} className={"flex aic relative flex-column pv6-l pv5 "+this.props.bg}>
+          <div className="w-100 z4">
+            {text}
+            <div className="photoContrast relative tc" style={contrastStyle}>
+              {contrastComponent}         
+              {label}
+              {/*<span className="mt3 right-20 absolute white top f3 fw5" data-type="original">{this.props.year[1]}</span>
+              <span className="mt3 left-20 absolute white top f3 fw5" data-type="modified">{this.props.year[0]}</span>*/}
+            </div>
+          </div>
+      </section>
+    )
+  }
 }
 
 /*09*/
-function Video(props) {
-  function playVideo(e) {
-    var $video = $('#video'+props.videoID);
-    if(e.target.classList.contains('pause')) {
-      e.target.classList.remove('pause');
-      $video.get(0).play();
-      $video.removeClass('clicked');
-    }
-    else {
-      e.target.classList.add('pause');
-      $video.get(0).pause();
-      $video.addClass('clicked');
-    }
-  }
-  function soundVideo(e) {
-    var $video = $('#video'+props.videoID);
-    if(e.target.classList.contains('unmute')) {
-      e.target.classList.remove('unmute');
-      $video.prop('muted', true);
-    }
-    else {
-      e.target.classList.add('unmute');
-      $video.prop('muted', false);
-    }
-  }
-  var text1 = null
-  var bgcolor = ""
-  var textcolor = ""
-  var h = "min-vh-150"
-  if(props.color === "dark") {
-    bgcolor = "bg-black o-60";
-    textcolor = "white";
-  } else {
-    bgcolor = "bg-white o-85";
-    textcolor = "black";
+class Video extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: false,
+      mobile: false
+    };
   }
 
-  if(props.text1 !== "") {
-    h = "min-vh-200"
-    if($(window).width() <= 959) {
-      bgcolor = "transparent";
+  componentDidMount(){
+    var $this = this;
+    var $t = $('#'+$this.props.id);
+    $(document).ready(function(){
+      if($(window).width() <= 959) $this.setState({mobile:true});
+    $(window).scroll(function(){
+      if($t.length !== 0) {
+        var top_of_object = $t.offset().top;
+        var bottom_of_object = $t.offset().top + $t.height();
+        var top_of_window = $(window).scrollTop(); 
+        var bottom_of_window = $(window).scrollTop()+ $(window).height(); 
+          
+        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
+          if(!$this.state.active) {
+            $this.setState({active:true});
+          }
+          if($t.find('video').get(0).paused) {
+            if($t.find('video').hasClass('clicked')) ;
+            else {
+              $t.find('video').get(0).play();
+              $t.find('.play').removeClass('pause');
+            }
+          }
+        } else {
+          var vid = document.getElementById('video'+$this.props.videoID);
+          if(vid !== null) {
+            if(vid.readyState === 4 ) {
+              if(!$t.find('video').get(0).paused) {
+                $t.find('video').get(0).pause();
+                $t.find('.play').addClass('pause');
+              }
+            }
+          }
+        }
+      }
+    });
+    });
+  }
+
+  render() {
+    var $this = this;
+    function playVideo(e) {
+      var $video = $('#video'+$this.props.videoID);
+      if(e.target.classList.contains('pause')) {
+        e.target.classList.remove('pause');
+        $video.get(0).play();
+        $video.removeClass('clicked');
+      }
+      else {
+        e.target.classList.add('pause');
+        $video.get(0).pause();
+        $video.addClass('clicked');
+      }
+    }
+    function soundVideo(e) {
+      var $video = $('#video'+$this.props.videoID);
+      if(e.target.classList.contains('unmute')) {
+        e.target.classList.remove('unmute');
+        $video.prop('muted', true);
+      }
+      else {
+        e.target.classList.add('unmute');
+        $video.prop('muted', false);
+      }
+    }
+    var text1 = null
+    var bgcolor = ""
+    var textcolor = ""
+    var h = "min-vh-150"
+    if(this.props.color === "dark") {
+      bgcolor = "bg-black o-60";
+      textcolor = "white";
+    } else {
+      bgcolor = "bg-white o-85";
       textcolor = "black";
     }
-    text1 = (
-        <div className="">
-          <div className={props.position+" w-50-l mw500 mh3-l mh3-l center w-100 pa4-l relative mt0-l mt4"}>
-            <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative ph0-l ph3 "+textcolor}>{props.text1}</p>
+
+    if(this.props.text1 !== "") {
+      h = "min-vh-200"
+      if($this.state.mobile) {
+        bgcolor = "transparent";
+        textcolor = "black";
+      }
+      text1 = (
+          <div className="">
+            <div className={this.props.position+" w-50-l mw500 mh3-l mh3-l center w-100 pa4-l relative mt0-l mt4"}>
+              <div className={bgcolor+" w-100 h-100 absolute pn top-left"}></div>
+              <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative ph0-l ph3 "+textcolor}>{this.props.text1}</p>
+            </div>
+          </div>
+        
+      )
+    }
+
+    var text2 = null;
+    if(this.props.number === 2) {
+      h = "min-vh-300"
+      if($this.state.mobile) {
+        bgcolor = "transparent";
+        textcolor = "black";
+      }
+      text2 = (
+        <div className="mt50vh">
+          <div className={this.props.position+" w-50-l mw500 mh3-l center w-100 pa4-l relative mt0-l mt4"}>
+            <div className={bgcolor+" w-100 h-100 absolute pn top-left"}></div>
+            <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative ph0-l ph3 "+textcolor}>{this.props.text2}</p>
           </div>
         </div>
-      
-    )
-  }
-
-  var text2 = null;
-  if(props.number === 2) {
-    h = "min-vh-300"
-    if($(window).width() <= 959) {
-      bgcolor = "transparent";
-      textcolor = "black";
+      )
     }
-    text2 = (
-      <div className="mt50vh">
-        <div className={props.position+" w-50-l mw500 mh3-l center w-100 pa4-l relative mt0-l mt4"}>
-          <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-          <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative ph0-l ph3 "+textcolor}>{props.text2}</p>
+
+    var loadingStyle = {
+      textAlign: "center",
+      position: "absolute",
+      left: 0,
+      right: 0,
+      top: "20%",
+      margin: "auto",
+      width: "200px",
+      color: "#f4f4f4"
+    }
+
+    var ship = {
+      backgroundImage: "url("+scrollship+")",
+      backgroundSize: "contain",
+      backgroundRepeat: "no-repeat",
+      height: "60px",
+      width: "60px",
+      position: "absolute",
+      left: 0,
+      right: 0,
+      marginLeft: "0"
+    }
+    
+    var unmuteTag = "";
+    var $video = $('#video'+this.props.videoID);
+    var video = this.state.active ? (
+      <div className="videoBg">
+        <div style={loadingStyle}>
+          <div className="dib floatship" style={ship}></div>
+          <p className="dib white ml4">
+            Loading...
+          </p>
         </div>
+        <video id={'video'+this.props.videoID} loop playsInline muted autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
+          <source src={this.props.link+'#t=0.1'} type="video/mp4"/>
+        </video>
+      </div>
+    ) : (
+      <div className="videoBg">
+        <video className="emptyVideo" id={'video'+this.props.videoID} loop playsInline muted autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
+        </video>
       </div>
     )
-  }
-  
-  var unmuteTag = "";
-  var $video = $('#video'+props.videoID);
-  var video = (
-    <video id={'video'+props.videoID} loop playsInline muted autoPlay>
-      <source src={props.link+'#t=0.1'} type="video/mp4"/>
-    </video>
-  )
-  if(props.sound) {
-    unmuteTag = "unmute";
-    var video = (
-      <video id={'video'+props.videoID} loop playsInline>
-        <source src={props.link+'#t=0.1'} type="video/mp4"/>
-      </video>
-    )
-  }
+    if(this.props.sound) {
+      unmuteTag = "unmute";
+      video = this.state.active ? (
+        <div className="videoBg">
+          <div style={loadingStyle}>
+            <div className="dib floatship" style={ship}></div>
+            <p className="dib white ml4">
+              Loading...
+            </p>
+          </div>
+          <video id={'video'+this.props.videoID} loop playsInline autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
+            <source src={this.props.link} type="video/mp4"/>
+          </video>
+        </div>
+      ) : (
+        <div className="videoBg">
+          <video className="emptyVideo" id={'video'+this.props.videoID} loop playsInline autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
+          </video>
+        </div>
+      )
+    }
 
-  var playButton = props.playing ? (<div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>) : null
+    var playButton = this.props.playing ? (<div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>) : null
 
-  var video_content = (
-      <div className="w-100 h-100 absolute top-left clipping">
-        {playButton}
-        <div className={unmuteTag+" fixed sound cp z10"} onClick={(e) => soundVideo(e)}></div>
-        <div className="bg-light-gray w-100 h-100 fixed fixed-content pn">
-          <div className="videoBg">
+    var video_content = (
+        <div className="w-100 h-100 absolute top-left clipping">
+          {playButton}
+          <div className={unmuteTag+" fixed sound cp z10"} onClick={(e) => soundVideo(e)}></div>
+          <div className="w-100 h-100 fixed fixed-content pn">
             {video}
           </div>
         </div>
-      </div>
-  )
+    )
 
-  var text_content = (
-      <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
-        {text1}
-        {text2}
-      </div>
-  )
-
-  if($(window).width() <= 959) {
-    h = "pv5 bg-near-white";
-    var mb4 = ""
-    if(props.text1 !== "") mb4 = "mb4"
-    video_content = (
-      <div className={"cf flex aic jcc w-100" + mb4}>
-        <div className="center relative">
-          <video className="w-100" id={'video'+props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay>
-            <source src={props.link} type="video/mp4"/>
-          </video>
+    var text_content = (
+        <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
+          {text1}
+          {text2}
         </div>
-      </div>
+    )
+
+    if($this.state.mobile) {
+      h = "pv5 bg-near-white";
+      var mb4 = ""
+      if(this.props.text1 !== "") mb4 = "mb4"
+      video_content = this.state.active ? (
+        <div className={"cf flex aic jcc w-100 flex-column " + mb4}>
+          <div className="center relative">
+            <video className="w-100" id={'video'+this.props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
+              <source src={this.props.link} type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      ) : (
+        <div className={"cf flex aic jcc w-100 flex-column " + mb4}>
+          <div className="center relative">
+            <video className="w-100 emptyVideo" id={'video'+this.props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
+            </video>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <section id={this.props.id} className={h+" flex aic flex-column-s relative video-content full-video bg-black"} data-active="false">
+        {video_content}
+        {text_content}
+      </section>
     )
   }
-
-  return (
-    <section id={props.id} className={h+" flex aic flex-column-s relative video-content full-video bg-black"}>
-      {video_content}
-      {text_content}
-    </section>
-  )
 }
 
 /*09-1*/
-function SmallVideo(props) {
-  function playVideo(e) {
-    var $video = $('#video'+props.videoID);
-    if(e.target.classList.contains('pause')) {
-      e.target.classList.remove('pause');
-      $video.get(0).play();
-      $video.removeClass('clicked');
+class SmallVideo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: false
+    };
+  }
+
+  componentDidMount(){
+    var $this = this;
+    var $t = $('#'+$this.props.id);
+    $(document).ready(function(){
+    $(window).scroll(function(){
+      if($t.length !== 0) {
+        var top_of_object = $t.offset().top;
+        var bottom_of_object = $t.offset().top + $t.height();
+        var top_of_window = $(window).scrollTop(); 
+        var bottom_of_window = $(window).scrollTop()+ $(window).height(); 
+          
+        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
+          if(!$this.state.active) {
+            $this.setState({active:true});
+          }
+          if($t.find('video').get(0).paused) {
+            if($t.find('video').hasClass('clicked')) ;
+            else {
+              $t.find('video').get(0).play();
+              $t.find('.play').removeClass('pause');
+            }
+          }
+        } else {
+          var vid = document.getElementById('video'+$this.props.videoID);
+          if(vid !== null) {
+            if(vid.readyState === 4 ) {
+              if(!$t.find('video').get(0).paused) {
+                $t.find('video').get(0).pause();
+                $t.find('.play').addClass('pause');
+              }
+            }
+          }
+        }
+      }
+    });
+    });
+  }
+
+  render(){
+    var $this = this;
+    var video_content = null;
+
+    if(this.state.active) {
+      video_content = this.state.sound ? (
+        <video className="w-100" id={'video'+this.props.videoID} controls controlsList="nodownload" loop playsInline autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
+          <source src={this.props.link+'#t=0.1'} type="video/mp4"/>
+        </video>
+      ) : (
+        <video className="w-100" id={'video'+this.props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
+          <source src={this.props.link+'#t=0.1'} type="video/mp4"/>
+        </video>
+      )
+      
     }
     else {
-      e.target.classList.add('pause');
-      $video.get(0).pause();
-      $video.addClass('clicked');
+      video_content = (
+        <video className="w-100 emptyVideo" id={'video'+this.props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
+        </video>
+      )
     }
-  }
-  function soundVideo(e) {
-    var $video = $('#video'+props.videoID);
-    if(e.target.classList.contains('unmute')) {
-      e.target.classList.remove('unmute');
-      $video.prop('muted', true);
-    }
-    else {
-      e.target.classList.add('unmute');
-      $video.prop('muted', false);
-    }
-  }
-  return (
-    <section id={props.id} className={"flex aic relative pv6-l pv5 video-content smallVideo "+props.bg}>
-      <div className="mw80 w-100 center z4 relative">
-        <div className="cf flex aic flex-column-s">
-          <div className="fl-l w-100 w-50-l ph2-l pv3 relative">
-            <video id={'video'+props.videoID} className="w-100" controls controlsList="nodownload" loop playsInline muted autoPlay>
-              <source src={props.link+'#t=0.1'} type="video/mp4"/>
-            </video>
-          </div>
-          <div className="fr-l w-100 w-50-l mw500 center ml5-l ph4-ns ph3 pv3">
-            <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph0-ns ph3">{props.text}</p>
-          </div>
+
+    var content_all = this.props.reverse ?  (
+      <div className="cf flex aic flex-column-s">
+        <div className="fl-l w-100 w-50-l ml5-l ph4-ns ph3 pv3">
+          <p className="center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph4-l ph3">{this.props.text}</p>
+        </div>
+        <div className="fr-l w-100 w-50-l pl25-l pv3 relative">
+          {video_content}
         </div>
       </div>
-    </section>
-  )
+    ) : (
+      <div className="cf flex aic flex-column-s">
+        <div className="fl-l w-100 w-50-l pl25-l pv3 relative">
+          {video_content}
+        </div>
+        <div className="fr-l w-100 w-50-l ml5-l ph4-ns ph3 pv3">
+          <p className="center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph4-l ph3">{this.props.text}</p>
+        </div>
+      </div>
+    )
+
+    return (
+      <section id={this.props.id} className={"flex aic relative pv6-l pv5 video-content smallVideo "+this.props.bg}>
+        <div className="mw80 w-100 center z4 relative">
+          {content_all}
+        </div>
+      </section>
+    )
+  }
 }
 
 /*09-2*/
-function CenterVideo(props) {
-  function playVideo(e) {
-    var $video = $('#video'+props.videoID);
-    if(e.target.classList.contains('pause')) {
-      e.target.classList.remove('pause');
-      $video.get(0).play();
-      $video.removeClass('clicked');
-    }
-    else {
-      e.target.classList.add('pause');
-      $video.get(0).pause();
-      $video.addClass('clicked');
-    }
+class CenterVideo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: false
+    };
   }
-  function soundVideo(e) {
-    var $video = $('#video'+props.videoID);
-    if(e.target.classList.contains('unmute')) {
-      e.target.classList.remove('unmute');
-      $video.prop('muted', true);
-    }
-    else {
-      e.target.classList.add('unmute');
-      $video.prop('muted', false);
-    }
-  }
-  var max = {
-    maxWidth: "800px"
-  }
-  var textShadow = "text-shadow f4-ns f5";
-  var bgColor = "";
-  var mask = "bg-dark-gray o-40";
-  if(props.bg) {
-    textShadow = "f5-ns f6";
-    bgColor = "bg-black o-60";
-    mask = "";
-  }
-
-  var unmuteTag = "";
-  var $video = $('#video'+props.videoID);
-  var video = (
-    <video id={'video'+props.videoID} loop playsInline muted autoPlay>
-      <source src={props.link+'#t=0.1'} type="video/mp4"/>
-    </video>
-  )
-  if(props.sound) {
-    unmuteTag = "unmute";
-    var video = (
-      <video id={'video'+props.videoID} loop playsInline>
-        <source src={props.link+'#t=0.1'} type="video/mp4"/>
-      </video>
-    )
+  componentDidMount(){
+    var $this = this;
+    var $t = $('#'+$this.props.id);
+    $(document).ready(function(){
+    $(window).scroll(function(){
+      if($t.length !== 0) {
+        var top_of_object = $t.offset().top;
+        var bottom_of_object = $t.offset().top + $t.height();
+        var top_of_window = $(window).scrollTop(); 
+        var bottom_of_window = $(window).scrollTop()+ $(window).height(); 
+          
+        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
+          if(!$this.state.active) {
+            $this.setState({active:true});
+          }
+          if($t.find('video').get(0).paused) {
+            if($t.find('video').hasClass('clicked')) ;
+            else {
+              $t.find('video').get(0).play();
+              $t.find('.play').removeClass('pause');
+            }
+          }
+        } else {
+          var vid = document.getElementById('video'+$this.props.videoID);
+          if(vid !== null) {
+            if(vid.readyState === 4 ) {
+              if(!$t.find('video').get(0).paused) {
+                $t.find('video').get(0).pause();
+                $t.find('.play').addClass('pause');
+              }
+            }
+          }
+        }
+      }
+    });
+    });
   }
 
-  return (
-    <section id={props.id} className="min-vh-150 flex aic relative pv6-l pv5 video-content bg-black z4">
-      <div className="w-100 h-100 absolute top-left clipping">
-        <div className={mask+" w-100 h-100 absolute pn top-left z4"}/>
-        {/*<div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>*/}
-        <div className={unmuteTag+" fixed sound cp z10"} onClick={(e) => soundVideo(e)}></div>
-        <div className="bg-light-gray w-100 h-100 fixed fixed-content pn">
-          <div className="videoBg">
+  render(){
+    var $this = this;
+    function playVideo(e) {
+      var $video = $('#video'+$this.props.videoID);
+      if(e.target.classList.contains('pause')) {
+        e.target.classList.remove('pause');
+        $video.get(0).play();
+        $video.removeClass('clicked');
+      }
+      else {
+        e.target.classList.add('pause');
+        $video.get(0).pause();
+        $video.addClass('clicked');
+      }
+    }
+    function soundVideo(e) {
+      var $video = $('#video'+$this.props.videoID);
+      if(e.target.classList.contains('unmute')) {
+        e.target.classList.remove('unmute');
+        $video.prop('muted', true);
+      }
+      else {
+        e.target.classList.add('unmute');
+        $video.prop('muted', false);
+      }
+    }
+    var max = {
+      maxWidth: "800px"
+    }
+    var textShadow = "text-shadow f4-ns f5";
+    var bgColor = "";
+    var mask = "bg-dark-gray o-40";
+    if(this.props.bg) {
+      textShadow = "f5-ns f6";
+      bgColor = "bg-black o-60";
+      mask = "";
+    }
+
+    var loadingStyle = {
+      textAlign: "center",
+      position: "absolute",
+      left: 0,
+      right: 0,
+      top: "20%",
+      margin: "auto",
+      width: "200px",
+      color: "#f4f4f4"
+    }
+
+    var ship = {
+      backgroundImage: "url("+scrollship+")",
+      backgroundSize: "contain",
+      backgroundRepeat: "no-repeat",
+      height: "60px",
+      width: "60px",
+      position: "absolute",
+      left: 0,
+      right: 0,
+      marginLeft: "0"
+    }
+
+    var unmuteTag = "";
+    var $video = $('#video'+this.props.videoID);
+    var video = this.state.active ? (
+      <div className="videoBg">
+        <div style={loadingStyle}>
+          <div className="dib floatship" style={ship}></div>
+          <p className="dib white ml4">
+            Loading...
+          </p>
+        </div>
+        <video id={'video'+this.props.videoID} loop playsInline muted autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
+          <source src={this.props.link+'#t=0.1'} type="video/mp4"/>
+        </video>
+      </div>
+    ) : (
+      <div className="videoBg">
+        <video className="emptyVideo" id={'video'+this.props.videoID} loop playsInline muted autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
+        </video>
+      </div>
+    );
+    if(this.props.sound) {
+      unmuteTag = "unmute";
+      video = this.state.active ? (
+        <div className="videoBg">
+          <div style={loadingStyle}>
+            <div className="dib floatship" style={ship}></div>
+            <p className="dib white ml4">
+              Loading...
+            </p>
+          </div>
+          <video id={'video'+this.props.videoID} loop playsInline autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
+            <source src={this.props.link+'#t=0.1'} type="video/mp4"/>
+          </video>
+        </div>
+      ) : (
+        <div className="videoBg">
+          <video className="emptyVideo" id={'video'+this.props.videoID} loop playsInline autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
+          </video>
+        </div>
+      );
+    }
+
+    return (
+      <section id={this.props.id} className="min-vh-150 flex aic relative pv6-l pv5 video-content z4 bg-black">
+        <div className="w-100 h-100 absolute top-left clipping">
+          <div className={mask+" w-100 h-100 absolute pn top-left z4"}></div>
+          {/*<div className="fixed play cp z10" onClick={(e) => playVideo(e)}></div>*/}
+          <div className={unmuteTag+" fixed sound cp z10"} onClick={(e) => soundVideo(e)}></div>
+          <div className="w-100 h-100 fixed fixed-content pn">
             {video}
           </div>
         </div>
-      </div>
-      <div className="w-100 center ph4-ns ph3 z4 relative">
-        <div className="cf flex aic">
-          <div className="w-100 w-50-l center pa4-l pa3 relative" style={max}>
-            <div className={bgColor+" w-100 h-100 absolute pn top-left"}/>
-            <p className={"pre-wrap f4 lh-copy mv0 z4 relative white "+textShadow}>{props.text1}</p>
+        <div className="w-100 center ph4-ns ph3 z4 relative">
+          <div className="cf flex aic">
+            <div className="w-100 w-50-l center pa4-l pa3 relative" style={max}>
+              <div className={bgColor+" w-100 h-100 absolute pn top-left"}></div>
+              <p className={"pre-wrap f4 lh-copy mv0 z4 relative white "+textShadow}>{this.props.text1}</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  )
+      </section>
+    )
+  }
 }
 
 /*09-2*/
-function CenterSmallVideo(props) {
-  function playVideo(e) {
-    var $video = $('#video'+props.videoID);
-    if(e.target.classList.contains('pause')) {
-      e.target.classList.remove('pause');
-      $video.get(0).play();
-      $video.removeClass('clicked');
-    }
-    else {
-      e.target.classList.add('pause');
-      $video.get(0).pause();
-      $video.addClass('clicked');
-    }
-  }
-  function soundVideo(e) {
-    var $video = $('#video'+props.videoID);
-    if(e.target.classList.contains('unmute')) {
-      e.target.classList.remove('unmute');
-      $video.prop('muted', true);
-    }
-    else {
-      e.target.classList.add('unmute');
-      $video.prop('muted', false);
-    }
-  }
-  var max = {
-    maxWidth: "800px"
-  }
-  var top = {
-    top: "40px"
-  }
-  var color = "";
-  if(props.color === "invert") color = "bg-near-white"
-
-  let text = null;
-  if(props.text !== "") {
-    text = (
-      <div className="mw80 center black mb5-ns mb4 pre-wrap">
-        <div className="mw7 w-100 center ph3 pv3">
-          <p className={"f5-ns f6 lh-copy mv0 "+props.align}>{props.text}</p>
-        </div>
-      </div>
-    )
+class CenterSmallVideo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: false
+    };
   }
 
-  return (
-    <section id={props.id} className={"flex aic relative pv6-l pv5 video-content "+color}>
-      <div className="w-100 center ph4-ns ph3 z4 relative">
-        {text}
-        <div className="cf flex aic jcc w-100 pv3">
-          <div className="center relative">
-            <video className="w-100" id={'video'+props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay style={max}>
-              <source src={props.link+'#t=0.1'} type="video/mp4"/>
-            </video>
+  componentDidMount(){
+    var $this = this;
+    var $t = $('#'+$this.props.id);
+    $(document).ready(function(){
+    $(window).scroll(function(){
+      if($t.length !== 0) {
+        var top_of_object = $t.offset().top;
+        var bottom_of_object = $t.offset().top + $t.height();
+        var top_of_window = $(window).scrollTop(); 
+        var bottom_of_window = $(window).scrollTop()+ $(window).height(); 
+          
+        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
+          if(!$this.state.active) {
+            $this.setState({active:true});
+          }
+          if($t.find('video').get(0).paused) {
+            if($t.find('video').hasClass('clicked')) ;
+            else {
+              $t.find('video').get(0).play();
+              $t.find('.play').removeClass('pause');
+            }
+          }
+        } else {
+          var vid = document.getElementById('video'+$this.props.videoID);
+          if(vid !== null) {
+            if(vid.readyState === 4 ) {
+              if(!$t.find('video').get(0).paused) {
+                $t.find('video').get(0).pause();
+                $t.find('.play').addClass('pause');
+              }
+            }
+          }
+        }
+      }
+    });
+    });
+  }
+
+  render(){
+    var $this = this;
+    var max = {
+      maxWidth: "800px"
+    }
+    var top = {
+      top: "40px"
+    }
+    var color = "bg-white";
+    if(this.props.color === "invert") color = "bg-near-white"
+
+    let text = null;
+    if(this.props.text !== "") {
+      text = (
+        <div className="mw80 center black mb5-ns mb4 pre-wrap ph4-ns ph3">
+          <div className="mw7 w-100 center ph4-l ph3 pv3">
+            <p className={"f5-ns f6 lh-copy mv0 "+this.props.align}>{this.props.text}</p>
           </div>
         </div>
-      </div>
-    </section>
-  )
+      )
+    }
+
+    var video_content = null;
+
+    if(this.state.active) {
+      video_content = this.state.sound ? (
+        <video className="w-100" id={'video'+this.props.videoID} controls controlsList="nodownload" loop playsInline autoPlay style={max} data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
+          <source src={this.props.link+'#t=0.1'} type="video/mp4"/>
+        </video>
+      ) : (
+        <video className="w-100" id={'video'+this.props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay style={max} data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
+          <source src={this.props.link+'#t=0.1'} type="video/mp4"/>
+        </video>
+      )
+      
+    }
+    else {
+      video_content = (
+        <video className="w-100 emptyVideo" id={'video'+this.props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay style={max} data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
+        </video>
+      )
+    }
+
+    return (
+      <section id={this.props.id} className={"flex aic relative pv6-l pv5 video-content "+color}>
+        <div className="w-100 center z4 relative">
+          {text}
+          <div className="cf flex aic jcc w-100 flex-column pv3">
+            <div className="center relative w-100 tc">
+              {video_content}
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
 }
 
 /*10*/
-function EndingVideo(props) {
-  var machineStyle = {
-    bottom: "-28px",
-    width: "90vw",
-    maxWidth: "400px",
-    zIndex: 10
-  }
-  var handStyle = {
-    bottom: "-20px",
-    width: "30.375vw",
-    maxWidth: "135px",
-    transform: "translateX(70px)",
-    zIndex: 10
+class EndingVideo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobile: false
+    };
   }
 
-  var bgTV = {
-    backgroundImage: 'url('+endingV+')',
-    backgroundSize: '100% 100%',
-    backgroundPosition: 'center 0',
-    backgroundRepeat: 'no-repeat'
+  componentDidMount(){
+    var $this = this;
+    $(document).ready(function(){
+      if($(window).width() < 480) $this.setState({mobile:true});
+    });
   }
+  render() {
+    var machineStyle = {
+      bottom: "-3px",
+      width: this.state.mobile ? "270px": "90vw",
+      maxWidth: "400px",
+      zIndex: 10
+    }
+    var handStyle = {
+      bottom: "-20px",
+      width: "30.375vw",
+      maxWidth: "135px",
+      transform: "translateX(70px)",
+      zIndex: 10
+    }
 
-  return (
-    <section id={props.id} className="flex aic relative bg-white pv6-l pv5 overflow-y-hidden">
-      <div className="center ph3-ns ph0 z4 relative mb6 mb5-l">
-        <div className="cf tc black w-60-l w-80-m w-100 center pv2 ph4 bg-white mb2">
-          <h3>{props.text}</h3>
+    var bgTV = {
+      backgroundImage: 'url('+endingV+')',
+      backgroundSize: '100% 100%',
+      backgroundPosition: 'center 0',
+      backgroundRepeat: 'no-repeat'
+    }
+
+    return (
+      <section id={this.props.id} className="flex aic relative bg-white pv6-l pv5 overflow-y-hidden">
+        <div className="center ph3-ns ph0 z4 relative mb5rem">
+          <div className="f7 f6-ns cf tc black w-60-l w-80-m w-100 center pv2 ph2 ph4-ns bg-white mb2">
+            <h3>{this.props.text}</h3>
+          </div>
+          <div className="bg-white pa5-ns pa0 pb6-ns pb4" style={bgTV}>
+            <iframe className="iframe" title="playlist" width="100%" height="315" src={this.props.link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+          </div>
         </div>
-        <div className="bg-white pa5-ns pa0 pb6-ns pb0" style={bgTV}>
-          <iframe className="iframe" title="playlist" width="100%" height="315" src={props.link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
-        </div>
-      </div>
-      <img className="absolute absolute-center" style={machineStyle} width="400px" src={timemachine} alt="timemachine"/>
-      <img className="absolute absolute-center" style={handStyle} width="135px" src={hand} alt="hand"/>
-    </section>
-  )
+        <img className="absolute absolute-center" style={machineStyle} width="400px" src={timemachinehand} alt="timemachine"/>
+      </section>
+    )
+  }
 }
 
 /*11*/
@@ -1587,104 +2308,148 @@ function PhotoAudio(props) {
 }
 
 /*13*/
-function Timeline(props) {
-  var special = props.special;
-  let grid = [];
-  var columns = "";
-  
-  var height = {
-    height: "560px"
+class Timeline extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobile: false
+    };
+  }
+  componentDidMount(){
+    var $this = this;
+    $(document).ready(function(){
+      if($(window).width() <= 479) $this.setState({mobile:true});
+    });
   }
 
-  var mobile = $(window).width() <= 959 ? true : false;
-  var w = ""
-  if(!special) w = "480px"
-  else {
-    if(mobile) w = "320px"
-    else w = "360px"
-  }
+  render(){
+    var special = this.props.special;
+    let grid = [];
+    var columns = "";
+    var crab = special ? "crab" : "";
 
+    var thisH = this.props.height; //560
 
-  for (var i = 0; i < props.images.length; i++){
-    var photoGridStyle = {
-      width: w,
-      height: special ? "560px" : "320px",
-      backgroundImage: "url("+props.images[i]+")",
-      backgroundSize: special ? "contain" : "cover",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center center"
+    var ths = thisH+"px";
+    if(this.state.mobile) ths = (thisH-80)+"px";
+    if(special) ths = "600px";
+
+    var scrollingAreaStyle = {
+      height: (special&&this.state.mobile) ? "170vw" : ths,
+      backgroundColor: (special) ? "#F4F4F4" : "transparent",
+      borderTop: (special) ? "#F4F4F4 20px solid" : "none",
+      borderBottom: (special) ? "#F4F4F4 20px solid" : "none"
     }
-    var textGridStyle = {
-      height: "240px",
-      maxWidth: "440px",
-      whiteSpace: "normal"
+    var w = ""
+    var h = ""
+    if (!special) {
+      if(this.state.mobile) {
+        w = "90vw";
+        h = "60vw";
+      } else {
+        w = "480px";
+        h = "320px";
+      }
+    } else {
+      if(this.state.mobile) {
+        w = "90vw";
+        h = "158vw";
+      } else {
+        w = "320px";
+        h = "560px";
+      }
     }
 
-    var text_content = special ? null : (
-      <div style={textGridStyle} className="pa4 center">
-          <p className="f5-ns f6 fw6 lh-copy mv2 bg-white dib z4 relative pr2">
-            {"• "+props.year[i]}
-          </p>
-          <p className="f6 lh-copy mv0">
-            {props.text[i]}
-          </p>
+    var bgColor = this.props.bg !== undefined ? this.props.bg : "bg-white";
+
+    for (var i = 0; i < this.props.images.length; i++){
+      var photoGridStyle = {
+        width: w,
+        height: h,
+        backgroundImage: "url("+this.props.images[i]+")",
+        backgroundSize: special ? "contain" : "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center"
+      }
+      var textGridStyle = {
+        height: (thisH-320)+"px",
+        maxWidth: "440px",
+        whiteSpace: "normal"
+      }
+
+      var text_content = special ? null : (
+        <div style={textGridStyle} className="pa4 center">
+            <p className={"f5-ns f6 fw6 lh-copy mv2 dib z4 relative pr2 "+bgColor}>
+              {"• "+this.props.year[i]}
+            </p>
+            <p className="f6 lh-copy mv0">
+              {this.props.text[i]}
+            </p>
+          </div>
+      )
+
+      var photos = (
+        <div className="grid-item relative z4" key={i}>
+          <div style={photoGridStyle}></div>
+          {text_content}
         </div>
+      )
+      columns+=(w+" ");
+      grid.push(photos);
+    }
+
+    var th = (thisH+40)+"px";
+    if(this.state.mobile) th = (thisH-40)+"px";
+
+    var container = {
+      gridTemplateColumns: columns,
+      gridGap: "10px",
+      height: (special&&this.state.mobile) ? "158vw" : th,
+      paddingBottom: (special&&this.state.mobile) ? "0" : "40px",
+      overflowY: "hidden"
+    }
+
+    var line = special ? null : {
+      top: this.state.mobile ? "60vw": "376px",
+      left: 0,
+      width: "100%",
+      height: "2px",
+      backgroundColor: "rgb(0, 0, 0)",
+      opacity: 0.1,
+      zIndex: 0,
+      transform: this.state.mobile ? "translateY(54px)" : ""
+    }
+
+    var max = {
+      maxWidth: "880px"
+    }
+    var content = null
+
+    if(this.props.content !== null) {
+      if(this.props.content === "") content = null;
+      else content = this.props.contentTitle ? (<p className='f3-ns f5 fw7 ph3 tracked mb5-ns mb3 lh-normal' style={max} dangerouslySetInnerHTML={{__html:this.props.content}}></p>) :
+      (<p className="lh-copy f5-ns f6 center pre-wrap ph4-ns ph3 mb5-ns mb3" style={max} dangerouslySetInnerHTML={{__html:this.props.content}}></p>);
+    }
+
+    var padding = special ? "pt6-l pt5" : "pv6-l pv5 min-vh-100";
+    var scrollLeft = (<p className='f6 o-50 tc mt4'>{"◂◂ 往左滑看更多"}</p>)
+    if(!this.state.mobile && this.props.images.length < 5) scrollLeft = null;
+
+    return (
+      <section id={this.props.id} className={bgColor+" flex aic relative flex-column "+padding}>      
+        <div className="ma0 ph3">
+          {content}
+        </div>
+        {scrollLeft}
+        <div className={"w-100 overflow-hidden relative"} style={scrollingAreaStyle}>
+          <div className="absolute line" style={line}></div>
+          <div className={"grid-container nowrap dragscroll relative ph5-l ph0 "+crab} style={container}>
+            {grid}
+          </div> 
+        </div>
+      </section>
     )
-
-    var photos = (
-      <div className="grid-item bg-white relative" key={i}>
-        <div style={photoGridStyle}></div>
-        {text_content}
-      </div>
-    )
-    columns+=(w+" ");
-    grid.push(photos);
   }
-
-  
-
-  var container = {
-    gridTemplateColumns: columns,
-    gridGap: "10px",
-    height: "600px",
-    paddingBottom: "40px"
-  }
-
-  var line = special ? null : {
-    top: "376px",
-    left: 0,
-    width: "100%",
-    height: "2px",
-    backgroundColor: "rgb(0, 0, 0)",
-    opacity: 0.1,
-    zIndex: 1
-  }
-
-  var max = {
-    maxWidth: "880px"
-  }
-  var content = null
-
-  if(props.content !== null) {
-    content = (<p className="lh-copy f5-ns f6 center pre-wrap ph4-ns ph3 mb5" style={max} dangerouslySetInnerHTML={{__html:props.content}}></p>);
-  }
-
-  var padding = special ? "pt6-l pt5" : "pv6-l pv5 min-vh-100"; 
-
-  return (
-    <section id={props.id} className={"flex aic relative bg-white flex-column "+padding}>      
-      <div className="ma0 ph3">
-        {content}
-      </div>
-      <p className='f6 o-50 tc mb4'>{"<<往左滑看更多"}</p>
-      <div className="w-100 overflow-hidden relative" style={height}>
-        <div className="absolute line" style={line}></div>
-        <div className="grid-container nowrap dragscroll relative ph5-l ph0" style={container}>
-          {grid}
-        </div> 
-      </div>
-    </section>
-  )
 }
 
 /*19*/
@@ -1767,9 +2532,9 @@ function Transition(props) {
     fontSize = "f2rem fw7 tracked mv0";
   }
   return (
-    <section id={props.id} className={props.title+" banner pv5-ns pv4 flex aic jcc flex-column-s ph4-ns ph3 z4 "+props.bg}>
+    <section id={props.id} className={props.title+" relative banner pv5 flex aic jcc flex-column-s ph4-ns ph3 z4 "+props.bg}>
       {img}
-      <p className={"dib mw7 lh-copy pre-wrap ph4-ns ph3 "+fontSize} dangerouslySetInnerHTML={{__html:props.text}}></p>
+      <p className={"dib mw7 mv0 lh-copy pre-wrap ph4-l ph3 "+fontSize} dangerouslySetInnerHTML={{__html:props.text}}></p>
     </section>
   )
 }
@@ -1810,13 +2575,13 @@ function Panorama(props) {
     padding: "20px"
   }
   return (
-    <section id={props.id} className="panorama-container relative">
+    <section id={props.id} className="panorama-container relative vh-100">
+      <p className="tc f3-ns f5 fw7 ph3 tracked mt0 mb4-ns mb3 lh-normal">{props.label}</p>
       <figure className="panorama">
         <img src={props.image} height="100%" alt="panorama" />
       </figure>
       <div className="panorama-icon"></div>
       <div className="panorama-text text-shadow">左右移動看看</div>
-      <label className="white absolute lh-normal z10 f6-ns f8 pn db-ns dn" style={bottomRight}>{props.label}</label>
     </section>
   )
 }
@@ -1829,13 +2594,13 @@ function Bullets(props) {
   var buttons = [];
   for (var i = 0; i < total; i++) {
     var temp = null;
-    if(i === active - 1) temp = (<button type="button" className="active image-gallery-bullet" aria-pressed="false" aria-label="Go to Slide 1"></button>)
-    else temp = (<button type="button" className="image-gallery-bullet" aria-pressed="false" aria-label="Go to Slide 1"></button>)
+    if(i === active - 1) temp = (<button type="button" className={props.dark+" active image-gallery-bullet side"} aria-pressed="false" aria-label="Go to Slide 1" key={i}></button>)
+    else temp = (<button type="button" className={props.dark+" image-gallery-bullet side"} aria-pressed="false" aria-label="Go to Slide 1" key={i}></button>)
     buttons.push(temp);
   }
 
   return (
-    <div className="image-gallery-bullets">
+    <div className="image-gallery-bullets side">
       <div className="image-gallery-bullets-container" role="navigation" aria-label="Bullet Navigation">
         {buttons}
       </div>
@@ -1843,193 +2608,321 @@ function Bullets(props) {
   )
 }
 
-function TimeChange(props) {
-  var z = "";
-  var h = "min-vh-150"
-  if(props.last) {
-    z = "z-1";
-    h = "min-vh-200"
+class TimeChange extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobile: false,
+      mini: false,
+    };
   }
-  var label = {
-    bottom: "0px",
-    right: "0px",
-    background: "rgba(0,0,0,.4)",
-    padding: "10px",
-    color: "white",
-    position: "absolute",
-    boxSizing: "border-box",
-    width: "100%",
-    fontSize: ".875em",
-    textAlign: "center",
-    lineHeight: 1.5
+  componentDidMount(){
+    var $this = this;
+    $(document).ready(function(){
+      if($(window).width() <= 959) $this.setState({mobile:true});
+      if($(window).width() <= 665) $this.setState({mini:true});
+    });
   }
-  return (
-    <section id={props.id} className={h+" flex aic relative timeChange bg-white "+z}>
-      <div className="w-100 h-100 absolute top-left time-clipping fade">
-        <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
-          <div className="center w-100 z4 pre-wrap">
-            <div className="mw7 center w-100 pt4 ph3 h5">
-              <p className="lh-copy mv0 dark-gray" dangerouslySetInnerHTML={{__html:props.text1}}></p>
-            </div>
-            <figure className="w-100 ma0">
-              <div className="w-third pr1 dib relative">
-                <img src={props.image[0]} alt="description"/>
-                <label style={label}>{props.labels[0]}</label>
-              </div>
-              <div className="w-third pr1 dib relative">
-                <img src={props.image[1]} alt="description"/>
-                <label style={label}>{props.labels[1]}</label>
-              </div>
-              <div className="w-third dib relative">
-                <img src={props.image[2]} alt="description"/>
-                <label style={label}>{props.labels[2]}</label>
-              </div>
-            </figure>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function TimeChangeFull(props) {
-  var mobile = $(window).width() <= 959 ? true : false;
-  var z = "";
-  var h = "min-vh-150"
-
-  var fullImage = {
-    height: "100vh",
-    objectFit: "cover",
-    objectPosition: props.move ? "30% 22px" : "center 22px",
-    width: "100%"
-  }
-  var bottomRight = {
-    bottom: "40px",
-    right: "0px",
-    background: "rgba(0,0,0,.2)",
-    padding: mobile ? "10px" : "20px"
-  }
-
-  var bgcolor = ""
-  var textcolor = ""
-  var up = null;
-  if(props.color === "dark") {
-    bgcolor = "bg-black o-20";
-    textcolor = "white";
-    up = {
-      top: "18%"
-    }
-  } else {
-    bgcolor = "bg-white o-85";
-    textcolor = "black";
-  }
-  var text1 = null; 
-  if(props.text1 !== "") {
-    text1 = (
-      <div className="cf">
-        <div className={props.position+" mw500 mh3-l center pa4-l pa3 relative"}>
-          <div className={bgcolor+" w-100 h-100 absolute pn top-left"}/>
-          <p className={"f5-ns f6 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:props.text1}}></p>
-        </div>
-      </div>
-    )
-  }
-  if(props.last) {
-    z = "z-1";
-    h = "min-vh-200"
-  }
-
-  var label_content = props.label !== "" ? (<label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{props.label}</label>) : null;
-
-  var earth = props.earth ? <GoogleEarthLogo text={props.earthText} /> : null;
-
-  return (
-    <section id={props.id} className={h+" flex aic relative bg-black timeChange "+z}>
-      <div className="w-100 h-100 absolute top-left time-clipping fade">
-        <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
-          <figure className="w-100 ma0">
-            <img className="w-100" style={fullImage} src={props.image} alt="background"/>
-          </figure>
-          {label_content}
-          <div className="absolute left-0 right-0 mw80 center ph4-ns ph3 w-100 z4 pre-wrap" style={up}>
-            {text1}
-          </div>
-          {earth}
-          <Bullets count={props.count}/>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function TimeChangeSide(props) {
-
-  var z = "";
-  var h = "min-vh-150"
-
-  if(props.last) {
-    z = "z-1";
-    h = "min-vh-200"
-  }
-  var mobile = $(window).width() <= 959 ? true : false;
-
-  var imgH = "100%";
-  if(!props.cover) {
-    imgH = mobile ? "80%" : "60%";
-  }
-
-  var halfImageContain = {
-    height: imgH,
-    objectFit: props.cover ? "cover" : "contain",
-    marginTop: mobile ? "66px" : "0"
-  }
-
-  var halfImageCover = {
-    width: mobile ? "100%" :"90%",
-    objectFit: "contain"
-  }
-
-  var bottomRight = {
-    bottom: "0px",
-    right: "0px",
-    background: "rgba(0,0,0,.2)",
-    padding: mobile ? "10px" : "20px"
-  }
-
-  var mb = mobile ? {margin: "20px 0"} : {margin: "0"}
-
-  var content = null;
-  if(props.text1 !== "") {
-    content = (
-      <div className="fl-l w-50-l w-100 pre-wrap">
-        <div className="mw500 center ml5-l ph3 pv3">
-          <div className="w-100 h-100 absolute pn top-left" />
-          <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph3" dangerouslySetInnerHTML={{__html:props.text1}}></p>
-        </div>
-      </div>
-    )
-  } else {
-    content = (
-      <figure className="fr-l w-50-l w-100 h-100-l h-50 relative tc flex jcc flex-column" style={mb}>
-        <img style={halfImageCover} src={props.image[1]} width="90%" alt="background"/>
-        <label className="f7 mt3 o-50 w-90-l w-100 mb4 lh-normal" >{props.label}</label>
-      </figure>
-    )
-  }
-
   
-  return (
-    <section id={props.id} className={h+" flex aic relative bg-white timeChange "+z}>
-      <div className="w-100 h-100 absolute top-left time-clipping fade cf">
-        <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic flex-column-s">
-          <figure className="fr-l w-50-l w-100 ma0 h-100-l h-75 flex aic">
-            <img style={halfImageContain} src={props.image[0]} width="100%" alt="background"/>
-          </figure>
-          {content}
+  render(){
+    var z = "";
+    var h = "min-vh-180";
+    if(this.props.last && !this.state.mobile) {
+      z = "z-1";
+      h = "min-vh-200"
+    }
+    var dH = null
+
+    if(this.state.mobile) {
+      h = "";
+      dH = {
+        minHeight: "calc(1413px + 18rem)"
+      }
+    }
+    if(this.state.mini) {
+      h = "";
+      dH = {
+        minHeight: "calc(223vw + 20rem)"
+      }
+    }
+
+    var label = {
+      bottom: "0px",
+      right: "0px",
+      background: "rgba(0,0,0,.4)",
+      padding: "10px",
+      color: "white",
+      position: "absolute",
+      boxSizing: "border-box",
+      width: "100%",
+      fontSize: ".875em",
+      textAlign: "center",
+      lineHeight: 1.5
+    }
+
+    if (this.state.mobile) {
+      label.fontSize = ".7em"
+    }
+
+    var max = {
+      maxHeight: "471px",
+      width: "100%",
+      objectFit: "cover"
+    }
+
+    var top = this.state.mobile ? null : {
+      marginTop: "66px"
+    }
+
+    
+
+    return (
+      <section id={this.props.id} className={h+" flex aic relative timeChange-text bg-white "+z} style={dH}>
+        <div className="w-100 h-100 absolute top-left time-clipping fade">
+          <div className="bg-white w-100 h-100-m h-100-l fixed-l fixed-content pn flex aic">
+            <div className="center w-100 z4 pre-wrap" style={top}>
+              <div className="mw7 mv3 mv0-l center w-100 pt0-l pt5 ph3 h5-ns h6">
+                <p className="lh-copy mv0 dark-gray ph3 ph0-l" dangerouslySetInnerHTML={{__html:this.props.text1}}></p>
+              </div>
+              <figure className="w-100 flex flex-wrap flex-nowrap-l ma0">
+                <div className="relative mr2-l">
+                  <img src={this.props.image[0]} alt="description" style={max}/>
+                  <label style={label}>{this.props.labels[0]}</label>
+                </div>
+                <div className="relative mr2-l">
+                  <img src={this.props.image[1]} alt="description" style={max}/>
+                  <label style={label}>{this.props.labels[1]}</label>
+                </div>
+                <div className="relative">
+                  <img src={this.props.image[2]} alt="description" style={max}/>
+                  <label style={label}>{this.props.labels[2]}</label>
+                </div>
+              </figure>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-  )
+      </section>
+    )
+  }
+}
+
+class TimeChangeFull extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobile: false
+    };
+  }
+  componentDidMount(){
+    var $this = this;
+    $(document).ready(function(){
+      if($(window).width() <= 959) $this.setState({mobile:true});
+    });
+  }
+  render(){
+    var z = "";
+    var h = "min-vh-150"
+    var first = "first z-1";
+
+    var fullImage = {
+      height: "100vh",
+      objectFit: "cover",
+      objectPosition: this.props.move ? "40% 22px" : "center 22px",
+      width: "100%"
+    }
+    var bottomRight = {
+      bottom: this.state.mobile ? "45px": "0",
+      right: "0px",
+      background: "rgba(0,0,0,.2)",
+      padding: this.state.mobile ? "10px" : "20px"
+    }
+
+    var bgcolor = ""
+    var textcolor = ""
+    var up = null;
+    if(this.props.color === "dark") {
+      bgcolor = "bg-black o-20";
+      textcolor = "white";
+      up = {
+        top: "18%"
+      }
+    } else {
+      bgcolor = "bg-white o-85";
+      textcolor = "black";
+    }
+    var text1 = null; 
+    if(this.props.text1 !== "") {
+      text1 = (
+        <div className="cf">
+          <div className={this.props.position+" mw500 mh3-l center pa4-l pa3 relative"}>
+            <div className={bgcolor+" w-100 h-100 absolute pn top-left"}></div>
+            <p className={"f5-ns f6 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:this.props.text1}}></p>
+          </div>
+        </div>
+      )
+    }
+    if(this.props.last) {
+      z = "z-1";
+      h = "min-vh-200"
+    }
+    if(!this.props.first) {
+      first = "fade"
+    }
+
+    var label_content = this.props.label !== "" ? (<label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{this.props.label}</label>) : null;
+    var earth = this.props.earth ? <GoogleEarthLogo text={this.props.earthText} /> : null;
+    var imgSrc = this.props.image;
+
+    return (
+      <section id={this.props.id} className={h+" flex aic relative timeChange "+z}>
+        <div className={first+" w-100 h-100 absolute top-left time-clipping"}>
+          <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
+            <figure className="w-100 ma0">
+              <img className="w-100" style={fullImage} src={imgSrc} alt="background"/>
+            </figure>
+            {label_content}
+            <div className="absolute left-0 right-0 mw80 center ph4-ns ph3 w-100 z4 pre-wrap" style={up}>
+              {text1}
+            </div>
+            {earth}
+            <Bullets count={this.props.count}/>
+          </div>
+        </div>
+      </section>
+    )
+  }
+}
+
+class TimeChangeSide extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobile: false
+    };
+  }
+  componentDidMount(){
+    var $this = this;
+    $(document).ready(function(){
+      if($(window).width() <= 959) $this.setState({mobile:true});
+    });
+  }
+
+  render(){
+
+    var z = "";
+    var h = "min-vh-150"
+    var first = "first z-1";
+
+    if(this.props.last) {
+      z = "z-1"
+      h = "min-vh-200"
+    }
+    if(!this.props.first) {
+      first = "fade"
+    }
+
+    var imgH = "100%";
+    if(!this.props.cover) {
+      imgH = this.state.mobile ? "80%" : "60%";
+    }
+
+    var ml = this.props.small ? "2.5rem" : "0";
+    if(this.state.mobile) ml = "0";
+
+    var halfImageContain = {
+      height: imgH,
+      objectFit: this.props.cover ? "cover" : "contain",
+      marginLeft: ml,
+    }
+
+    var halfImageCover = {
+      width: this.state.mobile ? "100%" :"90%",
+      objectFit: "contain"
+    }
+
+    var bottomRight = {
+      bottom: this.state.mobile ? "45px": "0",
+      right: "0px",
+      background: "rgba(0,0,0,.2)",
+      padding: this.state.mobile ? "10px" : "20px"
+    }
+
+    var content = null;
+    var container = {
+      marginTop: this.state.mobile ? "66px" : "0",
+    }
+
+    var topImg = {
+      maxWidth: this.state.mobile ? "75vw" : "auto",
+      margin: "0 auto"
+    }
+
+    if(this.props.small) {
+      topImg = {
+        maxWidth: this.state.mobile ? "100vw" : "auto",
+      }
+    }
+
+    var jcc = "jcc"
+
+    if(this.props.text1 !== "") {
+      container = {
+        marginTop: this.state.mobile ? "33px" : "0",
+      }
+      content = (
+        <div className="fl-l w-50-l w-100 pre-wrap mt4-ns pr4-l">
+          <div className="mw500 center ml4-l ph3 pv3">
+            <div className="w-100 h-100 absolute pn top-left"></div>
+            <p className='f3-ns f4 fw7 ph3 mb2 tracked'>{this.props.title}</p>
+            <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph3">{this.props.text1}</p>
+          </div>
+        </div>
+      )
+    } else {
+      topImg = {
+        height: "50vh"
+      }
+      var halfImageContain = {
+        height: this.state.mobile ? "100%" : "120%"
+      }
+      jcc = ""
+
+      content = (
+        <figure className="fr-l w-50-l w-100 relative tc flex jcc flex-column mv0">
+          <label className="tl-l tc f5-ns f8 mb3 tl w-90-l w-100 lh-normal ph0" >{this.props.label}</label>
+          <img style={halfImageCover} src={this.props.image[1]} width="90%" alt="background"/>
+        </figure>
+      )
+    }
+    
+    var imgSrc = this.props.image[0];
+    if(this.state.mobile && this.props.small) {
+      if(imgSrc.indexOf(".jpg") > -1) imgSrc = imgSrc.split('.jpg')[0]+"_m.jpg";
+      else imgSrc = imgSrc.split('.svg')[0]+"_m.svg";
+    }
+
+    if(this.props.cover) {
+      topImg = this.state.mobile ? {
+        height: "calc(100vh - 180px)"
+      } : null;
+      container = null;
+      jcc = "";
+    }
+    
+    return (
+      <section id={this.props.id} className={h+" flex aic relative timeChange "+z}>
+        <div className={first+" w-100 h-100 absolute top-left time-clipping cf"}>
+          <div className={jcc+" bg-white w-100 h-100 fixed fixed-content pn flex aic flex-column-s"} style={container}>
+            <figure className="fr-l w-50-l w-100 h-100-l ma0 flex aic overflow-hidden" style={topImg}>
+              <img style={halfImageContain} src={imgSrc} width="100%" alt="background"/>
+            </figure>
+            {content}
+            <Bullets dark={"dark"} count={this.props.count}/>
+          </div>
+        </div>
+      </section>
+    )
+  }
 }
 
 function InfoHelper(props) {
@@ -2047,141 +2940,159 @@ function TvLine(props) {
   )
 }
 
-function Blog(props) {
-  var img = null;
-  var text = null;
-  var mw = "mw80 ph3";
-  var column = "flex aic flex-column-s";
-  var a = "order-1";
-  var b = "order-0";
-  if(props.switch) {
-    a = "order-0";
-    b = "order-1"
+
+class Blog extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobile: false
+    };
+  }
+  componentDidMount(){
+    var $this = this;
+    $(document).ready(function(){
+      if($(window).width() <= 479) $this.setState({mobile:true});
+    });
   }
 
-  var mobile = $(window).width() <= 959 ? true : false;
-  var hint = mobile ? null : (<p className='f6 o-50 tc mt4'>{"<<往左滑看更多"}</p>)
-
-  let grid = [];
-  var columns = "";
-  var rows = "";
-  
-  
-  var w = mobile ? "100vw" : "660px";
-  var h = "200px";
-  var len = "count"+props.image.length;
-  var height = {
-    height: mobile ? props.image.length*200+"px" : "466px"
-  }
-
-  for (var i = 0; i < props.image.length; i++){
-    var item = {
-      width: w,
-      height: mobile ? "200px" : "400px",
-      backgroundImage: "url("+props.image[i]+")",
-      backgroundSize: "cover",
-      backgroundPosition: "center center"
-    }
-    var bottomRight = {
-      bottom: "0px",
-      right: "0px",
-      background: "rgba(0,0,0,.2)",
-      padding: mobile ? "10px" : "20px"
+  render(){
+    var img = null;
+    var text = null;
+    var mw = "mw80 ph3 ph4-ns";
+    var column = "flex aic flex-column-s";
+    var a = "order-1";
+    var b = "order-0";
+    if(this.props.switch) {
+      a = "order-0";
+      b = "order-1"
     }
 
-    var label_content = (<label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{props.label[i]}</label>)
-    var photos = (
-      <div className="grid-item bg-gray relative cp" alt={props.label[i]} style={item} key={i} onClick={(e) => props.onOpenModal(e.target.style.backgroundImage.split('"')[1], e.target.getAttribute("alt"))}>
-        {label_content}
-      </div>
-    )
-    columns+=(w+" ");
-    rows+=(h+" ");
-    grid.push(photos);
-  }
+    var hint = this.state.mobile ? null : (<p className='f6 o-50 tc mt4'>{"◂◂ 往左滑看更多"}</p>)
 
-  var container = {
-    gridTemplateColumns: mobile ? "100vw" : columns,
-    gridTemplateRows: mobile ? h : null,
-    height: mobile ? props.image.length*200+40+"px" : "440px",
-    paddingBottom: "40px",
-    justifyContent: "start",
-  }
+    let grid = [];
+    var columns = "";
+    var rows = "";
+    
+    
+    var w = this.state.mobile ? "100vw" : "660px";
+    var h = "200px";
+    var len = "count"+this.props.image.length;
+    var height = {
+      height: this.state.mobile ? this.props.image.length*200+"px" : "466px"
+    }
 
-  if(props.text === "") {
-    img = (
-      <div className="w-100">
-        <div className="fl-l w-100 w-50-l relative tc mb5 mb0-ns">
-          <img className="mb3" src={props.image[0]} alt={props.label[0]}/>
-          <label className="f7 mt2 o-50 lh-normal" >{props.label[0]}</label>
+    for (var i = 0; i < this.props.image.length; i++){
+      var item = {
+        width: w,
+        height: this.state.mobile ? "200px" : "400px",
+        backgroundImage: "url("+this.props.image[i]+")",
+        backgroundSize: "cover",
+        backgroundPosition: "center center"
+      }
+      var bottomRight = {
+        bottom: "0px",
+        right: "0px",
+        background: "rgba(0,0,0,.2)",
+        padding: this.state.mobile ? "10px" : "20px"
+      }
+
+      var label_content = (<label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{this.props.label[i]}</label>)
+      var photos = (
+        <div className="grid-item bg-gray relative cp" alt={this.props.label[i]} style={item} key={i} onClick={(e) => this.props.onOpenModal(e.target.style.backgroundImage.split('"')[1], e.target.getAttribute("alt"))}>
+          {label_content}
         </div>
-        <div className="fr-l w-100 w-50-l relative tc mb0">
-          <img className="mb3" src={props.image[1]} alt={props.label[1]}/>
-          <label className="f7 mt2 o-50 lh-normal" >{props.label[1]}</label>
+      )
+      columns+=(w+" ");
+      rows+=(h+" ");
+      grid.push(photos);
+    }
+
+    var container = {
+      gridTemplateColumns: this.state.mobile ? "100vw" : columns,
+      gridTemplateRows: this.state.mobile ? h : null,
+      height: this.state.mobile ? this.props.image.length*200+40+"px" : "440px",
+      paddingBottom: "40px",
+      justifyContent: "start",
+    }
+
+    if(this.props.text === "") {
+      img = (
+        <div className="w-100">
+          <div className="fl-l w-100 w-50-l relative tc mb5 mb0-ns">
+            <img className="mb3" src={this.props.image[0]} alt={this.props.label[0]}/>
+            <label className="f7 mt2 o-50 lh-normal" >{this.props.label[0]}</label>
+          </div>
+          <div className="fr-l w-100 w-50-l relative tc mb0">
+            <img className="mb3" src={this.props.image[1]} alt={this.props.label[1]}/>
+            <label className="f7 mt2 o-50 lh-normal" >{this.props.label[1]}</label>
+          </div>
         </div>
-      </div>
+      )
+    }
+    else {
+      text = (
+        <div className="w-100 ph4-l ph3 mb4">
+          <p className="mw7 center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black">{this.props.text}</p>
+        </div>
+      );
+    }
+    if(this.props.number === 1) {
+      img = (
+        <div className={a+" w-100 w-50-l pv3 relative tc-ns tl mb0"}>
+          <img className="mb3" src={this.props.image[0]} alt={this.props.label[0]}/>
+          <label className="f7 mt2 o-50 lh-normal" >{this.props.label[0]}</label>
+        </div>
+      );
+      text = (
+        <div className="w-100 w-50-l pv3 mb4">
+          <p className="mw500 center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black ph4-l ph3">{this.props.text}</p>
+        </div>
+      );
+    } else if(this.props.number === 2) {
+      column = "";
+      img = (
+        <div className="w-100">
+          <div className="fl-l w-100 w-50-l relative tc mb4 mb0-l">
+            <img className="mb3" src={this.props.image[0]} alt={this.props.label[0]}/>
+            <label className="f7 mt2 o-50 lh-normal" >{this.props.label[0]}</label>
+          </div>
+          <div className="fr-l w-100 w-50-l relative tc mb0">
+            <img className="mb3" src={this.props.image[1]} alt={this.props.label[1]}/>
+            <label className="f7 mt2 o-50 lh-normal" >{this.props.label[1]}</label>
+          </div>
+        </div>
+      );
+    } else if(this.props.number >= 3) {
+      column = "";
+      mw = "";
+      text = (
+        <div className="w-100 ph4-ns ph3 mb4">
+          <p className="mw7 center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black ph4-l ph3">{this.props.text}</p>
+        </div>
+      );
+      img = (
+        <div className="w-100 overflow-hidden" style={height}>
+          {hint}
+          <div className={"grid-container nowrap dragscroll "+len} style={container}>
+            {grid}
+          </div> 
+        </div>
+      );
+    }
+    
+    var bgColor = this.props.bg !== undefined ? this.props.bg : "bg-white";
+
+    return (
+      <section id={this.props.id} className={"flex aic relative pv6-l pv5 "+bgColor} >
+        <div className={mw+" w-100 center z4 relative"}>
+          <div className={"cf "+column}>
+            {text}
+            {img}
+          </div>
+        </div>
+      </section>
     )
   }
-  else {
-    text = (
-      <div className="mw7 center w-100 pa4-l pa3 mb4">
-        <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black">{props.text}</p>
-      </div>
-    );
-  }
-  if(props.number === 1) {
-    img = (
-      <div className={a+" w-100 w-50-l pv3 relative tc mb0"}>
-        <img className="mb3" src={props.image[0]} alt={props.label[0]}/>
-        <label className="f7 mt2 o-50 lh-normal" >{props.label[0]}</label>
-      </div>
-    );
-    text = (
-      <div className="mw500 center w-100 w-50-l ph3 pv3 mb4">
-        <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black">{props.text}</p>
-      </div>
-    );
-  } else if(props.number === 2) {
-    column = "";
-    img = (
-      <div className="w-100">
-        <div className="fl-l w-100 w-50-l relative tc mb5 mb0-ns">
-          <img className="mb3" src={props.image[0]} alt={props.label[0]}/>
-          <label className="f7 mt2 o-50 lh-normal" >{props.label[0]}</label>
-        </div>
-        <div className="fr-l w-100 w-50-l relative tc mb5 mb0-ns">
-          <img className="mb3" src={props.image[1]} alt={props.label[1]}/>
-          <label className="f7 mt2 o-50 lh-normal" >{props.label[1]}</label>
-        </div>
-      </div>
-    );
-  } else if(props.number >= 3) {
-    column = "";
-    mw = "";
-    text = (
-      <div className="mw7 center w-100 pa4-l pa3 mb4">
-        <p className="pre-wrap f5-ns f6 lh-copy mv0 z4 relative black ph0-ns ph3">{props.text}</p>
-      </div>
-    );
-    img = (
-      <div className="w-100 overflow-hidden" style={height}>
-        {hint}
-        <div className={"grid-container nowrap dragscroll "+len} style={container}>
-          {grid}
-        </div> 
-      </div>
-    );
-  }
-  return (
-    <section id={props.id} className={"flex aic relative pv6-l pv5 "+props.bg} >
-      <div className={mw+" w-100 center z4 relative"}>
-        <div className={"cf "+column}>
-          {text}
-          {img}
-        </div>
-      </div>
-    </section>
-  )
 }
 
 function More(props) {
@@ -2189,19 +3100,23 @@ function More(props) {
     borderTop: "1px #eee solid"
   }
 
+  var borderLink = {
+    borderColor: props.color
+  }
+
   var len = props.link.length;
-  var links = [];
+  var morelinks = [];
   for(var i = 0; i < len; i++) {
-    var link = (
+    var morelink = (
       <div className="fl w-100 w-50-ns pa2" key={i}>
         <div className="bg-white pv2 f4-ns f5 fw5">
-          <a className="bb bw2 b--blue" href={props.link[i]} target="_blank">
+          <a className="bb bw1" href={props.link[i]} target="_blank" style={borderLink} rel="noopener noreferrer">
             {props.title[i]}
           </a>
         </div>
       </div>
     )
-    links.push(link);
+    morelinks.push(morelink);
   }
 
 
@@ -2210,7 +3125,7 @@ function More(props) {
       <div className="mw8 center ph3">
         <div className="cf ph2-ns tc">
           <h1 className="ph2 fw7 tracked mb5-l mb4 f2rem">同場加映</h1>
-          {links}
+          {morelinks}
         </div>
       </div>
     </section>
@@ -2226,7 +3141,7 @@ function CTA(props) {
             <div className="fl w-third-l w-100 pa2 cp">
               <Link to="/island20">
                 <div className="pv3 pa4 tc ctaBox bg-white">
-                  <figure className="w5 h5 center mv0 flex aic jcc">
+                  <figure className="w-100 h5 center mv0 flex aic jcc">
                     <img src={ctap1} width="210" height="210" alt="回首頁"/>
                   </figure>
                   <p className="f3-ns f4 fw5 mt0 mb2">回首頁</p>
@@ -2237,7 +3152,7 @@ function CTA(props) {
             <div className="fl w-third-l w-100 pa2 cp">
               <Link to={"../"+props.next+"/"}> 
                 <div className="pv3 pa4 tc ctaBox bg-white" onClick={() => props.switchView(props.next)}>
-                  <figure className="w5 h5 center mv0 flex aic jcc">
+                  <figure className="w-100 h5 center mv0 flex aic jcc">
                     <img src={ctap2} width="210" height="210" alt="下一篇"/>
                   </figure>
                   <p className="f3-ns f4 fw5 mt0 mb2">下一篇</p>
@@ -2248,7 +3163,7 @@ function CTA(props) {
             <div className="fl w-third-l w-100 pa2 cp">
               <a href="https://ourisland.pts.org.tw/" target="_blank" rel="noopener noreferrer">
                 <div className="pv3 pa4 tc ctaBox bg-white">
-                  <figure className="w5 h5 center mv0 flex aic jcc">
+                  <figure className="w-100 h5 center mv0 flex aic jcc">
                     <img src={cta3} width="210" height="210" alt="大事記"/>
                   </figure>
                   <p className="f3-ns f4 fw5 mt0 mb2">島官網</p>
@@ -2284,10 +3199,26 @@ function CTA(props) {
 
 
 class Event01 extends Component {
-  state = {
-    open: false,
-    image: "",
-    description: ""
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+      image: "",
+      description: "",
+      chat: false
+    }
+  }
+  componentDidMount(){
+    var $this = this;
+    console.log("event01");
+    window.onload = function() {
+      if(window.location.href.indexOf('chatbot') > -1) {
+        $this.setState({chat: true});
+      }
+    }
+  }
+  componentDidUpdate(){
+    console.log("event01_update");
   }
  
   onOpenModal = (img, des) => {
@@ -2308,9 +3239,10 @@ class Event01 extends Component {
           id={"2-taiwan"}
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
-          illustration = {this.props.data.taiwan}
-          
-          map = {"-80px, -370px"}
+          illustration = {this.props.data.taiwan}     
+          primaryColor = {"#399DBB"}
+          shipPositionL = "51%"
+          shipPositionT = "-8%"
         />
         <Illustration
           id={"3-illustration"}
@@ -2329,12 +3261,15 @@ class Event01 extends Component {
           label={this.props.data.photoswitchLabel}
         />
 
+        <p className="nextp dib mw7 pt5 ma0 w-100 bg-near-white lh-copy pre-wrap ph3 tc dn-l">來看看淡水河如何從垃圾山變身為河濱公園…</p>
+
         <Video 
           id={"5-video"}
           videoID="01"
           link={this.props.data.video[0]}
           text1=""
           playing={true}
+          sound={false}
         />
 
         <PhotoTextFull
@@ -2378,6 +3313,7 @@ class Event01 extends Component {
           link={this.props.data.video[1]}
           text1={this.props.data.videoText[0]}
           playing={true}
+          sound={false}
         />
 
         <Transition id={"11-transition"} bg={"bg-white"} text={this.props.data.videoText[1]} />
@@ -2386,6 +3322,8 @@ class Event01 extends Component {
           videoID="03"
           link={this.props.data.video[2]}
           text1=""
+          playing={true}
+          sound={false}
         />
 
         <PhotoTextFull
@@ -2408,7 +3346,7 @@ class Event01 extends Component {
 
         <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
           <img src={this.state.image} alt="modal"/>
-          <p className="tc mb0 lh-normal pn">{this.state.description}</p>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
         </Modal>
 
         <TimeChangeFull
@@ -2418,6 +3356,7 @@ class Event01 extends Component {
           image = {this.props.data.photoFull[3]}
           label = {this.props.data.photoFullTextLabel[3]}
           count="1-2"
+          first={true}
         />
         <TimeChangeFull
           id={"16-timeChangeFull"}
@@ -2446,18 +3385,32 @@ class Event01 extends Component {
           year={this.props.data.photocontrastYear2}
           label=""
         />
-
+        
         <CenterVideo 
           id={"19-centerVideo"} 
           videoID="04"
           link={this.props.data.video[3]}
           text1={this.props.data.videoText[2]}
           bg={false}
+          playing={false}
+          sound={false}
         />
 
-        <EndingVideo id={"20-endingVideo"} text="來收看，淡水河20年來的故事..." link={"https://www.youtube.com/embed/pJcFZSLkelU?rel=0"}/>
-        {/*<Next switchView={this.props.switchView} next={"reborn-erren-river"} prev={"reborn-erren-river"}/>*/}
-        <More id={"21-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
+        <EndingVideo 
+          id={"20-endingVideo"} 
+          text="來收看，淡水河20年來的故事..." 
+          link={"https://www.youtube.com/embed/pJcFZSLkelU?rel=0"}
+        />
+
+        <ChatBot id={"chatbot"} display={this.state.chat}/>
+
+        <More 
+          id={"21-more"} 
+          link={this.props.data.moreLink} 
+          title={this.props.data.moreTitle} 
+          color={"#3A85A6"}
+        />
+
         <CTA id={"22-cta"} switchView={this.props.switchView} next={"reborn-erren-river"} nextN={"重生 二仁溪"}/>
       </div>
     );
@@ -2469,6 +3422,13 @@ class Event02 extends Component {
     open: false,
     image: "",
     description: ""
+  }
+
+  componentDidMount(){
+    console.log("event02");
+  }
+  componentDidUpdate(){
+    console.log("event02_update");
   }
  
   onOpenModal = (img, des) => {
@@ -2490,8 +3450,9 @@ class Event02 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          
-          map = {"-285px, 160px"}
+          primaryColor = {"#399DBB"}
+          shipPositionL = "35%"
+          shipPositionT = "47%"
         />
 
         <Illustration
@@ -2507,11 +3468,14 @@ class Event02 extends Component {
           bg={"bg-near-white"}
           link={this.props.data.video[0]}
           text={this.props.data.videoText[0]}
+          sound={false}
         />
 
         <Timeline
-          id={"5-timeline"} 
-          content={"<p class='f3 fw7 tracked mb0 lh-normal'>長達三十年，二仁溪還是無法擺脫廢五金陰影。</p>"}
+          id={"5-timeline"}
+          height="560"
+          contentTitle={true}
+          content={"長達三十年，二仁溪還是無法擺脫廢五金陰影。"}
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
@@ -2525,10 +3489,10 @@ class Event02 extends Component {
         <Video 
           id={"7-video"} 
           videoID="02"
-          position="fr-l"
           link={this.props.data.video[1]}
           text1=""
           playing={true}
+          sound={false}
         />
 
         <Blog
@@ -2561,6 +3525,7 @@ class Event02 extends Component {
           link={this.props.data.video[2]}
           text1=""
           playing={true}
+          sound={false}
         />
 
         <PhotoMultiple
@@ -2573,11 +3538,11 @@ class Event02 extends Component {
 
         <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
           <img src={this.state.image} alt="modal"/>
-          <p className="tc mb0 lh-normal pn">{this.state.description}</p>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
         </Modal>
 
         <EndingVideo id={"13-endingVideo"} text={"來看二仁溪，二十年來承受了什麼..."} link={"https://youtube.com/embed/gfI8M0LGMss?rel=0"}/>
-        <More id={"14-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
+        <More id={"14-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#3A85A6"}/>
         <CTA id={"15-cta"} switchView={this.props.switchView} next={"land-crabs-survival"}  nextN={"陸蟹闖天關"}/>
       </div>
     );
@@ -2615,8 +3580,9 @@ class Event03 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          
-          map = {"-185px, 335px"}
+          primaryColor = {"#399DBB"}
+          shipPositionL = "42%"
+          shipPositionT = "65%"
         />
 
         <Illustration
@@ -2628,15 +3594,17 @@ class Event03 extends Component {
 
         <CenterVideo
           id={"4-centerVideo"} 
-          sound={true}
           videoID="01"
           link={this.props.data.video[0]}
           text1={this.props.data.videoText[0]}
           bg={false}
+          sound={false}
+          playing={false}
         />
 
         <Transition
           id={"5-transition"} 
+          bg={"bg-white"}
           text={this.props.data.videoText[1]}
         />
 
@@ -2645,6 +3613,8 @@ class Event03 extends Component {
           videoID="02"
           link={this.props.data.video[1]}
           text1=""
+          playing={true}
+          sound={false}
         />
 
         <PhotoMultiple
@@ -2658,7 +3628,7 @@ class Event03 extends Component {
 
         <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
           <img src={this.state.image} alt="modal"/>
-          <p className="tc mb0 lh-normal pn">{this.state.description}</p>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
         </Modal>
 
         <Timeline
@@ -2672,9 +3642,10 @@ class Event03 extends Component {
 
         <CenterSmallVideo
           id={"9-centerSmallVideo"}  
-          videoID="13"
+          videoID="03"
           text={this.props.data.videoText[12]}
           link={this.props.data.video[12]}
+          sound={false}
         />
 
         <Transition
@@ -2684,7 +3655,7 @@ class Event03 extends Component {
         />
         <Transition
           id={"11-transition"} 
-          title={"transitionTitle"}
+          title={"transitionTitle bn"}
           bg={"bg-white black tc"}
           illustration={this.props.data.illustrationCrab[0]}
           text={"弱肉強食 生死關"}
@@ -2692,9 +3663,10 @@ class Event03 extends Component {
         
         <CenterSmallVideo
           id={"12-centerSmallVideo"}  
-          videoID="03"
+          videoID="04"
           text={this.props.data.videoText[2]}
           link={this.props.data.video[2]}
+          sound={false}
         />
 
         <Transition
@@ -2724,11 +3696,12 @@ class Event03 extends Component {
 
         <Video 
           id={"16-video"} 
-          videoID="04"
+          videoID="05"
           color={"dark"}
           text1={this.props.data.videoText[3]}
           link={this.props.data.video[3]}
-          playing={true}
+          playing={false}
+          sound={false}
         />
 
         <Blog
@@ -2751,9 +3724,10 @@ class Event03 extends Component {
         <CenterSmallVideo
           id={"19-centerSmallVideo"} 
           color={"invert"}
-          videoID="05"
+          videoID="06"
           text={this.props.data.videoText[4]}
           link={this.props.data.video[4]}
+          sound={false}
         />
 
         <Transition
@@ -2765,29 +3739,31 @@ class Event03 extends Component {
         />
         <Video 
           id={"21-transition"} 
-          sound={true}
-          videoID="06"
+          sound={false}
+          videoID="07"
           text1={this.props.data.videoText[5]}
           link={this.props.data.video[5]}
-          playing={true}
+          playing={false}
+          sound={false}
         />
         
 
-        <section id={"22-transition"}  style={max} className="pv6-ns pv5 ph3 center">
+        <section id={"22-transition"}  style={max} className="pv6-ns pv5 ph4-ns ph3 center">
           <img src={this.props.data.illustrationCrab[6]} className="w-25-ns w-50" alt="illustration" />
           <img src={this.props.data.illustrationCrab[7]} className="w-25-ns w-50" alt="illustration" />
           <img src={this.props.data.illustrationCrab[8]} className="w-25-ns w-50" alt="illustration" />
           <img src={this.props.data.illustrationCrab[9]} className="w-25-ns w-50" alt="illustration" />
-          <p className="lh-copy pre-wrap f5-ns f6 mt5 ph3">{this.props.data.videoText[6]}</p>
+          <p className="lh-copy pre-wrap f5-ns f6 mt5 ph4-l ph3">{this.props.data.videoText[6]}</p>
         </section>
 
         <Video 
           id={"23-video"} 
-          videoID="07"
+          videoID="08"
           position={"fr-l"}
           text1={this.props.data.videoText[11]}
           link={this.props.data.video[6]}
           playing={true}
+          sound={false}
         />
 
         <Transition
@@ -2800,14 +3776,16 @@ class Event03 extends Component {
 
         <Transition
           id={"25-transition"} 
+          bg={"bg-white"}
           text={this.props.data.videoText[7]}
         />
         <Video 
           id={"26-video"} 
-          videoID="08"
+          videoID="09"
           text1=""
           link={this.props.data.video[7]}
           playing={true}
+          sound={false}
         />
         <Blog
           id={"27-blog"} 
@@ -2820,9 +3798,10 @@ class Event03 extends Component {
         <SmallVideo
           id={"28-smallVideo"} 
           bg={"bg-near-white"}
-          videoID="09"
+          videoID="10"
           link={this.props.data.video[8]}
           text={this.props.data.videoText[9]}
+          sound={false}
         />
 
         <section id={"29-illustration"} className="ma0 flex jcc aic">
@@ -2848,30 +3827,35 @@ class Event03 extends Component {
 
         <Transition
           id={"32-transition"} 
+          bg={"bg-white"}
           text={this.props.data.transitionText[2]}
         />
 
         <Video 
           id={"33-video"} 
-          videoID="12"
+          videoID="11"
           text1=""
           link={this.props.data.video[10]}
           playing={true}
+          sound={false}
         />
 
         <SmallVideo
           id={"34-smallVideo"}  
           videoID="11"
           bg={"bg-near-white"}
+          reverse={true}
           text={this.props.data.blogText[2]}
           link={this.props.data.video[11]}
+          sound={false}
         />
 
         <CenterSmallVideo 
           id={"35-centerSmallVideo"} 
-          videoID="10"
+          videoID="12"
           text={this.props.data.videoText[10]}
           link={this.props.data.video[9]}
+          sound={false}
         />
         <PhotoCenterTextFull
           id={"36-photoCenterTextFull"} 
@@ -2880,9 +3864,9 @@ class Event03 extends Component {
           label = {this.props.data.photoFullTextLabel[1]}
           bg={false}
         />
-        <p className="w-100 tr f6 pa3 mv0 o-50 lh-normal">諮詢顧問及影像提供：劉烘昌</p>
+        <p className="w-100 tc f6 pa3 mv0 o-50 lh-normal">諮詢顧問及影像提供：劉烘昌</p>
         <EndingVideo id={"37-endingVideo"} text={"一起來守護陸蟹"} link={"https://youtube.com/embed/KyG4mEAyv8E?rel=0"}/>
-        <More id={"38-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
+        <More id={"38-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#3A85A6"}/>
         <CTA id={"39-cta"} switchView={this.props.switchView} next={"dawu-fishing-port"} nextN={"漁港的黑色幽默"}/>
       </div>
     );
@@ -2907,7 +3891,7 @@ class Event04 extends Component {
       var rightP = $('.panorama img').width() - $(window).width();
       var scrollP = rightP/2;
       // console.log(scrollP+"!!!");
-      if($(window).width() > 600) {
+      if($(window).width() > 1023) {
         panoramaScroll();
         console.log("wide");
       } else {
@@ -2916,7 +3900,7 @@ class Event04 extends Component {
       }
 
       $('.panorama').scroll(function(){
-        if($(window).width() <= 600) {
+        if($(window).width() <= 1024) {
           var rightP = $('.panorama img').width() - $(window).width();
           var deg = 90*$('.panorama').scrollLeft()/rightP-45;
           $('.panorama-icon').css('transform', 'rotate('+deg+'deg)');
@@ -2924,7 +3908,7 @@ class Event04 extends Component {
       })
 
       function panoramaScroll() {
-        console.log('scroll');
+        // console.log('scroll');
         var rightP = $('.panorama img').width() - $(window).width();
         var k = 0;
         $this.state.intervalP = setInterval(function(){
@@ -2972,8 +3956,9 @@ class Event04 extends Component {
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
-          
-          map = {"-125px, 265px"}
+          primaryColor = {"#399DBB"}
+          shipPositionL = "44%"
+          shipPositionT = "58%"
         />
 
         <Illustration
@@ -2989,6 +3974,7 @@ class Event04 extends Component {
           bg={"bg-near-white"}
           link={this.props.data.video[0]}
           text={this.props.data.videoText[0]}
+          sound={false}
         />
         {/*
         <PhotoSwitch 
@@ -3005,16 +3991,18 @@ class Event04 extends Component {
           link={this.props.data.video[1]}
           text1=""
           playing={true}
+          sound={false}
         />
 
           <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
           <img src={this.state.image} alt="modal"/>
-          <p className="tc mb0 lh-normal pn">{this.state.description}</p>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
         </Modal>
 
         <Transition
           id={"6-transition"} 
           text={this.props.data.panoramaText}
+          bg={"bg-white"}
         />
         <Panorama
           id={"7-panorama"} 
@@ -3027,23 +4015,30 @@ class Event04 extends Component {
           id={"9-timeChangeSide"} 
           cover={true}
           text1={this.props.data.photoSlideLabel[0]}
+          title={this.props.data.photoSlideTitle[0]}
           image = {this.props.data.photoSlidePhoto[0]}
           label = "2013年 大武漁港"
+          count="1-3"
+          first={true}
         />
         <TimeChangeSide
           id={"10-timeChangeSide"}
           cover={true}
           text1={this.props.data.photoSlideLabel[1]}
+          title={this.props.data.photoSlideTitle[1]}
           image = {this.props.data.photoSlidePhoto[1]}
           label = "2016年 大武漁港"
+          count="2-3"
         />
         <TimeChangeSide
           id={"11-timeChangeSide"}
           cover={true}
           text1={this.props.data.photoSlideLabel[2]}
+          title={this.props.data.photoSlideTitle[2]}
           last={true}
           image = {this.props.data.photoSlidePhoto[2]}
           label = "2018年 大武漁港"
+          count="3-3"
         />
 
         <Transition id={"12-transition"} bg={"bg-near-white z4"} text={this.props.data.photoSlideText}/>
@@ -3051,7 +4046,8 @@ class Event04 extends Component {
         <CenterVideo 
           id={"13-centerVideo"}
           videoID="06"
-          sound={true}
+          sound={false}
+          playing={false}
           link={this.props.data.video[5]}
           text1={this.props.data.videoText[5]}
           bg={true}
@@ -3059,6 +4055,7 @@ class Event04 extends Component {
 
         <Transition
           id={"14-transition"}
+          bg={"bg-near-white"}
           text={this.props.data.photoFullText[1]}
         />
         <Video 
@@ -3066,27 +4063,34 @@ class Event04 extends Component {
           videoID="05"
           link={this.props.data.video[4]}
           text1=""
-          sound={true}
           playing={false}
+          sound={false}
         />
   
         <Timeline
           id={"16-timeline"}
+          height={500}
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
           content={this.props.data.timelineContent}
+          bg={"bg-near-white"}
         />
 
         <TimeChangeSide
           id={"17-timeChangeSide"}
+          count="1-2"
           text1={this.props.data.photoText[0]}
+          title={this.props.data.photoTitle[0]}
           image = {this.props.data.photoImage[0]}
+          first={true}
         />
         <TimeChangeSide
           id={"18-timeChangeSide"}
+          count="2-2"
           last={true}
           text1={this.props.data.photoText[0]}
+          title={this.props.data.photoTitle[0]}
           image = {this.props.data.photoImage[1]}
         />
 
@@ -3096,6 +4100,7 @@ class Event04 extends Component {
           videoID="03"
           link={this.props.data.video[2]}
           text={this.props.data.videoText[2]}
+          sound={false}
         />
 
         <PhotoContrast 
@@ -3106,42 +4111,61 @@ class Event04 extends Component {
           year={this.props.data.photocontrastYear}
           label={this.props.data.photocontrastLabel}
         />
+        {/*
         <Transition
           id={"21-transition"}
           bg={"bg-near-white"}
           text={this.props.data.photoFullText[4]}
         />
-
         <TimeChangeSide
           id={"22-timeChangeSide"}
           text1=""
+          title=""
           image = {this.props.data.timeChangeSidePhotos[0]}
           label = {this.props.data.timeChangeSideLabels[0]}
+          count="1-4"
+          first={true}
         />
         <TimeChangeSide
           id={"23-timeChangeSide"}
           text1=""
+          title=""
           image = {this.props.data.timeChangeSidePhotos[1]}
           label = {this.props.data.timeChangeSideLabels[1]}
+          count="2-4"
         />
         <TimeChangeSide
           id={"24-timeChangeSide"}
           text1=""
+          title=""
           image = {this.props.data.timeChangeSidePhotos[2]}
           label = {this.props.data.timeChangeSideLabels[2]}
+          count="3-4"
         />
         <TimeChangeSide
           id={"25-timeChangeSide"}
           text1=""
+          title=""
           last={true}
           image = {this.props.data.timeChangeSidePhotos[3]}
           label = {this.props.data.timeChangeSideLabels[3]}
+          count="4-4"
+        />
+        */}
+        <Timeline
+          id={"22-timeline"}
+          special={true}
+          bg={"bg-near-white"}
+          content={this.props.data.photoFullText[4]}
+          text=""
+          year=""
+          images={this.props.data.timeChangeSideImage}
         />
         
         <Blog
-          id={"26-blog"}
+          id={"23-blog"}
           number={2}
-          bg={"bg-near-white z4"}
+          bg={"bg-white z4"}
           text={this.props.data.blogText[0]}
           image={this.props.data.blogImage[0]}
           label={this.props.data.blogLabel[0]}
@@ -3149,15 +4173,16 @@ class Event04 extends Component {
         />
 
         <TimeChangeFull
-          id={"27-timeChangeFull"}
+          id={"24-timeChangeFull"}
           position={"fl-l"}
           text1={this.props.data.videoText[6]}
           image={this.props.data.blogImage[3][0]}
           label = {this.props.data.blogLabel[3][0]}
           count="1-2"
+          first={true}
         />
         <TimeChangeFull
-          id={"28-timeChangeFull"}
+          id={"25-timeChangeFull"}
           position={"fl-l"}
           last={true}
           text1={this.props.data.videoText[6]}
@@ -3167,42 +4192,46 @@ class Event04 extends Component {
         />
 
         <Transition
-          id={"29-transition"}
+          id={"26-transition"}
           bg={"bg-white tc z4"}
           text={this.props.data.videoText[7]}
         />
 
         <Video
-          id={"30-video"}
+          id={"27-video"}
           position={"fr-l"}
           videoID="07"
           link={this.props.data.video[6]}
           text1=""
+          playing={true}
+          sound={false}
         />
 
         <Transition
-          id={"31-transition"}
+          id={"28-transition"}
           bg={"bg-blue white tc"}
           text={"你知道台灣有多少座漁港嗎？"}
         />
 
         <Video
-          id={"32-video"}
+          id={"29-video"}
           position={"fr-l"}
           videoID="04"
           link={this.props.data.video[3]}
           text1={this.props.data.videoText[3]}
+          sound={false}
         />
         <Blog
-          id={"33-blog"}
+          id={"30-blog"}
           number={2}
+          bg={"bg-white"}
           text={this.props.data.blogText[1]}
           image={this.props.data.blogImage[1]}
           label={this.props.data.blogLabel[1]}
           onOpenModal={this.onOpenModal.bind(this)}
         />
         <Blog
-          id={"34-blog"}
+          id={"31-blog"}
           number={2}
           bg={"bg-near-white"}
           text={this.props.data.blogText[2]}
@@ -3211,14 +4240,14 @@ class Event04 extends Component {
           onOpenModal={this.onOpenModal.bind(this)}
         />
         <PhotoCenterTextFull
-          id={"35-photoCenterTextFull"}
+          id={"32-photoCenterTextFull"}
           text1={this.props.data.photoFullText[3]}
           image = {this.props.data.photoFull[3]}
           label = {this.props.data.photoFullTextLabel[3]}
         />
-        <EndingVideo id={"36-endingVideo"} text="一起來關心我們的海岸" link={"https://www.youtube.com/embed/C-Au_8Y6tCc?rel=0"}/>
-        <More id={"37-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
-        <CTA id={"38-cta"} switchView={this.props.switchView} next={"kinmen-Hou-feng-kang"} nextN={"不靠海的金門後豐港"}/>
+        <EndingVideo id={"33-endingVideo"} text="一起來關心我們的海岸" link={"https://www.youtube.com/embed/C-Au_8Y6tCc?rel=0"}/>
+        <More id={"34-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#3A85A6"}/>
+        <CTA id={"35-cta"} switchView={this.props.switchView} next={"kinmen-Hou-feng-kang"} nextN={"不靠海的金門後豐港"}/>
       </div>
     );
   }
@@ -3251,8 +4280,9 @@ class Event05 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           kinmen = {true}
-          
-          map = {"-90px, -140px"}
+          primaryColor = {"#399DBB"}
+          shipPositionL = "32%"
+          shipPositionT = "47%"
         />
 
         <Illustration
@@ -3273,6 +4303,7 @@ class Event05 extends Component {
 
         <Transition
           id={"5-transition"}
+          bg={"bg-white"}
           text={this.props.data.transitionText}
         />
 
@@ -3287,6 +4318,8 @@ class Event05 extends Component {
           label = ""
           count="1-4"
           move={true}
+          switch={true}
+          first={true}
         />
         <TimeChangeFull
           id={"7-timeChangeFull"}
@@ -3299,6 +4332,7 @@ class Event05 extends Component {
           label = ""
           count="2-4"
           move={true}
+          switch={true}
         />
         <TimeChangeFull
           id={"8-timeChangeFull"}
@@ -3311,6 +4345,7 @@ class Event05 extends Component {
           label = ""
           count="3-4"
           move={true}
+          switch={true}
         />
         <TimeChangeFull
           id={"9-timeChangeFull"}
@@ -3324,6 +4359,7 @@ class Event05 extends Component {
           label = ""
           count="4-4"
           move={true}
+          switch={true}
         />        
       
         <SmallVideo
@@ -3332,6 +4368,7 @@ class Event05 extends Component {
           videoID="01"
           link={this.props.data.video[0]}
           text={this.props.data.videoText[0]}
+          sound={false}
         />
 
         <Blog
@@ -3347,14 +4384,14 @@ class Event05 extends Component {
 
         <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
           <img src={this.state.image} alt="modal"/>
-          <p className="tc mb0 lh-normal pn">{this.state.description}</p>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
         </Modal>
 
         <Video
           id={"12-video"} 
           videoID="02"
           color="dark"
-          sound={true}
+          sound={false}
           link={this.props.data.video[1]}
           text1={this.props.data.videoText[1]}
         />
@@ -3364,6 +4401,7 @@ class Event05 extends Component {
           videoID="03"
           link={this.props.data.video[2]}
           text={this.props.data.videoText[2]}
+          sound={false}
         />
 
         <PhotoTextFull
@@ -3380,21 +4418,30 @@ class Event05 extends Component {
           link={this.props.data.video[3]}
           text1=""
           playing={true}
+          sound={false}
         />
 
-        <PhotoTextFull
-          id={"16-photoTextFull"}
-          position={"fr-l"}
-          color={"dark"}
+        <TimeChangeSide
+          id={"16-timeChangeSide"}
           text1={this.props.data.photoText}
-          image = {this.props.data.photoImage}
-          label = ""
-          objectP = "0 64px"
-          switch = {true}
+          title=""
+          image = {this.props.data.photoImage[0]}
+          count="1-2"
+          first={true}
+          small={true}
+        />
+        <TimeChangeSide
+          id={"17-timeChangeSide"}
+          last={true}
+          title=""
+          text1={this.props.data.photoText}
+          image = {this.props.data.photoImage[1]}
+          count="2-2"
+          small={true}
         />
 
         <PhotoSwitch 
-          id={"17-photoSwitch"}
+          id={"18-photoSwitch"}
           position={"fl-l"}
           images={this.props.data.photoswitch} 
           text1={this.props.data.photoswitchText}
@@ -3402,7 +4449,8 @@ class Event05 extends Component {
         />
 
         <Timeline
-          id={"18-timeline"}
+          id={"19-timeline"}
+          height={480}
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
@@ -3410,23 +4458,24 @@ class Event05 extends Component {
         />
 
         <Video 
-          id={"19-video"}
+          id={"20-video"}
           videoID="05"
           link={this.props.data.video[4]}
           text1={this.props.data.videoText[4]}
           playing={true}
+          sound={false}
         />
 
         <PhotoCenterTextFull
-          id={"20-photoCenterFull"}
+          id={"21-photoCenterFull"}
           text1={this.props.data.photoFullText[2]}
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
         />
 
-        <EndingVideo id={"21-endingVideo"} text={"了解更多，關於金門鱟..."} link={"https://youtube.com/embed/nlWGkBTafkc?start=716&rel=0"}/>
-        <More id={"21-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle}/>
-        <CTA id={"23-cta"} switchView={this.props.switchView} next={"changing-tamsui-river"} nextN={"變遷 淡水河"}/>
+        <EndingVideo id={"22-endingVideo"} text={"了解更多，關於金門鱟..."} link={"https://youtube.com/embed/nlWGkBTafkc?start=716&rel=0"}/>
+        <More id={"23-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#3A85A6"}/>
+        <CTA id={"24-cta"} switchView={this.props.switchView} next={"changing-tamsui-river"} nextN={"變遷 淡水河"}/>
       </div>
     );
   }
@@ -3443,7 +4492,8 @@ class Event06 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-110px, -200px"}
+          shipPositionL = "0%"
+          shipPositionT = "0%"
         />
 
         <Illustration
@@ -3496,7 +4546,7 @@ class Event06 extends Component {
           text1={this.props.data.videoText[3]}
         />
 
-        <Transition text={this.props.data.videoText[4]}/>
+        <Transition text={this.props.data.videoText[4]} bg={"bg-white"}/>
         <Video 
           videoID="04"
           link={this.props.data.video[3]}
@@ -3584,7 +4634,7 @@ class Event07 extends Component {
           text1={this.props.data.videoText[1]}
         />
 
-        <Transition text={this.props.data.photoSlideText}/>
+        <Transition text={this.props.data.photoSlideText} bg={"bg-white"}/>
         <PhotoSlide
           text={this.props.data.photoSlideLabel}
           images={this.props.data.photoSlidePhoto}
@@ -3617,7 +4667,7 @@ class Event07 extends Component {
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
         />        
-        <Transition text={this.props.data.videoText[3]}/>
+        <Transition text={this.props.data.videoText[3]} bg={"bg-white"}/>
         <Video 
           videoID="04"
           link={this.props.data.video[3]}
@@ -3656,7 +4706,8 @@ class Event09 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-110px, -200px"}
+          shipPositionL = "0%"
+          shipPositionT = "0%"
         />
 
         <Illustration
@@ -3665,7 +4716,7 @@ class Event09 extends Component {
           illustration = {this.props.data.illustration}
         />
 
-        <Transition text={this.props.data.transitionText[0]} />
+        <Transition text={this.props.data.transitionText[0]} bg={"bg-white"}/>
         <Video 
           videoID="01"
           link={this.props.data.video[0]}
@@ -3686,14 +4737,14 @@ class Event09 extends Component {
           link={this.props.data.video[1]}
         />
 
-        <Transition text={this.props.data.transitionText[1]} />
+        <Transition text={this.props.data.transitionText[1]} bg={"bg-white"}/>
         <Video 
           videoID="03"
           link={this.props.data.video[2]}
           text1=""
         />
 
-        <Transition text={this.props.data.transitionText[2]} />
+        <Transition text={this.props.data.transitionText[2]} bg={"bg-white"}/>
         <PhotoSwitch 
           position={"fl-l"}
           images={this.props.data.photoswitch1} 
@@ -3756,7 +4807,8 @@ class Event12 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-110px, -200px"}
+          shipPositionL = "0%"
+          shipPositionT = "0%"
         />
 
         <Illustration
@@ -3764,7 +4816,7 @@ class Event12 extends Component {
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
-        <Transition text={this.props.data.transitionText[0]} />
+        <Transition text={this.props.data.transitionText[0]} bg={"bg-white"}/>
         <PhotoTextFull
           text1=""
           image = {this.props.data.photoFull[0]}
@@ -3797,7 +4849,7 @@ class Event12 extends Component {
           text1={this.props.data.videoText[1]}
         />
 
-        <Transition text={this.props.data.transitionText[1]} />
+        <Transition text={this.props.data.transitionText[1]} bg={"bg-white"}/>
         <Video 
           videoID="03"
           link={this.props.data.video[2]}
@@ -3830,7 +4882,7 @@ class Event12 extends Component {
           top={false}
         /> {/*提告*/}
 
-        <Transition text={this.props.data.transitionText[2]} />
+        <Transition text={this.props.data.transitionText[2]} bg={"bg-white"}/>
         <EndingVideo text={"想知道台鹼安順廠更多故事...."} link={"https://youtube.com/embed/6CwZYq6vt0k?rel=0"}/>
       </div>
     );
