@@ -125,8 +125,8 @@ class Page extends Component {
     document.getElementById('loading').classList.remove('fade');
 
     var data = pageEvent_data[this.state.id];
-    var images  = [data.code];
-    // var images  = [];
+    // var images  = [data.code];
+    var images  = [];
     var loaded = false;
     var p = 0;
     var id = setInterval(frame, 10);
@@ -359,8 +359,8 @@ class Page extends Component {
     document.getElementById('loading').classList.remove('fade');
 
     var data = pageEvent_data[this.state.id];
-    var images  = [data.code];
-    // var images  = [];
+    // var images  = [data.code];
+    var images  = [];
     var loaded = false;
     var p = 0;
     var id = setInterval(frame, 10);
@@ -4585,7 +4585,7 @@ class Event07 extends Component {
   componentDidMount(){
     var infoText = this.props.data.infoText;
     $(document).ready(function(){
-      var infoHelper = '<div className="absolute z10 mw7 infoHelper pn"><p className="near-black f7 fw4 bg-white pa3 pre-wrap lh-copy">'+infoText+'</p></div>';
+      var infoHelper = '<div class="absolute z10 mw7 infoHelper pn"><p class="near-black f7 fw4 bg-white pa3 pre-wrap lh-copy">'+infoText+'</p></div>';
       $('.info').append(infoHelper);
     })
   }
@@ -4606,6 +4606,8 @@ class Event07 extends Component {
           videoID="01"
           link={this.props.data.video[0]}
           text1={this.props.data.videoText[0]}
+          playing={true}
+          sound={false}
         />
 
         <Illustration
@@ -4641,6 +4643,7 @@ class Event07 extends Component {
         />
 
         <Timeline
+          height="480"
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
