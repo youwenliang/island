@@ -762,7 +762,7 @@ class Taiwan extends Component {
     }
     return (
       <section id={this.props.id} className="flex aic bg-near-white pv5 pv6-l ph4-ns ph3 ph0-l flex-wrap">
-        <div className="bg-near-white w-100 w-50-l">
+        <div className="bg-near-white w-100 w-50-l hide">
           <div className="relative" style={bgStyle}>
             <Overlay overlayColor={this.props.primaryColor} />
             <figure className="absolute floatship" style={position}>
@@ -772,8 +772,8 @@ class Taiwan extends Component {
           </div>
         </div>
         <div className="pt4 pa4-l pa3 w-100 w-40-l ml4-l">
-          <h2 className="mh4-l f4-ns f5 fw7 lh-copy mt0">{this.props.text1}</h2>
-          <p className="mh4-l f5-ns f6 lh-copy mv0 mw500">{this.props.text2}</p>
+          <h2 className="mh4-l f4-ns f5 fw7 lh-copy mt0 hide">{this.props.text1}</h2>
+          <p className="mh4-l f5-ns f6 lh-copy mv0 mw500 hide">{this.props.text2}</p>
         </div>
         {/* <GoogleEarthLogo text={"The image is from 2018/Google Earth  Data SIO,NOAA,U.S. Navy,NGA,GEBCO Image Landsat/Copemicus"} /> */}
       </section>
@@ -1468,13 +1468,13 @@ class PhotoMultiple extends Component {
     return (
       <section id={this.props.id} className={"flex aic relative bg-white flex-column pt6-l pt5 "+auto}>      
         <div className="mw80 center cf black mb5-ns mb3 ph4-ns ph3 w-100">
-          <div className="mw7 w-100 center bg-white pre-wrap">
+          <div className="mw7 w-100 center bg-white pre-wrap hide">
             <p className="f5-ns f6 lh-copy mv0 ph4-l ph3" dangerouslySetInnerHTML={{__html:this.props.text}}></p>
           </div>
         </div>
-        <div className="w-100 overflow-hidden" style={height}>
+        <div className="w-100 overflow-hidden hide" style={height}>
          {hint}
-         <div className="grid-container nowrap dragscroll" style={container}>
+         <div className="grid-container nowrap dragscroll hide" style={container}>
             {grid}
           </div> 
         </div>
@@ -1506,7 +1506,7 @@ class PhotoContrast extends Component {
     let text = null;
     if(this.props.text !== "") {
       text = (
-        <div className="mw80 center cf black mb5 ph4-ns ph3 ">
+        <div className="mw80 center cf black mb5 ph4-ns ph3 hide">
           <div className="mw7 w-100 center pre-wrap">
             <p className="f5-ns f6 lh-copy mv0 ph4-l ph3">{this.props.text}</p>
           </div>
@@ -1539,7 +1539,7 @@ class PhotoContrast extends Component {
       <section id={this.props.id} className={"flex aic relative flex-column pv6-l pv5 "+this.props.bg}>
           <div className="w-100 z4">
             {text}
-            <div className="photoContrast relative tc" style={contrastStyle}>
+            <div className="photoContrast relative tc hide" style={contrastStyle}>
               {contrastComponent}         
               {label}
               {/*<span className="mt3 right-20 absolute white top f3 fw5" data-type="original">{this.props.year[1]}</span>
@@ -1861,19 +1861,19 @@ class SmallVideo extends Component {
 
     var content_all = this.props.reverse ?  (
       <div className="cf flex aic flex-column-s">
-        <div className="fl-l w-100 w-50-l ml5-l ph4-ns ph3 pv3">
+        <div className="fl-l w-100 w-50-l ml5-l ph4-ns ph3 pv3 hide">
           <p className="center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph4-l ph3">{this.props.text}</p>
         </div>
-        <div className="fr-l w-100 w-50-l pl25-l pv3 relative">
+        <div className="fr-l w-100 w-50-l pl25-l pv3 relative hide">
           {video_content}
         </div>
       </div>
     ) : (
       <div className="cf flex aic flex-column-s">
-        <div className="fl-l w-100 w-50-l pl25-l pv3 relative">
+        <div className="fl-l w-100 w-50-l pl25-l pv3 relative hide">
           {video_content}
         </div>
-        <div className="fr-l w-100 w-50-l ml5-l ph4-ns ph3 pv3">
+        <div className="fr-l w-100 w-50-l ml5-l ph4-ns ph3 pv3 hide">
           <p className="center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph4-l ph3">{this.props.text}</p>
         </div>
       </div>
@@ -2123,7 +2123,7 @@ class CenterSmallVideo extends Component {
     if(this.props.text !== "") {
       text = (
         <div className="mw80 center black mb5-ns mb4 pre-wrap ph4-ns ph3">
-          <div className="mw7 w-100 center ph4-l ph3 pv3">
+          <div className="mw7 w-100 center ph4-l ph3 pv3 hide">
             <p className={"f5-ns f6 lh-copy mv0 "+this.props.align}>{this.props.text}</p>
           </div>
         </div>
@@ -2156,7 +2156,7 @@ class CenterSmallVideo extends Component {
         <div className="w-100 center z4 relative">
           {text}
           <div className="cf flex aic jcc w-100 flex-column pv3">
-            <div className="center relative w-100 tc">
+            <div className="center relative w-100 tc hide">
               {video_content}
             </div>
           </div>
@@ -2206,14 +2206,14 @@ class EndingVideo extends Component {
     return (
       <section id={this.props.id} className="flex aic relative bg-white pv6-l pv5 overflow-y-hidden">
         <div className="center ph3-ns ph0 z4 relative mb5rem">
-          <div className="f7 f6-ns cf tc black w-60-l w-80-m w-100 center pv2 ph2 ph4-ns bg-white mb2">
-            <h3>{this.props.text}</h3>
+          <div className="f7 f6-ns cf tc black w-60-l w-80-m w-100 center pv2 ph2 ph4-ns bg-white mb2 hide">
+            <h3 className="lh-copy">{this.props.text}</h3>
           </div>
-          <div className="bg-white pa5-ns pa0 pb6-ns pb4" style={bgTV}>
+          <div className="bg-white pa5-ns pa0 pb6-ns pb4 hide" style={bgTV}>
             <iframe className="iframe" title="playlist" width="100%" height="315" src={this.props.link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
           </div>
         </div>
-        <img className="absolute absolute-center" style={machineStyle} width="400px" src={timemachinehand} alt="timemachine"/>
+        <img className="absolute absolute-center hide" style={machineStyle} width="400px" src={timemachinehand} alt="timemachine"/>
       </section>
     )
   }
@@ -2434,16 +2434,16 @@ class Timeline extends Component {
     }
 
     var padding = special ? "pt6-l pt5" : "pv6-l pv5 min-vh-100";
-    var scrollLeft = (<p className='f6 o-50 tc mt4'>{"◂◂ 往左滑看更多"}</p>)
+    var scrollLeft = (<div className="ma0 pa0 hide"><p className='f6 o-50 tc mt4'>{"◂◂ 往左滑看更多"}</p></div>)
     if(!this.state.mobile && this.props.images.length < 5) scrollLeft = null;
 
     return (
       <section id={this.props.id} className={bgColor+" flex aic relative flex-column "+padding}>      
-        <div className="ma0 ph3">
+        <div className="ma0 ph3 hide">
           {content}
         </div>
         {scrollLeft}
-        <div className={"w-100 overflow-hidden relative"} style={scrollingAreaStyle}>
+        <div className={"w-100 overflow-hidden relative hide"} style={scrollingAreaStyle}>
           <div className="absolute line" style={line}></div>
           <div className={"grid-container nowrap dragscroll relative ph5-l ph0 "+crab} style={container}>
             {grid}
@@ -2527,16 +2527,20 @@ function Transition(props) {
   var fontSize = "f5-ns f6";
   if(props.illustration !== undefined) {
     img = (
-      <div className="overflow-hidden w7">
+      <div className="overflow-hidden w7 hide">
         <img src={props.illustration} height="200px" style={objectFit} alt="illustration" />
       </div>
     )
     fontSize = "f2rem fw7 tracked mv0";
   }
+
+  var pv = "pv5";
+  if(props.top) pv = "pt6-l pt5 pb5"
+
   return (
-    <section id={props.id} className={props.title+" relative banner pv5 flex aic jcc flex-column-s ph4-ns ph3 z4 "+props.bg}>
+    <section id={props.id} className={props.title+" "+pv+" relative banner flex aic jcc flex-column-s ph4-ns ph3 z4 "+props.bg}>
       {img}
-      <p className={"dib mw7 mv0 lh-copy pre-wrap ph4-l ph3 "+fontSize} dangerouslySetInnerHTML={{__html:props.text}}></p>
+      <p className={"dib mw7 mv0 lh-copy pre-wrap ph4-l ph3 hide "+fontSize} dangerouslySetInnerHTML={{__html:props.text}}></p>
     </section>
   )
 }
@@ -2723,7 +2727,7 @@ class TimeChangeFull extends Component {
   }
   render(){
     var z = "";
-    var h = "min-vh-150"
+    var h = "min-vh-100"
     var first = "first z-1";
 
     var fullImage = {
@@ -2998,7 +3002,7 @@ class Blog extends Component {
         padding: this.state.mobile ? "10px" : "20px"
       }
 
-      var label_content = (<label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{this.props.label[i]}</label>)
+      var label_content = this.props.label[i] === "" ? null : (<label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{this.props.label[i]}</label>)
       var photos = (
         <div className="grid-item bg-gray relative cp" alt={this.props.label[i]} style={item} key={i} onClick={(e) => this.props.onOpenModal(e.target.style.backgroundImage.split('"')[1], e.target.getAttribute("alt"))}>
           {label_content}
@@ -3019,7 +3023,7 @@ class Blog extends Component {
 
     if(this.props.text === "") {
       img = (
-        <div className="w-100">
+        <div className="w-100 hide">
           <div className="fl-l w-100 w-50-l relative tc mb5 mb0-ns">
             <img className="mb3" src={this.props.image[0]} alt={this.props.label[0]}/>
             <label className="f7 mt2 o-50 lh-normal" >{this.props.label[0]}</label>
@@ -3033,27 +3037,27 @@ class Blog extends Component {
     }
     else {
       text = (
-        <div className="w-100 ph4-l ph3 mb4">
+        <div className="w-100 ph4-l ph3 mb4 hide">
           <p className="mw7 center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black">{this.props.text}</p>
         </div>
       );
     }
     if(this.props.number === 1) {
       img = (
-        <div className={a+" w-100 w-50-l pv3 relative tc-ns tl mb0"}>
+        <div className={a+" w-100 w-50-l pv3 relative tc-ns tl mb0 hide"}>
           <img className="mb3" src={this.props.image[0]} alt={this.props.label[0]}/>
           <label className="f7 mt2 o-50 lh-normal" >{this.props.label[0]}</label>
         </div>
       );
       text = (
-        <div className="w-100 w-50-l pv3 mb4">
+        <div className="w-100 w-50-l pv3 mb4 hide">
           <p className="mw500 center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black ph4-l ph3">{this.props.text}</p>
         </div>
       );
     } else if(this.props.number === 2) {
       column = "";
       img = (
-        <div className="w-100 mt5">
+        <div className="w-100 mt5 hide">
           <div className="fl-l w-100 w-50-l relative tc mb4 mb0-l">
             <img className="mb3" src={this.props.image[0]} alt={this.props.label[0]}/>
             <label className="f7 mt2 o-50 lh-normal" >{this.props.label[0]}</label>
@@ -3068,12 +3072,12 @@ class Blog extends Component {
       column = "";
       mw = "";
       text = (
-        <div className="w-100 ph4-ns ph3 mb4">
+        <div className="w-100 ph4-ns ph3 mb4 hide">
           <p className="mw7 center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black ph4-l ph3">{this.props.text}</p>
         </div>
       );
       img = (
-        <div className="w-100 overflow-hidden" style={height}>
+        <div className="w-100 overflow-hidden hide" style={height}>
           {hint}
           <div className={"grid-container nowrap dragscroll "+len} style={container}>
             {grid}
@@ -3110,7 +3114,7 @@ function More(props) {
   var morelinks = [];
   for(var i = 0; i < len; i++) {
     var morelink = (
-      <div className="fl w-100 w-50-ns pa2" key={i}>
+      <div className="fl w-100 w-50-ns pa2 hide" key={i}>
         <div className="bg-white pv2 f4-ns f5 fw5">
           <a className="bb bw1" href={props.link[i]} target="_blank" style={borderLink} rel="noopener noreferrer">
             {props.title[i]}
@@ -3126,7 +3130,7 @@ function More(props) {
     <section id={props.id} className="bg-white pv6-l pv5 relative z10" style={border}>
       <div className="mw8 center ph3">
         <div className="cf ph2-ns tc">
-          <h1 className="ph2 fw7 tracked mb5-l mb4 f2rem">同場加映</h1>
+          <h1 className="ph2 fw7 tracked mb5-l mb4 f2rem hide">同場加映</h1>
           {morelinks}
         </div>
       </div>
@@ -3140,7 +3144,7 @@ function CTA(props) {
       <section id={props.id} className="bg-near-white pv6-l pv5 relative z10">
         <div className="mw8 center ph3">
           <div className="cf ph2-ns tc">
-            <div className="fl w-third-l w-100 pa2 cp">
+            <div className="fl w-third-l w-100 pa2 cp hide">
               <Link to="/island20">
                 <div className="pv3 pa4 tc ctaBox bg-white">
                   <figure className="w-100 h5 center mv0 flex aic jcc">
@@ -3151,7 +3155,7 @@ function CTA(props) {
                 </div>
               </Link>
             </div>
-            <div className="fl w-third-l w-100 pa2 cp">
+            <div className="fl w-third-l w-100 pa2 cp hide">
               <Link to={"../"+props.next+"/"}> 
                 <div className="pv3 pa4 tc ctaBox bg-white" onClick={() => props.switchView(props.next)}>
                   <figure className="w-100 h5 center mv0 flex aic jcc">
@@ -3162,7 +3166,7 @@ function CTA(props) {
                 </div>
               </Link>
             </div>
-            <div className="fl w-third-l w-100 pa2 cp">
+            <div className="fl w-third-l w-100 pa2 cp hide">
               <a href="https://ourisland.pts.org.tw/" target="_blank" rel="noopener noreferrer">
                 <div className="pv3 pa4 tc ctaBox bg-white">
                   <figure className="w-100 h5 center mv0 flex aic jcc">
@@ -3751,11 +3755,11 @@ class Event03 extends Component {
         
 
         <section id={"22-transition"}  style={max} className="pv6-ns pv5 ph4-ns ph3 center">
-          <img src={this.props.data.illustrationCrab[6]} className="w-25-ns w-50" alt="illustration" />
-          <img src={this.props.data.illustrationCrab[7]} className="w-25-ns w-50" alt="illustration" />
-          <img src={this.props.data.illustrationCrab[8]} className="w-25-ns w-50" alt="illustration" />
-          <img src={this.props.data.illustrationCrab[9]} className="w-25-ns w-50" alt="illustration" />
-          <p className="lh-copy pre-wrap f5-ns f6 mt5 ph4-l ph3">{this.props.data.videoText[6]}</p>
+          <img src={this.props.data.illustrationCrab[6]} className="w-25-ns w-50 hide" alt="illustration" />
+          <img src={this.props.data.illustrationCrab[7]} className="w-25-ns w-50 hide" alt="illustration" />
+          <img src={this.props.data.illustrationCrab[8]} className="w-25-ns w-50 hide" alt="illustration" />
+          <img src={this.props.data.illustrationCrab[9]} className="w-25-ns w-50 hide" alt="illustration" />
+          <p className="lh-copy pre-wrap f5-ns f6 mt5 ph4-l ph3 hide">{this.props.data.videoText[6]}</p>
         </section>
 
         <Video 
@@ -4005,6 +4009,7 @@ class Event04 extends Component {
           id={"6-transition"} 
           text={this.props.data.panoramaText}
           bg={"bg-white"}
+          top={true}
         />
         <Panorama
           id={"7-panorama"} 
@@ -4704,6 +4709,7 @@ class Event07 extends Component {
           id={"6-video"} 
           videoID="02"
           color="dark"
+          position="fr-l"
           link={this.props.data.video[1]}
           text1={this.props.data.videoText[1]}
         />
@@ -4798,19 +4804,36 @@ class Event08 extends Component {
   render() {
     return (
       <div>
-        <p>event08</p>
+        <EndingVideo id={"15-endingVideo"} text={"下次打開水龍頭，想著這些水是花費多少代價才來到我們身邊，就會更加珍惜。"} link={"https://youtube.com/embed/sMp_TgjcHDo?rel=0"}/>
+        <CTA id={"17-cta"} switchView={this.props.switchView} next={"asia-cement-cost"} nextN={"挖山取石的代價"}/>
       </div>
     );
   }
 }
 
 class Event09 extends Component {
+  state = {
+    open: false,
+    image: "",
+    description: ""
+  }
+ 
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
+          id={"2-taiwan"}
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
@@ -4820,33 +4843,65 @@ class Event09 extends Component {
         />
 
         <Illustration
+          id={"3-illustration"}
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
 
-        <Transition text={this.props.data.transitionText[0]} bg={"bg-white"}/>
-        <Video 
-          videoID="01"
-          link={this.props.data.video[0]}
-          text1=""
+        <PhotoText
+          id={"4-photoText"}
+          order="left"
+          color="invert"
+          text={this.props.data.photoText[0]}
+          image = {this.props.data.photoImage[0]}
         />
 
         <PhotoTextFull
+          id={"5-photoTextFull"}
           position={"fr-l"}
-          color="dark"
-          text1={this.props.data.photoFullText[0]}
-          image = {this.props.data.photoFull[0]}
-          label = {this.props.data.photoFullTextLabel[0]}
+          text1={this.props.data.photoFullText[2]}
+          image = {this.props.data.photoFull[2]}
+          label = {this.props.data.photoFullTextLabel[2]}
         />
 
-        <CenterSmallVideo 
+        <CenterSmallVideo
+          id={"6-centerSmallVideo"}  
+          videoID="01"
+          text={this.props.data.transitionText[3]}
+          link={this.props.data.video[0]}
+          sound={false}
+        />
+
+        <PhotoTextFull
+          id={"7-photoTextFull"}
+          position={"fl-l"}
+          text1={this.props.data.photoFullText[3]}
+          image = {this.props.data.photoFull[3]}
+          label = {this.props.data.photoFullTextLabel[3]}
+        />
+
+        <Blog
+          id={"8-blog"}
+          number={3}
+          text={this.props.data.blogText[0]}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
+        </Modal>
+
+        <Video
+          id={"9-video"}
           videoID="02"
-          color="invert"
-          link={this.props.data.video[1]}
+          link={this.props.data.video[2]}
+          text1={this.props.data.transitionText[1]}
         />
 
-        <Transition text={this.props.data.transitionText[1]} bg={"bg-white"}/>
         <Video 
           videoID="03"
           link={this.props.data.video[2]}
@@ -4854,17 +4909,28 @@ class Event09 extends Component {
         />
 
         <Transition text={this.props.data.transitionText[2]} bg={"bg-white"}/>
-        <PhotoSwitch 
-          position={"fl-l"}
-          images={this.props.data.photoswitch1} 
-          text1=""
-          label={this.props.data.photoswitchLabel1}
-        />        
-
         <Video 
           videoID="04"
-          link={this.props.data.video[3]}
+          link={this.props.data.video[2]}
           text1=""
+        />
+
+        <Blog
+          id={"8-blog"}
+          number={2}
+          text={this.props.data.blogText[1]}
+          image={this.props.data.blogImage[1]}
+          label={this.props.data.blogLabel[1]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />   
+
+        <SmallVideo 
+          id={"14-smallVideo"} 
+          videoID="05"
+          bg={"bg-near-white"}
+          link={this.props.data.video[1]}
+          text={this.props.data.transitionText[4]}
+          sound={false}
         />
 
         <PhotoTextFull
@@ -4880,6 +4946,44 @@ class Event09 extends Component {
           text1={this.props.data.photoswitchText2}
           label={this.props.data.photoswitchLabel2}
         />
+
+        <Blog
+          id={"8-blog"}
+          number={4}
+          text={this.props.data.blogText[2]}
+          image={this.props.data.blogImage[2]}
+          label={this.props.data.blogLabel[2]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Blog
+          id={"8-blog"}
+          number={1}
+          bg={"bg-near-white"}
+          text={this.props.data.blogText[3]}
+          image={this.props.data.blogImage[3]}
+          label={this.props.data.blogLabel[3]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <PhotoCenterTextFull
+          id={"15-photoCenterTextFull"} 
+          text1={this.props.data.photoFullText[4]}
+          image = {this.props.data.photoFull[4]}
+          label = {this.props.data.photoFullTextLabel[4]}
+        />
+
+        <PhotoText
+          id={"4-photoText"}
+          order="left"
+          color="invert"
+          text={this.props.data.photoText[1]}
+          image = {this.props.data.photoImage[1]}
+        />
+
+        <EndingVideo id={"15-endingVideo"} text={"一起來關心 山林採礦"} link={"https://youtube.com/embed/DwvwCxkHN-Q?start=1195&rel=0"}/>
+        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <CTA id={"17-cta"} switchView={this.props.switchView} next={"lishan-high-mountain-farms"} nextN={"咬一口高山青翠"}/>
       </div>
     );
   }

@@ -45,9 +45,9 @@ $(document).ready(function(){
 		var bottom_of_window = $(window).scrollTop() + $(window).height();
 		var $this = $(this);
 		if( bottom_of_window > bottom_of_object ){
-			TweenMax.to($this, .4, {opacity: 1, transform: "translate3d(0,0,0)"});
+			TweenMax.to($this, .4, {opacity: 1, y:0});
 		} else {
-			TweenMax.to($this, .4, {opacity: 0, transform: "translate3d(0,50px,0)"});
+			TweenMax.to($this, .4, {opacity: 0, y:50});
 		}
 	  });
       if($(window).scrollTop() >= 66){
