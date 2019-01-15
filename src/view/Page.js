@@ -371,7 +371,7 @@ class Page extends Component {
         if(loaded) {
           if(cookies.get('firstVisit') === undefined) {
             cookies.set('firstVisit', true, { path: '/' });
-            window.location.reload();
+            //window.location.reload();
           }
           setTimeout(function(){
             document.getElementById('loading').classList.add('fade');
@@ -394,7 +394,7 @@ class Page extends Component {
         clearInterval(id);
         if(cookies.get('firstVisit') === undefined) {
           cookies.set('firstVisit', true, { path: '/' });
-          window.location.reload();
+          //window.location.reload();
         }
         setTimeout(function(){
           document.getElementById('loading').classList.add('fade');
@@ -1645,8 +1645,8 @@ class Video extends Component {
         textcolor = "black";
       }
       text1 = (
-          <div className="">
-            <div className={this.props.position+" w-50-l mw500 mh3-l mh3-l center w-100 pa4-l relative mt0-l mt4"}>
+          <div className="cf-l">
+            <div className={this.props.position+" w-50-l mw500 mh3-l mh3-l center w-100 pa4-l relative mt0-l mt2"}>
               <div className={bgcolor+" w-100 h-100 absolute pn top-left"}></div>
               <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative ph0-l ph3 "+textcolor}>{this.props.text1}</p>
             </div>
@@ -1656,14 +1656,16 @@ class Video extends Component {
     }
 
     var text2 = null;
+    var mt50vh = "mt50vh";
     if(this.props.number === 2) {
       h = "min-vh-300"
       if($this.state.mobile) {
         bgcolor = "transparent";
         textcolor = "black";
+        mt50vh = "";
       }
       text2 = (
-        <div className="mt50vh">
+        <div className={"cf-l "+mt50vh}>
           <div className={this.props.position+" w-50-l mw500 mh3-l center w-100 pa4-l relative mt0-l mt4"}>
             <div className={bgcolor+" w-100 h-100 absolute pn top-left"}></div>
             <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative ph0-l ph3 "+textcolor}>{this.props.text2}</p>
@@ -3051,7 +3053,7 @@ class Blog extends Component {
     } else if(this.props.number === 2) {
       column = "";
       img = (
-        <div className="w-100">
+        <div className="w-100 mt5">
           <div className="fl-l w-100 w-50-l relative tc mb4 mb0-l">
             <img className="mb3" src={this.props.image[0]} alt={this.props.label[0]}/>
             <label className="f7 mt2 o-50 lh-normal" >{this.props.label[0]}</label>
@@ -4482,12 +4484,28 @@ class Event05 extends Component {
 }
 
 class Event06 extends Component {
+  state = {
+    open: false,
+    image: "",
+    description: ""
+  }
+ 
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
+          id={"2-taiwan"}
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
@@ -4497,12 +4515,14 @@ class Event06 extends Component {
         />
 
         <Illustration
+          id={"3-illustration"}
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
 
         <PhotoTextFull
+          id={"4-photoTextFull"}
           position={"fr-l"}
           text1={this.props.data.photoFullText[0]}
           image = {this.props.data.photoFull[0]}
@@ -4510,19 +4530,29 @@ class Event06 extends Component {
         />
 
         <Video 
+          id={"4-video"}
           videoID="01"
           link={this.props.data.video[0]}
           text1={this.props.data.videoText[0]}
+          playing={true}
+          sound={false}
+        />
+
+        <Transition
+          id={"5-transition"}
+          text={this.props.data.photoswitchText}
         />
 
         <PhotoSwitch 
+          id={"6-photoSwitch"}
           position={"fr-l"}
           images={this.props.data.photoswitch} 
-          text1={this.props.data.photoswitchText}
+          text1=""
           label={this.props.data.photoswitchLabel}
         />
 
         <PhotoTextFull
+          id={"7-photoTextFull"}
           position={"fl-l"}
           text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
@@ -4530,6 +4560,7 @@ class Event06 extends Component {
         />
 
         <Video 
+          id={"8-video"}
           number={2}
           position={"fr-l"}
           color="dark"
@@ -4539,42 +4570,70 @@ class Event06 extends Component {
           text2={this.props.data.videoText[2]}
         />
 
+        <Transition id={"9-transition"} text={this.props.data.transitionText[0]} bg={"bg-white"}/>
+
         <Video 
+          id={"9-video"}
           position={"fl-l"}
           videoID="03"
           link={this.props.data.video[2]}
           text1={this.props.data.videoText[3]}
+          playing={true}
         />
 
-        <Transition text={this.props.data.videoText[4]} bg={"bg-white"}/>
-        <Video 
-          videoID="04"
-          link={this.props.data.video[3]}
-          text1=""
-        />
 
-        <PhotoTextFull
+        <Blog
+          id={"11-blog"}
           number={2}
-          position={"fl-l"}
-          color="dark"
-          text1={this.props.data.photoFullText[2]}
-          text2={this.props.data.photoFullText[3]}
-          image = {this.props.data.photoFull[2]}
-          label = {this.props.data.photoFullTextLabel[2]}
+          bg={"bg-white z4"}
+          text={this.props.data.blogText[0]}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+          onOpenModal={this.onOpenModal.bind(this)}
         />
 
-        <Video 
-          videoID="05"
-          position={"fr-l"}
-          text1=""
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
+        </Modal>
+
+        <PhotoSwitch
+          id={"12-photoSwitch"}
+          number = {2} 
+          images={this.props.data.photoswitch2} 
+          text1={this.props.data.photoswitchText2}
+          text2={this.props.data.photoswitchText3}
+          label={this.props.data.photoswitchLabel2}
         />
 
-        <PhotoTextFull
-          position={"fl-l"}
+        <PhotoContrast
+          id={"13-photoContrast"} 
+          bg={"bg-white z1"}
+          images={this.props.data.photocontrast}
+          text={this.props.data.photocontrastText}
+          year=""
+          label=""
+        />
+
+        <SmallVideo 
+          id={"14-smallVideo"} 
+          videoID="04"
+          bg={"bg-near-white"}
+          link={this.props.data.video[4]}
+          text={this.props.data.videoText[5]}
+          sound={false}
+        />
+
+        <PhotoCenterTextFull
+          id={"15-photoCenterTextFull"} 
           text1={this.props.data.photoFullText[4]}
           image = {this.props.data.photoFull[3]}
           label = {this.props.data.photoFullTextLabel[3]}
         />
+
+        <EndingVideo id={"16-endingVideo"} text={"一起來，看梨山20年變遷...."} link={"https://youtube.com/embed/2hNzEhztAms?rel=0"}/>
+        <More id={"17-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <CTA id={"18-cta"} switchView={this.props.switchView} next={"lushan-hotspring-risk"} nextN={"冒險 泡湯去"}/>
 
       </div>
     );
