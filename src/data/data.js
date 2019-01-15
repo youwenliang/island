@@ -1202,12 +1202,12 @@ var data = {
 
         //CoverVideo
         "coverTitle": "/island20/images/titles/07.svg",
-        "coverDescription": "號稱天下第一泉的廬山溫泉，\n因為泉質優良，一度熙熙攘攘。\n十年前，暴洪沖走了繁華，\n曾經人聲鼎沸的山城，只剩空蕩。",
+        "coverDescription": "號稱天下第一泉的廬山溫泉，泉質優良，一度熙熙攘攘。\n十年前，暴洪沖走繁華，人聲鼎沸的山城，只剩空蕩。",
         "coverVideo": "/island20/events/lushan-hotspring-risk/videos/G13-塔羅灣溪滾滾洪流縮短版.mp4",
 
         // Taiwan
         "taiwanText": [
-            "盧山的地理位置",
+            "廬山的地理位置",
             "廬山溫泉位在南投縣仁愛鄉，海拔高度約1250公尺，鄰近清境農場與合歡山。"
         ],
 
@@ -1225,7 +1225,7 @@ var data = {
 
             "一場又一場的災難，是人們與河爭地的苦果。颱風帶來瞬間強降雨、導致上游集水區嚴重崩塌，產生大量土砂，廬山地區的塔羅灣溪河段，因為溫泉飯占用河川行水區，導致河道窄縮，原本80公尺寬的河道，只剩20公尺寬，因而通洪及輸砂能力嚴重不足，造成兩側溫泉飯店大淹水，水淹一至二層樓高，洪水退去之後，飯店一樓塞滿土砂，無法清理，業者只好將二樓改作一樓，慘澹經營。",
 
-            "2011年，南投縣政府公告「變更廬山風景特定區計畫」，將母安山地滑影響範圍改劃為保護區。經濟部公告塔羅灣溪堤防預定線範圍內為河川區。2012年，南投縣溫泉區管理計畫廢止廬山溫泉區。這兩項變革，正式宣告廬山溫泉接近終點。\n\n五家合法業者已領取總共7億元的補償金，正式歇業。目前還有十多家溫泉業者繼續經營。南投縣政府表示，四十多家業者中，有三十九家願意前往，這將是全台第一個產業遷建的案例。然而，到福興農場投資一家溫泉旅館至少需要一億的資金，遭受多次風災重創的廬山業者，是否還有能力前往？",
+            "2011年，南投縣政府公告「變更廬山風景特定區計畫」，將母安山地滑影響範圍改劃為保護區。經濟部公告塔羅灣溪堤防預定線範圍內為河川區。2012年，南投縣溫泉區管理計畫廢止廬山溫泉區。這兩項變革，正式宣告廬山溫泉走向終點。\n\n五家合法業者已領取總共7億元的補償金，正式歇業。目前還有十多家溫泉業者繼續經營。南投縣政府表示，四十多家業者中，有三十九家願意前往，這將是全台第一個產業遷建的案例。然而，到福興農場投資一家溫泉旅館需要上億元的資金，遭受多次風災重創的廬山業者，是否還有能力前往？",
 
             "量穩質優的泉水，讓廬山因而繁華。然而過度開發、與河爭地加上母安山的危險地質，從崛起到崩毀，不過短短數十年。人不能無止境的向大自然索求，廬山一步步走到今日，正是向環境誠心認錯的時候。"
         ],
@@ -1264,13 +1264,15 @@ var data = {
 
         // PhotoSwitch
         "photoswitch": [
-            "/island20/events/lushan-hotspring-risk/G25.jpg",
-            "/island20/events/lushan-hotspring-risk/G26.jpg",
+            "/island20/events/lushan-hotspring-risk/G24-廬山大景.jpg",
+            "/island20/events/lushan-hotspring-risk/G32-2018年廬山空拍02.jpg",
+            "/island20/events/lushan-hotspring-risk/GStill1217_00000.jpg",
         ],
 
         "photoswitchLabel": [
-            "2012年廬山遊客渡假泡湯",
-            "2012年廬山遊客渡假泡湯",
+            "2018年廬山大景",
+            "2018年廬山大景",
+            "2018年廬山大景"
         ],
 
         // PhotoSlide
@@ -1285,7 +1287,7 @@ var data = {
         ],
 
         // Timeline
-        "timelineContent": "辛樂克颱風造成震驚全台的災情，其實這不是廬山溫泉第一次遇災，1994年道格颱風，2004年敏督利颱風，2008年薔蜜颱風，2009年莫拉克颱風，都讓塔羅灣溪變身兇猛的巨龍，洪水夾帶土砂，一再沖進溪畔的溫泉飯店，一次又一次輪迴上演。",
+        "timelineContent": "辛樂克颱風造成震驚全台的災情，但其實這不是廬山溫泉第一次遇災，1994年道格颱風、2004年敏督利颱風、2008年薔蜜颱風、2009年莫拉克颱風，都讓塔羅灣溪變身兇猛的巨龍，洪水夾帶土砂，一再沖進溪畔的溫泉飯店，一次又一次輪迴上演。",
 
         "timelineYear": [
             "1994年",
@@ -1308,6 +1310,42 @@ var data = {
             "/island20/events/lushan-hotspring-risk/G3.jpg",
             "/island20/events/lushan-hotspring-risk/G4.jpg",
             "/island20/events/lushan-hotspring-risk/G5.jpg",
+        ],
+
+        // BlogPost (部落格 x 2)
+        "blogText": [
+          "",
+          "淹水與地滑雙重危機，廬山溫泉已經不適合繼續下去，南投縣政府提出產業遷建，計畫將業者遷往埔里的福興農場，目前陸續進行溫泉探勘與整地。2018年完成第一口溫泉井探勘，井深1244公尺，泉水溫度達到攝氏45度，水量充沛。預計挖掘4口溫泉井，目前正在進行第二口溫泉井的探勘。",
+        ],
+        "blogImage": [
+          ["/island20/events/lushan-hotspring-risk/G10.jpg",
+          "/island20/events/lushan-hotspring-risk/G11.jpg",
+          "/island20/events/lushan-hotspring-risk/G12.jpg"],
+          ["/island20/events/lushan-hotspring-risk/G19.jpg",
+          "/island20/events/lushan-hotspring-risk/G22.jpg",
+          "/island20/events/lushan-hotspring-risk/G18.jpg"],
+        ],
+        "blogLabel": [
+          ["2017年 受到北坡岩體推擠，民宅牆面裂開", "2017年 北坡岩體滑動造成邊界道路開裂，管理單位暫時以水泥修補。", "2018年 岩體滑動，廬山停車場結構持續裂開中"],
+          ["2018年 福興農場溫泉井鑽探", "2018年 福興農場鑽探出泉溫超過40度", "2018年 福興農場空拍"],
+        ],
+
+        // More
+        "moreLink": [
+          "https://ourisland.pts.org.tw/content/%E4%BE%86%E8%87%AA%E5%A4%A7%E5%9C%B0%E7%9A%84%E8%AD%A6%E7%A4%BA-%E6%B0%B4%E6%BC%AB%E5%BB%AC%E5%B1%B1",
+          "https://ourisland.pts.org.tw/content/%E5%A4%B1%E5%BA%8F%E7%9A%84%E5%9C%8B%E5%9C%9F",
+          "https://ourisland.pts.org.tw/content/%E5%BB%AC%E5%B1%B1%E5%A4%A",
+          "https://ourisland.pts.org.tw/content/%E6%B8%85%E5%A2%83%E5%A5%87%E8%B9%9F",
+          "https://ourisland.pts.org.tw/content/%E5%BB%AC%E5%B1%B1%E5%8A%AB",
+          "https://ourisland.pts.org.tw/content/%E7%AE%A1%E7%AE%A1%E6%BA%AB%E6%B3%89"
+        ],
+        "moreTitle": [
+          "2008年 來自大地的警示-水漫廬山",
+          "2009年 失序的國土",
+          "2010年 廬山夢",
+          "2011年 清境奇蹟",
+          "2012年 廬山劫",
+          "2013年 管管溫泉"
         ]
     },
 // ****************************************************************** H ******************************************************************

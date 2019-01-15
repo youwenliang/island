@@ -4648,12 +4648,28 @@ class Event07 extends Component {
       $('.info').append(infoHelper);
     })
   }
+  state = {
+    open: false,
+    image: "",
+    description: ""
+  }
+ 
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
+          id={"2-taiwan"} 
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
@@ -4662,6 +4678,7 @@ class Event07 extends Component {
         />
 
         <Video 
+          id={"3-video"} 
           videoID="01"
           link={this.props.data.video[0]}
           text1={this.props.data.videoText[0]}
@@ -4670,25 +4687,21 @@ class Event07 extends Component {
         />
 
         <Illustration
+          id={"4-illustration"} 
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
 
         <PhotoSwitch 
+          id={"5-photoSwitch"} 
           images={this.props.data.photoswitch} 
           label={this.props.data.photoswitchLabel}
-          text1=""
-        />
-
-        <PhotoTextFull
-          position={"fr-l"}
           text1={this.props.data.photoFullText[0]}
-          image = {this.props.data.photoFull[0]}
-          label = {this.props.data.photoFullTextLabel[0]}
         />
 
         <Video 
+          id={"6-video"} 
           videoID="02"
           color="dark"
           link={this.props.data.video[1]}
@@ -4702,6 +4715,7 @@ class Event07 extends Component {
         />
 
         <Timeline
+          id={"8-timeline"} 
           height="480"
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
@@ -4710,13 +4724,15 @@ class Event07 extends Component {
         />
 
         <PhotoContrast
+          id={"9-photoContrast"} 
           bg={"bg-near-white"}
           images={this.props.data.photocontrast}
           text=""
           year={this.props.data.photocontrastYear}
         />
 
-        <Video 
+        <Video
+          id={"10-video"} 
           videoID="03"
           color="dark"
           position={"fr-l"}
@@ -4724,23 +4740,54 @@ class Event07 extends Component {
           text1={this.props.data.videoText[2]}
         />
         <PhotoTextFull
+          id={"11-photoTextFull"} 
           position={"fl-l"}
           text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
-        />        
-        <Transition text={this.props.data.videoText[3]} bg={"bg-white"}/>
-        <Video 
+        />
+        <Blog
+          id={"14-blog"}
+          number={3}
+          text={this.props.data.blogText[0]}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
+        </Modal>
+
+        <Blog
+          id={"14-blog"}
+          number={3}
+          bg={"bg-near-white"}
+          text={this.props.data.blogText[1]}
+          image={this.props.data.blogImage[1]}
+          label={this.props.data.blogLabel[1]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <CenterSmallVideo 
+          id={"13-video"} 
           videoID="04"
           link={this.props.data.video[3]}
-          text1=""
+          text={this.props.data.videoText[3]}
         />
+
         <CenterVideo 
+          id={"14-centerVideo"} 
           videoID="05"
           link={this.props.data.video[4]}
           text1={this.props.data.videoText[4]}
           bg={false}
         />
+
+        <EndingVideo id={"15-endingVideo"} text={"廬山是如何變成今天的樣子呢?"} link={"https://youtube.com/embed/sMp_TgjcHDo?rel=0"}/>
+        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <CTA id={"17-cta"} switchView={this.props.switchView} next={"hushan-reservoir-lost-water"} nextN={"攔住水又失去水"}/>
         
       </div>
     );
