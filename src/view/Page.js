@@ -1303,9 +1303,9 @@ function PhotoTextFix(props) {
     h = "";
   }
 
-  var p = "pb6";
+  var p = "pb6-l pb5";
   if(props.top) {
-    p = "pt6";
+    p = "pt6-l pt5";
   }
 
   return (
