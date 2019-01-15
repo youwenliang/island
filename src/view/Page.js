@@ -1246,14 +1246,27 @@ class PhotoText extends Component {
       )
     }
 
+    var large = ""
+    var obj = null;
+    var mw70 = "mw70"
+    var pa3 = "pa3"
+    if(this.props.large) {
+      large = "h-100"
+      mw70 = ""
+      pa3 = ""
+      obj = {
+        objectFit: "cover"
+      }
+    }
+
     var photo_content_1 = this.state.mobile ? null : (
-      <figure className="center mw70 w-100 o-90 o-100-ns">
-        <img className={"w-50-l w-100 "+photo} src={this.props.image} alt="description"/>
+      <figure className={"center w-100 o-90 o-100-ns "+mw70+" "+large}>
+        <img className={"w-50-l w-100 "+photo+" "+large} src={this.props.image} alt="description" style={obj}/>
         {info}
       </figure>
     )
     var photo_content_2 = this.state.mobile ? (
-      <figure className="center mw70 w-100 bg-white pa3 o-90">
+      <figure className={"center mw70 w-100 bg-white o-90 "+pa3}>
         <img className={"w-50-l w-100 "+photo} src={this.props.image} alt="description"/>
         {info}
       </figure>
@@ -1272,7 +1285,7 @@ class PhotoText extends Component {
         <div className="mw70 center ph4-ns ph3 w-100 z4 pre-wrap" id="triggerText">
           <div className="cf black">
             {photo_content_2}
-            <div className={"w-50-l mw500 mh3-l center w-100 o-90 pa4-l pa3 "+color2+" "+text}>
+            <div className={"w-50-l mw500 mh3-l center w-100 o-90 pa4-l pa3 bg-white "+text}>
               <p className="f5-ns f6 lh-copy mv0" dangerouslySetInnerHTML={{__html:this.props.text}}></p>
             </div>
           </div>
@@ -4902,10 +4915,56 @@ class Event09 extends Component {
           text1={this.props.data.transitionText[1]}
         />
 
+        <TimeChangeFull
+          id={"15-timeChangeFull"}
+          position={"fr-l"}
+          text1={this.props.data.timeChangeText[0]}
+          image = {this.props.data.timeChangePhoto[0]}
+          label = {this.props.data.timeChangeLabel[0]}
+          count="1-2"
+          first={true}
+        />
+        <TimeChangeFull
+          id={"16-timeChangeFull"}
+          position={"fr-l"}
+          last={true}
+          text1={this.props.data.timeChangeText[0]}
+          image = {this.props.data.timeChangePhoto[1]}
+          label = {this.props.data.timeChangeLabel[1]}
+          count="2-2"
+        />
+
+        <PhotoText
+          id={"4-photoText"}
+          order="left"
+          large={true}
+          text={this.props.data.photoText[2]}
+          image = {this.props.data.photoImage[2]}
+        />
+
         <Video 
           videoID="03"
           link={this.props.data.video[2]}
           text1=""
+        />
+
+        <TimeChangeFull
+          id={"15-timeChangeFull"}
+          position={"fl-l"}
+          text1={this.props.data.timeChangeText[1]}
+          image = {this.props.data.timeChangePhoto[2]}
+          label = {this.props.data.timeChangeLabel[2]}
+          count="1-2"
+          first={true}
+        />
+        <TimeChangeFull
+          id={"16-timeChangeFull"}
+          position={"fl-l"}
+          last={true}
+          text1={this.props.data.timeChangeText[1]}
+          image = {this.props.data.timeChangePhoto[3]}
+          label = {this.props.data.timeChangeLabel[3]}
+          count="2-2"
         />
 
         <Transition text={this.props.data.transitionText[2]} bg={"bg-white"}/>
