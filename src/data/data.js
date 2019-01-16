@@ -1370,6 +1370,178 @@ var data = {
       ],
       "illustration": "/events/hushan-reservoir-lost-water/illustrations/illustrationH.svg",
 
+      "illustrationBird": [
+      "/events/hushan-reservoir-lost-water/illustrations/illustrationH.svg",
+      "/events/hushan-reservoir-lost-water/illustrations/illustrationH.svg",
+      "/events/hushan-reservoir-lost-water/illustrations/illustrationH.svg",
+      ],
+
+      // Transition
+      "transitionText": [
+      "在這座被犧牲的低海拔基因庫中，最受矚目的，是名列亞洲鳥類紅皮書瀕臨絕種鳥類的八色鳥，牠們在夏天來到台灣繁殖，秋天南返度冬。\n\n這種稀有鳥類，全世界最容易觀察到的地方，就在台灣的雲林斗六丘陵。",
+      "湖山水庫的水給誰用?",
+      "為什麼需要蓋湖山水庫?",
+      "這裡蓋水庫安全嗎?",
+      "沒有水閘門的水庫 居民能安心嗎?",
+      "經營管理上有什麼問題? ",
+      "興建水庫，最大的受害者還是自然界的生物",
+      "特生中心棲地組組長林瑞興表示，根據調查，目前全台灣的八色鳥數量少了50％，水庫旁的湖本村減少了70％。湖山水庫的工程，將溪谷和森林改變成開闊型的環境，變得不適合八色鳥生存，確實影響數量，但不是唯一原因，必須綜合考量牠們度冬地的狀況，參考全世界八色鳥的情況才能釐清。",
+      "蓋一座水庫，犧牲珍貴生態，值得嗎？\n取得水源，水庫不是唯一方案。"
+      ],
+
+      // Video
+      "video": [
+      "/events/hushan-reservoir-lost-water/videos/H27-八色鳥短片.mp4",
+      "/events/hushan-reservoir-lost-water/videos/H25-抽地下水.mp4",
+      "/events/hushan-reservoir-lost-water/videos/溢洪道空拍.mp4",
+      "",
+      "/events/hushan-reservoir-lost-water/videos/H26-陳清圳.mp4",
+      "/events/hushan-reservoir-lost-water/videos/H28-八色鳥底圖.mp4",
+      ],
+      "videoText":[
+      "",
+      "長期以來，少了溪水灌溉的雲林農民，大多使用地下水，工業進駐，用水需求增加，更加重地層下陷的威脅。\n\n根據水利署資料，雲林近20年來的總下陷量，內陸地區已經超過160公分，顯著下陷面積366.2平方公里，由於高鐵行經下陷區，如何減緩下陷變得更加急迫。\n\n地球公民基金會執行長李根政認為，集集攔河堰與湖山水庫，大規模取走地表水，對於減緩地層下陷根本沒有幫助，甚至還會加劇。對此，中區水資源局則回應湖山水庫供水之後，對減緩地層下陷一定有助益，然而，這還需要數十年才得以印證。",
+      "雲林環盟理事長張子見質疑，面對極端氣候的降雨集中，湖山水庫沒有閘門，無法控制出水量，一旦大雨降在這裏，下游的湖山里有能力承受嗎？\n\n中水局對於水庫設計有高度信心，表示水庫屆滿後，可關閉桶頭堰的取水口，離槽水庫的設計對下游更安全的。",
+      "從個人到產業，除了發揮巧思留住雨水，用過的水也能想辦法回收。李根政表示，台灣工業用水回收率偏低，回收率如能從三成提升到七成，節省下來的水超過一座曾文水庫的水。",
+      "有多少錢，做多少事，一個地區要發展，是不是也該先釐清有多少水？台灣水資源是不是能定出上限？",
+      "湖山水庫的興建，反映出人對待自然的態度。"
+      ],
+
+      // PhotoSwitch
+      "photoswitch": [
+          "/events/hushan-reservoir-lost-water/H6-1岩生秋海棠-陳清圳提供(壓字版).JPG",
+          "/events/hushan-reservoir-lost-water/H7-食蛇龜.jpg",
+          "/events/hushan-reservoir-lost-water/H8-寶哥拍圓葉布勒藤 (1).JPG",
+      ],
+
+      "photoswitchText": "在湖水漲起之前，這裡有一座美麗的幽情谷。\n\n從前，陡直的山壁上，長著台灣原生種植物---岩生秋海棠，以及非常珍貴稀有的圓葉布勒德藤。\n\n台灣有31種蛙類，這裡就發現了22種，同時這裡也是珍貴稀有的二級保育類動物，食蛇龜的重要棲地。\n\n環團在這裡發現了316種植物、81種鳥類，哺乳類、爬蟲類、魚、蛙類也多達20幾種。",
+
+      "photoswitchLabel": [
+          "岩生秋海棠",
+          "食蛇龜",
+          "圓葉布勒藤"
+      ],
+
+      // PhotoFull
+      "photoFull":[
+      "/events/hushan-reservoir-lost-water/H15-2011年水庫施工(614遇見八色鳥).jpg",
+      "/events/hushan-reservoir-lost-water/H4-入口意象.jpg",
+      "/events/hushan-reservoir-lost-water/H17-集集攔河堰蓄水高的狀態.JPG",
+      ],
+      "photoFullText":[
+      "然而，現在要看到牠們越來越難。\n\n雲林環盟理事長張子見說明，水庫興建範圍原本是全球已知八色鳥巢位最密集的地方，原本調查到六百多隻，水庫完工之後，只剩下二十幾隻，不只鄰近區域的八色鳥減少，其他物種也跟著消失。",
+      "現在來到湖山水庫，\n聽不見八色鳥的鳴叫聲，\n看不見牠們飛翔，\n只有入口意象上，冰冷的雕像。\n其他生物也看不到了，\n不再有蟲鳴鳥叫的熱鬧，\n剩下平靜的水面，映著天空的顏色。",
+      "水利署中區水資源局表示，湖山水庫主要供應雲林地區民生用水與離島工業區，完工後與集集攔河堰聯合運用，每日可供水約69.4萬噸，每年約有一億噸的水可以取代抽取地下水，有助解決雲林的地層下陷。\n\n地球公民基金會執行長李根政則認為，雲林地區每日民生用水20多萬噸，集集攔河堰就能供應，原本就不需要蓋湖山水庫。政府興建湖山水庫的目的，主要是為了雲林離島工業區的用水需求。"
+      ],
+      "photoFullTextLabel":[
+      "",
+      "",
+      "集集攔河堰蓄水高的狀態"
+      ],
+
+      // PhotoText
+      "photoText": [
+        "湖山水庫是一座離槽水庫，從濁水溪支流清水溪引水。\n\n集水面積：6.58平方公里\n淹沒面積：2.02平方公里 \n容      量：5,347萬立方公尺\n類      型：土石壩",
+        "環保團體指出大尖山斷層通過桶頭堰取水口， 西側的桐樹湖斷層鄰近湖山水庫壩址。當地地質屬於砂岩及泥岩，脆弱的地質被形容為「方糖水庫」。\n\n中水局認為，壩體距離桐樹湖斷層約2~3公里，大壩有加寬處理，並且採用土石壩的柔性結構，足以因應地震的影響，安全無虞。",
+        "中水局說明，已經建立植物保存園區，將水庫淹沒區的植物移植，另外也建造溫室，將野外採集的圓葉布勒德藤與岩生秋海棠扦插分株，移植到水庫周圍的四個地區，進行移地復育，針對八色鳥也有持續進行監測。\n\n雲林縣樟湖國小校長陳清圳質疑，天文、地文、水文、生文交織的複雜體系，人要怎麼做出來？"
+      ],
+      "photoImage": [
+        "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
+        "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
+        "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
+      ],
+
+      // Timeline
+      "timelineContent": "湖山水庫是台灣第95座水庫，在2000年通過環評後，兩年後開始動工，由於生態與梅林遺址等問題尚未釐清，因而停工，一直到2006年才復工。2015年底，水庫與攔河堰陸續完工，2016年4月2日正式啟用。這座水庫在諸多爭議聲中，蓋蓋停停，原本預定花費7-9年時間完工，卻延長至13年才完成，總經費花了185億元。",
+      "timelineText": [
+          "因為開挖裸露面積超過環評承諾，而被開罰五十萬。", 
+          "",
+          "水庫動工後，八色鳥棲地大幅縮減，鳥況明顯下降。",
+          "完工後開始蓄水的湖山水庫 。"
+      ],
+      "timelineYear": [
+          "2008年",
+          "2010年",
+          "2011年",
+          "2018年",
+      ],
+      "timelineImage": [
+      "/events/hushan-reservoir-lost-water/H11.jpg",
+      "/events/hushan-reservoir-lost-water/H12.jpg",
+      "/events/hushan-reservoir-lost-water/H13.jpg",
+      "/events/hushan-reservoir-lost-water/H14.jpg"
+      ],
+
+      "timelineContent2": "目前台灣水利單位還計畫在新北市坪林地區蓋平溪水庫、雙溪水庫以及苗栗蓋天花湖水庫等等，顯示水庫仍是台灣水資源開發的主軸。\n\n然而，蓋水庫對生態的破壞相當大，在美國憲法中已經明文規定，禁止興建水庫。歐美各國並開始進行拆壩運動，要如何取得水資源，又能讓生態保育與水資源開發，能夠取得雙贏，是我們未來水資源政策，必須要面對的課題。",
+      "timelineText2": [
+          "新竹荒野協會進行反新竹比麟水庫宣導活動。(許天麟提供)", 
+          "新北市平溪水庫舉辦說明會，居民掛起抗議布條。",
+          "為了了解苗栗天花湖水庫興建的影響，居民自行舉辦社區說明會。(戴文祥提供)",
+          "居民仍持續抗議新北市雙溪水庫的興建。"
+      ],
+      "timelineYear2": [
+          "2009年",
+          "2010年",
+          "2013年",
+          "2018年",
+      ],
+      "timelineImage2": [
+      "/events/hushan-reservoir-lost-water/H22.jpg",
+      "/events/hushan-reservoir-lost-water/H21.jpg",
+      "/events/hushan-reservoir-lost-water/H23.jpg",
+      "/events/hushan-reservoir-lost-water/H20.jpg"
+      ],
+
+      // TimeChangeFull
+      "timeChangePhoto": [
+      "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
+      "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
+      ],
+      "timeChangeText": [
+      "湖山水庫的集水範圍，位在清水溪上游的嘉義縣梅山鄉、阿里山鄉跟竹崎鄉，在居民的反彈下，擔心劃入保護區開發使用受限，因此尚未劃設為水質水量保護區。湖山水庫原訂劃設261.53平方公里的水質水量保護區，2017年1月24日只公告68.4平方公里，集水區有七成以上土地還沒劃設。\n\n環團擔心，水庫蓋成了，水源品質與集水區的水土保持無法確保，將加速淤積。中水局表示將持續與反對劃設民眾溝通。",
+      ],
+      "timeChangeLabel": [
+      "",
+      "",
+      ],
+
+      // BlogPost (部落格 x 2)
+        "blogText": [
+          "2012年，特生中心與中興大學的團隊，搶救出185隻食蛇龜，移往私人農場安置，之後野放到離原棲地不遠的地方，並且在20隻個體上裝了發報器，進行無線電追蹤。\n\n在水庫完工後，這些龜重回自然，並無後續追蹤資料。沒有人知道這場搶救行動的成效。",
+          "依據台水公司目前的減漏計畫，全國平均漏水率預計由2013年19.55%降至2022年14.25%，共計降低5.30%，合計每年約可節省1.7億立方公尺水量，相當於3座湖山水庫有效蓄水容量。\n\n漏水率難以降低，在於管線老舊、經費不足等問題。\n\n賴揆宣示，力拼漏水率在2031年降到10％，預計將能省下更多水。"
+        ],
+        "blogImage": [
+          ["/events/hushan-reservoir-lost-water/H19-裝上發報器的食蛇龜.jpg"],
+          ["https://fakeimg.pl/600x480/?text=PhotoText&retina=1"],
+        ],
+        "blogLabel": [
+          ["裝上發報器的食蛇龜，研究人員可用無線電接收訊號，得知牠們的所在位置。"],
+          [""],
+        ],
+
+
+
+
+
+
+      // More
+      "moreLink": [
+        "https://ourisland.pts.org.tw/content/%E6%B0%B4%E5%BA%AB%E8%88%87%E5%85%AB%E8%89%B2%E9%B3%A5",
+        "https://ourisland.pts.org.tw/content/%E6%B0%B4%E7%9A%84%E6%88%B0%E7%88%AD",
+        "https://ourisland.pts.org.tw/content/%E6%B0%B4%E5%BA%AB%E7%88%AD%E8%AD%B0",
+        "https://ourisland.pts.org.tw/content/%E6%B9%96%E5%B1%B1%E6%B0%B4%E5%BA%AB%E4%B9%8B%E6%B3%A2%E7%80%BE%E5%86%8D%E8%B5%B7",
+        "https://ourisland.pts.org.tw/content/%E9%81%87%E8%A6%8B%E5%85%AB%E8%89%B2%E9%B3%A5",
+        "https://ourisland.pts.org.tw/content/%E9%BE%9C%E9%80%94"
+      ],
+      "moreTitle": [
+        "2003年 水庫與八色鳥",
+        "2004年 水的戰爭",
+        "2005年 水庫爭議",
+        "2008年 湖山水庫之波瀾再現",
+        "2011年 遇見八色鳥",
+        "2012年 龜途"
+      ]
+
 
     },
 // ****************************************************************** I ******************************************************************

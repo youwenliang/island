@@ -7,6 +7,187 @@
 	.st1{fill:#222222;}
 	.st2{fill:#FFFFFF;}
 	.st3{fill:#CCD9CF;}
+
+	#smoke {
+		animation: fade 3s ease-in-out infinite;
+	}
+
+	#bird1 {
+		animation: fly1 3s ease-in-out infinite;
+	}
+	#bird2 {
+		animation: fly2 3s ease-in-out infinite;
+	}
+	#bird3 {
+		animation: fly3 3s ease-in-out infinite;
+	}
+	#bird4 {
+		animation: fly4 3s ease-in-out infinite;
+	}
+	#bird5 {
+		animation: fly5 3s ease-in-out infinite;
+	}
+
+	#hand {
+		animation: enter 3s ease-in-out infinite;
+	}
+	@keyframes enter {
+	  0% {
+	  	transform: translate(280px, -460px) rotateZ(22deg);
+	  	opacity: 0;
+	  }
+	  10% {
+	  	transform: translate(280px, -460px) rotateZ(22deg);
+	  	opacity: 0;
+	  }
+	  30% {
+	  	transform: translate(0px, 0) rotateZ(0deg);
+	  	opacity: 1;
+	  }
+	  80% {
+	  	transform: translate(0px, 0) rotateZ(0deg);
+	  	opacity: 1;
+	  }
+	  99% {
+	  	transform: translate(280px, -460px) rotateZ(22deg);
+	  	opacity: 0;
+	  }
+	  100% {
+	  	transform: translate(280px, -460px) rotateZ(22deg);
+	  	opacity: 0;
+	  }
+	}
+
+	@keyframes fade {
+	  0% {
+	  	opacity: 0;
+	  }
+	  30% {
+	  	opacity: 0;
+	  }
+	  40% {
+	  	opacity: 1;
+		
+	  }
+	  90% {
+	  	opacity: 1;
+	  	
+	  }
+	  100% {
+	    opacity: 0;
+	    
+	  }
+	}
+	@keyframes fly1 {
+	  0% {
+	  	opacity: 0;
+	  	transform: translate(-30px, 20px) rotateZ(1deg);
+	  }
+	  40% {
+	  	opacity: 0;
+	  	transform: translate(-30px, 20px) rotateZ(1deg);
+	  }
+	  50% {
+	  	opacity: 1;
+	  	transform: translate(0px, 0px) rotateZ(0deg);
+	  }
+	  90% {
+	  	opacity: 1;
+	  	transform: translate(0px, 0px) rotateZ(0deg);
+	  }
+	  100% {
+	    opacity: 0;
+	    transform: translate(0px, 0px) rotateZ(0deg);
+	  }
+	}
+	@keyframes fly2 {
+	  0% {
+	  	opacity: 0;
+	  	transform: translate(-30px, 40px) rotateZ(-1deg);
+	  }
+	  43% {
+	  	opacity: 0;
+	  	transform: translate(-30px, 40px) rotateZ(-1deg);
+	  }
+	  53% {
+	  	opacity: 1;
+	  	transform: translate(0px, 0px) rotateZ(0deg);
+	  }
+	  90% {
+	  	opacity: 1;
+	  	transform: translate(0px, 0px) rotateZ(0deg);
+	  }
+	  100% {
+	    opacity: 0;
+	    transform: translate(0px, 0px) rotateZ(0deg);
+	  }
+	}
+	@keyframes fly3 {
+	  0% {
+	  	opacity: 0;
+	  	transform: translate(0px, 40px) rotateZ(0deg);
+	  }
+	  46% {
+	  	opacity: 0;
+	  	transform: translate(0px, 40px) rotateZ(0deg);
+	  }
+	  56% {
+	  	opacity: 1;
+	  	transform: translate(0px, 0px) rotateZ(0deg);
+	  }
+	  90% {
+	  	opacity: 1;
+	  	transform: translate(0px, 0px) rotateZ(0deg);
+	  }
+	  100% {
+	    opacity: 0;
+	    transform: translate(0px, 0px) rotateZ(0deg);
+	  }
+	}
+	@keyframes fly4 {
+	  0% {
+	  	opacity: 0;
+	  	transform: translate(30px, 40px) rotateZ(-1deg);
+	  }
+	  49% {
+	  	opacity: 0;
+	  	transform: translate(30px, 40px) rotateZ(-1deg);
+	  }
+	  59% {
+	  	opacity: 1;
+	  	transform: translate(0px, 0px) rotateZ(0deg);
+	  }
+	  90% {
+	  	opacity: 1;
+	  	transform: translate(0px, 0px) rotateZ(0deg);
+	  }
+	  100% {
+	    opacity: 0;
+	    transform: translate(0px, 0px) rotateZ(0deg);
+	  }
+	}
+	@keyframes fly5 {
+	  0% {
+	  	opacity: 0;
+	  	transform: translate(30px, 20px) rotateZ(-1deg);
+	  }
+	  52% {
+	  	opacity: 0;
+	  	transform: translate(30px, 20px) rotateZ(-1deg);
+	  }
+	  62% {
+	  	opacity: 1;
+	  	transform: translate(0px, 0px) rotateZ(0deg);
+	  }
+	  90% {
+	  	opacity: 1;
+	  	transform: translate(0px, 0px) rotateZ(0deg);
+	  }
+	  100% {
+	    opacity: 0;
+	    transform: translate(0px, 0px) rotateZ(0deg);
+	  }
+	}
 </style>
 <g id="background">
 	<g id="_xFFFD__x83__x8C__xFFFD__x99__xA0_影像_1_">
@@ -450,7 +631,7 @@
 	<path d="M194.9,152c0.1,1.6-0.3,2.5-1.4,2.9c-1.2,0.5-2.2,0.1-2.9-0.9c-2-3.3-2.5-7.1-2.8-10.9c-0.1-1.1,0.7-1.8,1.8-2.1
 		c1.2-0.3,2.4,0.2,2.7,1.3C193.4,145.6,194.2,149.1,194.9,152z"/>
 </g>
-<g id="bird3_1_">
+<g id="bird4">
 	<polygon class="st2" points="197.8,243 218.8,228.5 226.8,232.5 225.3,237.5 	"/>
 	<polygon class="st2" points="244.3,246 256.3,239.5 265.3,240.5 266.8,246 	"/>
 	<polygon class="st2" points="164.3,271.5 148.3,279.5 120.3,281 157.3,293 182.8,348.5 202.8,364.5 220.8,373 230.8,371 

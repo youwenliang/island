@@ -4850,8 +4850,247 @@ class Event08 extends Component {
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
-        <EndingVideo id={"15-endingVideo"} text={"下次打開水龍頭，想著這些水是花費多少代價才來到我們身邊，就會更加珍惜。"} link={"https://youtube.com/embed/sMp_TgjcHDo?rel=0"}/>
-        <CTA id={"17-cta"} switchView={this.props.switchView} next={"asia-cement-cost"} nextN={"挖山取石的代價"}/>
+
+        <Transition id={"4-illustration"} text={this.props.data.transitionText[0]} bg={"bg-near-white"}/>
+
+        <Video
+          id={"5-video"} 
+          videoID="01"
+          link={this.props.data.video[0]}
+          text1=""
+          playing={true}
+        />
+        <PhotoSwitch 
+          id={"6-photoSwitch"} 
+          position={"fl-l"}
+          images={this.props.data.photoswitch} 
+          text1={this.props.data.photoswitchText}
+          label={this.props.data.photoswitchLabel}
+        />
+
+        <PhotoCenterTextFull
+          id={"7-photoCenterTextFull"} 
+          text1={this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+          bg={true}
+        />
+
+        <PhotoText
+          id={"8-photoText"}
+          order="left"
+          color="invert"
+          text={this.props.data.photoText[0]}
+          image = {this.props.data.photoImage[0]}
+        />
+
+        <Timeline
+          id={"9-timeline"}
+          height={480}
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
+          content={this.props.data.timelineContent}
+          bg={"bg-white"}
+        />
+
+        <PhotoCenterTextFull
+          id={"10-photoCenterTextFull"} 
+          text1={this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
+        />
+
+        <Transition
+          id={"11-transition"} 
+          bg={"bg-green white tc"}
+          text={this.props.data.transitionText[1]}
+        />
+
+        <PhotoTextFull
+          id={"12-photoTextFull"}
+          position={"fl-l"}
+          text1={this.props.data.photoFullText[2]}
+          image = {this.props.data.photoFull[2]}
+          label = {this.props.data.photoFullTextLabel[2]}
+        />
+
+        <Transition
+          id={"13-transition"} 
+          bg={"bg-green white tc"}
+          text={this.props.data.transitionText[2]}
+        />
+
+        <Video
+          id={"14-video"} 
+          videoID="02"
+          color="dark"
+          position="fl-l"
+          link={this.props.data.video[1]}
+          text1={this.props.data.videoText[1]}
+        />
+
+        <Transition
+          id={"15-transition"} 
+          bg={"bg-green white tc"}
+          text={this.props.data.transitionText[3]}
+        />
+
+        <PhotoText
+          id={"16-photoText"}
+          order="left"
+          color="invert"
+          text={this.props.data.photoText[1]}
+          image = {this.props.data.photoImage[1]}
+        />
+
+        <Transition
+          id={"17-transition"} 
+          bg={"bg-green white tc"}
+          text={this.props.data.transitionText[4]}
+        />
+
+        <Video
+          id={"18-video"} 
+          videoID="03"
+          link={this.props.data.video[2]}
+          text1={this.props.data.videoText[2]}
+        />
+
+        <Transition
+          id={"19-transition"} 
+          bg={"bg-green white tc"}
+          text={this.props.data.transitionText[5]}
+        />
+
+        <TimeChangeFull
+          id={"20-timeChangeFull"}
+          position={"fr-l"}
+          text1={this.props.data.timeChangeText[0]}
+          image = {this.props.data.timeChangePhoto[0]}
+          label = {this.props.data.timeChangeLabel[0]}
+          count="1-2"
+          first={true}
+        />
+        <TimeChangeFull
+          id={"21-timeChangeFull"}
+          position={"fr-l"}
+          last={true}
+          text1={this.props.data.timeChangeText[0]}
+          image = {this.props.data.timeChangePhoto[1]}
+          label = {this.props.data.timeChangeLabel[1]}
+          count="2-2"
+        />
+
+        <Transition id={"22-transition"} text={this.props.data.transitionText[6]} bg={"bg-near-white"}/>
+
+        <Blog
+          id={"23-blog"}
+          number={1}
+          text={this.props.data.blogText[0]}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
+        </Modal>
+
+        <Video
+          id={"24-video"} 
+          videoID="04"
+          color="dark"
+          link={""}
+          text1=""
+        />
+
+        <Transition id={"25-transition"} text={this.props.data.transitionText[7]} bg={"bg-near-white"}/>
+
+        <PhotoText
+          id={"26-photoText"}
+          order="left"
+          text={this.props.data.photoText[2]}
+          image = {this.props.data.photoImage[2]}
+          large ={true}
+        />
+
+        <Timeline
+          id={"27-timeline"}
+          height={520}
+          text={this.props.data.timelineText2}
+          year={this.props.data.timelineYear2}
+          images={this.props.data.timelineImage2}
+          content={this.props.data.timelineContent2}
+          bg={"bg-near-white"}
+        />
+
+        <Transition id={"28-transition"} text={this.props.data.transitionText[8]} bg={"bg-white"}/>
+
+        <Transition
+          id={"29-transition"} 
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationBird[0]}
+          text={"我們可以:節水"}
+        />
+
+        <CenterSmallVideo
+          id={"30-centerSmallVideo"}  
+          videoID="05"
+          text={this.props.data.videoText[3]}
+          link={this.props.data.video[3]}
+          sound={false}
+        />
+
+        <Transition
+          id={"31-transition"} 
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationBird[1]}
+          text={"我們可以:降低漏水率"}
+        />
+
+        <Blog
+          id={"32-blog"}
+          number={1}
+          text={this.props.data.blogText[1]}
+          image={this.props.data.blogImage[1]}
+          label={this.props.data.blogLabel[1]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Transition
+          id={"33-transition"} 
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationBird[2]}
+          text={"我們可以:區域性總量管制"}
+        />
+
+        <Video
+          id={"34-video"} 
+          videoID="06"
+          position="fr-l"
+          link={this.props.data.video[4]}
+          text1={this.props.data.videoText[4]}
+          playing={true}
+        />
+
+        <CenterVideo 
+          id={"35-centerVideo"} 
+          videoID="07"
+          link={this.props.data.video[5]}
+          text1={this.props.data.videoText[5]}
+          bg={false}
+          playing={false}
+          sound={false}
+        />
+
+        <EndingVideo id={"36-endingVideo"} text={"下次打開水龍頭，想著這些水是花費多少代價才來到我們身邊，就會更加珍惜。"} link={"https://youtube.com/embed/sMp_TgjcHDo?rel=0"}/>
+        <More id={"37-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <CTA id={"38-cta"} switchView={this.props.switchView} next={"asia-cement-cost"} nextN={"挖山取石的代價"}/>
       </div>
     );
   }
