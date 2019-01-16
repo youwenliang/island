@@ -4814,9 +4814,42 @@ class Event07 extends Component {
 }
 
 class Event08 extends Component {
+  state = {
+    open: false,
+    image: "",
+    description: ""
+  }
+ 
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
+        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        
+        <Taiwan
+          id={"2-taiwan"}
+          text1={this.props.data.taiwanText[0]}
+          text2={this.props.data.taiwanText[1]}
+          illustration = {this.props.data.taiwan}
+          
+          shipPositionL = "0%"
+          shipPositionT = "0%"
+        />
+
+        <Illustration
+          id={"3-illustration"}
+          number = {1}
+          text1={this.props.data.illustrationText[0]}
+          illustration = {this.props.data.illustration}
+        />
         <EndingVideo id={"15-endingVideo"} text={"下次打開水龍頭，想著這些水是花費多少代價才來到我們身邊，就會更加珍惜。"} link={"https://youtube.com/embed/sMp_TgjcHDo?rel=0"}/>
         <CTA id={"17-cta"} switchView={this.props.switchView} next={"asia-cement-cost"} nextN={"挖山取石的代價"}/>
       </div>

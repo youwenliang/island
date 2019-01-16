@@ -1351,7 +1351,26 @@ var data = {
 // ****************************************************************** H ******************************************************************
     "hushan-reservoir-lost-water": {
       "title": "攔住水又失去水",
-      "id": "事件8"
+      "id": "事件8",
+
+      //CoverVideo
+      "coverTitle": "/images/titles/08.svg",
+      "coverDescription": "為了攔住水，毀壞一片森林。\n眾多爭議中，艱難誕生的湖山水庫，是否成為減緩地層下陷的解藥？",
+      "coverVideo": "/events/hushan-reservoir-lost-water/videos/H1湖山水庫空拍1.mp4",
+
+      // Taiwan
+      "taiwanText": [
+          "湖山水庫的地理位置",
+          "湖山水庫位在雲林縣古坑鄉，集水面積6.58平方公里。"
+      ],
+
+      // Illustration
+      "illustrationText": [
+          "靜靜的湖水，映著天空的顏色。\n\n2016年4月啟用的湖山水庫，進入營運階段，水庫蓄水量達到總容量的50％，目前每日供水約16萬噸。\n\n為了讓它誕生，國際瀕危物種「八色鳥」，失去全台灣最好的一片繁殖地..."
+      ],
+      "illustration": "/events/hushan-reservoir-lost-water/illustrations/illustrationH.svg",
+
+
     },
 // ****************************************************************** I ******************************************************************
     "asia-cement-cost": {
@@ -1432,8 +1451,8 @@ var data = {
         "timeChangePhoto": [
         "/events/asia-cement-cost/I18.jpg",
         "/events/asia-cement-cost/I19.jpg",
-        "/events/asia-cement-cost/I18.jpg",
-        "/events/asia-cement-cost/I19.jpg"
+        "/events/asia-cement-cost/I55-土石流潛勢溪流A(水保局).jpg",
+        "/events/asia-cement-cost/I56-土石流潛勢溪流B(水保局).jpg"
         ],
         "timeChangeText": [
         "就算進去了，太魯閣人也已經認不出曾經的家園。經年累月的挖掘，原本的山頭已經整個消失不見。",
