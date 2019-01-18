@@ -1651,14 +1651,17 @@ class Video extends Component {
       textcolor = "black";
     }
 
+    var cf="cf"
+
     if(this.props.text1 !== "") {
       h = "min-vh-200"
       if($this.state.mobile) {
         bgcolor = "transparent";
         textcolor = "black";
+        cf="";
       }
       text1 = (
-          <div className="cf-l">
+          <div className={cf}>
             <div className={this.props.position+" w-50-l mw500 mh3-l mh3-l center w-100 pa4-l relative mt0-l mt2"}>
               <div className={bgcolor+" w-100 h-100 absolute pn top-left"}></div>
               <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative ph0-l ph3 "+textcolor}>{this.props.text1}</p>
@@ -1676,9 +1679,10 @@ class Video extends Component {
         bgcolor = "transparent";
         textcolor = "black";
         mt50vh = "";
+        cf="";
       }
       text2 = (
-        <div className={"cf-l "+mt50vh}>
+        <div className={cf+" "+mt50vh}>
           <div className={this.props.position+" w-50-l mw500 mh3-l center w-100 pa4-l relative mt0-l mt4"}>
             <div className={bgcolor+" w-100 h-100 absolute pn top-left"}></div>
             <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative ph0-l ph3 "+textcolor}>{this.props.text2}</p>
@@ -4528,8 +4532,8 @@ class Event06 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          shipPositionL = "0%"
-          shipPositionT = "0%"
+          shipPositionL = "48%"
+          shipPositionT = "12%"
         />
 
         <Illustration
@@ -4692,7 +4696,8 @@ class Event07 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-110px, -110px"}
+          shipPositionL = "47%"
+          shipPositionT = "18%"
         />
 
         <Video 
@@ -4840,8 +4845,8 @@ class Event08 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          shipPositionL = "0%"
-          shipPositionT = "0%"
+          shipPositionL = "41%"
+          shipPositionT = "28%"
         />
 
         <Illustration
@@ -5123,8 +5128,8 @@ class Event09 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          shipPositionL = "0%"
-          shipPositionT = "0%"
+          shipPositionL = "53%"
+          shipPositionT = "17%"
         />
 
         <Illustration
