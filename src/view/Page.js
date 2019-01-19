@@ -599,7 +599,7 @@ class Page extends Component {
       'science-park-landuse': <Event10 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
       'petrochemical-kingdom': <Event11 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
       'soil-pollution-tainan': <Event12 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
-      'event13': <Event13 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />
+      'mercury-sludge-volcano': <Event13 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />
     }
     let container = viewContainerMapping[this.state.view];
     
@@ -5345,6 +5345,9 @@ class Event10 extends Component {
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
+        <EndingVideo id={"15-endingVideo"} text={"一起來關心 山林採礦"} link={"https://youtube.com/embed/DwvwCxkHN-Q?start=1195&rel=0"}/>
+        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <CTA id={"17-cta"} switchView={this.props.switchView} next={"petrochemical-kingdom"} nextN={"海上的石化王國"}/>
       </div>
     );
   }
@@ -5370,6 +5373,9 @@ class Event11 extends Component {
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
+        <EndingVideo id={"15-endingVideo"} text={"一起來關心 山林採礦"} link={"https://youtube.com/embed/DwvwCxkHN-Q?start=1195&rel=0"}/>
+        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <CTA id={"17-cta"} switchView={this.props.switchView} next={"soil-pollution-tainan"} nextN={"焦土 台鹼安順廠"}/>
       </div>
     );
   }
@@ -5462,7 +5468,9 @@ class Event12 extends Component {
         /> {/*提告*/}
 
         <Transition text={this.props.data.transitionText[2]} bg={"bg-white"}/>
-        <EndingVideo text={"想知道台鹼安順廠更多故事...."} link={"https://youtube.com/embed/6CwZYq6vt0k?rel=0"}/>
+        <EndingVideo id={"15-endingVideo"} text={"想知道台鹼安順廠更多故事...."} link={"https://youtube.com/embed/6CwZYq6vt0k?rel=0"}/>
+        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <CTA id={"17-cta"} switchView={this.props.switchView} next={"mercury-sludge-volcano"} nextN={"無人知曉的未爆彈"}/>
       </div>
     );
   }
@@ -5488,6 +5496,9 @@ class Event13 extends Component {
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
+        <EndingVideo id={"15-endingVideo"} text={"一起來關心 山林採礦"} link={"https://youtube.com/embed/DwvwCxkHN-Q?start=1195&rel=0"}/>
+        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <CTA id={"17-cta"} switchView={this.props.switchView} next={"science-park-landuse"} nextN={"無土時代"}/>
       </div>
     );
   }
