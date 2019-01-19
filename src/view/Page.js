@@ -5329,7 +5329,22 @@ class Event10 extends Component {
   render() {
     return (
       <div>
-        <p>event10</p>
+        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        
+        <Taiwan
+          text1={this.props.data.taiwanText[0]}
+          text2={this.props.data.taiwanText[1]}
+          illustration = {this.props.data.taiwan}
+          
+          shipPositionL = "0%"
+          shipPositionT = "0%"
+        />
+
+        <Illustration
+          number = {1}
+          text1={this.props.data.illustrationText[0]}
+          illustration = {this.props.data.illustration}
+        />
       </div>
     );
   }
@@ -5339,7 +5354,22 @@ class Event11 extends Component {
   render() {
     return (
       <div>
-        <p>event11</p>
+        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        
+        <Taiwan
+          text1={this.props.data.taiwanText[0]}
+          text2={this.props.data.taiwanText[1]}
+          illustration = {this.props.data.taiwan}
+          
+          shipPositionL = "0%"
+          shipPositionT = "0%"
+        />
+
+        <Illustration
+          number = {1}
+          text1={this.props.data.illustrationText[0]}
+          illustration = {this.props.data.illustration}
+        />
       </div>
     );
   }
@@ -5442,7 +5472,22 @@ class Event13 extends Component {
   render() {
     return (
       <div>
-        <p>event13</p>
+        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        
+        <Taiwan
+          text1={this.props.data.taiwanText[0]}
+          text2={this.props.data.taiwanText[1]}
+          illustration = {this.props.data.taiwan}
+          
+          shipPositionL = "0%"
+          shipPositionT = "0%"
+        />
+
+        <Illustration
+          number = {1}
+          text1={this.props.data.illustrationText[0]}
+          illustration = {this.props.data.illustration}
+        />
       </div>
     );
   }
