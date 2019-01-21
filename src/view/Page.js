@@ -938,7 +938,7 @@ class PhotoTextFull extends Component {
       text1 = (
         <div className="cf">
           <div className={this.props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
-            <div className={bgcolor+" w-100 h-100 absolute pn top-left"}></div>
+            <div className={"w-100 h-100 absolute pn top-left "+this.props.opacity+" "+bgcolor}></div>
             <p className={"f5-ns f6 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:this.props.text1}}></p>
           </div>
         </div>
@@ -974,7 +974,7 @@ class PhotoTextFull extends Component {
     if(this.state.mobile && this.props.switch) h = "";
 
     return (
-      <section id={this.props.id} className={h+" flex aic relative pv6-l pv5"}>
+      <section id={this.props.id} className={h+" flex aic relative pv6-l pv5 photoText"}>
         <div className="w-100 h-100 absolute top-left clipping">
           <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
             {image_content}
@@ -1275,7 +1275,7 @@ class PhotoText extends Component {
     if(this.state.mobile) h = "";
 
     return (
-      <section id={this.props.id} className={h+" flex aic relative pv6-l pv5"}>
+      <section id={this.props.id} className={h+" flex aic relative pv6-l pv5 photoText"}>
         <div className="w-100 h-100 absolute top-left clipping">
           <div className={color1+" w-100 h-100 fixed fixed-content pn flex aic"}>
             {fish}
@@ -1781,7 +1781,7 @@ class Video extends Component {
       if(this.props.text1 !== "") mb4 = "mb4"
       video_content = this.state.active ? (
         <div className={"cf flex aic jcc w-100 flex-column " + mb4}>
-          <div className="center relative">
+          <div className="center relative w-100">
             <video className="w-100" id={'video'+this.props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
               <source src={this.props.link} type="video/mp4"/>
             </video>
@@ -1789,7 +1789,7 @@ class Video extends Component {
         </div>
       ) : (
         <div className={"cf flex aic jcc w-100 flex-column " + mb4}>
-          <div className="center relative">
+          <div className="center relative w-100">
             <video className="w-100 emptyVideo" id={'video'+this.props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
             </video>
           </div>
@@ -2798,7 +2798,7 @@ class TimeChangeFull extends Component {
 
     return (
       <section id={this.props.id} className={h+" flex aic relative timeChange "+z}>
-        <div className={first+" w-100 h-100 absolute top-left time-clipping"}>
+        <div className={first+" w-100 h-100 absolute top-left time-clipping fade"}>
           <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
             <figure className="w-100 ma0">
               <img className="w-100" style={fullImage} src={imgSrc} alt="background"/>
@@ -4664,11 +4664,11 @@ class Event06 extends Component {
 
 class Event07 extends Component {
   componentDidMount(){
-    var infoText = this.props.data.infoText;
-    $(document).ready(function(){
-      var infoHelper = '<div class="absolute z10 mw7 infoHelper pn"><p class="near-black f7 fw4 bg-white pa3 pre-wrap lh-copy">'+infoText+'</p></div>';
-      $('.info').append(infoHelper);
-    })
+    // var infoText = this.props.data.infoText;
+    // $(document).ready(function(){
+    //   var infoHelper = '<div class="absolute z10 mw7 infoHelper pn"><p class="near-black f7 fw4 bg-white pa3 pre-wrap lh-copy">'+infoText+'</p></div>';
+    //   $('.info').append(infoHelper);
+    // })
   }
   state = {
     open: false,
@@ -4732,15 +4732,18 @@ class Event07 extends Component {
           text1={this.props.data.videoText[1]}
         />
 
-        <Transition text={this.props.data.photoSlideText} bg={"bg-white"}/>
-        <PhotoSlide
-          text={this.props.data.photoSlideLabel}
-          images={this.props.data.photoSlidePhoto}
+        <Blog
+          id={"7-blog"}
+          number={2}
+          text={this.props.data.photoSlideText}
+          label={this.props.data.photoSlideLabel}
+          image={this.props.data.photoSlidePhoto}
+          onOpenModal={this.onOpenModal.bind(this)}
         />
-
         <Timeline
           id={"8-timeline"} 
           height="480"
+          bg={"bg-near-white"}
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
@@ -4749,9 +4752,9 @@ class Event07 extends Component {
 
         <PhotoContrast
           id={"9-photoContrast"} 
-          bg={"bg-near-white"}
+          bg={"bg-white"}
           images={this.props.data.photocontrast}
-          text=""
+          text={this.props.data.photocontrastText}
           year={this.props.data.photocontrastYear}
         />
 
@@ -4763,9 +4766,11 @@ class Event07 extends Component {
           link={this.props.data.video[2]}
           text1={this.props.data.videoText[2]}
         />
+        
         <PhotoTextFull
           id={"11-photoTextFull"} 
           position={"fl-l"}
+          opacity={"o-100"}
           text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
@@ -4908,7 +4913,9 @@ class Event08 extends Component {
 
         <Transition
           id={"11-transition"} 
-          bg={"bg-green white tc"}
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationBird[0]}
           text={this.props.data.transitionText[1]}
         />
 
@@ -4922,7 +4929,9 @@ class Event08 extends Component {
 
         <Transition
           id={"13-transition"} 
-          bg={"bg-green white tc"}
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationBird[0]}
           text={this.props.data.transitionText[2]}
         />
 
@@ -4937,7 +4946,9 @@ class Event08 extends Component {
 
         <Transition
           id={"15-transition"} 
-          bg={"bg-green white tc"}
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationBird[0]}
           text={this.props.data.transitionText[3]}
         />
 
@@ -4951,7 +4962,9 @@ class Event08 extends Component {
 
         <Transition
           id={"17-transition"} 
-          bg={"bg-green white tc"}
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationBird[0]}
           text={this.props.data.transitionText[4]}
         />
 
@@ -4964,7 +4977,9 @@ class Event08 extends Component {
 
         <Transition
           id={"19-transition"} 
-          bg={"bg-green white tc"}
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationBird[0]}
           text={this.props.data.transitionText[5]}
         />
 

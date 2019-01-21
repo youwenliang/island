@@ -31,6 +31,10 @@ body {
   z-index: -1;
 }
 
+.o-100 {
+  opacity: 1 !important;
+}
+
 .tracked {
   letter-spacing: .1em !important;
 }
@@ -486,7 +490,7 @@ nav .btn {
   border-top: none;
 }
 
-.transitionTitle + section:not(.full-video) {
+.transitionTitle + section:not(.full-video):not(.timeChange):not(.photoText) {
   padding-top: 0 !important;
   min-height: auto !important;
 }
