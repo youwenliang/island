@@ -5022,8 +5022,9 @@ class Event08 extends Component {
           id={"24-video"} 
           videoID="04"
           color="dark"
-          link={""}
+          link={this.props.data.video[6]}
           text1=""
+          playing={true}
         />
 
         <Transition id={"25-transition"} text={this.props.data.transitionText[7]} bg={"bg-near-white"}/>
@@ -5205,10 +5206,11 @@ class Event09 extends Component {
           videoID="02"
           link={this.props.data.video[2]}
           text1={this.props.data.transitionText[1]}
+          playing={true}
         />
 
         <TimeChangeFull
-          id={"15-timeChangeFull"}
+          id={"10-timeChangeFull"}
           position={"fr-l"}
           text1={this.props.data.timeChangeText[0]}
           image = {this.props.data.timeChangePhoto[0]}
@@ -5217,7 +5219,7 @@ class Event09 extends Component {
           first={true}
         />
         <TimeChangeFull
-          id={"16-timeChangeFull"}
+          id={"11-timeChangeFull"}
           position={"fr-l"}
           last={true}
           text1={this.props.data.timeChangeText[0]}
@@ -5227,7 +5229,7 @@ class Event09 extends Component {
         />
 
         <PhotoText
-          id={"4-photoText"}
+          id={"12-photoText"}
           order="left"
           large={true}
           text={this.props.data.photoText[2]}
@@ -5235,13 +5237,15 @@ class Event09 extends Component {
         />
 
         <Video 
+          id={"13-video"}
           videoID="03"
-          link={this.props.data.video[2]}
+          link={this.props.data.video[3]}
           text1=""
+          playing={true}
         />
 
         <TimeChangeFull
-          id={"15-timeChangeFull"}
+          id={"14-timeChangeFull"}
           position={"fl-l"}
           text1={this.props.data.timeChangeText[1]}
           image = {this.props.data.timeChangePhoto[2]}
@@ -5250,7 +5254,7 @@ class Event09 extends Component {
           first={true}
         />
         <TimeChangeFull
-          id={"16-timeChangeFull"}
+          id={"15-timeChangeFull"}
           position={"fl-l"}
           last={true}
           text1={this.props.data.timeChangeText[1]}
@@ -5259,15 +5263,18 @@ class Event09 extends Component {
           count="2-2"
         />
 
-        <Transition text={this.props.data.transitionText[2]} bg={"bg-white"}/>
-        <Video 
+        <Transition id={"16-transition"} text={this.props.data.transitionText[2]} bg={"bg-white"}/>
+
+        <Video
+          id={"17-video"} 
           videoID="04"
-          link={this.props.data.video[2]}
+          link={this.props.data.video[4]}
+          playing={true}
           text1=""
         />
 
         <Blog
-          id={"8-blog"}
+          id={"18-blog"}
           number={2}
           text={this.props.data.blogText[1]}
           image={this.props.data.blogImage[1]}
@@ -5276,7 +5283,7 @@ class Event09 extends Component {
         />   
 
         <SmallVideo 
-          id={"14-smallVideo"} 
+          id={"19-smallVideo"} 
           videoID="05"
           bg={"bg-near-white"}
           link={this.props.data.video[1]}
@@ -5285,6 +5292,7 @@ class Event09 extends Component {
         />
 
         <PhotoTextFull
+          id={"20-photoTextFull"}
           position={"fl-l"}
           text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
@@ -5292,6 +5300,7 @@ class Event09 extends Component {
         />
 
         <PhotoSwitch 
+          id={"21-photoSwitch"}
           position={"fl-l"}
           images={this.props.data.photoswitch2} 
           text1={this.props.data.photoswitchText2}
@@ -5299,7 +5308,7 @@ class Event09 extends Component {
         />
 
         <Blog
-          id={"8-blog"}
+          id={"22-blog"}
           number={4}
           text={this.props.data.blogText[2]}
           image={this.props.data.blogImage[2]}
@@ -5308,7 +5317,7 @@ class Event09 extends Component {
         />
 
         <Blog
-          id={"8-blog"}
+          id={"23-blog"}
           number={1}
           bg={"bg-near-white"}
           text={this.props.data.blogText[3]}
@@ -5318,23 +5327,23 @@ class Event09 extends Component {
         />
 
         <PhotoCenterTextFull
-          id={"15-photoCenterTextFull"} 
+          id={"24-photoCenterTextFull"} 
           text1={this.props.data.photoFullText[4]}
           image = {this.props.data.photoFull[4]}
           label = {this.props.data.photoFullTextLabel[4]}
         />
 
         <PhotoText
-          id={"4-photoText"}
+          id={"25-photoText"}
           order="left"
           color="invert"
           text={this.props.data.photoText[1]}
           image = {this.props.data.photoImage[1]}
         />
 
-        <EndingVideo id={"15-endingVideo"} text={"一起來關心 山林採礦"} link={"https://youtube.com/embed/DwvwCxkHN-Q?start=1195&rel=0"}/>
-        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
-        <CTA id={"17-cta"} switchView={this.props.switchView} next={"lishan-high-mountain-farms"} nextN={"咬一口高山青翠"}/>
+        <EndingVideo id={"26-endingVideo"} text={"一起來關心 山林採礦"} link={"https://youtube.com/embed/DwvwCxkHN-Q?start=1195&rel=0"}/>
+        <More id={"27-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <CTA id={"28-cta"} switchView={this.props.switchView} next={"lishan-high-mountain-farms"} nextN={"咬一口高山青翠"}/>
       </div>
     );
   }
