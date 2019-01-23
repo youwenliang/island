@@ -687,7 +687,7 @@ function CoverVideo(props) {
 
 
   return (
-    <section id={props.id} className="vh-100 flex aic relative">
+    <section id={props.id} className="vh-100 flex aic relative z4">
       <div className="w-100 h-100 absolute z4 pn" style={gradient}></div>
       <div className="w-100 h-100 absolute top-left clipping">
       <div className="w-100 h-100 fixed fixed-content pn">
@@ -722,8 +722,14 @@ class Taiwan extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
 
@@ -825,8 +831,14 @@ class Illustration extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
   render(){
@@ -896,8 +908,14 @@ class PhotoTextFull extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
 
@@ -1000,8 +1018,14 @@ class PhotoCenterTextFull extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
 
@@ -1063,8 +1087,14 @@ class PhotoText extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
 
@@ -1425,8 +1455,14 @@ class PhotoMultiple extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
 
@@ -1577,8 +1613,22 @@ class Video extends Component {
   componentDidMount(){
     var $this = this;
     var $t = $('#'+$this.props.id);
+    var mh = $t.css('min-height');
+
+    function checkMobile() {
+      if($(window).width() <= 959) {
+        $this.setState({mobile:true});
+        $t.css('min-height', 'auto');
+      }
+      else {
+        $this.setState({mobile:false});
+        $t.css('min-height', mh);
+      }
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
     $(document).ready(function(){
-      if($(window).width() <= 959) $this.setState({mobile:true});
+      checkMobile();
     $(window).scroll(function(){
       if($t.length !== 0) {
         var top_of_object = $t.offset().top;
@@ -2194,8 +2244,14 @@ class EndingVideo extends Component {
 
   componentDidMount(){
     var $this = this;
+    function checkMobile() {
+      if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
     $(document).ready(function(){
-      if($(window).width() < 480) $this.setState({mobile:true});
+      checkMobile();
     });
   }
   render() {
@@ -2336,8 +2392,14 @@ class Timeline extends Component {
   }
   componentDidMount(){
     var $this = this;
+    function checkMobile() {
+      if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
     $(document).ready(function(){
-      if($(window).width() <= 479) $this.setState({mobile:true});
+      checkMobile();
     });
   }
 
@@ -2641,9 +2703,16 @@ class TimeChange extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
       if($(window).width() <= 665) $this.setState({mini:true});
+      else $this.setState({mini:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
   
@@ -2738,8 +2807,14 @@ class TimeChangeFull extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
   render(){
@@ -2825,8 +2900,14 @@ class TimeChangeSide extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
 
@@ -2934,7 +3015,7 @@ class TimeChangeSide extends Component {
     
     return (
       <section id={this.props.id} className={h+" flex aic relative timeChange "+z}>
-        <div className={first+" w-100 h-100 absolute top-left time-clipping cf"}>
+        <div className={first+" w-100 h-100 absolute top-left time-clipping cf fade"}>
           <div className={jcc+" bg-white w-100 h-100 fixed fixed-content pn flex aic flex-column-s"} style={container}>
             <figure className="fr-l w-50-l w-100 h-100-l ma0 flex aic overflow-hidden" style={topImg}>
               <img style={halfImageContain} src={imgSrc} width="100%" alt="background"/>
@@ -2973,8 +3054,14 @@ class Blog extends Component {
   }
   componentDidMount(){
     var $this = this;
+    function checkMobile() {
+      if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
     $(document).ready(function(){
-      if($(window).width() <= 479) $this.setState({mobile:true});
+      checkMobile();
     });
   }
 
@@ -4524,7 +4611,7 @@ class Event06 extends Component {
     const { open } = this.state;
     return (
       <div>
-        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} code={this.props.data.code} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
           id={"2-taiwan"}
@@ -4688,7 +4775,7 @@ class Event07 extends Component {
     const { open } = this.state;
     return (
       <div>
-        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} code={this.props.data.code} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
           id={"2-taiwan"} 
@@ -4842,7 +4929,7 @@ class Event08 extends Component {
     const { open } = this.state;
     return (
       <div>
-        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} code={this.props.data.code} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
           id={"2-taiwan"}
@@ -5136,7 +5223,7 @@ class Event09 extends Component {
     const { open } = this.state;
     return (
       <div>
-        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} code={this.props.data.code} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
           id={"2-taiwan"}
