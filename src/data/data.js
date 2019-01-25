@@ -1460,9 +1460,9 @@ var data = {
                 "中水局說明，已經建立植物保存園區，將水庫淹沒區的植物移植，另外也建造溫室，將野外採集的圓葉布勒德藤與岩生秋海棠扦插分株，移植到水庫周圍的四個地區，進行移地復育，針對八色鳥也有持續進行監測。\n\n雲林縣樟湖國小校長陳清圳質疑，天文、地文、水文、生文交織的複雜體系，人要怎麼做出來？"
             ],
             "photoImage": [
-                "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
-                "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
-                "/island20/events/hushan-reservoir-lost-water/H29-湖山水庫衛星圖.jpg",
+                "/island20/events/hushan-reservoir-lost-water/illustrations/page8.jpg",
+                "/island20/events/hushan-reservoir-lost-water/illustrations/page13.jpg",
+                "/island20/events/hushan-reservoir-lost-water/illustrations/page20.jpg",
             ],
 
             // Timeline
@@ -1606,7 +1606,7 @@ var data = {
                 "礦場高度節節下降，距離下方部落不到300公尺，整個礦區像一個內凹的大碗，居民最擔心的是如果暴雨來襲，脆弱的邊坡是否能夠承受。"
             ],
             "photoImage": [
-                "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
+                "/island20/events/asia-cement-cost/illustrations/illustrationTaiwan.svg",
                 "https://fakeimg.pl/600x480/?text=PhotoText&retina=1",
                 "/island20/events/asia-cement-cost/I22-2016.06.17花蓮亞泥與下方部落.jpg",
             ],
@@ -1615,7 +1615,7 @@ var data = {
             "photoFull": [
                 "/island20/events/asia-cement-cost/原住民抗議.jpg",
                 "/island20/events/asia-cement-cost/I31-789-1-43.jpg",
-                "/island20/events/asia-cement-cost/i23-花蓮新城山衛星圖.jpg",
+                "/island20/events/asia-cement-cost/illustrations/page5.jpg",
                 "/island20/events/asia-cement-cost/I42-權狀地籍列冊.jpg",
                 "/island20/events/asia-cement-cost/I41-2016.06.17花蓮亞泥07.jpg",
             ],
@@ -1636,8 +1636,8 @@ var data = {
 
             // TimeChangeFull
             "timeChangePhoto": [
-                "/island20/events/asia-cement-cost/I18.jpg",
-                "/island20/events/asia-cement-cost/I19.jpg",
+                "/island20/events/asia-cement-cost/illustrations/page11-1.jpg",
+                "/island20/events/asia-cement-cost/illustrations/page11-2.jpg",
                 "/island20/events/asia-cement-cost/I55-土石流潛勢溪流A(水保局).jpg",
                 "/island20/events/asia-cement-cost/I56-土石流潛勢溪流B(水保局).jpg"
             ],

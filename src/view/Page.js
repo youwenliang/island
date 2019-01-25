@@ -125,8 +125,8 @@ class Page extends Component {
     document.getElementById('loading').classList.remove('fade');
 
     var data = pageEvent_data[this.state.id];
-    // var images  = [data.code];
-    var images  = [];
+    var images  = [data.code];
+    // var images  = [];
     var loaded = false;
     var p = 0;
     var id = setInterval(frame, 10);
@@ -359,8 +359,8 @@ class Page extends Component {
     document.getElementById('loading').classList.remove('fade');
 
     var data = pageEvent_data[this.state.id];
-    // var images  = [data.code];
-    var images  = [];
+    var images  = [data.code];
+    // var images  = [];
     var loaded = false;
     var p = 0;
     var id = setInterval(frame, 10);
@@ -1635,11 +1635,14 @@ class Video extends Component {
         var bottom_of_object = $t.offset().top + $t.height();
         var top_of_window = $(window).scrollTop(); 
         var bottom_of_window = $(window).scrollTop()+ $(window).height(); 
-          
-        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
+        
+        if(bottom_of_window + 640 > top_of_object && top_of_window < bottom_of_object) {
           if(!$this.state.active) {
             $this.setState({active:true});
           }
+        }
+
+        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
           if($t.find('video').get(0).paused) {
             if($t.find('video').hasClass('clicked')) ;
             else {
@@ -1876,10 +1879,13 @@ class SmallVideo extends Component {
         var top_of_window = $(window).scrollTop(); 
         var bottom_of_window = $(window).scrollTop()+ $(window).height(); 
           
-        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
+        if(bottom_of_window + 640 > top_of_object && top_of_window < bottom_of_object) {
           if(!$this.state.active) {
             $this.setState({active:true});
           }
+        }
+
+        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
           if($t.find('video').get(0).paused) {
             if($t.find('video').hasClass('clicked')) ;
             else {
@@ -1975,10 +1981,13 @@ class CenterVideo extends Component {
         var top_of_window = $(window).scrollTop(); 
         var bottom_of_window = $(window).scrollTop()+ $(window).height(); 
           
-        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
+        if(bottom_of_window + 640 > top_of_object && top_of_window < bottom_of_object) {
           if(!$this.state.active) {
             $this.setState({active:true});
           }
+        }
+
+        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
           if($t.find('video').get(0).paused) {
             if($t.find('video').hasClass('clicked')) ;
             else {
@@ -2148,10 +2157,13 @@ class CenterSmallVideo extends Component {
         var top_of_window = $(window).scrollTop(); 
         var bottom_of_window = $(window).scrollTop()+ $(window).height(); 
           
-        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
+        if(bottom_of_window + 640 > top_of_object && top_of_window < bottom_of_object) {
           if(!$this.state.active) {
             $this.setState({active:true});
           }
+        }
+
+        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
           if($t.find('video').get(0).paused) {
             if($t.find('video').hasClass('clicked')) ;
             else {
@@ -2837,7 +2849,9 @@ class TimeChangeFull extends Component {
 
     var bgcolor = ""
     var textcolor = ""
-    var up = null;
+    var up = {
+      top: this.props.up
+    }
     if(this.props.color === "dark") {
       bgcolor = "bg-black o-20";
       textcolor = "white";
@@ -4976,7 +4990,7 @@ class Event08 extends Component {
         <PhotoText
           id={"8-photoText"}
           order="left"
-          color="invert"
+          large={true}
           text={this.props.data.photoText[0]}
           image = {this.props.data.photoImage[0]}
         />
@@ -4988,7 +5002,7 @@ class Event08 extends Component {
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
           content={this.props.data.timelineContent}
-          bg={"bg-white"}
+          bg={"bg-near-white"}
         />
 
         <PhotoCenterTextFull
@@ -5042,7 +5056,7 @@ class Event08 extends Component {
         <PhotoText
           id={"16-photoText"}
           order="left"
-          color="invert"
+          large={true}
           text={this.props.data.photoText[1]}
           image = {this.props.data.photoImage[1]}
         />
@@ -5253,6 +5267,7 @@ class Event09 extends Component {
         <PhotoTextFull
           id={"5-photoTextFull"}
           position={"fr-l"}
+          objectP={"43%"}
           text1={this.props.data.photoFullText[2]}
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
@@ -5298,21 +5313,23 @@ class Event09 extends Component {
 
         <TimeChangeFull
           id={"10-timeChangeFull"}
-          position={"fr-l"}
+          position={"fl-l"}
           text1={this.props.data.timeChangeText[0]}
           image = {this.props.data.timeChangePhoto[0]}
           label = {this.props.data.timeChangeLabel[0]}
           count="1-2"
           first={true}
+          up={"18%"}
         />
         <TimeChangeFull
           id={"11-timeChangeFull"}
-          position={"fr-l"}
+          position={"fl-l"}
           last={true}
           text1={this.props.data.timeChangeText[0]}
           image = {this.props.data.timeChangePhoto[1]}
           label = {this.props.data.timeChangeLabel[1]}
           count="2-2"
+          up={"18%"}
         />
 
         <PhotoText
@@ -5339,6 +5356,7 @@ class Event09 extends Component {
           label = {this.props.data.timeChangeLabel[2]}
           count="1-2"
           first={true}
+          up={"18%"}
         />
         <TimeChangeFull
           id={"15-timeChangeFull"}
@@ -5348,6 +5366,7 @@ class Event09 extends Component {
           image = {this.props.data.timeChangePhoto[3]}
           label = {this.props.data.timeChangeLabel[3]}
           count="2-2"
+          up={"18%"}
         />
 
         <Transition id={"16-transition"} text={this.props.data.transitionText[2]} bg={"bg-white"}/>
