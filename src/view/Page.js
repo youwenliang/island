@@ -4879,6 +4879,7 @@ class Event07 extends Component {
         <Blog
           id={"14-blog"}
           number={3}
+          bg={"bg-near-white"}
           text={this.props.data.blogText[0]}
           image={this.props.data.blogImage[0]}
           label={this.props.data.blogLabel[0]}
@@ -4889,6 +4890,14 @@ class Event07 extends Component {
           <img src={this.state.image} alt="modal"/>
           <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
         </Modal>
+
+        <SmallVideo
+          id={"15-smallVideo"}  
+          videoID="06"
+          text={this.props.data.videoText[5]}
+          link={this.props.data.video[5]}
+          sound={false}
+        />
 
         <Blog
           id={"14-blog"}
