@@ -1053,6 +1053,10 @@ class PhotoCenterTextFull extends Component {
       bgColor = "bg-black o-60";
       mask = "";
     }
+
+    var label = this.props.label == "" ? null : (
+      <label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{this.props.label}</label>
+    )
     return (
       <section id={this.props.id} className="min-vh-200 flex aic relative bg-black">
         <div className="w-100 h-100 absolute top-left clipping">
@@ -1061,7 +1065,7 @@ class PhotoCenterTextFull extends Component {
               <img className="w-100" style={fullImage} src={this.props.image} alt="background"/>
             </figure>
             <div className={mask+" w-100 h-100 absolute pn top-left z4"}></div>
-            <label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{this.props.label}</label>
+            {label}
           </div>
         </div>
         <div className="w-100 center ph4-ns ph3 z4 relative">
@@ -1557,7 +1561,7 @@ class PhotoContrast extends Component {
       text = (
         <div className="mw80 center cf black mb5 ph4-ns ph3 hide">
           <div className="mw7 w-100 center pre-wrap">
-            <p className="f5-ns f6 lh-copy mv0 ph4-l ph3">{this.props.text}</p>
+            <p className="f5-ns f6 lh-copy mv0 ph4-l ph3" dangerouslySetInnerHTML={{__html:this.props.text}}></p>
           </div>
         </div>
       )
@@ -3205,6 +3209,9 @@ class Blog extends Component {
     }
     
     var bgColor = this.props.bg !== undefined ? this.props.bg : "bg-white";
+    var more = this.props.more === undefined ? null : (
+      <p className="w-100 tc f6 pa3 mv0 o-50 lh-normal">{this.props.more}</p>
+    )
 
     return (
       <section id={this.props.id} className={"flex aic relative pv6-l pv5 "+bgColor} >
@@ -3212,6 +3219,7 @@ class Blog extends Component {
           <div className={"cf "+column}>
             {text}
             {img}
+            {more}
           </div>
         </div>
       </section>
@@ -4634,7 +4642,7 @@ class Event06 extends Component {
           illustration = {this.props.data.taiwan}
           
           shipPositionL = "48%"
-          shipPositionT = "12%"
+          shipPositionT = "21%"
         />
 
         <Illustration
@@ -4857,6 +4865,7 @@ class Event07 extends Component {
           images={this.props.data.photocontrast}
           text={this.props.data.photocontrastText}
           year={this.props.data.photocontrastYear}
+          label={this.props.data.photocontrastLabel}
         />
 
         <Video
@@ -4884,6 +4893,7 @@ class Event07 extends Component {
           image={this.props.data.blogImage[0]}
           label={this.props.data.blogLabel[0]}
           onOpenModal={this.onOpenModal.bind(this)}
+          more={this.props.data.blogMore[0]}
         />
 
         <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
@@ -4979,6 +4989,11 @@ class Event08 extends Component {
           link={this.props.data.video[0]}
           text1=""
           playing={true}
+        />
+        <Transition
+          id={"10-transition"} 
+          bg={"bg-green white tc"}
+          text={"在湖水漲起之前，這裡有一座美麗的幽情谷。"}
         />
         <PhotoSwitch 
           id={"6-photoSwitch"} 
@@ -5200,10 +5215,9 @@ class Event08 extends Component {
           text={"我們可以:區域性總量管制"}
         />
 
-        <Video
+        <CenterSmallVideo
           id={"34-video"} 
           videoID="06"
-          position="fr-l"
           link={this.props.data.video[4]}
           text1={this.props.data.videoText[4]}
           playing={true}
@@ -5219,7 +5233,7 @@ class Event08 extends Component {
           sound={false}
         />
 
-        <EndingVideo id={"36-endingVideo"} text={"下次打開水龍頭，想著這些水是花費多少代價才來到我們身邊，就會更加珍惜。"} link={"https://youtube.com/embed/sMp_TgjcHDo?rel=0"}/>
+        <EndingVideo id={"36-endingVideo"} text={"再看一眼，湖山水庫..."} link={"https://youtube.com/embed/MpiZ6kbim2g?rel=0"}/>
         <More id={"37-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
         <CTA id={"38-cta"} switchView={this.props.switchView} next={"asia-cement-cost"} nextN={"挖山取石的代價"}/>
       </div>
