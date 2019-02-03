@@ -1121,7 +1121,9 @@ class PhotoText extends Component {
     }
     
     var fish = null;
-    var info = null;
+    var info = this.props.info === undefined ? null : (
+      <p className="w-50-l w-100 f6-ns f7 fw5 tc o-50">{this.props.info}</p>
+    )
 
 
     if(this.props.fish) {
@@ -1436,7 +1438,7 @@ function PhotoSwitch(props) {
     <section id={props.id} className={h+" flex aic w-100 relative bvh"}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="w-100 h-100 fixed fixed-content">
-          <ImageGallery items={images} showFullscreenButton={false} showThumbnails={false} showPlayButton={false} autoPlay={true} showBullets={true} slideInterval={7000}/>
+          <ImageGallery items={images} showFullscreenButton={false} showThumbnails={false} showPlayButton={false} autoPlay={true} showBullets={true} slideInterval={9000}/>
         </div>
       </div>
       <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap pn">
@@ -2474,9 +2476,15 @@ class Timeline extends Component {
         whiteSpace: "normal"
       }
 
+      var boxColor = ""
+      if(this.props.noImg) {
+        bgColor="";
+        boxColor="bg-white";
+      }
+
       var text_content = special ? null : (
-        <div style={textGridStyle} className="pa4 center">
-            <p className={"f5-ns f6 fw6 lh-copy mv2 dib z4 relative pr2 "+bgColor}>
+        <div style={textGridStyle} className={"pa4 center "+boxColor}>
+            <p className={"f5-ns f6 fw6 lh-copy mb2 mt0 dib z4 relative pr2 "+bgColor}>
               {"• "+this.props.year[i]}
             </p>
             <p className="f6 lh-copy mv0">
@@ -2485,9 +2493,13 @@ class Timeline extends Component {
           </div>
       )
 
+      var photoGrid = this.props.noImg ? null : (
+        <div style={photoGridStyle}></div>
+      )
+
       var photos = (
         <div className="grid-item relative z4" key={i}>
-          <div style={photoGridStyle}></div>
+          {photoGrid}
           {text_content}
         </div>
       )
@@ -2517,6 +2529,19 @@ class Timeline extends Component {
       transform: this.state.mobile ? "translateY(54px)" : ""
     }
 
+    if(this.props.noImg) {
+      line = {
+        top: this.state.mobile ? "1px": "56px",
+        left: 0,
+        width: "100%",
+        height: "2px",
+        backgroundColor: "rgb(0, 0, 0)",
+        opacity: 0.1,
+        zIndex: 0,
+        transform: this.state.mobile ? "translateY(54px)" : ""
+      }
+    }
+
     var max = {
       maxWidth: "880px"
     }
@@ -2528,9 +2553,11 @@ class Timeline extends Component {
       (<p className="lh-copy f5-ns f6 center pre-wrap ph4-ns ph3 mb5-ns mb3" style={max} dangerouslySetInnerHTML={{__html:this.props.content}}></p>);
     }
 
-    var padding = special ? "pt6-l pt5" : "pv6-l pv5 min-vh-100";
+    var padding = special || this.props.noImg ? "pt6-l pt5" : "pv6-l pv5 min-vh-100";
     var scrollLeft = (<div className="ma0 pa0 hide"><p className='f6 o-50 tc mt4'>{"◂◂ 往左滑看更多"}</p></div>)
     if(!this.state.mobile && this.props.images.length < 5) scrollLeft = null;
+    
+    bgColor = this.props.bg !== undefined ? this.props.bg : "bg-white";
 
     return (
       <section id={this.props.id} className={bgColor+" flex aic relative flex-column "+padding}>      
@@ -3115,7 +3142,7 @@ class Blog extends Component {
         height: this.state.mobile ? "200px" : "400px",
         backgroundImage: "url("+this.props.image[i]+")",
         backgroundSize: "cover",
-        backgroundPosition: "center center"
+        backgroundPosition: "center bottom"
       }
       var bottomRight = {
         bottom: "0px",
@@ -5281,10 +5308,11 @@ class Event09 extends Component {
 
         <PhotoText
           id={"4-photoText"}
-          order="left"
+          order="right"
           color="invert"
           text={this.props.data.photoText[0]}
           image = {this.props.data.photoImage[0]}
+          info={"資料來源：礦務局2018年10月資料"}
         />
 
         <PhotoTextFull
@@ -5326,12 +5354,14 @@ class Event09 extends Component {
           <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
         </Modal>
 
-        <Video
-          id={"9-video"}
-          videoID="02"
-          link={this.props.data.video[2]}
-          text1={this.props.data.transitionText[1]}
-          playing={true}
+        <Transition id={"16-transition"} text={this.props.data.transitionText[1]} bg={"bg-near-white"}/>
+
+        <PhotoTextFull
+          id={"7-photoTextFull"}
+          position={"fl-l"}
+          text1=""
+          image = {this.props.data.photoFull[5]}
+          label = {this.props.data.photoFullTextLabel[5]}
         />
 
         <TimeChangeFull
@@ -5392,19 +5422,18 @@ class Event09 extends Component {
           up={"18%"}
         />
 
-        <Transition id={"16-transition"} text={this.props.data.transitionText[2]} bg={"bg-white"}/>
-
-        <Video
+        <CenterSmallVideo
           id={"17-video"} 
           videoID="04"
           link={this.props.data.video[4]}
           playing={true}
-          text1=""
+          text={this.props.data.transitionText[2]}
         />
 
         <Blog
           id={"18-blog"}
           number={2}
+          bg={"bg-near-white"}
           text={this.props.data.blogText[1]}
           image={this.props.data.blogImage[1]}
           label={this.props.data.blogLabel[1]}
@@ -5414,7 +5443,6 @@ class Event09 extends Component {
         <SmallVideo 
           id={"19-smallVideo"} 
           videoID="05"
-          bg={"bg-near-white"}
           link={this.props.data.video[1]}
           text={this.props.data.transitionText[4]}
           sound={false}
@@ -5462,12 +5490,15 @@ class Event09 extends Component {
           label = {this.props.data.photoFullTextLabel[4]}
         />
 
-        <PhotoText
-          id={"25-photoText"}
-          order="left"
-          color="invert"
-          text={this.props.data.photoText[1]}
-          image = {this.props.data.photoImage[1]}
+        <Timeline
+          id={"16-timeline"}
+          height={300}
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
+          content={this.props.data.photoText[1]}
+          bg={"bg-near-white"}
+          noImg={true}
         />
 
         <EndingVideo id={"26-endingVideo"} text={"一起來關心 山林採礦"} link={"https://youtube.com/embed/DwvwCxkHN-Q?start=1195&rel=0"}/>
