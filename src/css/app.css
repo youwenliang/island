@@ -503,7 +503,7 @@ nav .btn {
   max-width: 36rem;
 }
 
-@media screen and (min-width: 60em) {
+/*@media screen and (min-width: 60em) {
   .transitionTitle div {
     transform: translateX(-100px);
   }
@@ -511,7 +511,7 @@ nav .btn {
   .transitionTitle p {
     transform: translateX(-100px);
   }
-}
+}*/
 
 .photoContrast > div {
   margin-bottom: 1rem;

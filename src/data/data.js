@@ -1391,10 +1391,18 @@ var data = {
             "illustration": "/events/hushan-reservoir-lost-water/illustrations/illustrationH.svg",
 
             "illustrationBird": [
-                "/events/hushan-reservoir-lost-water/illustrations/illustrationH.svg",
-                "/events/hushan-reservoir-lost-water/illustrations/illustrationH.svg",
-                "/events/hushan-reservoir-lost-water/illustrations/illustrationH.svg",
+                "/events/hushan-reservoir-lost-water/illustrations/waterdrops-01.svg",
+                "/events/hushan-reservoir-lost-water/illustrations/waterdrops-02.svg",
+                "/events/hushan-reservoir-lost-water/illustrations/waterdrops-03.svg",
             ],
+            "illustrationQ": [
+                "/events/hushan-reservoir-lost-water/illustrations/湖山水庫Q1-Q5-01.svg",
+                "/events/hushan-reservoir-lost-water/illustrations/湖山水庫Q1-Q5-02.svg",
+                "/events/hushan-reservoir-lost-water/illustrations/湖山水庫Q1-Q5-03.svg",
+                "/events/hushan-reservoir-lost-water/illustrations/湖山水庫Q1-Q5-04.svg",
+                "/events/hushan-reservoir-lost-water/illustrations/湖山水庫Q1-Q5-05.svg",
+            ],
+
 
             // Transition
             "transitionText": [

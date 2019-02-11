@@ -2643,13 +2643,14 @@ function PhotoSlide(props) {
 
 function Transition(props) {
   var objectFit = {
-    objectFit: "cover"
+    objectFit: "cover",
+    maxWidth: "24rem"
   }
   var img = null;
   var fontSize = "f5-ns f6";
   if(props.illustration !== undefined) {
     img = (
-      <div className="overflow-hidden w7 hide">
+      <div className="overflow-hidden hide">
         <img src={props.illustration} height="200px" style={objectFit} alt="illustration" />
       </div>
     )
@@ -5067,7 +5068,7 @@ class Event08 extends Component {
           id={"11-transition"} 
           title={"transitionTitle"}
           bg={"bg-white black tc"}
-          illustration={this.props.data.illustrationBird[0]}
+          illustration={this.props.data.illustrationQ[0]}
           text={this.props.data.transitionText[1]}
         />
 
@@ -5083,7 +5084,7 @@ class Event08 extends Component {
           id={"13-transition"} 
           title={"transitionTitle"}
           bg={"bg-white black tc"}
-          illustration={this.props.data.illustrationBird[0]}
+          illustration={this.props.data.illustrationQ[1]}
           text={this.props.data.transitionText[2]}
         />
 
@@ -5100,7 +5101,7 @@ class Event08 extends Component {
           id={"15-transition"} 
           title={"transitionTitle"}
           bg={"bg-white black tc"}
-          illustration={this.props.data.illustrationBird[0]}
+          illustration={this.props.data.illustrationQ[2]}
           text={this.props.data.transitionText[3]}
         />
 
@@ -5116,7 +5117,7 @@ class Event08 extends Component {
           id={"17-transition"} 
           title={"transitionTitle"}
           bg={"bg-white black tc"}
-          illustration={this.props.data.illustrationBird[0]}
+          illustration={this.props.data.illustrationQ[3]}
           text={this.props.data.transitionText[4]}
         />
 
@@ -5131,7 +5132,7 @@ class Event08 extends Component {
           id={"19-transition"} 
           title={"transitionTitle"}
           bg={"bg-white black tc"}
-          illustration={this.props.data.illustrationBird[0]}
+          illustration={this.props.data.illustrationQ[4]}
           text={this.props.data.transitionText[5]}
         />
 
