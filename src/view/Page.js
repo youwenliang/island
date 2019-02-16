@@ -4873,7 +4873,8 @@ class Event07 extends Component {
           id={"7-blog"}
           number={2}
           text={this.props.data.photoSlideText}
-          label={this.props.data.photoSlideLabel}
+          label={["",""]}
+          more={this.props.data.photoSlideLabel}
           image={this.props.data.photoSlidePhoto}
           onOpenModal={this.onOpenModal.bind(this)}
         />
@@ -4908,7 +4909,6 @@ class Event07 extends Component {
         <PhotoTextFull
           id={"11-photoTextFull"} 
           position={"fl-l"}
-          opacity={"o-100"}
           text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
@@ -5348,6 +5348,7 @@ class Event09 extends Component {
           image={this.props.data.blogImage[0]}
           label={this.props.data.blogLabel[0]}
           onOpenModal={this.onOpenModal.bind(this)}
+          more={"以上照片提供:田春綢"}
         />
 
         <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
