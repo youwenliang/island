@@ -4873,8 +4873,7 @@ class Event07 extends Component {
           id={"7-blog"}
           number={2}
           text={this.props.data.photoSlideText}
-          label={["",""]}
-          more={this.props.data.photoSlideLabel}
+          label={this.props.data.photoSlideLabel}
           image={this.props.data.photoSlidePhoto}
           onOpenModal={this.onOpenModal.bind(this)}
         />
@@ -5136,23 +5135,12 @@ class Event08 extends Component {
           text={this.props.data.transitionText[5]}
         />
 
-        <TimeChangeFull
-          id={"20-timeChangeFull"}
-          position={"fr-l"}
-          text1={this.props.data.timeChangeText[0]}
-          image = {this.props.data.timeChangePhoto[0]}
-          label = {this.props.data.timeChangeLabel[0]}
-          count="1-2"
-          first={true}
-        />
-        <TimeChangeFull
-          id={"21-timeChangeFull"}
-          position={"fr-l"}
-          last={true}
-          text1={this.props.data.timeChangeText[0]}
-          image = {this.props.data.timeChangePhoto[1]}
-          label = {this.props.data.timeChangeLabel[1]}
-          count="2-2"
+        <SmallVideo 
+          id={"19-smallVideo"} 
+          videoID="05"
+          link={this.props.data.video[1]}
+          text={this.props.data.timeChangeText[0]}
+          sound={false}
         />
 
         <Transition id={"22-transition"} text={this.props.data.transitionText[6]} bg={"bg-near-white"}/>
