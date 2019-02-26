@@ -125,8 +125,8 @@ class Page extends Component {
     document.getElementById('loading').classList.remove('fade');
 
     var data = pageEvent_data[this.state.id];
-    var images  = [data.code];
-    // var images  = [];
+    // var images  = [data.code];
+    var images  = [];
     var loaded = false;
     var p = 0;
     var id = setInterval(frame, 10);
@@ -359,8 +359,8 @@ class Page extends Component {
     document.getElementById('loading').classList.remove('fade');
 
     var data = pageEvent_data[this.state.id];
-    var images  = [data.code];
-    // var images  = [];
+    // var images  = [data.code];
+    var images  = [];
     var loaded = false;
     var p = 0;
     var id = setInterval(frame, 10);
@@ -1722,7 +1722,7 @@ class Video extends Component {
       text1 = (
           <div className={cf}>
             <div className={this.props.position+" w-50-l mw500 mh3-l mh3-l center w-100 pa4-l relative mt0-l mt2"}>
-              <div className={bgcolor+" w-100 h-100 absolute pn top-left"}></div>
+              <div className={bgcolor+" w-100 h-100 absolute pn top-left z1"}></div>
               <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative ph0-l ph3 "+textcolor}>{this.props.text1}</p>
             </div>
           </div>
@@ -1743,7 +1743,7 @@ class Video extends Component {
       text2 = (
         <div className={cf+" "+mt50vh}>
           <div className={this.props.position+" w-50-l mw500 mh3-l center w-100 pa4-l relative mt0-l mt4"}>
-            <div className={bgcolor+" w-100 h-100 absolute pn top-left"}></div>
+            <div className={bgcolor+" w-100 h-100 absolute pn top-left z1"}></div>
             <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative ph0-l ph3 "+textcolor}>{this.props.text2}</p>
           </div>
         </div>
@@ -1838,6 +1838,7 @@ class Video extends Component {
       h = "pv5 bg-near-white";
       var mb4 = ""
       if(this.props.text1 !== "") mb4 = "mb4"
+      if(this.props.order) mb4 = "mt4"
       video_content = this.state.active ? (
         <div className={"cf flex aic jcc w-100 flex-column " + mb4}>
           <div className="center relative w-100">
@@ -1855,11 +1856,25 @@ class Video extends Component {
         </div>
       );
     }
+    
+    var all = (
+      <div className="w-100">
+        {video_content}
+        {text_content}
+      </div>
+    )
+    if(this.props.order) {
+      all = (
+        <div className="w-100">          
+          {text_content}
+          {video_content}
+        </div>
+      )
+    }
 
     return (
       <section id={this.props.id} className={h+" flex aic flex-column-s relative video-content full-video bg-black"} data-active="false">
-        {video_content}
-        {text_content}
+        {all}
       </section>
     )
   }
@@ -2883,6 +2898,11 @@ class TimeChangeFull extends Component {
     var textcolor = ""
     var up = {
       top: this.props.up
+    }
+    if(this.state.mobile && this.props.upM !== undefined) {
+      up = {
+        top: this.props.upM   
+      }
     }
     if(this.props.color === "dark") {
       bgcolor = "bg-black o-20";
@@ -4724,6 +4744,7 @@ class Event06 extends Component {
           position={"fr-l"}
           color="dark"
           videoID="02"
+          order={true}
           link={this.props.data.video[1]}
           text1={this.props.data.videoText[1]}
           text2={this.props.data.videoText[2]}
@@ -5061,6 +5082,7 @@ class Event08 extends Component {
           text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
+          objectP={"30%"}
         />
 
         <Transition
@@ -5352,6 +5374,7 @@ class Event09 extends Component {
           text1=""
           image = {this.props.data.photoFull[5]}
           label = {this.props.data.photoFullTextLabel[5]}
+          objectP = {"65%"}
         />
 
         <TimeChangeFull
@@ -5363,6 +5386,7 @@ class Event09 extends Component {
           count="1-2"
           first={true}
           up={"18%"}
+          upM={"58%"}
         />
         <TimeChangeFull
           id={"11-timeChangeFull"}
@@ -5373,6 +5397,7 @@ class Event09 extends Component {
           label = {this.props.data.timeChangeLabel[1]}
           count="2-2"
           up={"18%"}
+          upM={"58%"}
         />
 
         <PhotoText
@@ -5399,6 +5424,7 @@ class Event09 extends Component {
           label = {this.props.data.timeChangeLabel[2]}
           count="1-2"
           first={true}
+          move={true}
           up={"18%"}
         />
         <TimeChangeFull
@@ -5409,6 +5435,7 @@ class Event09 extends Component {
           image = {this.props.data.timeChangePhoto[3]}
           label = {this.props.data.timeChangeLabel[3]}
           count="2-2"
+          move={true}
           up={"18%"}
         />
 
@@ -5444,6 +5471,7 @@ class Event09 extends Component {
           text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
+          objectP={"60%"}
         />
 
         <PhotoSwitch 
@@ -5547,6 +5575,13 @@ class Event11 extends Component {
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
+
+        <PhotoTextFull
+          text1=""
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+        />
+
         <EndingVideo id={"15-endingVideo"} text={"一起來關心 山林採礦"} link={"https://youtube.com/embed/DwvwCxkHN-Q?start=1195&rel=0"}/>
         <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
         <CTA id={"17-cta"} switchView={this.props.switchView} next={"soil-pollution-tainan"} nextN={"焦土 台鹼安順廠"}/>
