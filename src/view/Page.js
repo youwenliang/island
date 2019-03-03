@@ -1309,11 +1309,23 @@ class PhotoText extends Component {
     ) : null
 
     if(this.state.mobile) h = "";
+    var bgImg = null;
+    if(this.props.bg !== undefined) {
+      color1 = null;
+      h = "min-vh-150";
+      bgImg = {
+        background: "url("+this.props.bg+")",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center",
+        backgroundColor: "transparent"
+      }
+    }
 
     return (
       <section id={this.props.id} className={h+" flex aic relative pv6-l pv5 photoText"}>
         <div className="w-100 h-100 absolute top-left clipping">
-          <div className={color1+" w-100 h-100 fixed fixed-content pn flex aic"}>
+          <div className={color1+" w-100 h-100 fixed fixed-content pn flex aic"} style={bgImg}>
             {fish}
             {photo_content_1}
           </div>
@@ -2497,11 +2509,14 @@ class Timeline extends Component {
         boxColor="bg-white";
       }
 
+      var y = (<p className={"f5-ns f6 fw6 lh-copy mb2 mt0 dib z4 relative pr2 "+bgColor}>{"• "+this.props.year[i]}</p>);
+      if(this.props.noY) y = null;
+
       var text_content = special ? null : (
         <div style={textGridStyle} className={"pa4 center "+boxColor}>
-            <p className={"f5-ns f6 fw6 lh-copy mb2 mt0 dib z4 relative pr2 "+bgColor}>
-              {"• "+this.props.year[i]}
-            </p>
+            
+              {y}
+            
             <p className="f6 lh-copy mv0">
               {this.props.text[i]}
             </p>
@@ -2560,7 +2575,12 @@ class Timeline extends Component {
     var max = {
       maxWidth: "880px"
     }
-    var content = null
+    var content = null;
+    var jcc = null;
+    if(this.props.noY) {
+      line = null;
+      jcc = "jcc"
+    }
 
     if(this.props.content !== null) {
       if(this.props.content === "") content = null;
@@ -2582,7 +2602,7 @@ class Timeline extends Component {
         {scrollLeft}
         <div className={"w-100 overflow-hidden relative hide"} style={scrollingAreaStyle}>
           <div className="absolute line" style={line}></div>
-          <div className={"grid-container nowrap dragscroll relative ph5-l ph0 "+crab} style={container}>
+          <div className={"grid-container nowrap dragscroll relative ph5-l ph0 "+crab+" "+jcc} style={container}>
             {grid}
           </div> 
         </div>
@@ -5783,6 +5803,15 @@ class Event12 extends Component {
           illustration = {this.props.data.illustration}
         />
 
+        <PhotoText
+          id={"4-photoText"}
+          order="right"
+          color="invert"
+          text={this.props.data.photoText[2]}
+          image = {this.props.data.photoImage[2]}
+          bg={this.props.data.photoImage[3]}
+        />
+
         <Transition id={"5-transition"} text={this.props.data.transitionText[0]} bg={"bg-white"}/>
 
         <Video 
@@ -5822,7 +5851,16 @@ class Event12 extends Component {
           text={this.props.data.videoText[2]}
         />
 
-        
+        <Timeline
+          id={"12-timeline"}
+          height={480}
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
+          content={this.props.data.timelineContent}
+          bg={"bg-near-white"}
+          noY={true}
+        />
 
         <SmallVideo 
           id={"13-smallVideo"}
@@ -5838,7 +5876,15 @@ class Event12 extends Component {
           text1={this.props.data.videoText[4]}
         />
 
-
+        <Timeline
+          id={"15-timeline"}
+          height={560}
+          text={this.props.data.timelineText1}
+          year={this.props.data.timelineYear1}
+          images={this.props.data.timelineImage1}
+          content={this.props.data.timelineContent1}
+          bg={"bg-white"}
+        />
 
         <PhotoCenterTextFull
           id={"16-photoCenterTextFull"} 
