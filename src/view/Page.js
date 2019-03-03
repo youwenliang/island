@@ -5647,7 +5647,7 @@ class Event10 extends Component {
         />
 
         <CenterSmallVideo 
-          id={"15-smallVideo"}
+          id={"15-centerSmallVideo"}
           videoID="04"
           link={this.props.data.video[3]}
           text={this.props.data.videoText[3]}
@@ -5723,9 +5723,9 @@ class Event10 extends Component {
           label = {this.props.data.photoFullTextLabel[5]}
         />
 
-        <EndingVideo id={"15-endingVideo"} text={"當農地變成工業區"} link={"https://youtube.com/embed/iwcWyreW9nA?start=1195&rel=0"}/>
-        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
-        <CTA id={"17-cta"} switchView={this.props.switchView} next={"petrochemical-kingdom"} nextN={"海上的石化王國"}/>
+        <EndingVideo id={"27-endingVideo"} text={"當農地變成工業區"} link={"https://youtube.com/embed/iwcWyreW9nA?start=1195&rel=0"}/>
+        <More id={"28-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
+        <CTA id={"29-cta"} switchView={this.props.switchView} next={"petrochemical-kingdom"} nextN={"海上的石化王國"}/>
       </div>
     );
   }
@@ -5764,9 +5764,10 @@ class Event12 extends Component {
   render() {
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
+          id={"2-taiwan"} 
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
@@ -5776,80 +5777,97 @@ class Event12 extends Component {
         />
 
         <Illustration
+          id={"3-illustration"} 
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
-        <Transition text={this.props.data.transitionText[0]} bg={"bg-white"}/>
-        <PhotoTextFull
-          text1=""
-          image = {this.props.data.photoFull[0]}
-          label = {this.props.data.photoFullTextLabel[0]}
+
+        <Transition id={"5-transition"} text={this.props.data.transitionText[0]} bg={"bg-white"}/>
+
+        <Video 
+          id={"6-video"}
+          videoID="01"
+          link={this.props.data.video[0]}
+          text1={this.props.data.videoText[0]}
         />
 
         <PhotoText
+          id={"7-photoText"}
           order="right"
           color="invert"
           text={this.props.data.photoText[0]}
           image = {this.props.data.photoImage[0]}
-        /> {/*廠區*/}
+        />
+
+        <CenterSmallVideo 
+          id={"8-centerSmallVideo"}
+          videoID="02"
+          link={this.props.data.video[1]}
+          text={this.props.data.videoText[1]}
+        />
 
         <PhotoTextFull
-          text1 = {this.props.data.photoFullText[0]}
-          image = {this.props.data.photoFull[1]}
-          label = {this.props.data.photoFullTextLabel[1]}
-        /> {/*病變*/}
+          id={"9-photoTextFull"}
+          text1={this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+        />
+        <Transition id={"10-transition"} text={this.props.data.transitionText[1]} bg={"bg-near-white"}/>
 
         <SmallVideo 
-          videoID="01"
-          link={this.props.data.video[0]}
-          text={this.props.data.videoText[0]}
-        />
-
-        <Video 
-          videoID="02"
-          color="dark"
-          link={this.props.data.video[1]}
-          text1={this.props.data.videoText[1]}
-        />
-
-        <Transition text={this.props.data.transitionText[1]} bg={"bg-white"}/>
-        <Video 
+          id={"11-smallVideo"}
           videoID="03"
           link={this.props.data.video[2]}
-          text1=""
+          text={this.props.data.videoText[2]}
+        />
+
+        
+
+        <SmallVideo 
+          id={"13-smallVideo"}
+          videoID="04"
+          link={this.props.data.video[3]}
+          text={this.props.data.videoText[3]}
+        />
+
+        <Video 
+          id={"14-video"}
+          videoID="05"
+          link={this.props.data.video[4]}
+          text1={this.props.data.videoText[4]}
+        />
+
+
+
+        <PhotoCenterTextFull
+          id={"16-photoCenterTextFull"} 
+          text1 = {this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
+          bg={true}
         />
 
         <PhotoCenterTextFull
-          text1 = {this.props.data.photoFullText[1]}
+          id={"17-photoCenterTextFull"} 
+          text1 = {this.props.data.photoFullText[2]}
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
-        /> {/*石棺*/}
+          bg={true}
+        />
 
-        <PhotoTextFix
-          order="left"
+        <PhotoText
+          id={"18-photoText"}
+          order="right"
           color="invert"
           text={this.props.data.photoText[1]}
           image = {this.props.data.photoImage[1]}
-          label = {this.props.data.photoLabel[0]}
-          multiple = {true}
-          top={true}
-        /> {/*提告*/}
+        />
 
-        <PhotoTextFix
-          order="left"
-          color="invert"
-          text={this.props.data.photoText[2]}
-          image = {this.props.data.photoImage[2]}
-          label = {this.props.data.photoLabel[1]}
-          multiple = {true}
-          top={false}
-        /> {/*提告*/}
 
-        <Transition text={this.props.data.transitionText[2]} bg={"bg-white"}/>
-        <EndingVideo id={"15-endingVideo"} text={"想知道台鹼安順廠更多故事...."} link={"https://youtube.com/embed/6CwZYq6vt0k?rel=0"}/>
-        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
-        <CTA id={"17-cta"} switchView={this.props.switchView} next={"mercury-sludge-volcano"} nextN={"無人知曉的未爆彈"}/>
+        <EndingVideo id={"20-endingVideo"} text={"來看台鹼安順廠所遺留下的毒害"} link={"https://youtube.com/embed/FdCu9lOMolc?rel=0"}/>
+        <More id={"21-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
+        <CTA id={"22-cta"} switchView={this.props.switchView} next={"mercury-sludge-volcano"} nextN={"無人知曉的未爆彈"}/>
       </div>
     );
   }
