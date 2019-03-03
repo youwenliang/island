@@ -2534,7 +2534,7 @@ class Timeline extends Component {
     }
 
     var line = special ? null : {
-      top: this.state.mobile ? "60vw": "376px",
+      top: this.state.mobile ? "57.5vw": "369px",
       left: 0,
       width: "100%",
       height: "2px",
@@ -5528,12 +5528,28 @@ class Event09 extends Component {
 }
 
 class Event10 extends Component {
+  state = {
+    open: false,
+    image: "",
+    description: ""
+  }
+ 
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
+          id={"2-taiwan"}
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
@@ -5543,12 +5559,172 @@ class Event10 extends Component {
         />
 
         <Illustration
+          id={"3-illustration"}
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
-        <EndingVideo id={"15-endingVideo"} text={"一起來關心 山林採礦"} link={"https://youtube.com/embed/DwvwCxkHN-Q?start=1195&rel=0"}/>
-        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+
+        <PhotoTextFull
+          id={"4-photoTextFull"}
+          text1 = {this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+        />
+
+        <Transition id={"5-transition"} text={this.props.data.transitionText[0]} bg={"bg-white"}/>
+
+        <PhotoTextFull
+          id={"6-photoTextFull"}
+          text1 = {this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
+          position = {"fr-l"}
+        />
+
+        <CenterSmallVideo
+          id={"7-centerSmallVideo"}
+          videoID="01"
+          text={this.props.data.videoText[0]}
+          link={this.props.data.video[0]}
+          sound={false}
+        />
+
+        <PhotoSwitch
+          id={"8-photoSwitch"}
+          number = {1} 
+          images={this.props.data.photoswitch} 
+          text1={this.props.data.photoswitchText}
+          label={this.props.data.photoswitchLabel}
+        />
+
+        <Transition id={"9-transition"} text={this.props.data.transitionText[1]} bg={"bg-white"}/>
+
+        <PhotoTextFull
+          id={"10-photoTextFull"}
+          text1 = {this.props.data.photoFullText[2]}
+          image = {this.props.data.photoFull[2]}
+          label = {this.props.data.photoFullTextLabel[2]}
+        />
+
+        <CenterVideo 
+          id={"11-centerVideo"} 
+          videoID="02"
+          link={this.props.data.video[1]}
+          text1={this.props.data.videoText[1]}
+          bg={false}
+          playing={true}
+          sound={false}
+        />
+
+        <SmallVideo 
+          id={"12-smallVideo"}
+          videoID="03"
+          link={this.props.data.video[2]}
+          text={this.props.data.videoText[2]}
+        />
+
+        <Blog
+          id={"13-blog"}
+          bg={"bg-near-white"}
+          number={4}
+          text={this.props.data.blogText[0]}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
+        </Modal>
+
+        <PhotoTextFull
+          id={"14-photoTextFull"}
+          text1 = {this.props.data.photoFullText[3]}
+          image = {this.props.data.photoFull[3]}
+          label = {this.props.data.photoFullTextLabel[3]}
+        />
+
+        <CenterSmallVideo 
+          id={"15-smallVideo"}
+          videoID="04"
+          link={this.props.data.video[3]}
+          text={this.props.data.videoText[3]}
+        />
+
+        <SmallVideo 
+          id={"16-smallVideo"}
+          videoID="05"
+          link={this.props.data.video[4]}
+          text={this.props.data.videoText[4]}
+          bg={"bg-near-white"}
+        />
+
+        <Transition id={"17-transition"} text={this.props.data.transitionText[2]} bg={"bg-white"}/>
+
+        <Video 
+          id={"18-video"}
+          videoID="06"
+          link={this.props.data.video[5]}
+          text1=""
+          playing={true}
+        />
+
+        <Transition id={"19-transition"} text={this.props.data.transitionText[3]} bg={"bg-white"}/>
+
+        <SmallVideo 
+          id={"20-smallVideo"}
+          videoID="07"
+          link={this.props.data.video[6]}
+          text={this.props.data.videoText[6]}
+          bg={"bg-near-white"}
+        />
+
+        <PhotoTextFull
+          id={"21-photoTextFull"}
+          text1 = {this.props.data.photoFullText[4]}
+          image = {this.props.data.photoFull[4]}
+          label = {this.props.data.photoFullTextLabel[4]}
+        />
+
+        <Timeline
+          id={"23-timeline"}
+          height={560}
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
+          content={this.props.data.transitionText[4]}
+          bg={"bg-white"}
+        />
+
+        <Blog
+          id={"24-blog"}
+          bg={"bg-near-white"}
+          number={1}
+          text={this.props.data.blogText[1]}
+          image={this.props.data.blogImage[1]}
+          label={this.props.data.blogLabel[1]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Video 
+          id={"25-video"}
+          videoID="08"
+          link={this.props.data.video[7]}
+          text1=""
+          playing={true}
+        />
+
+        <PhotoCenterTextFull
+          id={"26-photoCenterFull"}
+          text1 = {this.props.data.photoFullText[5]}
+          image = {this.props.data.photoFull[5]}
+          label = {this.props.data.photoFullTextLabel[5]}
+        />
+
+        <EndingVideo id={"15-endingVideo"} text={"當農地變成工業區"} link={"https://youtube.com/embed/iwcWyreW9nA?start=1195&rel=0"}/>
+        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
         <CTA id={"17-cta"} switchView={this.props.switchView} next={"petrochemical-kingdom"} nextN={"海上的石化王國"}/>
       </div>
     );
@@ -5576,14 +5752,8 @@ class Event11 extends Component {
           illustration = {this.props.data.illustration}
         />
 
-        <PhotoTextFull
-          text1=""
-          image = {this.props.data.photoFull[0]}
-          label = {this.props.data.photoFullTextLabel[0]}
-        />
-
         <EndingVideo id={"15-endingVideo"} text={"一起來關心 山林採礦"} link={"https://youtube.com/embed/DwvwCxkHN-Q?start=1195&rel=0"}/>
-        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
         <CTA id={"17-cta"} switchView={this.props.switchView} next={"soil-pollution-tainan"} nextN={"焦土 台鹼安順廠"}/>
       </div>
     );
@@ -5678,7 +5848,7 @@ class Event12 extends Component {
 
         <Transition text={this.props.data.transitionText[2]} bg={"bg-white"}/>
         <EndingVideo id={"15-endingVideo"} text={"想知道台鹼安順廠更多故事...."} link={"https://youtube.com/embed/6CwZYq6vt0k?rel=0"}/>
-        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
         <CTA id={"17-cta"} switchView={this.props.switchView} next={"mercury-sludge-volcano"} nextN={"無人知曉的未爆彈"}/>
       </div>
     );
@@ -5706,7 +5876,7 @@ class Event13 extends Component {
           illustration = {this.props.data.illustration}
         />
         <EndingVideo id={"15-endingVideo"} text={"一起來關心 山林採礦"} link={"https://youtube.com/embed/DwvwCxkHN-Q?start=1195&rel=0"}/>
-        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
         <CTA id={"17-cta"} switchView={this.props.switchView} next={"science-park-landuse"} nextN={"無土時代"}/>
       </div>
     );
