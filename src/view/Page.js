@@ -2464,7 +2464,8 @@ class Timeline extends Component {
       height: (special&&this.state.mobile) ? "170vw" : ths,
       backgroundColor: (special) ? "#F4F4F4" : "transparent",
       borderTop: (special) ? "#F4F4F4 20px solid" : "none",
-      borderBottom: (special) ? "#F4F4F4 20px solid" : "none"
+      borderBottom: (special) ? "#F4F4F4 20px solid" : "none",
+      marginBottom: (special) ? "4rem" : "0"
     }
     var w = ""
     var h = ""
@@ -3246,14 +3247,26 @@ class Blog extends Component {
       );
     } else if(this.props.number === 2) {
       column = "";
+      var image1 = this.props.image[0];
+      var image2 = this.props.image[1];
+
+      if(this.props.switchM) {
+        if(this.state.mobile){
+          image1 = this.props.image[0].split('.')[0]+'-M.jpg';
+          image2 = this.props.image[1].split('.')[0]+'-M.jpg';
+        } else {
+          image1 = this.props.image[0];
+          image2 = this.props.image[1];          
+        }
+      }
       img = (
         <div className="w-100 mt5 hide">
           <div className="fl-l w-100 w-50-l relative tc mb4 mb0-l">
-            <img className="mb3" src={this.props.image[0]} alt={this.props.label[0]}/>
+            <img className="mb3" src={image1} alt={this.props.label[0]}/>
             <label className="f7 mt2 o-50 lh-normal" >{this.props.label[0]}</label>
           </div>
           <div className="fr-l w-100 w-50-l relative tc mb0">
-            <img className="mb3" src={this.props.image[1]} alt={this.props.label[1]}/>
+            <img className="mb3" src={image2} alt={this.props.label[1]}/>
             <label className="f7 mt2 o-50 lh-normal" >{this.props.label[1]}</label>
           </div>
         </div>
@@ -4729,7 +4742,7 @@ class Event06 extends Component {
         />
 
         <Video 
-          id={"4-video"}
+          id={"5-video"}
           videoID="01"
           link={this.props.data.video[0]}
           text1={this.props.data.videoText[0]}
@@ -4738,12 +4751,12 @@ class Event06 extends Component {
         />
 
         <Transition
-          id={"5-transition"}
+          id={"6-transition"}
           text={this.props.data.photoswitchText}
         />
 
         <PhotoSwitch 
-          id={"6-photoSwitch"}
+          id={"7-photoSwitch"}
           position={"fr-l"}
           images={this.props.data.photoswitch} 
           text1=""
@@ -4751,7 +4764,7 @@ class Event06 extends Component {
         />
 
         <PhotoTextFull
-          id={"7-photoTextFull"}
+          id={"8-photoTextFull"}
           position={"fl-l"}
           text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
@@ -4759,7 +4772,7 @@ class Event06 extends Component {
         />
 
         <Video 
-          id={"8-video"}
+          id={"9-video"}
           number={2}
           position={"fr-l"}
           color="dark"
@@ -4770,10 +4783,10 @@ class Event06 extends Component {
           text2={this.props.data.videoText[2]}
         />
 
-        <Transition id={"9-transition"} text={this.props.data.transitionText[0]} bg={"bg-white"}/>
+        <Transition id={"10-transition"} text={this.props.data.transitionText[0]} bg={"bg-white"}/>
 
         <Video 
-          id={"9-video"}
+          id={"11-video"}
           position={"fl-l"}
           videoID="03"
           link={this.props.data.video[2]}
@@ -4781,9 +4794,18 @@ class Event06 extends Component {
           playing={true}
         />
 
+        <Timeline
+          id={"12-timeline"}
+          special={true}
+          bg={"bg-near-white"}
+          content={this.props.data.photoFullText[5]}
+          text=""
+          year=""
+          images={this.props.data.timelineImage}
+        />
 
         <Blog
-          id={"11-blog"}
+          id={"13-blog"}
           number={2}
           bg={"bg-white z4"}
           text={this.props.data.blogText[0]}
@@ -4798,7 +4820,7 @@ class Event06 extends Component {
         </Modal>
 
         <PhotoSwitch
-          id={"12-photoSwitch"}
+          id={"14-photoSwitch"}
           number = {2} 
           images={this.props.data.photoswitch2} 
           text1={this.props.data.photoswitchText2}
@@ -4807,7 +4829,7 @@ class Event06 extends Component {
         />
 
         <PhotoContrast
-          id={"13-photoContrast"} 
+          id={"15-photoContrast"} 
           bg={"bg-white z1"}
           images={this.props.data.photocontrast}
           text={this.props.data.photocontrastText}
@@ -4816,7 +4838,7 @@ class Event06 extends Component {
         />
 
         <SmallVideo 
-          id={"14-smallVideo"} 
+          id={"16-smallVideo"} 
           videoID="04"
           bg={"bg-near-white"}
           link={this.props.data.video[4]}
@@ -4825,15 +4847,15 @@ class Event06 extends Component {
         />
 
         <PhotoCenterTextFull
-          id={"15-photoCenterTextFull"} 
+          id={"17-photoCenterTextFull"} 
           text1={this.props.data.photoFullText[4]}
           image = {this.props.data.photoFull[3]}
           label = {this.props.data.photoFullTextLabel[3]}
         />
 
-        <EndingVideo id={"16-endingVideo"} text={"一起來，看梨山20年變遷...."} link={"https://youtube.com/embed/2hNzEhztAms?rel=0"}/>
-        <More id={"17-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
-        <CTA id={"18-cta"} switchView={this.props.switchView} next={"lushan-hotspring-risk"} nextN={"冒險 泡湯去"}/>
+        <EndingVideo id={"18-endingVideo"} text={"一起來，看梨山20年變遷...."} link={"https://youtube.com/embed/2hNzEhztAms?rel=0"}/>
+        <More id={"19-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <CTA id={"20-cta"} switchView={this.props.switchView} next={"lushan-hotspring-risk"} nextN={"冒險 泡湯去"}/>
 
       </div>
     );
@@ -4917,7 +4939,9 @@ class Event07 extends Component {
           label={this.props.data.photoSlideLabel}
           image={this.props.data.photoSlidePhoto}
           onOpenModal={this.onOpenModal.bind(this)}
+          switchM={true}
         />
+
         <Timeline
           id={"8-timeline"} 
           height="480"
