@@ -1852,7 +1852,7 @@ class Video extends Component {
       if(this.props.text1 !== "") mb4 = "mb4"
       if(this.props.order) mb4 = "mt4"
       video_content = this.state.active ? (
-        <div className={"cf flex aic jcc w-100 flex-column " + mb4}>
+        <div className={"z4 relative cf flex aic jcc w-100 flex-column " + mb4}>
           <div className="center relative w-100">
             <video className="w-100" id={'video'+this.props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
               <source src={this.props.link} type="video/mp4"/>
@@ -1860,7 +1860,7 @@ class Video extends Component {
           </div>
         </div>
       ) : (
-        <div className={"cf flex aic jcc w-100 flex-column " + mb4}>
+        <div className={"z4 relative cf flex aic jcc w-100 flex-column " + mb4}>
           <div className="center relative w-100">
             <video className="w-100 emptyVideo" id={'video'+this.props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
             </video>

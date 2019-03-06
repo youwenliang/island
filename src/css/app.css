@@ -31,6 +31,10 @@ body {
   z-index: -1;
 }
 
+.image-gallery-image {
+  pointer-events: none;
+}
+
 .o-100 {
   opacity: 1 !important;
 }
