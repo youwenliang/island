@@ -1323,14 +1323,14 @@ class PhotoText extends Component {
     }
 
     var photo_content_1 = this.state.mobile ? null : (
-      <figure className={"center w-100 o-90 o-100-ns relative"+mw70+" "+large}>
+      <figure className={"center w-100 o-90 o-100-ns relative "+mw70+" "+large}>
         {copyright_content}
         <img className={"w-50-l w-100 "+photo+" "+large} src={this.props.image} alt="description" style={obj}/>
         {info}
       </figure>
     )
     var photo_content_2 = this.state.mobile ? (
-      <figure className={"center mw70 w-100 bg-white o-90 relative"+pa3}>
+      <figure className={"center mw70 w-100 bg-white o-90 relative "+pa3}>
         {copyright_content}
         <img className={"w-50-l w-100 "+photo} src={this.props.image} alt="description"/>
         {info}
