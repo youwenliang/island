@@ -934,6 +934,14 @@ class PhotoTextFull extends Component {
       padding: this.state.mobile ? "10px" : "20px"
     }
 
+    var bottomLeft = {
+      bottom: this.state.mobile ? "45px": "0",
+      left: "0",
+      padding: this.state.mobile ? "10px" : "20px",
+      maxWidth: "80%",
+      textAlign: "left"
+    }
+
     var bgcolor = ""
     var textcolor = ""
     if(this.props.color === "dark") {
@@ -949,6 +957,11 @@ class PhotoTextFull extends Component {
     var label_content = null;
     if(this.props.label !== "") {
       label_content = (<label className="white absolute lh-normal f6-ns f8 pn" style={bottomRight}>{this.props.label}</label>)
+    }
+
+    var copyright_content = null;
+    if(this.props.copyright) {
+      copyright_content = (<label className="white absolute f8 pn o-30" style={bottomLeft}>{this.props.copyright}</label>)
     }
 
     if(this.props.text1 !== "") {
@@ -997,6 +1010,7 @@ class PhotoTextFull extends Component {
           <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
             {image_content}
             {label_content}
+            {copyright_content}
           </div>
         </div>
         <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
@@ -1295,14 +1309,29 @@ class PhotoText extends Component {
       }
     }
 
+    var copyrightStyle = {
+      bottom: "0",
+      left: this.state.mobile ? "0": "50%",
+      padding: this.state.mobile ? "10px" : "20px",
+      maxWidth: this.state.mobile ? "100%" : "80%",
+      textAlign: "left"
+    }
+
+    var copyright_content = null;
+    if(this.props.copyright) {
+      copyright_content = (<label className="white absolute f8 pn o-30" style={copyrightStyle}>{this.props.copyright}</label>)
+    }
+
     var photo_content_1 = this.state.mobile ? null : (
-      <figure className={"center w-100 o-90 o-100-ns "+mw70+" "+large}>
+      <figure className={"center w-100 o-90 o-100-ns relative"+mw70+" "+large}>
+        {copyright_content}
         <img className={"w-50-l w-100 "+photo+" "+large} src={this.props.image} alt="description" style={obj}/>
         {info}
       </figure>
     )
     var photo_content_2 = this.state.mobile ? (
-      <figure className={"center mw70 w-100 bg-white o-90 "+pa3}>
+      <figure className={"center mw70 w-100 bg-white o-90 relative"+pa3}>
+        {copyright_content}
         <img className={"w-50-l w-100 "+photo} src={this.props.image} alt="description"/>
         {info}
       </figure>
@@ -2954,6 +2983,19 @@ class TimeChangeFull extends Component {
       first = "fade"
     }
 
+    var copyrightStyle = {
+      bottom: "0",
+      left: "0",
+      padding: this.state.mobile ? "10px" : "20px",
+      maxWidth: this.state.mobile ? "100%" : "80%",
+      textAlign: "left"
+    }
+
+    var copyright_content = null;
+    if(this.props.copyright) {
+      copyright_content = (<label className="white absolute f8 pn o-30" style={copyrightStyle}>{this.props.copyright}</label>)
+    }
+
     var label_content = this.props.label !== "" ? (<label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{this.props.label}</label>) : null;
     var earth = this.props.earth ? <GoogleEarthLogo text={this.props.earthText} /> : null;
     var imgSrc = this.props.image;
@@ -2963,6 +3005,7 @@ class TimeChangeFull extends Component {
         <div className={first+" w-100 h-100 absolute top-left time-clipping fade"}>
           <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
             <figure className="w-100 ma0">
+              {copyright_content}
               <img className="w-100" style={fullImage} src={imgSrc} alt="background"/>
             </figure>
             {label_content}
@@ -5109,6 +5152,7 @@ class Event08 extends Component {
           large={true}
           text={this.props.data.photoText[0]}
           image = {this.props.data.photoImage[0]}
+          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
         />
 
         <Timeline
@@ -5176,6 +5220,7 @@ class Event08 extends Component {
           large={true}
           text={this.props.data.photoText[1]}
           image = {this.props.data.photoImage[1]}
+          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
         />
 
         <Transition
@@ -5242,6 +5287,7 @@ class Event08 extends Component {
           text={this.props.data.photoText[2]}
           image = {this.props.data.photoImage[2]}
           large ={true}
+          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
         />
 
         <Timeline
@@ -5377,6 +5423,7 @@ class Event09 extends Component {
           text1={this.props.data.photoFullText[2]}
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
+          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
         />
 
         <CenterSmallVideo
@@ -5470,6 +5517,7 @@ class Event09 extends Component {
           first={true}
           move={true}
           up={"18%"}
+          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
         />
         <TimeChangeFull
           id={"15-timeChangeFull"}
@@ -5481,6 +5529,7 @@ class Event09 extends Component {
           count="2-2"
           move={true}
           up={"18%"}
+          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
         />
 
         <CenterSmallVideo
