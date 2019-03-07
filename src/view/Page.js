@@ -5248,7 +5248,7 @@ class Event08 extends Component {
         <SmallVideo 
           id={"19-smallVideo"} 
           videoID="05"
-          link={this.props.data.video[1]}
+          link={this.props.data.video[7]}
           text={this.props.data.timeChangeText[0]}
           sound={false}
         />

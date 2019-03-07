@@ -1427,12 +1427,13 @@ var data = {
             // Video
             "video": [
                 "/island20/events/hushan-reservoir-lost-water/videos/H27-八色鳥短片.mp4",
-                "/island20/events/hushan-reservoir-lost-water/videos/H36-0219_湖山水庫(修改版).mp4",
+                "/island20/events/hushan-reservoir-lost-water/videos/H25-抽地下水.mp4",
                 "/island20/events/hushan-reservoir-lost-water/videos/H4-溢洪道空拍.mp4",
                 "/island20/events/hushan-reservoir-lost-water/videos/H31-節水短片.mp4",
                 "/island20/events/hushan-reservoir-lost-water/videos/H26-陳清圳.mp4",
                 "/island20/events/hushan-reservoir-lost-water/videos/H28-八色鳥底圖.mp4",
                 "/island20/events/hushan-reservoir-lost-water/videos/H30食蛇龜.mp4",
+                "/island20/events/hushan-reservoir-lost-water/videos/H36-0219_湖山水庫(修改版).mp4",
             ],
             "videoText": [
                 "",
