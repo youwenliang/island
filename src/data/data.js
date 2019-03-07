@@ -1427,7 +1427,7 @@ var data = {
             // Video
             "video": [
                 "/island20/events/hushan-reservoir-lost-water/videos/H27-八色鳥短片.mp4",
-                "/island20/events/hushan-reservoir-lost-water/videos/H25-抽地下水.mp4",
+                "/island20/events/hushan-reservoir-lost-water/videos/H36-0219_湖山水庫(修改版).mp4",
                 "/island20/events/hushan-reservoir-lost-water/videos/H4-溢洪道空拍.mp4",
                 "/island20/events/hushan-reservoir-lost-water/videos/H31-節水短片.mp4",
                 "/island20/events/hushan-reservoir-lost-water/videos/H26-陳清圳.mp4",
@@ -1547,7 +1547,7 @@ var data = {
             // BlogPost (部落格 x 2)
             "blogText": [
                 "2012年，特生中心與中興大學的團隊，搶救出185隻食蛇龜，移往私人農場安置，之後野放到離原棲地不遠的地方，並且在20隻個體上裝了發報器，進行無線電追蹤。\n\n在水庫完工後，這些龜重回自然，並無後續追蹤資料，沒有人知道這場搶救行動的成效。",
-                "依據台水公司目前的減漏計畫，全國平均漏水率預計由2012年19.55%降至2022年14.25%，共計降低5.30%，合計每年約可節省1.7億立方公尺水量，相當於3座湖山水庫有效蓄水容量。\n\n漏水率難以降低，在於管線老舊、經費不足等問題。\n\n賴揆宣示，力拼漏水率在2031年降到10％，預計將能省下更多水。"
+                "依據台水公司目前的減漏計畫，全國平均漏水率預計由2012年19.55%降至2022年14.25%，共計降低5.30%，合計每年約可節省1.7億立方公尺水量，相當於3座湖山水庫有效蓄水容量。\n\n漏水率難以降低，在於管線老舊、經費不足等問題。\n\n2017年時任行政院長賴清德力拼漏水率在2031年降到10％，預計將能省下更多水。"
             ],
             "blogImage": [
                 ["/island20/events/hushan-reservoir-lost-water/H19-裝上發報器的食蛇龜.jpg"],

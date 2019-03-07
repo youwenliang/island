@@ -2934,7 +2934,7 @@ class TimeChangeFull extends Component {
     var fullImage = {
       height: "100vh",
       objectFit: "cover",
-      objectPosition: this.props.move ? "40% 22px" : "center 22px",
+      objectPosition: this.props.move ? "41.5% 22px" : "center 22px",
       width: "100%"
     }
     var bottomRight = {
