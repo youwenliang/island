@@ -4982,7 +4982,6 @@ class Event07 extends Component {
           label={this.props.data.photoSlideLabel}
           image={this.props.data.photoSlidePhoto}
           onOpenModal={this.onOpenModal.bind(this)}
-          switchM={true}
         />
 
         <Timeline
