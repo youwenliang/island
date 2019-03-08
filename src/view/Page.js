@@ -1476,7 +1476,7 @@ function PhotoSwitch(props) {
     )
   }
   return (
-    <section id={props.id} className={h+" flex aic w-100 relative bvh"}>
+    <section id={props.id} className={h+" flex aic w-100 relative bvh "+props.z}>
       <div className="w-100 h-100 absolute top-left clipping">
         <div className="w-100 h-100 fixed fixed-content">
           <ImageGallery items={images} showFullscreenButton={false} showThumbnails={false} showPlayButton={false} autoPlay={true} showBullets={true} slideInterval={9000}/>
@@ -4804,6 +4804,7 @@ class Event06 extends Component {
           images={this.props.data.photoswitch} 
           text1=""
           label={this.props.data.photoswitchLabel}
+          z="z2"
         />
 
         <PhotoTextFull
@@ -4869,6 +4870,7 @@ class Event06 extends Component {
           text1={this.props.data.photoswitchText2}
           text2={this.props.data.photoswitchText3}
           label={this.props.data.photoswitchLabel2}
+          z="z1"
         />
 
         <PhotoContrast
