@@ -2646,12 +2646,20 @@ class Timeline extends Component {
     if(!this.state.mobile && this.props.images.length < 5) scrollLeft = null;
     
     bgColor = this.props.bg !== undefined ? this.props.bg : "bg-white";
+    
+    var scrollTitle = null;
+    if(this.props.scrollTitle !== undefined) {
+        scrollTitle = (
+          <p className='f3-ns f5 fw7 ph3 tracked mb0 lh-normal'>{this.props.scrollTitle}</p>
+        )
+    }
 
     return (
       <section id={this.props.id} className={bgColor+" flex aic relative flex-column "+padding}>      
         <div className="ma0 ph3 hide">
           {content}
         </div>
+        {scrollTitle}
         {scrollLeft}
         <div className={"w-100 overflow-hidden relative hide"} style={scrollingAreaStyle}>
           <div className="absolute line" style={line}></div>
@@ -4868,6 +4876,7 @@ class Event06 extends Component {
           text=""
           year=""
           images={this.props.data.timelineImage}
+          scrollTitle="2004年敏督利颱風災情"
         />
 
         <Blog
