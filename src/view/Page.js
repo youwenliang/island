@@ -1440,56 +1440,79 @@ function MapText(props) {
 }
 
 /*06*/
-function PhotoSwitch(props) {
-  var list = props.images;
-  var title = props.label;
-  const images = [];
-  for(var i = 0; i < list.length; i++) {
-    var temp = {
-      original: list[i],
-      thumbnail: list[i],
-      description: title[i]
+class PhotoSwitch extends Component {
+  componentDidMount(){
+    var $this = this;
+    var $t = $('#'+$this.props.id);
+
+    $(document).ready(function(){
+      $(window).scroll(function(){
+        if($t.length !== 0) {
+          var top_of_object = $t.offset().top;
+          var bottom_of_object = $t.offset().top + $t.height();
+          var top_of_window = $(window).scrollTop(); 
+          var bottom_of_window = $(window).scrollTop()+ $(window).height(); 
+          
+          if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
+            $t.addClass('z2');
+          } else {
+            $t.removeClass('z2');
+          }
+        }
+      });
+    });
+  }
+  render(){
+    var list = this.props.images;
+    var title = this.props.label;
+    const images = [];
+    for(var i = 0; i < list.length; i++) {
+      var temp = {
+        original: list[i],
+        thumbnail: list[i],
+        description: title[i]
+      }
+      images.push(temp);
     }
-    images.push(temp);
-  }
-  var text1 = null;
-  var h = "min-vh-150"
-  if(props.text1 !== "") {
-    h = "min-vh-200"
-    text1 = (
-      <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative "+props.position}>
-        <div className="w-100 h-100 absolute bg-black o-60 top-left"></div>
-        <p className="f5-ns f6 lh-copy mv0 relative z4">{props.text1}</p>
-      </div>
-    )
-  }
-  var text2 = null;
-  if(props.number === 2) {
-    h = "min-vh-300"
-    text2 = (
-      <div className="cf white mt50vh">
-        <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative "+props.position}>
+    var text1 = null;
+    var h = "min-vh-150"
+    if(this.props.text1 !== "") {
+      h = "min-vh-200"
+      text1 = (
+        <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative "+this.props.position}>
           <div className="w-100 h-100 absolute bg-black o-60 top-left"></div>
-          <p className="f5-ns f6 lh-copy mv0 relative z4">{props.text2}</p>
+          <p className="f5-ns f6 lh-copy mv0 relative z4">{this.props.text1}</p>
         </div>
-      </div>
+      )
+    }
+    var text2 = null;
+    if(this.props.number === 2) {
+      h = "min-vh-300"
+      text2 = (
+        <div className="cf white mt50vh">
+          <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative "+this.props.position}>
+            <div className="w-100 h-100 absolute bg-black o-60 top-left"></div>
+            <p className="f5-ns f6 lh-copy mv0 relative z4">{this.props.text2}</p>
+          </div>
+        </div>
+      )
+    }
+    return (
+      <section id={this.props.id} className={h+" flex aic w-100 relative bvh photoSwitch "+this.props.z}>
+        <div className="w-100 h-100 absolute top-left clipping">
+          <div className="w-100 h-100 fixed fixed-content">
+            <ImageGallery items={images} showFullscreenButton={false} showThumbnails={false} showPlayButton={false} autoPlay={true} showBullets={true} slideInterval={9000}/>
+          </div>
+        </div>
+        <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap pn">
+          <div className="cf white">
+            {text1}
+          </div>
+          {text2}
+        </div>
+      </section>
     )
   }
-  return (
-    <section id={props.id} className={h+" flex aic w-100 relative bvh "+props.z}>
-      <div className="w-100 h-100 absolute top-left clipping">
-        <div className="w-100 h-100 fixed fixed-content">
-          <ImageGallery items={images} showFullscreenButton={false} showThumbnails={false} showPlayButton={false} autoPlay={true} showBullets={true} slideInterval={9000}/>
-        </div>
-      </div>
-      <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap pn">
-        <div className="cf white">
-          {text1}
-        </div>
-        {text2}
-      </div>
-    </section>
-  )
 }
 
 /*07*/
@@ -4804,7 +4827,6 @@ class Event06 extends Component {
           images={this.props.data.photoswitch} 
           text1=""
           label={this.props.data.photoswitchLabel}
-          z="z2"
         />
 
         <PhotoTextFull
@@ -4870,7 +4892,6 @@ class Event06 extends Component {
           text1={this.props.data.photoswitchText2}
           text2={this.props.data.photoswitchText3}
           label={this.props.data.photoswitchLabel2}
-          z="z1"
         />
 
         <PhotoContrast
