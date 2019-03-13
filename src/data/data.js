@@ -1141,8 +1141,8 @@ var data = {
             // PhotoSwitch2
             "photoswitch2": [
                 "/island20/events/lishan-high-mountain-farms/F49.jpg",
-                "/island20/events/lishan-high-mountain-farms/F58-保留側枝的果樹.png",
-                "/island20/events/lishan-high-mountain-farms/F59-合法卻危險的菜田.png",
+                "/island20/events/lishan-high-mountain-farms/F58-保留側枝的果樹.jpg",
+                "/island20/events/lishan-high-mountain-farms/F59-合法卻危險的菜田.jpg",
                 "/island20/events/lishan-high-mountain-farms/F65-2018年梨山空拍.jpg",
                 "/island20/events/lishan-high-mountain-farms/F67-2010.01.14空拍-德基水庫上游開發-梨山地區-福壽山農場6.jpg",
             ],
@@ -1407,7 +1407,7 @@ var data = {
                 "/island20/events/hushan-reservoir-lost-water/illustrations/湖山水庫Q1-Q5-02.svg",
                 "/island20/events/hushan-reservoir-lost-water/illustrations/湖山水庫Q1-Q5-03.svg",
                 "/island20/events/hushan-reservoir-lost-water/illustrations/湖山水庫Q1-Q5-04.svg",
-                "/island20/events/hushan-reservoir-lost-water/illustrations/湖山水庫Q1-Q5-05.svg",
+                "/island20/eveFnts/hushan-reservoir-lost-water/illustrations/湖山水庫Q1-Q5-05.svg",
             ],
 
 
@@ -1503,7 +1503,7 @@ var data = {
                 "2018年",
             ],
             "timelineImage": [
-                "/island20/events/hushan-reservoir-lost-water/H32.png",
+                "/island20/events/hushan-reservoir-lost-water/H32.jpg",
                 "/island20/events/hushan-reservoir-lost-water/H11.jpg",
                 "/island20/events/hushan-reservoir-lost-water/H12.jpg",
                 "/island20/events/hushan-reservoir-lost-water/H14.jpg"

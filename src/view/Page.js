@@ -125,8 +125,8 @@ class Page extends Component {
     document.getElementById('loading').classList.remove('fade');
 
     var data = pageEvent_data[this.state.id];
-    // var images  = [data.code];
-    var images  = [];
+    var images  = [data.code];
+    // var images  = [];
     var loaded = false;
     var p = 0;
     var id = setInterval(frame, 10);
@@ -359,8 +359,8 @@ class Page extends Component {
     document.getElementById('loading').classList.remove('fade');
 
     var data = pageEvent_data[this.state.id];
-    // var images  = [data.code];
-    var images  = [];
+    var images  = [data.code];
+    // var images  = [];
     var loaded = false;
     var p = 0;
     var id = setInterval(frame, 10);
@@ -2650,7 +2650,7 @@ class Timeline extends Component {
     var scrollTitle = null;
     if(this.props.scrollTitle !== undefined) {
         scrollTitle = (
-          <p className='f3-ns f5 fw7 ph3 tracked mb0 lh-normal'>{this.props.scrollTitle}</p>
+          <p className='f3-ns f5 fw7 ph3 tracked mb0 lh-normal hide'>{this.props.scrollTitle}</p>
         )
     }
 

@@ -284,7 +284,7 @@ class Events extends Component {
         </div>
         {this.topics(0, false)}
         {this.topics(1, false)}
-        {this.topics(2, false)}
+        {this.topics(2, true)}
       </div>
     );
   }
