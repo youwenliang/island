@@ -1407,7 +1407,7 @@ var data = {
                 "/island20/events/hushan-reservoir-lost-water/illustrations/湖山水庫Q1-Q5-02.svg",
                 "/island20/events/hushan-reservoir-lost-water/illustrations/湖山水庫Q1-Q5-03.svg",
                 "/island20/events/hushan-reservoir-lost-water/illustrations/湖山水庫Q1-Q5-04.svg",
-                "/island20/eveFnts/hushan-reservoir-lost-water/illustrations/湖山水庫Q1-Q5-05.svg",
+                "/eveFnts/hushan-reservoir-lost-water/illustrations/湖山水庫Q1-Q5-05.svg",
             ],
 
 
@@ -1794,7 +1794,10 @@ var data = {
         // ****************************************************************** J ******************************************************************
         "science-park-landuse": {
             "title": "無土時代",
+            "description": "相思寮，見證台灣農業史的小村莊，居民在此，安身立命。當農地變成工業區腹地，老聚落從此變貌。",
+            "thumbnail": "/island20/events/science-park-landuse/thumbnailJ.jpg",
             "id": "事件10",
+            "code": "/island20/events/science-park-landuse/videos/coverJ.png",
 
             //CoverVideo
             "coverTitle": "/island20/images/titles/10.svg",
@@ -1968,12 +1971,15 @@ var data = {
         // ****************************************************************** K ******************************************************************
         "petrochemical-kingdom": {
             "title": "海上的石化王國",
+            "description": "1998年雲林麥寮沿海，一座石化工業區誕生，從此以後，海風吹來的不再只是鹹鹹的滋味。",
+            "thumbnail": "/island20/events/petrochemical-kingdom/thumbnailK.jpg",
             "id": "事件11",
+            "code": "/island20/events/petrochemical-kingdom/videos/coverK.png",
 
             //CoverVideo
             "coverTitle": "/island20/images/titles/11.svg",
-            "coverDescription": "1998年在雲林麥寮沿海，一個石化工業區誕生了火力電廠、煉油廠、輕油裂解廠、塑膠纖維廠，串連起來。\n從此以後，圍繞著海岸的是燃燒塔與煙囪，海風吹來的不再只是鹹鹹的滋味...",
-            "coverVideo": "/island20/events/soil-pollution-tainan/videos/L15-台鹼安順廠空拍2.mp4",
+            "coverDescription": "1998年雲林麥寮沿海，一座石化工業區誕生，\n從此以後，海風吹來的不再只是鹹鹹的滋味。",
+            "coverVideo": "/island20/events/petrochemical-kingdom/videos/K26-2018六輕空拍.mp4",
 
             // Taiwan
             "taiwanText": [
@@ -1983,32 +1989,37 @@ var data = {
 
             // Illustration
             "illustrationText": [
-                "1986年，政府核准台塑石化興建第六輕油裂解廠，歷經宜蘭利澤、桃園觀音、嘉義東石，最後落腳雲林麥寮。\n\n在政府種種協助下取得水源，大動作填海造陸，並給予免稅優惠，忽略了環境衝擊和風險，造成日後環境危機。"
+                "1986年，政府核准台塑石化興建第六輕油裂解廠，歷經宜蘭利澤、桃園觀音、嘉義東石，最後落腳雲林麥寮。\n\n在政府種種協助下取得水源，大規模填海造陸，並給予免稅優惠，忽略了環境衝擊和風險，造成日後環境危機。"
             ],
             "illustration": "/island20/events/petrochemical-kingdom/illustrations/illustrationK.svg",
 
+
             // More
             "moreLink": [
-                "https://ourisland.pts.org.tw/content/%E8%92%99%E5%A1%B5%E7%9A%84%E5%B8%8C%E6%9C%9B",
-                "https://ourisland.pts.org.tw/content/%E5%A5%BD%E5%B1%B1%E5%A5%BD%E6%B0%B4%E7%9A%84%E8%83%8C%E5%BE%8C",
-                "https://ourisland.pts.org.tw/content/%E6%8D%8D%E5%B1%B1",
-                "https://ourisland.pts.org.tw/content/%E6%8E%A1%E4%B8%8D%E6%8E%A1%E6%B0%B4%E6%B3%A5%EF%BC%9F",
-                "https://ourisland.pts.org.tw/content/%E5%A4%AA%E9%AD%AF%E9%96%A3%E4%B9%8B%E6%80%92",
-                "https://ourisland.pts.org.tw/content/%E6%8E%A1-%E5%B1%B1"
+                "https://ourisland.pts.org.tw/content/%E6%96%B0%E4%B8%96%E7%95%8C%E7%9A%84%E8%BF%B7%E5%A4%B1",
+                "https://ourisland.pts.org.tw/content/%E5%85%AD%E8%BC%95%E7%9A%84%E8%B3%BA%E8%88%87%E8%B3%A0",
+                "https://www.youtube.com/watch?v=wTEbr007XZc&t=1535s",
+                "https://ourisland.pts.org.tw/content/%E8%A2%AB%E9%81%BA%E5%BF%98%E7%9A%84%E5%8F%B0%E8%A5%BF%E6%9D%91",
+                "https://ourisland.pts.org.tw/content/%E5%AE%B6%E8%AE%8A-%E7%95%B6%E5%A4%A7%E5%9F%8E%E9%81%87%E4%B8%8A%E9%BA%A5%E5%AF%AE",
+                "https://ourisland.pts.org.tw/content/%E8%9A%B5%E8%8B%97%E6%B6%88%E5%A4%B1%E4%B9%8B%E8%AC%8E"
             ],
             "moreTitle": [
-                "2002年 蒙塵的希望",
-                "2010年 好山好水的背後",
-                "2014年 捍山",
-                "2016年 採不採水泥",
-                "2017年 太魯閣之怒",
-                "2017年 採山"
+                "1998年新世界的迷失",
+                "2010年 六輕的賺與賠",
+                "2011年 福爾摩沙對福爾摩沙",
+                "2013年 被遺忘的台西村",
+                "2014年家變-當大城遇上麥寮",
+                "2018年蚵苗消失之謎"
             ]
         },
         // ****************************************************************** L ******************************************************************
         "soil-pollution-tainan": {
             "title": "焦土 台鹼安順廠",
+            "description": "一座化學工廠，為台南的濱海小鎮帶來短暫繁華，卻在人與土地上，留下漫長的毒害和夢魘。",
+            "thumbnail": "/island20/events/soil-pollution-tainan/thumbnailL.jpg",
             "id": "事件12",
+            "code": "/island20/events/soil-pollution-tainan/videos/coverL.png",
+
 
             //CoverVideo
             "coverTitle": "/island20/images/titles/12.svg",
@@ -2146,41 +2157,44 @@ var data = {
         // ****************************************************************** M ******************************************************************
         "mercury-sludge-volcano": {
             "title": "無人知曉的未爆彈",
+            "description": "20年前，屏東赤山巖農地，被濫倒有毒汞污泥及各式廢棄物。20年後，受難的土地恢復了嗎？台灣還有多少未爆彈？",
+            "thumbnail": "/island20/events/mercury-sludge-volcano/thumbnailM.jpg",
             "id": "事件13",
+            "code": "/island20/events/mercury-sludge-volcano/videos/coverM.png",
 
             //CoverVideo
             "coverTitle": "/island20/images/titles/13.svg",
-            "coverDescription": "二十年前，有毒汞污泥被棄置在，屏東新園赤山巖及柬埔寨，台灣成了污染輸出國，也讓事業廢棄物流向追蹤，成為環保督導重點。\n二十年後，汞污泥的去向如何？受難的土地，恢復了嗎？",
-            "coverVideo": "/island20/events/soil-pollution-tainan/videos/L15-台鹼安順廠空拍2.mp4",
+            "coverDescription": "20年前，屏東赤山巖農地，被濫倒有毒汞污泥及各式廢棄物。\n20年後，受難的土地恢復了嗎？台灣還有多少未爆彈？",
+            "coverVideo": "/island20/events/mercury-sludge-volcano/videos/M51赤山巖底圖封面影音.mp4",
 
             // Taiwan
             "taiwanText": [
                 "赤山巖的地理位置",
-                "赤山巖汙染整治場址位在屏東縣新園鄉田寮村，只隔一條萬丹排水道，就是萬丹鄉，鄰近皆為農業區。"
+                "赤山巖污染整治場址位在屏東縣新園鄉田寮村，和萬丹鄉只隔一條萬丹排水道，鄰近皆為農業區。"
             ],
 
             // Illustration
             "illustrationText": [
-                "1996年運泰公司將台塑的汞汙泥及集塵灰等其他不明廢棄物，回填至赤山巖農地，造成嚴重土壤汙染，農地成為廢棄物的出口，是台灣二十年來不斷輪迴的惡夢"
+                "1960、1970年代，工業發展，帶動台灣經濟起飛，卻伴隨諸多代價。工業煙囪燃燒下，農漁業資源與空氣品質，節節敗退。廢棄物毒埋土壤，地下水跟著遭到污染，人的健康也隨之犧牲。與毒共存的日子，有沒有終結的一天？"
             ],
             "illustration": "/island20/events/mercury-sludge-volcano/illustrations/illustrationM.svg",
 
             // More
             "moreLink": [
-                "https://ourisland.pts.org.tw/content/%E8%92%99%E5%A1%B5%E7%9A%84%E5%B8%8C%E6%9C%9B",
-                "https://ourisland.pts.org.tw/content/%E5%A5%BD%E5%B1%B1%E5%A5%BD%E6%B0%B4%E7%9A%84%E8%83%8C%E5%BE%8C",
-                "https://ourisland.pts.org.tw/content/%E6%8D%8D%E5%B1%B1",
-                "https://ourisland.pts.org.tw/content/%E6%8E%A1%E4%B8%8D%E6%8E%A1%E6%B0%B4%E6%B3%A5%EF%BC%9F",
-                "https://ourisland.pts.org.tw/content/%E5%A4%AA%E9%AD%AF%E9%96%A3%E4%B9%8B%E6%80%92",
-                "https://ourisland.pts.org.tw/content/%E6%8E%A1-%E5%B1%B1"
+                "https://ourisland.pts.org.tw/content/%E8%97%8D%E5%A4%A9%E4%B8%8B%E7%9A%84%E9%BB%91%E5%9C%9F%E5%9C%B0",
+                "https://ourisland.pts.org.tw/content/%E5%91%8A%E8%A7%A3%E5%A4%A7%E5%9C%B0",
+                "https://ourisland.pts.org.tw/content/%E6%B0%B4%E4%B8%8B%E6%AF%92%E5%AE%B3%E6%B0%B4%E4%B8%8B%E9%A4%98%E6%82%B8",
+                "https://ourisland.pts.org.tw/content/%E4%B8%AD%E6%AF%92%EF%BC%81%E5%A4%A7%E8%82%9A%E6%BA%AA",
+                "https://ourisland.pts.org.tw/content/%E5%86%8D%E5%88%A9%E7%94%A8%E7%9A%84%E7%9C%9F%E8%88%87%E5%81%87-%E9%AD%9A%E5%A1%AD%E9%A4%8A%E5%87%BA%E5%BB%A2%E6%A3%84%E7%89%A9",
+                "https://ourisland.pts.org.tw/content/%E5%AF%8C%E8%B2%B4%E9%AD%9A%E4%B9%8B%E6%AD%BB"
             ],
             "moreTitle": [
-                "2002年 蒙塵的希望",
-                "2010年 好山好水的背後",
-                "2014年 捍山",
-                "2016年 採不採水泥",
-                "2017年 太魯閣之怒",
-                "2017年 採山"
+                "1999年 藍天下的黑土地",
+                "2003年 告解大地",
+                "2003年 水下毒害",
+                "2011年 中毒！大肚溪",
+                "2016年 再利用的真與假-魚塭養出廢棄物",
+                "2018年 富貴魚之死"
             ]
         }
     },

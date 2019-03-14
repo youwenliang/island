@@ -2484,7 +2484,8 @@ class Timeline extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobile: false
+      mobile: false,
+      narrow: false,
     };
   }
   componentDidMount(){
@@ -2492,6 +2493,8 @@ class Timeline extends Component {
     function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
       else $this.setState({mobile:false});
+      if($(window).width() <= 1600) $this.setState({narrow:true});
+      else $this.setState({narrow:false});
     }
     $(window).on('resize orientationchange', checkMobile);
 
@@ -2509,7 +2512,7 @@ class Timeline extends Component {
     var thisH = this.props.height; //560
 
     var ths = thisH+"px";
-    if(this.state.mobile) ths = (thisH-80)+"px";
+    if(this.state.mobile) ths = "calc("+(thisH-320)+"px + 60vw";
     if(special) ths = "600px";
 
     var scrollingAreaStyle = {
@@ -2591,7 +2594,7 @@ class Timeline extends Component {
     }
 
     var th = (thisH+40)+"px";
-    if(this.state.mobile) th = (thisH-40)+"px";
+    if(this.state.mobile) th = "calc("+(thisH-280)+"px + 60vw";
 
     var container = {
       gridTemplateColumns: columns,
@@ -2632,7 +2635,10 @@ class Timeline extends Component {
     var jcc = null;
     if(this.props.noY) {
       line = null;
-      jcc = "jcc"
+      
+      if(this.state.narrow) jcc = "";
+      else jcc = "jcc"
+
     }
 
     if(this.props.content !== null) {
@@ -2641,7 +2647,7 @@ class Timeline extends Component {
       (<p className="lh-copy f5-ns f6 center pre-wrap ph4-ns ph3 mb5-ns mb3" style={max} dangerouslySetInnerHTML={{__html:this.props.content}}></p>);
     }
 
-    var padding = special || this.props.noImg ? "pt6-l pt5" : "pv6-l pv5 min-vh-100";
+    var padding = special || this.props.noImg || this.props.noY ? "pt6-l pt5" : "pv6-l pv5 min-vh-100";
     var scrollLeft = (<div className="ma0 pa0 hide"><p className='f6 o-50 tc mt4'>{"◂◂ 往左滑看更多"}</p></div>)
     if(!this.state.mobile && this.props.images.length < 5) scrollLeft = null;
     
@@ -5847,7 +5853,7 @@ class Event10 extends Component {
           label = {this.props.data.photoFullTextLabel[5]}
         />
 
-        <EndingVideo id={"27-endingVideo"} text={"當農地變成工業區"} link={"https://youtube.com/embed/iwcWyreW9nA?start=1195&rel=0"}/>
+        <EndingVideo id={"27-endingVideo"} text={"當農地變成工業區"} link={"https://youtube.com/embed/iwcWyreW9nA?rel=0"}/>
         <More id={"28-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
         <CTA id={"29-cta"} switchView={this.props.switchView} next={"petrochemical-kingdom"} nextN={"海上的石化王國"}/>
       </div>
@@ -5859,9 +5865,10 @@ class Event11 extends Component {
   render() {
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
+          id={"2-taiwan"} 
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
@@ -5871,14 +5878,40 @@ class Event11 extends Component {
         />
 
         <Illustration
+          id={"3-illustration"} 
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
+        {/*
+        // SmallVideo
+        // PhotoTextFull
+        // PhotoMultiple
+        // Timeline
+        // SmallVideo
+        // PhotoText
+        // Transition
+        // PhotoText
+        // Transition
+        // Video
+        // Transition
+        // Video
+        // new audio layout
+        // SmallVideo
+        // PhotoText with background?
+        // CenterSmallVideo
+        // Blog 5
+        // PhotoText
+        // Blog 1
+        // PhotoTextFull
+        // PhotoContrast1
+        // PhotoContrast2
+        // PhotoCenterTextFull
+        */}
 
-        <EndingVideo id={"15-endingVideo"} text={"一起來關心 山林採礦"} link={"https://youtube.com/embed/DwvwCxkHN-Q?start=1195&rel=0"}/>
-        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
-        <CTA id={"17-cta"} switchView={this.props.switchView} next={"soil-pollution-tainan"} nextN={"焦土 台鹼安順廠"}/>
+        <EndingVideo id={"27-endingVideo"} text={"想了解六輕更多"} link={"https://youtube.com/embed/cg4lgyEdY8g?rel=0"}/>
+        <More id={"28-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
+        <CTA id={"29-cta"} switchView={this.props.switchView} next={"soil-pollution-tainan"} nextN={"焦土 台鹼安順廠"}/>
       </div>
     );
   }
@@ -5957,7 +5990,7 @@ class Event12 extends Component {
 
         <Timeline
           id={"12-timeline"}
-          height={480}
+          height={560}
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
@@ -6027,9 +6060,10 @@ class Event13 extends Component {
   render() {
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
+          id={"2-taiwan"} 
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
@@ -6039,13 +6073,34 @@ class Event13 extends Component {
         />
 
         <Illustration
+          id={"3-illustration"} 
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
-        <EndingVideo id={"15-endingVideo"} text={"一起來關心 山林採礦"} link={"https://youtube.com/embed/DwvwCxkHN-Q?start=1195&rel=0"}/>
-        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
-        <CTA id={"17-cta"} switchView={this.props.switchView} next={"science-park-landuse"} nextN={"無土時代"}/>
+        
+        {/*
+        // PhotoCenterTextFull
+        // Blog 1
+        // Transition
+        // Video 
+        // PhotoTextFull
+        // SmallVideo
+        // SmallVideo
+        // PhotoSwitch
+        // Timeline
+        // SmallVideo
+        // Transition
+        // Video
+        // Video
+        // PhotoTextFull
+        // PhotoMultiple
+        // PhotoCenterTextFull with bg
+        */}
+
+        <EndingVideo id={"20-endingVideo"} text={"重回污染現場"} link={"https://youtube.com/embed/AeX1vJVP-nI?rel=0"}/>
+        <More id={"21-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
+        <CTA id={"22-cta"} switchView={this.props.switchView} next={"science-park-landuse"} nextN={"無土時代"}/>
       </div>
     );
   }
