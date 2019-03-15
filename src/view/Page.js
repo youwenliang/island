@@ -5883,6 +5883,23 @@ class Event11 extends Component {
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
+
+        <SmallVideo 
+          id={"4-smallVideo"}
+          videoID="01"
+          link={this.props.data.video[0]}
+          text={this.props.data.videoText[0]}
+          bg={"bg-near-white"}
+        />
+
+        <PhotoTextFull
+          id={"5-photoTextFull"}
+          text1 = {this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+        />
+        
+
         {/*
         // SmallVideo
         // PhotoTextFull
