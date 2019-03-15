@@ -1588,11 +1588,19 @@ class PhotoMultiple extends Component {
     var auto = this.props.second === "auto-scroll-2" ? this.props.second : "auto-scroll" 
     if(this.state.mobile) auto = "";
 
+    var title = null;
+    if(this.props.title !== undefined) {
+        title = (
+          <p className='f3-ns f5 fw7 ph3 tracked mb0 lh-normal hide tc'>{this.props.title}</p>
+        )
+    }
+
     return (
       <section id={this.props.id} className={"flex aic relative bg-white flex-column pt6-l pt5 "+auto}>      
         <div className="mw80 center cf black mb5-ns mb3 ph4-ns ph3 w-100">
           <div className="mw7 w-100 center bg-white pre-wrap hide">
             <p className="f5-ns f6 lh-copy mv0 ph4-l ph3" dangerouslySetInnerHTML={{__html:this.props.text}}></p>
+            {title}
           </div>
         </div>
         <div className="w-100 overflow-hidden hide" style={height}>
@@ -6072,32 +6080,6 @@ class Event11 extends Component {
           label = {this.props.data.photoFullTextLabel[3]}
         />
 
-        {/*
-        // SmallVideo
-        // PhotoTextFull
-        // PhotoMultiple
-        // Timeline
-        // SmallVideo
-        // PhotoText
-        // Transition
-        // PhotoText
-        // Transition
-        // Video
-        // Transition
-        // Video
-        // new audio layout
-        // SmallVideo
-        // PhotoText with background?
-        // CenterSmallVideo
-        // Blog 5
-        // PhotoText
-        // Blog 1
-        // PhotoTextFull
-        // PhotoContrast1
-        // PhotoContrast2
-        // PhotoCenterTextFull
-        */}
-
         <EndingVideo id={"28-endingVideo"} text={"想了解六輕更多"} link={"https://youtube.com/embed/cg4lgyEdY8g?rel=0"}/>
         <More id={"29-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
         <CTA id={"30-cta"} switchView={this.props.switchView} next={"soil-pollution-tainan"} nextN={"焦土 台鹼安順廠"}/>
@@ -6282,7 +6264,127 @@ class Event13 extends Component {
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
+
+        <PhotoCenterTextFull
+          id={"4-photoCenterTextFull"} 
+          text1 = {this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+        />
+
+        <Blog
+          id={"5-blog"}
+          number={1}
+          text={this.props.data.blogText[0]}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+        />
+
+        <Transition id={"6-transition"} text={this.props.data.transitionText[0]} bg={"bg-near-white"}/>
+
+        <Video 
+          id={"7-video"}
+          videoID="01"
+          link={this.props.data.video[0]}
+          text1={this.props.data.videoText[0]}
+        />
+
+        <PhotoTextFull
+          id={"8-photoTextFull"} 
+          text1 = {this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
+        />
+
+        <SmallVideo 
+          id={"9-smallVideo"}
+          videoID="02"
+          link={this.props.data.video[1]}
+          text={this.props.data.videoText[1]}
+        />
+
+        <SmallVideo 
+          id={"10-smallVideo"}
+          videoID="03"
+          link={this.props.data.video[2]}
+          text={this.props.data.videoText[2]}
+          bg={"bg-near-white"}
+        />
+
+        <PhotoSwitch
+          id={"11-photoSwitch"}
+          number = {2} 
+          images={this.props.data.photoswitch} 
+          text1={this.props.data.photoswitchText}
+          text2={this.props.data.photoswitchText2}
+          label={this.props.data.photoswitchLabel}
+        />
+
+        <Timeline
+          id={"12-timeline"} 
+          height="480"
+          bg={"bg-white"}
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
+          content={this.props.data.timelineContent}
+        />
+
+        <SmallVideo 
+          id={"13-smallVideo"}
+          videoID="04"
+          link={this.props.data.video[3]}
+          text={this.props.data.videoText[3]}
+          bg={"bg-near-white"}
+        />
         
+        <Transition id={"14-transition"} text={this.props.data.transitionText[1]} bg={"bg-white"}/>
+
+        <Video 
+          id={"15-video"}
+          videoID="05"
+          link={this.props.data.video[4]}
+          text1={this.props.data.videoText[4]}
+        />
+
+        <Video 
+          id={"16-video"}
+          videoID="06"
+          link={this.props.data.video[5]}
+          text1={this.props.data.videoText[5]}
+        />
+
+        <PhotoTextFull
+          id={"17-photoTextFull"}
+          position={"fr-l"}
+          text1 = {this.props.data.photoFullText[2]}
+          image = {this.props.data.photoFull[2]}
+          label = {this.props.data.photoFullTextLabel[2]}
+        />
+
+        <PhotoMultiple
+          id={"18-photoMultiple"} 
+          title={"各地廢棄物非法棄置現場"}
+          text={this.props.data.photoMultipleText}
+          images={this.props.data.photoMultiple}
+          label={this.props.data.photoMultipleLabel}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
+        </Modal>
+
+        <PhotoCenterTextFull
+          id={"19-photoCenterTextFull"} 
+          text1 = {this.props.data.photoFullText[3]}
+          image = {this.props.data.photoFull[3]}
+          label = {this.props.data.photoFullTextLabel[3]}
+          bg = {true}
+        />
+
+
         {/*
         // PhotoCenterTextFull
         // Blog 1
