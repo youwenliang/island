@@ -1391,7 +1391,7 @@ ul.none {
 }
 
 #play-btn {
-  background-image: url("/island20/images/icons/play_new.svg");
+  background-image: url("/images/icons/play_new.svg");
   background-size: cover;
   width: 75px;
   height: 75px;
@@ -1399,11 +1399,11 @@ ul.none {
 }
 
 #play-btn.pause {
-  background-image: url("/island20/images/icons/pause_new.svg");
+  background-image: url("/images/icons/pause_new.svg");
 }
 
 .play {
-  background-image: url("/island20/images/icons/pause_new.svg");
+  background-image: url("/images/icons/pause_new.svg");
   background-size: 32px 32px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -1415,13 +1415,13 @@ ul.none {
   border-radius: 100%;
 }
 .play.pause {
-  background-image: url("/island20/images/icons/play_new.svg");
+  background-image: url("/images/icons/play_new.svg");
 }
 
 
 
 .sound {
-  background-image: url("/island20/images/icons/mute.svg");
+  background-image: url("/images/icons/mute.svg");
   background-size: 32px 32px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -1434,7 +1434,7 @@ ul.none {
 }
 
 .sound.unmute {
-  background-image: url("/island20/images/icons/unmute.svg");
+  background-image: url("/images/icons/unmute.svg");
 }
 
 .smallVideo .play {

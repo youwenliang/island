@@ -2158,6 +2158,29 @@ var data = {
                 
             ],
 
+            // Photo Audio
+            "photoAudioContent": "依靠海洋生活的蚵農，也發現這片海變得不一樣了。雲林台西海域蚵苗豐富，是台灣最重要的蚵苗採集區，全台大約七到八成的蚵苗，都來自這裡。近年來，蚵苗狀況一年比一年差。",
+            "photoAudioPhoto": [
+            "/events/petrochemical-kingdom/K52-林進郎.jpg",
+            "/events/petrochemical-kingdom/K53-劉莉蓮.jpg",
+            "/events/petrochemical-kingdom/K54-翁義聰.jpg",
+            ],
+            "photoAudio": [
+            "/events/petrochemical-kingdom/audios/K52-1聲音檔林進郎.mp3",
+            "/events/petrochemical-kingdom/audios/K53-1劉莉蓮聲音檔.mp3",
+            "/events/petrochemical-kingdom/audios/K54-1翁義聰聲音檔.mp3",
+            ],
+            "photoAudioName": [
+            "林進郎 養殖漁民",
+            "劉莉蓮 中山大學海科系教授",
+            "翁義聰 崑山科大 環工系教授"
+            ],
+            "photoAudioText": [
+            "放了差不多三個月，附著的蚵苗還是很小，如果完全失敗，損失將近兩百萬。",
+            "六輕排煙脫硫會有硫酸導入海水，合理推測蚵苗長期住在不太好的環境，有可能體質比較虛弱，但都是猜測，因欠缺相關研究。",
+            "集集攔河堰，攔截生態用水，河口營養鹽相對就減少，如果攔河堰攔走50%，它的營養鹽就減少50%。"
+            ],
+
             // More
             "moreLink": [
                 "https://ourisland.pts.org.tw/content/%E6%96%B0%E4%B8%96%E7%95%8C%E7%9A%84%E8%BF%B7%E5%A4%B1",
@@ -2394,7 +2417,7 @@ var data = {
                 "/events/mercury-sludge-volcano/M50-2015-台中清水焚化爐底渣.jpg",
                 "/events/mercury-sludge-volcano/M38-2016-台南安南區魚塭被回填焚化爐底渣B.jpg",
                 "/events/mercury-sludge-volcano/M39-2017-新竹新豐海岸廢棄爐石.jpg",
-                "/events/mercury-sludge-volcano/M35-2018-高雄大寮爐碴危及養鴨場食品安全.jpg",
+                "/events/mercury-sludge-volcano/M35-2018-高雄大寮爐碴危及養鴨場食品安全z.jpg",
             ],
 
             "photoMultipleLabel": [
@@ -2440,6 +2463,7 @@ var data = {
                 "/events/mercury-sludge-volcano/M33-泥火山噴發.jpg",
                 "/events/mercury-sludge-volcano/M42-赤山巖整治場址居民擔憂地下水遭到汙染.jpg",
             ],
+
 
             // Photo Switch
             "photoswitch": [

@@ -2690,6 +2690,78 @@ class Timeline extends Component {
   }
 }
 
+class Music extends Component {
+  state = {
+    play: false
+  }
+  
+  audio = new Audio(this.props.url)
+  togglePlay = () => {
+    this.setState({ play: !this.state.play }, () => {
+      this.state.play ? this.audio.play() : this.audio.pause();
+    });
+  }
+  render() {
+    var stateP = !this.state.play ? 'pause':''
+    var $t = this;
+    var max = {
+      width: "200px"
+    }
+
+    $t.audio.addEventListener("ended",function() {
+      $t.setState({play:false});
+    })
+
+    return (
+      <div className="ph4-l ph3 mt3">
+        <div className="cp br2 ph3 pv2 tc b--black-30 ba flex aic" onClick={this.togglePlay} style={max}>
+          <div className={"pn z10 dib play mr3 "+ stateP}></div>
+          {this.state.play ? '暫停錄音檔' : '播放錄音檔'}
+        </div>
+      </div>
+    );
+  }
+}
+
+function PhotoAudioPlay(props) {
+  var max = {
+    maxWidth: "880px"
+  }
+
+  function content(i) {
+    var thisID = "play-"+i;
+
+    return (
+      <div className="cf flex aic flex-column-s">
+        <div className="fl-l w-100 w-50-l pl25-l pv3 relative hide">
+          <img className="mt4 mt0-l" src={props.image[i]} alt={props.name[i]}/>
+        </div>
+        <div className="fr-l w-100 w-50-l ml5-l ph4-ns ph3 pv3 hide">
+          <p className="center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph4-l ph3 fw7">{props.name[i]}</p>
+          <p className="center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph4-l ph3">{props.text[i]}</p>
+          <Music url={props.audio[i]}/>
+        </div>
+      </div>
+    )
+  }
+  var content_all = [];
+  for(var i = 0; i < props.image.length; i++) {
+    content_all.push(content(i));
+  }
+
+  return (
+    <section id={props.id} className={props.bg+" flex aic relative flex-column pv6-l pv5"}>      
+      <div className="ma0 ph3 hide">
+        <p className="lh-copy f5-ns f6 center pre-wrap ph4-ns ph3 mb5-ns mb3" style={max} dangerouslySetInnerHTML={{__html: props.content}}></p>
+      </div>
+      <div className="mw80 w-100 center z4 relative">
+        {content_all}
+      </div>
+    </section>
+  )
+}
+
+
 /*19*/
 function PhotoSlide(props) {
   let grid = [];
@@ -3069,6 +3141,7 @@ class TimeChangeFull extends Component {
     )
   }
 }
+
 
 class TimeChangeSide extends Component {
   constructor(props) {
@@ -5994,13 +6067,22 @@ class Event11 extends Component {
           link={this.props.data.video[3]}
           text1={this.props.data.videoText[3]}
         />
+        
+        <PhotoAudioPlay
+          id={"16-photoAudioPlay"}
+          content={this.props.data.photoAudioContent}
+          audio={this.props.data.photoAudio}
+          image={this.props.data.photoAudioPhoto}
+          text={this.props.data.photoAudioText}
+          name={this.props.data.photoAudioName}
+        />
 
         <SmallVideo 
           id={"17-smallVideo"}
           videoID="05"
           link={this.props.data.video[4]}
           text={this.props.data.videoText[4]}
-          bg={"bg-white"}
+          bg={"bg-near-white"}
         />
 
         <PhotoText
@@ -6383,26 +6465,6 @@ class Event13 extends Component {
           label = {this.props.data.photoFullTextLabel[3]}
           bg = {true}
         />
-
-
-        {/*
-        // PhotoCenterTextFull
-        // Blog 1
-        // Transition
-        // Video 
-        // PhotoTextFull
-        // SmallVideo
-        // SmallVideo
-        // PhotoSwitch
-        // Timeline
-        // SmallVideo
-        // Transition
-        // Video
-        // Video
-        // PhotoTextFull
-        // PhotoMultiple
-        // PhotoCenterTextFull with bg
-        */}
 
         <EndingVideo id={"20-endingVideo"} text={"重回污染現場"} link={"https://youtube.com/embed/AeX1vJVP-nI?rel=0"}/>
         <More id={"21-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
