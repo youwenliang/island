@@ -1329,8 +1329,12 @@ class PhotoText extends Component {
         {info}
       </figure>
     )
+
+    var bgwhite = "bg-white";
+    if(this.props.noWhite) bgwhite = "";
+
     var photo_content_2 = this.state.mobile ? (
-      <figure className={"center mw70 w-100 bg-white o-90 relative "+pa3}>
+      <figure className={"center mw70 w-100 o-90 relative "+pa3+" "+bgwhite}>
         {copyright_content}
         <img className={"w-50-l w-100 "+photo} src={this.props.image} alt="description"/>
         {info}
@@ -5817,9 +5821,11 @@ class Event10 extends Component {
 
         <PhotoTextFull
           id={"10-photoTextFull"}
+          position = {"fr-l"}
           text1 = {this.props.data.photoFullText[2]}
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
+          objectP = {"20%"}
         />
 
         <CenterVideo 
@@ -5837,11 +5843,15 @@ class Event10 extends Component {
           videoID="03"
           link={this.props.data.video[2]}
           text={this.props.data.videoText[2]}
+          bg={"bg-near-white"}
         />
+
+        <section id={"illustration"} className="pt6-ns pt5 ph4-ns ph3 center below tc">
+          <img src={this.props.data.illustrationMore[2]} className="w-third-l w-80 hide" alt="illustration" />
+        </section>
 
         <Blog
           id={"13-blog"}
-          bg={"bg-near-white"}
           number={4}
           text={this.props.data.blogText[0]}
           image={this.props.data.blogImage[0]}
@@ -5876,6 +5886,9 @@ class Event10 extends Component {
           bg={"bg-near-white"}
         />
 
+        <section id={"illustration"} className="pt6-ns pt5 ph4-ns ph3 center below tc">
+          <img src={this.props.data.illustrationMore[1]} className="w-third-l w-80 hide" alt="illustration" />
+        </section>
         <Transition id={"17-transition"} text={this.props.data.transitionText[2]} bg={"bg-white"}/>
 
         <Video 
@@ -5886,14 +5899,18 @@ class Event10 extends Component {
           playing={true}
         />
 
-        <Transition id={"19-transition"} text={this.props.data.transitionText[3]} bg={"bg-white"}/>
+        <Transition id={"19-transition"} text={this.props.data.transitionText[3]} bg={"bg-near-white"}/>
+
+        <section id={"illustration"} className="pt6-ns pt5 ph4-ns ph3 center below tc">
+          <img src={this.props.data.illustrationMore[0]} className="w-third-l w-80 hide" alt="illustration" />
+        </section>
 
         <SmallVideo 
           id={"20-smallVideo"}
           videoID="07"
           link={this.props.data.video[6]}
           text={this.props.data.videoText[6]}
-          bg={"bg-near-white"}
+          bg={"bg-white"}
         />
 
         <PhotoTextFull
@@ -6196,10 +6213,10 @@ class Event12 extends Component {
         <PhotoText
           id={"4-photoText"}
           order="right"
-          color="invert"
           text={this.props.data.photoText[2]}
           image = {this.props.data.photoImage[2]}
           bg={this.props.data.photoImage[3]}
+          noWhite={true}
         />
 
         <Transition id={"5-transition"} text={this.props.data.transitionText[0]} bg={"bg-white"}/>
@@ -6214,7 +6231,6 @@ class Event12 extends Component {
         <PhotoText
           id={"7-photoText"}
           order="right"
-          color="invert"
           text={this.props.data.photoText[0]}
           image = {this.props.data.photoImage[0]}
         />
@@ -6224,6 +6240,7 @@ class Event12 extends Component {
           videoID="02"
           link={this.props.data.video[1]}
           text={this.props.data.videoText[1]}
+          color={"invert"}
         />
 
         <PhotoTextFull

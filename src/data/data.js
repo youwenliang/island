@@ -1815,6 +1815,11 @@ var data = {
                 "1980年代，台灣產業啟動轉型之路，決定以高科技代工作為主要發展政策。為了鼓勵人才回流，在新竹結合產官學，設立具有產業群聚型態的科學園區，政府認為是金雞母，能夠帶動地方發展。"
             ],
             "illustration": "/events/science-park-landuse/illustrations/illustrationJ.svg",
+            "illustrationMore":[
+            "/events/science-park-landuse/illustrations/廢排-01.svg",
+            "/events/science-park-landuse/illustrations/搶水-01.svg",
+            "/events/science-park-landuse/illustrations/迫遷-01.svg",
+            ],
 
             // PhotoFull
             "photoFull": [
@@ -2039,10 +2044,10 @@ var data = {
             "早在2008年起，雲林縣政府就委託詹長權教授團隊，進行六輕附近居民健康風險評估，發現越接近六輕的地區，居民癌症發生率明顯偏高，心血管和腎臟疾病的威脅也顯著增加。不過，台塑質疑未把居民個人因素納入考慮，罹癌不必然與六輕有關。\n\n2018年台大公衛學院再次發表報告，納入居民生活飲食習慣，並校正這些因子的影響，最後結論仍與過去一致：雲林縣台西鄉和麥寮鄉，癌症的發生率是雲林其他鄉鎮的1.29倍，女人與老人的風險更顯著。"
             ],
             "photoImage": [
+            "/events/petrochemical-kingdom/illustrations/page-10.svg",
+            "/events/petrochemical-kingdom/illustrations/page-12.jpg",
             "https://fakeimg.pl/800x600/?text=image&retina=1",
-            "https://fakeimg.pl/800x600/?text=image&retina=1",
-            "https://fakeimg.pl/800x600/?text=image&retina=1",
-            "https://fakeimg.pl/800x600/?text=image&retina=1",
+            "/events/petrochemical-kingdom/illustrations/page-23.jpg",
             ],
 
             "transitionText": [
@@ -2255,9 +2260,9 @@ var data = {
                 "台鹼安順廠的前身，可回溯到1942年，當時日本鐘淵曹達株式會社強徵民地，成立工廠生產燒鹼、鹽酸和液氯，並為日本海軍製造毒氣。戰後，國民政府接收日產，更名為台灣鹼業公司安順廠。1960 年代，開始生產五氯酚，製造農藥，外銷日本，直到1982年關廠停產，隔年併入中國石油化學工業開發股份有限公司（簡稱中石化）。"
             ],
             "photoImage": [
-                "/events/soil-pollution-tainan/L32(參考用圖).jpg",
+                "/events/soil-pollution-tainan/illustrations/page-7.jpg",
                 "https://fakeimg.pl/800x600/?text=image&retina=1",
-                "https://fakeimg.pl/800x600/?text=image&retina=1",
+                "/events/soil-pollution-tainan/illustrations/page-4.png",
                 "/events/soil-pollution-tainan/L13-日治時期的台鹼安順廠.jpg",
             ],
             "photoLabel": [
