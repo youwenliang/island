@@ -5773,8 +5773,8 @@ class Event10 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          shipPositionL = "0%"
-          shipPositionT = "0%"
+          shipPositionL = "38%"
+          shipPositionT = "30%"
         />
 
         <Illustration
@@ -5899,12 +5899,12 @@ class Event10 extends Component {
           playing={true}
         />
 
-        <Transition id={"19-transition"} text={this.props.data.transitionText[3]} bg={"bg-near-white"}/>
-
         <section id={"illustration"} className="pt6-ns pt5 ph4-ns ph3 center below tc">
           <img src={this.props.data.illustrationMore[0]} className="w-third-l w-80 hide" alt="illustration" />
         </section>
-
+        <Transition id={"19-transition"} text={this.props.data.transitionText[3]} bg={"bg-white"}/>
+        {/*
+        
         <SmallVideo 
           id={"20-smallVideo"}
           videoID="07"
@@ -5912,6 +5912,7 @@ class Event10 extends Component {
           text={this.props.data.videoText[6]}
           bg={"bg-white"}
         />
+        */}
 
         <PhotoTextFull
           id={"21-photoTextFull"}
