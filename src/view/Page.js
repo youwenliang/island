@@ -6200,8 +6200,8 @@ class Event12 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          shipPositionL = "0%"
-          shipPositionT = "0%"
+          shipPositionL = "34%"
+          shipPositionT = "50%"
         />
 
         <Illustration
