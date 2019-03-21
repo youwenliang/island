@@ -1823,7 +1823,7 @@ var data = {
 
             // PhotoFull
             "photoFull": [
-                "/events/science-park-landuse/J13-2018年中科四期大景.JPG",
+                "/events/science-park-landuse/J51-筆直空曠的中科四期道路.JPG",
                 "/events/science-park-landuse/J22-2009.11.22彰化二林相思寮聚落.jpg",
                 "/events/science-park-landuse/J49-中科四期衛星圖.jpg",
                 "/events/science-park-landuse/J29.jpg",
@@ -1952,7 +1952,7 @@ var data = {
                 "/events/science-park-landuse/j43.jpg",
                 "/events/science-park-landuse/J56-二階環評說明會.JPG",
                 "/events/science-park-landuse/J34-2012.04.12反中科搶水自救會-行政院前靜坐.jpg",
-                "/events/science-park-landuse/J53.jpg",
+                "/events/science-park-landuse/J53-畫面提供彰化縣環境保護聯盟.jpg",
             ],
 
             // More
