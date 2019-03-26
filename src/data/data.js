@@ -2270,7 +2270,7 @@ var data = {
             ],
             "photoImage": [
                 "/events/soil-pollution-tainan/illustrations/page-7.jpg",
-                "/events/soil-pollution-tainan/illustrations/page-19.jpg",
+                "/events/soil-pollution-tainan/illustrations/page-19.png",
                 "/events/soil-pollution-tainan/illustrations/page-4.png",
                 "/events/soil-pollution-tainan/L13-日治時期的台鹼安順廠.jpg",
             ],
