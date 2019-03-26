@@ -14,7 +14,6 @@ class Footer extends Component {
                   <br/>
                   <a href="https://cyberisland.teldap.tw/" target="_blank" rel="noopener noreferrer">中研院 數位島嶼</a>
                   <br/>
-                  <a href="https://www.taipeibiennial.org/2018" target="_blank" rel="noopener noreferrer">臺北市立美術館 後自然：美術館作為一個生態系統</a>
                 </p>
                 <p className="f6 fw4 lh-normal">
                   看到更多環境議題，歡迎寄信給我們的島<br/>ourisland2013@gmail.com

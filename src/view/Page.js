@@ -1136,7 +1136,7 @@ class PhotoText extends Component {
     
     var fish = null;
     var info = this.props.info === undefined ? null : (
-      <p className="w-50-l w-100 f6-ns f7 fw5 tc o-50">{this.props.info}</p>
+      <p className="w-50-l w-100 f6-ns f7 fw5 tc o-50 lh-normal">{this.props.info}</p>
     )
 
 
@@ -5991,8 +5991,8 @@ class Event11 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          shipPositionL = "0%"
-          shipPositionT = "0%"
+          shipPositionL = "35%"
+          shipPositionT = "30%"
         />
 
         <Illustration
@@ -6065,7 +6065,6 @@ class Event11 extends Component {
           color="invert"
           text={this.props.data.photoText[1]}
           image = {this.props.data.photoImage[1]}
-          info = {"出處：台大風險社會與政策研究中心"}
         />
         
         <Transition id={"12-transition"} text={this.props.data.transitionText[1]} bg={"bg-white"}/>
@@ -6134,6 +6133,7 @@ class Event11 extends Component {
           order="right"
           text={this.props.data.photoText[3]}
           image = {this.props.data.photoImage[3]}
+          info={"2018年詹長權將雲林縣麥寮、台西鄉（深色區）設定為高曝露區，周邊其他鄉鎮（淺色區）列為低曝露區作為對照組。"}
         />
 
         <Blog
@@ -6154,23 +6154,21 @@ class Event11 extends Component {
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
         />
-
-        <PhotoContrast
-          id={"25-photoContrast"} 
-          bg={"bg-white z1"}
-          images={this.props.data.photocontrast}
-          text={this.props.data.photocontrastText}
-          year={this.props.data.photocontrastYear}
-          label=""
+        <Blog
+          id={"25-blog"}
+          number={2}
+          image={this.props.data.photocontrast}
+          label={this.props.data.photocontrastLabel}
+          onOpenModal={this.onOpenModal.bind(this)}
+          bg={"bg-white"}
         />
-
-        <PhotoContrast
-          id={"26-photoContrast"} 
-          bg={"bg-white z1"}
-          images={this.props.data.photocontrast2}
-          text={this.props.data.photocontrastText2}
-          year={this.props.data.photocontrastYear2}
-          label=""
+        <Blog
+          id={"26-blog"}
+          number={2}
+          image={this.props.data.photocontrast2}
+          label={this.props.data.photocontrastLabel2}
+          onOpenModal={this.onOpenModal.bind(this)}
+          bg={"bg-near-white"}
         />
 
         <PhotoCenterTextFull
@@ -6182,7 +6180,7 @@ class Event11 extends Component {
 
         <EndingVideo id={"28-endingVideo"} text={"想了解六輕更多"} link={"https://youtube.com/embed/cg4lgyEdY8g?rel=0"}/>
         <More id={"29-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
-        <CTA id={"30-cta"} switchView={this.props.switchView} next={"soil-pollution-tainan"} nextN={"焦土 台鹼安順廠"}/>
+        <CTA id={"30-cta"} switchView={this.props.switchView} next={"soil-pollution-tainan"} nextN={"焦土"}/>
       </div>
     );
   }
@@ -6354,8 +6352,8 @@ class Event13 extends Component {
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          shipPositionL = "0%"
-          shipPositionT = "0%"
+          shipPositionL = "40%"
+          shipPositionT = "60%"
         />
 
         <Illustration
@@ -6387,6 +6385,7 @@ class Event13 extends Component {
           videoID="01"
           link={this.props.data.video[0]}
           text1={this.props.data.videoText[0]}
+          playing={true}
         />
 
         <PhotoTextFull
@@ -6403,11 +6402,12 @@ class Event13 extends Component {
           text={this.props.data.videoText[1]}
         />
 
-        <SmallVideo 
-          id={"10-smallVideo"}
-          videoID="03"
-          link={this.props.data.video[2]}
-          text={this.props.data.videoText[2]}
+        <Blog
+          id={"10-blog"}
+          number={1}
+          text={this.props.data.blogText[1]}
+          image={this.props.data.blogImage[1]}
+          label={this.props.data.blogLabel[1]}
           bg={"bg-near-white"}
         />
 
@@ -6437,8 +6437,6 @@ class Event13 extends Component {
           text={this.props.data.videoText[3]}
           bg={"bg-near-white"}
         />
-        
-        <Transition id={"14-transition"} text={this.props.data.transitionText[1]} bg={"bg-white"}/>
 
         <Video 
           id={"15-video"}
@@ -6446,6 +6444,8 @@ class Event13 extends Component {
           link={this.props.data.video[4]}
           text1={this.props.data.videoText[4]}
         />
+
+        <Transition id={"14-transition"} text={this.props.data.transitionText[1]} bg={"bg-white"}/>
 
         <Video 
           id={"16-video"}
@@ -6481,7 +6481,6 @@ class Event13 extends Component {
           text1 = {this.props.data.photoFullText[3]}
           image = {this.props.data.photoFull[3]}
           label = {this.props.data.photoFullTextLabel[3]}
-          bg = {true}
         />
 
         <EndingVideo id={"20-endingVideo"} text={"重回污染現場"} link={"https://youtube.com/embed/AeX1vJVP-nI?rel=0"}/>
