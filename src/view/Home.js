@@ -128,7 +128,7 @@ class Home extends Component {
         <Nav timeline={true}/>
         <Cover/>
         <Events/>
-        {/*<Timeline/>*/}
+        <Timeline/>
         <CTA/>
         {/*
         <div id="section-nav">

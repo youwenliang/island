@@ -11,6 +11,7 @@ import ReactList from 'react-list'; // eslint-disable-line no-unused-vars
 import Image from "react-graceful-image";
 import Swiper from 'swiper/dist/js/swiper.js';
 import Nav from '../component/Nav';
+import Cookies from 'universal-cookie';
 
 // Story Data
 const story_data = data.stories;
@@ -93,18 +94,54 @@ class Search extends Component {
     $(window).on('resize orientationchange', setHeight);
     
     // Init Page
+    const cookies = new Cookies();
+    var $t = this;
+
     document.body.classList.add('ds');
     document.getElementById('loading').classList.remove('fade');
 
-    // Preload Images
     var images  = [];
+    var loaded = false;
+    var p = 0;
+    var id = setInterval(frame, 10);
+    
+    function frame() {
+      //console.log(loaded)
+      if (p >= 100) {
+        if(loaded) {
+          if(cookies.get('firstVisit') === undefined) {
+            cookies.set('firstVisit', true, { path: '/' });
+            // window.location.reload();
+          }
+          setTimeout(function(){
+            document.getElementById('loading').classList.add('fade');
+            document.body.classList.remove('ds');
+          },400);
+          clearInterval(id);
+        }
+      } else {
+        p++; 
+        $('.progress-view').text(p+'%');
+      }
+    }
+    // var images  = [];
     loadImage(images)
     .then(function (allImgs) {
       console.log(allImgs.length, 'images loaded!', allImgs);
-      setTimeout(function(){
-        document.getElementById('loading').classList.add('fade');
-        document.body.classList.remove('ds');
-      },600);
+      console.log($t.state.view);
+      loaded = true;
+
+      if(p >= 100) {
+        clearInterval(id);
+        if(cookies.get('firstVisit') === undefined) {
+          cookies.set('firstVisit', true, { path: '/' });
+          // window.location.reload();
+        }
+        setTimeout(function(){
+          document.getElementById('loading').classList.add('fade');
+          document.body.classList.remove('ds');
+        },400);
+      }
     })
     .catch(function (err) {
       console.error('One or more images have failed to load :(');
@@ -328,15 +365,36 @@ class Search extends Component {
       imageLength = images.length;
     }
     var imageSlider = [];
-    for(var i = 0; i < imageLength; i++) {
-      var slides = (
-        <div className="swiper-slide" key={i}>
+    var all_content = null;
+    if(imageLength > 1) {
+      for(var i = 0; i < imageLength; i++) {
+        var slides = (
+          <div className="swiper-slide" key={i}>
+            <figure className="mh0 mv4 modalImg">
+              <img src={images[i]} alt="story" />
+            </figure>
+          </div>
+        )
+        imageSlider.push(slides);
+      }
+      all_content = (
+        <div className="swiper-container">
+          <div className="swiper-wrapper">
+            {imageSlider}
+          </div>
+          <div className="swiper-pagination"></div>
+          <div className="swiper-button-prev"></div>
+          <div className="swiper-button-next"></div>
+        </div>
+      )
+    } else {
+      all_content = (
+        <div className="image">
           <figure className="mh0 mv4 modalImg">
-            <img src={images[i]} alt="story" />
+            <img src={images[0]} alt="story" />
           </figure>
         </div>
       )
-      imageSlider.push(slides);
     }
 
     var form = {
@@ -399,15 +457,7 @@ class Search extends Component {
           </div>
         </div>
         <Modal open={open} onClose={this.onCloseModal}>
-          <div className="swiper-container">
-            <div className="swiper-wrapper">
-              {imageSlider}
-            </div>
-            <div className="swiper-pagination"></div>
-            <div className="swiper-button-prev"></div>
-            <div className="swiper-button-next"></div>
-          </div>
-          
+          {all_content}
           <div className="ph4-ns pb4 modalTxt">
             <h2>{this.state.content.name}</h2>
             <p className="lh-copy">
