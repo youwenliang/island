@@ -6464,7 +6464,7 @@ class Event13 extends Component {
 
         <PhotoMultiple
           id={"18-photoMultiple"} 
-          title={"各地廢棄物非法棄置現場"}
+          title={"各地廢棄物棄置現場"}
           text={this.props.data.photoMultipleText}
           images={this.props.data.photoMultiple}
           label={this.props.data.photoMultipleLabel}
