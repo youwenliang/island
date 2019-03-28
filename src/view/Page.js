@@ -3418,6 +3418,12 @@ class Blog extends Component {
       column = "";
       var image1 = this.props.image[0];
       var image2 = this.props.image[1];
+      var mt5 = "mt5";
+
+      if(this.props.text === "") {
+        text = null;
+        mt5 = "";
+      }
 
       if(this.props.switchM) {
         if(this.state.mobile){
@@ -3429,7 +3435,7 @@ class Blog extends Component {
         }
       }
       img = (
-        <div className="w-100 mt5 hide">
+        <div className={"w-100 hide "+mt5}>
           <div className="fl-l w-100 w-50-l relative tc mb4 mb0-l">
             <img className="mb3" src={image1} alt={this.props.label[0]}/>
             <label className="f7 mt2 o-50 lh-normal" >{this.props.label[0]}</label>
@@ -5825,7 +5831,8 @@ class Event10 extends Component {
           text1 = {this.props.data.photoFullText[2]}
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
-          objectP = {"20%"}
+          objectP = {"10%"}
+          copyright = {'Image is from 2019,©DigitalGlobe,Terra Metrics,©CNES/Airbus'}
         />
 
         <CenterVideo 
@@ -5884,6 +5891,7 @@ class Event10 extends Component {
           link={this.props.data.video[4]}
           text={this.props.data.videoText[4]}
           bg={"bg-near-white"}
+          reverse = {true}
         />
 
         <section id={"illustration"} className="pt6-ns pt5 ph4-ns ph3 center below tc">
@@ -5954,6 +5962,7 @@ class Event10 extends Component {
           text1 = {this.props.data.photoFullText[5]}
           image = {this.props.data.photoFull[5]}
           label = {this.props.data.photoFullTextLabel[5]}
+          objectP = {"20%"}
         />
 
         <EndingVideo id={"27-endingVideo"} text={"當農地變成工業區"} link={"https://youtube.com/embed/iwcWyreW9nA?rel=0"}/>
@@ -6157,6 +6166,7 @@ class Event11 extends Component {
         <Blog
           id={"25-blog"}
           number={2}
+          text=""
           image={this.props.data.photocontrast}
           label={this.props.data.photocontrastLabel}
           onOpenModal={this.onOpenModal.bind(this)}
@@ -6165,6 +6175,7 @@ class Event11 extends Component {
         <Blog
           id={"26-blog"}
           number={2}
+          text=""
           image={this.props.data.photocontrast2}
           label={this.props.data.photocontrastLabel2}
           onOpenModal={this.onOpenModal.bind(this)}
@@ -6368,6 +6379,7 @@ class Event13 extends Component {
           text1 = {this.props.data.photoFullText[0]}
           image = {this.props.data.photoFull[0]}
           label = {this.props.data.photoFullTextLabel[0]}
+          objectP={"30%"}
         />
 
         <Blog
