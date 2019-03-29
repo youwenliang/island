@@ -364,14 +364,25 @@ class Search extends Component {
       images = this.state.content.images;
       imageLength = images.length;
     }
+
     var imageSlider = [];
     var all_content = null;
+    var label = null;
+    var bottomRight = {
+      bottom: this.state.mobile ? "45px": "0",
+      right: "0",
+      background: "rgba(0,0,0,.2)",
+      padding: this.state.mobile ? "10px" : "20px"
+    }
+
     if(imageLength > 1) {
       for(var i = 0; i < imageLength; i++) {
+        label = this.state.content.labels == undefined ? null : this.state.content.labels[i];
         var slides = (
           <div className="swiper-slide" key={i}>
             <figure className="mh0 mv4 modalImg">
               <img src={images[i]} alt="story" />
+              <label className="white absolute lh-normal f6-ns f8 pn" style={bottomRight}>{label}</label>
             </figure>
           </div>
         )
@@ -388,10 +399,12 @@ class Search extends Component {
         </div>
       )
     } else {
+      label = this.state.content.labels == undefined ? null : this.state.content.labels[0];
       all_content = (
         <div className="image">
           <figure className="mh0 mv4 modalImg">
             <img src={images[0]} alt="story" />
+            <label className="white absolute lh-normal f6-ns f8 pn" style={bottomRight}>{label}</label>
           </figure>
         </div>
       )
@@ -414,6 +427,8 @@ class Search extends Component {
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center center'
     }
+
+    
 
     return (
       <section id="timeline" className="min-vh-100 bg-white pv5-l pv4">
@@ -459,10 +474,8 @@ class Search extends Component {
         <Modal open={open} onClose={this.onCloseModal}>
           {all_content}
           <div className="ph4-ns pb4 modalTxt">
-            <h2>{this.state.content.name}</h2>
-            <p className="lh-copy">
-              {this.state.content.content}
-            </p>
+            <h2 className="f3-ns f5">{this.state.content.name}</h2>
+            <p className="lh-copy pre-wrap" dangerouslySetInnerHTML={{__html:this.state.content.content}}></p>
           </div>
         </Modal>
       </section>

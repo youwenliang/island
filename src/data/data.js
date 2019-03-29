@@ -2664,11 +2664,12 @@ var data = {
             "id": 3,
             "time": 1977.11,
             "name": "全台首座核電廠併聯發電",
-            "content": "新北市石門核能電廠，是全台第一座核電廠，廠區內裝設兩部63萬6千瓩汽輪發電機組，每部機組年發電量50億度，宣告台灣啟用核電。2015年提出除役計畫。",
+            "content": "新北市石門核能電廠，是全台第一座核電廠，廠區內裝設兩部63萬6千瓩汽輪發電機組，每部機組年發電量50億度，宣告台灣啟用核電。2015年提出除役計畫。\n\n<a class='tc blue link underline' href='/' target='_blank'>這是一個連結</a>",
             "area": "north",
             "keywords": "1970 1977 north",
             "tags": [1970, "北部地區"],
-            "images": ["/images/stories/3-1994年核一廠外觀.jpg"]
+            "images": ["/images/stories/3-1994年核一廠外觀.jpg"],
+            "labels": ["1994年 核一廠外觀"]
         },
         {
             "id": 4,

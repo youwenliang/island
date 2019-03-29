@@ -13,7 +13,7 @@ class Timeline extends Component {
               <a href="/island20/timeline/" target="_blank"><button className="btn cp mt4 mb5">前往大紀事</button></a>
             </div>
             <div className="fl w-100 w-60-l ph2 hide">
-              <a href="/ourisland/timeline/" target="_blank">
+              <a href="/island20/timeline/" target="_blank">
                 <figure className="mh0 pl5-l">
                   <img src="https://fakeimg.pl/800x600/?text=timeline&retina=1" alt="timeline" />
                 </figure>
