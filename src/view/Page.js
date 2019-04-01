@@ -6084,6 +6084,7 @@ class Event11 extends Component {
           videoID="03"
           link={this.props.data.video[2]}
           text1={this.props.data.videoText[2]}
+          playing={true}
         />
 
         <Transition id={"14-transition"} text={this.props.data.transitionText[2]} bg={"bg-white"}/>
@@ -6112,12 +6113,11 @@ class Event11 extends Component {
           bg={"bg-near-white"}
         />
 
-        <PhotoText
-          id={"18-photoText"}
-          order="left"
-          color="invert"
-          image = {this.props.data.photoImage[2]}
-          bg = {this.props.data.photoFull[1]}
+        <PhotoTextFull
+          id={"18-photoTextFull"}
+          position={"fr-l"}
+          text1={this.props.data.photoText[2]}
+          image = {this.props.data.photoFull[1]}
         />
 
         <CenterSmallVideo 

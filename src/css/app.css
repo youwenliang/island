@@ -31,6 +31,10 @@ body {
   z-index: -1;
 }
 
+tr td:nth-child(1) {
+  font-weight: 700;
+}
+
 .image-gallery-image {
   pointer-events: none;
 }
