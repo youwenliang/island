@@ -5911,6 +5911,7 @@ class Event10 extends Component {
           <img src={this.props.data.illustrationMore[0]} className="w-third-l w-80 hide" alt="illustration" />
         </section>
         <Transition id={"19-transition"} text={this.props.data.transitionText[3]} bg={"bg-white"}/>
+        
         {/*
         
         <SmallVideo 
@@ -6236,6 +6237,7 @@ class Event12 extends Component {
           videoID="01"
           link={this.props.data.video[0]}
           text1={this.props.data.videoText[0]}
+          playing={true}
         />
 
         <PhotoText
@@ -6455,6 +6457,7 @@ class Event13 extends Component {
           videoID="05"
           link={this.props.data.video[4]}
           text1={this.props.data.videoText[4]}
+          playing={true}
         />
 
         <Transition id={"14-transition"} text={this.props.data.transitionText[1]} bg={"bg-white"}/>
