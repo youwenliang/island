@@ -616,7 +616,7 @@ nav .btn {
 }
 
 .card figure {
-  min-height: 200px;
+  min-height: 150px;
 }
 
 .card figure img {
@@ -630,6 +630,10 @@ nav .btn {
   .w7-ns {
     width: 24rem;
   }
+}
+
+.vh-22 {
+  height: 22vh;
 }
 
 .image-gallery-bullets-container {
@@ -844,26 +848,27 @@ nav .btn {
 
 /* Stories */
 .storyContainer {
-  height: 60vh;
-  min-height: 400px;
+  height: calc(100vh - 380px);
+  min-height: 315px;
   overflow: hidden;
 }
 
 .storyBox {
   height: calc(24rem + 40px);
   cursor: grab;
-  padding-top: 5vh;
+  padding-top: calc((100vh - 680px)/4);
 }
 
 @media screen and (min-width: 30em) {
   .storyBox {
-    height: calc(60vh + 40px);
-    min-height: 440px;
+    height: calc(100vh - 340px);
+    min-height: 355px;
   }
 }
 
 .topicContainer li,
 .dateContainer li {
+  background: #ddd;
   transition: all .2s ease-in-out;
 }
 .dateContainer li {
@@ -871,7 +876,7 @@ nav .btn {
 }
 
 li.active {
-  background: #ccc;
+  background: #fff;
   transition: all .2s ease-in-out;
 }
 

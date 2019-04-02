@@ -236,7 +236,7 @@ class Search extends Component {
     return (
       <li className={"storyItem item cp mh3"+d+style} key={i} onClick={(e) => this.onOpenModal(e, s)}>
         <div className="pn">
-          <figure className={"ma0 vh-25 overflow-hidden"+image} style={figure}>
+          <figure className={"ma0 vh-22 overflow-hidden"+image} style={figure}>
             <Image
               src={cover}
               width="100%"
@@ -435,14 +435,13 @@ class Search extends Component {
         <Helmet>
             <title>台灣環境史三十年大事紀 - 我們的島二十週年</title>
         </Helmet>
-        <Nav timeline={false} notfix={true}/>
+        <Nav timeline={false} notfix={true} show={true}/>
         <div className="mw8-ns center ph3-ns mb4-ns pt4-l pt5">
           <div className="cf mb3-ns mb2">
-            <div className="fl w-100 w-40-l flex aic mb3 mb0-l ph0-ns ph3">
+            <div className="fl w-100 w-20-l flex aic mb3 mb0-l ph0-ns ph3">
               <h2 className="ma0 nowrap">大事紀標題</h2>
-              <p className="ma0 ph3 o-50 f6">大事紀介紹大事紀介紹大事紀介紹大事紀介紹大事紀介紹</p>
             </div>
-            <div className="fl w-100 w-60-l">
+            <div className="fl w-100 w-80-l">
               <form className="flex space-between aic" style={form} onSubmit={this.updateSearch.bind(this)}>
                 <input id="search_input" className="w-100 ph2" type="text" ref="keyword" placeholder="搜尋紀事"/>
                 <select name="areas" ref="areas" className="w150">
