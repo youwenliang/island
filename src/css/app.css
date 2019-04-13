@@ -880,6 +880,11 @@ li.active {
   transition: all .2s ease-in-out;
 }
 
+.dateContainer li.active {
+  background: #ccc;
+  transition: all .2s ease-in-out;
+}
+
 .dateContainer ul {
   transition: all .1s ease-in-out;
 }
@@ -897,6 +902,10 @@ ul.none {
 
 .storyItem img {
   object-fit: cover;
+}
+
+.storyItem .icon {
+  object-fit: contain;
 }
 
 .storyItem.card {

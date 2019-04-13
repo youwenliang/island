@@ -216,7 +216,7 @@ class Search extends Component {
     if(s.time === "") {
       style = " bg-white dark-gray w7-ns w5 pa3";
       image = " dn";
-      if(this.state.topic <= 5) icon = (<img src={topic_data[this.state.topic].icon} width="44" height="44" className="pr3" alt={topic_data[this.state.topic].title}/>);
+      if(this.state.topic <= 5) icon = (<img src={topic_data[this.state.topic].icon} width="44" height="44" className="pr3 icon" alt={topic_data[this.state.topic].title}/>);
       else d = " dn";
     } else {
       image = " flex aic"

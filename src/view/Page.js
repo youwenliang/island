@@ -1003,6 +1003,7 @@ class PhotoTextFull extends Component {
     }
 
     if(this.state.mobile && this.props.switch) h = "";
+    if(this.props.small) h = "min-vh-100";
 
     return (
       <section id={this.props.id} className={h+" flex aic relative pv6-l pv5 photoText"}>
@@ -5835,7 +5836,7 @@ class Event10 extends Component {
           copyright = {'Image is from 2019,©DigitalGlobe,Terra Metrics,©CNES/Airbus'}
         />
 
-        <CenterVideo 
+        <Video 
           id={"11-centerVideo"} 
           videoID="02"
           link={this.props.data.video[1]}
@@ -6118,6 +6119,7 @@ class Event11 extends Component {
           position={"fr-l"}
           text1={this.props.data.photoText[2]}
           image = {this.props.data.photoFull[1]}
+          small = {true}
         />
 
         <CenterSmallVideo 
