@@ -446,10 +446,14 @@ class Search extends Component {
                 <input id="search_input" className="w-100 ph2" type="text" ref="keyword" placeholder="搜尋紀事"/>
                 <select name="areas" ref="areas" className="w150">
                   <option value="">全部地區</option>
-                  <option value="north">北部地區</option>
-                  <option value="central">中部地區</option>
-                  <option value="south">南部地區</option>
-                  <option value="others">其他</option>
+                  <option value="area1">北北基</option>
+                  <option value="area2">桃竹苗</option>
+                  <option value="area3">中彰投</option>
+                  <option value="area4">雲嘉南</option>
+                  <option value="area5">高屏</option>
+                  <option value="area6">宜花東</option>
+                  <option value="area7">金馬澎蘭嶼</option>
+                  <option value="others">不分區及其他</option>
                 </select>
                 <input type="submit" className="ph2 tc cp w4" value="搜尋" />
               </form>
