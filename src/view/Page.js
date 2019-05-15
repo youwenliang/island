@@ -6169,7 +6169,7 @@ class Event11 extends Component {
         <Blog
           id={"25-blog"}
           number={2}
-          text=""
+          text={this.props.data.photocontrastText}
           image={this.props.data.photocontrast}
           label={this.props.data.photocontrastLabel}
           onOpenModal={this.onOpenModal.bind(this)}
