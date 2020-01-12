@@ -30,8 +30,8 @@ class Home extends Component {
     document.body.classList.add('ds');
     document.getElementById('loading').classList.remove('fade');
 
-    // var images  = [];
-    var images  = ["/island20/images/1-1_A22.jpg","/island20/images/1-2_B6.jpg","/island20/images/1-3_C1.jpg","/island20/images/1-4_D32.jpg","/island20/images/1-5_E7.jpg"];
+    var images  = [];
+    // var images  = ["/island20/images/1-1_A22.jpg","/island20/images/1-2_B6.jpg","/island20/images/1-3_C1.jpg","/island20/images/1-4_D32.jpg","/island20/images/1-5_E7.jpg","/island20/images/2-1.jpg","/island20/images/2-2.jpg","/island20/images/2-3.jpg","/island20/images/2-4.jpg","/island20/images/3-1.jpg","/island20/images/3-2.jpg","/island20/images/3-3.jpg","/island20/images/3-4.jpg"];
     var loaded = false;
     var p = 0;
     var id = setInterval(frame, 10);

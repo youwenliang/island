@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import coverVideo from '../assets/videos/cover.mp4';
 import cover from '../assets/images/cover.svg';
-import Phone from '../component/Phone';
-import scrollship from '../assets/images/時光機.svg';
+// import Phone from '../component/Phone';
+// import scrollship from '../assets/images/時光機.svg';
 import panel from '../assets/videos/4_時光機.gif';
 
 import numbers1 from '../assets/videos/4_數字_1.gif';

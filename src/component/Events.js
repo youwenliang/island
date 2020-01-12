@@ -201,7 +201,7 @@ class Events extends Component {
     },
     {
           backgroundImage: 'url('+topic3L+'), url('+topic3R+')',
-          backgroundPosition: 'calc(50% - 450px) 20px, calc(50% + 420px) 20px',
+          backgroundPosition: 'calc(50% - 570px) 20px, calc(50% + 520px) 20px',
           backgroundRepeat: 'no-repeat'
     }
     ]
@@ -283,8 +283,8 @@ class Events extends Component {
           </div>
         </div>
         {this.topics(0, false)}
-        {this.topics(1, true)}
-        {this.topics(2, true)}
+        {this.topics(1, false)}
+        {this.topics(2, false)}
       </div>
     );
   }

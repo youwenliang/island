@@ -60,10 +60,12 @@ class Nav extends Component {
     }
     var url = "http://line.naver.jp/R/msg/text/?穿梭島嶼時光機 - 我們的島二十週年%0D%0A"+link;
     // if(this.props.timeline) timeline = (<a href="/ourisland/timeline/" target="_blank"><button className="btn cp h2 ph3">前往大紀事</button></a>);
+    var show = null
+    if(this.props.show) show = "o-100"
     return (
       <div>
         <nav className="w-100 top0 z40 h3 flex aic space-between">
-          <div className="bg-dark-gray w-100 h-100 absolute top0"></div>
+          <div className={"bg-dark-gray w-100 h-100 absolute top0 "+show}></div>
           <div className="w-100 mw9 center ph3 relative z4">
             <div className="ph2-ns flex space-between aic white">
               <Link to="/island20/">

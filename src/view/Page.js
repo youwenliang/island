@@ -181,7 +181,7 @@ class Page extends Component {
       //   $this.find('video').get(0).pause()
       // });
 
-      var scrolling = false;
+      var scrolling = false; // eslint-disable-line no-unused-vars
       $t.state.scrollprogress = setInterval(function(){
         if(!$('.progress.active').hasClass('scrolling')) {
           $('.progress.active').addClass('scrolling');
@@ -371,7 +371,7 @@ class Page extends Component {
         if(loaded) {
           if(cookies.get('firstVisit') === undefined) {
             cookies.set('firstVisit', true, { path: '/' });
-            window.location.reload();
+            //window.location.reload();
           }
           setTimeout(function(){
             document.getElementById('loading').classList.add('fade');
@@ -394,7 +394,7 @@ class Page extends Component {
         clearInterval(id);
         if(cookies.get('firstVisit') === undefined) {
           cookies.set('firstVisit', true, { path: '/' });
-          window.location.reload();
+          //window.location.reload();
         }
         setTimeout(function(){
           document.getElementById('loading').classList.add('fade');
@@ -414,7 +414,7 @@ class Page extends Component {
       //   $this.find('video').get(0).pause()
       // });
 
-      var scrolling = false;
+      var scrolling = false; // eslint-disable-line no-unused-vars
       $t.state.scrollprogress = setInterval(function(){
         if(!$('.progress.active').hasClass('scrolling')) {
           $('.progress.active').addClass('scrolling');
@@ -599,7 +599,7 @@ class Page extends Component {
       'science-park-landuse': <Event10 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
       'petrochemical-kingdom': <Event11 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
       'soil-pollution-tainan': <Event12 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />,
-      'event13': <Event13 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />
+      'mercury-sludge-volcano': <Event13 data={data} view={this.state.view} switchView={this.switchView.bind(this)} />
     }
     let container = viewContainerMapping[this.state.view];
     
@@ -687,7 +687,7 @@ function CoverVideo(props) {
 
 
   return (
-    <section id={props.id} className="vh-100 flex aic relative">
+    <section id={props.id} className="vh-100 flex aic relative z4">
       <div className="w-100 h-100 absolute z4 pn" style={gradient}></div>
       <div className="w-100 h-100 absolute top-left clipping">
       <div className="w-100 h-100 fixed fixed-content pn">
@@ -722,8 +722,14 @@ class Taiwan extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
 
@@ -749,7 +755,7 @@ class Taiwan extends Component {
     }
     var l = this.props.text1.split("的")[0];
     var r = (l.length-2) * 15 + 60 + "px";
-    var label = {
+    var label = { 
       background: "#222222",
       color: "white",
       padding: "10px 12px",
@@ -762,7 +768,7 @@ class Taiwan extends Component {
     }
     return (
       <section id={this.props.id} className="flex aic bg-near-white pv5 pv6-l ph4-ns ph3 ph0-l flex-wrap">
-        <div className="bg-near-white w-100 w-50-l">
+        <div className="bg-near-white w-100 w-50-l hide">
           <div className="relative" style={bgStyle}>
             <Overlay overlayColor={this.props.primaryColor} />
             <figure className="absolute floatship" style={position}>
@@ -772,8 +778,8 @@ class Taiwan extends Component {
           </div>
         </div>
         <div className="pt4 pa4-l pa3 w-100 w-40-l ml4-l">
-          <h2 className="mh4-l f4-ns f5 fw7 lh-copy mt0">{this.props.text1}</h2>
-          <p className="mh4-l f5-ns f6 lh-copy mv0 mw500">{this.props.text2}</p>
+          <h2 className="mh4-l f4-ns f5 fw7 lh-copy mt0 hide">{this.props.text1}</h2>
+          <p className="mh4-l f5-ns f6 lh-copy mv0 mw500 hide">{this.props.text2}</p>
         </div>
         {/* <GoogleEarthLogo text={"The image is from 2018/Google Earth  Data SIO,NOAA,U.S. Navy,NGA,GEBCO Image Landsat/Copemicus"} /> */}
       </section>
@@ -825,8 +831,14 @@ class Illustration extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
   render(){
@@ -896,8 +908,14 @@ class PhotoTextFull extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
 
@@ -914,6 +932,14 @@ class PhotoTextFull extends Component {
       right: "0",
       background: "rgba(0,0,0,.2)",
       padding: this.state.mobile ? "10px" : "20px"
+    }
+
+    var bottomLeft = {
+      bottom: this.state.mobile ? "45px": "0",
+      left: "0",
+      padding: this.state.mobile ? "10px" : "20px",
+      maxWidth: "80%",
+      textAlign: "left"
     }
 
     var bgcolor = ""
@@ -933,12 +959,17 @@ class PhotoTextFull extends Component {
       label_content = (<label className="white absolute lh-normal f6-ns f8 pn" style={bottomRight}>{this.props.label}</label>)
     }
 
+    var copyright_content = null;
+    if(this.props.copyright) {
+      copyright_content = (<label className="white absolute f8 pn o-30" style={bottomLeft}>{this.props.copyright}</label>)
+    }
+
     if(this.props.text1 !== "") {
       h = "min-vh-200"
       text1 = (
         <div className="cf">
           <div className={this.props.position+" w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative"}>
-            <div className={bgcolor+" w-100 h-100 absolute pn top-left"}></div>
+            <div className={"w-100 h-100 absolute pn top-left "+this.props.opacity+" "+bgcolor}></div>
             <p className={"f5-ns f6 lh-copy mv0 z4 relative "+textcolor} dangerouslySetInnerHTML={{__html:this.props.text1}}></p>
           </div>
         </div>
@@ -972,13 +1003,15 @@ class PhotoTextFull extends Component {
     }
 
     if(this.state.mobile && this.props.switch) h = "";
+    if(this.props.small) h = "min-vh-100";
 
     return (
-      <section id={this.props.id} className={h+" flex aic relative pv6-l pv5"}>
+      <section id={this.props.id} className={h+" flex aic relative pv6-l pv5 photoText"}>
         <div className="w-100 h-100 absolute top-left clipping">
           <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
             {image_content}
             {label_content}
+            {copyright_content}
           </div>
         </div>
         <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap">
@@ -1000,8 +1033,14 @@ class PhotoCenterTextFull extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
 
@@ -1029,6 +1068,10 @@ class PhotoCenterTextFull extends Component {
       bgColor = "bg-black o-60";
       mask = "";
     }
+
+    var label = this.props.label === "" ? null : (
+      <label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{this.props.label}</label>
+    )
     return (
       <section id={this.props.id} className="min-vh-200 flex aic relative bg-black">
         <div className="w-100 h-100 absolute top-left clipping">
@@ -1037,7 +1080,7 @@ class PhotoCenterTextFull extends Component {
               <img className="w-100" style={fullImage} src={this.props.image} alt="background"/>
             </figure>
             <div className={mask+" w-100 h-100 absolute pn top-left z4"}></div>
-            <label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{this.props.label}</label>
+            {label}
           </div>
         </div>
         <div className="w-100 center ph4-ns ph3 z4 relative">
@@ -1063,8 +1106,14 @@ class PhotoText extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
 
@@ -1087,7 +1136,9 @@ class PhotoText extends Component {
     }
     
     var fish = null;
-    var info = null;
+    var info = this.props.info === undefined ? null : (
+      <p className="w-50-l w-100 f6-ns f7 fw5 tc o-50 lh-normal">{this.props.info}</p>
+    )
 
 
     if(this.props.fish) {
@@ -1246,25 +1297,75 @@ class PhotoText extends Component {
       )
     }
 
+    var large = ""
+    var obj = null;
+    var mw70 = "mw70"
+    var pa3 = "pa3"
+    if(this.props.large) {
+      large = "h-100"
+      mw70 = ""
+      pa3 = ""
+      obj = {
+        objectFit: "cover"
+      }
+    }
+
+    var copyrightStyle = {
+      bottom: "0",
+      left: this.state.mobile ? "0": "50%",
+      padding: this.state.mobile ? "10px" : "20px",
+      maxWidth: this.state.mobile ? "100%" : "80%",
+      textAlign: "left"
+    }
+
+    var copyright_content = null;
+    if(this.props.copyright) {
+      copyright_content = (<label className="white absolute f8 pn o-30" style={copyrightStyle}>{this.props.copyright}</label>)
+    }
+
     var photo_content_1 = this.state.mobile ? null : (
-      <figure className="center mw70 w-100 o-90 o-100-ns">
-        <img className={"w-50-l w-100 "+photo} src={this.props.image} alt="description"/>
+      <figure className={"center w-100 o-90 o-100-ns relative "+mw70+" "+large}>
+        {copyright_content}
+        <img className={"w-50-l w-100 "+photo+" "+large} src={this.props.image} alt="description" style={obj}/>
         {info}
       </figure>
     )
+
+    var bgwhite = "bg-white";
+    if(this.props.noWhite) bgwhite = "";
+
     var photo_content_2 = this.state.mobile ? (
-      <figure className="center mw70 w-100 bg-white pa3 o-90">
+      <figure className={"center mw70 w-100 o-90 relative "+pa3+" "+bgwhite}>
+        {copyright_content}
         <img className={"w-50-l w-100 "+photo} src={this.props.image} alt="description"/>
         {info}
       </figure>
     ) : null
 
     if(this.state.mobile) h = "";
+    var bgImg = null;
+    if(this.props.bg !== undefined) {
+      color1 = null;
+      h = "min-vh-150";
+      bgImg = {
+        background: "url("+this.props.bg+")",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center",
+        backgroundColor: "transparent"
+      }
+    }
+
+    var photo_text = this.props.text === undefined ? null : (
+            <div className={"w-50-l mw500 mh3-l center w-100 o-90 pa4-l pa3 bg-white "+text}>
+              <p className="f5-ns f6 lh-copy mv0" dangerouslySetInnerHTML={{__html:this.props.text}}></p>
+            </div>
+    )
 
     return (
-      <section id={this.props.id} className={h+" flex aic relative pv6-l pv5"}>
+      <section id={this.props.id} className={h+" flex aic relative pv6-l pv5 photoText"}>
         <div className="w-100 h-100 absolute top-left clipping">
-          <div className={color1+" w-100 h-100 fixed fixed-content pn flex aic"}>
+          <div className={color1+" w-100 h-100 fixed fixed-content pn flex aic"} style={bgImg}>
             {fish}
             {photo_content_1}
           </div>
@@ -1272,9 +1373,7 @@ class PhotoText extends Component {
         <div className="mw70 center ph4-ns ph3 w-100 z4 pre-wrap" id="triggerText">
           <div className="cf black">
             {photo_content_2}
-            <div className={"w-50-l mw500 mh3-l center w-100 o-90 pa4-l pa3 "+color2+" "+text}>
-              <p className="f5-ns f6 lh-copy mv0" dangerouslySetInnerHTML={{__html:this.props.text}}></p>
-            </div>
+            {photo_text}
           </div>
         </div>
       </section>
@@ -1303,9 +1402,9 @@ function PhotoTextFix(props) {
     h = "";
   }
 
-  var p = "pb6";
+  var p = "pb6-l pb5";
   if(props.top) {
-    p = "pt6";
+    p = "pt6-l pt5";
   }
 
   return (
@@ -1350,56 +1449,79 @@ function MapText(props) {
 }
 
 /*06*/
-function PhotoSwitch(props) {
-  var list = props.images;
-  var title = props.label;
-  const images = [];
-  for(var i = 0; i < list.length; i++) {
-    var temp = {
-      original: list[i],
-      thumbnail: list[i],
-      description: title[i]
+class PhotoSwitch extends Component {
+  componentDidMount(){
+    var $this = this;
+    var $t = $('#'+$this.props.id);
+
+    $(document).ready(function(){
+      $(window).scroll(function(){
+        if($t.length !== 0) {
+          var top_of_object = $t.offset().top;
+          var bottom_of_object = $t.offset().top + $t.height();
+          var top_of_window = $(window).scrollTop(); 
+          var bottom_of_window = $(window).scrollTop()+ $(window).height(); 
+          
+          if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
+            $t.addClass('z2');
+          } else {
+            $t.removeClass('z2');
+          }
+        }
+      });
+    });
+  }
+  render(){
+    var list = this.props.images;
+    var title = this.props.label;
+    const images = [];
+    for(var i = 0; i < list.length; i++) {
+      var temp = {
+        original: list[i],
+        thumbnail: list[i],
+        description: title[i]
+      }
+      images.push(temp);
     }
-    images.push(temp);
-  }
-  var text1 = null;
-  var h = "min-vh-150"
-  if(props.text1 !== "") {
-    h = "min-vh-200"
-    text1 = (
-      <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative "+props.position}>
-        <div className="w-100 h-100 absolute bg-black o-60 top-left"></div>
-        <p className="f5-ns f6 lh-copy mv0 relative z4">{props.text1}</p>
-      </div>
-    )
-  }
-  var text2 = null;
-  if(props.number === 2) {
-    h = "min-vh-300"
-    text2 = (
-      <div className="cf white mt50vh">
-        <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative "+props.position}>
+    var text1 = null;
+    var h = "min-vh-150"
+    if(this.props.text1 !== "") {
+      h = "min-vh-200"
+      text1 = (
+        <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative "+this.props.position}>
           <div className="w-100 h-100 absolute bg-black o-60 top-left"></div>
-          <p className="f5-ns f6 lh-copy mv0 relative z4">{props.text2}</p>
+          <p className="f5-ns f6 lh-copy mv0 relative z4">{this.props.text1}</p>
         </div>
-      </div>
+      )
+    }
+    var text2 = null;
+    if(this.props.number === 2) {
+      h = "min-vh-300"
+      text2 = (
+        <div className="cf white mt50vh">
+          <div className={"w-50-l mw500 mh3-l center w-100 pa4-l pa3 relative "+this.props.position}>
+            <div className="w-100 h-100 absolute bg-black o-60 top-left"></div>
+            <p className="f5-ns f6 lh-copy mv0 relative z4">{this.props.text2}</p>
+          </div>
+        </div>
+      )
+    }
+    return (
+      <section id={this.props.id} className={h+" flex aic w-100 relative bvh photoSwitch "+this.props.z}>
+        <div className="w-100 h-100 absolute top-left clipping">
+          <div className="w-100 h-100 fixed fixed-content">
+            <ImageGallery items={images} showFullscreenButton={false} showThumbnails={false} showPlayButton={false} autoPlay={true} showBullets={true} slideInterval={9000}/>
+          </div>
+        </div>
+        <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap pn">
+          <div className="cf white">
+            {text1}
+          </div>
+          {text2}
+        </div>
+      </section>
     )
   }
-  return (
-    <section id={props.id} className={h+" flex aic w-100 relative bvh"}>
-      <div className="w-100 h-100 absolute top-left clipping">
-        <div className="w-100 h-100 fixed fixed-content">
-          <ImageGallery items={images} showFullscreenButton={false} showThumbnails={false} showPlayButton={false} autoPlay={true} showBullets={true} slideInterval={7000}/>
-        </div>
-      </div>
-      <div className="mw80 center ph4-ns ph3 w-100 z4 pre-wrap pn">
-        <div className="cf white">
-          {text1}
-        </div>
-        {text2}
-      </div>
-    </section>
-  )
 }
 
 /*07*/
@@ -1412,8 +1534,14 @@ class PhotoMultiple extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
 
@@ -1465,16 +1593,24 @@ class PhotoMultiple extends Component {
     var auto = this.props.second === "auto-scroll-2" ? this.props.second : "auto-scroll" 
     if(this.state.mobile) auto = "";
 
+    var title = null;
+    if(this.props.title !== undefined) {
+        title = (
+          <p className='f3-ns f5 fw7 ph3 tracked mb0 lh-normal hide tc'>{this.props.title}</p>
+        )
+    }
+
     return (
       <section id={this.props.id} className={"flex aic relative bg-white flex-column pt6-l pt5 "+auto}>      
         <div className="mw80 center cf black mb5-ns mb3 ph4-ns ph3 w-100">
-          <div className="mw7 w-100 center bg-white pre-wrap">
+          <div className="mw7 w-100 center bg-white pre-wrap hide">
             <p className="f5-ns f6 lh-copy mv0 ph4-l ph3" dangerouslySetInnerHTML={{__html:this.props.text}}></p>
+            {title}
           </div>
         </div>
-        <div className="w-100 overflow-hidden" style={height}>
+        <div className="w-100 overflow-hidden hide" style={height}>
          {hint}
-         <div className="grid-container nowrap dragscroll" style={container}>
+         <div className="grid-container nowrap dragscroll hide" style={container}>
             {grid}
           </div> 
         </div>
@@ -1506,9 +1642,9 @@ class PhotoContrast extends Component {
     let text = null;
     if(this.props.text !== "") {
       text = (
-        <div className="mw80 center cf black mb5 ph4-ns ph3 ">
+        <div className="mw80 center cf black mb5 ph4-ns ph3 hide">
           <div className="mw7 w-100 center pre-wrap">
-            <p className="f5-ns f6 lh-copy mv0 ph4-l ph3">{this.props.text}</p>
+            <p className="f5-ns f6 lh-copy mv0 ph4-l ph3" dangerouslySetInnerHTML={{__html:this.props.text}}></p>
           </div>
         </div>
       )
@@ -1539,7 +1675,7 @@ class PhotoContrast extends Component {
       <section id={this.props.id} className={"flex aic relative flex-column pv6-l pv5 "+this.props.bg}>
           <div className="w-100 z4">
             {text}
-            <div className="photoContrast relative tc" style={contrastStyle}>
+            <div className="photoContrast relative tc hide" style={contrastStyle}>
               {contrastComponent}         
               {label}
               {/*<span className="mt3 right-20 absolute white top f3 fw5" data-type="original">{this.props.year[1]}</span>
@@ -1564,19 +1700,36 @@ class Video extends Component {
   componentDidMount(){
     var $this = this;
     var $t = $('#'+$this.props.id);
+    var mh = $t.css('min-height');
+
+    function checkMobile() {
+      if($(window).width() <= 959) {
+        $this.setState({mobile:true});
+        $t.css('min-height', 'auto');
+      }
+      else {
+        $this.setState({mobile:false});
+        $t.css('min-height', mh);
+      }
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
     $(document).ready(function(){
-      if($(window).width() <= 959) $this.setState({mobile:true});
+      checkMobile();
     $(window).scroll(function(){
       if($t.length !== 0) {
         var top_of_object = $t.offset().top;
         var bottom_of_object = $t.offset().top + $t.height();
         var top_of_window = $(window).scrollTop(); 
         var bottom_of_window = $(window).scrollTop()+ $(window).height(); 
-          
-        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
+        
+        if(bottom_of_window + 640 > top_of_object && top_of_window < bottom_of_object) {
           if(!$this.state.active) {
             $this.setState({active:true});
           }
+        }
+
+        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
           if($t.find('video').get(0).paused) {
             if($t.find('video').hasClass('clicked')) ;
             else {
@@ -1638,16 +1791,19 @@ class Video extends Component {
       textcolor = "black";
     }
 
+    var cf="cf"
+
     if(this.props.text1 !== "") {
       h = "min-vh-200"
       if($this.state.mobile) {
         bgcolor = "transparent";
         textcolor = "black";
+        cf="";
       }
       text1 = (
-          <div className="">
-            <div className={this.props.position+" w-50-l mw500 mh3-l mh3-l center w-100 pa4-l relative mt0-l mt4"}>
-              <div className={bgcolor+" w-100 h-100 absolute pn top-left"}></div>
+          <div className={cf}>
+            <div className={this.props.position+" w-50-l mw500 mh3-l mh3-l center w-100 pa4-l relative mt0-l mt2"}>
+              <div className={bgcolor+" w-100 h-100 absolute pn top-left z1"}></div>
               <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative ph0-l ph3 "+textcolor}>{this.props.text1}</p>
             </div>
           </div>
@@ -1656,16 +1812,19 @@ class Video extends Component {
     }
 
     var text2 = null;
+    var mt50vh = "mt50vh";
     if(this.props.number === 2) {
       h = "min-vh-300"
       if($this.state.mobile) {
         bgcolor = "transparent";
         textcolor = "black";
+        mt50vh = "";
+        cf="";
       }
       text2 = (
-        <div className="mt50vh">
+        <div className={cf+" "+mt50vh}>
           <div className={this.props.position+" w-50-l mw500 mh3-l center w-100 pa4-l relative mt0-l mt4"}>
-            <div className={bgcolor+" w-100 h-100 absolute pn top-left"}></div>
+            <div className={bgcolor+" w-100 h-100 absolute pn top-left z1"}></div>
             <p className={"pre-wrap f5-ns f6 lh-copy mv0 z4 relative ph0-l ph3 "+textcolor}>{this.props.text2}</p>
           </div>
         </div>
@@ -1760,28 +1919,43 @@ class Video extends Component {
       h = "pv5 bg-near-white";
       var mb4 = ""
       if(this.props.text1 !== "") mb4 = "mb4"
+      if(this.props.order) mb4 = "mt4"
       video_content = this.state.active ? (
-        <div className={"cf flex aic jcc w-100 flex-column " + mb4}>
-          <div className="center relative">
+        <div className={"z4 relative cf flex aic jcc w-100 flex-column " + mb4}>
+          <div className="center relative w-100">
             <video className="w-100" id={'video'+this.props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
               <source src={this.props.link} type="video/mp4"/>
             </video>
           </div>
         </div>
       ) : (
-        <div className={"cf flex aic jcc w-100 flex-column " + mb4}>
-          <div className="center relative">
+        <div className={"z4 relative cf flex aic jcc w-100 flex-column " + mb4}>
+          <div className="center relative w-100">
             <video className="w-100 emptyVideo" id={'video'+this.props.videoID} controls controlsList="nodownload" loop playsInline muted autoPlay data-autoplay-fallback="muted" preload="auto" poster={placeholder}>
             </video>
           </div>
         </div>
       );
     }
+    
+    var all = (
+      <div className="w-100">
+        {video_content}
+        {text_content}
+      </div>
+    )
+    if(this.props.order) {
+      all = (
+        <div className="w-100">          
+          {text_content}
+          {video_content}
+        </div>
+      )
+    }
 
     return (
       <section id={this.props.id} className={h+" flex aic flex-column-s relative video-content full-video bg-black"} data-active="false">
-        {video_content}
-        {text_content}
+        {all}
       </section>
     )
   }
@@ -1807,10 +1981,13 @@ class SmallVideo extends Component {
         var top_of_window = $(window).scrollTop(); 
         var bottom_of_window = $(window).scrollTop()+ $(window).height(); 
           
-        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
+        if(bottom_of_window + 640 > top_of_object && top_of_window < bottom_of_object) {
           if(!$this.state.active) {
             $this.setState({active:true});
           }
+        }
+
+        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
           if($t.find('video').get(0).paused) {
             if($t.find('video').hasClass('clicked')) ;
             else {
@@ -1859,19 +2036,19 @@ class SmallVideo extends Component {
 
     var content_all = this.props.reverse ?  (
       <div className="cf flex aic flex-column-s">
-        <div className="fl-l w-100 w-50-l ml5-l ph4-ns ph3 pv3">
+        <div className="fl-l w-100 w-50-l ml5-l ph4-ns ph3 pv3 hide">
           <p className="center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph4-l ph3">{this.props.text}</p>
         </div>
-        <div className="fr-l w-100 w-50-l pl25-l pv3 relative">
+        <div className="fr-l w-100 w-50-l pl25-l pv3 relative hide">
           {video_content}
         </div>
       </div>
     ) : (
       <div className="cf flex aic flex-column-s">
-        <div className="fl-l w-100 w-50-l pl25-l pv3 relative">
+        <div className="fl-l w-100 w-50-l pl25-l pv3 relative hide">
           {video_content}
         </div>
-        <div className="fr-l w-100 w-50-l ml5-l ph4-ns ph3 pv3">
+        <div className="fr-l w-100 w-50-l ml5-l ph4-ns ph3 pv3 hide">
           <p className="center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph4-l ph3">{this.props.text}</p>
         </div>
       </div>
@@ -1906,10 +2083,13 @@ class CenterVideo extends Component {
         var top_of_window = $(window).scrollTop(); 
         var bottom_of_window = $(window).scrollTop()+ $(window).height(); 
           
-        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
+        if(bottom_of_window + 640 > top_of_object && top_of_window < bottom_of_object) {
           if(!$this.state.active) {
             $this.setState({active:true});
           }
+        }
+
+        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
           if($t.find('video').get(0).paused) {
             if($t.find('video').hasClass('clicked')) ;
             else {
@@ -2079,10 +2259,13 @@ class CenterSmallVideo extends Component {
         var top_of_window = $(window).scrollTop(); 
         var bottom_of_window = $(window).scrollTop()+ $(window).height(); 
           
-        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
+        if(bottom_of_window + 640 > top_of_object && top_of_window < bottom_of_object) {
           if(!$this.state.active) {
             $this.setState({active:true});
           }
+        }
+
+        if(bottom_of_window > top_of_object && top_of_window < bottom_of_object ){
           if($t.find('video').get(0).paused) {
             if($t.find('video').hasClass('clicked')) ;
             else {
@@ -2121,7 +2304,7 @@ class CenterSmallVideo extends Component {
     if(this.props.text !== "") {
       text = (
         <div className="mw80 center black mb5-ns mb4 pre-wrap ph4-ns ph3">
-          <div className="mw7 w-100 center ph4-l ph3 pv3">
+          <div className="mw7 w-100 center ph4-l ph3 pv3 hide">
             <p className={"f5-ns f6 lh-copy mv0 "+this.props.align}>{this.props.text}</p>
           </div>
         </div>
@@ -2154,7 +2337,7 @@ class CenterSmallVideo extends Component {
         <div className="w-100 center z4 relative">
           {text}
           <div className="cf flex aic jcc w-100 flex-column pv3">
-            <div className="center relative w-100 tc">
+            <div className="center relative w-100 tc hide">
               {video_content}
             </div>
           </div>
@@ -2175,8 +2358,14 @@ class EndingVideo extends Component {
 
   componentDidMount(){
     var $this = this;
+    function checkMobile() {
+      if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
     $(document).ready(function(){
-      if($(window).width() < 480) $this.setState({mobile:true});
+      checkMobile();
     });
   }
   render() {
@@ -2204,14 +2393,14 @@ class EndingVideo extends Component {
     return (
       <section id={this.props.id} className="flex aic relative bg-white pv6-l pv5 overflow-y-hidden">
         <div className="center ph3-ns ph0 z4 relative mb5rem">
-          <div className="f7 f6-ns cf tc black w-60-l w-80-m w-100 center pv2 ph2 ph4-ns bg-white mb2">
-            <h3>{this.props.text}</h3>
+          <div className="f7 f6-ns cf tc black w-60-l w-80-m w-100 center pv2 ph2 ph4-ns bg-white mb2 hide">
+            <h3 className="lh-copy">{this.props.text}</h3>
           </div>
-          <div className="bg-white pa5-ns pa0 pb6-ns pb4" style={bgTV}>
+          <div className="bg-white pa5-ns pa0 pb6-ns pb4 hide" style={bgTV}>
             <iframe className="iframe" title="playlist" width="100%" height="315" src={this.props.link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
           </div>
         </div>
-        <img className="absolute absolute-center" style={machineStyle} width="400px" src={timemachinehand} alt="timemachine"/>
+        <img className="absolute absolute-center hide" style={machineStyle} width="400px" src={timemachinehand} alt="timemachine"/>
       </section>
     )
   }
@@ -2312,13 +2501,22 @@ class Timeline extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobile: false
+      mobile: false,
+      narrow: false,
     };
   }
   componentDidMount(){
     var $this = this;
+    function checkMobile() {
+      if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+      if($(window).width() <= 1600) $this.setState({narrow:true});
+      else $this.setState({narrow:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
     $(document).ready(function(){
-      if($(window).width() <= 479) $this.setState({mobile:true});
+      checkMobile();
     });
   }
 
@@ -2331,14 +2529,15 @@ class Timeline extends Component {
     var thisH = this.props.height; //560
 
     var ths = thisH+"px";
-    if(this.state.mobile) ths = (thisH-80)+"px";
+    if(this.state.mobile) ths = "calc("+(thisH-320)+"px + 60vw";
     if(special) ths = "600px";
 
     var scrollingAreaStyle = {
       height: (special&&this.state.mobile) ? "170vw" : ths,
       backgroundColor: (special) ? "#F4F4F4" : "transparent",
       borderTop: (special) ? "#F4F4F4 20px solid" : "none",
-      borderBottom: (special) ? "#F4F4F4 20px solid" : "none"
+      borderBottom: (special) ? "#F4F4F4 20px solid" : "none",
+      marginBottom: (special) ? "4rem" : "0"
     }
     var w = ""
     var h = ""
@@ -2377,20 +2576,33 @@ class Timeline extends Component {
         whiteSpace: "normal"
       }
 
+      var boxColor = ""
+      if(this.props.noImg) {
+        bgColor="";
+        boxColor="bg-white";
+      }
+
+      var y = (<p className={"f5-ns f6 fw6 lh-copy mb2 mt0 dib z4 relative pr2 "+bgColor}>{"• "+this.props.year[i]}</p>);
+      if(this.props.noY) y = null;
+
       var text_content = special ? null : (
-        <div style={textGridStyle} className="pa4 center">
-            <p className={"f5-ns f6 fw6 lh-copy mv2 dib z4 relative pr2 "+bgColor}>
-              {"• "+this.props.year[i]}
-            </p>
+        <div style={textGridStyle} className={"pa4 center "+boxColor}>
+            
+              {y}
+            
             <p className="f6 lh-copy mv0">
               {this.props.text[i]}
             </p>
           </div>
       )
 
+      var photoGrid = this.props.noImg ? null : (
+        <div style={photoGridStyle}></div>
+      )
+
       var photos = (
         <div className="grid-item relative z4" key={i}>
-          <div style={photoGridStyle}></div>
+          {photoGrid}
           {text_content}
         </div>
       )
@@ -2399,7 +2611,7 @@ class Timeline extends Component {
     }
 
     var th = (thisH+40)+"px";
-    if(this.state.mobile) th = (thisH-40)+"px";
+    if(this.state.mobile) th = "calc("+(thisH-280)+"px + 60vw";
 
     var container = {
       gridTemplateColumns: columns,
@@ -2410,7 +2622,7 @@ class Timeline extends Component {
     }
 
     var line = special ? null : {
-      top: this.state.mobile ? "60vw": "376px",
+      top: this.state.mobile ? "57.5vw": "369px",
       left: 0,
       width: "100%",
       height: "2px",
@@ -2420,10 +2632,31 @@ class Timeline extends Component {
       transform: this.state.mobile ? "translateY(54px)" : ""
     }
 
+    if(this.props.noImg) {
+      line = {
+        top: this.state.mobile ? "1px": "56px",
+        left: 0,
+        width: "100%",
+        height: "2px",
+        backgroundColor: "rgb(0, 0, 0)",
+        opacity: 0.1,
+        zIndex: 0,
+        transform: this.state.mobile ? "translateY(54px)" : ""
+      }
+    }
+
     var max = {
       maxWidth: "880px"
     }
-    var content = null
+    var content = null;
+    var jcc = null;
+    if(this.props.noY) {
+      line = null;
+      
+      if(this.state.narrow) jcc = "";
+      else jcc = "jcc"
+
+    }
 
     if(this.props.content !== null) {
       if(this.props.content === "") content = null;
@@ -2431,19 +2664,29 @@ class Timeline extends Component {
       (<p className="lh-copy f5-ns f6 center pre-wrap ph4-ns ph3 mb5-ns mb3" style={max} dangerouslySetInnerHTML={{__html:this.props.content}}></p>);
     }
 
-    var padding = special ? "pt6-l pt5" : "pv6-l pv5 min-vh-100";
-    var scrollLeft = (<p className='f6 o-50 tc mt4'>{"◂◂ 往左滑看更多"}</p>)
+    var padding = special || this.props.noImg || this.props.noY ? "pt6-l pt5" : "pv6-l pv5 min-vh-100";
+    var scrollLeft = (<div className="ma0 pa0 hide"><p className='f6 o-50 tc mt4'>{"◂◂ 往左滑看更多"}</p></div>)
     if(!this.state.mobile && this.props.images.length < 5) scrollLeft = null;
+    
+    bgColor = this.props.bg !== undefined ? this.props.bg : "bg-white";
+    
+    var scrollTitle = null;
+    if(this.props.scrollTitle !== undefined) {
+        scrollTitle = (
+          <p className='f3-ns f5 fw7 ph3 tracked mb0 lh-normal hide'>{this.props.scrollTitle}</p>
+        )
+    }
 
     return (
       <section id={this.props.id} className={bgColor+" flex aic relative flex-column "+padding}>      
-        <div className="ma0 ph3">
+        <div className="ma0 ph3 hide">
           {content}
         </div>
+        {scrollTitle}
         {scrollLeft}
-        <div className={"w-100 overflow-hidden relative"} style={scrollingAreaStyle}>
+        <div className={"w-100 overflow-hidden relative hide"} style={scrollingAreaStyle}>
           <div className="absolute line" style={line}></div>
-          <div className={"grid-container nowrap dragscroll relative ph5-l ph0 "+crab} style={container}>
+          <div className={"grid-container nowrap dragscroll relative ph5-l ph0 "+crab+" "+jcc} style={container}>
             {grid}
           </div> 
         </div>
@@ -2451,6 +2694,78 @@ class Timeline extends Component {
     )
   }
 }
+
+class Music extends Component {
+  state = {
+    play: false
+  }
+  
+  audio = new Audio(this.props.url)
+  togglePlay = () => {
+    this.setState({ play: !this.state.play }, () => {
+      this.state.play ? this.audio.play() : this.audio.pause();
+    });
+  }
+  render() {
+    var stateP = !this.state.play ? 'pause':''
+    var $t = this;
+    var max = {
+      width: "200px"
+    }
+
+    $t.audio.addEventListener("ended",function() {
+      $t.setState({play:false});
+    })
+
+    return (
+      <div className="ph4-l ph3 mt3">
+        <div className="cp br2 ph3 pv2 tc b--black-30 ba flex aic" onClick={this.togglePlay} style={max}>
+          <div className={"pn z10 dib play mr3 "+ stateP}></div>
+          {this.state.play ? '暫停錄音檔' : '播放錄音檔'}
+        </div>
+      </div>
+    );
+  }
+}
+
+function PhotoAudioPlay(props) {
+  var max = {
+    maxWidth: "880px"
+  }
+
+  function content(i) {
+    var thisID = "play-"+i;
+
+    return (
+      <div className="cf flex aic flex-column-s">
+        <div className="fl-l w-100 w-50-l pl25-l pv3 relative hide">
+          <img className="mt4 mt0-l" src={props.image[i]} alt={props.name[i]}/>
+        </div>
+        <div className="fr-l w-100 w-50-l ml5-l ph4-ns ph3 pv3 hide">
+          <p className="center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph4-l ph3 fw7">{props.name[i]}</p>
+          <p className="center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black mt0-ns mt4 ph4-l ph3">{props.text[i]}</p>
+          <Music url={props.audio[i]}/>
+        </div>
+      </div>
+    )
+  }
+  var content_all = [];
+  for(var i = 0; i < props.image.length; i++) {
+    content_all.push(content(i));
+  }
+
+  return (
+    <section id={props.id} className={props.bg+" flex aic relative flex-column pv6-l pv5"}>      
+      <div className="ma0 ph3 hide">
+        <p className="lh-copy f5-ns f6 center pre-wrap ph4-ns ph3 mb5-ns mb3" style={max} dangerouslySetInnerHTML={{__html: props.content}}></p>
+      </div>
+      <div className="mw80 w-100 center z4 relative">
+        {content_all}
+      </div>
+    </section>
+  )
+}
+
 
 /*19*/
 function PhotoSlide(props) {
@@ -2519,22 +2834,27 @@ function PhotoSlide(props) {
 
 function Transition(props) {
   var objectFit = {
-    objectFit: "cover"
+    objectFit: "cover",
+    maxWidth: "24rem"
   }
   var img = null;
   var fontSize = "f5-ns f6";
   if(props.illustration !== undefined) {
     img = (
-      <div className="overflow-hidden w7">
+      <div className="overflow-hidden hide">
         <img src={props.illustration} height="200px" style={objectFit} alt="illustration" />
       </div>
     )
     fontSize = "f2rem fw7 tracked mv0";
   }
+
+  var pv = "pv5";
+  if(props.top) pv = "pt6-l pt5 pb5"
+
   return (
-    <section id={props.id} className={props.title+" relative banner pv5 flex aic jcc flex-column-s ph4-ns ph3 z4 "+props.bg}>
+    <section id={props.id} className={props.title+" "+pv+" relative banner flex aic jcc flex-column-s ph4-ns ph3 z4 "+props.bg}>
       {img}
-      <p className={"dib mw7 mv0 lh-copy pre-wrap ph4-l ph3 "+fontSize} dangerouslySetInnerHTML={{__html:props.text}}></p>
+      <p className={"dib mw7 mv0 lh-copy pre-wrap ph4-l ph3 hide "+fontSize} dangerouslySetInnerHTML={{__html:props.text}}></p>
     </section>
   )
 }
@@ -2618,9 +2938,16 @@ class TimeChange extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
       if($(window).width() <= 665) $this.setState({mini:true});
+      else $this.setState({mini:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
   
@@ -2715,19 +3042,25 @@ class TimeChangeFull extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
   render(){
     var z = "";
-    var h = "min-vh-150"
+    var h = "min-vh-100"
     var first = "first z-1";
 
     var fullImage = {
       height: "100vh",
       objectFit: "cover",
-      objectPosition: this.props.move ? "40% 22px" : "center 22px",
+      objectPosition: this.props.move ? "41.5% 22px" : "center 22px",
       width: "100%"
     }
     var bottomRight = {
@@ -2739,7 +3072,14 @@ class TimeChangeFull extends Component {
 
     var bgcolor = ""
     var textcolor = ""
-    var up = null;
+    var up = {
+      top: this.props.up
+    }
+    if(this.state.mobile && this.props.upM !== undefined) {
+      up = {
+        top: this.props.upM   
+      }
+    }
     if(this.props.color === "dark") {
       bgcolor = "bg-black o-20";
       textcolor = "white";
@@ -2769,15 +3109,29 @@ class TimeChangeFull extends Component {
       first = "fade"
     }
 
+    var copyrightStyle = {
+      bottom: "0",
+      left: "0",
+      padding: this.state.mobile ? "10px" : "20px",
+      maxWidth: this.state.mobile ? "100%" : "80%",
+      textAlign: "left"
+    }
+
+    var copyright_content = null;
+    if(this.props.copyright) {
+      copyright_content = (<label className="white absolute f8 pn o-30" style={copyrightStyle}>{this.props.copyright}</label>)
+    }
+
     var label_content = this.props.label !== "" ? (<label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{this.props.label}</label>) : null;
     var earth = this.props.earth ? <GoogleEarthLogo text={this.props.earthText} /> : null;
     var imgSrc = this.props.image;
 
     return (
       <section id={this.props.id} className={h+" flex aic relative timeChange "+z}>
-        <div className={first+" w-100 h-100 absolute top-left time-clipping"}>
+        <div className={first+" w-100 h-100 absolute top-left time-clipping fade"}>
           <div className="bg-white w-100 h-100 fixed fixed-content pn flex aic">
             <figure className="w-100 ma0">
+              {copyright_content}
               <img className="w-100" style={fullImage} src={imgSrc} alt="background"/>
             </figure>
             {label_content}
@@ -2793,6 +3147,7 @@ class TimeChangeFull extends Component {
   }
 }
 
+
 class TimeChangeSide extends Component {
   constructor(props) {
     super(props);
@@ -2802,8 +3157,14 @@ class TimeChangeSide extends Component {
   }
   componentDidMount(){
     var $this = this;
-    $(document).ready(function(){
+    function checkMobile() {
       if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
+    $(document).ready(function(){
+      checkMobile();
     });
   }
 
@@ -2911,7 +3272,7 @@ class TimeChangeSide extends Component {
     
     return (
       <section id={this.props.id} className={h+" flex aic relative timeChange "+z}>
-        <div className={first+" w-100 h-100 absolute top-left time-clipping cf"}>
+        <div className={first+" w-100 h-100 absolute top-left time-clipping cf fade"}>
           <div className={jcc+" bg-white w-100 h-100 fixed fixed-content pn flex aic flex-column-s"} style={container}>
             <figure className="fr-l w-50-l w-100 h-100-l ma0 flex aic overflow-hidden" style={topImg}>
               <img style={halfImageContain} src={imgSrc} width="100%" alt="background"/>
@@ -2950,8 +3311,14 @@ class Blog extends Component {
   }
   componentDidMount(){
     var $this = this;
+    function checkMobile() {
+      if($(window).width() <= 959) $this.setState({mobile:true});
+      else $this.setState({mobile:false});
+    }
+    $(window).on('resize orientationchange', checkMobile);
+
     $(document).ready(function(){
-      if($(window).width() <= 479) $this.setState({mobile:true});
+      checkMobile();
     });
   }
 
@@ -2987,7 +3354,7 @@ class Blog extends Component {
         height: this.state.mobile ? "200px" : "400px",
         backgroundImage: "url("+this.props.image[i]+")",
         backgroundSize: "cover",
-        backgroundPosition: "center center"
+        backgroundPosition: "center bottom"
       }
       var bottomRight = {
         bottom: "0px",
@@ -2996,7 +3363,7 @@ class Blog extends Component {
         padding: this.state.mobile ? "10px" : "20px"
       }
 
-      var label_content = (<label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{this.props.label[i]}</label>)
+      var label_content = this.props.label[i] === "" ? null : (<label className="white absolute lh-normal z10 f6-ns f8 pn" style={bottomRight}>{this.props.label[i]}</label>)
       var photos = (
         <div className="grid-item bg-gray relative cp" alt={this.props.label[i]} style={item} key={i} onClick={(e) => this.props.onOpenModal(e.target.style.backgroundImage.split('"')[1], e.target.getAttribute("alt"))}>
           {label_content}
@@ -3017,7 +3384,7 @@ class Blog extends Component {
 
     if(this.props.text === "") {
       img = (
-        <div className="w-100">
+        <div className="w-100 hide">
           <div className="fl-l w-100 w-50-l relative tc mb5 mb0-ns">
             <img className="mb3" src={this.props.image[0]} alt={this.props.label[0]}/>
             <label className="f7 mt2 o-50 lh-normal" >{this.props.label[0]}</label>
@@ -3031,33 +3398,51 @@ class Blog extends Component {
     }
     else {
       text = (
-        <div className="w-100 ph4-l ph3 mb4">
+        <div className="w-100 ph4-l ph3 mb4 hide">
           <p className="mw7 center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black">{this.props.text}</p>
         </div>
       );
     }
     if(this.props.number === 1) {
       img = (
-        <div className={a+" w-100 w-50-l pv3 relative tc-ns tl mb0"}>
+        <div className={a+" w-100 w-50-l pv3 relative tc-ns tl mb0 hide"}>
           <img className="mb3" src={this.props.image[0]} alt={this.props.label[0]}/>
           <label className="f7 mt2 o-50 lh-normal" >{this.props.label[0]}</label>
         </div>
       );
       text = (
-        <div className="w-100 w-50-l pv3 mb4">
+        <div className="w-100 w-50-l pv3 mb4 hide">
           <p className="mw500 center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black ph4-l ph3">{this.props.text}</p>
         </div>
       );
     } else if(this.props.number === 2) {
       column = "";
+      var image1 = this.props.image[0];
+      var image2 = this.props.image[1];
+      var mt5 = "mt5";
+
+      if(this.props.text === "") {
+        text = null;
+        mt5 = "";
+      }
+
+      if(this.props.switchM) {
+        if(this.state.mobile){
+          image1 = this.props.image[0].split('.')[0]+'-M.jpg';
+          image2 = this.props.image[1].split('.')[0]+'-M.jpg';
+        } else {
+          image1 = this.props.image[0];
+          image2 = this.props.image[1];          
+        }
+      }
       img = (
-        <div className="w-100">
+        <div className={"w-100 hide "+mt5}>
           <div className="fl-l w-100 w-50-l relative tc mb4 mb0-l">
-            <img className="mb3" src={this.props.image[0]} alt={this.props.label[0]}/>
+            <img className="mb3" src={image1} alt={this.props.label[0]}/>
             <label className="f7 mt2 o-50 lh-normal" >{this.props.label[0]}</label>
           </div>
           <div className="fr-l w-100 w-50-l relative tc mb0">
-            <img className="mb3" src={this.props.image[1]} alt={this.props.label[1]}/>
+            <img className="mb3" src={image2} alt={this.props.label[1]}/>
             <label className="f7 mt2 o-50 lh-normal" >{this.props.label[1]}</label>
           </div>
         </div>
@@ -3066,12 +3451,12 @@ class Blog extends Component {
       column = "";
       mw = "";
       text = (
-        <div className="w-100 ph4-ns ph3 mb4">
+        <div className="w-100 ph4-ns ph3 mb4 hide">
           <p className="mw7 center pre-wrap f5-ns f6 lh-copy mv0 z4 relative black ph4-l ph3">{this.props.text}</p>
         </div>
       );
       img = (
-        <div className="w-100 overflow-hidden" style={height}>
+        <div className="w-100 overflow-hidden hide" style={height}>
           {hint}
           <div className={"grid-container nowrap dragscroll "+len} style={container}>
             {grid}
@@ -3081,6 +3466,9 @@ class Blog extends Component {
     }
     
     var bgColor = this.props.bg !== undefined ? this.props.bg : "bg-white";
+    var more = this.props.more === undefined ? null : (
+      <p className="w-100 tc f6 pa3 mv0 o-50 lh-normal">{this.props.more}</p>
+    )
 
     return (
       <section id={this.props.id} className={"flex aic relative pv6-l pv5 "+bgColor} >
@@ -3088,6 +3476,7 @@ class Blog extends Component {
           <div className={"cf "+column}>
             {text}
             {img}
+            {more}
           </div>
         </div>
       </section>
@@ -3108,7 +3497,7 @@ function More(props) {
   var morelinks = [];
   for(var i = 0; i < len; i++) {
     var morelink = (
-      <div className="fl w-100 w-50-ns pa2" key={i}>
+      <div className="fl w-100 w-50-ns pa2 hide" key={i}>
         <div className="bg-white pv2 f4-ns f5 fw5">
           <a className="bb bw1" href={props.link[i]} target="_blank" style={borderLink} rel="noopener noreferrer">
             {props.title[i]}
@@ -3124,7 +3513,7 @@ function More(props) {
     <section id={props.id} className="bg-white pv6-l pv5 relative z10" style={border}>
       <div className="mw8 center ph3">
         <div className="cf ph2-ns tc">
-          <h1 className="ph2 fw7 tracked mb5-l mb4 f2rem">同場加映</h1>
+          <h1 className="ph2 fw7 tracked mb5-l mb4 f2rem hide">同場加映</h1>
           {morelinks}
         </div>
       </div>
@@ -3138,7 +3527,7 @@ function CTA(props) {
       <section id={props.id} className="bg-near-white pv6-l pv5 relative z10">
         <div className="mw8 center ph3">
           <div className="cf ph2-ns tc">
-            <div className="fl w-third-l w-100 pa2 cp">
+            <div className="fl w-third-l w-100 pa2 cp hide">
               <Link to="/island20">
                 <div className="pv3 pa4 tc ctaBox bg-white">
                   <figure className="w-100 h5 center mv0 flex aic jcc">
@@ -3149,7 +3538,7 @@ function CTA(props) {
                 </div>
               </Link>
             </div>
-            <div className="fl w-third-l w-100 pa2 cp">
+            <div className="fl w-third-l w-100 pa2 cp hide">
               <Link to={"../"+props.next+"/"}> 
                 <div className="pv3 pa4 tc ctaBox bg-white" onClick={() => props.switchView(props.next)}>
                   <figure className="w-100 h5 center mv0 flex aic jcc">
@@ -3160,7 +3549,7 @@ function CTA(props) {
                 </div>
               </Link>
             </div>
-            <div className="fl w-third-l w-100 pa2 cp">
+            <div className="fl w-third-l w-100 pa2 cp hide">
               <a href="https://ourisland.pts.org.tw/" target="_blank" rel="noopener noreferrer">
                 <div className="pv3 pa4 tc ctaBox bg-white">
                   <figure className="w-100 h5 center mv0 flex aic jcc">
@@ -3749,11 +4138,11 @@ class Event03 extends Component {
         
 
         <section id={"22-transition"}  style={max} className="pv6-ns pv5 ph4-ns ph3 center">
-          <img src={this.props.data.illustrationCrab[6]} className="w-25-ns w-50" alt="illustration" />
-          <img src={this.props.data.illustrationCrab[7]} className="w-25-ns w-50" alt="illustration" />
-          <img src={this.props.data.illustrationCrab[8]} className="w-25-ns w-50" alt="illustration" />
-          <img src={this.props.data.illustrationCrab[9]} className="w-25-ns w-50" alt="illustration" />
-          <p className="lh-copy pre-wrap f5-ns f6 mt5 ph4-l ph3">{this.props.data.videoText[6]}</p>
+          <img src={this.props.data.illustrationCrab[6]} className="w-25-ns w-50 hide" alt="illustration" />
+          <img src={this.props.data.illustrationCrab[7]} className="w-25-ns w-50 hide" alt="illustration" />
+          <img src={this.props.data.illustrationCrab[8]} className="w-25-ns w-50 hide" alt="illustration" />
+          <img src={this.props.data.illustrationCrab[9]} className="w-25-ns w-50 hide" alt="illustration" />
+          <p className="lh-copy pre-wrap f5-ns f6 mt5 ph4-l ph3 hide">{this.props.data.videoText[6]}</p>
         </section>
 
         <Video 
@@ -4003,6 +4392,7 @@ class Event04 extends Component {
           id={"6-transition"} 
           text={this.props.data.panoramaText}
           bg={"bg-white"}
+          top={true}
         />
         <Panorama
           id={"7-panorama"} 
@@ -4482,27 +4872,45 @@ class Event05 extends Component {
 }
 
 class Event06 extends Component {
+  state = {
+    open: false,
+    image: "",
+    description: ""
+  }
+ 
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} code={this.props.data.code} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
+          id={"2-taiwan"}
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          shipPositionL = "0%"
-          shipPositionT = "0%"
+          shipPositionL = "48%"
+          shipPositionT = "21%"
         />
 
         <Illustration
+          id={"3-illustration"}
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
 
         <PhotoTextFull
+          id={"4-photoTextFull"}
           position={"fr-l"}
           text1={this.props.data.photoFullText[0]}
           image = {this.props.data.photoFull[0]}
@@ -4510,19 +4918,29 @@ class Event06 extends Component {
         />
 
         <Video 
+          id={"5-video"}
           videoID="01"
           link={this.props.data.video[0]}
           text1={this.props.data.videoText[0]}
+          playing={true}
+          sound={false}
+        />
+
+        <Transition
+          id={"6-transition"}
+          text={this.props.data.photoswitchText}
         />
 
         <PhotoSwitch 
+          id={"7-photoSwitch"}
           position={"fr-l"}
           images={this.props.data.photoswitch} 
-          text1={this.props.data.photoswitchText}
+          text1=""
           label={this.props.data.photoswitchLabel}
         />
 
         <PhotoTextFull
+          id={"8-photoTextFull"}
           position={"fl-l"}
           text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
@@ -4530,51 +4948,91 @@ class Event06 extends Component {
         />
 
         <Video 
+          id={"9-video"}
           number={2}
           position={"fr-l"}
           color="dark"
           videoID="02"
+          order={true}
           link={this.props.data.video[1]}
           text1={this.props.data.videoText[1]}
           text2={this.props.data.videoText[2]}
         />
 
+        <Transition id={"10-transition"} text={this.props.data.transitionText[0]} bg={"bg-white"}/>
+
         <Video 
+          id={"11-video"}
           position={"fl-l"}
           videoID="03"
           link={this.props.data.video[2]}
           text1={this.props.data.videoText[3]}
+          playing={true}
         />
 
-        <Transition text={this.props.data.videoText[4]} bg={"bg-white"}/>
-        <Video 
-          videoID="04"
-          link={this.props.data.video[3]}
-          text1=""
+        <Timeline
+          id={"12-timeline"}
+          special={true}
+          bg={"bg-near-white"}
+          content={this.props.data.photoFullText[5]}
+          text=""
+          year=""
+          images={this.props.data.timelineImage}
+          scrollTitle="2004年敏督利颱風災情"
         />
 
-        <PhotoTextFull
+        <Blog
+          id={"13-blog"}
           number={2}
-          position={"fl-l"}
-          color="dark"
-          text1={this.props.data.photoFullText[2]}
-          text2={this.props.data.photoFullText[3]}
-          image = {this.props.data.photoFull[2]}
-          label = {this.props.data.photoFullTextLabel[2]}
+          bg={"bg-white z4"}
+          text={this.props.data.blogText[0]}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+          onOpenModal={this.onOpenModal.bind(this)}
         />
 
-        <Video 
-          videoID="05"
-          position={"fr-l"}
-          text1=""
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
+        </Modal>
+
+        <PhotoSwitch
+          id={"14-photoSwitch"}
+          number = {2} 
+          images={this.props.data.photoswitch2} 
+          text1={this.props.data.photoswitchText2}
+          text2={this.props.data.photoswitchText3}
+          label={this.props.data.photoswitchLabel2}
         />
 
-        <PhotoTextFull
-          position={"fl-l"}
+        <PhotoContrast
+          id={"15-photoContrast"} 
+          bg={"bg-white z1"}
+          images={this.props.data.photocontrast}
+          text={this.props.data.photocontrastText}
+          year=""
+          label=""
+        />
+
+        <SmallVideo 
+          id={"16-smallVideo"} 
+          videoID="04"
+          bg={"bg-near-white"}
+          link={this.props.data.video[4]}
+          text={this.props.data.videoText[5]}
+          sound={false}
+        />
+
+        <PhotoCenterTextFull
+          id={"17-photoCenterTextFull"} 
           text1={this.props.data.photoFullText[4]}
           image = {this.props.data.photoFull[3]}
           label = {this.props.data.photoFullTextLabel[3]}
         />
+
+        <EndingVideo id={"18-endingVideo"} text={"一起來，看梨山20年變遷...."} link={"https://youtube.com/embed/2hNzEhztAms?rel=0"}/>
+        <More id={"19-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <CTA id={"20-cta"} switchView={this.props.switchView} next={"lushan-hotspring-risk"} nextN={"冒險 泡湯去"}/>
 
       </div>
     );
@@ -4583,64 +5041,87 @@ class Event06 extends Component {
 
 class Event07 extends Component {
   componentDidMount(){
-    var infoText = this.props.data.infoText;
-    $(document).ready(function(){
-      var infoHelper = '<div className="absolute z10 mw7 infoHelper pn"><p className="near-black f7 fw4 bg-white pa3 pre-wrap lh-copy">'+infoText+'</p></div>';
-      $('.info').append(infoHelper);
-    })
+    // var infoText = this.props.data.infoText;
+    // $(document).ready(function(){
+    //   var infoHelper = '<div class="absolute z10 mw7 infoHelper pn"><p class="near-black f7 fw4 bg-white pa3 pre-wrap lh-copy">'+infoText+'</p></div>';
+    //   $('.info').append(infoHelper);
+    // })
   }
+  state = {
+    open: false,
+    image: "",
+    description: ""
+  }
+ 
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} code={this.props.data.code} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
+          id={"2-taiwan"} 
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          map = {"-110px, -110px"}
+          shipPositionL = "47%"
+          shipPositionT = "18%"
         />
 
         <Video 
+          id={"3-video"} 
           videoID="01"
           link={this.props.data.video[0]}
           text1={this.props.data.videoText[0]}
+          playing={true}
+          sound={false}
         />
 
         <Illustration
+          id={"4-illustration"} 
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
 
         <PhotoSwitch 
+          id={"5-photoSwitch"} 
           images={this.props.data.photoswitch} 
           label={this.props.data.photoswitchLabel}
-          text1=""
-        />
-
-        <PhotoTextFull
-          position={"fr-l"}
           text1={this.props.data.photoFullText[0]}
-          image = {this.props.data.photoFull[0]}
-          label = {this.props.data.photoFullTextLabel[0]}
         />
 
         <Video 
+          id={"6-video"} 
           videoID="02"
           color="dark"
+          position="fr-l"
           link={this.props.data.video[1]}
           text1={this.props.data.videoText[1]}
         />
 
-        <Transition text={this.props.data.photoSlideText} bg={"bg-white"}/>
-        <PhotoSlide
-          text={this.props.data.photoSlideLabel}
-          images={this.props.data.photoSlidePhoto}
+        <Blog
+          id={"7-blog"}
+          number={2}
+          text={this.props.data.photoSlideText}
+          label={this.props.data.photoSlideLabel}
+          image={this.props.data.photoSlidePhoto}
+          onOpenModal={this.onOpenModal.bind(this)}
         />
 
         <Timeline
+          id={"8-timeline"} 
+          height="480"
+          bg={"bg-near-white"}
           text={this.props.data.timelineText}
           year={this.props.data.timelineYear}
           images={this.props.data.timelineImage}
@@ -4648,37 +5129,82 @@ class Event07 extends Component {
         />
 
         <PhotoContrast
-          bg={"bg-near-white"}
+          id={"9-photoContrast"} 
+          bg={"bg-white"}
           images={this.props.data.photocontrast}
-          text=""
+          text={this.props.data.photocontrastText}
           year={this.props.data.photocontrastYear}
+          label={this.props.data.photocontrastLabel}
         />
 
-        <Video 
+        <Video
+          id={"10-video"} 
           videoID="03"
           color="dark"
           position={"fr-l"}
           link={this.props.data.video[2]}
           text1={this.props.data.videoText[2]}
         />
+        
         <PhotoTextFull
+          id={"11-photoTextFull"} 
           position={"fl-l"}
           text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
-        />        
-        <Transition text={this.props.data.videoText[3]} bg={"bg-white"}/>
-        <Video 
+        />
+        <Blog
+          id={"14-blog"}
+          number={3}
+          bg={"bg-near-white"}
+          text={this.props.data.blogText[0]}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+          onOpenModal={this.onOpenModal.bind(this)}
+          more={this.props.data.blogMore[0]}
+        />
+
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
+        </Modal>
+
+        <SmallVideo
+          id={"15-smallVideo"}  
+          videoID="06"
+          text={this.props.data.videoText[5]}
+          link={this.props.data.video[5]}
+          sound={false}
+        />
+
+        <Blog
+          id={"14-blog"}
+          number={3}
+          bg={"bg-near-white"}
+          text={this.props.data.blogText[1]}
+          image={this.props.data.blogImage[1]}
+          label={this.props.data.blogLabel[1]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <CenterSmallVideo 
+          id={"13-video"} 
           videoID="04"
           link={this.props.data.video[3]}
-          text1=""
+          text={this.props.data.videoText[3]}
         />
+
         <CenterVideo 
+          id={"14-centerVideo"} 
           videoID="05"
           link={this.props.data.video[4]}
           text1={this.props.data.videoText[4]}
           bg={false}
         />
+
+        <EndingVideo id={"15-endingVideo"} text={"廬山是如何變成今天的樣子呢?"} link={"https://youtube.com/embed/sMp_TgjcHDo?rel=0"}/>
+        <More id={"16-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <CTA id={"17-cta"} switchView={this.props.switchView} next={"hushan-reservoir-lost-water"} nextN={"攔住水又失去水"}/>
         
       </div>
     );
@@ -4686,111 +5212,989 @@ class Event07 extends Component {
 }
 
 class Event08 extends Component {
+  state = {
+    open: false,
+    image: "",
+    description: ""
+  }
+ 
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
-        <p>event08</p>
+        <CoverVideo id={"1-coverVideo"} code={this.props.data.code} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        
+        <Taiwan
+          id={"2-taiwan"}
+          text1={this.props.data.taiwanText[0]}
+          text2={this.props.data.taiwanText[1]}
+          illustration = {this.props.data.taiwan}
+          
+          shipPositionL = "41%"
+          shipPositionT = "28%"
+        />
+
+        <Illustration
+          id={"3-illustration"}
+          number = {1}
+          text1={this.props.data.illustrationText[0]}
+          illustration = {this.props.data.illustration}
+        />
+
+        <Transition id={"4-illustration"} text={this.props.data.transitionText[0]} bg={"bg-near-white"}/>
+
+        <Video
+          id={"5-video"} 
+          videoID="01"
+          link={this.props.data.video[0]}
+          text1=""
+          playing={true}
+        />
+        <Transition
+          id={"10-transition"} 
+          bg={"bg-green white tc"}
+          text={"在湖水漲起之前，這裡有一座美麗的幽情谷。"}
+        />
+        <PhotoSwitch 
+          id={"6-photoSwitch"} 
+          position={"fl-l"}
+          images={this.props.data.photoswitch} 
+          text1={this.props.data.photoswitchText}
+          label={this.props.data.photoswitchLabel}
+        />
+
+        <PhotoCenterTextFull
+          id={"7-photoCenterTextFull"} 
+          text1={this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+          bg={true}
+        />
+
+        <PhotoText
+          id={"8-photoText"}
+          order="left"
+          large={true}
+          text={this.props.data.photoText[0]}
+          image = {this.props.data.photoImage[0]}
+          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
+        />
+
+        <Timeline
+          id={"9-timeline"}
+          height={480}
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
+          content={this.props.data.timelineContent}
+          bg={"bg-near-white"}
+        />
+
+        <PhotoCenterTextFull
+          id={"10-photoCenterTextFull"} 
+          text1={this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
+          objectP={"30%"}
+        />
+
+        <Transition
+          id={"11-transition"} 
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationQ[0]}
+          text={this.props.data.transitionText[1]}
+        />
+
+        <PhotoTextFull
+          id={"12-photoTextFull"}
+          position={"fl-l"}
+          text1={this.props.data.photoFullText[2]}
+          image = {this.props.data.photoFull[2]}
+          label = {this.props.data.photoFullTextLabel[2]}
+        />
+
+        <Transition
+          id={"13-transition"} 
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationQ[1]}
+          text={this.props.data.transitionText[2]}
+        />
+
+        <Video
+          id={"14-video"} 
+          videoID="02"
+          color="dark"
+          position="fl-l"
+          link={this.props.data.video[1]}
+          text1={this.props.data.videoText[1]}
+        />
+
+        <Transition
+          id={"15-transition"} 
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationQ[2]}
+          text={this.props.data.transitionText[3]}
+        />
+
+        <PhotoText
+          id={"16-photoText"}
+          order="left"
+          large={true}
+          text={this.props.data.photoText[1]}
+          image = {this.props.data.photoImage[1]}
+          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
+        />
+
+        <Transition
+          id={"17-transition"} 
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationQ[3]}
+          text={this.props.data.transitionText[4]}
+        />
+
+        <Video
+          id={"18-video"} 
+          videoID="03"
+          link={this.props.data.video[2]}
+          text1={this.props.data.videoText[2]}
+        />
+
+        <Transition
+          id={"19-transition"} 
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationQ[4]}
+          text={this.props.data.transitionText[5]}
+        />
+
+        <SmallVideo 
+          id={"19-smallVideo"} 
+          videoID="05"
+          link={this.props.data.video[7]}
+          text={this.props.data.timeChangeText[0]}
+          sound={false}
+        />
+
+        <Transition id={"22-transition"} text={this.props.data.transitionText[6]} bg={"bg-near-white"}/>
+
+        <Blog
+          id={"23-blog"}
+          number={1}
+          text={this.props.data.blogText[0]}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
+        </Modal>
+
+        <Video
+          id={"24-video"} 
+          videoID="04"
+          color="dark"
+          link={this.props.data.video[6]}
+          text1=""
+          playing={true}
+        />
+
+        <Transition id={"25-transition"} text={this.props.data.transitionText[7]} bg={"bg-near-white"}/>
+
+        <PhotoText
+          id={"26-photoText"}
+          order="left"
+          text={this.props.data.photoText[2]}
+          image = {this.props.data.photoImage[2]}
+          large ={true}
+          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
+        />
+
+        <Timeline
+          id={"27-timeline"}
+          height={520}
+          text={this.props.data.timelineText2}
+          year={this.props.data.timelineYear2}
+          images={this.props.data.timelineImage2}
+          content={this.props.data.timelineContent2}
+          bg={"bg-near-white"}
+        />
+
+        <Transition id={"28-transition"} text={this.props.data.transitionText[8]} bg={"bg-white"}/>
+
+        <Transition
+          id={"29-transition"} 
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationBird[0]}
+          text={"我們可以:節水"}
+        />
+
+        <CenterSmallVideo
+          id={"30-centerSmallVideo"}  
+          videoID="05"
+          text={this.props.data.videoText[3]}
+          link={this.props.data.video[3]}
+          sound={false}
+        />
+
+        <Transition
+          id={"31-transition"} 
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationBird[1]}
+          text={"我們可以:降低漏水率"}
+        />
+
+        <Blog
+          id={"32-blog"}
+          number={1}
+          text={this.props.data.blogText[1]}
+          image={this.props.data.blogImage[1]}
+          label={this.props.data.blogLabel[1]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Transition
+          id={"33-transition"} 
+          title={"transitionTitle"}
+          bg={"bg-white black tc"}
+          illustration={this.props.data.illustrationBird[2]}
+          text={"我們可以:區域性總量管制"}
+        />
+
+        <CenterSmallVideo
+          id={"34-video"} 
+          videoID="06"
+          link={this.props.data.video[4]}
+          text1={this.props.data.videoText[4]}
+          playing={true}
+        />
+
+        <CenterVideo 
+          id={"35-centerVideo"} 
+          videoID="07"
+          link={this.props.data.video[5]}
+          text1={this.props.data.videoText[5]}
+          bg={false}
+          playing={false}
+          sound={false}
+        />
+
+        <EndingVideo id={"36-endingVideo"} text={"再看一眼，湖山水庫..."} link={"https://youtube.com/embed/MpiZ6kbim2g?rel=0"}/>
+        <More id={"37-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <CTA id={"38-cta"} switchView={this.props.switchView} next={"asia-cement-cost"} nextN={"挖山取石的代價"}/>
       </div>
     );
   }
 }
 
 class Event09 extends Component {
+  state = {
+    open: false,
+    image: "",
+    description: ""
+  }
+ 
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} code={this.props.data.code} name={this.props.data.title} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
+          id={"2-taiwan"}
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          shipPositionL = "0%"
-          shipPositionT = "0%"
+          shipPositionL = "53%"
+          shipPositionT = "17%"
         />
 
         <Illustration
+          id={"3-illustration"}
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
 
-        <Transition text={this.props.data.transitionText[0]} bg={"bg-white"}/>
-        <Video 
-          videoID="01"
-          link={this.props.data.video[0]}
-          text1=""
+        <PhotoText
+          id={"4-photoText"}
+          order="right"
+          color="invert"
+          text={this.props.data.photoText[0]}
+          image = {this.props.data.photoImage[0]}
+          info={"資料來源：礦務局2018年10月資料"}
         />
 
         <PhotoTextFull
+          id={"5-photoTextFull"}
           position={"fr-l"}
-          color="dark"
-          text1={this.props.data.photoFullText[0]}
-          image = {this.props.data.photoFull[0]}
-          label = {this.props.data.photoFullTextLabel[0]}
+          objectP={"43%"}
+          text1={this.props.data.photoFullText[2]}
+          image = {this.props.data.photoFull[2]}
+          label = {this.props.data.photoFullTextLabel[2]}
+          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
         />
 
-        <CenterSmallVideo 
-          videoID="02"
-          color="invert"
-          link={this.props.data.video[1]}
+        <CenterSmallVideo
+          id={"6-centerSmallVideo"}  
+          videoID="01"
+          text={this.props.data.transitionText[3]}
+          link={this.props.data.video[0]}
+          sound={false}
         />
 
-        <Transition text={this.props.data.transitionText[1]} bg={"bg-white"}/>
-        <Video 
-          videoID="03"
-          link={this.props.data.video[2]}
-          text1=""
-        />
-
-        <Transition text={this.props.data.transitionText[2]} bg={"bg-white"}/>
-        <PhotoSwitch 
+        <PhotoTextFull
+          id={"7-photoTextFull"}
           position={"fl-l"}
-          images={this.props.data.photoswitch1} 
+          text1={this.props.data.photoFullText[3]}
+          image = {this.props.data.photoFull[3]}
+          label = {this.props.data.photoFullTextLabel[3]}
+        />
+
+        <Blog
+          id={"8-blog"}
+          number={3}
+          text={this.props.data.blogText[0]}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+          onOpenModal={this.onOpenModal.bind(this)}
+          more={"以上照片提供:田春綢"}
+        />
+
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
+        </Modal>
+
+        <Transition id={"16-transition"} text={this.props.data.transitionText[1]} bg={"bg-near-white"}/>
+
+        <PhotoTextFull
+          id={"7-photoTextFull"}
+          position={"fl-l"}
           text1=""
-          label={this.props.data.photoswitchLabel1}
-        />        
+          image = {this.props.data.photoFull[5]}
+          label = {this.props.data.photoFullTextLabel[5]}
+          objectP = {"65%"}
+        />
+
+        <TimeChangeFull
+          id={"10-timeChangeFull"}
+          position={"fl-l"}
+          text1={this.props.data.timeChangeText[0]}
+          image = {this.props.data.timeChangePhoto[0]}
+          label = {this.props.data.timeChangeLabel[0]}
+          count="1-2"
+          first={true}
+          up={"18%"}
+          upM={"58%"}
+        />
+        <TimeChangeFull
+          id={"11-timeChangeFull"}
+          position={"fl-l"}
+          last={true}
+          text1={this.props.data.timeChangeText[0]}
+          image = {this.props.data.timeChangePhoto[1]}
+          label = {this.props.data.timeChangeLabel[1]}
+          count="2-2"
+          up={"18%"}
+          upM={"58%"}
+        />
+
+        <PhotoText
+          id={"12-photoText"}
+          order="left"
+          large={true}
+          text={this.props.data.photoText[2]}
+          image = {this.props.data.photoImage[2]}
+        />
 
         <Video 
-          videoID="04"
+          id={"13-video"}
+          videoID="03"
           link={this.props.data.video[3]}
           text1=""
+          playing={true}
+        />
+
+        <TimeChangeFull
+          id={"14-timeChangeFull"}
+          position={"fl-l"}
+          text1={this.props.data.timeChangeText[1]}
+          image = {this.props.data.timeChangePhoto[2]}
+          label = {this.props.data.timeChangeLabel[2]}
+          count="1-2"
+          first={true}
+          move={true}
+          up={"18%"}
+          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
+        />
+        <TimeChangeFull
+          id={"15-timeChangeFull"}
+          position={"fl-l"}
+          last={true}
+          text1={this.props.data.timeChangeText[1]}
+          image = {this.props.data.timeChangePhoto[3]}
+          label = {this.props.data.timeChangeLabel[3]}
+          count="2-2"
+          move={true}
+          up={"18%"}
+          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
+        />
+
+        <CenterSmallVideo
+          id={"17-video"} 
+          videoID="04"
+          link={this.props.data.video[4]}
+          playing={true}
+          text={this.props.data.transitionText[2]}
+        />
+
+        <Blog
+          id={"18-blog"}
+          number={2}
+          bg={"bg-near-white"}
+          text={this.props.data.blogText[1]}
+          image={this.props.data.blogImage[1]}
+          label={this.props.data.blogLabel[1]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />   
+
+        <SmallVideo 
+          id={"19-smallVideo"} 
+          videoID="05"
+          link={this.props.data.video[1]}
+          text={this.props.data.transitionText[4]}
+          sound={false}
         />
 
         <PhotoTextFull
+          id={"20-photoTextFull"}
           position={"fl-l"}
           text1={this.props.data.photoFullText[1]}
           image = {this.props.data.photoFull[1]}
           label = {this.props.data.photoFullTextLabel[1]}
+          objectP={"60%"}
         />
 
         <PhotoSwitch 
+          id={"21-photoSwitch"}
           position={"fl-l"}
           images={this.props.data.photoswitch2} 
           text1={this.props.data.photoswitchText2}
           label={this.props.data.photoswitchLabel2}
         />
+
+        <Blog
+          id={"22-blog"}
+          number={4}
+          text={this.props.data.blogText[2]}
+          image={this.props.data.blogImage[2]}
+          label={this.props.data.blogLabel[2]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Blog
+          id={"23-blog"}
+          number={1}
+          bg={"bg-near-white"}
+          text={this.props.data.blogText[3]}
+          image={this.props.data.blogImage[3]}
+          label={this.props.data.blogLabel[3]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <PhotoCenterTextFull
+          id={"24-photoCenterTextFull"} 
+          text1={this.props.data.photoFullText[4]}
+          image = {this.props.data.photoFull[4]}
+          label = {this.props.data.photoFullTextLabel[4]}
+        />
+
+        <Timeline
+          id={"16-timeline"}
+          height={300}
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
+          content={this.props.data.photoText[1]}
+          bg={"bg-near-white"}
+          noImg={true}
+        />
+
+        <EndingVideo id={"26-endingVideo"} text={"一起來關心 山林採礦"} link={"https://youtube.com/embed/DwvwCxkHN-Q?start=1195&rel=0"}/>
+        <More id={"27-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#85A48C"}/>
+        <CTA id={"28-cta"} switchView={this.props.switchView} next={"lishan-high-mountain-farms"} nextN={"咬一口高山青翠"}/>
       </div>
     );
   }
 }
 
 class Event10 extends Component {
+  state = {
+    open: false,
+    image: "",
+    description: ""
+  }
+ 
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
-        <p>event10</p>
+        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        
+        <Taiwan
+          id={"2-taiwan"}
+          text1={this.props.data.taiwanText[0]}
+          text2={this.props.data.taiwanText[1]}
+          illustration = {this.props.data.taiwan}
+          
+          shipPositionL = "38%"
+          shipPositionT = "30%"
+        />
+
+        <Illustration
+          id={"3-illustration"}
+          number = {1}
+          text1={this.props.data.illustrationText[0]}
+          illustration = {this.props.data.illustration}
+        />
+
+        <PhotoTextFull
+          id={"4-photoTextFull"}
+          text1 = {this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+        />
+
+        <Transition id={"5-transition"} text={this.props.data.transitionText[0]} bg={"bg-white"}/>
+
+        <PhotoTextFull
+          id={"6-photoTextFull"}
+          text1 = {this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
+          position = {"fr-l"}
+        />
+
+        <CenterSmallVideo
+          id={"7-centerSmallVideo"}
+          videoID="01"
+          text={this.props.data.videoText[0]}
+          link={this.props.data.video[0]}
+          sound={false}
+        />
+
+        <PhotoSwitch
+          id={"8-photoSwitch"}
+          number = {1} 
+          images={this.props.data.photoswitch} 
+          text1={this.props.data.photoswitchText}
+          label={this.props.data.photoswitchLabel}
+        />
+
+        <Transition id={"9-transition"} text={this.props.data.transitionText[1]} bg={"bg-white"}/>
+
+        <PhotoTextFull
+          id={"10-photoTextFull"}
+          position = {"fr-l"}
+          text1 = {this.props.data.photoFullText[2]}
+          image = {this.props.data.photoFull[2]}
+          label = {this.props.data.photoFullTextLabel[2]}
+          objectP = {"10%"}
+          copyright = {'Image is from 2019,©DigitalGlobe,Terra Metrics,©CNES/Airbus'}
+        />
+
+        <Video 
+          id={"11-centerVideo"} 
+          videoID="02"
+          link={this.props.data.video[1]}
+          text1={this.props.data.videoText[1]}
+          bg={false}
+          playing={true}
+          sound={false}
+        />
+
+        <SmallVideo 
+          id={"12-smallVideo"}
+          videoID="03"
+          link={this.props.data.video[2]}
+          text={this.props.data.videoText[2]}
+          bg={"bg-near-white"}
+        />
+
+        <section id={"illustration"} className="pt6-ns pt5 ph4-ns ph3 center below tc">
+          <img src={this.props.data.illustrationMore[2]} className="w-third-l w-80 hide" alt="illustration" />
+        </section>
+
+        <Blog
+          id={"13-blog"}
+          number={4}
+          text={this.props.data.blogText[0]}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
+        </Modal>
+
+        <PhotoTextFull
+          id={"14-photoTextFull"}
+          text1 = {this.props.data.photoFullText[3]}
+          image = {this.props.data.photoFull[3]}
+          label = {this.props.data.photoFullTextLabel[3]}
+        />
+
+        <CenterSmallVideo 
+          id={"15-centerSmallVideo"}
+          videoID="04"
+          link={this.props.data.video[3]}
+          text={this.props.data.videoText[3]}
+        />
+
+        <SmallVideo 
+          id={"16-smallVideo"}
+          videoID="05"
+          link={this.props.data.video[4]}
+          text={this.props.data.videoText[4]}
+          bg={"bg-near-white"}
+          reverse = {true}
+        />
+
+        <section id={"illustration"} className="pt6-ns pt5 ph4-ns ph3 center below tc">
+          <img src={this.props.data.illustrationMore[1]} className="w-third-l w-80 hide" alt="illustration" />
+        </section>
+        <Transition id={"17-transition"} text={this.props.data.transitionText[2]} bg={"bg-white"}/>
+
+        <Video 
+          id={"18-video"}
+          videoID="06"
+          link={this.props.data.video[5]}
+          text1=""
+          playing={true}
+        />
+
+        <section id={"illustration"} className="pt6-ns pt5 ph4-ns ph3 center below tc">
+          <img src={this.props.data.illustrationMore[0]} className="w-third-l w-80 hide" alt="illustration" />
+        </section>
+        <Transition id={"19-transition"} text={this.props.data.transitionText[3]} bg={"bg-white"}/>
+        
+        {/*
+        
+        <SmallVideo 
+          id={"20-smallVideo"}
+          videoID="07"
+          link={this.props.data.video[6]}
+          text={this.props.data.videoText[6]}
+          bg={"bg-white"}
+        />
+        */}
+
+        <PhotoTextFull
+          id={"21-photoTextFull"}
+          text1 = {this.props.data.photoFullText[4]}
+          image = {this.props.data.photoFull[4]}
+          label = {this.props.data.photoFullTextLabel[4]}
+        />
+
+        <Timeline
+          id={"23-timeline"}
+          height={560}
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
+          content={this.props.data.transitionText[4]}
+          bg={"bg-white"}
+        />
+
+        <Blog
+          id={"24-blog"}
+          bg={"bg-near-white"}
+          number={1}
+          text={this.props.data.blogText[1]}
+          image={this.props.data.blogImage[1]}
+          label={this.props.data.blogLabel[1]}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Video 
+          id={"25-video"}
+          videoID="08"
+          link={this.props.data.video[7]}
+          text1=""
+          playing={true}
+        />
+
+        <PhotoCenterTextFull
+          id={"26-photoCenterFull"}
+          text1 = {this.props.data.photoFullText[5]}
+          image = {this.props.data.photoFull[5]}
+          label = {this.props.data.photoFullTextLabel[5]}
+          objectP = {"20%"}
+        />
+
+        <EndingVideo id={"27-endingVideo"} text={"當農地變成工業區"} link={"https://youtube.com/embed/iwcWyreW9nA?rel=0"}/>
+        <More id={"28-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
+        <CTA id={"29-cta"} switchView={this.props.switchView} next={"petrochemical-kingdom"} nextN={"海上的石化王國"}/>
       </div>
     );
   }
 }
 
 class Event11 extends Component {
+  state = {
+    open: false,
+    image: "",
+    description: ""
+  }
+ 
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
-        <p>event11</p>
+        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        
+        <Taiwan
+          id={"2-taiwan"} 
+          text1={this.props.data.taiwanText[0]}
+          text2={this.props.data.taiwanText[1]}
+          illustration = {this.props.data.taiwan}
+          
+          shipPositionL = "35%"
+          shipPositionT = "30%"
+        />
+
+        <Illustration
+          id={"3-illustration"} 
+          number = {1}
+          text1={this.props.data.illustrationText[0]}
+          illustration = {this.props.data.illustration}
+        />
+
+        <SmallVideo 
+          id={"4-smallVideo"}
+          videoID="01"
+          link={this.props.data.video[0]}
+          text={this.props.data.videoText[0]}
+          bg={"bg-near-white"}
+        />
+
+        <PhotoTextFull
+          id={"5-photoTextFull"}
+          text1 = {this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+        />
+
+        <PhotoMultiple
+          id={"6-photoMultiple"} 
+          text={this.props.data.photoMultipleText}
+          images={this.props.data.photoMultiple}
+          label={this.props.data.photoMultipleLabel}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
+        </Modal>
+
+        <Timeline
+          id={"7-timeline"} 
+          height="480"
+          bg={"bg-near-white"}
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
+          content={this.props.data.timelineContent}
+          scrollTitle={"這座石化王國是如何形成的？"}
+        />
+
+        <SmallVideo 
+          id={"8-smallVideo"}
+          videoID="02"
+          link={this.props.data.video[1]}
+          text={this.props.data.videoText[1]}
+          bg={"bg-white"}
+        />
+
+        <PhotoText
+          id={"9-photoText"}
+          order="left"
+          color="invert"
+          text={this.props.data.photoText[0]}
+          image = {this.props.data.photoImage[0]}
+        />
+
+        <Transition id={"10-transition"} text={this.props.data.transitionText[0]} bg={"bg-white"}/>
+
+        <PhotoText
+          id={"11-photoText"}
+          order="right"
+          color="invert"
+          text={this.props.data.photoText[1]}
+          image = {this.props.data.photoImage[1]}
+        />
+        
+        <Transition id={"12-transition"} text={this.props.data.transitionText[1]} bg={"bg-white"}/>
+
+        <Video 
+          id={"13-video"}
+          videoID="03"
+          link={this.props.data.video[2]}
+          text1={this.props.data.videoText[2]}
+          playing={true}
+        />
+
+        <Transition id={"14-transition"} text={this.props.data.transitionText[2]} bg={"bg-white"}/>
+
+        <Video 
+          id={"15-video"}
+          videoID="04"
+          link={this.props.data.video[3]}
+          text1={this.props.data.videoText[3]}
+        />
+        
+        <PhotoAudioPlay
+          id={"16-photoAudioPlay"}
+          content={this.props.data.photoAudioContent}
+          audio={this.props.data.photoAudio}
+          image={this.props.data.photoAudioPhoto}
+          text={this.props.data.photoAudioText}
+          name={this.props.data.photoAudioName}
+        />
+
+        <SmallVideo 
+          id={"17-smallVideo"}
+          videoID="05"
+          link={this.props.data.video[4]}
+          text={this.props.data.videoText[4]}
+          bg={"bg-near-white"}
+        />
+
+        <PhotoTextFull
+          id={"18-photoTextFull"}
+          position={"fr-l"}
+          text1={this.props.data.photoText[2]}
+          image = {this.props.data.photoFull[1]}
+          small = {true}
+        />
+
+        <CenterSmallVideo 
+          id={"19-smallVideo"}
+          videoID="06"
+          link={this.props.data.video[5]}
+          text={this.props.data.videoText[5]}
+          bg={"bg-white"}
+        />
+
+        <Blog
+          id={"20-blog"}
+          number={5}
+          text={this.props.data.blogText[0]}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+          onOpenModal={this.onOpenModal.bind(this)}
+          bg={"bg-near-white"}
+        />
+
+        <PhotoText
+          id={"21-photoText"}
+          order="right"
+          text={this.props.data.photoText[3]}
+          image = {this.props.data.photoImage[3]}
+          info={"2018年詹長權將雲林縣麥寮、台西鄉（深色區）設定為高曝露區，周邊其他鄉鎮（淺色區）列為低曝露區作為對照組。"}
+        />
+
+        <Blog
+          id={"22-blog"}
+          number={1}
+          text={this.props.data.blogText[1]}
+          image={this.props.data.blogImage[1]}
+          label={this.props.data.blogLabel[1]}
+          onOpenModal={this.onOpenModal.bind(this)}
+          bg={"bg-near-white"}
+        />
+
+        <Transition id={"23-transition"} text={this.props.data.transitionText[3]} bg={"bg-white"}/>
+          
+        <PhotoTextFull
+          id={"24-photoTextFull"}
+          text1 = {this.props.data.photoFullText[2]}
+          image = {this.props.data.photoFull[2]}
+          label = {this.props.data.photoFullTextLabel[2]}
+        />
+        <Blog
+          id={"25-blog"}
+          number={2}
+          text={this.props.data.photocontrastText}
+          image={this.props.data.photocontrast}
+          label={this.props.data.photocontrastLabel}
+          onOpenModal={this.onOpenModal.bind(this)}
+          bg={"bg-white"}
+        />
+        <Blog
+          id={"26-blog"}
+          number={2}
+          text=""
+          image={this.props.data.photocontrast2}
+          label={this.props.data.photocontrastLabel2}
+          onOpenModal={this.onOpenModal.bind(this)}
+          bg={"bg-near-white"}
+        />
+
+        <PhotoCenterTextFull
+          id={"27-photoTextCenterFull"}
+          text1 = {this.props.data.photoFullText[3]}
+          image = {this.props.data.photoFull[3]}
+          label = {this.props.data.photoFullTextLabel[3]}
+        />
+
+        <EndingVideo id={"28-endingVideo"} text={"想了解六輕更多"} link={"https://youtube.com/embed/cg4lgyEdY8g?rel=0"}/>
+        <More id={"29-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
+        <CTA id={"30-cta"} switchView={this.props.switchView} next={"soil-pollution-tainan"} nextN={"焦土"}/>
       </div>
     );
   }
@@ -4800,100 +6204,305 @@ class Event12 extends Component {
   render() {
     return (
       <div>
-        <CoverVideo title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
         
         <Taiwan
+          id={"2-taiwan"} 
           text1={this.props.data.taiwanText[0]}
           text2={this.props.data.taiwanText[1]}
           illustration = {this.props.data.taiwan}
           
-          shipPositionL = "0%"
-          shipPositionT = "0%"
+          shipPositionL = "34%"
+          shipPositionT = "50%"
         />
 
         <Illustration
+          id={"3-illustration"} 
           number = {1}
           text1={this.props.data.illustrationText[0]}
           illustration = {this.props.data.illustration}
         />
-        <Transition text={this.props.data.transitionText[0]} bg={"bg-white"}/>
-        <PhotoTextFull
-          text1=""
-          image = {this.props.data.photoFull[0]}
-          label = {this.props.data.photoFullTextLabel[0]}
+
+        <PhotoText
+          id={"4-photoText"}
+          order="right"
+          text={this.props.data.photoText[2]}
+          image = {this.props.data.photoImage[2]}
+          bg={this.props.data.photoImage[3]}
+          noWhite={true}
+        />
+
+        <Transition id={"5-transition"} text={this.props.data.transitionText[0]} bg={"bg-white"}/>
+
+        <Video 
+          id={"6-video"}
+          videoID="01"
+          link={this.props.data.video[0]}
+          text1={this.props.data.videoText[0]}
+          playing={true}
         />
 
         <PhotoText
+          id={"7-photoText"}
           order="right"
-          color="invert"
           text={this.props.data.photoText[0]}
           image = {this.props.data.photoImage[0]}
-        /> {/*廠區*/}
+        />
+
+        <CenterSmallVideo 
+          id={"8-centerSmallVideo"}
+          videoID="02"
+          link={this.props.data.video[1]}
+          text={this.props.data.videoText[1]}
+          color={"invert"}
+        />
 
         <PhotoTextFull
-          text1 = {this.props.data.photoFullText[0]}
-          image = {this.props.data.photoFull[1]}
-          label = {this.props.data.photoFullTextLabel[1]}
-        /> {/*病變*/}
+          id={"9-photoTextFull"}
+          text1={this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+        />
+        <Transition id={"10-transition"} text={this.props.data.transitionText[1]} bg={"bg-near-white"}/>
 
         <SmallVideo 
-          videoID="01"
-          link={this.props.data.video[0]}
-          text={this.props.data.videoText[0]}
-        />
-
-        <Video 
-          videoID="02"
-          color="dark"
-          link={this.props.data.video[1]}
-          text1={this.props.data.videoText[1]}
-        />
-
-        <Transition text={this.props.data.transitionText[1]} bg={"bg-white"}/>
-        <Video 
+          id={"11-smallVideo"}
           videoID="03"
           link={this.props.data.video[2]}
-          text1=""
+          text={this.props.data.videoText[2]}
+        />
+
+        <Timeline
+          id={"12-timeline"}
+          height={560}
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
+          content={this.props.data.timelineContent}
+          bg={"bg-near-white"}
+          noY={true}
+        />
+
+        <SmallVideo 
+          id={"13-smallVideo"}
+          videoID="04"
+          link={this.props.data.video[3]}
+          text={this.props.data.videoText[3]}
+        />
+
+        <Video 
+          id={"14-video"}
+          videoID="05"
+          link={this.props.data.video[4]}
+          text1={this.props.data.videoText[4]}
+        />
+
+        <Timeline
+          id={"15-timeline"}
+          height={560}
+          text={this.props.data.timelineText1}
+          year={this.props.data.timelineYear1}
+          images={this.props.data.timelineImage1}
+          content={this.props.data.timelineContent1}
+          bg={"bg-white"}
         />
 
         <PhotoCenterTextFull
+          id={"16-photoCenterTextFull"} 
           text1 = {this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
+          bg={true}
+        />
+
+        <PhotoCenterTextFull
+          id={"17-photoCenterTextFull"} 
+          text1 = {this.props.data.photoFullText[2]}
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
-        /> {/*石棺*/}
+          bg={true}
+        />
 
-        <PhotoTextFix
-          order="left"
+        <PhotoText
+          id={"18-photoText"}
+          order="right"
           color="invert"
           text={this.props.data.photoText[1]}
           image = {this.props.data.photoImage[1]}
-          label = {this.props.data.photoLabel[0]}
-          multiple = {true}
-          top={true}
-        /> {/*提告*/}
+        />
 
-        <PhotoTextFix
-          order="left"
-          color="invert"
-          text={this.props.data.photoText[2]}
-          image = {this.props.data.photoImage[2]}
-          label = {this.props.data.photoLabel[1]}
-          multiple = {true}
-          top={false}
-        /> {/*提告*/}
 
-        <Transition text={this.props.data.transitionText[2]} bg={"bg-white"}/>
-        <EndingVideo text={"想知道台鹼安順廠更多故事...."} link={"https://youtube.com/embed/6CwZYq6vt0k?rel=0"}/>
+        <EndingVideo id={"19-endingVideo"} text={"來看台鹼安順廠所遺留下的毒害"} link={"https://youtube.com/embed/FdCu9lOMolc?rel=0"}/>
+        <More id={"20-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
+        <CTA id={"21-cta"} switchView={this.props.switchView} next={"mercury-sludge-volcano"} nextN={"無人知曉的未爆彈"}/>
       </div>
     );
   }
 }
 
 class Event13 extends Component {
+  state = {
+    open: false,
+    image: "",
+    description: ""
+  }
+ 
+  onOpenModal = (img, des) => {
+    this.setState({ open: true, image: img, description: des});
+    console.log(this.state);
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { open } = this.state;
     return (
       <div>
-        <p>event13</p>
+        <CoverVideo id={"1-coverVideo"} title={this.props.data.coverTitle} content={this.props.data.coverDescription} link={this.props.data.coverVideo}/>
+        
+        <Taiwan
+          id={"2-taiwan"} 
+          text1={this.props.data.taiwanText[0]}
+          text2={this.props.data.taiwanText[1]}
+          illustration = {this.props.data.taiwan}
+          
+          shipPositionL = "40%"
+          shipPositionT = "60%"
+        />
+
+        <Illustration
+          id={"3-illustration"} 
+          number = {1}
+          text1={this.props.data.illustrationText[0]}
+          illustration = {this.props.data.illustration}
+        />
+
+        <PhotoCenterTextFull
+          id={"4-photoCenterTextFull"} 
+          text1 = {this.props.data.photoFullText[0]}
+          image = {this.props.data.photoFull[0]}
+          label = {this.props.data.photoFullTextLabel[0]}
+          objectP={"30%"}
+        />
+
+        <Blog
+          id={"5-blog"}
+          number={1}
+          text={this.props.data.blogText[0]}
+          image={this.props.data.blogImage[0]}
+          label={this.props.data.blogLabel[0]}
+        />
+
+        <Transition id={"6-transition"} text={this.props.data.transitionText[0]} bg={"bg-near-white"}/>
+
+        <Video 
+          id={"7-video"}
+          videoID="01"
+          link={this.props.data.video[0]}
+          text1={this.props.data.videoText[0]}
+          playing={true}
+        />
+
+        <PhotoTextFull
+          id={"8-photoTextFull"} 
+          text1 = {this.props.data.photoFullText[1]}
+          image = {this.props.data.photoFull[1]}
+          label = {this.props.data.photoFullTextLabel[1]}
+        />
+
+        <SmallVideo 
+          id={"9-smallVideo"}
+          videoID="02"
+          link={this.props.data.video[1]}
+          text={this.props.data.videoText[1]}
+        />
+
+        <Blog
+          id={"10-blog"}
+          number={1}
+          text={this.props.data.blogText[1]}
+          image={this.props.data.blogImage[1]}
+          label={this.props.data.blogLabel[1]}
+          bg={"bg-near-white"}
+        />
+
+        <PhotoSwitch
+          id={"11-photoSwitch"}
+          number = {2} 
+          images={this.props.data.photoswitch} 
+          text1={this.props.data.photoswitchText}
+          text2={this.props.data.photoswitchText2}
+          label={this.props.data.photoswitchLabel}
+        />
+
+        <Timeline
+          id={"12-timeline"} 
+          height="480"
+          bg={"bg-white"}
+          text={this.props.data.timelineText}
+          year={this.props.data.timelineYear}
+          images={this.props.data.timelineImage}
+          content={this.props.data.timelineContent}
+        />
+
+        <SmallVideo 
+          id={"13-smallVideo"}
+          videoID="04"
+          link={this.props.data.video[3]}
+          text={this.props.data.videoText[3]}
+          bg={"bg-near-white"}
+        />
+
+        <Video 
+          id={"14-video"}
+          videoID="05"
+          link={this.props.data.video[4]}
+          text1={this.props.data.videoText[4]}
+          playing={true}
+        />
+
+        <Transition id={"15-transition"} text={this.props.data.transitionText[1]} bg={"bg-white"}/>
+
+        <Video 
+          id={"16-video"}
+          videoID="06"
+          link={this.props.data.video[5]}
+          text1={this.props.data.videoText[5]}
+        />
+
+        <PhotoTextFull
+          id={"17-photoTextFull"}
+          position={"fr-l"}
+          text1 = {this.props.data.photoFullText[2]}
+          image = {this.props.data.photoFull[2]}
+          label = {this.props.data.photoFullTextLabel[2]}
+        />
+
+        <PhotoMultiple
+          id={"18-photoMultiple"} 
+          title={"各地廢棄物棄置現場"}
+          text={this.props.data.photoMultipleText}
+          images={this.props.data.photoMultiple}
+          label={this.props.data.photoMultipleLabel}
+          onOpenModal={this.onOpenModal.bind(this)}
+        />
+
+        <Modal open={open} onClose={this.onCloseModal} center classNames={{modal: "modalImg", closeButton: "closeButton-circle"}}>
+          <img src={this.state.image} alt="modal"/>
+          <p className="f6-ns f8 tc mb0 lh-normal pn">{this.state.description}</p>
+        </Modal>
+
+        <PhotoCenterTextFull
+          id={"19-photoCenterTextFull"} 
+          text1 = {this.props.data.photoFullText[3]}
+          image = {this.props.data.photoFull[3]}
+          label = {this.props.data.photoFullTextLabel[3]}
+        />
+
+        <EndingVideo id={"20-endingVideo"} text={"重回污染現場"} link={"https://youtube.com/embed/AeX1vJVP-nI?rel=0"}/>
+        <More id={"21-more"} link={this.props.data.moreLink} title={this.props.data.moreTitle} color={"#CF9479"}/>
+        <CTA id={"22-cta"} switchView={this.props.switchView} next={"science-park-landuse"} nextN={"無土時代"}/>
       </div>
     );
   }
