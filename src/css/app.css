@@ -522,6 +522,13 @@ nav .btn {
   transform: translateX(60px) scale(1.5);
 }
 
+@media screen and (max-width: 479px) {
+  .scaleup {
+    transform: translateX(15px) scale(1.5);
+  }
+}
+
+
 .swiper-pagination-bullet-active {
   background: #333 !important;
 }
@@ -1999,7 +2006,9 @@ ul.none {
   background: #B7CBCE;
   color: #333;
   padding: 8px 16px;
+  max-height: 36px;
   border: 1px solid #DDDDDD;
+  border-radius: 0px;
 }
 
 #search_input {
@@ -2011,8 +2020,10 @@ ul.none {
   background: #EEEEEE;
   color: #000;
   padding: 8px 16px;
+  max-height: 36px;
   border: 1px solid #DDDDDD;
   min-width: 160px;
+  border-radius: 0px;
 }
 
 .patitle {
@@ -2029,6 +2040,7 @@ select {
   background: #FFFFFF;
   color: #333;
   padding: 8px 16px;
+  max-height: 36px;
   border: 1px solid #DDDDDD;
   cursor: pointer;
   position: relative;
@@ -2045,6 +2057,7 @@ select {
     5px 5px,
     0px 1.5em;
   background-repeat: no-repeat;
+  border-radius: 0px;
 }
 
 select:after {

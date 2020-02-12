@@ -249,7 +249,7 @@ class Search extends Component {
             />
           </figure>
           <div className={pa+" tl"}>
-            <h3 className={"ma0 f4-ns f5 initial lh-copy flex aic "+tscale}>{icon}{s.name}</h3>
+            <h3 className={"ma0 f4-ns f5 initial lh-normal flex aic "+tscale}>{icon}{s.name}</h3>
             <p className="mv2 f5-ns f6">{s.time}</p>
           </div>
         </div>
@@ -376,17 +376,17 @@ class Search extends Component {
       bottom: this.state.mobile ? "45px": "0",
       right: "0",
       background: "rgba(0,0,0,.2)",
-      padding: this.state.mobile ? "10px" : "20px"
+      padding: this.state.mobile ? "10px" : "16px"
     }
 
     if(imageLength > 1) {
       for(var i = 0; i < imageLength; i++) {
-        label = this.state.content.labels === undefined ? null : this.state.content.labels[i];
+        label = !this.state.content.labels ? null : (<label className="white absolute lh-normal f6-ns f8 pn" style={bottomRight}>{this.state.content.labels[i]}</label>)
         var slides = (
           <div className="swiper-slide" key={i}>
             <figure className="mh0 mv4 modalImg">
-              <img src={images[i]} alt="story" />
-              <label className="white absolute lh-normal f6-ns f8 pn" style={bottomRight}>{label}</label>
+              <img src={images[i]} width="100%" alt="story" />
+              {label}
             </figure>
           </div>
         )
@@ -403,12 +403,12 @@ class Search extends Component {
         </div>
       )
     } else {
-      label = this.state.content.labels === undefined ? null : this.state.content.labels[0];
+      label = !this.state.content.labels ? null : (<label className="white absolute lh-normal f6-ns f8 pn" style={bottomRight}>{this.state.content.labels[0]}</label>)
       all_content = (
         <div className="image">
           <figure className="mh0 mv4 modalImg">
-            <img src={images[0]} alt="story" />
-            <label className="white absolute lh-normal f6-ns f8 pn" style={bottomRight}>{label}</label>
+            <img src={images[0]} width="100%" alt="story" />
+            {label}
           </figure>
         </div>
       )
@@ -432,7 +432,15 @@ class Search extends Component {
       backgroundPosition: 'center center'
     }
 
-
+    var all_links = [];
+    if(!this.state.content.links) ;
+    else {
+      all_links = [(<br/>)];
+      for(var i = 0; i < this.state.content.links.length; i++) {
+        var temp = (<a className='tc blue link underline' href={this.state.content.links[i]} target='_blank'>{this.state.content.linkTitles[i]}</a>);
+        all_links.push(temp);
+      }
+    }
 
     return (
       <section id="timeline" className="min-vh-100 bg-white pv5-l pv4">
@@ -484,6 +492,7 @@ class Search extends Component {
           <div className="ph4-ns pb4 modalTxt">
             <h2 className="f3-ns f5">{this.state.content.name}</h2>
             <p className="lh-copy pre-wrap" dangerouslySetInnerHTML={{__html:this.state.content.content}}></p>
+            {all_links}
           </div>
         </Modal>
       </section>

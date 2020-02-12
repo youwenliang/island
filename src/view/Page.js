@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {Helmet} from "react-helmet";
 import loadImage from 'image-promise';
-
+import canAutoPlay from 'can-autoplay'; // eslint-disable-line no-unused-vars
 import data from '../data/data.js';
 import $ from 'jquery';
 import BeforeAfterSlider from 'react-before-after-slider'; // eslint-disable-line no-unused-vars

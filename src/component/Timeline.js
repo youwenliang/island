@@ -30,8 +30,8 @@ class Timeline extends Component {
       <div className="cf ph2-ns flex aic">
         <div className="fl w-100 w-50-l ph2 tl hide">
           <img className="mw400 mb3" src={title} alt="島嶼時光機" />
-          <h2 className="f2 mt3 mb2 tracked fw3">台灣環境大事記</h2>
-          <h3 className="fw4 lh-copy mt0">從「天災地變」到「食在不安」，<br/>完整收錄1970到2019年間的台灣環境重要大事記。</h3>
+          <h5 className="f5 mt0 tracked fw5 o-50">台灣環境大事記</h5>
+          <h3 className="fw4 lh-copy">從「天災地變」到「食在不安」，<br/>完整收錄1970到2019年間的台灣環境重要大事記。</h3>
           <a href="/island20/timeline/" target="_blank"><button className="btn cp mt4 mb4">了解更多</button></a>
         </div>
         <div className="fl w-100 w-50-l ph2 hide">
@@ -53,8 +53,8 @@ class Timeline extends Component {
         </div>
         <div className="center mw400 w-100 w-40-l ph2 tl hide">
           <img className="mb3" src={title} alt="島嶼時光機" />
-          <h2 className="f2 mt3 mb2 tracked fw3">台灣環境大事記</h2>
-          <h3 className="fw4 lh-copy mt0">從「天災地變」到「食在不安」，<br/>完整收錄1970到2019年間的台灣環境重要大事記。</h3>
+          <h5 className="f5 mt0 tracked fw5 o-50">台灣環境大事記</h5>
+          <h3 className="fw4 lh-copy">從「天災地變」到「食在不安」，<br/>完整收錄1970到2019年間的台灣環境重要大事記。</h3>
           <a href="/island20/timeline/" target="_blank"><button className="btn cp mt4 mb5">了解更多</button></a>
         </div>
       </div>
