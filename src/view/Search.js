@@ -442,6 +442,16 @@ class Search extends Component {
       }
     }
 
+    if(this.state.content.video) {
+      var videoID = this.state.content.links[0].split('be/')[1];
+      all_content = (
+        <div className="video-container mv4">
+          <iframe width="853" height="480" src={"https://www.youtube.com/embed/"+videoID} frameborder="0" allowfullscreen></iframe>
+        </div>
+      )
+      all_links = null;
+    }
+
     return (
       <section id="timeline" className="min-vh-100 bg-white pv5-l pv4">
         <Helmet>

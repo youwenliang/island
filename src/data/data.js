@@ -2652,6 +2652,7 @@ var data = {
             "keywords": "污染公害 1970 基隆 船舶污染 漏油 海洋污染  油污 海洋汙染",
             "links": ["https://youtu.be/T7_-S6r40js"],
             "linkTitles": ["布拉格油輪漏油污染"],
+            "video": true
         }, {
             "id": 3,
             "time": 1977.11,
@@ -2717,6 +2718,7 @@ var data = {
             "images": ["http://i3.ytimg.com/vi/gvyiA0e7yV8/maxresdefault.jpg"],
             "links": ["https://youtu.be/gvyiA0e7yV8"],
             "linkTitles": ["桃園爆發首起鎘米污染"],
+            "video": true
         }, {
             "id": 8,
             "time": 1982.3,
@@ -2749,6 +2751,7 @@ var data = {
             "images": ["http://i3.ytimg.com/vi/AOWTNh9Rtng/maxresdefault.jpg"],
             "links": ["https://youtu.be/AOWTNh9Rtng"],
             "linkTitles": ["桃園中福村鎘米污染"],
+            "video": true
         }, {
             "id": 12,
             "time": 1984,
@@ -2759,6 +2762,7 @@ var data = {
             "images": ["https://img.youtube.com/vi/CaqC8pw_mm4/0.jpg"],
             "links": ["https://youtu.be/CaqC8pw_mm4"],
             "linkTitles": ["珊瑚白化"],
+            "video": true
         }, {
             "id": 12-1,
             "time": 1985,
@@ -3061,7 +3065,8 @@ var data = {
             "keywords": "環境運動 反水庫 美濃愛鄉協進會 水資源 水利署 美濃",
             "images": ["http://i3.ytimg.com/vi/JVjCJseudo4/maxresdefault.jpg"],
             "links": ["https://youtu.be/JVjCJseudo4"],
-            "linkTitles": ["反美濃水庫運動"]
+            "linkTitles": ["反美濃水庫運動"],
+            "video": true
         }, {
             "id": 35,
             "time": 1993.4,
