@@ -16,6 +16,10 @@ body {
   letter-spacing: 0.04em;
 }
 
+#islandTitle {
+  max-width: 300px;
+}
+
 .taiwan-label:after {
   content: '';
   width: 20px;

@@ -12,6 +12,7 @@ import Image from "react-graceful-image";
 import Swiper from 'swiper/dist/js/swiper.js';
 import Nav from '../component/Nav';
 import Cookies from 'universal-cookie';
+import islandTitle from '../assets/images/大事記-04.svg';
 
 // Story Data
 const story_data = data.stories;
@@ -461,9 +462,11 @@ class Search extends Component {
         <div className="mw8-ns center ph3-ns mb4-ns pt4-l pt5">
           <div className="cf mb3-ns mb2">
             <div className="fl w-100 w-30-l flex aic mb3 mb0-l ph0-ns ph3 patitle">
-              <h2 className="ma0 nowrap">大事紀標題</h2>
+              <h2 className="mh4-l mv0 nowrap center">
+                <img id="islandTitle" src={islandTitle} width="100%" alt="島嶼時光機"/>
+              </h2>
             </div>
-            <div className="fl w-100 w-60-l">
+            <div className="fl w-100 w-60-l mv3-l">
               <form className="flex space-between aic" style={form} onSubmit={this.updateSearch.bind(this)}>
                 <input id="search_input" className="w-100 ph2" type="text" ref="keyword" placeholder="搜尋紀事"/>
                 <select name="areas" ref="areas" className="w150">
