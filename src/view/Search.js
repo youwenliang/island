@@ -19,8 +19,8 @@ const story_data = data.stories;
 const topic_data = data.topics;
 const date_data = data.dates;
 var divides = [];
-var offset_i = 520;
-var offset_w = 440;
+var offset_i = 352;
+var offset_w = 352;
 
 class Search extends Component {
   constructor(props) {
@@ -421,7 +421,7 @@ class Search extends Component {
 
     var link = "";
     if(this.state.topic > 5) {
-      link = "https://fakeimg.pl/1920x1080/?text=search&retina=1"
+      link = topic_data[0].background
     } else {
       link = topic_data[this.state.topic].background;
     }
