@@ -12,7 +12,7 @@ import Image from "react-graceful-image";
 import Swiper from 'swiper/dist/js/swiper.js';
 import Nav from '../component/Nav';
 import Cookies from 'universal-cookie';
-import islandTitle from '../assets/images/大事記-04.svg';
+import islandTitle from '../assets/images/islandTitle.svg';
 
 // Story Data
 const story_data = data.stories;
@@ -261,7 +261,8 @@ class Search extends Component {
   // Story Component
   storyList = () => {
     let filteredStories = story_data.filter((s) => {
-      return s.keywords.indexOf(this.state.search) !== -1 && s.keywords.indexOf(this.state.area) !== -1;
+      var check = s.keywords+" "+s.name+" "+s.content;
+      return check.indexOf(this.state.search) !== -1 && check.indexOf(this.state.area) !== -1;
     });
     return (<ul id="storyBox" className="storyBox tc pa0 nowrap list overflow-x-scroll dragscroll z4 relative">{filteredStories.map((s, i) => {
       return this.stories(s, i);
@@ -463,7 +464,7 @@ class Search extends Component {
           <div className="cf mb3-ns mb2">
             <div className="fl w-100 w-30-l flex aic mb3 mb0-l ph0-ns ph3 patitle">
               <h2 className="mh4-l mv0 nowrap center">
-                <img id="islandTitle" src={islandTitle} width="100%" alt="島嶼時光機"/>
+                <img id="islandTitle" src={islandTitle} width="100%" height="60px" alt="島嶼時光機"/>
               </h2>
             </div>
             <div className="fl w-100 w-60-l mv3-l">
