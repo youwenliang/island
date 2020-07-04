@@ -435,7 +435,7 @@ class Search extends Component {
     }
 
     var all_links = [];
-    if(!this.state.content.links) ;
+    if(!this.state.content.linkTitles) ;
     else {
       all_links = [(<br/>)];
       for(var i = 0; i < this.state.content.links.length; i++) {

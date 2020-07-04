@@ -2641,6 +2641,7 @@ var data = {
             "area": "北北基",
             "keywords": "污染公害 1970 基隆 船舶 漏油 海污 油污 汙染 布拉格",
             "images": ["https://img.youtube.com/vi/T7_-S6r40js/0.jpg"],
+            "video": true,
             "links": [
                 "https://youtu.be/T7_-S6r40js"
 
@@ -2768,6 +2769,7 @@ var data = {
             "area": "桃竹苗",
             "keywords": "食在不安 污染 土壤污染 土污 土汙 土地汙染 鎘米 高銀污染 灌排 農地工廠 工業廢水 重金屬",
             "images": ["https://img.youtube.com/vi/gvyiA0e7yV8/0.jpg"],
+            "video": true,
             "links": [
                 "https://youtu.be/gvyiA0e7yV8"
 
@@ -2824,6 +2826,7 @@ var data = {
             "area": "桃竹苗",
             "keywords": "食在不安 鎘米 重金屬 工業廢水 廢水 灌排 農地工廠  汙染 污染 整治 都市計畫",
             "images": ["https://img.youtube.com/vi/AOWTNh9Rtng/0.jpg"],
+            "video": true,
             "links": [
                 "https://youtu.be/AOWTNh9Rtng"
 
@@ -2836,6 +2839,7 @@ var data = {
             "area": "高屏",
             "keywords": "珊瑚 白化 氣候變遷 暖化 珊瑚死亡 珊瑚礁生態 聖嬰現象  墾丁 南灣 秘雕魚 海溫升高",
             "images": ["https://img.youtube.com/vi/CaqC8pw_mm4/0.jpg"],
+            "video": true,
             "links": [
                 "https://youtu.be/CaqC8pw_mm4"
 
@@ -3379,6 +3383,7 @@ var data = {
             "content": "1992年行政院核定美濃水庫工程經費，預計隔年動工，美濃居民獲知後，以生態保育、文化保存與守護家園為訴求，展開反美濃水庫運動，最後讓水庫暫停興建。",
             "area": "高屏",
             "keywords": "環境運動 水庫 美濃愛鄉 水資源 水利署 美濃 缺水",
+            "video": true,
             "images": ["https://img.youtube.com/vi/JVjCJseudo4/0.jpg"],
             "links": ["https://youtu.be/JVjCJseudo4"],
         }, {
@@ -3718,6 +3723,7 @@ var data = {
             "content": "又稱七一七強震，震央在嘉義縣瑞里鎮，芮氏規模6.2。嘉義縣梅山鄉、竹崎鄉以及番路鄉分別傳出災情，其中梅山鄉的瑞里大飯店嚴重受損、阿里山區多處公路，因坍方落石而中斷，阿里山森林鐵路嚴重受損，停駛五個月。",
             "area": "雲嘉南",
             "keywords": "天災地變 瑞里地震 717地震 嘉義地震 梅山地震 阿里山 ",
+            "video": true,
             "images": ["https://img.youtube.com/vi/HAEjAobGSH0/0.jpg"],
             "links": ["https://youtu.be/HAEjAobGSH0"],
 
@@ -3840,6 +3846,7 @@ var data = {
             "content": "早期垃圾處理費都隨水費徵收，2000年7月1日，台北市率先使用垃圾費專用袋，從少丟垃圾少付費的概念，促進垃圾減量、資源分類回收。根據統計，廢棄物量從2000年的120多萬公噸，2016年已降到83萬公噸。 ",
             "area": "北北基",
             "keywords": "隨袋徵收 垃圾 水費 塑膠袋 廢棄物 垃圾減量 回收",
+            "video": true,
             "images": ["https://img.youtube.com/vi/GbqVbTf7BBk/0.jpg"],
             "links": ["https://youtu.be/GbqVbTf7BBk"],
 
@@ -3852,6 +3859,7 @@ var data = {
             "content": "昇利化工將長興化工委託處理的有害廢溶劑，傾倒高屏溪上游的旗山溪，危害高屏地區兩百萬人用水安全，自來水公司為了安全起見，停水六天。檢警調查後發現大肚溪、濁水溪及大園溪流也遭偷倒，環保署對昇利化工和長興化工分別給予撤證和停工處分。",
             "area": "高屏",
             "keywords": "污染公害 昇利化工 廢水排放 污染 高屏溪汙染 廢棄物 竹科廢水 光電廢水",
+            "video": true,
             "images": ["https://img.youtube.com/vi/b-JPQuZho5k/0.jpg"],
             "links": ["https://youtu.be/b-JPQuZho5k"],
 
@@ -3964,6 +3972,7 @@ var data = {
             "area": "桃竹苗",
             "keywords": "污染公害 廢油污染 漏油 加油站 控制場址 污染場址 山泉水 加油站 地下水 士香 整治",
             "links": ["https://youtu.be/6hNnev_tDFU"],
+            "video": true,
             "images": ["https://img.youtube.com/vi/6hNnev_tDFU/0.jpg"],
             "linkTitles": ["士香加油站污染"],
 
