@@ -3082,7 +3082,7 @@ var data = {
             ],
             "images": [
                 "/island20/images/stories/21-A.jpg",
-                "/island20/images/stories/21-B"
+                "/island20/images/stories/21-B.jpg"
 
             ],
             "labels": [
@@ -3368,7 +3368,7 @@ var data = {
             "content": "台北市民生別墅爆發第一起輻射鋼筋事件，20多年來全台共發現300多棟、1661戶輻射屋，估計受輻射暴露影響的人數，超過一萬人。陸續有居民罹患白血病、甲狀腺癌、乳癌等疾病。",
             "area": "北北基",
             "keywords": "污染公害 輻射鋼筋 輻射屋 原能會 王玉麟 輻射 汙染 環境風險 白血病",
-            "links": ["https://https://youtu.be/B0voLPuo7TM"],
+            "links": ["https://youtu.be/B0voLPuo7TM"],
             "linkTitles": ["輻射屋二十年"],
             "images": ["/island20/images/stories/37-A.jpg", "/island20/images/stories/37-B.jpg", "/island20/images/stories/37-C.jpg"],
             "labels": ["台北市民生別墅最早爆發出使用輻射鋼筋", "1994年 受害居民組成的輻射受害者協會上街抗爭", "2001年 輻射安全促進會創會理事王玉麟進行室內檢測"]
@@ -3423,7 +3423,7 @@ var data = {
             "keywords": "天災地變 乾旱 氣候變遷 枯水 缺水 祈雨 基隆 氣候變遷 雨港 限水",
 
 
-            "images": ["/island20/images/stories/42-A.jpg", "/island20/images/stories/42-B .jpg", "/island20/images/stories/42-C.jpg"],
+            "images": ["/island20/images/stories/42-A.jpg", "/island20/images/stories/42-B.jpg", "/island20/images/stories/42-C.jpg"],
             "labels": ["1993年 基隆市長設壇率眾跪地祈求天降甘霖", "1993年 基隆新山水庫水位持續降低", "1993年 苗栗明德水庫也乾裂見底"]
         }, {
             "id": 43,
@@ -3588,7 +3588,7 @@ var data = {
             "keywords": "天災地變 三峽 白雞山 土石流 地滑 地質敏感 地震 山坡地 擋土牆 颱風 坡地住宅 開發 強震",
 
 
-            "images": ["/island20/images/stories/57-A.jpg", "/island20/images/stories/57-B.jpg", "/island20/images/stories/57-C"],
+            "images": ["/island20/images/stories/57-A.jpg", "/island20/images/stories/57-B.jpg", "/island20/images/stories/57-C.jpg"],
             "labels": ["早期開發大規模的挖山填谷，地質鬆軟易釀災", "山坡地住宅沿自然河谷崩塌滑落 ", "新北市三峽白雞地區電線杆滑落、路基消失"]
         }, {
             "id": 58,
@@ -3630,7 +3630,7 @@ var data = {
             "content": "台11線東部濱海公路拓寬工程從花蓮至臺東，全線總長173公里。1993年，臺東段正式開工，水泥擋土牆、護欄、消波塊沿著海岸北上蔓延。三年後，花蓮段也跟著動工，東部沿海地貌完全改觀。",
             "area": "宜花東",
             "keywords": "開路爭議 拓寬 台11線 海岸公路 花東海岸 海岸變遷 海岸線 退縮",
-            "links": ["https://www.youtube.com/watch?v=WvWGpZfqjoM"],
+            "links": ["https://youtu.be/4SWMrrBOQ2c"],
             "linkTitles": ["陷落的海岸線"],
             "images": ["/island20/images/stories/61-A.jpg", "/island20/images/stories/61-B.jpg"],
             "labels": ["花東海岸每年退縮四公尺，道路原本就易受海浪侵襲", "2000年 花蓮鹽寮海岸大量消波塊保護台11線"]
@@ -3662,7 +3662,7 @@ var data = {
             "name": "爆發口蹄疫",
             "content": "1997年3月新竹縣病死豬隻檢體發現口蹄疫病症，證實隔絕將近70年的口蹄疫再度爆發，焚化不及的病豬就地掩埋造成環境污染。除了經濟損失將近兩千億之外，台灣也被列為疫區，歷經20年，2018年7月正式拔針，解除警報。",
             "area": "不分區及其他",
-            "keywords": "口蹄疫 病死豬 疫區 非洲豬瘟 養豬 死豬掩埋 畜牧業 疫苗  防疫",
+            "keywords": "食在不安 口蹄疫 病死豬 疫區 非洲豬瘟 養豬 死豬掩埋 畜牧業 疫苗 防疫",
 
 
             "images": ["/island20/images/stories/64-A.jpg", "/island20/images/stories/64-B.jpg", "/island20/images/stories/64-C.jpg"],
@@ -3751,7 +3751,7 @@ var data = {
             "name": "新竹香山牡蠣含銅量超標40倍",
             "content": "1998年學者調查發現，新竹香山海域牡蠣含銅量持續偏高，出現綠牡蠣，懷疑是新竹科學園區與香山工業區廢水排放至客雅溪所導致。2004年底的台大研究報告，香山牡蠣含銅量高達1,000ppm，是國際平均值的40倍。在輿論壓力下，2007年5月政府發放補償金，香山海域不再開放養殖。",
             "area": "桃竹苗",
-            "keywords": "污染公害 銅綠 重金屬 蚵仔 牡蠣 竹科廢水 香山 含銅量 新竹科學園區 客雅溪 廢水 汙染  污染",
+            "keywords": "污染公害 銅綠 重金屬 蚵仔 牡蠣 竹科廢水 香山 含銅量 新竹科學園區 客雅溪 廢水 汙染 污染 食在不安",
             "links": ["https://www.youtube.com/watch?v=cecmxjuh7WE&t"],
             "linkTitles": ["綠牡蠣悲歌"],
             "images": ["/island20/images/stories/72-A.JPG", "/island20/images/stories/72-B.jpg"],
@@ -3907,7 +3907,7 @@ var data = {
             "name": "台南東山嶺南村反永揚掩埋場",
             "content": "永揚垃圾掩埋場計畫在台南市東山區設置，由於鄰近民宅和水庫，當地居民在2001年5月通過環評後才得知，憂心水源受到污染，於是組織自救會進行長達十年的抗爭，過程中也發現環評不實而提起訴訟，最後永揚案的環評結論遭到撤銷而宣告終止。",
             "area": "雲嘉南",
-            "keywords": "環境運動 嶺南村 東山掩埋場 永揚掩埋場 烏山頭水庫 公民運動 環評",
+            "keywords": "食在不安 環境運動 嶺南村 東山掩埋場 永揚掩埋場 烏山頭水庫 公民運動 環評",
             "links": ["https://youtu.be/LRKUQYHvuy0"],
             "linkTitles": ["東山聖戰 十年滄桑"],
             "images": ["/island20/images/stories/86-A.JPG", "/island20/images/stories/86-B.JPG", "/island20/images/stories/86-C.JPG"],
@@ -4029,9 +4029,9 @@ var data = {
             "name": "台南台鹼安順廠污染曝光",
             "content": "台灣鹼業公司安順廠在1982年關廠，隔年併入中石化公司， 1994年清華大學團隊驗出民眾常捕食的魚體含有戴奧辛．2002年成大研究團隊也發現居民血液裡戴奧辛含量偏高。同年8月黃煥彰老師對媒體揭露污染問題，此事件才受到關注。環保署在2003年將廠區公告為土壤污染管制區。",
             "area": "雲嘉南",
-            "keywords": "污染公害 廢棄工廠 台灣鹼業 安順廠 中石化 重金屬 健康風險 李俊璋 黃煥彰 戴奧辛 污染 整治 熱回收",
+            "keywords": "食在不安 污染公害 廢棄工廠 台灣鹼業 安順廠 中石化 重金屬 健康風險 李俊璋 黃煥彰 戴奧辛 污染 整治 熱回收",
             "links": ["https://newmedia.pts.org.tw/island20/soil-pollution-tainan/"],
-            "linkTitles": ["焦土ˇ"],
+            "linkTitles": ["焦土"],
             "images": ["/island20/images/stories/97-A.JPG"],
             "labels": ["台鹼安順廠旁貯水池豎立告示牌，警告不要捕食"]
         }, {
@@ -4060,7 +4060,7 @@ var data = {
             "id": 100,
             "time": 2002.10,
             "name": "原住民反對成立馬告國家公園",
-            "content": "在民代金素梅的帶領下，反對馬告國家公園成立的原住民走上街頭，在10月25日，夜宿台北市凱達格蘭大道，並於隔日舉辦遊行活動，表達設立國家公園，是非法掠奪原住民傳統領域，直到現在馬告國家公園預算仍被凍結。",
+            "content": "在民代高金素梅的帶領下，反對馬告國家公園成立的原住民走上街頭，在10月25日，夜宿台北市凱達格蘭大道，並於隔日舉辦遊行活動，表達設立國家公園，是非法掠奪原住民傳統領域，直到現在馬告國家公園預算仍被凍結。",
             "area": "北北基 桃竹苗 宜花東",
             "keywords": "國家公園 傳統領域 原住民 保留地 馬告國家公園 森林運動 森林保育 棲蘭山",
             "links": ["https://youtu.be/APhm-EEqWpY?t=1"],
@@ -4175,7 +4175,7 @@ var data = {
             "keywords": "資源回收 回收分類 廚餘回收 回收利用 垃圾分類",
 
 
-            "images": ["/island20/images/stories/110-A.jpg", "/island20/images/stories110-B.jpg"],
+            "images": ["/island20/images/stories/110-A.jpg", "/island20/images/stories/110-B.jpg"],
             "labels": ["民間資源業者把垃圾回收分類處理", "回收廚餘又分類為生的堆肥、熟的養豬"]
         }, {
             "id": 111,
@@ -4558,15 +4558,15 @@ var data = {
             "content": "2010年3月21日高雄仁武居民抗議台塑仁武廠內驗出致癌的1,2-二氯乙烷，地下水更是超過管制標準30萬倍。之後高雄市環保局在廠外監測井也驗出中華村地下水含有二氯乙烷，當地居民憂心影響生活及農田灌溉，甚至後勁溪會連帶遭到污染。",
             "area": "高屏",
             "keywords": "後勁溪 仁武廠 台塑仁武 致癌物質 二氯乙烷 地下水 農田汙染 灌溉用水 曹公圳 石化業 重工業 工業廢水 土地分區 污染公害",
-
+            "links": ["https://youtu.be/PhzngjsaXsY"],
             "linkTitles": ["超標三十萬倍！"],
             "images": ["/island20/images/stories/145-A.jpg", "/island20/images/stories/145-B.JPG", "/island20/images/stories/145-C.jpg"],
-            "labels": ["2010.3.22 高雄仁武居民至台塑仁武廠抗議", "台塑仁武廠緊鄰後勁溪，排放水也曾污染後勁溪", "地下水和後勁溪都受到污染，讓下游農民擔憂不已"]
+            "labels": ["2010.3.22 高雄仁武居民至台塑仁武廠抗議", "台塑仁武廠就緊鄰在後勁溪旁", "地下水和後勁溪都受到污染，讓下游農民擔憂不已"]
         }, {
             "id": 146,
             "time": 2010.4,
-            "name": "桃園航空城大規模徵收",
-            "content": "2010年桃園市政府為因應國際機場的發展，公告規劃「桃園航空城計畫」，開發面積6,000多公頃，徵收面積達3,000多公頃，政府估計可創造2.3兆的經濟效益，但有上萬戶居民受到影響，引發當地民眾抗爭。",
+            "name": "桃園市公告實施航空城區域計畫",
+            "content": "2010年桃園市政府為因應國際機場的發展，公告規劃「桃園航空城區域計畫」，開發面積6,000多公頃，徵收面積達3,000多公頃，政府估計可創造2.3兆的經濟效益，但有上萬戶居民受到影響，引發當地民眾抗爭。",
             "area": "桃竹苗",
             "keywords": "機場 第三跑道 都市計畫 桃園機場擴建 航空城 蛋白區 蛋黃區 土地徵收 區段徵收 開發利用",
             "links": ["https://youtu.be/CFFK_CWZkaA"],
@@ -4613,7 +4613,7 @@ var data = {
             "content": "梅姬颱風和東北季風帶來的豪雨，刷新蘇澳站設站以來紀錄，整個蘇澳幾乎都泡在水裡，部分低窪地區甚至水淹兩層樓高。強降雨也讓蘇花公路部分路基流失，發生遊覽車摔落山谷的悲劇。這場風災也導致蘇花改工程環評，在之後一個月內迅速通過。",
             "area": "宜花東",
             "keywords": "梅姬颱風 土石流 潛勢溪流 蘇花高 蘇花公路 遊覽車摔落 路基流失 強降雨 天災地變",
-
+            "links": ["https://youtu.be/x6WqTbJE-uQ"],
             "linkTitles": ["梅姬颱風"],
             "images": ["/island20/images/stories/150-A.jpg", "/island20/images/stories/150-B.jpg", "/island20/images/stories/150-C.jpg"],
             "labels": ["受災嚴重的宜蘭縣蘇澳鎮，幾乎整個鎮都泡在水裡", "國軍出動協助清理土石流災後現場", "強降雨導致蘇花公路路基流失，數十部遊覽車受困"]
@@ -4631,14 +4631,14 @@ var data = {
         }, {
             "id": 152,
             "time": 2011.5,
-            "name": "台北港特定區徵收",
+            "name": "台北港特定區徵收舉辦說明會",
             "content": "新北市政府在1999年提出台北港特定區的新訂都市計畫，希望打造台北港，成為亞太運輸中心，吸引產業進駐，並預計徵收私有土地進行分期開發，2011年5月底舉辦說明會，居民才得知政府要公告徵收，拆除1,200間房舍，引起部分居民反對。",
             "area": "北北基",
             "keywords": "台北港 區段徵收 土地徵收 迫遷 汪菊 新市鎮 開發利用",
             "links": ["https://youtu.be/IGq8i5iQ--g"],
             "linkTitles": ["汪菊的願望"],
             "images": ["/island20/images/stories/152-A.JPG", "/island20/images/stories/152-B.jpg", "/island20/images/stories/152-C.jpg"],
-            "labels": ["世居在台北港聚落的汪菊，頂著年邁身軀上台發言", "因台北港特定區計畫，百年聚落瓦解成廢墟", "台北港特定區的都市計畫徵收近一千公頃土地"]
+            "labels": ["2011年12月 世居在台北港聚落的汪菊，頂著老邁的身軀發言", "因台北港特定區計畫，百年聚落瓦解成廢墟", "台北港特定區的都市計畫徵收近一千公頃土地"]
         }, {
             "id": 153,
             "time": "2011.10.3",
@@ -4692,7 +4692,7 @@ var data = {
             "keywords": "風機 風車 苑裡反風車 能源轉型 再生能源 噪音 英華威 絕食",
             "links": ["https://youtu.be/v91U6yvLiSA"],
             "linkTitles": ["風能神話"],
-            "images": ["/island20/images/stories/157-A.jpg", "/island20/images/stories/157-B.jpg", "/island20/images/stories/157-C"],
+            "images": ["/island20/images/stories/157-A.jpg", "/island20/images/stories/157-B.jpg", "/island20/images/stories/157-C.jpg"],
             "labels": ["苗栗縣後龍鎮灣瓦村居民，飽受風機噪音之苦", "台灣西海岸沿海平均2.6公里就有一座大型風機", "2013年 苗栗苑裡反大型風機居民到能源局抗議"]
         }, {
             "id": 158,
@@ -4709,7 +4709,7 @@ var data = {
             "id": 159,
             "time": 2013.5,
             "name": "高雄大林農地回填爐碴",
-            "content": "2013年5月高雄市大林居民發現附近農地填埋廢爐碴，池水變藍pH值超過12，回填物來自中鋼爐碴，地主表示爐碴是產品不是廢棄物，引發爭議。因沒有農地農用，高雄市政府對地主開罰。 2017年5月高雄高等行政法院判決，市府應要求施工單位「建發營造」限期清除，直到2020年5月尚未清除完畢。。",
+            "content": "2013年5月高雄市大林居民發現附近農地填埋廢爐碴，池水變藍pH值超過12，回填物來自中鋼爐碴，地主表示爐碴是產品不是廢棄物，引發爭議。因沒有農地農用，高雄市政府對地主開罰。 2017年5月高雄高等行政法院判決，市府應要求施工單位「建發營造」限期清除，直到2020年5月尚未清除完畢。",
             "area": "高屏",
             "keywords": "污染公害 爐碴 爐石 鄭妙珍 事業廢棄物 事廢 產品 回填 中鋼 廢棄物 農地農用 鋼鐵 大林",
             "links": ["https://youtu.be/UB0almaihLI"],
@@ -4769,7 +4769,7 @@ var data = {
             "keywords": "雪谷纜車 高山 纜車 高山旅遊 遊憩壓力 開發 觀光",
             "links": ["https://youtu.be/OYd8vbxRZ9Y"],
             "linkTitles": ["雪谷的挑戰"],
-            "images": ["/island20/images/stories/164-A.jpg", "/island20/images/stories/164-B.jpg", "/island20/images/stories164-C.jpg"],
+            "images": ["/island20/images/stories/164-A.jpg", "/island20/images/stories/164-B.jpg", "/island20/images/stories/164-C.jpg"],
             "labels": ["2014.7.13 民眾上街反對雪谷線高山纜車", "台中市府舉辦環評說明會，支持者高掛布條", "谷關林地上，可見塔柱位置地質鑽探標記"]
         }, {
             "id": 165,
@@ -4865,7 +4865,7 @@ var data = {
             "name": "焚化爐底渣被非法傾倒",
             "content": "2015年12月民間團體召開記者會，呼籲政府重視底渣管理的缺失。台灣每年燃燒660萬公噸的垃圾，產生約100萬公噸底渣，不時傳出底渣被非法傾倒農地、魚塭等地。2016年全國最大的再利用廠-映誠公司，被查獲在台南安南區違法傾倒10多萬公噸底渣，估計前後獲取不法所得達3億多元。",
             "area": "不分區及其他",
-            "keywords": "污染公害 焚化爐底渣 廢棄物 垃圾 底渣 事業廢棄物 有毒廢棄物 非法回填 台南社大",
+            "keywords": "食在不安 污染公害 焚化爐底渣 廢棄物 垃圾 底渣 事業廢棄物 有毒廢棄物 非法回填 台南社大",
             "links": ["https://youtu.be/uurYGxLaGEE"],
             "linkTitles": ["失控的零廢棄"],
             "images": ["/island20/images/stories/173-A.jpg", "/island20/images/stories/173-B.jpg", "/island20/images/stories/173-C.jpg"],
@@ -5088,7 +5088,7 @@ var data = {
             "keywords": "深澳電廠 第三接收站 三接 天然氣 能源轉型 火力發電 燃煤電廠",
             "links": ["https://youtu.be/_KCmzra3LSA"],
             "linkTitles": ["能源轉型的深澳路口"],
-            "images": ["/island20/images/stories/193-A.jpg", "/island20/images/stories193-B.jpg", "/island20/images/stories/193-C.jpg"],
+            "images": ["/island20/images/stories/193-A.jpg", "/island20/images/stories/193-B.jpg", "/island20/images/stories/193-C.jpg"],
             "labels": ["新北市瑞芳區深澳灣，有豐富的海洋生態", "居民在環評會議上高舉海報，表達反對心聲", "漁民擔憂電廠運作衝擊漁業資源"]
         }, {
             "id": 194,
@@ -5155,7 +5155,7 @@ var data = {
             "links": ["https://www.youtube.com/watch?v=2hCPjL2e6LM"],
             "linkTitles": ["澎湖地表下的黑流"],
             "images": ["/island20/images/stories/199-A.jpg", "/island20/images/stories/199-B.jpg", "/island20/images/stories/199-C.jpg"],
-            "labels": ["油庫附近的農民發現玉米生長狀況不理想", "中油在2017年檢整，發現湖西油庫油槽異常卻未通報", "澎湖縣湖西鄉居民擔心居住安全，要求遷廠"]
+            "labels": ["油庫附近的農民發現玉米生長狀況不理想", "中油在2017年檢整，發現湖西油庫油槽異常卻未通報", "澎湖縣湖西鄉居民擔心居住安全，要求遷移油庫"]
         }, {
             "id": 200,
             "time": "2018.8.1",
@@ -5215,7 +5215,7 @@ var data = {
             "id": 205,
             "time": "2019.1.3",
             "name": "金門海漂死豬感染非洲豬瘟，離島加強疫情管理",
-            "content": "2018年底，金門漂來第一頭海漂死豬。2019年1月3日，檢驗報告出爐，確認帶有非洲豬瘟病毒。農委會宣布加嚴金門輸台的豬肉製品管控，周邊養豬場也進行境內移動管制。截至2019年5月，離島的海漂死豬檢出陽性共有10例，金門8例、馬祖2例。",
+            "content": "2018年底，金門漂來第一頭海漂死豬。2019年1月3日，檢驗報告出爐，確認帶有非洲豬瘟病毒。農委會宣布加嚴金門輸台的豬肉製品管控，周邊養豬場也進行境內移動管制。截至2020年6月，離島的海漂死豬檢出陽性共有14例，金門12例、馬祖2例。",
             "area": "金馬澎蘭嶼",
             "keywords": "豬瘟 養豬 防疫 消毒 豬肉 移動管制  防疫 防檢疫 檢疫",
             "links": ["https://youtu.be/YdParnUVLNo"],
@@ -5294,7 +5294,7 @@ var data = {
             "name": "工廠管理輔導法修法三讀通過",
             "content": "為了管理農地違章工廠亂象，立法院推動工廠管理輔導法部分條文修正，推動就地輔導納入管理。環團要求納入落日條款和公民訴訟機制。2019年6月27日立法院三讀通過工輔法修正草案，修法後2年納管、3年提改善計畫，20年的落日期限，公民訴訟則未納入。",
             "area": "不分區及其他",
-            "keywords": "工輔法 農地工廠 違章工廠 農地污染 工廠管理輔導法 公民訴訟 落日條款",
+            "keywords": "食在不安 工輔法 農地工廠 違章工廠 農地污染 工廠管理輔導法 公民訴訟 落日條款",
             "links": ["https://youtu.be/X-6rLXxSHjc"],
             "linkTitles": ["農地上的日不落國"],
             "images": ["/island20/images/stories/212-A.jpg", "/island20/images/stories/212-B.jpg", "/island20/images/stories/212-C.jpg"],
@@ -5339,8 +5339,8 @@ var data = {
             "content": "2019年10月1日早上9點半，宜蘭縣南方澳跨港大橋發生坍塌意外，3艘漁船遭到壓毀、6人死亡、10多人輕重傷。1998 年興建的南方澳跨海大橋為何斷裂，相關成立專責單位深入調查，全台兩萬多座橋梁的安全問題再度受到重視。",
             "area": "宜花東",
             "keywords": "跨海大橋  斷橋 南方澳 工安意外 ",
-
-
+            "links": ["https://youtu.be/liVrKD9nIvY?t=805"],
+            "linkTitles": ["南方澳大橋斷裂事件"],
             "images": ["/island20/images/stories/216-A.JPG", "/island20/images/stories/216-B.jpg", "/island20/images/stories/216-C.jpg"],
             "labels": ["2019.10 南方澳大橋跨港大橋從中間直接垮下", "斷橋壓垮了3艘漁船，也造成6名外籍移工死亡", "2019.1 造型優美的南方澳跨海大橋，過去是著名地標"]
         }
