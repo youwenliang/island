@@ -261,7 +261,7 @@ class Search extends Component {
   // Story Component
   storyList = () => {
     let filteredStories = story_data.filter((s) => {
-      var check = s.keywords+" "+s.name+" "+s.content;
+      var check = s.keywords+" "+s.name+" "+s.content+" "+s.time;
       return check.indexOf(this.state.search) !== -1 && check.indexOf(this.state.area) !== -1;
     });
     return (<ul id="storyBox" className="storyBox tc pa0 nowrap list overflow-x-scroll dragscroll z4 relative">{filteredStories.map((s, i) => {
