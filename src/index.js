@@ -3,14 +3,25 @@ import { render } from 'react-snapshot';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from "react-browser-router";
+import { createBrowserHistory } from 'history';
 import registerServiceWorker from './registerServiceWorker';
+import ReactGA from 'react-ga';
 import $ from 'jquery';
 import {TweenMax} from "gsap/all";
 import ScrollMagic from 'scrollmagic'; // eslint-disable-line no-unused-vars
 
+const history = createBrowserHistory();
+ReactGA.initialize('UA-37840627-8');
+
+// Initialize google analytics page view tracking
+history.listen(location => {
+  ReactGA.set({ page: location.pathname }); // Update the user's current page
+  ReactGA.pageview(location.pathname); // Record a pageview for the given page
+});
+
 render((
-<BrowserRouter basename="island20">
-	<App />
+<BrowserRouter basename="island20" history={history}>
+  <App />
 </BrowserRouter>), 
 document.getElementById('root'));
 registerServiceWorker();
@@ -23,12 +34,12 @@ $(document).ready(function(){
   //   window.location.reload();
   // }
 
-	// $(window).click(function(e) {
-	//     console.log(e.target.className);
-	// });
-	// Disable Image dragging
+  // $(window).click(function(e) {
+  //     console.log(e.target.className);
+  // });
+  // Disable Image dragging
     var flag = false;
-	$('img').on('dragstart', function(event) { event.preventDefault(); });
+  $('img').on('dragstart', function(event) { event.preventDefault(); });
 
     
     $('.panorama .left').mouseenter(function(){
@@ -38,18 +49,18 @@ $(document).ready(function(){
         // $('.panorama img').css('object-position', '100%');
     });
 
-	// Show hidden div on scroll
-	$(window).scroll( function(){
-	  $('.hide').each( function(i){
-		var bottom_of_object = $(this).offset().top + $(this).outerHeight()/4;
-		var bottom_of_window = $(window).scrollTop() + $(window).height();
-		var $this = $(this);
-		if( bottom_of_window > bottom_of_object ){
-			TweenMax.to($this, .4, {opacity: 1, y:0});
-		} else {
-			TweenMax.to($this, .4, {opacity: 0, y:50});
-		}
-	  });
+  // Show hidden div on scroll
+  $(window).scroll( function(){
+    $('.hide').each( function(i){
+    var bottom_of_object = $(this).offset().top + $(this).outerHeight()/4;
+    var bottom_of_window = $(window).scrollTop() + $(window).height();
+    var $this = $(this);
+    if( bottom_of_window > bottom_of_object ){
+      TweenMax.to($this, .4, {opacity: 1, y:0});
+    } else {
+      TweenMax.to($this, .4, {opacity: 0, y:50});
+    }
+    });
       if($(window).scrollTop() >= 66){
         if(!flag) {
             flag = true;
@@ -59,31 +70,31 @@ $(document).ready(function(){
         flag = false;
         $('nav').removeClass('fix');
       }
-	});
+  });
 
-	// Prevent Click and Dragscroll
-	$('.dragscroll').on('scroll', function() {
-		$('.dragscroll .item').one('click touch', function( event ) {
-			var $this = $(this);
-			$this.addClass('noClick');
-			if (event.isDefaultPrevented()) {
-				$('.dragscroll .item').unbind('click touch').off(event);
-				return true;
-			} else {
-				console.log( "blocked link" );
-				event.preventDefault();
-				setTimeout(function(){
-					$this.removeClass('noClick');
-				}, 100);
-			}
-		});
-	});
-	$('.dragscroll .item').on('click touch', function(event) {
-		if (event.isDefaultPrevented()) {
-			$('.dragscroll .item').unbind('click touch').off(event);
-			return true;
-		}
-	});
+  // Prevent Click and Dragscroll
+  $('.dragscroll').on('scroll', function() {
+    $('.dragscroll .item').one('click touch', function( event ) {
+      var $this = $(this);
+      $this.addClass('noClick');
+      if (event.isDefaultPrevented()) {
+        $('.dragscroll .item').unbind('click touch').off(event);
+        return true;
+      } else {
+        console.log( "blocked link" );
+        event.preventDefault();
+        setTimeout(function(){
+          $this.removeClass('noClick');
+        }, 100);
+      }
+    });
+  });
+  $('.dragscroll .item').on('click touch', function(event) {
+    if (event.isDefaultPrevented()) {
+      $('.dragscroll .item').unbind('click touch').off(event);
+      return true;
+    }
+  });
 
   // function initPlayers(num) {
   //   // pass num in if there are multiple audio players e.g 'player' + i

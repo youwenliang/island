@@ -20,6 +20,7 @@
     "react-compare-image": "^0.7.0",
     "react-dom": "^16.4.1",
     "react-fontawesome": "^1.6.1",
+    "react-ga": "^3.1.2",
     "react-graceful-image": "^1.2.9",
     "react-gsap": "^1.2.0",
     "react-helmet": "^5.2.0",
