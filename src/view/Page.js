@@ -4702,7 +4702,7 @@ class Event05 extends Component {
           position={"fl-l"}
           earth = {true}
           color={"dark"}
-          earthText = {"Image is from Google Earth ©️2018  DigitalGlobe"}
+          earthText = {"Image is from Google Earth (c)2018  DigitalGlobe"}
           text1={this.props.data.timeChangeLabels[0]}
           image = {this.props.data.timeChangePhotos[0]}
           label = ""
@@ -4716,7 +4716,7 @@ class Event05 extends Component {
           position={"fl-l"}
           earth = {true}
           color={"dark"}
-          earthText = {"Image is from Google Earth ©️2018  DigitalGlobe"}
+          earthText = {"Image is from Google Earth (c)2018  DigitalGlobe"}
           text1={this.props.data.timeChangeLabels[1]}
           image = {this.props.data.timeChangePhotos[1]}
           label = ""
@@ -4729,7 +4729,7 @@ class Event05 extends Component {
           position={"fl-l"}
           earth = {true}
           color={"dark"}
-          earthText = {"Image is from Google Earth ©️2018  DigitalGlobe"}
+          earthText = {"Image is from Google Earth (c)2018  DigitalGlobe"}
           text1={this.props.data.timeChangeLabels[2]}
           image = {this.props.data.timeChangePhotos[2]}
           label = ""
@@ -4742,7 +4742,7 @@ class Event05 extends Component {
           position={"fl-l"}
           earth = {true}
           color={"dark"}
-          earthText = {"Image is from Google Earth ©️2018  DigitalGlobe"}
+          earthText = {"Image is from Google Earth (c)2018  DigitalGlobe"}
           last={true}
           text1={this.props.data.timeChangeLabels[3]}
           image = {this.props.data.timeChangePhotos[3]}
@@ -5285,7 +5285,7 @@ class Event08 extends Component {
           large={true}
           text={this.props.data.photoText[0]}
           image = {this.props.data.photoImage[0]}
-          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
+          copyright = {"Image is from 2018/(c)DigitalGlobe,(c)CNES/Airbus"}
         />
 
         <Timeline
@@ -5353,7 +5353,7 @@ class Event08 extends Component {
           large={true}
           text={this.props.data.photoText[1]}
           image = {this.props.data.photoImage[1]}
-          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
+          copyright = {"Image is from 2018/(c)DigitalGlobe,(c)CNES/Airbus"}
         />
 
         <Transition
@@ -5420,7 +5420,7 @@ class Event08 extends Component {
           text={this.props.data.photoText[2]}
           image = {this.props.data.photoImage[2]}
           large ={true}
-          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
+          copyright = {"Image is from 2018/(c)DigitalGlobe,(c)CNES/Airbus"}
         />
 
         <Timeline
@@ -5556,7 +5556,7 @@ class Event09 extends Component {
           text1={this.props.data.photoFullText[2]}
           image = {this.props.data.photoFull[2]}
           label = {this.props.data.photoFullTextLabel[2]}
-          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
+          copyright = {"Image is from 2018/(c)DigitalGlobe,(c)CNES/Airbus"}
         />
 
         <CenterSmallVideo
@@ -5650,7 +5650,7 @@ class Event09 extends Component {
           first={true}
           move={true}
           up={"18%"}
-          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
+          copyright = {"Image is from 2018/(c)DigitalGlobe,(c)CNES/Airbus"}
         />
         <TimeChangeFull
           id={"15-timeChangeFull"}
@@ -5662,7 +5662,7 @@ class Event09 extends Component {
           count="2-2"
           move={true}
           up={"18%"}
-          copyright = {"Image is from 2018/©️DigitalGlobe,©️CNES/Airbus"}
+          copyright = {"Image is from 2018/(c)DigitalGlobe,(c)CNES/Airbus"}
         />
 
         <CenterSmallVideo
